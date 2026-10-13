@@ -8,6 +8,8 @@ A free Windows optimizer written in PowerShell. SharkOptimizer groups Windows tw
 
 Download **`SharkOptimizer-Setup.exe`** from the [latest GitHub release](https://github.com/Bas-Makes-Stuff/SharkOptimizer/releases/latest), then run the installer. It installs SharkOptimizer, adds a Start Menu entry, offers an optional Desktop shortcut, and includes an uninstaller.
 
+Current version: **1.5.1**.
+
 The installer is not code-signed. If SmartScreen appears, confirm that you downloaded the setup file from this official repository before choosing **More info > Run anyway**.
 
 ## Features
@@ -68,3 +70,4 @@ SharkOptimizer can change Windows settings, registry values, services, and netwo
 
 - Font: [Poppins](https://fonts.google.com/specimen/Poppins), licensed under the SIL Open Font License.
 - SharkOptimizer is an independent project and is not affiliated with Hone, ExitLag, GearUP Booster, Microsoft, NVIDIA, AMD, Riot Games, Epic Games, Valve, or other companies mentioned in the app.
+
