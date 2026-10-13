@@ -6,7 +6,7 @@ A free, open PC optimizer for Windows 10 and 11, written in PowerShell. It match
 
 ## Download
 
-Download the latest ready-to-use ZIP from the [Releases page](https://github.com/Bas-Makes-Stuff/SharkOptimizer/releases/latest). The current release is [SharkOptimizer V1.3.1](https://github.com/Bas-Makes-Stuff/SharkOptimizer/releases/tag/1.3.0).
+Download the latest ready-to-use ZIP from the [Releases page](https://github.com/Bas-Makes-Stuff/SharkOptimizer/releases/latest). The current release is [SharkOptimizer V1.3.1](https://github.com/Bas-Makes-Stuff/SharkOptimizer/releases/tag/1.3.1).
 
 ## Features
 
