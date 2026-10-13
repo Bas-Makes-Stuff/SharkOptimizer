@@ -2,24 +2,27 @@
 
 A free, open PC optimizer for Windows 10 and 11, written in PowerShell. It matches tweaks to your hardware, has game profiles, repair tools and a before/after benchmark, and **every change can be undone**.
 
-> Made by Bas. Available in English and Nederlands.
+> Made by Bas. Available in English, Nederlands, Español, Deutsch, Français, Português (Brasil), Русский and 简体中文.
 
 ## Download
 
-Download the latest ready-to-use ZIP from the [Releases page](https://github.com/Bas-Makes-Stuff/SharkOptimizer/releases/latest). The current release is [SharkOptimizer V1.3.1](https://github.com/Bas-Makes-Stuff/SharkOptimizer/releases/tag/1.3.1).
+Download the latest ready-to-use ZIP from the [Releases page](https://github.com/Bas-Makes-Stuff/SharkOptimizer/releases/latest).
 
 ## Features
 
 - **96 tweaks** in clear categories: Privacy & Security, Quality of Life, FPS & Latency, Network & Ping, Windows Optimization and Advanced.
 - **Risk tags** on every tweak: SAFE, CAUTION or CORE WINDOWS CHANGE, with a warning before anything risky is applied.
 - **Matched to your PC**: tweaks that don't suit your hardware (for example NVIDIA-only or SSD-only ones) are greyed out and explained.
-- **10 game profiles** (VALORANT, Fortnite, CS2, Apex Legends, Warzone, FiveM / GTA V, Roblox, Rocket League, Overwatch 2, Rust) with tips and recommended tweaks. Games with anti-cheat only get Windows-level changes. The app never touches game files or game processes.
+- **10 game profiles** (VALORANT, Fortnite, CS2, Apex Legends, Warzone, FiveM / GTA V, Roblox, Rocket League, Overwatch 2, Rust) with tips and recommended tweaks, plus an **Add Game** button for any other game. Games with anti-cheat only get Windows-level changes. The app never touches game files or game processes.
+- **My Presets**: save your own tweak selections and share them with a short code.
 - **Windows tools**: repair tools, startup app manager, built-in app removal and a heavy-app closer.
-- **Boost-Up**: cleaners for temp files, caches and more.
+- **Boost-Up**: cleaners for temp files, caches and more, plus an optional **weekly cleanup** through Windows Task Scheduler.
 - **Lab**: before/after benchmark, Game Mode, system check, tweak verification, profile export/import and a live ping graph.
 - **Network tools**: region ping test, DNS benchmark and traceroute.
 - **Restore points and undo** for everything it changes.
-- **Dutch and English**, switchable at any time.
+- **8 languages**, switchable at any time, and a choice of accent colours (blue, green, purple, orange).
+- **Copy System Report**: one click copies your specs, applied tweaks and recent log lines (your username is hidden), which makes problems easy to report.
+- An animated loading screen with startup checks and a clear error report.
 
 ## Quick start
 
@@ -31,11 +34,11 @@ Download the latest ready-to-use ZIP from the [Releases page](https://github.com
 4. On the **Dashboard**, click **Create Restore Point** first.
 5. Click **Apply Recommended**, or pick a **Preset** and review it on the Tweaks page.
 6. On **Tweaks**, tick what you want and click **Apply Selected**. Use **Details** on any card to see exactly what it changes.
-7. On **Games**, click **Scan for Games**, pick a game and click **Optimize**.
+7. On **Games**, click **Scan for Games** (or **Add Game**), pick a game and click **Optimize**.
 8. In the **Lab**, click **Run BEFORE**, apply your tweaks, restart if asked, then click **Run AFTER** to see what changed.
 9. To go back, use the **Restore** tab (**Undo All Tweaks**) or **Reset to Windows Defaults** in the Lab.
 
-The in-app **Guide** (the `?` button) walks you through the same steps.
+Change the language with the language button at the top right, or in **Settings** (the gear icon). The in-app **Guide** (the `?` button) walks you through the same steps.
 
 ### Snel starten (NL)
 
@@ -43,7 +46,11 @@ The in-app **Guide** (the `?` button) walks you through the same steps.
 2. Dubbelklik op `Start-SharkOptimizer.cmd` als die in de release-ZIP staat, of rechtsklik op `SharkOptimizer-Launcher.ps1` en kies **Uitvoeren met PowerShell**.
 3. Klik op **Ja** bij de beheerdersmelding.
 4. Maak eerst een herstelpunt op het Dashboard. Gebruik daarna **Aanbevolen toepassen** of kies zelf tweaks.
-5. Taal wisselen kan met de **NL/EN**-knop bovenaan of via **Instellingen**.
+5. Taal wisselen kan met de taalknop rechtsboven of via **Instellingen**.
+
+## Languages
+
+English and Nederlands are fully translated. Español, Deutsch, Français, Português (Brasil), Русский and 简体中文 translate the menus, buttons, labels and all tweak names. Longer descriptions, warnings and the in-app guide are still in English for those six languages. Corrections are welcome as issues or pull requests.
 
 ## Requirements
 
@@ -57,7 +64,7 @@ The in-app **Guide** (the `?` button) walks you through the same steps.
 | File | What it does |
 |------|--------------|
 | `SharkOptimizer.ps1` | The app |
-| `SharkOptimizer-Launcher.ps1` | Loading screen, startup checks and error report |
+| `SharkOptimizer-Launcher.ps1` | Animated loading screen, startup checks and error report |
 | `Start-SharkOptimizer.cmd` | Double-click starter (optional) |
 | `shark.ico` | Icon (optional) |
 
@@ -68,6 +75,7 @@ Settings, logs and undo information are stored in `C:\ProgramData\SharkOptimizer
 - **"Windows protected your PC" or a blocked script:** click **More info**, then **Run anyway**. Or right-click the downloaded ZIP, choose **Properties**, tick **Unblock**, and unzip again. The scripts are plain text, so you can read them first.
 - **The app closes on start:** the loading screen shows the error with **Copy details** and **Open logs** buttons. Open an issue and paste the text.
 - **Something feels off after a tweak:** open **Restore**, undo the last tweak you applied, and restart.
+- **Reporting a problem:** open **Settings > Help and data > Copy System Report** and paste the result into your issue.
 
 ## Safety
 
