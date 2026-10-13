@@ -1,6 +1,6 @@
-# SharkOptimizer launcher v3 (hardened): animated loading screen, requirement checks, one admin prompt,
+﻿# SharkOptimizer launcher 1.5.1: animated loading screen, requirement checks, one admin prompt,
 # single instance, clear error report with Retry, and a quiet fallback that still starts the app if the animation fails.
-# Keep this file in the same folder as SharkOptimizer.ps1. Start it with Start-SharkOptimizer.cmd or the Desktop shortcut.
+# Keep this file in the same folder as SharkOptimizer.ps1. Start it with the root Start-SharkOptimizer.bat file.
 $ErrorActionPreference = 'Stop'
 $Root = $PSScriptRoot
 $Main = Join-Path $Root 'SharkOptimizer.ps1'
@@ -98,7 +98,8 @@ function Test-AppWindow($processId) {
 }
 
 # ---- 4. language, accent colour and version (read from the app's settings)
-$lang = 'en'; $accent = '#1FB6FF'; $ver = ''
+$LauncherVersion = '1.5.1'
+$lang = 'en'; $accent = '#1FB6FF'; $ver = "v$LauncherVersion"
 $codes = 'nl', 'es', 'de', 'fr', 'pt', 'ru', 'zh'
 try {
     $cc = (Get-UICulture).TwoLetterISOLanguageName
@@ -111,7 +112,10 @@ try {
         if ($st.Accent -and $accMap.ContainsKey([string]$st.Accent)) { $accent = $accMap[[string]$st.Accent] }
     }
     $vm = [regex]::Match([IO.File]::ReadAllText($Main), "\`$AppVer = '([0-9][0-9.]*)'")
-    if ($vm.Success) { $ver = 'v' + $vm.Groups[1].Value }
+    if ($vm.Success -and $vm.Groups[1].Value -ne $LauncherVersion) {
+        Write-LLog "Version mismatch: launcher $LauncherVersion, app $($vm.Groups[1].Value)."
+        $ver = 'v' + $vm.Groups[1].Value
+    }
 } catch { Write-LLog "Settings could not be read: $($_.Exception.Message)" }
 function Mix-White($hex, $t) {
     $c = [Windows.Media.ColorConverter]::ConvertFromString($hex)

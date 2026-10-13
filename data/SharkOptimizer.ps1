@@ -1,4 +1,4 @@
-
+﻿
 #Requires -Version 5.1
 <#
   SharkOptimizer  -  PowerShell + WPF PC optimizer
@@ -18,39 +18,87 @@ $DataDir = Join-Path $env:ProgramData 'SharkOptimizer'
 New-Item $DataDir -ItemType Directory -Force | Out-Null
 $StateFile = Join-Path $DataDir 'state.json'
 $LogFile   = Join-Path $DataDir 'log.txt'
+
+# Write JSON beside the destination, then atomically replace it. A crash during
+# serialization must not truncate the only copy of the undo history.
+function Write-JsonAtomic([string]$Path, [object]$Value, [int]$Depth = 6) {
+    $fullPath = [IO.Path]::GetFullPath($Path)
+    $directory = [IO.Path]::GetDirectoryName($fullPath)
+    if (-not (Test-Path -LiteralPath $directory)) { New-Item -ItemType Directory -Path $directory -Force | Out-Null }
+    $tempPath = Join-Path $directory ('.' + [IO.Path]::GetFileName($fullPath) + '.' + [guid]::NewGuid().ToString('N') + '.tmp')
+    $json = ConvertTo-Json -InputObject $Value -Depth $Depth
+    $utf8 = [System.Text.UTF8Encoding]::new($false)
+    [IO.File]::WriteAllText($tempPath, $json, $utf8)
+    try {
+        if (Test-Path -LiteralPath $fullPath) {
+            [IO.File]::Copy($fullPath, ($fullPath + '.bak'), $true)
+            [IO.File]::Replace($tempPath, $fullPath, $null)
+        }
+        else { [IO.File]::Move($tempPath, $fullPath) }
+    } catch {
+        Remove-Item -LiteralPath $tempPath -Force -ErrorAction SilentlyContinue
+        throw
+    }
+}
+
 $State = @{}
+$script:StateLoadNotice = $null
 if (Test-Path $StateFile) {
     try {
-        $o = Get-Content $StateFile -Raw | ConvertFrom-Json
+        $o = Get-Content $StateFile -Raw -ErrorAction Stop | ConvertFrom-Json -ErrorAction Stop
+        if ($null -eq $o -or $o -is [string] -or $o -is [System.Array]) { throw 'Saved change history is not a JSON object.' }
         foreach ($prop in $o.PSObject.Properties) { $State[$prop.Name] = @($prop.Value | Where-Object { $_ }) }
-    } catch {}
+    } catch {
+        $primaryError = $_.Exception.Message
+        try {
+            $backupFile = $StateFile + '.bak'
+            if (-not (Test-Path -LiteralPath $backupFile)) { throw 'No saved backup was found.' }
+            $o = Get-Content $backupFile -Raw -ErrorAction Stop | ConvertFrom-Json -ErrorAction Stop
+            if ($null -eq $o -or $o -is [string] -or $o -is [System.Array]) { throw 'Saved backup is not a JSON object.' }
+            foreach ($prop in $o.PSObject.Properties) { $State[$prop.Name] = @($prop.Value | Where-Object { $_ }) }
+            $script:StateLoadNotice = 'The saved change history was damaged. SharkOptimizer recovered the previous copy; review Restore before making more changes.'
+        } catch {
+            $State.Clear()
+            $script:StateLoadNotice = "The saved change history could not be read ($primaryError). No applied-change history was loaded; use Restore carefully."
+        }
+    }
 }
-function Save-State { $State | ConvertTo-Json -Depth 6 | Set-Content $StateFile -Encoding UTF8 }
+function Save-State {
+    try { Write-JsonAtomic $StateFile $State 6 }
+    catch { if (Get-Command Log -ErrorAction SilentlyContinue) { Log "Could not save change history: $($_.Exception.Message)" } }
+}
 
 # ---------------------------------------------------------------- hardware detection
 function Get-Specs {
-    $cpu  = Get-CimInstance Win32_Processor | Select-Object -First 1
-    $gpus = @(Get-CimInstance Win32_VideoController)
+    $cpu = $null; $cs = $null; $osInfo = $null
+    $gpus = @(); $nics = @(); $laptop = $false
+    try { $cpu = Get-CimInstance Win32_Processor -ErrorAction Stop | Select-Object -First 1 } catch {}
+    try { $gpus = @(Get-CimInstance Win32_VideoController -ErrorAction Stop) } catch {}
     $gpu  = $gpus | Where-Object { $_.Name -match 'NVIDIA|Radeon|Arc' } | Select-Object -First 1
     if (-not $gpu) { $gpu = $gpus | Select-Object -First 1 }
-    $cs   = Get-CimInstance Win32_ComputerSystem
-    $ram  = [math]::Round($cs.TotalPhysicalMemory / 1GB)
-    $laptop = [bool](Get-CimInstance Win32_Battery -ErrorAction SilentlyContinue)
-    if (-not $laptop) { $ct = (Get-CimInstance Win32_SystemEnclosure).ChassisTypes; if ($ct | Where-Object { $_ -in 8,9,10,14,30,31 }) { $laptop = $true } }
+    try { $cs = Get-CimInstance Win32_ComputerSystem -ErrorAction Stop } catch {}
+    $ram = if ($cs -and $cs.TotalPhysicalMemory) { [math]::Round($cs.TotalPhysicalMemory / 1GB) } else { 0 }
+    try { $laptop = [bool](Get-CimInstance Win32_Battery -ErrorAction Stop) } catch {}
+    if (-not $laptop) { try { $ct = (Get-CimInstance Win32_SystemEnclosure -ErrorAction Stop).ChassisTypes; if ($ct | Where-Object { $_ -in 8,9,10,14,30,31 }) { $laptop = $true } } catch {} }
     $ssd = $false
     try { $ssd = [bool](Get-Partition -DriveLetter ([string]$env:SystemDrive[0]) | Get-Disk | Get-PhysicalDisk | Where-Object MediaType -eq 'SSD') } catch {}
-    $nics = @(Get-NetAdapter -Physical -ErrorAction SilentlyContinue | Where-Object Status -eq 'Up')
+    try { $nics = @(Get-NetAdapter -Physical -ErrorAction Stop | Where-Object Status -eq 'Up') } catch {}
     $wifi = [bool]($nics | Where-Object { $_.PhysicalMediaType -match '802.11' })
     $build = [Environment]::OSVersion.Version.Build
     $gname = if ($gpu) { [string]$gpu.Name } else { 'Unknown GPU' }
-    $tier = if ($ram -le 8 -or $cpu.NumberOfLogicalProcessors -le 4) { 'Entry-level' } elseif ($ram -ge 32 -and $cpu.NumberOfLogicalProcessors -ge 12) { 'High-end' } else { 'Mid-range' }
+    try { $osInfo = Get-CimInstance Win32_OperatingSystem -ErrorAction Stop } catch {}
+    $cpuName = if ($cpu -and $cpu.Name) { ([string]$cpu.Name).Trim() } else { 'Unknown CPU' }
+    $cores = if ($cpu) { [int]$cpu.NumberOfCores } else { 0 }
+    $threads = if ($cpu) { [int]$cpu.NumberOfLogicalProcessors } else { 0 }
+    $tier = if (-not $cpu -or -not $cs) { 'Unknown' } elseif ($ram -le 8 -or $threads -le 4) { 'Entry-level' } elseif ($ram -ge 32 -and $threads -ge 12) { 'High-end' } else { 'Mid-range' }
+    if (-not $cpu -or -not $cs -or -not $osInfo) { $script:HardwareNotice = 'Some PC details could not be read. SharkOptimizer started with conservative hardware matching.' }
     [pscustomobject]@{
-        CPU=$cpu.Name.Trim(); Cores=$cpu.NumberOfCores; Threads=$cpu.NumberOfLogicalProcessors
-        Intel=($cpu.Name -match 'Intel'); AMD=($cpu.Name -match 'AMD')
+        CPU=$cpuName; Cores=$cores; Threads=$threads
+        Intel=($cpuName -match 'Intel'); AMD=($cpuName -match 'AMD')
         GPU=$gname; Nvidia=($gname -match 'NVIDIA'); AmdGpu=($gname -match 'Radeon|AMD'); IntelGpu=($gname -match 'Intel'); GpuCount=$gpus.Count
         RamGB=$ram; Laptop=$laptop; SSD=$ssd; Wifi=$wifi; Nics=@($nics | ForEach-Object Name)
         Build=$build; Win11=($build -ge 22000)
-        OS=(Get-CimInstance Win32_OperatingSystem).Caption; Tier=$tier
+        OS=$(if ($osInfo) { [string]$osInfo.Caption } else { 'Windows (details unavailable)' }); Tier=$tier
     }
 }
 $Spec = $null
@@ -58,13 +106,17 @@ $specCache = Join-Path $DataDir 'specs-cache.json'
 try {
     if (Test-Path $specCache) {
         $sc = Get-Content $specCache -Raw | ConvertFrom-Json
-        if ($sc.Spec -and $sc.Spec.PSObject.Properties['GpuCount'] -and (((Get-Date) - [datetime]$sc.Saved).TotalHours -lt 12) -and ([int]$sc.Build -eq [Environment]::OSVersion.Version.Build)) { $Spec = $sc.Spec }
+        $specFields = 'CPU','GpuCount','RamGB','Build','OS','Tier'
+        $missingSpecFields = @($specFields | Where-Object { -not $sc.Spec.PSObject.Properties[$_] })
+        $validSpec = ($null -ne $sc.Spec) -and ($missingSpecFields.Count -eq 0)
+        if ($validSpec -and (((Get-Date) - [datetime]$sc.Saved).TotalHours -lt 12) -and ([int]$sc.Build -eq [Environment]::OSVersion.Version.Build)) { $Spec = $sc.Spec }
     }
 } catch {}
 if (-not $Spec) {
     $Spec = Get-Specs
-    try { @{ Saved = (Get-Date).ToString('s'); Build = [int]$Spec.Build; Spec = $Spec } | ConvertTo-Json -Depth 4 | Set-Content $specCache -Encoding UTF8 } catch {}
+    try { Write-JsonAtomic -Path $specCache -Value @{ Saved = (Get-Date).ToString('s'); Build = [int]$Spec.Build; Spec = $Spec } -Depth 4 } catch {}
 }
+if (($Spec.Tier -eq 'Unknown' -or [string]$Spec.OS -like '*details unavailable*') -and -not $script:HardwareNotice) { $script:HardwareNotice = 'Some PC details could not be read. SharkOptimizer started with conservative hardware matching.' }
 
 # ---------------------------------------------------------------- tracked changes (undo engine)
 $script:CurId = ''
@@ -360,7 +412,10 @@ function Undo-Tweak($t) {
     if ($t.Undo) { & $t.Undo }
     $State.Remove($t.Id)
 }
-function Test-Applicable($t) { if ($t.Req) { [bool](& $t.Req) } else { $true } }
+function Test-Applicable($t) {
+    if ($script:HardwareNotice -and $t.Req) { return $false }
+    if ($t.Req) { [bool](& $t.Req) } else { $true }
+}
 function Get-Tweak($id) { $Tweaks | Where-Object { $_.Id -eq $id } | Select-Object -First 1 }
 
 # ---------------------------------------------------------------- presets
@@ -428,7 +483,7 @@ $xaml = @'
   </DrawingGroup></DrawingImage.Drawing></DrawingImage>
   <Style TargetType="Button"><Setter Property="Foreground" Value="#E8ECF4"/><Setter Property="Background" Value="#16233A"/><Setter Property="Padding" Value="16,9"/><Setter Property="Margin" Value="4"/><Setter Property="Cursor" Value="Hand"/><Setter Property="FontWeight" Value="SemiBold"/>
    <Setter Property="Template"><Setter.Value><ControlTemplate TargetType="Button">
-    <Border x:Name="bd" Background="{TemplateBinding Background}" CornerRadius="10" Padding="{TemplateBinding Padding}" RenderTransformOrigin="0.5,0.5">
+    <Border x:Name="bd" Background="{TemplateBinding Background}" BorderBrush="#1E2E4B" BorderThickness="1" CornerRadius="10" Padding="{TemplateBinding Padding}" RenderTransformOrigin="0.5,0.5">
      <Border.RenderTransform><ScaleTransform x:Name="sc" ScaleX="1" ScaleY="1"/></Border.RenderTransform>
      <ContentPresenter HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" VerticalAlignment="Center"/>
     </Border>
@@ -441,6 +496,7 @@ $xaml = @'
       <Trigger.EnterActions><BeginStoryboard><Storyboard><DoubleAnimation Storyboard.TargetName="sc" Storyboard.TargetProperty="ScaleX" To="0.96" Duration="0:0:0.08"/><DoubleAnimation Storyboard.TargetName="sc" Storyboard.TargetProperty="ScaleY" To="0.96" Duration="0:0:0.08"/></Storyboard></BeginStoryboard></Trigger.EnterActions>
       <Trigger.ExitActions><BeginStoryboard><Storyboard><DoubleAnimation Storyboard.TargetName="sc" Storyboard.TargetProperty="ScaleX" To="1" Duration="0:0:0.15"/><DoubleAnimation Storyboard.TargetName="sc" Storyboard.TargetProperty="ScaleY" To="1" Duration="0:0:0.15"/></Storyboard></BeginStoryboard></Trigger.ExitActions>
      </Trigger>
+     <Trigger Property="IsKeyboardFocused" Value="True"><Setter TargetName="bd" Property="BorderBrush" Value="#5BE3FF"/><Setter TargetName="bd" Property="BorderThickness" Value="1"/></Trigger>
      <Trigger Property="IsEnabled" Value="False"><Setter TargetName="bd" Property="Opacity" Value="0.4"/></Trigger>
     </ControlTemplate.Triggers></ControlTemplate></Setter.Value></Setter></Style>
   <Style x:Key="NavBtn" TargetType="Button"><Setter Property="Foreground" Value="#C2CCDF"/><Setter Property="Background" Value="#0B1424"/><Setter Property="Cursor" Value="Hand"/><Setter Property="FontWeight" Value="SemiBold"/><Setter Property="Tag" Value=""/>
@@ -461,7 +517,7 @@ $xaml = @'
      <Track.IncreaseRepeatButton><RepeatButton Style="{StaticResource SbPage}" Command="ScrollBar.PageDownCommand"/></Track.IncreaseRepeatButton>
      <Track.Thumb><Thumb><Thumb.Template><ControlTemplate TargetType="Thumb"><Border x:Name="tb" Background="#2A3A5C" CornerRadius="4" Margin="1"/><ControlTemplate.Triggers><Trigger Property="IsMouseOver" Value="True"><Setter TargetName="tb" Property="Background" Value="#1FB6FF"/></Trigger></ControlTemplate.Triggers></ControlTemplate></Thumb.Template></Thumb></Track.Thumb>
     </Track></Grid></ControlTemplate></Setter.Value></Setter></Style>
-  <Style TargetType="TextBox"><Setter Property="Background" Value="#0F1A2C"/><Setter Property="Foreground" Value="#E8ECF4"/><Setter Property="BorderBrush" Value="#1E2E4B"/><Setter Property="CaretBrush" Value="White"/><Setter Property="Padding" Value="10,7"/></Style>
+  <Style TargetType="TextBox"><Setter Property="Background" Value="#0F1A2C"/><Setter Property="Foreground" Value="#E8ECF4"/><Setter Property="BorderBrush" Value="#1E2E4B"/><Setter Property="CaretBrush" Value="White"/><Setter Property="Padding" Value="10,7"/><Style.Triggers><Trigger Property="IsKeyboardFocused" Value="True"><Setter Property="BorderBrush" Value="#5BE3FF"/></Trigger></Style.Triggers></Style>
   <Style TargetType="CheckBox"><Setter Property="Foreground" Value="#E8ECF4"/><Setter Property="VerticalContentAlignment" Value="Center"/></Style>
   <Style TargetType="ProgressBar"><Setter Property="Height" Value="7"/><Setter Property="Foreground" Value="#35D07F"/><Setter Property="Background" Value="#1E2B45"/><Setter Property="BorderThickness" Value="0"/><Setter Property="Maximum" Value="100"/></Style>
  </Window.Resources>
@@ -492,14 +548,14 @@ $xaml = @'
 
     <ScrollViewer x:Name="pgDash" VerticalScrollBarVisibility="Auto">
      <StackPanel>
-      <TextBlock Text="Welcome to SharkOptimizer" Foreground="White" FontSize="30" FontWeight="Bold"/>
+      <TextBlock x:Name="txtDashTitle" Text="Welcome to SharkOptimizer" Foreground="White" FontSize="30" FontWeight="Bold"/>
       <TextBlock x:Name="txtTier" Foreground="#7F8FAE" Margin="0,2,0,14"/>
       <UniformGrid Columns="3" Margin="-6,0">
        <Border Margin="6" Padding="18" CornerRadius="14" Background="#0F1A2C" BorderBrush="#1A2943" BorderThickness="1"><StackPanel><TextBlock Text="CPU USAGE" Foreground="#7F8FAE" FontSize="11" FontWeight="SemiBold"/><TextBlock x:Name="txtCpu" Text="0%" Foreground="White" FontSize="34" FontWeight="Bold" Margin="0,2,0,8"/><ProgressBar x:Name="barCpu" Foreground="#35D07F"/></StackPanel></Border> <Border Margin="6" Padding="18" CornerRadius="14" Background="#0F1A2C" BorderBrush="#1A2943" BorderThickness="1"><StackPanel><TextBlock Text="GPU 3D USAGE" Foreground="#7F8FAE" FontSize="11" FontWeight="SemiBold"/><TextBlock x:Name="txtGpu" Text="0%" Foreground="White" FontSize="34" FontWeight="Bold" Margin="0,2,0,8"/><ProgressBar x:Name="barGpu" Foreground="#1FB6FF"/></StackPanel></Border> <Border Margin="6" Padding="18" CornerRadius="14" Background="#0F1A2C" BorderBrush="#1A2943" BorderThickness="1"><StackPanel><TextBlock Text="RAM USAGE" Foreground="#7F8FAE" FontSize="11" FontWeight="SemiBold"/><TextBlock x:Name="txtRam" Text="0%" Foreground="White" FontSize="34" FontWeight="Bold" Margin="0,2,0,8"/><ProgressBar x:Name="barRam" Foreground="#FFC857"/></StackPanel></Border>
       </UniformGrid>
       <UniformGrid Columns="4" Margin="-6,0">
        <Border Margin="6" Padding="16" CornerRadius="14" Background="#0F1A2C" BorderBrush="#1A2943" BorderThickness="1"><StackPanel><TextBlock x:Name="txtActive" Text="0" Foreground="#35D07F" FontSize="26" FontWeight="Bold"/><TextBlock Text="Optimizations active" Foreground="#7F8FAE" FontSize="12"/></StackPanel></Border> <Border Margin="6" Padding="16" CornerRadius="14" Background="#0F1A2C" BorderBrush="#1A2943" BorderThickness="1"><StackPanel><TextBlock x:Name="txtRecCnt" Text="0" Foreground="#FFC857" FontSize="26" FontWeight="Bold"/><TextBlock Text="Recommended pending" Foreground="#7F8FAE" FontSize="12"/></StackPanel></Border> <Border Margin="6" Padding="16" CornerRadius="14" Background="#0F1A2C" BorderBrush="#1A2943" BorderThickness="1"><StackPanel><TextBlock x:Name="txtTotal" Text="0" Foreground="#FFFFFF" FontSize="26" FontWeight="Bold"/><TextBlock Text="Tweaks available" Foreground="#7F8FAE" FontSize="12"/></StackPanel></Border>
-       <Border Margin="6" Padding="16" CornerRadius="14" Background="#0F1A2C" BorderBrush="#1A2943" BorderThickness="1"><StackPanel><TextBlock x:Name="txtScore" Text="0%" Foreground="#1FB6FF" FontSize="26" FontWeight="Bold"/><TextBlock Text="Optimization score" Foreground="#7F8FAE" FontSize="12" Margin="0,0,0,6"/><ProgressBar x:Name="barScore" Foreground="#1FB6FF"/></StackPanel></Border>
+       <Border Margin="6" Padding="16" CornerRadius="14" Background="#0F1A2C" BorderBrush="#1A2943" BorderThickness="1"><StackPanel><TextBlock x:Name="txtScore" Text="0%" Foreground="#1FB6FF" FontSize="26" FontWeight="Bold"/><TextBlock Text="Recommended tweaks applied" Foreground="#7F8FAE" FontSize="12" Margin="0,0,0,6"/><ProgressBar x:Name="barScore" Foreground="#1FB6FF"/></StackPanel></Border>
       </UniformGrid>
       <Border Margin="0,6,0,6" Padding="16" CornerRadius="14" Background="#0F1A2C" BorderBrush="#1A2943" BorderThickness="1">
        <StackPanel><TextBlock Text="Presets" Foreground="White" FontWeight="Bold" Margin="0,0,0,6"/>
@@ -517,7 +573,7 @@ $xaml = @'
     <Grid x:Name="pgTweaks" Visibility="Collapsed">
      <Grid.RowDefinitions><RowDefinition Height="Auto"/><RowDefinition Height="Auto"/><RowDefinition Height="*"/><RowDefinition Height="Auto"/></Grid.RowDefinitions>
      <DockPanel Grid.Row="0" Margin="0,0,0,10">
-      <TextBlock Text="Tweaks" Foreground="White" FontSize="28" FontWeight="Bold" DockPanel.Dock="Left"/>
+      <TextBlock x:Name="txtTweaksTitle" Text="Tweaks" Foreground="White" FontSize="28" FontWeight="Bold" DockPanel.Dock="Left"/>
       <CheckBox x:Name="chkRec" Content="Recommended only" DockPanel.Dock="Right" Margin="12,0,0,0" VerticalAlignment="Center"/>
       <TextBox x:Name="txtSearch" Width="230" DockPanel.Dock="Right" ToolTip="Search tweaks"/>
       <Grid/>
@@ -539,7 +595,7 @@ $xaml = @'
     <Grid x:Name="pgGames" Visibility="Collapsed">
      <Grid.RowDefinitions><RowDefinition Height="Auto"/><RowDefinition Height="*"/></Grid.RowDefinitions>
      <StackPanel>
-      <TextBlock Text="Games" Foreground="White" FontSize="28" FontWeight="Bold"/>
+      <TextBlock x:Name="txtGamesTitle" Text="Games" Foreground="White" FontSize="28" FontWeight="Bold"/>
       <DockPanel Margin="0,2,0,10"><Button x:Name="btnScan" Content="Scan for Games" DockPanel.Dock="Left" Margin="0,4,8,4"/><TextBlock x:Name="txtScan" Foreground="#7F8FAE" VerticalAlignment="Center" Text="Pick a game for a tuned profile. Scan to detect your installs."/></DockPanel>
      </StackPanel>
      <Grid Grid.Row="1"><Grid.ColumnDefinitions><ColumnDefinition Width="260"/><ColumnDefinition Width="*"/></Grid.ColumnDefinitions>
@@ -550,7 +606,7 @@ $xaml = @'
 
     <ScrollViewer x:Name="pgWin" Visibility="Collapsed" VerticalScrollBarVisibility="Auto">
      <StackPanel>
-      <TextBlock Text="Windows" Foreground="White" FontSize="28" FontWeight="Bold"/>
+      <TextBlock x:Name="txtWinTitle" Text="Windows" Foreground="White" FontSize="28" FontWeight="Bold"/>
       <TextBlock Text="Repair tools, startup control, built-in app removal and a heavy-app closer. More Windows tweaks are under Tweaks > Windows Optimization." Foreground="#7F8FAE" TextWrapping="Wrap"/>
       <TextBlock Text="Quick Tools" Foreground="White" FontSize="16" FontWeight="Bold" Margin="4,20,0,8"/>
       <WrapPanel x:Name="pnlTools" Margin="-4,0"/>
@@ -571,7 +627,7 @@ $xaml = @'
 
     <Grid x:Name="pgBoost" Visibility="Collapsed">
      <StackPanel>
-      <TextBlock Text="Boost-Up" Foreground="White" FontSize="28" FontWeight="Bold"/>
+      <TextBlock x:Name="txtBoostTitle" Text="Boost-Up" Foreground="White" FontSize="28" FontWeight="Bold"/>
       <TextBlock Text="Routine cleanups. Run monthly or when your PC feels slow." Foreground="#7F8FAE" Margin="0,0,0,14"/>
       <ScrollViewer MaxHeight="520" VerticalScrollBarVisibility="Auto"><StackPanel x:Name="lstBoost"/></ScrollViewer>
       <Button x:Name="btnBoostAll" Content="Run All" Background="#1FB6FF" Foreground="#06121F" HorizontalAlignment="Left" Margin="0,10"/>
@@ -581,7 +637,7 @@ $xaml = @'
     <Grid x:Name="pgNet" Visibility="Collapsed">
      <Grid.RowDefinitions><RowDefinition Height="Auto"/><RowDefinition Height="*"/></Grid.RowDefinitions>
      <StackPanel>
-      <TextBlock Text="Network &amp; Ping" Foreground="White" FontSize="28" FontWeight="Bold"/>
+      <TextBlock x:Name="txtNetTitle" Text="Network &amp; Ping" Foreground="White" FontSize="28" FontWeight="Bold"/>
       <TextBlock Text="Measures ping, jitter and packet loss. Region tests use cloud endpoints as a route-quality guide. Enter a game server host to test it directly." Foreground="#7F8FAE" TextWrapping="Wrap" Margin="0,0,0,12"/>
       <WrapPanel>
        <Button x:Name="btnPing" Content="Test Regions"/>
@@ -597,7 +653,7 @@ $xaml = @'
 
     <Grid x:Name="pgRestore" Visibility="Collapsed">
      <StackPanel>
-      <TextBlock Text="Restore" Foreground="White" FontSize="28" FontWeight="Bold"/>
+      <TextBlock x:Name="txtRestoreTitle" Text="Restore" Foreground="White" FontSize="28" FontWeight="Bold"/>
       <TextBlock Text="Every change is recorded, so you can revert it at any time." Foreground="#7F8FAE" Margin="0,0,0,12"/>
       <WrapPanel>
        <Button x:Name="btnRP" Content="Create Restore Point"/>
@@ -617,7 +673,7 @@ $xaml = @'
 $window = [Windows.Markup.XamlReader]::Load((New-Object System.Xml.XmlNodeReader ([xml]$xaml)))
 $window.Icon = $window.FindResource('SharkIcon')
 $ui = @{}
-foreach ($nm in 'navDash','navTweaks','navGames','navWin','navBoost','navNet','navRestore','txtSide','pgDash','pgTweaks','pgGames','pgWin','pgBoost','pgNet','pgRestore','txtTier','txtCpu','barCpu','txtGpu','barGpu','txtRam','barRam','txtActive','txtRecCnt','txtTotal','txtScore','barScore','pnlPresets','txtSpecs','btnDashApply','btnDashRP','chkRec','txtSearch','chips','wrap','txtSel','btnSelRec','btnSelAll','btnClear','btnUndo','btnApply','btnScan','txtScan','gameList','gameDetail','pnlTools','lstStartup','btnStartRef','lstBloat','btnBloatRef','btnBloat','lstProc','btnProcRef','btnProcClose','lstBoost','btnBoostAll','btnPing','txtHost','btnHost','btnDns','btnBestDns','btnFlush','txtNet','btnRP','btnUndoAll','btnLog','txtApplied','txtLog') {
+foreach ($nm in 'navDash','navTweaks','navGames','navWin','navBoost','navNet','navRestore','txtSide','pgDash','pgTweaks','pgGames','pgWin','pgBoost','pgNet','pgRestore','txtDashTitle','txtTweaksTitle','txtGamesTitle','txtWinTitle','txtBoostTitle','txtNetTitle','txtRestoreTitle','txtTier','txtCpu','barCpu','txtGpu','barGpu','txtRam','barRam','txtActive','txtRecCnt','txtTotal','txtScore','barScore','pnlPresets','txtSpecs','btnDashApply','btnDashRP','chkRec','txtSearch','chips','wrap','txtSel','btnSelRec','btnSelAll','btnClear','btnUndo','btnApply','btnScan','txtScan','gameList','gameDetail','pnlTools','lstStartup','btnStartRef','lstBloat','btnBloatRef','btnBloat','lstProc','btnProcRef','btnProcClose','lstBoost','btnBoostAll','btnPing','txtHost','btnHost','btnDns','btnBestDns','btnFlush','txtNet','btnRP','btnUndoAll','btnLog','txtApplied','txtLog') {
     $ui[$nm] = $window.FindName($nm)
     if (-not $ui[$nm]) { throw "UI element not found: $nm" }
 }
@@ -630,6 +686,8 @@ function Log($m) {
     Add-Content $LogFile $line -ErrorAction SilentlyContinue
     Flush-UI
 }
+if ($script:StateLoadNotice) { Log $script:StateLoadNotice }
+if ($script:HardwareNotice) { Log $script:HardwareNotice }
 function New-Text($text, $size = 12, $color = '#C2CCDF', $bold = $false, $margin = '0') {
     $tb = New-Object Windows.Controls.TextBlock; $tb.Text = $text; $tb.FontSize = $size; $tb.Foreground = Brush $color
     $tb.TextWrapping = 'Wrap'; $tb.Margin = $margin; if ($bold) { $tb.FontWeight = 'Bold' }; $tb
@@ -645,7 +703,7 @@ function New-RestorePoint {
 }
 
 $ui.txtSide.Text = "$($Spec.CPU)`n$($Spec.GPU)"
-$ui.txtTier.Text = "$($Spec.Tier) PC  -  tweaks matched to your hardware"
+$ui.txtTier.Text = if ($script:HardwareNotice) { 'PC details unavailable - hardware-matched tweaks are disabled for safety.' } else { "$($Spec.Tier) PC  -  tweaks matched to your hardware" }
 $ui.txtSpecs.Text = @(
  "OS       $($Spec.OS)  (build $($Spec.Build))",
  "CPU      $($Spec.CPU)  [$($Spec.Cores)C / $($Spec.Threads)T]",
@@ -756,7 +814,24 @@ function Get-Visible {
 }
 function Render-Tweaks {
     $ui.wrap.Children.Clear(); $script:cardIdx = 0
-    foreach ($tw in @(Get-Visible)) { $cd = New-Card $tw; $ui.wrap.Children.Add($cd) | Out-Null; $tgt = $(if (Test-Applicable $tw) { 1 } else { 0.5 }); Animate-In $cd ([math]::Min($script:cardIdx * 16, 360)) 10 240 $tgt; $script:cardIdx++ }
+    $visibleTweaks = @(Get-Visible)
+    if (-not $visibleTweaks.Count) {
+        $empty = New-Object Windows.Controls.Border; $empty.Width = 600; $empty.Padding = '22'; $empty.Margin = '4,12'; $empty.CornerRadius = 12
+        $empty.Background = Brush '#0F1A2C'; $empty.BorderBrush = Brush '#1A2943'; $empty.BorderThickness = 1
+        $message = switch ($script:Lang) {
+            'nl' { 'Geen tweaks gevonden. Wis de zoekopdracht of kies een andere categorie.' }
+            'es' { 'No hay ajustes que coincidan. Borra la búsqueda o elige otra categoría.' }
+            'de' { 'Keine passenden Tweaks gefunden. Suche löschen oder eine andere Kategorie wählen.' }
+            'fr' { 'Aucun réglage correspondant. Effacez la recherche ou choisissez une autre catégorie.' }
+            'pt' { 'Nenhum ajuste encontrado. Limpe a pesquisa ou escolha outra categoria.' }
+            'ru' { 'Подходящие настройки не найдены. Очистите поиск или выберите другую категорию.' }
+            'zh' { '没有符合条件的调整。请清除搜索或选择其他类别。' }
+            default { 'No tweaks match these filters. Clear the search or choose another category.' }
+        }
+        $empty.Child = (New-Text $message 13 '#7F8FAE')
+        $ui.wrap.Children.Add($empty) | Out-Null
+    }
+    foreach ($tw in $visibleTweaks) { $cd = New-Card $tw; $ui.wrap.Children.Add($cd) | Out-Null; $tgt = $(if (Test-Applicable $tw) { 1 } else { 0.5 }); Animate-In $cd ([math]::Min($script:cardIdx * 16, 360)) 10 240 $tgt; $script:cardIdx++ }
     foreach ($chip in $ui.chips.Children) {
         $on = ($chip.Tag -eq $script:CatFilter)
         $chip.Background = Brush $(if ($on) { '#1FB6FF' } else { '#16233A' }); $chip.Foreground = Brush $(if ($on) { '#06121F' } else { '#C2CCDF' })
@@ -1245,7 +1320,7 @@ $timer.Start()
 
 
 # ================================================================ SharkOptimizer Lab (added module)
-$AppVersion = '1.5.0'
+$AppVersion = '1.5.1'
 $window.Title = "SharkOptimizer v$AppVersion"
 $BenchFile = Join-Path $DataDir 'bench.json'
 function Test-Cmd($n) { [bool](Get-Command $n -ErrorAction SilentlyContinue) }
@@ -1425,7 +1500,7 @@ function Save-Bench($slot, $res) {
     $store = @{}
     if (Test-Path $BenchFile) { $o = Get-Content $BenchFile -Raw | ConvertFrom-Json; foreach ($pr in $o.PSObject.Properties) { $store[$pr.Name] = $pr.Value } }
     $store[$slot] = $res; $store["${slot}Time"] = (Get-Date).ToString('s')
-    $store | ConvertTo-Json -Depth 4 | Set-Content $BenchFile -Encoding UTF8
+    Write-JsonAtomic -Path $BenchFile -Value $store -Depth 4
 }
 Add-LabSection 'Before and after benchmark' 'Measures ping, jitter, DNS speed, idle CPU, RAM, process count and boot time, so you can see what your tweaks really changed. Takes about 20 seconds.'
 $script:txtBenchStatus = New-Text '' 12 '#1FB6FF' $false '4,0,0,4'
@@ -1723,7 +1798,7 @@ Refresh-GmProcs; Refresh-GmGames
 
 
 # ================================================================ SharkOptimizer Pro UI (added module)
-$ProVersion = '1.5.0'
+$ProVersion = '1.5.1'
 function Has-Fn($n) { [bool](Get-Command $n -CommandType Function -ErrorAction SilentlyContinue) }
 function Step($name, [scriptblock]$body) { try { & $body } catch { Log "UI step '$name' failed: $($_.Exception.Message)" } }
 try { $window.Title = "SharkOptimizer v$ProVersion" } catch {}
@@ -2099,7 +2174,7 @@ try { Update-ProChrome } catch {}
 
 
 # ================================================================ SharkOptimizer Settings, Dutch and Updates (added module)
-$AppVer = '1.5.0'
+$AppVer = '1.5.1'
 try { $window.Title = "SharkOptimizer v$AppVer" } catch {}
 function Has-Fn($n) { [bool](Get-Command $n -CommandType Function -ErrorAction SilentlyContinue) }
 function Tn($en, $nl) { if ($script:Lang -eq 'nl') { $nl } else { $en } }
@@ -2109,8 +2184,28 @@ $SettingsFile = Join-Path $DataDir 'settings.json'
 $Settings = @{ Language = 'en'; AutoUpdate = $true; Toasts = $true; ShowLog = $true; ScanOnStart = $false
                UpdateUrl = 'https://raw.githubusercontent.com/Bas-Makes-Stuff/SharkOptimizer/main/version.json' }
 try { if ((Get-UICulture).TwoLetterISOLanguageName -eq 'nl') { $Settings.Language = 'nl' } } catch {}
-if (Test-Path $SettingsFile) { try { $so = Get-Content $SettingsFile -Raw | ConvertFrom-Json; foreach ($spx in $so.PSObject.Properties) { $Settings[$spx.Name] = $spx.Value } } catch {} }
-function Save-Settings { try { $Settings | ConvertTo-Json | Set-Content $SettingsFile -Encoding UTF8 } catch {} }
+if (Test-Path $SettingsFile) {
+    try {
+        $so = Get-Content $SettingsFile -Raw -ErrorAction Stop | ConvertFrom-Json -ErrorAction Stop
+        if ($null -eq $so -or $so -is [string] -or $so -is [System.Array]) { throw 'Saved settings are not a JSON object.' }
+        foreach ($spx in $so.PSObject.Properties) { $Settings[$spx.Name] = $spx.Value }
+    }
+    catch {
+        try {
+            $settingsBackup = $SettingsFile + '.bak'
+            if (-not (Test-Path -LiteralPath $settingsBackup)) { throw 'No saved settings backup was found.' }
+            $so = Get-Content $settingsBackup -Raw -ErrorAction Stop | ConvertFrom-Json -ErrorAction Stop
+            if ($null -eq $so -or $so -is [string] -or $so -is [System.Array]) { throw 'Settings backup is not a JSON object.' }
+            foreach ($spx in $so.PSObject.Properties) { $Settings[$spx.Name] = $spx.Value }
+        }
+        catch { $script:SettingsLoadNotice = 'Saved settings could not be read. SharkOptimizer started with default settings.' }
+    }
+}
+function Save-Settings {
+    try { Write-JsonAtomic $SettingsFile $Settings 6 }
+    catch { if (Get-Command Log -ErrorAction SilentlyContinue) { Log "Could not save settings: $($_.Exception.Message)" } }
+}
+if ($script:SettingsLoadNotice) { Log $script:SettingsLoadNotice }
 $script:Lang = 'en'
 
 # ---------------------------------------------------------------- games: no fake "installed" at startup, remember scan results
@@ -2127,7 +2222,7 @@ function Scan-Games {
     & $script:OrigScan
     try {
         $out = @{}; foreach ($g in $Games) { $out[$g.Id] = @($script:GamePaths[$g.Id] | Where-Object { $_ }) }
-        $out | ConvertTo-Json | Set-Content $GameCache -Encoding UTF8
+        Write-JsonAtomic -Path $GameCache -Value $out -Depth 4
     } catch {}
 }
 if ($Settings.ScanOnStart) { $window.Add_ContentRendered({ try { Scan-Games } catch {} }) }
@@ -2151,7 +2246,7 @@ RAM USAGE => RAM-GEBRUIK
 Optimizations active => Actieve optimalisaties
 Recommended pending => Aanbevolen, nog te doen
 Tweaks available => Beschikbare tweaks
-Optimization score => Optimalisatiescore
+Recommended tweaks applied => Aanbevolen tweaks toegepast
 Presets => Voorinstellingen
 Safe Essentials => Veilige basis
 Competitive => Competitief
@@ -3139,7 +3234,7 @@ $script:UserPresets = @()
 if (Test-Path $PresetsFile) {
     try { $pj = Get-Content $PresetsFile -Raw | ConvertFrom-Json; foreach ($p in @($pj)) { if ($p.name) { $script:UserPresets += @{ name = [string]$p.name; ids = @($p.ids | ForEach-Object { [string]$_ }) } } } } catch {}
 }
-function Save-Presets { try { ConvertTo-Json -InputObject @($script:UserPresets) -Depth 4 | Set-Content $PresetsFile -Encoding UTF8 } catch {} }
+function Save-Presets { try { Write-JsonAtomic -Path $PresetsFile -Value @($script:UserPresets) -Depth 4 } catch { Log "Could not save presets: $($_.Exception.Message)" } }
 function Encode-PresetCode($name, $ids) {
     $text = (($name -replace '[\|\r\n]', ' ')) + '|' + ($ids -join ',')
     $bytes = [Text.Encoding]::UTF8.GetBytes($text)
@@ -3329,7 +3424,7 @@ RAM USAGE => USO DE RAM
 Optimizations active => Optimizaciones activas
 Recommended pending => Recomendadas pendientes
 Tweaks available => Ajustes disponibles
-Optimization score => Puntuación de optimización
+Recommended tweaks applied => Ajustes recomendados aplicados
 Presets => Preajustes
 Safe Essentials => Esenciales seguros
 Competitive => Competitivo
@@ -3604,7 +3699,7 @@ RAM USAGE => RAM-AUSLASTUNG
 Optimizations active => Aktive Optimierungen
 Recommended pending => Empfohlen, offen
 Tweaks available => Verfügbare Tweaks
-Optimization score => Optimierungswert
+Recommended tweaks applied => Empfohlene Tweaks angewendet
 Presets => Voreinstellungen
 Safe Essentials => Sichere Basis
 Competitive => Wettkampf
@@ -3879,7 +3974,7 @@ RAM USAGE => UTILISATION RAM
 Optimizations active => Optimisations actives
 Recommended pending => Recommandées en attente
 Tweaks available => Réglages disponibles
-Optimization score => Score d'optimisation
+Recommended tweaks applied => Recommandations appliquées
 Presets => Préréglages
 Safe Essentials => Essentiels sûrs
 Competitive => Compétitif
@@ -4154,7 +4249,7 @@ RAM USAGE => USO DA RAM
 Optimizations active => Otimizações ativas
 Recommended pending => Recomendadas pendentes
 Tweaks available => Ajustes disponíveis
-Optimization score => Pontuação de otimização
+Recommended tweaks applied => Ajustes recomendados aplicados
 Presets => Predefinições
 Safe Essentials => Essenciais seguros
 Competitive => Competitivo
@@ -4429,7 +4524,7 @@ RAM USAGE => ЗАГРУЗКА ОЗУ
 Optimizations active => Активные оптимизации
 Recommended pending => Рекомендуемых осталось
 Tweaks available => Доступно твиков
-Optimization score => Оценка оптимизации
+Recommended tweaks applied => Применённые рекомендации
 Presets => Пресеты
 Safe Essentials => Безопасная база
 Competitive => Соревновательный
@@ -4704,7 +4799,7 @@ RAM USAGE => 内存使用率
 Optimizations active => 已启用的优化
 Recommended pending => 待应用的推荐项
 Tweaks available => 可用优化项
-Optimization score => 优化评分
+Recommended tweaks applied => 已应用的推荐调整
 Presets => 预设
 Safe Essentials => 安全基础
 Competitive => 竞技
@@ -5123,7 +5218,7 @@ $script:ApplCache = @{}
 function Test-Applicable($t) {
     $id = [string]$t.Id
     if ($script:ApplCache.ContainsKey($id)) { return $script:ApplCache[$id] }
-    $r = if ($t.Req) { [bool](& $t.Req) } else { $true }
+    $r = if ($script:HardwareNotice -and $t.Req) { $false } elseif ($t.Req) { [bool](& $t.Req) } else { $true }
     $script:ApplCache[$id] = $r; $r
 }
 $script:TweakIndex = @{}
@@ -5278,7 +5373,7 @@ function Scan-Games {
         if ($script:Lang -ne 'en' -and (Has-Fn 'Get-Nl')) { $tr = Get-Nl $msg; if ($tr) { $msg = $tr } }
         $ui.txtScan.Text = $msg
         try {
-            if ($GameCache) { $out = @{}; foreach ($g in $Games) { $out[$g.Id] = @($script:GamePaths[$g.Id] | Where-Object { $_ }) }; $out | ConvertTo-Json | Set-Content $GameCache -Encoding UTF8 }
+            if ($GameCache) { $out = @{}; foreach ($g in $Games) { $out[$g.Id] = @($script:GamePaths[$g.Id] | Where-Object { $_ }) }; Write-JsonAtomic -Path $GameCache -Value $out -Depth 4 }
         } catch {}
     } finally { $ui.btnScan.IsEnabled = $true }
     Render-GameList
@@ -5587,13 +5682,112 @@ function Set-Language($lang) {
 }
 if ($script:XLang) { Set-Language $script:XLang }
 
+# ---- consolidated navigation and page labels
+function Set-NavCaption($button, $caption) {
+    try { $button.Content.Children[1].Text = $caption } catch {}
+}
+function Set-NavLabels {
+    $code = [string]$script:Lang
+    if (-not $code) { $code = [string]$script:XLang }
+    $labels = @{
+        en = @('Home','Optimize','Games','Tools','Performance','Recovery','Cleanup','Network diagnostics')
+        nl = @('Start','Optimaliseren','Games','Hulpmiddelen','Prestaties','Herstel','Opschonen','Netwerkdiagnose')
+        es = @('Inicio','Optimizar','Juegos','Herramientas','Rendimiento','Recuperación','Limpieza','Diagnóstico de red')
+        de = @('Start','Optimieren','Spiele','Werkzeuge','Leistung','Wiederherstellung','Bereinigung','Netzwerkdiagnose')
+        fr = @('Accueil','Optimiser','Jeux','Outils','Performances','Récupération','Nettoyage','Diagnostic réseau')
+        pt = @('Início','Otimizar','Jogos','Ferramentas','Desempenho','Recuperação','Limpeza','Diagnóstico de rede')
+        ru = @('Главная','Оптимизация','Игры','Инструменты','Производительность','Восстановление','Очистка','Диагностика сети')
+        zh = @('首页','优化','游戏','工具','性能','恢复','清理','网络诊断')
+    }
+    if (-not $labels.ContainsKey($code)) { $code = 'en' }
+    $v = $labels[$code]
+    Set-NavCaption $ui.navDash $v[0]; Set-NavCaption $ui.navTweaks $v[1]
+    Set-NavCaption $ui.navGames $v[2]; Set-NavCaption $ui.navWin $v[3]
+    Set-NavCaption $script:labNav $v[4]; Set-NavCaption $ui.navRestore $v[5]
+    $ui.txtTweaksTitle.Text = $v[1]; $ui.txtGamesTitle.Text = $v[2]
+    $ui.txtWinTitle.Text = $v[3]; $ui.txtBoostTitle.Text = $v[6]; $ui.txtNetTitle.Text = $v[7]
+    if ($script:labTitle) { $script:labTitle.Text = $v[4] }
+    if ($script:cleanupExpander) { $script:cleanupExpander.Header = $v[6] }
+    if ($script:networkExpander) { $script:networkExpander.Header = $v[7] }
+    if ($PageInfo) {
+        $PageInfo.navDash = @($v[0], 'PC status, quick actions and recommended starting points.')
+        $PageInfo.navTweaks = @($v[1], 'Review and apply PC optimizations.')
+        $PageInfo.navGames = @($v[2], 'Find games and review their optimization profiles.')
+        $PageInfo.navWin = @($v[3], 'Startup apps, Windows tools and routine cleanup.')
+        $PageInfo.navLab = @($v[4], 'Benchmark, Game Mode, verification and network diagnostics.')
+        $PageInfo.navRestore = @($v[5], 'Review active changes and undo them.')
+    }
+    try { if ($script:CurNav) { Update-ProChrome } } catch {}
+}
+$script:OrigConsolidatedSetLanguage = ${function:Set-Language}
+function Set-Language($lang) {
+    & $script:OrigConsolidatedSetLanguage $lang
+    Set-NavLabels
+}
+
+# Put less-used maintenance and network controls behind expanders on their related pages.
+try {
+    $rootPages = $ui.pgDash.Parent
+    [void]$rootPages.Children.Remove($ui.pgBoost)
+    [void]$rootPages.Children.Remove($ui.pgNet)
+    $ui.pgBoost.Visibility = 'Visible'
+    $ui.pgNet.Visibility = 'Visible'
+
+    $script:cleanupExpander = New-Object Windows.Controls.Expander
+    $script:cleanupExpander.Header = 'Cleanup'; $script:cleanupExpander.IsExpanded = $false
+    $script:cleanupExpander.Margin = '0,18,0,8'; $script:cleanupExpander.Padding = '12,8'
+    $script:cleanupExpander.Foreground = Brush '#FFFFFF'; $script:cleanupExpander.Background = Brush '#0F1A2C'
+    $script:cleanupExpander.BorderBrush = Brush '#1A2943'; $script:cleanupExpander.BorderThickness = 1
+    $script:cleanupExpander.Content = $ui.pgBoost
+    $ui.pgWin.Content.Children.Add($script:cleanupExpander) | Out-Null
+
+    $script:networkExpander = New-Object Windows.Controls.Expander
+    $script:networkExpander.Header = 'Network diagnostics'; $script:networkExpander.IsExpanded = $false
+    $script:networkExpander.Margin = '0,18,0,12'; $script:networkExpander.Padding = '12,8'
+    $script:networkExpander.Foreground = Brush '#FFFFFF'; $script:networkExpander.Background = Brush '#0F1A2C'
+    $script:networkExpander.BorderBrush = Brush '#1A2943'; $script:networkExpander.BorderThickness = 1
+    $ui.pgNet.Height = 430
+    $script:networkExpander.Content = $ui.pgNet
+    $lab.Children.Add($script:networkExpander) | Out-Null
+    $script:labTitle = $lab.Children[0]
+    $script:labNav = $ui.navLab
+
+    # Remove old category captions and the now-redundant navigation buttons.
+    $navStack = $ui.navDash.Parent
+    foreach ($child in @($navStack.Children)) {
+        if ($child -is [Windows.Controls.TextBlock] -and $child.Text -in @('OVERVIEW','TUNE','SYSTEM','MAINTAIN')) {
+            [void]$navStack.Children.Remove($child)
+        }
+    }
+    $ui.navBoost.Visibility = 'Collapsed'; $ui.navNet.Visibility = 'Collapsed'
+    $pages.Remove('navBoost'); $pages.Remove('navNet')
+} catch { Log "Navigation consolidation failed: $($_.Exception.Message)" }
+
+# Older guide and in-app shortcuts still point at these internal page IDs.
+$script:OrigConsolidatedShowPage = ${function:Show-Page}
+function Show-Page($nav) {
+    if ($nav -eq 'navBoost') { $nav = 'navWin' }
+    elseif ($nav -eq 'navNet') { $nav = 'navLab' }
+    & $script:OrigConsolidatedShowPage $nav
+}
+Set-NavLabels
+
 # ---------------------------------------------------------------- start
 Log "Loaded $($Tweaks.Count) tweaks and $($Games.Count) game profiles. Detected: $($Spec.Tier) PC, $($Spec.RamGB) GB RAM, $($Spec.GPU)."
 Render-Tweaks
 Render-GameList
-Refresh-Startup
-Refresh-Procs
 Show-Page 'navDash'
-$window.Add_ContentRendered({ try { Animate-In $window.Content 0 0 450 } catch {}; try { Refresh-Bloat } catch {} })
+$window.Add_ContentRendered({
+    try { Animate-In $window.Content 0 0 450 } catch {}
+    $script:startupTimer = New-Object Windows.Threading.DispatcherTimer
+    $script:startupTimer.Interval = [TimeSpan]::FromMilliseconds(250)
+    $script:startupTimer.Add_Tick({
+        $script:startupTimer.Stop()
+        try { Refresh-Startup } catch { Log "Startup list refresh failed: $($_.Exception.Message)" }
+        try { Refresh-Procs } catch { Log "Process list refresh failed: $($_.Exception.Message)" }
+        try { Refresh-Bloat } catch { Log "Built-in app scan failed: $($_.Exception.Message)" }
+    })
+    $script:startupTimer.Start()
+})
 [void]$window.ShowDialog()
 Save-State
