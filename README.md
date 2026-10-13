@@ -4,6 +4,10 @@ A free, open PC optimizer for Windows 10 and 11, written in PowerShell. It match
 
 > Made by Bas. Available in English and Nederlands.
 
+## Download
+
+Download the latest ready-to-use ZIP from the [Releases page](https://github.com/Bas-Makes-Stuff/SharkOptimizer/releases/latest). The current release is [SharkOptimizer V1.3.0](https://github.com/Bas-Makes-Stuff/SharkOptimizer/releases/tag/1.3.0).
+
 ## Features
 
 - **96 tweaks** in clear categories: Privacy & Security, Quality of Life, FPS & Latency, Network & Ping, Windows Optimization and Advanced.
@@ -19,9 +23,9 @@ A free, open PC optimizer for Windows 10 and 11, written in PowerShell. It match
 
 ## Quick start
 
-1. Click the green **Code** button, then **Download ZIP**, and unzip the folder somewhere permanent (for example `C:\SharkOptimizer`).
+1. Go to the [latest release](https://github.com/Bas-Makes-Stuff/SharkOptimizer/releases/latest), download **SharkOptimizer.zip** under **Assets**, and unzip it somewhere permanent (for example `C:\SharkOptimizer`). Do **not** use Code > Download ZIP for normal use; that is the source-code download.
 2. Start it:
-   - Double-click `Start-SharkOptimizer.cmd` if you have it, **or**
+   - Double-click `Start-SharkOptimizer.cmd` if the release ZIP includes it, **or**
    - right-click `SharkOptimizer-Launcher.ps1` and choose **Run with PowerShell**.
 3. Click **Yes** on the Windows administrator prompt. A loading screen appears, then the app opens.
 4. On the **Dashboard**, click **Create Restore Point** first.
@@ -35,8 +39,8 @@ The in-app **Guide** (the `?` button) walks you through the same steps.
 
 ### Snel starten (NL)
 
-1. Klik op **Code** en dan **Download ZIP**, en pak de map uit op een vaste plek.
-2. Dubbelklik op `Start-SharkOptimizer.cmd`, of rechtsklik op `SharkOptimizer-Launcher.ps1` en kies **Uitvoeren met PowerShell**.
+1. Ga naar de [laatste release](https://github.com/Bas-Makes-Stuff/SharkOptimizer/releases/latest), download **SharkOptimizer.zip** onder **Assets** en pak het uit op een vaste plek. Gebruik voor normaal gebruik **niet** Code > Download ZIP; dat is de broncode-download.
+2. Dubbelklik op `Start-SharkOptimizer.cmd` als die in de release-ZIP staat, of rechtsklik op `SharkOptimizer-Launcher.ps1` en kies **Uitvoeren met PowerShell**.
 3. Klik op **Ja** bij de beheerdersmelding.
 4. Maak eerst een herstelpunt op het Dashboard. Gebruik daarna **Aanbevolen toepassen** of kies zelf tweaks.
 5. Taal wisselen kan met de **NL/EN**-knop bovenaan of via **Instellingen**.
