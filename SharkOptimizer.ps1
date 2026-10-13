@@ -1,4 +1,4 @@
-﻿
+
 #Requires -Version 5.1
 <#
   SharkOptimizer  -  PowerShell + WPF PC optimizer
@@ -1235,7 +1235,7 @@ $timer.Start()
 
 
 # ================================================================ SharkOptimizer Lab (added module)
-$AppVersion = '1.1.0'
+$AppVersion = '1.4.0'
 $window.Title = "SharkOptimizer v$AppVersion"
 $BenchFile = Join-Path $DataDir 'bench.json'
 function Test-Cmd($n) { [bool](Get-Command $n -ErrorAction SilentlyContinue) }
@@ -1647,7 +1647,7 @@ function Update-PingGraph {
     for ($i = 0; $i -lt $n; $i++) {
         $v = $script:PingVals[$i]; if ($v -lt 0) { continue }
         $y = 108 - [math]::Min($v, $maxScale) / $maxScale * 100
-        [void]$pts.Add((New-Object Windows.Point(($startI + $i) * $stepX, $y)))
+        [void]$pts.Add(([Windows.Point]::new(($startI + $i) * $stepX, $y)))
     }
     $script:poly.Points = $pts
     if ($vals.Count) {
@@ -1713,7 +1713,7 @@ Refresh-GmProcs; Refresh-GmGames; Update-RPLine
 
 
 # ================================================================ SharkOptimizer Pro UI (added module)
-$ProVersion = '1.2.0'
+$ProVersion = '1.4.0'
 function Has-Fn($n) { [bool](Get-Command $n -CommandType Function -ErrorAction SilentlyContinue) }
 function Step($name, [scriptblock]$body) { try { & $body } catch { Log "UI step '$name' failed: $($_.Exception.Message)" } }
 try { $window.Title = "SharkOptimizer v$ProVersion" } catch {}
@@ -2089,7 +2089,7 @@ try { Update-ProChrome } catch {}
 
 
 # ================================================================ SharkOptimizer Settings, Dutch and Updates (added module)
-$AppVer = '1.3.0'
+$AppVer = '1.4.0'
 try { $window.Title = "SharkOptimizer v$AppVer" } catch {}
 function Has-Fn($n) { [bool](Get-Command $n -CommandType Function -ErrorAction SilentlyContinue) }
 function Tn($en, $nl) { if ($script:Lang -eq 'nl') { $nl } else { $en } }
@@ -2855,6 +2855,2237 @@ try {
 Apply-Settings
 if ($Settings.Language -eq 'nl') { Set-Language 'nl' } else { $script:Lang = 'en'; Refresh-LangButtons }
 if ($Settings.AutoUpdate) { Start-UpdateCheck $false }
+
+
+# ================================================================ SharkOptimizer Updater removed (added module)
+try { $Settings.AutoUpdate = $false; Save-Settings } catch {}
+foreach ($tn in 'UpdTimer', 'GhTimer') { try { (Get-Variable -Scope Script -Name $tn -ValueOnly -ErrorAction Stop).Stop() } catch {} }
+function Start-UpdateCheck($manual = $false) { }
+function Show-UpdateBanner { }
+function Install-Update { }
+try { $script:updBanner.Visibility = 'Collapsed' } catch {}
+try {
+    $kids = @($setPanel.Children)
+    $start = -1; $end = -1
+    for ($i = 0; $i -lt $kids.Count; $i++) {
+        $k = $kids[$i]
+        if ($k -is [Windows.Controls.TextBlock]) {
+            if ($start -lt 0 -and $k.Text -eq 'Updates') { $start = $i }
+            elseif ($start -ge 0 -and ($k.Text -eq 'Behaviour' -or $k.Text -eq 'Gedrag')) { $end = $i; break }
+        }
+    }
+    if ($start -ge 0 -and $end -gt $start) { for ($i = $start; $i -lt $end; $i++) { $kids[$i].Visibility = 'Collapsed' } }
+} catch {}
+
+
+# ================================================================ SharkOptimizer Extras (added module): accent colours, weekly cleanup, Add Game, My Presets, system report
+if (-not (Get-Command Step -CommandType Function -ErrorAction SilentlyContinue)) { function Step($name, [scriptblock]$body) { try { & $body } catch { Log "UI step '$name' failed: $($_.Exception.Message)" } } }
+
+$extraNl = @{
+    'Appearance' = 'Uiterlijk'; 'Choose the highlight colour of the app.' = 'Kies de accentkleur van de app.'
+    'Blue' = 'Blauw'; 'Green' = 'Groen'; 'Purple' = 'Paars'; 'Orange' = 'Oranje'
+    'Scheduled cleanup' = 'Geplande opruiming'
+    'Cleans temp files, crash dumps and error reports once a week with Windows Task Scheduler. It never touches your documents or the Recycle Bin.' = 'Ruimt eenmaal per week tijdelijke bestanden, crashdumps en foutrapporten op met Windows Taakplanner. Het raakt je documenten of de Prullenbak nooit aan.'
+    'Enable weekly cleanup' = 'Wekelijkse opruiming aanzetten'; 'Disable weekly cleanup' = 'Wekelijkse opruiming uitzetten'; 'Run it now' = 'Nu uitvoeren'
+    'Monday' = 'Maandag'; 'Tuesday' = 'Dinsdag'; 'Wednesday' = 'Woensdag'; 'Thursday' = 'Donderdag'; 'Friday' = 'Vrijdag'; 'Saturday' = 'Zaterdag'; 'Sunday' = 'Zondag'
+    'Add Game' = 'Game toevoegen'; 'Remove from list' = 'Uit lijst verwijderen'
+    'My Presets' = 'Mijn voorinstellingen'; 'Save current selection' = 'Huidige selectie opslaan'; 'Import code' = 'Code importeren'
+    'Use' = 'Gebruiken'; 'Copy code' = 'Code kopiëren'; 'Delete' = 'Verwijderen'; 'No presets yet.' = 'Nog geen voorinstellingen.'
+    'Copy System Report' = 'Systeemrapport kopiëren'; 'OK' = 'OK'; 'Cancel' = 'Annuleren'
+}
+if ($NL) { foreach ($k in $extraNl.Keys) { $NL[$k] = $extraNl[$k] } }
+function Tr($el) { if (Has-Fn 'Translate-Now') { Translate-Now $el } }
+function Say($text) { if (Has-Fn 'Show-Toast') { Show-Toast $text } ; Log $text }
+
+# ---------------------------------------------------------------- 1. accent colours
+$AccentSets = [ordered]@{ 'blue' = '#1FB6FF'; 'green' = '#22D3A6'; 'purple' = '#A78BFA'; 'orange' = '#FF9F1A' }
+$script:AccBase = @('#1FB6FF', '#10304A', '#0F2E45')
+$script:AccCur  = @('#1FB6FF', '#10304A', '#0F2E45')
+function Mix-Hex($a, $b, $t) {
+    $ca = [Windows.Media.ColorConverter]::ConvertFromString($a); $cb = [Windows.Media.ColorConverter]::ConvertFromString($b)
+    $r = [int]($ca.R * $t + $cb.R * (1 - $t)); $g = [int]($ca.G * $t + $cb.G * (1 - $t)); $bl = [int]($ca.B * $t + $cb.B * (1 - $t))
+    '#{0:X2}{1:X2}{2:X2}' -f $r, $g, $bl
+}
+function Get-AccentTriple($name) {
+    if ($name -eq 'blue') { return @('#1FB6FF', '#10304A', '#0F2E45') }
+    $a = $AccentSets[$name]; @($a, (Mix-Hex $a '#0B1424' 0.20), (Mix-Hex $a '#0F1A2C' 0.22))
+}
+function Brush($hex) {
+    $h = [string]$hex
+    for ($i = 0; $i -lt 3; $i++) { if ($h -ieq $script:AccBase[$i]) { $h = $script:AccCur[$i]; break } }
+    [Windows.Media.BrushConverter]::new().ConvertFromString($h)
+}
+function Remap-Brush($b, $from, $to) {
+    if ($b -is [Windows.Media.SolidColorBrush]) {
+        $c = $b.Color; $hex = '#{0:X2}{1:X2}{2:X2}' -f $c.R, $c.G, $c.B
+        for ($i = 0; $i -lt 3; $i++) { if ($hex -ieq $from[$i]) { return [Windows.Media.BrushConverter]::new().ConvertFromString($to[$i]) } }
+    }
+    $null
+}
+function Recolor-El($el, $from, $to) {
+    foreach ($pn in 'Background', 'Foreground', 'BorderBrush', 'Fill', 'Stroke') {
+        try {
+            $prop = $el.GetType().GetProperty($pn)
+            if ($prop -and $prop.CanWrite) { $nb = Remap-Brush ($prop.GetValue($el)) $from $to; if ($nb) { $prop.SetValue($el, $nb) } }
+        } catch {}
+    }
+}
+function Walk-Recolor($o, $from, $to) {
+    if ($null -eq $o) { return }
+    Recolor-El $o $from $to
+    try { foreach ($c in @([Windows.LogicalTreeHelper]::GetChildren($o))) { if ($c -is [Windows.DependencyObject]) { Walk-Recolor $c $from $to } } } catch {}
+}
+function Refresh-AccentButtons {
+    foreach ($b in @($script:accButtons)) { $b.Opacity = $(if ($b.Tag -eq $Settings.Accent) { 1 } else { 0.5 }) }
+}
+function Set-Accent($name) {
+    if (-not $AccentSets.Contains($name)) { $name = 'blue' }
+    $to = Get-AccentTriple $name; $from = $script:AccCur
+    if (($from -join ',') -ne ($to -join ',')) { Walk-Recolor $window $from $to }
+    $script:AccCur = $to
+    $Settings.Accent = $name; Save-Settings
+    foreach ($k in @($pages.Keys)) {
+        try { $nb = $ui[$k]; $ind = $nb.Template.FindName('ind', $nb); if ($ind) { $ind.Background = Brush '#1FB6FF' } } catch {}
+    }
+    try {
+        if ($switchXaml) {
+            $nsw = [Windows.Markup.XamlReader]::Parse(($switchXaml -replace '#1FB6FF', $to[0]))
+            foreach ($x in @($setPanel.Children)) { if ($x -is [Windows.Controls.CheckBox]) { $x.Style = $nsw } }
+        }
+    } catch {}
+    try { Refresh-AccentButtons } catch {}
+}
+
+function Insert-SettingsBefore($texts, $elements) {
+    $idx = -1; $kids = @($setPanel.Children)
+    for ($i = 0; $i -lt $kids.Count; $i++) { if ($kids[$i] -is [Windows.Controls.TextBlock] -and $texts -contains $kids[$i].Text) { $idx = $i; break } }
+    if ($idx -lt 0) { $idx = $setPanel.Children.Count }
+    foreach ($e in $elements) { $setPanel.Children.Insert($idx, $e); $idx++ }
+}
+
+Step 'accent-ui' {
+    $title = New-Text 'Appearance' 17 '#FFFFFF' $true '4,24,0,2'
+    $sub = New-Text 'Choose the highlight colour of the app.' 12 '#7F8FAE' $false '4,0,0,8'
+    $row = New-Object Windows.Controls.WrapPanel; $row.Margin = '-4,0,0,0'
+    $script:accButtons = @()
+    $swatch = @{ 'blue' = '#1FB6FE'; 'green' = '#22D3A7'; 'purple' = '#A78BFB'; 'orange' = '#FF9F1B' }
+    foreach ($nm in @($AccentSets.Keys)) {
+        $b = New-Object Windows.Controls.Button; $b.Content = (Get-Culture).TextInfo.ToTitleCase($nm); $b.Tag = $nm; $b.Padding = '18,9'
+        $b.Background = [Windows.Media.BrushConverter]::new().ConvertFromString($swatch[$nm]); $b.Foreground = [Windows.Media.BrushConverter]::new().ConvertFromString('#06121F')
+        $b.Add_Click({ Set-Accent $this.Tag })
+        $row.Children.Add($b) | Out-Null; $script:accButtons += $b
+    }
+    Insert-SettingsBefore @('Behaviour', 'Gedrag') @($title, $sub, $row)
+}
+
+# ---------------------------------------------------------------- 2. weekly cleanup (Task Scheduler)
+$TaskName = 'SharkOptimizer Weekly Cleanup'
+$CleanupFile = Join-Path $DataDir 'weekly-cleanup.ps1'
+$cleanupText = @'
+$ErrorActionPreference = 'SilentlyContinue'
+$log = Join-Path $env:ProgramData 'SharkOptimizer\scheduled-cleanup.log'
+function Clean-Folder($path, $days) {
+    $freed = 0; $limit = (Get-Date).AddDays(-$days)
+    Get-ChildItem -LiteralPath $path -Force -Recurse -File | Where-Object { $_.LastWriteTime -lt $limit } | ForEach-Object {
+        $len = $_.Length
+        try { Remove-Item -LiteralPath $_.FullName -Force -ErrorAction Stop; $freed += $len } catch {}
+    }
+    $freed
+}
+$total = 0
+foreach ($p in @($env:TEMP, 'C:\Windows\Temp', "$env:LOCALAPPDATA\CrashDumps", 'C:\ProgramData\Microsoft\Windows\WER\ReportArchive', 'C:\ProgramData\Microsoft\Windows\WER\ReportQueue')) {
+    if (Test-Path -LiteralPath $p) { $total += Clean-Folder $p 2 }
+}
+ipconfig /flushdns | Out-Null
+Add-Content $log ("{0}  freed {1:N0} MB" -f (Get-Date -Format 'yyyy-MM-dd HH:mm'), ($total / 1MB))
+'@
+function Get-CleanupTask { try { Get-ScheduledTask -TaskName $TaskName -ErrorAction Stop } catch { $null } }
+function Refresh-CleanupStatus {
+    if (-not $script:txtCleanStatus) { return }
+    $t = Get-CleanupTask
+    if ($t) {
+        $next = '-'
+        try { $info = Get-ScheduledTaskInfo -TaskName $TaskName -ErrorAction Stop; if ($info.NextRunTime -gt [datetime]'2000-01-01') { $next = $info.NextRunTime.ToString('ddd dd MMM HH:mm') } } catch {}
+        $script:txtCleanStatus.Text = (Tn 'Weekly cleanup is ON. Next run: ' 'Wekelijkse opruiming staat AAN. Volgende keer: ') + $next
+    } else { $script:txtCleanStatus.Text = Tn 'Weekly cleanup is off.' 'Wekelijkse opruiming staat uit.' }
+}
+function Enable-WeeklyCleanup($day, $time) {
+    if ($time -notmatch '^([01]?\d|2[0-3]):[0-5]\d$') { throw (Tn 'Enter the time like 20:00.' 'Vul de tijd in zoals 20:00.') }
+    [IO.File]::WriteAllText($CleanupFile, $cleanupText, (New-Object Text.UTF8Encoding $true))
+    $at = [datetime]::ParseExact($time, [string[]]@('H:mm', 'HH:mm'), [Globalization.CultureInfo]::InvariantCulture, [Globalization.DateTimeStyles]::None)
+    $act = New-ScheduledTaskAction -Execute 'powershell.exe' -Argument "-NoProfile -ExecutionPolicy Bypass -WindowStyle Hidden -File `"$CleanupFile`""
+    $trg = New-ScheduledTaskTrigger -Weekly -DaysOfWeek $day -At $at
+    $set = New-ScheduledTaskSettingsSet -StartWhenAvailable -AllowStartIfOnBatteries -DontStopIfGoingOnBatteries -ExecutionTimeLimit (New-TimeSpan -Minutes 30)
+    $pr = New-ScheduledTaskPrincipal -UserId ([Security.Principal.WindowsIdentity]::GetCurrent().Name) -LogonType Interactive -RunLevel Highest
+    Register-ScheduledTask -TaskName $TaskName -Action $act -Trigger $trg -Settings $set -Principal $pr -Description 'SharkOptimizer weekly cleanup' -Force | Out-Null
+}
+Step 'cleanup-ui' {
+    $title = New-Text 'Scheduled cleanup' 17 '#FFFFFF' $true '4,24,0,2'
+    $sub = New-Text 'Cleans temp files, crash dumps and error reports once a week with Windows Task Scheduler. It never touches your documents or the Recycle Bin.' 12 '#7F8FAE' $false '4,0,0,8'
+    $script:txtCleanStatus = New-Text '' 12 '#1FB6FF' $false '4,0,0,6'
+    $row = New-Object Windows.Controls.WrapPanel; $row.Margin = '-4,0,0,0'
+    $script:cmbCleanDay = New-Object Windows.Controls.ComboBox; $script:cmbCleanDay.Width = 130; $script:cmbCleanDay.Margin = '4'; $script:cmbCleanDay.VerticalAlignment = 'Center'
+    foreach ($d in 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday') { $it = New-Object Windows.Controls.ComboBoxItem; $it.Content = $d; $it.Tag = $d; [void]$script:cmbCleanDay.Items.Add($it) }
+    $dayIdx = 6; $i = 0; foreach ($d in 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday') { if ($Settings.CleanDay -eq $d) { $dayIdx = $i }; $i++ }
+    $script:cmbCleanDay.SelectedIndex = $dayIdx
+    $script:txtCleanTime = New-Object Windows.Controls.TextBox; $script:txtCleanTime.Width = 70; $script:txtCleanTime.Margin = '4'; $script:txtCleanTime.VerticalAlignment = 'Center'
+    $script:txtCleanTime.Text = $(if ($Settings.CleanTime) { [string]$Settings.CleanTime } else { '20:00' })
+    $row.Children.Add($script:cmbCleanDay) | Out-Null; $row.Children.Add($script:txtCleanTime) | Out-Null
+    $row.Children.Add((New-SetBtn 'Enable weekly cleanup' {
+        try {
+            $day = [string]$script:cmbCleanDay.SelectedItem.Tag; $tm = $script:txtCleanTime.Text.Trim()
+            Enable-WeeklyCleanup $day $tm
+            $Settings.CleanDay = $day; $Settings.CleanTime = $tm; Save-Settings
+            Say (Tn 'Weekly cleanup scheduled.' 'Wekelijkse opruiming ingepland.')
+        } catch { Log "Schedule failed: $($_.Exception.Message)"; [void][Windows.MessageBox]::Show($_.Exception.Message, 'SharkOptimizer', 'OK', 'Warning') }
+        Refresh-CleanupStatus
+    } $true)) | Out-Null
+    $row.Children.Add((New-SetBtn 'Disable weekly cleanup' {
+        try { Unregister-ScheduledTask -TaskName $TaskName -Confirm:$false -ErrorAction Stop; Say (Tn 'Weekly cleanup turned off.' 'Wekelijkse opruiming uitgezet.') } catch { Log "Could not remove the task: $($_.Exception.Message)" }
+        Refresh-CleanupStatus
+    })) | Out-Null
+    $row.Children.Add((New-SetBtn 'Run it now' {
+        if (Get-CleanupTask) { try { Start-ScheduledTask -TaskName $TaskName; Say (Tn 'Cleanup started.' 'Opruiming gestart.') } catch { Log "Could not start the task: $($_.Exception.Message)" } }
+        else { Say (Tn 'Turn the weekly cleanup on first.' 'Zet eerst de wekelijkse opruiming aan.') }
+    })) | Out-Null
+    Insert-SettingsBefore @('Behaviour', 'Gedrag') @($title, $sub, $script:txtCleanStatus, $row)
+    Refresh-CleanupStatus
+}
+
+# ---------------------------------------------------------------- 3. Add Game button
+$AddedGamesFile = Join-Path $DataDir 'added-games.json'
+$StdGameTweaks = @('f_gamemode', 'f_dvr', 'f_overlay', 'f_throttle', 'f_prio', 'f_mmcss', 'f_mouse', 'f_usb', 'n_nagle', 'n_throttle', 'n_dns')
+function Save-AddedGames {
+    try {
+        $list = @($Games | Where-Object { $_.Id -like 'custom_*' } | ForEach-Object { @{ id = $_.Id; name = $_.Name; exe = [string]$_.Exes[0]; path = [string](@($script:GamePaths[$_.Id])[0]); ac = [string]$_.AC } })
+        ConvertTo-Json -InputObject $list | Set-Content $AddedGamesFile -Encoding UTF8
+    } catch {}
+}
+function Register-CustomGame($path, $name, $ac) {
+    $id = 'custom_' + (($name.ToLower()) -replace '[^a-z0-9]', '')
+    if ($id -eq 'custom_') { $id = 'custom_' + [guid]::NewGuid().ToString('N').Substring(0, 6) }
+    $exe = [IO.Path]::GetFileName($path)
+    $existing = $Games | Where-Object { $_.Id -eq $id } | Select-Object -First 1
+    if (-not $existing) {
+        $tip = 'Custom game. SharkOptimizer applies safe Windows tweaks and a GPU preference. In-game settings are up to you.'
+        $g = @{ Id = $id; Name = $name; Exes = @($exe); AC = $ac; Tweaks = $StdGameTweaks; Tips = @($tip); Launch = ''; LaunchWhere = '' }
+        $script:Games = @($Games) + $g
+        if ($script:TipsEn) { $script:TipsEn[$id] = @($tip); $script:LwEn[$id] = '' }
+        if ($TipsNl) { $TipsNl[$id] = @('Eigen game. SharkOptimizer past veilige Windows-tweaks en een GPU-voorkeur toe. De instellingen in de game zelf bepaal je zelf.') }
+    }
+    $script:GamePaths[$id] = @($path)
+    $id
+}
+function Add-GameFromDialog {
+    $dlg = New-Object Microsoft.Win32.OpenFileDialog; $dlg.Filter = 'Programs (*.exe)|*.exe'; $dlg.Title = Tn 'Choose the game program (.exe)' 'Kies het gameprogramma (.exe)'
+    if ($dlg.ShowDialog() -ne $true) { return }
+    $path = $dlg.FileName
+    $name = [IO.Path]::GetFileNameWithoutExtension($path)
+    try { $pn = [Diagnostics.FileVersionInfo]::GetVersionInfo($path).ProductName; if ($pn -and $pn.Trim().Length -gt 1) { $name = $pn.Trim() } } catch {}
+    $q = Tn "Does '$name' use anti-cheat (for example EasyAntiCheat, Vanguard or BattlEye)?`n`nChoose Yes if you are not sure. SharkOptimizer then only changes Windows settings and never sets process priority." "Gebruikt '$name' anti-cheat (bijvoorbeeld EasyAntiCheat, Vanguard of BattlEye)?`n`nKies Ja als je het niet zeker weet. SharkOptimizer wijzigt dan alleen Windows-instellingen en zet nooit de procesprioriteit."
+    $ac = if ([Windows.MessageBox]::Show($q, 'SharkOptimizer', 'YesNo', 'Question') -eq 'Yes') { 'set by you' } else { '' }
+    $id = Register-CustomGame $path $name $ac
+    Save-AddedGames
+    Render-GameList; Show-Game $id; Show-Page 'navGames'
+    Say ((Tn 'Game added: ' 'Game toegevoegd: ') + $name)
+}
+if (Test-Path $AddedGamesFile) {
+    try {
+        $saved = Get-Content $AddedGamesFile -Raw | ConvertFrom-Json
+        foreach ($sg in @($saved)) { if ($sg.path -and (Test-Path -LiteralPath ([string]$sg.path))) { [void](Register-CustomGame ([string]$sg.path) ([string]$sg.name) ([string]$sg.ac)) } }
+    } catch {}
+}
+Step 'addgame-ui' {
+    $host1 = $ui.btnScan.Parent
+    $ab = New-Object Windows.Controls.Button; $ab.Content = 'Add Game'; $ab.Padding = '14,9'; $ab.Margin = '0,4,8,4'
+    $ab.Add_Click({ try { Add-GameFromDialog } catch { Log "Add game failed: $($_.Exception.Message)" } })
+    [Windows.Controls.DockPanel]::SetDock($ab, 'Left')
+    $host1.Children.Insert($host1.Children.IndexOf($ui.btnScan) + 1, $ab)
+}
+$script:OrigShowGame2 = ${function:Show-Game}
+function Show-Game($id) {
+    & $script:OrigShowGame2 $id
+    try {
+        if ([string]$id -like 'custom_*') {
+            $btns = $ui.gameDetail.Children[$ui.gameDetail.Children.Count - 1]
+            if ($btns -is [Windows.Controls.WrapPanel]) {
+                $rb = New-Object Windows.Controls.Button; $rb.Content = 'Remove from list'; $rb.Tag = $id; $rb.Background = Brush '#3A1F2B'
+                $rb.Add_Click({
+                    $gid = [string]$this.Tag
+                    try { Undo-GameKey "game_$gid" } catch {}
+                    $script:Games = @($Games | Where-Object { $_.Id -ne $gid }); $script:GamePaths.Remove($gid)
+                    Save-State; Save-AddedGames; $script:CurGame = $null; $ui.gameDetail.Children.Clear(); Render-GameList; Update-Stats
+                    Log 'Game removed from the list.'
+                })
+                $btns.Children.Add($rb) | Out-Null; Tr $rb
+            }
+        }
+    } catch {}
+}
+
+# ---------------------------------------------------------------- 4. My Presets with share codes
+$PresetsFile = Join-Path $DataDir 'presets.json'
+$script:UserPresets = @()
+if (Test-Path $PresetsFile) {
+    try { $pj = Get-Content $PresetsFile -Raw | ConvertFrom-Json; foreach ($p in @($pj)) { if ($p.name) { $script:UserPresets += @{ name = [string]$p.name; ids = @($p.ids | ForEach-Object { [string]$_ }) } } } } catch {}
+}
+function Save-Presets { try { ConvertTo-Json -InputObject @($script:UserPresets) -Depth 4 | Set-Content $PresetsFile -Encoding UTF8 } catch {} }
+function Encode-PresetCode($name, $ids) {
+    $text = (($name -replace '[\|\r\n]', ' ')) + '|' + ($ids -join ',')
+    $bytes = [Text.Encoding]::UTF8.GetBytes($text)
+    $ms = New-Object IO.MemoryStream
+    $ds = New-Object IO.Compression.DeflateStream($ms, [IO.Compression.CompressionMode]::Compress)
+    $ds.Write($bytes, 0, $bytes.Length); $ds.Close()
+    'SHARK1-' + (([Convert]::ToBase64String($ms.ToArray())).TrimEnd('=') -replace '\+', '-' -replace '/', '_')
+}
+function Decode-PresetCode($code) {
+    try {
+        $c = ([string]$code).Trim()
+        if ($c -notmatch '^SHARK1-([A-Za-z0-9_\-]+)$') { return $null }
+        $b64 = ($Matches[1] -replace '-', '+') -replace '_', '/'
+        while ($b64.Length % 4) { $b64 += '=' }
+        $in = [IO.MemoryStream]::new([byte[]][Convert]::FromBase64String($b64))
+        $ds = New-Object IO.Compression.DeflateStream($in, [IO.Compression.CompressionMode]::Decompress)
+        $sr = New-Object IO.StreamReader($ds, [Text.Encoding]::UTF8)
+        $buf = New-Object char[] 8001; $n = $sr.Read($buf, 0, 8001)
+        if ($n -gt 8000 -or $n -lt 3) { return $null }
+        $text = New-Object string($buf, 0, $n)
+        $parts = $text.Split([char]'|')
+        if ($parts.Count -ne 2) { return $null }
+        $name = ($parts[0] -replace '[^\p{L}\p{N} _\-\.\(\)]', '').Trim(); if (-not $name) { $name = 'Imported' }; if ($name.Length -gt 40) { $name = $name.Substring(0, 40) }
+        $all = @($parts[1].Split(',') | Where-Object { $_ -match '^[a-z]_[a-z0-9]+$' })
+        $good = @($all | Where-Object { Get-Tweak $_ })
+        return @{ name = $name; ids = $good; skipped = ($all.Count - $good.Count) }
+    } catch { return $null }
+}
+function Read-Text($title, $prompt, $default = '') {
+    $w = New-Object Windows.Window; $w.Title = $title; $w.Width = 480; $w.SizeToContent = 'Height'; $w.ResizeMode = 'NoResize'
+    $w.Background = Brush '#0B1424'; $w.Owner = $window; $w.WindowStartupLocation = 'CenterOwner'
+    $sp = New-Object Windows.Controls.StackPanel; $sp.Margin = '20'
+    $sp.Children.Add((New-Text $prompt 13 '#C2CCDF' $false '0,0,0,8')) | Out-Null
+    $script:rtBox = New-Object Windows.Controls.TextBox; $script:rtBox.Text = $default; $script:rtBox.Padding = '8,6'; $sp.Children.Add($script:rtBox) | Out-Null
+    $row = New-Object Windows.Controls.StackPanel; $row.Orientation = 'Horizontal'; $row.HorizontalAlignment = 'Right'; $row.Margin = '0,12,0,0'
+    $ok = New-Object Windows.Controls.Button; $ok.Content = 'OK'; $ok.Padding = '18,8'; $ok.Background = Brush '#1FB6FF'; $ok.Foreground = Brush '#06121F'
+    $cancel = New-Object Windows.Controls.Button; $cancel.Content = 'Cancel'; $cancel.Padding = '18,8'
+    $script:rtWin = $w; $script:rtResult = $null
+    $ok.Add_Click({ $script:rtResult = $script:rtBox.Text; $script:rtWin.Close() }); $cancel.Add_Click({ $script:rtWin.Close() })
+    $row.Children.Add($ok) | Out-Null; $row.Children.Add($cancel) | Out-Null; $sp.Children.Add($row) | Out-Null
+    $w.Content = $sp; Tr $w
+    $script:rtBox.Focus() | Out-Null
+    [void]$w.ShowDialog()
+    $script:rtResult
+}
+function Use-Preset($ids) {
+    $script:Selected.Clear(); $n = 0
+    foreach ($id in $ids) { $tw = Get-Tweak $id; if ($tw -and (Test-Applicable $tw) -and -not $State.ContainsKey($tw.Id)) { [void]$script:Selected.Add($tw.Id); $n++ } }
+    $script:CatFilter = 'All'; $ui.chkRec.IsChecked = $false; $ui.txtSearch.Text = ''
+    Render-Tweaks; Show-Page 'navTweaks'
+    Log "Preset: $n tweaks selected. Review them, then click Apply Selected."
+}
+function Rebuild-PresetList {
+    $script:pmList.Children.Clear()
+    if (-not $script:UserPresets.Count) { $script:pmList.Children.Add((New-Text 'No presets yet.' 13 '#7F8FAE' $false '4,8,0,8')) | Out-Null }
+    foreach ($p in $script:UserPresets) {
+        $row = New-Object Windows.Controls.Border; $row.Background = Brush '#0F1A2C'; $row.BorderBrush = Brush '#1A2943'; $row.BorderThickness = 1; $row.CornerRadius = 10; $row.Padding = '14,10'; $row.Margin = '0,0,0,8'
+        $dp = New-Object Windows.Controls.DockPanel
+        $bp = New-Object Windows.Controls.StackPanel; $bp.Orientation = 'Horizontal'; [Windows.Controls.DockPanel]::SetDock($bp, 'Right')
+        foreach ($spec in @(@('Use', 'use'), @('Copy code', 'copy'), @('Delete', 'del'))) {
+            $b = New-Object Windows.Controls.Button; $b.Content = $spec[0]; $b.Tag = @{ n = $p.name; a = $spec[1] }; $b.Padding = '12,6'
+            if ($spec[1] -eq 'use') { $b.Background = Brush '#1FB6FF'; $b.Foreground = Brush '#06121F' }
+            if ($spec[1] -eq 'del') { $b.Background = Brush '#3A1F2B' }
+            $b.Add_Click({
+                $t = $this.Tag; $pr = $script:UserPresets | Where-Object { $_.name -eq $t.n } | Select-Object -First 1
+                if (-not $pr) { return }
+                switch ($t.a) {
+                    'use'  { $script:pmWin.Close(); Use-Preset $pr.ids }
+                    'copy' { [Windows.Clipboard]::SetText((Encode-PresetCode $pr.name $pr.ids)); Say (Tn 'Share code copied.' 'Deelcode gekopieerd.') }
+                    'del'  { $script:UserPresets = @($script:UserPresets | Where-Object { $_.name -ne $t.n }); Save-Presets; Rebuild-PresetList }
+                }
+            })
+            $bp.Children.Add($b) | Out-Null
+        }
+        $tx = New-Object Windows.Controls.StackPanel
+        $tx.Children.Add((New-Text $p.name 14 '#FFFFFF' $true)) | Out-Null
+        $tx.Children.Add((New-Text ("{0} tweaks" -f @($p.ids).Count) 11.5 '#7F8FAE')) | Out-Null
+        $dp.Children.Add($bp) | Out-Null; $dp.Children.Add($tx) | Out-Null; $row.Child = $dp; $script:pmList.Children.Add($row) | Out-Null
+    }
+    Tr $script:pmWin
+}
+function Show-PresetManager {
+    $w = New-Object Windows.Window; $w.Title = Tn 'My Presets' 'Mijn voorinstellingen'; $w.Width = 620; $w.Height = 520; $w.Background = Brush '#08101D'
+    $w.Owner = $window; $w.WindowStartupLocation = 'CenterOwner'
+    $grid = New-Object Windows.Controls.Grid; $grid.Margin = '18'
+    foreach ($h in 'Auto', '*', 'Auto') { $r = New-Object Windows.Controls.RowDefinition; $r.Height = $h; $grid.RowDefinitions.Add($r) }
+    $hd = New-Text 'My Presets' 22 '#FFFFFF' $true '0,0,0,10'; [Windows.Controls.Grid]::SetRow($hd, 0); $grid.Children.Add($hd) | Out-Null
+    $sv = New-Object Windows.Controls.ScrollViewer; $sv.VerticalScrollBarVisibility = 'Auto'; $script:pmList = New-Object Windows.Controls.StackPanel; $sv.Content = $script:pmList
+    [Windows.Controls.Grid]::SetRow($sv, 1); $grid.Children.Add($sv) | Out-Null
+    $foot = New-Object Windows.Controls.WrapPanel; [Windows.Controls.Grid]::SetRow($foot, 2); $foot.Margin = '0,10,0,0'
+    $save = New-Object Windows.Controls.Button; $save.Content = 'Save current selection'; $save.Padding = '14,9'; $save.Background = Brush '#1FB6FF'; $save.Foreground = Brush '#06121F'
+    $save.Add_Click({
+        $ids = @($script:Selected | Sort-Object)
+        if (-not $ids.Count) { [void][Windows.MessageBox]::Show((Tn 'Tick some tweaks on the Tweaks page first, then save them as a preset.' 'Vink eerst tweaks aan op de Tweaks-pagina en sla ze daarna op als voorinstelling.'), 'SharkOptimizer'); return }
+        $nm = Read-Text (Tn 'Save preset' 'Voorinstelling opslaan') (Tn 'Give your preset a name:' 'Geef je voorinstelling een naam:') ''
+        if ($nm -and $nm.Trim()) {
+            $nm = ($nm -replace '[\|\r\n]', ' ').Trim(); if ($nm.Length -gt 40) { $nm = $nm.Substring(0, 40) }
+            $script:UserPresets = @($script:UserPresets | Where-Object { $_.name -ne $nm }) + @{ name = $nm; ids = $ids }
+            Save-Presets; Rebuild-PresetList; Say ((Tn 'Preset saved: ' 'Voorinstelling opgeslagen: ') + $nm)
+        }
+    })
+    $imp = New-Object Windows.Controls.Button; $imp.Content = 'Import code'; $imp.Padding = '14,9'
+    $imp.Add_Click({
+        $code = Read-Text (Tn 'Import preset' 'Voorinstelling importeren') (Tn 'Paste the share code (starts with SHARK1-):' 'Plak de deelcode (begint met SHARK1-):') ''
+        if (-not $code) { return }
+        $d = Decode-PresetCode $code
+        if (-not $d -or -not $d.ids.Count) { [void][Windows.MessageBox]::Show((Tn 'That code is not valid.' 'Die code is niet geldig.'), 'SharkOptimizer', 'OK', 'Warning'); return }
+        $nm = $d.name; $k = 2; while ($script:UserPresets | Where-Object { $_.name -eq $nm }) { $nm = "$($d.name) ($k)"; $k++ }
+        $script:UserPresets = @($script:UserPresets) + @{ name = $nm; ids = $d.ids }
+        Save-Presets; Rebuild-PresetList
+        Say ((Tn 'Preset imported: ' 'Voorinstelling geïmporteerd: ') + $nm + $(if ($d.skipped) { " ($($d.skipped) unknown skipped)" } else { '' }))
+    })
+    $foot.Children.Add($save) | Out-Null; $foot.Children.Add($imp) | Out-Null; $grid.Children.Add($foot) | Out-Null
+    $w.Content = $grid; $script:pmWin = $w
+    Rebuild-PresetList; Tr $w
+    $w.Show()
+}
+Step 'presets-ui' {
+    $pb = New-Object Windows.Controls.Button; $pb.Content = 'My Presets'; $pb.Padding = '14,8'
+    $pb.Add_Click({ if ($script:pmWin -and $script:pmWin.IsVisible) { $script:pmWin.Activate() } else { Show-PresetManager } })
+    $ui.pnlPresets.Children.Add($pb) | Out-Null
+}
+
+# ---------------------------------------------------------------- 5. copy system report
+function Get-SystemReport {
+    $L = New-Object System.Collections.ArrayList
+    $ver = if ($AppVer) { $AppVer } else { '?' }
+    [void]$L.Add("SharkOptimizer system report"); [void]$L.Add("App version : $ver"); [void]$L.Add("Created     : $(Get-Date -Format 'yyyy-MM-dd HH:mm')"); [void]$L.Add("Language    : $($script:Lang)")
+    $dv = ''; try { $dv = (Get-ItemProperty 'HKLM:\SOFTWARE\Microsoft\Windows NT\CurrentVersion' -ErrorAction Stop).DisplayVersion } catch {}
+    [void]$L.Add("Windows     : $($Spec.OS) build $($Spec.Build) $dv")
+    [void]$L.Add("CPU         : $($Spec.CPU) [$($Spec.Cores)C/$($Spec.Threads)T]")
+    try { foreach ($v in @(Get-CimInstance Win32_VideoController)) { [void]$L.Add("GPU         : $($v.Name)  driver $($v.DriverVersion)") } } catch { [void]$L.Add("GPU         : $($Spec.GPU)") }
+    [void]$L.Add("RAM         : $($Spec.RamGB) GB"); [void]$L.Add("System disk : $(if ($Spec.SSD) { 'SSD' } else { 'HDD or unknown' })")
+    [void]$L.Add("Type        : $(if ($Spec.Laptop) { 'Laptop' } else { 'Desktop' })"); [void]$L.Add("Network     : $(if ($Spec.Wifi) { 'Wi-Fi' } else { 'Ethernet' })")
+    [void]$L.Add(''); [void]$L.Add('Applied tweaks:')
+    $any = $false
+    foreach ($t in $Tweaks) { if ($State.ContainsKey($t.Id)) { $nm = if ($script:TweakEn -and $script:TweakEn.ContainsKey($t.Id)) { $script:TweakEn[$t.Id].N } else { $t.Name }; [void]$L.Add("  $($t.Id)  $nm"); $any = $true } }
+    if (-not $any) { [void]$L.Add('  (none)') }
+    $gp = @($State.Keys | Where-Object { $_ -like 'game_*' })
+    if ($gp.Count) { [void]$L.Add(''); [void]$L.Add('Game profiles: ' + (($gp | ForEach-Object { $_ -replace '^game_', '' }) -join ', ')) }
+    [void]$L.Add(''); [void]$L.Add('Settings: accent=' + $Settings.Accent + ' toasts=' + $Settings.Toasts + ' showLog=' + $Settings.ShowLog)
+    [void]$L.Add(''); [void]$L.Add('Recent log:')
+    try { foreach ($ln in @(Get-Content $LogFile -Tail 40 -ErrorAction Stop)) { [void]$L.Add("  $ln") } } catch { [void]$L.Add('  (no log yet)') }
+    $text = $L -join "`r`n"
+    foreach ($secret in $env:USERNAME, $env:COMPUTERNAME) { if ($secret) { $text = $text -replace [regex]::Escape($secret), '<hidden>' } }
+    $text
+}
+Step 'report-ui' {
+    $rb = New-Object Windows.Controls.Button; $rb.Content = 'Copy System Report'; $rb.Padding = '14,9'
+    $rb.Add_Click({ try { [Windows.Clipboard]::SetText((Get-SystemReport)); Say (Tn 'System report copied. Paste it into your message.' 'Systeemrapport gekopieerd. Plak het in je bericht.') } catch { Log "Report failed: $($_.Exception.Message)" } })
+    $target = $null
+    foreach ($pnl in @($setPanel.Children | Where-Object { $_ -is [Windows.Controls.WrapPanel] })) {
+        foreach ($b in @($pnl.Children | Where-Object { $_ -is [Windows.Controls.Button] })) { if ($b.Content -eq 'Show the guide again' -or $b.Content -eq 'Toon de handleiding opnieuw') { $target = $pnl } }
+    }
+    if ($target) { $target.Children.Add($rb) | Out-Null } else { $setPanel.Children.Add($rb) | Out-Null }
+    Tr $rb
+}
+
+# ---------------------------------------------------------------- start-up for the extras
+try { Set-Accent $(if ($Settings.Accent) { [string]$Settings.Accent } else { 'blue' }) } catch {}
+try { if ($script:Lang -eq 'nl') { Tr $window } } catch {}
+
+
+# ================================================================ SharkOptimizer More Languages (added module): Spanish, German, French, Portuguese (Brazil), Russian, Simplified Chinese
+$script:XLangs = [ordered]@{}
+$script:XLang = $null
+function Parse-Pairs($text) {
+    $h = @{}
+    foreach ($ln in ($text -split "`r?`n")) { $i = $ln.IndexOf(' => '); if ($i -gt 0) { $h[$ln.Substring(0, $i)] = $ln.Substring($i + 4) } }
+    $h
+}
+function Add-XLang($code, $native, $uiText, $twText) { $script:XLangs[$code] = @{ Native = $native; UI = (Parse-Pairs $uiText); Tw = (Parse-Pairs $twText) } }
+$xl_es_ui = @'
+Dashboard => Panel
+Tweaks => Ajustes
+Games => Juegos
+Windows => Windows
+Lab => Laboratorio
+Boost-Up => Boost-Up
+Network => Red
+Restore => Restaurar
+Settings => Configuración
+Welcome to SharkOptimizer => Bienvenido a SharkOptimizer
+CPU USAGE => USO DE CPU
+GPU 3D USAGE => USO DE GPU 3D
+RAM USAGE => USO DE RAM
+Optimizations active => Optimizaciones activas
+Recommended pending => Recomendadas pendientes
+Tweaks available => Ajustes disponibles
+Optimization score => Puntuación de optimización
+Presets => Preajustes
+Safe Essentials => Esenciales seguros
+Competitive => Competitivo
+Max Privacy => Máxima privacidad
+Low-End PC => PC de gama baja
+Laptop Safe => Seguro para portátil
+Apply Recommended => Aplicar recomendados
+Create Restore Point => Crear punto de restauración
+Recommended only => Solo recomendados
+All => Todos
+Privacy & Security => Privacidad y seguridad
+Quality of Life => Comodidad
+FPS & Latency => FPS y latencia
+Network & Ping => Red y ping
+Windows Optimization => Optimización de Windows
+Advanced => Avanzado
+Select Recommended => Seleccionar recomendados
+Select Visible => Seleccionar visibles
+Clear => Borrar
+Undo Selected => Deshacer seleccionados
+Apply Selected => Aplicar seleccionados
+SAFE => SEGURO
+CAUTION => PRECAUCIÓN
+CORE WINDOWS CHANGE => CAMBIO EN EL NÚCLEO DE WINDOWS
+FOR YOUR PC => PARA TU PC
+RESTART NEEDED => REQUIERE REINICIO
+Select => Seleccionar
+ACTIVE => ACTIVO
+Inactive => Inactivo
+Details => Detalles
+Scan for Games => Buscar juegos
+Installed => Instalado
+Not detected => No detectado
+Profile active => Perfil activo
+INSTALLED => INSTALADO
+NOT DETECTED => NO DETECTADO
+PROFILE ACTIVE => PERFIL ACTIVO
+Recommended Windows tweaks => Ajustes de Windows recomendados
+In-game tips => Consejos en el juego
+Launch options => Opciones de inicio
+Copy => Copiar
+Undo Game Settings => Deshacer ajustes del juego
+Open Folder => Abrir carpeta
+Add Game => Añadir juego
+Remove from list => Quitar de la lista
+Quick Tools => Herramientas rápidas
+Startup Apps => Aplicaciones de inicio
+Refresh => Actualizar
+Remove Built-in Apps => Quitar aplicaciones integradas
+Remove Selected => Quitar seleccionadas
+Close Heavy Apps => Cerrar apps pesadas
+Close Selected => Cerrar seleccionadas
+System File Check => Comprobar archivos del sistema
+DISM Repair => Reparación DISM
+Check Disk (scan) => Comprobar disco (análisis)
+Reset Windows Update => Restablecer Windows Update
+Rebuild Icon Cache => Reconstruir caché de iconos
+Restart Explorer => Reiniciar el Explorador
+Disk Cleanup => Liberador de espacio
+Power Options => Opciones de energía
+Services => Servicios
+Task Manager => Administrador de tareas
+Run All => Ejecutar todo
+Run => Ejecutar
+Not run yet => Aún no ejecutado
+Not needed on this PC => No necesario en este PC
+Junk Cleaner => Limpiador de basura
+Optimize Drives => Optimizar unidades
+Clean Recent Documents => Borrar documentos recientes
+Clean Thumbnail Cache => Borrar caché de miniaturas
+Clean Font Cache => Borrar caché de fuentes
+Clear Shader Caches => Borrar cachés de shaders
+Clean Browser Caches => Borrar cachés del navegador
+Trim Process RAM => Liberar RAM de procesos
+Flush DNS Cache => Vaciar caché DNS
+Test Regions => Probar regiones
+Test Host => Probar host
+DNS Benchmark => Prueba de DNS
+Apply Best DNS => Aplicar el mejor DNS
+Flush DNS => Vaciar DNS
+Undo All Tweaks => Deshacer todos los ajustes
+Open Log => Abrir registro
+Currently applied => Aplicado actualmente
+Nothing applied yet. => Aún no se ha aplicado nada.
+Before and after benchmark => Prueba antes y después
+Run BEFORE => Medir ANTES
+Run AFTER => Medir DESPUÉS
+Clear Results => Borrar resultados
+Game Mode => Modo juego
+Start Game Mode => Iniciar modo juego
+End Game Mode => Terminar modo juego
+Refresh Lists => Actualizar listas
+Game Mode is off. => El modo juego está desactivado.
+System check => Revisión del sistema
+Run System Check => Revisar el sistema
+Verify applied tweaks => Verificar ajustes aplicados
+Verify Now => Verificar ahora
+Re-apply Drifted => Reaplicar revertidos
+Profiles and safe apply => Perfiles y aplicación segura
+Export Profile => Exportar perfil
+Import Profile => Importar perfil
+Guided Apply (selected tweaks) => Aplicación guiada (seleccionados)
+Reset to Windows Defaults => Restablecer valores de Windows
+Network tools => Herramientas de red
+Start Live Ping => Iniciar ping en vivo
+Stop => Detener
+Traceroute => Traceroute
+Scan Wi-Fi Channels => Analizar canales Wi-Fi
+Language => Idioma
+Behaviour => Comportamiento
+Show pop-up notifications => Mostrar notificaciones emergentes
+Show the activity log => Mostrar el registro de actividad
+Scan for games when SharkOptimizer starts => Buscar juegos al iniciar SharkOptimizer
+Help and data => Ayuda y datos
+Show the guide again => Mostrar la guía de nuevo
+Open data folder => Abrir carpeta de datos
+Open log file => Abrir archivo de registro
+Clear saved game scan => Borrar búsqueda de juegos guardada
+Reset settings => Restablecer configuración
+About => Acerca de
+Appearance => Apariencia
+Blue => Azul
+Green => Verde
+Purple => Morado
+Orange => Naranja
+Scheduled cleanup => Limpieza programada
+Enable weekly cleanup => Activar limpieza semanal
+Disable weekly cleanup => Desactivar limpieza semanal
+Run it now => Ejecutar ahora
+My Presets => Mis preajustes
+Save current selection => Guardar selección actual
+Import code => Importar código
+Use => Usar
+Copy code => Copiar código
+Delete => Eliminar
+No presets yet. => Aún no hay preajustes.
+Copy System Report => Copiar informe del sistema
+Guide  (how to use) => Guía (cómo usar)
+Close => Cerrar
+Back => Atrás
+Next => Siguiente
+Finish => Finalizar
+Save => Guardar
+Check now => Comprobar ahora
+Cancel => Cancelar
+Monday => Lunes
+Tuesday => Martes
+Wednesday => Miércoles
+Thursday => Jueves
+Friday => Viernes
+Saturday => Sábado
+Sunday => Domingo
+selected => seleccionados
+Pending => Pendiente
+Unavailable => No disponible
+Optimize for => Optimizar para
+'@
+$xl_es_tw = @'
+p_telemetry => Desactivar telemetría
+p_tasks => Desactivar tareas de telemetría
+p_adid => Desactivar ID de publicidad
+p_bing => Desactivar búsqueda web en Inicio
+p_cortana => Desactivar Cortana y búsqueda en la nube
+p_activity => Desactivar historial de actividad
+p_ads => Quitar anuncios de Windows
+p_consumer => Bloquear funciones de consumo
+p_copilot => Desactivar Copilot
+p_recall => Desactivar análisis de datos con IA
+p_widgets => Desactivar Widgets
+p_wer => Desactivar informes de errores
+p_feedback => Desactivar solicitudes de opinión
+p_inventory => Desactivar inventario de apps y Grabador de pasos
+p_ink => Detener recopilación de escritura y entintado
+p_clip => Desactivar sincronización del portapapeles
+p_location => Desactivar servicios de ubicación
+p_llmnr => Desactivar LLMNR
+p_remreg => Desactivar Registro remoto
+p_remote => Desactivar Asistencia remota
+p_nvtel => Desactivar telemetría de NVIDIA
+p_do => Desactivar uso compartido de actualizaciones (P2P)
+q_ext => Mostrar extensiones de archivo
+q_hidden => Mostrar archivos ocultos
+q_thispc => Abrir el Explorador en Este equipo
+q_recent => Ocultar archivos recientes y frecuentes
+q_shake => Desactivar sacudir ventanas
+q_dark => Modo oscuro
+q_taskbar => Barra de tareas limpia de Windows 11
+q_classic => Menú contextual clásico
+q_boot => Mensajes de arranque detallados
+q_menu => Menús instantáneos
+q_kb => Repetición rápida del teclado
+q_shutdown => Apagado más rápido
+q_startdelay => Quitar retraso de inicio
+q_sticky => Desactivar avisos de teclas especiales
+q_reboot => Bloquear reinicios forzados por actualizaciones
+q_welcome => Omitir pantallas de bienvenida tras actualizar
+q_visfx => Efectos visuales ligeros
+q_bgapps => Bloquear apps en segundo plano
+q_search => Desactivar indexado de búsqueda
+f_gamemode => Activar Modo juego
+f_dvr => Desactivar grabación en segundo plano
+f_overlay => Desactivar superposición de Game Bar
+f_power => Plan de energía Máximo rendimiento
+f_usb => Desactivar suspensión selectiva de USB
+f_pcie => Desactivar ahorro de energía PCIe
+f_diskoff => Nunca suspender discos duros
+f_cpumin => Estado mínimo de CPU al 100%
+f_throttle => Desactivar limitación de energía
+f_prio => Aumentar prioridad en primer plano
+f_mmcss => Planificación de juegos (MMCSS)
+f_fso => Desactivar optimizaciones de pantalla completa
+f_mouse => Entrada de ratón sin procesar
+f_hags => Planificación de GPU (HAGS)
+f_mpo => Desactivar Multiplane Overlay (MPO)
+f_fast => Desactivar inicio rápido
+f_sysmain => Desactivar SysMain
+f_timerreq => Resolución global del temporizador
+n_nagle => Desactivar algoritmo de Nagle
+n_throttle => Desactivar limitación de red
+n_qos => Quitar reserva de ancho de banda QoS
+n_ports => Reutilización más rápida de puertos TCP
+n_heur => Desactivar heurística TCP
+n_dns => DNS rápido (Cloudflare)
+n_rsc => Desactivar coalescencia de paquetes (RSC)
+n_lso => Desactivar Large Send Offload
+n_nicpwr => Desactivar ahorro de energía del adaptador
+n_eee => Desactivar Green Ethernet / EEE
+n_flow => Desactivar control de flujo
+n_intmod => Desactivar moderación de interrupciones
+n_rss => Activar Receive Side Scaling
+n_wifi => Wi-Fi a máximo rendimiento
+n_netbios => Desactivar NetBIOS sobre TCP/IP
+n_teredo => Desactivar túnel Teredo
+w_edge => Detener actividad de Edge en segundo plano
+w_services => Desactivar servicios no usados
+w_chat => Quitar icono de Chat de Teams
+w_lastaccess => Desactivar última hora de acceso NTFS
+w_8dot3 => Desactivar nombres de archivo 8.3
+w_svchost => Unir procesos de host de servicios
+w_pagingexec => Mantener el kernel en RAM
+w_memcomp => Desactivar compresión de memoria
+w_prefetch => Desactivar Prefetcher
+w_maint => Desactivar mantenimiento automático
+w_onedrive => Desactivar sincronización de OneDrive
+w_wudrv => Bloquear controladores de Windows Update
+w_spooler => Desactivar cola de impresión
+a_msi => Modo MSI de la GPU
+a_tick => Desactivar tick dinámico
+a_hyperv => Desactivar hipervisor
+a_xbox => Desactivar servicios de Xbox
+a_ipv6 => Desactivar IPv6
+a_spectre => Desactivar mitigaciones de CPU
+a_vbs => Desactivar VBS / Integridad de memoria
+a_hib => Desactivar hibernación
+'@
+Add-XLang 'es' 'Español' $xl_es_ui $xl_es_tw
+
+$xl_de_ui = @'
+Dashboard => Übersicht
+Tweaks => Tweaks
+Games => Spiele
+Windows => Windows
+Lab => Labor
+Boost-Up => Boost-Up
+Network => Netzwerk
+Restore => Wiederherstellen
+Settings => Einstellungen
+Welcome to SharkOptimizer => Willkommen bei SharkOptimizer
+CPU USAGE => CPU-AUSLASTUNG
+GPU 3D USAGE => GPU-3D-AUSLASTUNG
+RAM USAGE => RAM-AUSLASTUNG
+Optimizations active => Aktive Optimierungen
+Recommended pending => Empfohlen, offen
+Tweaks available => Verfügbare Tweaks
+Optimization score => Optimierungswert
+Presets => Voreinstellungen
+Safe Essentials => Sichere Basis
+Competitive => Wettkampf
+Max Privacy => Maximale Privatsphäre
+Low-End PC => Schwacher PC
+Laptop Safe => Laptop-sicher
+Apply Recommended => Empfohlene anwenden
+Create Restore Point => Wiederherstellungspunkt erstellen
+Recommended only => Nur empfohlene
+All => Alle
+Privacy & Security => Datenschutz & Sicherheit
+Quality of Life => Komfort
+FPS & Latency => FPS & Latenz
+Network & Ping => Netzwerk & Ping
+Windows Optimization => Windows-Optimierung
+Advanced => Erweitert
+Select Recommended => Empfohlene auswählen
+Select Visible => Sichtbare auswählen
+Clear => Leeren
+Undo Selected => Auswahl rückgängig
+Apply Selected => Auswahl anwenden
+SAFE => SICHER
+CAUTION => VORSICHT
+CORE WINDOWS CHANGE => EINGRIFF IN WINDOWS-KERN
+FOR YOUR PC => FÜR DEINEN PC
+RESTART NEEDED => NEUSTART NÖTIG
+Select => Auswählen
+ACTIVE => AKTIV
+Inactive => Inaktiv
+Details => Details
+Scan for Games => Spiele suchen
+Installed => Installiert
+Not detected => Nicht gefunden
+Profile active => Profil aktiv
+INSTALLED => INSTALLIERT
+NOT DETECTED => NICHT GEFUNDEN
+PROFILE ACTIVE => PROFIL AKTIV
+Recommended Windows tweaks => Empfohlene Windows-Tweaks
+In-game tips => Tipps im Spiel
+Launch options => Startoptionen
+Copy => Kopieren
+Undo Game Settings => Spieleinstellungen rückgängig
+Open Folder => Ordner öffnen
+Add Game => Spiel hinzufügen
+Remove from list => Aus Liste entfernen
+Quick Tools => Schnellwerkzeuge
+Startup Apps => Autostart-Apps
+Refresh => Aktualisieren
+Remove Built-in Apps => Integrierte Apps entfernen
+Remove Selected => Auswahl entfernen
+Close Heavy Apps => Schwere Apps schließen
+Close Selected => Auswahl schließen
+System File Check => Systemdateien prüfen
+DISM Repair => DISM-Reparatur
+Check Disk (scan) => Datenträger prüfen (Scan)
+Reset Windows Update => Windows Update zurücksetzen
+Rebuild Icon Cache => Symbolcache neu aufbauen
+Restart Explorer => Explorer neu starten
+Disk Cleanup => Datenträgerbereinigung
+Power Options => Energieoptionen
+Services => Dienste
+Task Manager => Task-Manager
+Run All => Alle ausführen
+Run => Ausführen
+Not run yet => Noch nicht ausgeführt
+Not needed on this PC => Auf diesem PC nicht nötig
+Junk Cleaner => Datenmüll-Bereiniger
+Optimize Drives => Laufwerke optimieren
+Clean Recent Documents => Zuletzt verwendete Dokumente löschen
+Clean Thumbnail Cache => Miniaturansicht-Cache leeren
+Clean Font Cache => Schriftarten-Cache leeren
+Clear Shader Caches => Shader-Caches leeren
+Clean Browser Caches => Browser-Caches leeren
+Trim Process RAM => Prozess-RAM freigeben
+Flush DNS Cache => DNS-Cache leeren
+Test Regions => Regionen testen
+Test Host => Host testen
+DNS Benchmark => DNS-Benchmark
+Apply Best DNS => Besten DNS anwenden
+Flush DNS => DNS leeren
+Undo All Tweaks => Alle Tweaks rückgängig
+Open Log => Protokoll öffnen
+Currently applied => Aktuell angewendet
+Nothing applied yet. => Noch nichts angewendet.
+Before and after benchmark => Messung vorher und nachher
+Run BEFORE => Messung VORHER
+Run AFTER => Messung NACHHER
+Clear Results => Ergebnisse löschen
+Game Mode => Spielemodus
+Start Game Mode => Spielemodus starten
+End Game Mode => Spielemodus beenden
+Refresh Lists => Listen aktualisieren
+Game Mode is off. => Spielemodus ist aus.
+System check => Systemprüfung
+Run System Check => Systemprüfung starten
+Verify applied tweaks => Angewendete Tweaks prüfen
+Verify Now => Jetzt prüfen
+Re-apply Drifted => Zurückgesetzte erneut anwenden
+Profiles and safe apply => Profile und sicheres Anwenden
+Export Profile => Profil exportieren
+Import Profile => Profil importieren
+Guided Apply (selected tweaks) => Schrittweise anwenden (Auswahl)
+Reset to Windows Defaults => Auf Windows-Standard zurücksetzen
+Network tools => Netzwerkwerkzeuge
+Start Live Ping => Live-Ping starten
+Stop => Stopp
+Traceroute => Traceroute
+Scan Wi-Fi Channels => WLAN-Kanäle scannen
+Language => Sprache
+Behaviour => Verhalten
+Show pop-up notifications => Pop-up-Benachrichtigungen anzeigen
+Show the activity log => Aktivitätsprotokoll anzeigen
+Scan for games when SharkOptimizer starts => Beim Start nach Spielen suchen
+Help and data => Hilfe und Daten
+Show the guide again => Anleitung erneut anzeigen
+Open data folder => Datenordner öffnen
+Open log file => Protokolldatei öffnen
+Clear saved game scan => Gespeicherte Spielesuche löschen
+Reset settings => Einstellungen zurücksetzen
+About => Info
+Appearance => Darstellung
+Blue => Blau
+Green => Grün
+Purple => Lila
+Orange => Orange
+Scheduled cleanup => Geplante Bereinigung
+Enable weekly cleanup => Wöchentliche Bereinigung aktivieren
+Disable weekly cleanup => Wöchentliche Bereinigung deaktivieren
+Run it now => Jetzt ausführen
+My Presets => Meine Voreinstellungen
+Save current selection => Aktuelle Auswahl speichern
+Import code => Code importieren
+Use => Verwenden
+Copy code => Code kopieren
+Delete => Löschen
+No presets yet. => Noch keine Voreinstellungen.
+Copy System Report => Systembericht kopieren
+Guide  (how to use) => Anleitung (so geht's)
+Close => Schließen
+Back => Zurück
+Next => Weiter
+Finish => Fertig
+Save => Speichern
+Check now => Jetzt prüfen
+Cancel => Abbrechen
+Monday => Montag
+Tuesday => Dienstag
+Wednesday => Mittwoch
+Thursday => Donnerstag
+Friday => Freitag
+Saturday => Samstag
+Sunday => Sonntag
+selected => ausgewählt
+Pending => Offen
+Unavailable => Nicht verfügbar
+Optimize for => Optimieren für
+'@
+$xl_de_tw = @'
+p_telemetry => Telemetrie deaktivieren
+p_tasks => Telemetrie-Aufgaben deaktivieren
+p_adid => Werbe-ID deaktivieren
+p_bing => Websuche im Startmenü deaktivieren
+p_cortana => Cortana und Cloudsuche deaktivieren
+p_activity => Aktivitätsverlauf deaktivieren
+p_ads => Windows-Werbung entfernen
+p_consumer => Verbraucherfunktionen blockieren
+p_copilot => Copilot deaktivieren
+p_recall => KI-Datenanalyse von Windows deaktivieren
+p_widgets => Widgets deaktivieren
+p_wer => Fehlerberichterstattung deaktivieren
+p_feedback => Feedback-Abfragen deaktivieren
+p_inventory => App-Inventar und Problemschritte-Recorder deaktivieren
+p_ink => Sammeln von Tipp- und Handschriftdaten stoppen
+p_clip => Zwischenablage-Cloudsync deaktivieren
+p_location => Standortdienste deaktivieren
+p_llmnr => LLMNR deaktivieren
+p_remreg => Remoteregistrierung deaktivieren
+p_remote => Remoteunterstützung deaktivieren
+p_nvtel => NVIDIA-Telemetrie deaktivieren
+p_do => Update-Freigabe (P2P) deaktivieren
+q_ext => Dateiendungen anzeigen
+q_hidden => Versteckte Dateien anzeigen
+q_thispc => Explorer bei „Dieser PC“ öffnen
+q_recent => Zuletzt und häufig verwendete Dateien ausblenden
+q_shake => Fenster-Schütteln deaktivieren
+q_dark => Dunkelmodus
+q_taskbar => Aufgeräumte Windows-11-Taskleiste
+q_classic => Klassisches Kontextmenü
+q_boot => Ausführliche Startmeldungen
+q_menu => Sofortige Menüs
+q_kb => Schnelle Tastaturwiederholung
+q_shutdown => Schnelleres Herunterfahren
+q_startdelay => Startverzögerung entfernen
+q_sticky => Einrastfunktions-Hinweise deaktivieren
+q_reboot => Erzwungene Update-Neustarts blockieren
+q_welcome => Willkommensseiten nach Updates überspringen
+q_visfx => Schlanke visuelle Effekte
+q_bgapps => Hintergrund-Apps blockieren
+q_search => Suchindizierung deaktivieren
+f_gamemode => Spielemodus aktivieren
+f_dvr => Hintergrundaufnahme deaktivieren
+f_overlay => Game-Bar-Overlay deaktivieren
+f_power => Energiesparplan „Höchstleistung“
+f_usb => USB-Selective-Suspend deaktivieren
+f_pcie => PCIe-Energiesparen deaktivieren
+f_diskoff => Festplatten nie in den Ruhezustand
+f_cpumin => Minimaler Prozessorzustand 100 %
+f_throttle => Energie-Drosselung deaktivieren
+f_prio => Vordergrundpriorität erhöhen
+f_mmcss => Spiele-Planung (MMCSS)
+f_fso => Vollbildoptimierungen deaktivieren
+f_mouse => Rohe Mauseingabe
+f_hags => GPU-Planung (HAGS)
+f_mpo => Multiplane Overlay (MPO) deaktivieren
+f_fast => Schnellstart deaktivieren
+f_sysmain => SysMain deaktivieren
+f_timerreq => Globale Timer-Auflösung
+n_nagle => Nagle-Algorithmus deaktivieren
+n_throttle => Netzwerk-Drosselung deaktivieren
+n_qos => QoS-Bandbreitenreserve entfernen
+n_ports => Schnellere Wiederverwendung von TCP-Ports
+n_heur => TCP-Heuristik deaktivieren
+n_dns => Schneller DNS (Cloudflare)
+n_rsc => Paketzusammenfassung (RSC) deaktivieren
+n_lso => Large Send Offload deaktivieren
+n_nicpwr => Adapter-Energiesparen deaktivieren
+n_eee => Green Ethernet / EEE deaktivieren
+n_flow => Flusssteuerung deaktivieren
+n_intmod => Interrupt-Moderation deaktivieren
+n_rss => Receive Side Scaling aktivieren
+n_wifi => WLAN maximale Leistung
+n_netbios => NetBIOS über TCP/IP deaktivieren
+n_teredo => Teredo-Tunnel deaktivieren
+w_edge => Edge-Hintergrundaktivität stoppen
+w_services => Ungenutzte Dienste deaktivieren
+w_chat => Teams-Chat-Symbol entfernen
+w_lastaccess => NTFS-Zugriffszeit deaktivieren
+w_8dot3 => 8.3-Dateinamen deaktivieren
+w_svchost => Dienst-Hostprozesse zusammenführen
+w_pagingexec => Kernel im RAM halten
+w_memcomp => Speicherkomprimierung deaktivieren
+w_prefetch => Prefetcher deaktivieren
+w_maint => Automatische Wartung deaktivieren
+w_onedrive => OneDrive-Synchronisierung deaktivieren
+w_wudrv => Treiber über Windows Update blockieren
+w_spooler => Druckwarteschlange deaktivieren
+a_msi => GPU-MSI-Modus
+a_tick => Dynamischen Tick deaktivieren
+a_hyperv => Hypervisor ausschalten
+a_xbox => Xbox-Dienste deaktivieren
+a_ipv6 => IPv6 deaktivieren
+a_spectre => CPU-Schutzmaßnahmen deaktivieren
+a_vbs => VBS / Speicherintegrität deaktivieren
+a_hib => Ruhezustand deaktivieren
+'@
+Add-XLang 'de' 'Deutsch' $xl_de_ui $xl_de_tw
+
+$xl_fr_ui = @'
+Dashboard => Tableau de bord
+Tweaks => Réglages
+Games => Jeux
+Windows => Windows
+Lab => Labo
+Boost-Up => Boost-Up
+Network => Réseau
+Restore => Restauration
+Settings => Paramètres
+Welcome to SharkOptimizer => Bienvenue dans SharkOptimizer
+CPU USAGE => UTILISATION CPU
+GPU 3D USAGE => UTILISATION GPU 3D
+RAM USAGE => UTILISATION RAM
+Optimizations active => Optimisations actives
+Recommended pending => Recommandées en attente
+Tweaks available => Réglages disponibles
+Optimization score => Score d'optimisation
+Presets => Préréglages
+Safe Essentials => Essentiels sûrs
+Competitive => Compétitif
+Max Privacy => Confidentialité max
+Low-End PC => PC d'entrée de gamme
+Laptop Safe => Sûr pour portable
+Apply Recommended => Appliquer les recommandés
+Create Restore Point => Créer un point de restauration
+Recommended only => Recommandés seulement
+All => Tous
+Privacy & Security => Confidentialité et sécurité
+Quality of Life => Confort
+FPS & Latency => FPS et latence
+Network & Ping => Réseau et ping
+Windows Optimization => Optimisation de Windows
+Advanced => Avancé
+Select Recommended => Sélectionner les recommandés
+Select Visible => Sélectionner les visibles
+Clear => Effacer
+Undo Selected => Annuler la sélection
+Apply Selected => Appliquer la sélection
+SAFE => SÛR
+CAUTION => ATTENTION
+CORE WINDOWS CHANGE => MODIFICATION DU CŒUR DE WINDOWS
+FOR YOUR PC => POUR VOTRE PC
+RESTART NEEDED => REDÉMARRAGE REQUIS
+Select => Sélectionner
+ACTIVE => ACTIF
+Inactive => Inactif
+Details => Détails
+Scan for Games => Rechercher des jeux
+Installed => Installé
+Not detected => Non détecté
+Profile active => Profil actif
+INSTALLED => INSTALLÉ
+NOT DETECTED => NON DÉTECTÉ
+PROFILE ACTIVE => PROFIL ACTIF
+Recommended Windows tweaks => Réglages Windows recommandés
+In-game tips => Conseils en jeu
+Launch options => Options de lancement
+Copy => Copier
+Undo Game Settings => Annuler les réglages du jeu
+Open Folder => Ouvrir le dossier
+Add Game => Ajouter un jeu
+Remove from list => Retirer de la liste
+Quick Tools => Outils rapides
+Startup Apps => Applications au démarrage
+Refresh => Actualiser
+Remove Built-in Apps => Supprimer les applis intégrées
+Remove Selected => Supprimer la sélection
+Close Heavy Apps => Fermer les applis lourdes
+Close Selected => Fermer la sélection
+System File Check => Vérification des fichiers système
+DISM Repair => Réparation DISM
+Check Disk (scan) => Vérifier le disque (analyse)
+Reset Windows Update => Réinitialiser Windows Update
+Rebuild Icon Cache => Reconstruire le cache des icônes
+Restart Explorer => Redémarrer l'Explorateur
+Disk Cleanup => Nettoyage de disque
+Power Options => Options d'alimentation
+Services => Services
+Task Manager => Gestionnaire des tâches
+Run All => Tout exécuter
+Run => Exécuter
+Not run yet => Pas encore exécuté
+Not needed on this PC => Inutile sur ce PC
+Junk Cleaner => Nettoyeur de fichiers inutiles
+Optimize Drives => Optimiser les lecteurs
+Clean Recent Documents => Effacer les documents récents
+Clean Thumbnail Cache => Vider le cache des miniatures
+Clean Font Cache => Vider le cache des polices
+Clear Shader Caches => Vider les caches de shaders
+Clean Browser Caches => Vider les caches du navigateur
+Trim Process RAM => Libérer la RAM des processus
+Flush DNS Cache => Vider le cache DNS
+Test Regions => Tester les régions
+Test Host => Tester un hôte
+DNS Benchmark => Benchmark DNS
+Apply Best DNS => Appliquer le meilleur DNS
+Flush DNS => Vider le DNS
+Undo All Tweaks => Annuler tous les réglages
+Open Log => Ouvrir le journal
+Currently applied => Actuellement appliqué
+Nothing applied yet. => Rien n'est encore appliqué.
+Before and after benchmark => Mesure avant et après
+Run BEFORE => Mesure AVANT
+Run AFTER => Mesure APRÈS
+Clear Results => Effacer les résultats
+Game Mode => Mode jeu
+Start Game Mode => Démarrer le mode jeu
+End Game Mode => Arrêter le mode jeu
+Refresh Lists => Actualiser les listes
+Game Mode is off. => Le mode jeu est désactivé.
+System check => Vérification du système
+Run System Check => Lancer la vérification
+Verify applied tweaks => Vérifier les réglages appliqués
+Verify Now => Vérifier maintenant
+Re-apply Drifted => Réappliquer les annulés
+Profiles and safe apply => Profils et application sûre
+Export Profile => Exporter le profil
+Import Profile => Importer un profil
+Guided Apply (selected tweaks) => Application guidée (sélection)
+Reset to Windows Defaults => Rétablir les valeurs de Windows
+Network tools => Outils réseau
+Start Live Ping => Démarrer le ping en direct
+Stop => Arrêter
+Traceroute => Traceroute
+Scan Wi-Fi Channels => Analyser les canaux Wi-Fi
+Language => Langue
+Behaviour => Comportement
+Show pop-up notifications => Afficher les notifications
+Show the activity log => Afficher le journal d'activité
+Scan for games when SharkOptimizer starts => Rechercher des jeux au démarrage
+Help and data => Aide et données
+Show the guide again => Afficher le guide à nouveau
+Open data folder => Ouvrir le dossier de données
+Open log file => Ouvrir le fichier journal
+Clear saved game scan => Effacer la recherche de jeux enregistrée
+Reset settings => Réinitialiser les paramètres
+About => À propos
+Appearance => Apparence
+Blue => Bleu
+Green => Vert
+Purple => Violet
+Orange => Orange
+Scheduled cleanup => Nettoyage planifié
+Enable weekly cleanup => Activer le nettoyage hebdomadaire
+Disable weekly cleanup => Désactiver le nettoyage hebdomadaire
+Run it now => Exécuter maintenant
+My Presets => Mes préréglages
+Save current selection => Enregistrer la sélection actuelle
+Import code => Importer un code
+Use => Utiliser
+Copy code => Copier le code
+Delete => Supprimer
+No presets yet. => Aucun préréglage pour l'instant.
+Copy System Report => Copier le rapport système
+Guide  (how to use) => Guide (mode d'emploi)
+Close => Fermer
+Back => Retour
+Next => Suivant
+Finish => Terminer
+Save => Enregistrer
+Check now => Vérifier maintenant
+Cancel => Annuler
+Monday => Lundi
+Tuesday => Mardi
+Wednesday => Mercredi
+Thursday => Jeudi
+Friday => Vendredi
+Saturday => Samedi
+Sunday => Dimanche
+selected => sélectionnés
+Pending => En attente
+Unavailable => Indisponible
+Optimize for => Optimiser pour
+'@
+$xl_fr_tw = @'
+p_telemetry => Désactiver la télémétrie
+p_tasks => Désactiver les tâches de télémétrie
+p_adid => Désactiver l'identifiant publicitaire
+p_bing => Désactiver la recherche web dans Démarrer
+p_cortana => Désactiver Cortana et la recherche cloud
+p_activity => Désactiver l'historique d'activité
+p_ads => Supprimer les publicités de Windows
+p_consumer => Bloquer les fonctions grand public
+p_copilot => Désactiver Copilot
+p_recall => Désactiver l'analyse de données par IA
+p_widgets => Désactiver les widgets
+p_wer => Désactiver le rapport d'erreurs
+p_feedback => Désactiver les demandes d'avis
+p_inventory => Désactiver l'inventaire d'applis et l'Enregistreur d'actions
+p_ink => Arrêter la collecte de saisie et d'écriture
+p_clip => Désactiver la synchro du presse-papiers cloud
+p_location => Désactiver les services de localisation
+p_llmnr => Désactiver LLMNR
+p_remreg => Désactiver le Registre à distance
+p_remote => Désactiver l'Assistance à distance
+p_nvtel => Désactiver la télémétrie NVIDIA
+p_do => Désactiver le partage de mises à jour (P2P)
+q_ext => Afficher les extensions de fichiers
+q_hidden => Afficher les fichiers cachés
+q_thispc => Ouvrir l'Explorateur sur Ce PC
+q_recent => Masquer les fichiers récents et fréquents
+q_shake => Désactiver le secouement de fenêtre
+q_dark => Mode sombre
+q_taskbar => Barre des tâches épurée Windows 11
+q_classic => Menu contextuel classique
+q_boot => Messages de démarrage détaillés
+q_menu => Menus instantanés
+q_kb => Répétition rapide du clavier
+q_shutdown => Arrêt plus rapide
+q_startdelay => Supprimer le délai au démarrage
+q_sticky => Désactiver les alertes de touches rémanentes
+q_reboot => Bloquer les redémarrages forcés des mises à jour
+q_welcome => Ignorer les écrans d'accueil après mise à jour
+q_visfx => Effets visuels légers
+q_bgapps => Bloquer les applis en arrière-plan
+q_search => Désactiver l'indexation de la recherche
+f_gamemode => Activer le mode jeu
+f_dvr => Désactiver l'enregistrement en arrière-plan
+f_overlay => Désactiver la superposition Game Bar
+f_power => Mode d'alimentation Performances ultimes
+f_usb => Désactiver la suspension sélective USB
+f_pcie => Désactiver l'économie d'énergie PCIe
+f_diskoff => Ne jamais mettre les disques en veille
+f_cpumin => État minimal du processeur à 100 %
+f_throttle => Désactiver le bridage énergétique
+f_prio => Augmenter la priorité au premier plan
+f_mmcss => Planification des jeux (MMCSS)
+f_fso => Désactiver les optimisations plein écran
+f_mouse => Entrée souris brute
+f_hags => Planification GPU (HAGS)
+f_mpo => Désactiver Multiplane Overlay (MPO)
+f_fast => Désactiver le démarrage rapide
+f_sysmain => Désactiver SysMain
+f_timerreq => Résolution globale du minuteur
+n_nagle => Désactiver l'algorithme de Nagle
+n_throttle => Désactiver le bridage réseau
+n_qos => Supprimer la réserve de bande passante QoS
+n_ports => Réutilisation plus rapide des ports TCP
+n_heur => Désactiver l'heuristique TCP
+n_dns => DNS rapide (Cloudflare)
+n_rsc => Désactiver la fusion de paquets (RSC)
+n_lso => Désactiver Large Send Offload
+n_nicpwr => Désactiver l'économie d'énergie de la carte réseau
+n_eee => Désactiver Green Ethernet / EEE
+n_flow => Désactiver le contrôle de flux
+n_intmod => Désactiver la modération des interruptions
+n_rss => Activer Receive Side Scaling
+n_wifi => Wi-Fi en performances maximales
+n_netbios => Désactiver NetBIOS sur TCP/IP
+n_teredo => Désactiver le tunnel Teredo
+w_edge => Arrêter l'activité d'Edge en arrière-plan
+w_services => Désactiver les services inutilisés
+w_chat => Supprimer l'icône Chat de Teams
+w_lastaccess => Désactiver l'heure du dernier accès NTFS
+w_8dot3 => Désactiver les noms de fichiers 8.3
+w_svchost => Fusionner les processus hôtes de services
+w_pagingexec => Garder le noyau en RAM
+w_memcomp => Désactiver la compression mémoire
+w_prefetch => Désactiver le préchargeur
+w_maint => Désactiver la maintenance automatique
+w_onedrive => Désactiver la synchronisation OneDrive
+w_wudrv => Bloquer les pilotes via Windows Update
+w_spooler => Désactiver le spouleur d'impression
+a_msi => Mode MSI du GPU
+a_tick => Désactiver le tick dynamique
+a_hyperv => Désactiver l'hyperviseur
+a_xbox => Désactiver les services Xbox
+a_ipv6 => Désactiver IPv6
+a_spectre => Désactiver les protections du processeur
+a_vbs => Désactiver VBS / Intégrité de la mémoire
+a_hib => Désactiver l'hibernation
+'@
+Add-XLang 'fr' 'Français' $xl_fr_ui $xl_fr_tw
+
+$xl_pt_ui = @'
+Dashboard => Painel
+Tweaks => Ajustes
+Games => Jogos
+Windows => Windows
+Lab => Laboratório
+Boost-Up => Boost-Up
+Network => Rede
+Restore => Restauração
+Settings => Configurações
+Welcome to SharkOptimizer => Bem-vindo ao SharkOptimizer
+CPU USAGE => USO DA CPU
+GPU 3D USAGE => USO DA GPU 3D
+RAM USAGE => USO DA RAM
+Optimizations active => Otimizações ativas
+Recommended pending => Recomendadas pendentes
+Tweaks available => Ajustes disponíveis
+Optimization score => Pontuação de otimização
+Presets => Predefinições
+Safe Essentials => Essenciais seguros
+Competitive => Competitivo
+Max Privacy => Privacidade máxima
+Low-End PC => PC fraco
+Laptop Safe => Seguro para notebook
+Apply Recommended => Aplicar recomendados
+Create Restore Point => Criar ponto de restauração
+Recommended only => Somente recomendados
+All => Todos
+Privacy & Security => Privacidade e segurança
+Quality of Life => Praticidade
+FPS & Latency => FPS e latência
+Network & Ping => Rede e ping
+Windows Optimization => Otimização do Windows
+Advanced => Avançado
+Select Recommended => Selecionar recomendados
+Select Visible => Selecionar visíveis
+Clear => Limpar
+Undo Selected => Desfazer selecionados
+Apply Selected => Aplicar selecionados
+SAFE => SEGURO
+CAUTION => CUIDADO
+CORE WINDOWS CHANGE => ALTERAÇÃO NO NÚCLEO DO WINDOWS
+FOR YOUR PC => PARA O SEU PC
+RESTART NEEDED => REINÍCIO NECESSÁRIO
+Select => Selecionar
+ACTIVE => ATIVO
+Inactive => Inativo
+Details => Detalhes
+Scan for Games => Procurar jogos
+Installed => Instalado
+Not detected => Não detectado
+Profile active => Perfil ativo
+INSTALLED => INSTALADO
+NOT DETECTED => NÃO DETECTADO
+PROFILE ACTIVE => PERFIL ATIVO
+Recommended Windows tweaks => Ajustes do Windows recomendados
+In-game tips => Dicas no jogo
+Launch options => Opções de inicialização
+Copy => Copiar
+Undo Game Settings => Desfazer ajustes do jogo
+Open Folder => Abrir pasta
+Add Game => Adicionar jogo
+Remove from list => Remover da lista
+Quick Tools => Ferramentas rápidas
+Startup Apps => Aplicativos de inicialização
+Refresh => Atualizar
+Remove Built-in Apps => Remover aplicativos integrados
+Remove Selected => Remover selecionados
+Close Heavy Apps => Fechar apps pesados
+Close Selected => Fechar selecionados
+System File Check => Verificar arquivos do sistema
+DISM Repair => Reparo DISM
+Check Disk (scan) => Verificar disco (varredura)
+Reset Windows Update => Redefinir o Windows Update
+Rebuild Icon Cache => Recriar cache de ícones
+Restart Explorer => Reiniciar o Explorador
+Disk Cleanup => Limpeza de disco
+Power Options => Opções de energia
+Services => Serviços
+Task Manager => Gerenciador de tarefas
+Run All => Executar tudo
+Run => Executar
+Not run yet => Ainda não executado
+Not needed on this PC => Desnecessário neste PC
+Junk Cleaner => Limpador de lixo
+Optimize Drives => Otimizar unidades
+Clean Recent Documents => Limpar documentos recentes
+Clean Thumbnail Cache => Limpar cache de miniaturas
+Clean Font Cache => Limpar cache de fontes
+Clear Shader Caches => Limpar caches de shaders
+Clean Browser Caches => Limpar caches do navegador
+Trim Process RAM => Liberar RAM dos processos
+Flush DNS Cache => Limpar cache DNS
+Test Regions => Testar regiões
+Test Host => Testar host
+DNS Benchmark => Teste de DNS
+Apply Best DNS => Aplicar o melhor DNS
+Flush DNS => Limpar DNS
+Undo All Tweaks => Desfazer todos os ajustes
+Open Log => Abrir registro
+Currently applied => Aplicado atualmente
+Nothing applied yet. => Nada aplicado ainda.
+Before and after benchmark => Medição antes e depois
+Run BEFORE => Medir ANTES
+Run AFTER => Medir DEPOIS
+Clear Results => Limpar resultados
+Game Mode => Modo jogo
+Start Game Mode => Iniciar modo jogo
+End Game Mode => Encerrar modo jogo
+Refresh Lists => Atualizar listas
+Game Mode is off. => O modo jogo está desligado.
+System check => Verificação do sistema
+Run System Check => Verificar o sistema
+Verify applied tweaks => Verificar ajustes aplicados
+Verify Now => Verificar agora
+Re-apply Drifted => Reaplicar revertidos
+Profiles and safe apply => Perfis e aplicação segura
+Export Profile => Exportar perfil
+Import Profile => Importar perfil
+Guided Apply (selected tweaks) => Aplicação guiada (selecionados)
+Reset to Windows Defaults => Restaurar padrões do Windows
+Network tools => Ferramentas de rede
+Start Live Ping => Iniciar ping ao vivo
+Stop => Parar
+Traceroute => Traceroute
+Scan Wi-Fi Channels => Analisar canais Wi-Fi
+Language => Idioma
+Behaviour => Comportamento
+Show pop-up notifications => Mostrar notificações pop-up
+Show the activity log => Mostrar o registro de atividades
+Scan for games when SharkOptimizer starts => Procurar jogos ao iniciar o SharkOptimizer
+Help and data => Ajuda e dados
+Show the guide again => Mostrar o guia novamente
+Open data folder => Abrir pasta de dados
+Open log file => Abrir arquivo de registro
+Clear saved game scan => Limpar busca de jogos salva
+Reset settings => Redefinir configurações
+About => Sobre
+Appearance => Aparência
+Blue => Azul
+Green => Verde
+Purple => Roxo
+Orange => Laranja
+Scheduled cleanup => Limpeza agendada
+Enable weekly cleanup => Ativar limpeza semanal
+Disable weekly cleanup => Desativar limpeza semanal
+Run it now => Executar agora
+My Presets => Minhas predefinições
+Save current selection => Salvar seleção atual
+Import code => Importar código
+Use => Usar
+Copy code => Copiar código
+Delete => Excluir
+No presets yet. => Nenhuma predefinição ainda.
+Copy System Report => Copiar relatório do sistema
+Guide  (how to use) => Guia (como usar)
+Close => Fechar
+Back => Voltar
+Next => Avançar
+Finish => Concluir
+Save => Salvar
+Check now => Verificar agora
+Cancel => Cancelar
+Monday => Segunda-feira
+Tuesday => Terça-feira
+Wednesday => Quarta-feira
+Thursday => Quinta-feira
+Friday => Sexta-feira
+Saturday => Sábado
+Sunday => Domingo
+selected => selecionados
+Pending => Pendente
+Unavailable => Indisponível
+Optimize for => Otimizar para
+'@
+$xl_pt_tw = @'
+p_telemetry => Desativar telemetria
+p_tasks => Desativar tarefas de telemetria
+p_adid => Desativar ID de publicidade
+p_bing => Desativar pesquisa na web no Iniciar
+p_cortana => Desativar Cortana e pesquisa na nuvem
+p_activity => Desativar histórico de atividades
+p_ads => Remover anúncios do Windows
+p_consumer => Bloquear recursos de consumo
+p_copilot => Desativar Copilot
+p_recall => Desativar análise de dados por IA
+p_widgets => Desativar Widgets
+p_wer => Desativar relatório de erros
+p_feedback => Desativar pedidos de feedback
+p_inventory => Desativar inventário de apps e Gravador de passos
+p_ink => Parar coleta de digitação e escrita à mão
+p_clip => Desativar sincronização da área de transferência
+p_location => Desativar serviços de localização
+p_llmnr => Desativar LLMNR
+p_remreg => Desativar Registro remoto
+p_remote => Desativar Assistência remota
+p_nvtel => Desativar telemetria da NVIDIA
+p_do => Desativar compartilhamento de atualizações (P2P)
+q_ext => Mostrar extensões de arquivo
+q_hidden => Mostrar arquivos ocultos
+q_thispc => Abrir o Explorador em Este Computador
+q_recent => Ocultar arquivos recentes e frequentes
+q_shake => Desativar agitar janelas
+q_dark => Modo escuro
+q_taskbar => Barra de tarefas limpa do Windows 11
+q_classic => Menu de contexto clássico
+q_boot => Mensagens de inicialização detalhadas
+q_menu => Menus instantâneos
+q_kb => Repetição rápida do teclado
+q_shutdown => Desligamento mais rápido
+q_startdelay => Remover atraso de inicialização
+q_sticky => Desativar avisos de teclas de aderência
+q_reboot => Bloquear reinícios forçados por atualizações
+q_welcome => Pular telas de boas-vindas após atualizações
+q_visfx => Efeitos visuais leves
+q_bgapps => Bloquear apps em segundo plano
+q_search => Desativar indexação de pesquisa
+f_gamemode => Ativar Modo jogo
+f_dvr => Desativar gravação em segundo plano
+f_overlay => Desativar sobreposição da Game Bar
+f_power => Plano de energia Desempenho máximo
+f_usb => Desativar suspensão seletiva de USB
+f_pcie => Desativar economia de energia PCIe
+f_diskoff => Nunca suspender discos rígidos
+f_cpumin => Estado mínimo da CPU em 100%
+f_throttle => Desativar limitação de energia
+f_prio => Aumentar prioridade em primeiro plano
+f_mmcss => Agendamento de jogos (MMCSS)
+f_fso => Desativar otimizações de tela cheia
+f_mouse => Entrada bruta do mouse
+f_hags => Agendamento da GPU (HAGS)
+f_mpo => Desativar Multiplane Overlay (MPO)
+f_fast => Desativar inicialização rápida
+f_sysmain => Desativar SysMain
+f_timerreq => Resolução global do temporizador
+n_nagle => Desativar algoritmo de Nagle
+n_throttle => Desativar limitação de rede
+n_qos => Remover reserva de banda QoS
+n_ports => Reutilização mais rápida de portas TCP
+n_heur => Desativar heurística TCP
+n_dns => DNS rápido (Cloudflare)
+n_rsc => Desativar coalescência de pacotes (RSC)
+n_lso => Desativar Large Send Offload
+n_nicpwr => Desativar economia de energia do adaptador
+n_eee => Desativar Green Ethernet / EEE
+n_flow => Desativar controle de fluxo
+n_intmod => Desativar moderação de interrupções
+n_rss => Ativar Receive Side Scaling
+n_wifi => Wi-Fi em desempenho máximo
+n_netbios => Desativar NetBIOS sobre TCP/IP
+n_teredo => Desativar túnel Teredo
+w_edge => Parar atividade do Edge em segundo plano
+w_services => Desativar serviços não usados
+w_chat => Remover ícone do Chat do Teams
+w_lastaccess => Desativar último acesso do NTFS
+w_8dot3 => Desativar nomes de arquivo 8.3
+w_svchost => Unir processos de host de serviços
+w_pagingexec => Manter o kernel na RAM
+w_memcomp => Desativar compressão de memória
+w_prefetch => Desativar Prefetcher
+w_maint => Desativar manutenção automática
+w_onedrive => Desativar sincronização do OneDrive
+w_wudrv => Bloquear drivers pelo Windows Update
+w_spooler => Desativar spooler de impressão
+a_msi => Modo MSI da GPU
+a_tick => Desativar tick dinâmico
+a_hyperv => Desativar hipervisor
+a_xbox => Desativar serviços do Xbox
+a_ipv6 => Desativar IPv6
+a_spectre => Desativar mitigações da CPU
+a_vbs => Desativar VBS / Integridade da memória
+a_hib => Desativar hibernação
+'@
+Add-XLang 'pt' 'Português (Brasil)' $xl_pt_ui $xl_pt_tw
+
+$xl_ru_ui = @'
+Dashboard => Главная
+Tweaks => Твики
+Games => Игры
+Windows => Windows
+Lab => Лаборатория
+Boost-Up => Boost-Up
+Network => Сеть
+Restore => Восстановление
+Settings => Настройки
+Welcome to SharkOptimizer => Добро пожаловать в SharkOptimizer
+CPU USAGE => ЗАГРУЗКА ЦП
+GPU 3D USAGE => ЗАГРУЗКА GPU 3D
+RAM USAGE => ЗАГРУЗКА ОЗУ
+Optimizations active => Активные оптимизации
+Recommended pending => Рекомендуемых осталось
+Tweaks available => Доступно твиков
+Optimization score => Оценка оптимизации
+Presets => Пресеты
+Safe Essentials => Безопасная база
+Competitive => Соревновательный
+Max Privacy => Макс. приватность
+Low-End PC => Слабый ПК
+Laptop Safe => Для ноутбуков
+Apply Recommended => Применить рекомендуемые
+Create Restore Point => Создать точку восстановления
+Recommended only => Только рекомендуемые
+All => Все
+Privacy & Security => Приватность и безопасность
+Quality of Life => Удобство
+FPS & Latency => FPS и задержка
+Network & Ping => Сеть и пинг
+Windows Optimization => Оптимизация Windows
+Advanced => Дополнительно
+Select Recommended => Выбрать рекомендуемые
+Select Visible => Выбрать видимые
+Clear => Сбросить
+Undo Selected => Отменить выбранные
+Apply Selected => Применить выбранные
+SAFE => БЕЗОПАСНО
+CAUTION => ВНИМАНИЕ
+CORE WINDOWS CHANGE => ИЗМЕНЕНИЕ ЯДРА WINDOWS
+FOR YOUR PC => ДЛЯ ВАШЕГО ПК
+RESTART NEEDED => НУЖНА ПЕРЕЗАГРУЗКА
+Select => Выбрать
+ACTIVE => АКТИВНО
+Inactive => Неактивно
+Details => Подробнее
+Scan for Games => Найти игры
+Installed => Установлена
+Not detected => Не найдена
+Profile active => Профиль активен
+INSTALLED => УСТАНОВЛЕНА
+NOT DETECTED => НЕ НАЙДЕНА
+PROFILE ACTIVE => ПРОФИЛЬ АКТИВЕН
+Recommended Windows tweaks => Рекомендуемые твики Windows
+In-game tips => Советы для игры
+Launch options => Параметры запуска
+Copy => Копировать
+Undo Game Settings => Отменить настройки игры
+Open Folder => Открыть папку
+Add Game => Добавить игру
+Remove from list => Убрать из списка
+Quick Tools => Быстрые инструменты
+Startup Apps => Автозагрузка
+Refresh => Обновить
+Remove Built-in Apps => Удалить встроенные приложения
+Remove Selected => Удалить выбранные
+Close Heavy Apps => Закрыть тяжёлые приложения
+Close Selected => Закрыть выбранные
+System File Check => Проверка системных файлов
+DISM Repair => Восстановление DISM
+Check Disk (scan) => Проверка диска (сканирование)
+Reset Windows Update => Сбросить Центр обновления
+Rebuild Icon Cache => Пересоздать кэш значков
+Restart Explorer => Перезапустить Проводник
+Disk Cleanup => Очистка диска
+Power Options => Электропитание
+Services => Службы
+Task Manager => Диспетчер задач
+Run All => Запустить всё
+Run => Запустить
+Not run yet => Ещё не запускалось
+Not needed on this PC => Не нужно на этом ПК
+Junk Cleaner => Очистка мусора
+Optimize Drives => Оптимизация дисков
+Clean Recent Documents => Очистить недавние документы
+Clean Thumbnail Cache => Очистить кэш эскизов
+Clean Font Cache => Очистить кэш шрифтов
+Clear Shader Caches => Очистить кэш шейдеров
+Clean Browser Caches => Очистить кэш браузеров
+Trim Process RAM => Освободить ОЗУ процессов
+Flush DNS Cache => Очистить кэш DNS
+Test Regions => Проверить регионы
+Test Host => Проверить хост
+DNS Benchmark => Тест DNS
+Apply Best DNS => Применить лучший DNS
+Flush DNS => Очистить DNS
+Undo All Tweaks => Отменить все твики
+Open Log => Открыть журнал
+Currently applied => Сейчас применено
+Nothing applied yet. => Пока ничего не применено.
+Before and after benchmark => Замер до и после
+Run BEFORE => Замер ДО
+Run AFTER => Замер ПОСЛЕ
+Clear Results => Очистить результаты
+Game Mode => Игровой режим
+Start Game Mode => Включить игровой режим
+End Game Mode => Выключить игровой режим
+Refresh Lists => Обновить списки
+Game Mode is off. => Игровой режим выключен.
+System check => Проверка системы
+Run System Check => Проверить систему
+Verify applied tweaks => Проверка применённых твиков
+Verify Now => Проверить сейчас
+Re-apply Drifted => Применить сброшенные снова
+Profiles and safe apply => Профили и безопасное применение
+Export Profile => Экспорт профиля
+Import Profile => Импорт профиля
+Guided Apply (selected tweaks) => Пошаговое применение (выбранные)
+Reset to Windows Defaults => Вернуть настройки Windows
+Network tools => Сетевые инструменты
+Start Live Ping => Запустить живой пинг
+Stop => Стоп
+Traceroute => Трассировка
+Scan Wi-Fi Channels => Сканировать каналы Wi-Fi
+Language => Язык
+Behaviour => Поведение
+Show pop-up notifications => Показывать всплывающие уведомления
+Show the activity log => Показывать журнал действий
+Scan for games when SharkOptimizer starts => Искать игры при запуске SharkOptimizer
+Help and data => Справка и данные
+Show the guide again => Показать руководство снова
+Open data folder => Открыть папку данных
+Open log file => Открыть файл журнала
+Clear saved game scan => Очистить сохранённый поиск игр
+Reset settings => Сбросить настройки
+About => О программе
+Appearance => Оформление
+Blue => Синий
+Green => Зелёный
+Purple => Фиолетовый
+Orange => Оранжевый
+Scheduled cleanup => Очистка по расписанию
+Enable weekly cleanup => Включить еженедельную очистку
+Disable weekly cleanup => Выключить еженедельную очистку
+Run it now => Запустить сейчас
+My Presets => Мои пресеты
+Save current selection => Сохранить текущий выбор
+Import code => Импорт кода
+Use => Применить
+Copy code => Копировать код
+Delete => Удалить
+No presets yet. => Пресетов пока нет.
+Copy System Report => Копировать отчёт о системе
+Guide  (how to use) => Руководство (как пользоваться)
+Close => Закрыть
+Back => Назад
+Next => Далее
+Finish => Готово
+Save => Сохранить
+Check now => Проверить сейчас
+Cancel => Отмена
+Monday => Понедельник
+Tuesday => Вторник
+Wednesday => Среда
+Thursday => Четверг
+Friday => Пятница
+Saturday => Суббота
+Sunday => Воскресенье
+selected => выбрано
+Pending => Ожидает
+Unavailable => Недоступно
+Optimize for => Оптимизировать для
+'@
+$xl_ru_tw = @'
+p_telemetry => Отключить телеметрию
+p_tasks => Отключить задачи телеметрии
+p_adid => Отключить рекламный идентификатор
+p_bing => Отключить веб-поиск в меню «Пуск»
+p_cortana => Отключить Cortana и облачный поиск
+p_activity => Отключить журнал действий
+p_ads => Убрать рекламу Windows
+p_consumer => Заблокировать потребительские функции
+p_copilot => Отключить Copilot
+p_recall => Отключить ИИ-анализ данных Windows
+p_widgets => Отключить виджеты
+p_wer => Отключить отчёты об ошибках
+p_feedback => Отключить запросы отзывов
+p_inventory => Отключить инвентаризацию приложений и запись действий
+p_ink => Остановить сбор данных ввода и рукописного текста
+p_clip => Отключить облачную синхронизацию буфера обмена
+p_location => Отключить службы определения местоположения
+p_llmnr => Отключить LLMNR
+p_remreg => Отключить удалённый реестр
+p_remote => Отключить удалённого помощника
+p_nvtel => Отключить телеметрию NVIDIA
+p_do => Отключить раздачу обновлений (P2P)
+q_ext => Показывать расширения файлов
+q_hidden => Показывать скрытые файлы
+q_thispc => Открывать Проводник на «Этот компьютер»
+q_recent => Скрыть недавние и частые файлы
+q_shake => Отключить встряхивание окон
+q_dark => Тёмная тема
+q_taskbar => Чистая панель задач Windows 11
+q_classic => Классическое контекстное меню
+q_boot => Подробные сообщения при загрузке
+q_menu => Мгновенные меню
+q_kb => Быстрое повторение клавиш
+q_shutdown => Быстрое завершение работы
+q_startdelay => Убрать задержку автозапуска
+q_sticky => Отключить окна залипания клавиш
+q_reboot => Запретить принудительные перезагрузки для обновлений
+q_welcome => Пропускать экраны приветствия после обновлений
+q_visfx => Лёгкие визуальные эффекты
+q_bgapps => Заблокировать фоновые приложения
+q_search => Отключить индексацию поиска
+f_gamemode => Включить игровой режим
+f_dvr => Отключить фоновую запись
+f_overlay => Отключить оверлей Game Bar
+f_power => План питания «Максимальная производительность»
+f_usb => Отключить выборочную приостановку USB
+f_pcie => Отключить энергосбережение PCIe
+f_diskoff => Никогда не отключать жёсткие диски
+f_cpumin => Минимальное состояние ЦП 100%
+f_throttle => Отключить энергетическое троттлинг
+f_prio => Повысить приоритет переднего плана
+f_mmcss => Планирование игр (MMCSS)
+f_fso => Отключить оптимизацию полноэкранного режима
+f_mouse => Необработанный ввод мыши
+f_hags => Планирование GPU (HAGS)
+f_mpo => Отключить Multiplane Overlay (MPO)
+f_fast => Отключить быстрый запуск
+f_sysmain => Отключить SysMain
+f_timerreq => Глобальное разрешение таймера
+n_nagle => Отключить алгоритм Нейгла
+n_throttle => Отключить сетевой троттлинг
+n_qos => Убрать резерв пропускной способности QoS
+n_ports => Быстрое повторное использование TCP-портов
+n_heur => Отключить эвристику TCP
+n_dns => Быстрый DNS (Cloudflare)
+n_rsc => Отключить объединение пакетов (RSC)
+n_lso => Отключить Large Send Offload
+n_nicpwr => Отключить энергосбережение адаптера
+n_eee => Отключить Green Ethernet / EEE
+n_flow => Отключить управление потоком
+n_intmod => Отключить модерацию прерываний
+n_rss => Включить Receive Side Scaling
+n_wifi => Wi-Fi на максимальной производительности
+n_netbios => Отключить NetBIOS через TCP/IP
+n_teredo => Отключить туннель Teredo
+w_edge => Остановить фоновую работу Edge
+w_services => Отключить неиспользуемые службы
+w_chat => Убрать значок чата Teams
+w_lastaccess => Отключить обновление времени доступа NTFS
+w_8dot3 => Отключить имена файлов 8.3
+w_svchost => Объединить процессы-хосты служб
+w_pagingexec => Держать ядро в ОЗУ
+w_memcomp => Отключить сжатие памяти
+w_prefetch => Отключить Prefetcher
+w_maint => Отключить автоматическое обслуживание
+w_onedrive => Отключить синхронизацию OneDrive
+w_wudrv => Блокировать драйверы из Центра обновления
+w_spooler => Отключить диспетчер печати
+a_msi => Режим MSI для GPU
+a_tick => Отключить динамический тик
+a_hyperv => Выключить гипервизор
+a_xbox => Отключить службы Xbox
+a_ipv6 => Отключить IPv6
+a_spectre => Отключить защиту ЦП от уязвимостей
+a_vbs => Отключить VBS / Целостность памяти
+a_hib => Отключить гибернацию
+'@
+Add-XLang 'ru' 'Русский' $xl_ru_ui $xl_ru_tw
+
+$xl_zh_ui = @'
+Dashboard => 仪表盘
+Tweaks => 优化项
+Games => 游戏
+Windows => Windows
+Lab => 实验室
+Boost-Up => 加速清理
+Network => 网络
+Restore => 还原
+Settings => 设置
+Welcome to SharkOptimizer => 欢迎使用 SharkOptimizer
+CPU USAGE => CPU 使用率
+GPU 3D USAGE => GPU 3D 使用率
+RAM USAGE => 内存使用率
+Optimizations active => 已启用的优化
+Recommended pending => 待应用的推荐项
+Tweaks available => 可用优化项
+Optimization score => 优化评分
+Presets => 预设
+Safe Essentials => 安全基础
+Competitive => 竞技
+Max Privacy => 最强隐私
+Low-End PC => 低配电脑
+Laptop Safe => 笔记本安全
+Apply Recommended => 应用推荐项
+Create Restore Point => 创建还原点
+Recommended only => 仅推荐
+All => 全部
+Privacy & Security => 隐私与安全
+Quality of Life => 使用便利
+FPS & Latency => 帧率与延迟
+Network & Ping => 网络与延迟
+Windows Optimization => Windows 优化
+Advanced => 高级
+Select Recommended => 选择推荐项
+Select Visible => 选择可见项
+Clear => 清除
+Undo Selected => 撤销所选
+Apply Selected => 应用所选
+SAFE => 安全
+CAUTION => 注意
+CORE WINDOWS CHANGE => 修改 WINDOWS 核心设置
+FOR YOUR PC => 适合你的电脑
+RESTART NEEDED => 需要重启
+Select => 选择
+ACTIVE => 已启用
+Inactive => 未启用
+Details => 详情
+Scan for Games => 扫描游戏
+Installed => 已安装
+Not detected => 未检测到
+Profile active => 配置已启用
+INSTALLED => 已安装
+NOT DETECTED => 未检测到
+PROFILE ACTIVE => 配置已启用
+Recommended Windows tweaks => 推荐的 Windows 优化项
+In-game tips => 游戏内建议
+Launch options => 启动选项
+Copy => 复制
+Undo Game Settings => 撤销游戏设置
+Open Folder => 打开文件夹
+Add Game => 添加游戏
+Remove from list => 从列表移除
+Quick Tools => 快捷工具
+Startup Apps => 启动项
+Refresh => 刷新
+Remove Built-in Apps => 卸载内置应用
+Remove Selected => 移除所选
+Close Heavy Apps => 关闭高占用应用
+Close Selected => 关闭所选
+System File Check => 系统文件检查
+DISM Repair => DISM 修复
+Check Disk (scan) => 磁盘检查（扫描）
+Reset Windows Update => 重置 Windows 更新
+Rebuild Icon Cache => 重建图标缓存
+Restart Explorer => 重启资源管理器
+Disk Cleanup => 磁盘清理
+Power Options => 电源选项
+Services => 服务
+Task Manager => 任务管理器
+Run All => 全部运行
+Run => 运行
+Not run yet => 尚未运行
+Not needed on this PC => 此电脑无需
+Junk Cleaner => 垃圾清理
+Optimize Drives => 优化驱动器
+Clean Recent Documents => 清除最近文档
+Clean Thumbnail Cache => 清除缩略图缓存
+Clean Font Cache => 清除字体缓存
+Clear Shader Caches => 清除着色器缓存
+Clean Browser Caches => 清除浏览器缓存
+Trim Process RAM => 释放进程内存
+Flush DNS Cache => 清空 DNS 缓存
+Test Regions => 测试区域
+Test Host => 测试主机
+DNS Benchmark => DNS 测速
+Apply Best DNS => 应用最快 DNS
+Flush DNS => 清空 DNS
+Undo All Tweaks => 撤销全部优化
+Open Log => 打开日志
+Currently applied => 当前已应用
+Nothing applied yet. => 尚未应用任何内容。
+Before and after benchmark => 前后对比测试
+Run BEFORE => 优化前测试
+Run AFTER => 优化后测试
+Clear Results => 清除结果
+Game Mode => 游戏模式
+Start Game Mode => 启动游戏模式
+End Game Mode => 结束游戏模式
+Refresh Lists => 刷新列表
+Game Mode is off. => 游戏模式已关闭。
+System check => 系统检查
+Run System Check => 运行系统检查
+Verify applied tweaks => 验证已应用的优化
+Verify Now => 立即验证
+Re-apply Drifted => 重新应用被还原项
+Profiles and safe apply => 配置与安全应用
+Export Profile => 导出配置
+Import Profile => 导入配置
+Guided Apply (selected tweaks) => 分步应用（所选）
+Reset to Windows Defaults => 恢复 Windows 默认
+Network tools => 网络工具
+Start Live Ping => 开始实时 Ping
+Stop => 停止
+Traceroute => 路由追踪
+Scan Wi-Fi Channels => 扫描 Wi-Fi 信道
+Language => 语言
+Behaviour => 行为
+Show pop-up notifications => 显示弹出通知
+Show the activity log => 显示活动日志
+Scan for games when SharkOptimizer starts => 启动时扫描游戏
+Help and data => 帮助与数据
+Show the guide again => 再次显示指南
+Open data folder => 打开数据文件夹
+Open log file => 打开日志文件
+Clear saved game scan => 清除已保存的游戏扫描
+Reset settings => 重置设置
+About => 关于
+Appearance => 外观
+Blue => 蓝色
+Green => 绿色
+Purple => 紫色
+Orange => 橙色
+Scheduled cleanup => 定时清理
+Enable weekly cleanup => 启用每周清理
+Disable weekly cleanup => 关闭每周清理
+Run it now => 立即运行
+My Presets => 我的预设
+Save current selection => 保存当前选择
+Import code => 导入代码
+Use => 使用
+Copy code => 复制代码
+Delete => 删除
+No presets yet. => 还没有预设。
+Copy System Report => 复制系统报告
+Guide  (how to use) => 指南（使用方法）
+Close => 关闭
+Back => 返回
+Next => 下一步
+Finish => 完成
+Save => 保存
+Check now => 立即检查
+Cancel => 取消
+Monday => 星期一
+Tuesday => 星期二
+Wednesday => 星期三
+Thursday => 星期四
+Friday => 星期五
+Saturday => 星期六
+Sunday => 星期日
+selected => 已选择
+Pending => 待处理
+Unavailable => 不可用
+Optimize for => 优化：
+'@
+$xl_zh_tw = @'
+p_telemetry => 禁用遥测
+p_tasks => 禁用遥测计划任务
+p_adid => 禁用广告 ID
+p_bing => 禁用开始菜单网页搜索
+p_cortana => 禁用 Cortana 和云搜索
+p_activity => 禁用活动历史记录
+p_ads => 移除 Windows 广告
+p_consumer => 阻止消费者体验功能
+p_copilot => 禁用 Copilot
+p_recall => 禁用 Windows AI 数据分析
+p_widgets => 禁用小组件
+p_wer => 禁用错误报告
+p_feedback => 禁用反馈提示
+p_inventory => 禁用应用清单与问题步骤记录器
+p_ink => 停止收集键入和墨迹数据
+p_clip => 禁用剪贴板云同步
+p_location => 禁用位置服务
+p_llmnr => 禁用 LLMNR
+p_remreg => 禁用远程注册表
+p_remote => 禁用远程协助
+p_nvtel => 禁用 NVIDIA 遥测
+p_do => 禁用更新共享（P2P）
+q_ext => 显示文件扩展名
+q_hidden => 显示隐藏文件
+q_thispc => 资源管理器默认打开“此电脑”
+q_recent => 隐藏最近和常用文件
+q_shake => 禁用晃动窗口最小化
+q_dark => 深色模式
+q_taskbar => 简洁的 Windows 11 任务栏
+q_classic => 经典右键菜单
+q_boot => 详细启动信息
+q_menu => 菜单即时弹出
+q_kb => 快速键盘重复
+q_shutdown => 更快关机
+q_startdelay => 移除启动项延迟
+q_sticky => 禁用粘滞键弹窗
+q_reboot => 阻止更新强制重启
+q_welcome => 跳过更新后的欢迎页面
+q_visfx => 轻量视觉效果
+q_bgapps => 阻止后台应用
+q_search => 禁用搜索索引
+f_gamemode => 启用游戏模式
+f_dvr => 禁用后台录制
+f_overlay => 禁用 Game Bar 悬浮窗
+f_power => 卓越性能电源计划
+f_usb => 禁用 USB 选择性暂停
+f_pcie => 禁用 PCIe 节能
+f_diskoff => 硬盘永不休眠
+f_cpumin => CPU 最小状态 100%
+f_throttle => 禁用电源节流
+f_prio => 提高前台优先级
+f_mmcss => 游戏调度（MMCSS）
+f_fso => 禁用全屏优化
+f_mouse => 原始鼠标输入
+f_hags => GPU 硬件加速调度（HAGS）
+f_mpo => 禁用多平面叠加（MPO）
+f_fast => 禁用快速启动
+f_sysmain => 禁用 SysMain
+f_timerreq => 全局计时器分辨率
+n_nagle => 禁用 Nagle 算法
+n_throttle => 禁用网络节流
+n_qos => 移除 QoS 带宽预留
+n_ports => 更快复用 TCP 端口
+n_heur => 禁用 TCP 启发式
+n_dns => 快速 DNS（Cloudflare）
+n_rsc => 禁用数据包合并（RSC）
+n_lso => 禁用大型发送卸载
+n_nicpwr => 禁用网卡节能
+n_eee => 禁用绿色以太网 / EEE
+n_flow => 禁用流量控制
+n_intmod => 禁用中断调节
+n_rss => 启用接收端缩放
+n_wifi => Wi-Fi 最高性能
+n_netbios => 禁用 TCP/IP 上的 NetBIOS
+n_teredo => 禁用 Teredo 隧道
+w_edge => 停止 Edge 后台活动
+w_services => 禁用未使用的服务
+w_chat => 移除 Teams 聊天图标
+w_lastaccess => 禁用 NTFS 最后访问时间更新
+w_8dot3 => 禁用 8.3 短文件名
+w_svchost => 合并服务主机进程
+w_pagingexec => 让内核常驻内存
+w_memcomp => 禁用内存压缩
+w_prefetch => 禁用预取
+w_maint => 禁用自动维护
+w_onedrive => 禁用 OneDrive 同步
+w_wudrv => 阻止通过 Windows 更新安装驱动
+w_spooler => 禁用打印后台处理程序
+a_msi => GPU MSI 模式
+a_tick => 禁用动态时钟
+a_hyperv => 关闭虚拟机监控程序
+a_xbox => 禁用 Xbox 服务
+a_ipv6 => 禁用 IPv6
+a_spectre => 禁用 CPU 安全缓解
+a_vbs => 禁用 VBS / 内存完整性
+a_hib => 禁用休眠
+'@
+Add-XLang 'zh' '简体中文' $xl_zh_ui $xl_zh_tw
+
+# keep the Dutch dictionary so it can be restored
+$script:NLBackup = @{}; foreach ($k in @($NL.Keys)) { $script:NLBackup[$k] = $NL[$k] }
+$script:NLRulesBackup = $NLRules
+function Restore-NlDict { $NL.Clear(); foreach ($k in @($script:NLBackup.Keys)) { $NL[$k] = $script:NLBackup[$k] }; $script:NLRules = $script:NLRulesBackup }
+
+# translate whenever any language other than English is active
+function Translate-Now($root) { if ($script:Lang -ne 'en' -and $root) { try { Walk-Tree $root } catch {} } }
+
+function Build-XRules($u) {
+    @(
+        @('^(\d+) selected$', '$1 ' + $u['selected']),
+        @('^Apply Selected \((\d+)\)$', $u['Apply Selected'] + ' ($1)'),
+        @('^Optimize for (.+)$', $u['Optimize for'] + ' $1'),
+        @('^ACTIVE(\s{5})(.+)$', $u['ACTIVE'] + '$1$2'),
+        @('^Pending(\s{4})(.+)$', $u['Pending'] + '$1$2'),
+        @('^Unavailable(\s{2})(.+)$', $u['Unavailable'] + '$1$2')
+    )
+}
+
+$script:OrigSetLanguage2 = ${function:Set-Language}
+function Set-Language($lang) {
+    if ($lang -eq 'en' -or $lang -eq 'nl' -or -not $script:XLangs.Contains($lang)) {
+        if ($script:XLang) { Restore-NlDict }
+        $script:XLang = $null
+        & $script:OrigSetLanguage2 $lang
+        try { Refresh-LangButtons } catch {}
+        return
+    }
+    & $script:OrigSetLanguage2 'en'
+    $d = $script:XLangs[$lang]
+    $script:XLang = $lang; $script:Lang = $lang; $Settings.Language = $lang; Save-Settings
+    $NL.Clear(); foreach ($k in @($d.UI.Keys)) { $NL[$k] = $d.UI[$k] }
+    $script:NLRules = Build-XRules $d.UI
+    foreach ($t in $Tweaks) { if ($d.Tw.ContainsKey($t.Id)) { $t.Name = $d.Tw[$t.Id] } }
+    if ($PageInfo -and $script:PageEn) {
+        foreach ($k in @($script:PageEn.Keys)) {
+            $en = $script:PageEn[$k]; $tr = $d.UI[[string]$en[0]]
+            $PageInfo[$k] = @($(if ($tr) { $tr } else { $en[0] }), $en[1])
+        }
+    }
+    try { Walk-Tree $window } catch {}
+    try { Render-Tweaks } catch {}
+    try { Render-GameList; if ($script:CurGame) { Show-Game $script:CurGame } } catch {}
+    try { Update-Stats } catch {}
+    try { if ($script:CurNav) { Update-ProChrome } } catch {}
+    try { Refresh-LangButtons } catch {}
+    if ($script:GuideWin -and $script:GuideWin.IsVisible) { try { Render-Slide; Translate-Now $script:GuideWin } catch {} }
+}
+
+$script:OrigUS4 = ${function:Update-Stats}
+function Update-Stats {
+    & $script:OrigUS4
+    if ($script:XLang) {
+        try {
+            foreach ($tb in $ui.txtSel, $ui.txtApplied) { $nl = Get-Nl $tb.Text; if ($nl) { $tb.Text = $nl } }
+            if ($script:hdrApply) { $nl = Get-Nl ([string]$script:hdrApply.Content); if ($nl) { $script:hdrApply.Content = $nl } }
+        } catch {}
+    }
+}
+$script:OrigShowPage3 = ${function:Show-Page}
+function Show-Page($nav) {
+    & $script:OrigShowPage3 $nav
+    if ($script:XLang) { try { if ($script:hdrApply) { $nl = Get-Nl ([string]$script:hdrApply.Content); if ($nl) { $script:hdrApply.Content = $nl } } } catch {} }
+}
+
+# ---- language buttons in Settings, and a language picker in the header
+$script:xLangBtns = @()
+function Refresh-LangButtons {
+    $cur = $script:Lang
+    foreach ($pair in @(@($script:btnEn, 'en'), @($script:btnNl, 'nl'))) {
+        $b = $pair[0]; if (-not $b) { continue }
+        $on = ($cur -eq $pair[1])
+        $b.Background = Brush $(if ($on) { '#1FB6FF' } else { '#16233A' }); $b.Foreground = Brush $(if ($on) { '#06121F' } else { '#E8ECF4' })
+    }
+    foreach ($b in @($script:xLangBtns)) {
+        $on = ($cur -eq [string]$b.Tag)
+        $b.Background = Brush $(if ($on) { '#1FB6FF' } else { '#16233A' }); $b.Foreground = Brush $(if ($on) { '#06121F' } else { '#E8ECF4' })
+    }
+    if ($script:hdrLang) { $script:hdrLang.Content = ([string]$cur).ToUpper() }
+}
+function Choose-Language($code) { $Settings.LangChosen = $true; Save-Settings; Set-Language $code }
+try {
+    if ($script:btnEn -and $script:btnEn.Parent) {
+        $row = $script:btnEn.Parent
+        foreach ($code in @($script:XLangs.Keys)) {
+            $b = New-Object Windows.Controls.Button; $b.Content = $script:XLangs[$code].Native; $b.Tag = $code; $b.Padding = '18,9'
+            $b.Add_Click({ Choose-Language ([string]$this.Tag) })
+            $row.Children.Add($b) | Out-Null; $script:xLangBtns += $b
+        }
+        $script:btnEn.Add_Click({ $Settings.LangChosen = $true; Save-Settings })
+        $script:btnNl.Add_Click({ $Settings.LangChosen = $true; Save-Settings })
+    }
+} catch {}
+
+function Show-LangPicker($anchor) {
+    $w = New-Object Windows.Window; $w.WindowStyle = 'None'; $w.ResizeMode = 'NoResize'; $w.ShowInTaskbar = $false; $w.Topmost = $true
+    $w.SizeToContent = 'WidthAndHeight'; $w.Background = Brush '#0B1424'; $w.Owner = $window
+    $border = New-Object Windows.Controls.Border; $border.BorderBrush = Brush '#1FB6FF'; $border.BorderThickness = 1; $border.Padding = '6'; $border.CornerRadius = 10
+    $sp = New-Object Windows.Controls.StackPanel
+    $items = @(@('en', 'English'), @('nl', 'Nederlands'))
+    foreach ($code in @($script:XLangs.Keys)) { $items += , @($code, $script:XLangs[$code].Native) }
+    foreach ($it in $items) {
+        $b = New-Object Windows.Controls.Button; $b.Content = $it[1]; $b.Tag = $it[0]; $b.Padding = '16,8'; $b.Margin = '2'; $b.MinWidth = 170; $b.HorizontalContentAlignment = 'Left'
+        if ($it[0] -eq $script:Lang) { $b.Background = Brush '#10304A'; $b.Foreground = Brush '#1FB6FF' }
+        $b.Add_Click({ $c = [string]$this.Tag; $script:lpWin.Close(); Choose-Language $c })
+        $sp.Children.Add($b) | Out-Null
+    }
+    $border.Child = $sp; $w.Content = $border; $script:lpWin = $w
+    $w.WindowStartupLocation = 'Manual'
+    try {
+        $pt = $anchor.PointToScreen(([Windows.Point]::new(0, $anchor.ActualHeight + 4)))
+        $src = [Windows.PresentationSource]::FromVisual($anchor)
+        $dip = $src.CompositionTarget.TransformFromDevice.Transform($pt)
+        $w.Left = [math]::Max(0, $dip.X - 110); $w.Top = $dip.Y
+    } catch { $w.WindowStartupLocation = 'CenterOwner' }
+    $w.Add_Deactivated({ try { $script:lpWin.Close() } catch {} })
+    $w.Show()
+}
+try {
+    if ($script:hdrLang -and $script:hdrLang.Parent) {
+        $bar = $script:hdrLang.Parent; $i = $bar.Children.IndexOf($script:hdrLang)
+        $new = New-Object Windows.Controls.Button; $new.Content = 'EN'; $new.FontSize = 11.5; $new.Padding = '10,6'; $new.Margin = '3,0'; $new.VerticalAlignment = 'Center'
+        $new.Add_Click({ if ($script:lpWin -and $script:lpWin.IsVisible) { $script:lpWin.Close() } else { Show-LangPicker $this } })
+        [System.Windows.Shell.WindowChrome]::SetIsHitTestVisibleInChrome($new, $true)
+        $bar.Children.RemoveAt($i); $bar.Children.Insert($i, $new); $script:hdrLang = $new
+    }
+} catch {}
+
+# ---- start-up language
+$startCode = [string]$Settings.Language
+if (-not $script:XLangs.Contains($startCode) -and -not $Settings.LangChosen) {
+    try { $cc = (Get-UICulture).TwoLetterISOLanguageName; if ($script:XLangs.Contains($cc)) { $startCode = $cc } } catch {}
+}
+if ($script:XLangs.Contains($startCode)) { Set-Language $startCode } else { try { Refresh-LangButtons } catch {} }
 
 # ---------------------------------------------------------------- start
 Log "Loaded $($Tweaks.Count) tweaks and $($Games.Count) game profiles. Detected: $($Spec.Tier) PC, $($Spec.RamGB) GB RAM, $($Spec.GPU)."
