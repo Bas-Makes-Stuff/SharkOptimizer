@@ -53,7 +53,18 @@ function Get-Specs {
         OS=(Get-CimInstance Win32_OperatingSystem).Caption; Tier=$tier
     }
 }
-$Spec = Get-Specs
+$Spec = $null
+$specCache = Join-Path $DataDir 'specs-cache.json'
+try {
+    if (Test-Path $specCache) {
+        $sc = Get-Content $specCache -Raw | ConvertFrom-Json
+        if ($sc.Spec -and $sc.Spec.PSObject.Properties['GpuCount'] -and (((Get-Date) - [datetime]$sc.Saved).TotalHours -lt 12) -and ([int]$sc.Build -eq [Environment]::OSVersion.Version.Build)) { $Spec = $sc.Spec }
+    }
+} catch {}
+if (-not $Spec) {
+    $Spec = Get-Specs
+    try { @{ Saved = (Get-Date).ToString('s'); Build = [int]$Spec.Build; Spec = $Spec } | ConvertTo-Json -Depth 4 | Set-Content $specCache -Encoding UTF8 } catch {}
+}
 
 # ---------------------------------------------------------------- tracked changes (undo engine)
 $script:CurId = ''
@@ -1218,7 +1229,6 @@ function Refresh-GpuCounters {
         $script:gpuC = @($pcat.GetInstanceNames() | Where-Object { $_ -like '*engtype_3D*' } | Select-Object -First 40 | ForEach-Object { $pc = New-Object Diagnostics.PerformanceCounter('GPU Engine', 'Utilization Percentage', $_); [void]$pc.NextValue(); $pc })
     } catch { $script:gpuC = @() }
 }
-Refresh-GpuCounters
 $timer = New-Object Windows.Threading.DispatcherTimer; $timer.Interval = [TimeSpan]::FromSeconds(2)
 $timer.Add_Tick({
     try {
@@ -1228,14 +1238,14 @@ $timer.Add_Tick({
         $rv = [math]::Round(100 * (1 - $ci.AvailablePhysicalMemory / $ci.TotalPhysicalMemory)); $ui.txtRam.Text = "$rv%"; Set-Bar $ui.barRam $rv
         $gv = 0; foreach ($pc in $script:gpuC) { try { $gv += $pc.NextValue() } catch {} }
         $gv = [math]::Min(100, [math]::Round($gv)); $ui.txtGpu.Text = "$gv%"; Set-Bar $ui.barGpu $gv
-        if ($script:tick % 15 -eq 0) { Refresh-GpuCounters }
+        if ($script:tick -eq 1 -or $script:tick % 15 -eq 0) { Refresh-GpuCounters }
     } catch {}
 })
 $timer.Start()
 
 
 # ================================================================ SharkOptimizer Lab (added module)
-$AppVersion = '1.4.0'
+$AppVersion = '1.5.0'
 $window.Title = "SharkOptimizer v$AppVersion"
 $BenchFile = Join-Path $DataDir 'bench.json'
 function Test-Cmd($n) { [bool](Get-Command $n -ErrorAction SilentlyContinue) }
@@ -1709,11 +1719,11 @@ $lab.Children.Add((New-Text ' ' 20 '#08101D')) | Out-Null
 
 # ----- wire up the page
 $labNav.Add_Click({ Refresh-GmProcs; Refresh-GmGames; Show-Page 'navLab' })
-Refresh-GmProcs; Refresh-GmGames; Update-RPLine
+Refresh-GmProcs; Refresh-GmGames
 
 
 # ================================================================ SharkOptimizer Pro UI (added module)
-$ProVersion = '1.4.0'
+$ProVersion = '1.5.0'
 function Has-Fn($n) { [bool](Get-Command $n -CommandType Function -ErrorAction SilentlyContinue) }
 function Step($name, [scriptblock]$body) { try { & $body } catch { Log "UI step '$name' failed: $($_.Exception.Message)" } }
 try { $window.Title = "SharkOptimizer v$ProVersion" } catch {}
@@ -2089,7 +2099,7 @@ try { Update-ProChrome } catch {}
 
 
 # ================================================================ SharkOptimizer Settings, Dutch and Updates (added module)
-$AppVer = '1.4.0'
+$AppVer = '1.5.0'
 try { $window.Title = "SharkOptimizer v$AppVer" } catch {}
 function Has-Fn($n) { [bool](Get-Command $n -CommandType Function -ErrorAction SilentlyContinue) }
 function Tn($en, $nl) { if ($script:Lang -eq 'nl') { $nl } else { $en } }
@@ -5086,6 +5096,496 @@ if (-not $script:XLangs.Contains($startCode) -and -not $Settings.LangChosen) {
     try { $cc = (Get-UICulture).TwoLetterISOLanguageName; if ($script:XLangs.Contains($cc)) { $startCode = $cc } } catch {}
 }
 if ($script:XLangs.Contains($startCode)) { Set-Language $startCode } else { try { Refresh-LangButtons } catch {} }
+
+
+# ================================================================ SharkOptimizer Speed (added module)
+if (-not (Get-Command Has-Fn -CommandType Function -ErrorAction SilentlyContinue)) { function Has-Fn($n) { [bool](Get-Command $n -CommandType Function -ErrorAction SilentlyContinue) } }
+
+# ---- 1. cached, frozen brushes (thousands of colour objects are created when cards are drawn)
+$script:BrushCache = @{}
+$script:BrushConv = [Windows.Media.BrushConverter]::new()
+function Brush($hex) {
+    $h = [string]$hex
+    $b = $script:BrushCache[$h]; if ($b) { return $b }
+    $m = $h
+    if ($script:AccBase) { for ($i = 0; $i -lt 3; $i++) { if ($h -ieq $script:AccBase[$i]) { $m = $script:AccCur[$i]; break } } }
+    $b = $script:BrushConv.ConvertFromString($m)
+    try { $b.Freeze() } catch {}
+    $script:BrushCache[$h] = $b; $b
+}
+if (Has-Fn 'Set-Accent') {
+    $script:OrigSetAccent = ${function:Set-Accent}
+    function Set-Accent($name) { $script:BrushCache.Clear(); & $script:OrigSetAccent $name; $script:BrushCache.Clear() }
+}
+
+# ---- 2. remember which tweaks fit this PC, and look tweaks up by id
+$script:ApplCache = @{}
+function Test-Applicable($t) {
+    $id = [string]$t.Id
+    if ($script:ApplCache.ContainsKey($id)) { return $script:ApplCache[$id] }
+    $r = if ($t.Req) { [bool](& $t.Req) } else { $true }
+    $script:ApplCache[$id] = $r; $r
+}
+$script:TweakIndex = @{}
+function Get-Tweak($id) {
+    if ($script:TweakIndex.Count -ne $Tweaks.Count) { $script:TweakIndex = @{}; foreach ($t in $Tweaks) { $script:TweakIndex[[string]$t.Id] = $t } }
+    $script:TweakIndex[[string]$id]
+}
+
+# ---- 3. fewer animations on long lists, and a short wait while typing in the search box
+if (Has-Fn 'Animate-In') {
+    $script:OrigAnimate = ${function:Animate-In}
+    function Animate-In($el, $delayMs = 0, $dist = 12, $ms = 280, $to = 1) {
+        if ($delayMs -ge 240) { try { $el.Opacity = $to } catch {}; return }
+        & $script:OrigAnimate $el $delayMs $dist $ms $to
+    }
+}
+$script:OrigRenderT = ${function:Render-Tweaks}
+$script:RenderTimer = New-Object Windows.Threading.DispatcherTimer; $script:RenderTimer.Interval = [TimeSpan]::FromMilliseconds(220)
+$script:RenderTimer.Add_Tick({ $script:RenderTimer.Stop(); & $script:OrigRenderT })
+function Render-Tweaks {
+    if ($ui.txtSearch.IsKeyboardFocused) { $script:RenderTimer.Stop(); $script:RenderTimer.Start() }
+    else { $script:RenderTimer.Stop(); & $script:OrigRenderT }
+}
+
+# ---- 4. translation lookups: remember strings that have no translation
+if (Has-Fn 'Get-Nl') {
+    $script:NlMiss = @{}
+    $script:OrigGetNl = ${function:Get-Nl}
+    function Get-Nl($txt) {
+        if ($null -eq $txt -or $txt -eq '') { return $null }
+        if ($script:NlMiss.ContainsKey($txt)) { return $null }
+        $r = & $script:OrigGetNl $txt
+        if (-not $r) { $script:NlMiss[$txt] = $true }
+        $r
+    }
+    $script:OrigSetLang3 = ${function:Set-Language}
+    function Set-Language($lang) { $script:NlMiss.Clear(); & $script:OrigSetLang3 $lang; $script:NlMiss.Clear() }
+}
+
+# ---- 5. live gauges: lighter GPU counters, slower refresh
+$script:GpuStamp = [datetime]::MinValue
+if (Has-Fn 'Refresh-GpuCounters') {
+    $script:OrigRefreshGpu = ${function:Refresh-GpuCounters}
+    function Refresh-GpuCounters {
+        if (@($script:gpuC).Count -and ((Get-Date) - $script:GpuStamp).TotalMinutes -lt 5) { return }
+        foreach ($c in @($script:gpuC)) { try { $c.Dispose() } catch {} }
+        & $script:OrigRefreshGpu; $script:GpuStamp = Get-Date
+    }
+}
+try { if ($timer) { $timer.Interval = [TimeSpan]::FromSeconds(3) } } catch {}
+
+# ---- 6. restore points only when they are needed
+$script:RPNeeded = $null
+$script:RPStamp = [datetime]::MinValue
+$script:OrigRP3 = ${function:New-RestorePoint}
+function New-RestorePoint {
+    if ($null -ne $script:RPNeeded) {
+        if (-not $script:RPNeeded) { Log 'Only safe tweaks: restore point skipped (every change can be undone).'; return }
+        if (((Get-Date) - $script:RPStamp).TotalMinutes -lt 30) { Log 'Using the restore point made a few minutes ago.'; return }
+    }
+    & $script:OrigRP3; $script:RPStamp = Get-Date
+}
+$script:OrigApply2 = ${function:Invoke-Apply}
+function Invoke-Apply($list) {
+    $l = @($list); $risky = @($l | Where-Object { $_.Risk -ne 'Safe' })
+    $script:RPNeeded = (($risky.Count -gt 0) -or [bool]$Settings.AlwaysRestorePoint)
+    try { & $script:OrigApply2 $list } finally { $script:RPNeeded = $null }
+}
+try {
+    if ($NL) { $NL['Always create a restore point before applying'] = 'Maak altijd een herstelpunt voordat je toepast' }
+    $cb = New-Object Windows.Controls.CheckBox; $cb.Content = 'Always create a restore point before applying'; $cb.Tag = 'AlwaysRestorePoint'; $cb.Margin = '4,7'
+    $cb.IsChecked = [bool]$Settings.AlwaysRestorePoint
+    if ($swStyle) { $cb.Style = $swStyle }
+    $cb.Add_Click({ $Settings.AlwaysRestorePoint = [bool]$this.IsChecked; Save-Settings })
+    $idx = -1; $kids = @($setPanel.Children)
+    for ($i = 0; $i -lt $kids.Count; $i++) { if ($kids[$i] -is [Windows.Controls.CheckBox] -and [string]$kids[$i].Tag -eq 'ScanOnStart') { $idx = $i; break } }
+    if ($idx -ge 0) { $setPanel.Children.Insert($idx + 1, $cb) } else { $setPanel.Children.Add($cb) | Out-Null }
+    if (Has-Fn 'Translate-Now') { Translate-Now $cb }
+} catch {}
+
+# ---- 7. the built-in app list is loaded in the background
+$script:BloatPs = $null; $script:BloatAsync = $null
+$script:BloatTimer = New-Object Windows.Threading.DispatcherTimer; $script:BloatTimer.Interval = [TimeSpan]::FromMilliseconds(400)
+$script:BloatTimer.Add_Tick({
+    if (-not $script:BloatAsync -or -not $script:BloatAsync.IsCompleted) { return }
+    $script:BloatTimer.Stop()
+    $installed = @()
+    try { $installed = @($script:BloatPs.EndInvoke($script:BloatAsync)) } catch {}
+    try { $script:BloatPs.Dispose() } catch {}
+    $script:BloatPs = $null; $script:BloatAsync = $null
+    $ui.lstBloat.Children.Clear()
+    $n = 0
+    foreach ($key in @($BloatApps.Keys)) {
+        if ($installed -notcontains $key) { continue }
+        $cb2 = New-Object Windows.Controls.CheckBox; $cb2.Content = $BloatApps[$key]; $cb2.Tag = $key; $cb2.Margin = '4,3,18,3'; $cb2.Width = 210
+        $ui.lstBloat.Children.Add($cb2) | Out-Null; $n++
+    }
+    if (-not $n) { $ui.lstBloat.Children.Add((New-Text 'None of the listed apps are installed.' 12 '#7F8FAE' $false '4,0,0,6')) | Out-Null }
+    if (Has-Fn 'Translate-Now') { Translate-Now $ui.lstBloat }
+})
+function Refresh-Bloat {
+    if ($script:BloatAsync) { return }
+    $ui.lstBloat.Children.Clear()
+    $ui.lstBloat.Children.Add((New-Text 'Loading apps...' 12 '#7F8FAE' $false '4,0,0,6')) | Out-Null
+    $ps = [powershell]::Create()
+    [void]$ps.AddScript({ @(Get-AppxPackage -ErrorAction SilentlyContinue | ForEach-Object { $_.Name }) })
+    $script:BloatPs = $ps; $script:BloatAsync = $ps.BeginInvoke(); $script:BloatTimer.Start()
+}
+
+# ---- 8. faster folder scanning and cleaning (.NET instead of Get-ChildItem)
+$FastFindCs = @'
+using System;
+using System.Collections.Generic;
+using System.IO;
+using System.Text.RegularExpressions;
+public static class FastFind {
+    public static List<string> Find(string root, int maxDepth, string[] patterns) {
+        List<string> res = new List<string>(); List<Regex> rx = new List<Regex>();
+        foreach (string p in patterns) rx.Add(new Regex("^" + Regex.Escape(p).Replace("\\*", ".*").Replace("\\?", ".") + "$", RegexOptions.IgnoreCase));
+        Walk(root, 0, maxDepth, rx, res); return res;
+    }
+    static void Walk(string dir, int d, int max, List<Regex> rx, List<string> res) {
+        try { foreach (string f in Directory.EnumerateFiles(dir)) { string n = Path.GetFileName(f); foreach (Regex r in rx) { if (r.IsMatch(n)) { res.Add(f); break; } } } } catch { }
+        if (d >= max) return;
+        try { foreach (string s in Directory.EnumerateDirectories(dir)) Walk(s, d + 1, max, rx, res); } catch { }
+    }
+}
+'@
+function Scan-Games {
+    $ui.btnScan.IsEnabled = $false
+    $n = 0
+    try {
+        if (-not ('FastFind' -as [type])) { Add-Type -TypeDefinition $FastFindCs }
+        $patterns = [string[]]@($Games | ForEach-Object { $_.Exes } | Select-Object -Unique)
+        $hits = New-Object System.Collections.ArrayList
+        foreach ($root in @(Get-GameRoots)) {
+            $ui.txtScan.Text = "Scanning $root ..."
+            if ($script:Lang -ne 'en' -and (Has-Fn 'Get-Nl')) { $tr = Get-Nl $ui.txtScan.Text; if ($tr) { $ui.txtScan.Text = $tr } }
+            Flush-UI
+            foreach ($p in [FastFind]::Find($root, 5, $patterns)) { [void]$hits.Add($p) }
+        }
+        $old = $script:GamePaths
+        $script:GamePaths = @{}
+        foreach ($g in $Games) {
+            $mine = @()
+            foreach ($h in $hits) { $leaf = [IO.Path]::GetFileName($h); foreach ($pt in $g.Exes) { if ($leaf -like $pt) { $mine += $h; break } } }
+            if ($g.Id -like 'custom_*' -and $old.ContainsKey($g.Id)) { $mine += @($old[$g.Id] | Where-Object { $_ -and (Test-Path -LiteralPath ([string]$_)) }) }
+            $script:GamePaths[$g.Id] = @($mine | Select-Object -Unique)
+        }
+        $n = @($Games | Where-Object { @($script:GamePaths[$_.Id]).Count -gt 0 }).Count
+        $msg = "Scan finished. Found $n of $($Games.Count) supported games."
+        if ($script:Lang -ne 'en' -and (Has-Fn 'Get-Nl')) { $tr = Get-Nl $msg; if ($tr) { $msg = $tr } }
+        $ui.txtScan.Text = $msg
+        try {
+            if ($GameCache) { $out = @{}; foreach ($g in $Games) { $out[$g.Id] = @($script:GamePaths[$g.Id] | Where-Object { $_ }) }; $out | ConvertTo-Json | Set-Content $GameCache -Encoding UTF8 }
+        } catch {}
+    } finally { $ui.btnScan.IsEnabled = $true }
+    Render-GameList
+    if ($script:CurGame) { Show-Game $script:CurGame }
+    Log "Game scan: $n games found."
+}
+$script:freedTmp = 0
+function Remove-DirWalk($dir) {
+    try { foreach ($f in [IO.Directory]::EnumerateFiles($dir)) { try { $len = (New-Object IO.FileInfo $f).Length; [IO.File]::Delete($f); $script:freedTmp += $len } catch {} } } catch {}
+    try { foreach ($s in [IO.Directory]::EnumerateDirectories($dir)) { Remove-DirWalk $s } } catch {}
+}
+function Remove-Dir($path) {
+    $script:freedTmp = 0
+    if ([IO.Directory]::Exists($path)) { Remove-DirWalk $path }
+    $script:freedTmp
+}
+
+# ---- 9. do slow things after the window is visible
+$window.Add_ContentRendered({
+    try { Set-Content (Join-Path $DataDir 'ready.flag') (Get-Date).ToString('s') -ErrorAction Stop } catch {}
+    if (Has-Fn 'Update-RPLine') {
+        $t = New-Object Windows.Threading.DispatcherTimer; $t.Interval = [TimeSpan]::FromSeconds(2.5)
+        $script:rpTimer = $t
+        $t.Add_Tick({ $script:rpTimer.Stop(); try { Update-RPLine } catch {} })
+        $t.Start()
+    }
+})
+
+
+# ================================================================ SharkOptimizer Complete Translations (added module): full German
+$script:XExtra = @{}
+function Add-XExtra($code, $descText, $warnText, $tipsText, $lwText, $slidesText, $hintsText, $uiText, $rules) {
+    $tips = @{}
+    foreach ($ln in ($tipsText -split "`r?`n")) { $i = $ln.IndexOf('|'); if ($i -gt 0) { $g = $ln.Substring(0, $i); if (-not $tips.ContainsKey($g)) { $tips[$g] = @() }; $tips[$g] += $ln.Substring($i + 1) } }
+    $slides = @()
+    foreach ($ln in ($slidesText -split "`r?`n")) { if (-not $ln.Trim()) { continue }; $f = $ln.Split('|'); $slides += , @{ T = $f[0]; B = ($f[1] -replace '\\n', "`n"); Btn = $f[2] } }
+    $script:XExtra[$code] = @{ Desc = (Parse-Pairs $descText); Warn = (Parse-Pairs $warnText); Tips = $tips; LW = (Parse-Pairs $lwText); Slides = $slides; Hints = (Parse-Pairs $hintsText); Rules = $rules }
+    $extraUi = Parse-Pairs $uiText
+    foreach ($k in @($extraUi.Keys)) { $script:XLangs[$code].UI[$k] = $extraUi[$k] }
+}
+$de_desc = @'
+p_telemetry => Setzt die Telemetrie auf das Minimum und stoppt den DiagTrack-Dienst. Weniger CPU-, Festplatten- und Netzwerklast im Hintergrund.
+p_tasks => Schaltet die Aufgaben für Kompatibilitätsbewertung, CEIP und Datenträgerdiagnose ab, die im Hintergrund aufwachen.
+p_adid => Verhindert, dass Apps eine eindeutige Werbe-ID nutzen, um dich zu profilieren.
+p_bing => Die Suche im Startmenü durchsucht nur deinen PC, nicht Bing. Schnellere Ergebnisse, keine Suchanfragen nach außen.
+p_cortana => Schaltet Cortana und die Cloudsuche per Richtlinie ab.
+p_activity => Windows sammelt und lädt deinen Aktivitätsverlauf nicht mehr hoch.
+p_ads => Schaltet Werbung im Startmenü, Tipps auf dem Sperrbildschirm, Werbung in den Einstellungen und stille App-Installationen ab.
+p_consumer => Verhindert, dass Windows vorgeschlagene Apps, Spotlight-Inhalte und Werbeinstallationen aufdrängt.
+p_copilot => Schaltet Copilot per Richtlinie ab, damit er nicht mehr im Hintergrund lädt.
+p_recall => Blockiert Recall-ähnliche KI-Bildschirmaufnahmen und die Analyse deiner Aktivitäten.
+p_widgets => Stoppt das Widgets-Fenster und den zugehörigen Webprozess.
+p_wer => Windows erstellt und sendet keine Absturzberichte mehr.
+p_feedback => Windows fragt dich nicht mehr nach Feedback.
+p_inventory => Stoppt die App-Inventarisierung und die Datensammlung des Problemschritte-Recorders.
+p_ink => Windows sammelt keine Handschrift- und Tippproben mehr, um Vorschläge zu verbessern.
+p_clip => Dein Zwischenablageverlauf wird nicht mehr zwischen Geräten synchronisiert.
+p_location => Schaltet die Windows-Standortermittlung für den ganzen PC ab.
+p_llmnr => Schaltet ein veraltetes Namensauflösungsprotokoll ab, das Angreifer in gemeinsamen Netzwerken ausnutzen.
+p_remreg => Stoppt den Dienst, über den andere PCs deine Registrierung im Netzwerk bearbeiten können.
+p_remote => Schließt die Tür für die Remoteunterstützung und verkleinert deine Angriffsfläche.
+p_nvtel => Stoppt den NVIDIA Telemetry Container. Treiber und Spiele funktionieren weiter.
+p_do => Windows lädt keine Updates mehr mit deiner Bandbreite an andere PCs hoch.
+q_ext => Zeigt immer .exe, .png, .txt und mehr an. Hilft, gefälschte Dateien zu erkennen.
+q_hidden => Zeigt versteckte Dateien und Ordner im Explorer an.
+q_thispc => Der Explorer öffnet „Dieser PC“ statt „Schnellzugriff“.
+q_recent => Der Explorer listet zuletzt und häufig verwendete Dateien nicht mehr im Schnellzugriff auf.
+q_shake => Ein Fenster zu schütteln minimiert die anderen nicht mehr.
+q_dark => Stellt Windows und Apps auf das dunkle Design um.
+q_taskbar => Richtet die Taskleiste links aus und blendet die Schaltflächen für Widgets, Aufgabenansicht und Suche aus.
+q_classic => Bringt das vollständige Kontextmenü unter Windows 11 zurück.
+q_boot => Zeigt ausführliche Meldungen beim Starten und Herunterfahren. Macht den Start nicht schneller, hilft aber bei der Fehlersuche.
+q_menu => Menüs öffnen sich ohne Verzögerung.
+q_kb => Kürzeste Wiederholungsverzögerung und schnellste Wiederholungsrate.
+q_shutdown => Dienste und Apps haben 2 Sekunden zum Beenden. Hängende Apps werden automatisch beendet.
+q_startdelay => Autostart-Apps starten sofort, statt etwa 10 Sekunden zu warten.
+q_sticky => Kein Shift-x5-Fenster mehr mitten im Spiel.
+q_reboot => Windows startet nicht mehr von selbst neu, während du angemeldet bist.
+q_welcome => Blendet die Seiten „Lass uns dein Gerät fertig einrichten“ nach Updates aus.
+q_visfx => Schaltet Animationen und Transparenz aus für einen flotteren Desktop und weniger GPU- und RAM-Verbrauch.
+q_bgapps => Verhindert, dass Store-Apps im Hintergrund laufen. Spart RAM und CPU.
+q_search => Stoppt den Indexdienst. Weniger Festplattenlast auf Systemen mit HDD.
+f_gamemode => Sagt Windows, dein Spiel zu bevorzugen und Treiberupdates während des Spielens zu pausieren.
+f_dvr => Stoppt die Xbox-Game-Bar-Aufnahme, eine bekannte Ursache für Frametime-Spitzen.
+f_overlay => Entfernt die Game-Bar-Einblendung und die Controller-Tastenkürzel.
+f_power => Aktiviert den Energiesparplan „Höchstleistung“: kein Core Parking, keine CPU-Taktverzögerungen.
+f_usb => Verhindert, dass Windows USB-Anschlüsse abschaltet. Beugt Aussetzern bei Maus, Tastatur und Headset vor.
+f_pcie => Hält die PCIe-Verbindung zu GPU und SSD auf voller Geschwindigkeit (ASPM aus).
+f_diskoff => Festplatten bleiben im Netzbetrieb aktiv, das verhindert Ruckler, wenn ein Spiel nach Leerlauf Daten lädt.
+f_cpumin => Die CPU taktet im Netzbetrieb nie herunter. Entfernt die Anlaufzeit in kompetitiven Spielen.
+f_throttle => Verhindert, dass Windows Hintergrund-Apps wie Discord, OBS und Launcher ausbremst.
+f_prio => Setzt Win32PrioritySeparation auf 0x26 (kurze Zeitscheiben, 3:1-Vordergrundbonus), eine Standardeinstellung für geringe Eingabeverzögerung.
+f_mmcss => Gibt der Games-Aufgabe hohe GPU- und CPU-Priorität und senkt die Multimedia-Reserve.
+f_fso => Nutzt echtes exklusives Vollbild. Kann die Eingabeverzögerung in älteren DX9- und DX11-Spielen senken.
+f_mouse => Schaltet die Zeigerbeschleunigung für Zielen 1:1 aus. Abmelden ist nötig.
+f_hags => Lässt die GPU ihre Planung selbst verwalten. Nötig für DLSS Frame Generation und kann die CPU-Last senken.
+f_mpo => Kann Ruckeln, Flackern und schwarze Bildschirme auf manchen NVIDIA- und AMD-Systemen beheben.
+f_fast => Erzwingt beim Herunterfahren einen echten Kaltstart. Behebt veraltete Treiberzustände und Ruckeln nach langer Laufzeit.
+f_sysmain => SSDs brauchen kein Prefetching. Verringert zufällige Festplatten- und RAM-Aktivität.
+f_timerreq => Stellt die prozessbezogene Timer-Auflösung unter Windows 11 wieder her, damit timerintensive Spiele gleichmäßig laufen.
+n_nagle => Sendet kleine Pakete sofort. Ein klassischer Ping- und Jitter-Fix für Online-Spiele.
+n_throttle => Entfernt die Netzwerkdrosselung für Multimedia.
+n_qos => Gibt die 20 % Bandbreite frei, die Windows für QoS reservieren kann.
+n_ports => Kürzeres TIME_WAIT (30 s) und 65.534 Benutzerports. Hilft bei Lobbys, die oft neu verbinden.
+n_heur => Verhindert, dass Windows TCP-Fenstergrößen selbst überschreibt, was den Durchsatz stabil hält.
+n_dns => Setzt 1.1.1.1 auf deinen aktiven Adaptern für schnellere Abfragen. Teste zuerst im Tab Netzwerk.
+n_rsc => Stoppt das Bündeln eingehender Pakete durch den Adapter. Geringere Latenz, etwas mehr CPU-Last.
+n_lso => Behebt Ruckeln beim Hochladen bei manchen Adaptern und Treibern.
+n_nicpwr => Verhindert, dass Windows den Adapter abschaltet, was Lagspitzen und zufällige Verbindungsabbrüche vermeidet.
+n_eee => Schaltet Energy-Efficient Ethernet und ähnliche Energiemodi aus, die Aufwachverzögerung verursachen.
+n_flow => Verhindert, dass der Adapter Verkehr pausiert, wenn die Gegenstelle darum bittet. Kann Latenzspitzen glätten.
+n_intmod => Liefert Pakete sofort an die CPU, statt sie zu bündeln. Niedrigerer Ping, höhere CPU-Last.
+n_rss => Verteilt die Netzwerkverarbeitung auf mehrere CPU-Kerne.
+n_wifi => Setzt das WLAN-Energiesparen auf maximale Leistung, im Netz- und Akkubetrieb.
+n_netbios => Schaltet veraltete NetBIOS-Namensmeldungen ab. Weniger Hintergrundrauschen im Netzwerk.
+n_teredo => Schaltet den IPv6-über-IPv4-Tunnel ab, der Overhead verursacht und Verbindungen verlangsamen kann.
+w_edge => Schaltet Edge Startup Boost und den Hintergrundmodus aus, damit Edge im geschlossenen Zustand nicht weiterläuft.
+w_services => Schaltet Fax, Retail Demo, Windows-Medienfreigabe und Maps Broker ab. Gibt RAM und Handles frei.
+w_chat => Entfernt die Chat-Schaltfläche aus der Windows-11-Taskleiste.
+w_lastaccess => Windows schreibt nicht mehr bei jedem Lesezugriff einen Zeitstempel. Weniger Festplattenaktivität.
+w_8dot3 => Stoppt das Erzeugen veralteter kurzer Dateinamen für jede Datei. Schnelleres Anlegen von Dateien.
+w_svchost => Fasst Dienste in weniger svchost.exe-Prozessen zusammen, wenn genug RAM vorhanden ist.
+w_pagingexec => Verhindert, dass Windows Kernel und Treiber auf die Festplatte auslagert. Verbessert die Reaktionsfähigkeit auf PCs mit viel RAM.
+w_memcomp => Überspringt das Komprimieren von RAM-Seiten, was etwas CPU spart, wenn du viel Speicher hast.
+w_prefetch => Schaltet den Prefetcher und das Vorladen von Superfetch ab. Auf SSDs nicht nötig.
+w_maint => Verhindert, dass Windows Wartungsaufgaben im Leerlauf nach eigenem Zeitplan ausführt.
+w_onedrive => Schaltet die OneDrive-Dateisynchronisierung per Richtlinie ab.
+w_wudrv => Windows Update ersetzt deine GPU- und Chipsatztreiber nicht mehr durch eigene Versionen.
+w_spooler => Stoppt den Druckdienst. Spart RAM und schließt eine häufige Angriffsfläche.
+a_msi => Stellt die GPU auf Message Signaled Interrupts für geringere DPC-Latenz.
+a_tick => Konstante Timer-Interrupts für gleichmäßigere Frametimes (bcdedit).
+a_hyperv => Verhindert, dass der Windows-Hypervisor beim Start geladen wird, wodurch der Virtualisierungs-Overhead entfällt.
+a_xbox => Schaltet Xbox-Live-Anmeldung, Spielstände, Netzwerk und Zubehördienste ab.
+a_ipv6 => Erzwingt nur IPv4. Kann seltsames Routing oder DNS-Verzögerungen bei manchen Anbietern beheben.
+a_spectre => Schaltet Spectre- und Meltdown-Schutzmaßnahmen ab. Kann FPS auf älteren Intel-CPUs steigern.
+a_vbs => Schaltet Virtualization-Based Security und HVCI ab, was auf manchen Systemen FPS kostet.
+a_hib => Löscht hiberfil.sys und gibt einige GB auf dem Systemlaufwerk frei.
+'@
+$de_warn = @'
+p_location => Karten, Wetter und „Mein Gerät suchen“ funktionieren nicht mehr.
+q_shutdown => Apps mit ungespeicherter Arbeit können beim Herunterfahren geschlossen werden.
+q_bgapps => Mail, Kalender und andere Store-Apps benachrichtigen dich nicht mehr, solange sie geschlossen sind.
+q_search => Dateisuchen im Startmenü und im Explorer werden deutlich langsamer.
+f_dvr => Aufnahmen mit Win+G und Win+Alt+R funktionieren nicht mehr.
+f_power => Höherer Stromverbrauch und mehr Wärme. Leert Laptop-Akkus schnell.
+f_cpumin => Höhere Leerlauftemperaturen und höherer Stromverbrauch. Nicht für Laptops im Akkubetrieb.
+f_fso => Kann in manchen DX12-Spielen Tearing verursachen oder FPS senken.
+f_hags => Kann bei älteren GPUs oder Treibern Ruckeln verursachen. Teste deine Spiele nach einem Neustart.
+f_mpo => Nur verwenden, wenn du Flackern oder Ruckeln siehst. Der Stromverbrauch kann leicht steigen.
+f_fast => Kaltstarts dauern ein paar Sekunden länger, vor allem auf Festplatten.
+f_timerreq => Etwas höherer Stromverbrauch. Nur relevant für Spiele, die 0,5-ms-Timer anfordern.
+n_lso => Kann die CPU-Last bei großen Uploads leicht erhöhen.
+n_flow => Große lokale Dateiübertragungen können sich etwas anders verhalten.
+n_intmod => Erhöht die CPU-Last bei viel Netzwerkverkehr. Schwache CPUs können FPS verlieren.
+n_netbios => Sehr alte Dateifreigaben, die auf NetBIOS-Namen angewiesen sind, funktionieren nicht mehr.
+n_teredo => Xbox-Live-Partychat und manche Peer-to-Peer-Spiele nutzen Teredo.
+w_8dot3 => Sehr alte 16-Bit-Installationsprogramme können fehlschlagen. Vorhandene Kurznamen bleiben erhalten.
+w_svchost => Wenn ein gruppierter Dienst abstürzt, können andere in derselben Gruppe mitstoppen.
+w_pagingexec => Belegt dauerhaft etwas mehr RAM.
+w_memcomp => Macht alles langsamer, wenn dein RAM voll läuft.
+w_prefetch => Programme können auf Festplatten etwas langsamer starten.
+w_maint => Geplante Defragmentierung und Diagnosen laufen nicht. Nutze stattdessen Boost-Up.
+w_onedrive => Dateien bleiben auf deinem PC, werden aber nicht mehr mit der Cloud synchronisiert.
+w_wudrv => Du musst Treiber selbst beim Hersteller aktualisieren.
+w_spooler => Drucken und PDF-Drucker funktionieren nicht mehr.
+a_msi => Eine nicht unterstützte GPU oder ein solcher Treiber kann schwarze Bildschirme verursachen. Halte einen Wiederherstellungspunkt bereit.
+a_tick => Höherer Stromverbrauch und mehr Wärme im Leerlauf.
+a_hyperv => WSL2, Docker, Windows Sandbox und Android-Emulatoren funktionieren nicht mehr, bis du das rückgängig machst.
+a_xbox => Zerstört die Xbox-App, Game Pass auf dem PC, die Xbox-Anmeldung und Cloud-Spielstände.
+a_ipv6 => Manche Spiele, Xbox Live und Anbieter, die auf IPv6 setzen, können ausfallen oder langsamer verbinden.
+a_spectre => Sicherheitsrisiko: setzt deine CPU Angriffen über spekulative Ausführung aus. Vermeide das auf PCs für Banking oder Arbeit.
+a_vbs => Senkt den Kernelschutz. Manche Anti-Cheats und Arbeitsrichtlinien erwarten, dass er aktiv ist.
+a_hib => Ruhezustand und Schnellstart funktionieren nicht mehr.
+'@
+$de_tips = @'
+valorant|Stelle Material, Textur, Detail und UI-Qualität auf Niedrig.
+valorant|Schalte Vignette, Bloom, Verzerrung, Schattenwurf und V-Sync aus.
+valorant|Nutze MSAA 2x mit anisotroper Filterung 1x und lass Multithreaded Rendering an.
+valorant|Aktiviere NVIDIA Reflex Low Latency (An + Boost), wenn deine GPU es unterstützt.
+valorant|Begrenze die FPS auf etwa 3 unter der Bildwiederholrate deines Monitors (Limit FPS Always).
+valorant|Vanguard verlangt unter Windows 11 Secure Boot und TPM 2.0. Speicherintegrität (VBS) ist nicht erforderlich, das Abschalten ist also optional.
+fortnite|Der Performance-Modus liefert auf den meisten PCs die stabilsten FPS. DX12 kann sich auf manchen neueren oder AMD-Systemen flüssiger anfühlen, teste also beides.
+fortnite|Schatten aus bringt den größten FPS-Gewinn. Stelle Effekte und Nachbearbeitung auf Niedrig.
+fortnite|Niedrige Texturen und Meshes senken den VRAM-Verbrauch und Streaming-Ruckler.
+fortnite|Begrenze die FPS knapp unter der Bildwiederholrate deines Monitors.
+cs2|Startoptionen helfen nur ein wenig. Die meisten Gewinne kommen von den Videoeinstellungen im Spiel und den GPU-Treibereinstellungen.
+cs2|Setze ein FPS-Limit 10 über deiner Bildwiederholrate für stabile Frametimes (zum Beispiel +fps_max 250 bei 240 Hz).
+cs2|Schalte V-Sync aus und nutze die rohe Mauseingabe im Spiel.
+apex|Allgemeiner Tipp: Nutze exklusives Vollbild, schalte V-Sync aus und begrenze die FPS knapp unter deiner Bildwiederholrate.
+apex|Senke das Texture Streaming Budget, wenn du wenig VRAM hast, um Ruckler zu vermeiden.
+apex|Aktualisiere deinen GPU-Treiber, bevor du Einstellungen änderst.
+warzone|Allgemeiner Tipp: Kompiliere Shader nach jedem Update neu und halte das Spiel auf einer SSD.
+warzone|Begrenze die FPS knapp unter deiner Bildwiederholrate und nutze exklusives Vollbild.
+warzone|Schließe Overlays und Launcher, die du beim Spielen nicht brauchst.
+fivem|Drücke im Spiel F8 und gib cl_drawfps true ein, um die FPS anzuzeigen, oder cl_drawperf true für Ping, Paketverlust sowie CPU- und GPU-Last.
+fivem|Schalte MSAA und Reflection MSAA aus, setze Grass Quality auf Normal und lass Extended Distance Scaling auf dem Minimum.
+fivem|Senke str_maxVehicleTextureRes in der Konsole, um den VRAM-Verbrauch auf schweren Servern zu verringern.
+fivem|Server-Skripte und gestreamte Assets verursachen oft mehr Lag als deine Grafikeinstellungen, teste also auf ein paar Servern.
+roblox|Allgemeiner Tipp: Stelle die Grafikqualität in den Roblox-Einstellungen manuell niedriger.
+roblox|Ändere keine Roblox-Dateien. Tweaks auf Windows-Ebene sind der sichere Weg.
+roblox|Schließe zusätzliche Browser-Tabs und Launcher, denn Roblox belastet die CPU stark.
+rocketleague|Allgemeiner Tipp: Schalte V-Sync aus und begrenze die FPS auf oder über deiner Bildwiederholrate für die geringste Eingabeverzögerung.
+rocketleague|Senke Render- und Effektqualität, wenn du Frametime-Spitzen siehst.
+overwatch|Allgemeiner Tipp: Aktiviere „Puffer reduzieren“, schalte V-Sync aus und begrenze die FPS knapp über deiner Bildwiederholrate.
+overwatch|Nutze Niedrig oder Mittel bei Schatten- und Effektdetails für ein klareres Bild.
+rust|Allgemeiner Tipp: Halte das Spiel auf einer SSD und senke Sichtweite und Schattenkaskaden.
+rust|Rust braucht viel RAM, schließe also andere Apps, bevor du mit 16 GB oder weniger spielst.
+'@
+$de_lw = @'
+fortnite => Epic Games Launcher > Profil > Einstellungen > Fortnite > Zusätzliche Befehlszeilenargumente. Von der Community gemeldet, teste es selbst.
+cs2 => Steam > Rechtsklick auf CS2 > Eigenschaften > Startoptionen. Auf schwachen PCs nutze +fps_max 60 für Stabilität.
+'@
+$de_slides = @'
+Willkommen bei SharkOptimizer|SharkOptimizer passt Tweaks an deinen PC an und protokolliert jede Änderung, sodass du alles jederzeit rückgängig machen kannst.\n\nErstelle zuerst einen Wiederherstellungspunkt. Du kannst diese Anleitung mit der ?-Schaltfläche oben oder über Anleitung in der Seitenleiste erneut öffnen.|Wiederherstellungspunkt erstellen
+Übersicht|Oben siehst du CPU, GPU und RAM live.\n\nVoreinstellungen wählen eine fertige Zusammenstellung auf der Tweaks-Seite aus, die du prüfen kannst. Der Wert zeigt, wie viele empfohlene Tweaks du angewendet hast.|Zur Übersicht
+Tweaks|Filtere mit den Tabs nach Kategorie. Die Marken zeigen das Risiko: SICHER, VORSICHT oder EINGRIFF IN WINDOWS-KERN.\n\nHake Tweaks an und klicke auf Auswahl anwenden (auch oben). Details zeigt genau, was ein Tweak ändert. Auswahl rückgängig macht es wieder rückgängig.|Zu den Tweaks
+Spiele|Klicke auf Spiele suchen, wähle ein Spiel, lies die Tipps und klicke auf Optimieren.\n\nSpiele mit Anti-Cheat bekommen nur Änderungen auf Windows-Ebene. An Spieldateien wird nichts angefasst.|Zu den Spielen
+Windows und Boost-Up|Windows bietet Reparaturwerkzeuge, Autostart-Verwaltung, das Entfernen integrierter Apps und einen Schließer für schwere Apps.\n\nBoost-Up führt Bereinigungen aus. Etwa einmal im Monat genügt.|Zu Windows
+Labor: messen und prüfen|Führe die Messung VORHER aus, wende deine Tweaks an, starte bei Bedarf neu und führe dann die Messung NACHHER aus, um zu sehen, was sich geändert hat.\n\nDer Spielemodus schließt die Apps, die du wählst, und stellt alles wieder her, wenn dein Spiel endet. Jetzt prüfen kontrolliert, ob deine Tweaks noch aktiv sind.|Zum Labor
+Netzwerk|Regionen testen und der DNS-Benchmark zeigen deinen Ping und den schnellsten DNS. Besten DNS anwenden nutzt ihn.\n\nEin Live-Ping-Diagramm und Traceroute findest du im Labor.|Zum Netzwerk
+Sicher bleiben|Der Tab Wiederherstellen zeigt alles, was angewendet wurde, und lässt dich es rückgängig machen. Auf Windows-Standard zurücksetzen (im Labor) macht alles rückgängig.\n\nWenn ein Spiel oder eine App nach einer Änderung merkwürdig reagiert, mache zuerst den letzten Tweak rückgängig.|Zur Wiederherstellung
+'@
+$de_hints = @'
+navDash => Dein PC auf einen Blick. Nutze Voreinstellungen für schnelle Ergebnisse.
+navTweaks => Hake Tweaks an und wähle Auswahl anwenden. Die Marken zeigen, wie riskant jeder Tweak ist.
+navGames => Suchen, Spiel wählen, dann Optimieren. Spiele mit Anti-Cheat erhalten nur sichere Änderungen auf Windows-Ebene.
+navWin => Reparaturwerkzeuge, Autostart-Apps, integrierte Apps entfernen und schwere Apps schließen.
+navLab => Messung vorher und nachher, Spielemodus, Systemprüfung, Prüfen und Profile.
+navBoost => Routinebereinigung. Etwa einmal im Monat ausführen.
+navNet => Ping, DNS-Benchmark und Servertests.
+navRestore => Sieh nach, was angewendet wurde, und mache alles rückgängig.
+navSettings => Sprache, Updates und Verhalten.
+'@
+$de_ui = @'
+Pick a preset to select its tweaks. You review them on the Tweaks page before anything is applied. => Wähle eine Voreinstellung, um ihre Tweaks auszuwählen. Du prüfst sie auf der Tweaks-Seite, bevor etwas angewendet wird.
+Recommended applies safe tweaks only. => „Empfohlene anwenden“ setzt nur sichere Tweaks um.
+Pick a game for a tuned profile. Scan to detect your installs. => Wähle ein Spiel für ein abgestimmtes Profil. Suche, um deine Installationen zu finden.
+This game uses anti-cheat, so SharkOptimizer only changes Windows settings. It does not touch the game process, its files or its priority. => Dieses Spiel nutzt Anti-Cheat, daher ändert SharkOptimizer nur Windows-Einstellungen. Spielprozess, Spieldateien und Priorität bleiben unangetastet.
+Repair tools, startup control, built-in app removal and a heavy-app closer. More Windows tweaks are under Tweaks > Windows Optimization. => Reparaturwerkzeuge, Autostart-Verwaltung, Entfernen integrierter Apps und ein Schließer für schwere Apps. Weitere Windows-Tweaks findest du unter Tweaks > Windows-Optimierung.
+Untick an app to stop it launching at sign-in. Changes apply immediately and can be reversed. => Entferne den Haken, damit eine App nicht beim Anmelden startet. Änderungen gelten sofort und lassen sich rückgängig machen.
+Removes Microsoft apps you may not use. They can be reinstalled from the Microsoft Store, but this cannot be undone here. => Entfernt Microsoft-Apps, die du vielleicht nicht nutzt. Du kannst sie über den Microsoft Store neu installieren, aber hier lässt sich das nicht rückgängig machen.
+Open apps using the most RAM. Closing asks each app to quit normally, so you can still save your work. => Geöffnete Apps mit dem höchsten RAM-Verbrauch. Beim Schließen wird jede App normal beendet, sodass du noch speichern kannst.
+No registry startup entries found. => Keine Autostart-Einträge in der Registrierung gefunden.
+None of the listed apps are installed. => Keine der aufgeführten Apps ist installiert.
+No other app windows are open. => Es sind keine anderen App-Fenster geöffnet.
+Routine cleanups. Run monthly or when your PC feels slow. => Routinebereinigungen. Monatlich ausführen oder wenn dein PC langsam wirkt.
+Temp files, update download cache, crash dumps and the Recycle Bin. => Temporäre Dateien, Update-Downloadcache, Absturzabbilder und der Papierkorb.
+TRIM on SSDs, defrag on HDDs (system drive). => TRIM auf SSDs, Defragmentierung auf Festplatten (Systemlaufwerk).
+Clears your Explorer recent files history. => Löscht die Liste zuletzt verwendeter Dateien im Explorer.
+Rebuilds Explorer thumbnails and fixes broken previews. => Baut die Miniaturansichten im Explorer neu auf und behebt defekte Vorschauen.
+Resets the Windows font cache. => Setzt den Windows-Schriftartencache zurück.
+DirectX, NVIDIA and AMD shader caches. Your first game launch afterwards may stutter while they rebuild. => DirectX-, NVIDIA- und AMD-Shader-Caches. Beim ersten Spielstart danach kann es ruckeln, während sie neu aufgebaut werden.
+Cache folders for Chrome, Edge, Brave and Firefox. Logins and bookmarks are kept. => Cache-Ordner von Chrome, Edge, Brave und Firefox. Anmeldungen und Lesezeichen bleiben erhalten.
+Trims background process memory. The effect is temporary. => Gibt Speicher von Hintergrundprozessen frei. Der Effekt ist nur vorübergehend.
+Clears stale DNS entries. => Löscht veraltete DNS-Einträge.
+Measures ping, jitter and packet loss. Region tests use cloud endpoints as a route-quality guide. Enter a game server host to test it directly. => Misst Ping, Jitter und Paketverlust. Regionstests nutzen Cloud-Endpunkte als Anhaltspunkt für die Routenqualität. Gib einen Spieleserver ein, um ihn direkt zu testen.
+Every change is recorded, so you can revert it at any time. => Jede Änderung wird protokolliert, sodass du sie jederzeit zurücknehmen kannst.
+Measure results, run Game Mode, check your hardware and manage your setup. => Miss Ergebnisse, starte den Spielemodus, prüfe deine Hardware und verwalte dein Setup.
+Measures ping, jitter, DNS speed, idle CPU, RAM, process count and boot time, so you can see what your tweaks really changed. Takes about 20 seconds. => Misst Ping, Jitter, DNS-Geschwindigkeit, CPU im Leerlauf, RAM, Prozessanzahl und Startzeit, damit du siehst, was deine Tweaks wirklich verändert haben. Dauert etwa 20 Sekunden.
+Switches to a performance power plan, pauses Windows Update, closes apps you pick and trims memory. Everything is restored when it ends. Run a scan on the Games tab to list your games here. => Wechselt zu einem Leistungs-Energiesparplan, pausiert Windows Update, schließt Apps, die du auswählst, und gibt Speicher frei. Alles wird wiederhergestellt, wenn es endet. Suche zuerst im Tab Spiele, damit deine Spiele hier erscheinen.
+Looks at drivers, RAM speed, display refresh rate and security features that affect gaming. => Prüft Treiber, RAM-Geschwindigkeit, Bildwiederholrate und Sicherheitsfunktionen, die das Spielen beeinflussen.
+Windows updates and driver installers sometimes undo tweaks. This re-reads every applied tweak and shows any that drifted. => Windows-Updates und Treiberinstallationen machen Tweaks manchmal rückgängig. Das liest jeden angewendeten Tweak neu aus und zeigt die zurückgesetzten.
+Export what you applied, import it on another PC, apply selected tweaks in small batches you can test, or go back to Windows defaults. => Exportiere, was du angewendet hast, importiere es auf einem anderen PC, wende ausgewählte Tweaks in kleinen, testbaren Gruppen an oder kehre zu den Windows-Standardwerten zurück.
+Live ping graph, traceroute and a Wi-Fi channel check. Use a game server address for the most useful graph. => Live-Ping-Diagramm, Traceroute und eine WLAN-Kanalprüfung. Nutze eine Spieleserver-Adresse für das aussagekräftigste Diagramm.
+Choose the language of the app. It changes instantly. => Wähle die Sprache der App. Sie wechselt sofort.
+Choose the highlight colour of the app. => Wähle die Akzentfarbe der App.
+Cleans temp files, crash dumps and error reports once a week with Windows Task Scheduler. It never touches your documents or the Recycle Bin. => Bereinigt einmal pro Woche temporäre Dateien, Absturzabbilder und Fehlerberichte über die Windows-Aufgabenplanung. Deine Dokumente und der Papierkorb bleiben unberührt.
+Made by Bas. Free to use. Every change can be undone. => Von Bas gemacht. Kostenlos nutzbar. Jede Änderung lässt sich rückgängig machen.
+Language, updates and behaviour. => Sprache, Updates und Verhalten.
+Always create a restore point before applying => Vor dem Anwenden immer einen Wiederherstellungspunkt erstellen
+Loading apps... => Apps werden geladen...
+Not needed on this PC => Auf diesem PC nicht nötig
+'@
+Add-XExtra 'de' $de_desc $de_warn $de_tips $de_lw $de_slides $de_hints $de_ui @(
+    @('^STEP (\d+) OF (\d+)$', 'SCHRITT $1 VON $2'),
+    @('^Scanning (.+) \.\.\.$', 'Suche in $1 ...'),
+    @('^Scan finished\. Found (\d+) of (\d+) supported games\.$', 'Suche beendet. $1 von $2 unterstützten Spielen gefunden.')
+)
+
+function Apply-XExtra($code) {
+    $x = $script:XExtra[$code]
+    foreach ($t in $Tweaks) {
+        if ($x.Desc.ContainsKey($t.Id)) { $t.Desc = $x.Desc[$t.Id] }
+        if ($x.Warn.ContainsKey($t.Id)) { $t.Warn = $x.Warn[$t.Id] }
+    }
+    foreach ($g in $Games) {
+        if ($x.Tips.ContainsKey($g.Id)) { $g.Tips = @($x.Tips[$g.Id]) }
+        if ($x.LW.ContainsKey($g.Id)) { $g.LaunchWhere = $x.LW[$g.Id] }
+    }
+    if ($Slides) { for ($i = 0; $i -lt $Slides.Count -and $i -lt $x.Slides.Count; $i++) { $Slides[$i].T = $x.Slides[$i].T; $Slides[$i].B = $x.Slides[$i].B; $Slides[$i].Btn = $x.Slides[$i].Btn } }
+    if ($PageInfo) { foreach ($k in @($x.Hints.Keys)) { if ($PageInfo.ContainsKey($k)) { $PageInfo[$k] = @($PageInfo[$k][0], $x.Hints[$k]) } } }
+    $script:NLRules = @($script:NLRules) + @($x.Rules)
+    if ($script:NlMiss) { $script:NlMiss.Clear() }
+    try { Render-Tweaks } catch {}
+    try { Render-GameList; if ($script:CurGame) { Show-Game $script:CurGame } } catch {}
+    try { Update-Stats } catch {}
+    try { if ($script:CurNav) { Update-ProChrome } } catch {}
+    if ($script:GuideWin -and $script:GuideWin.IsVisible) { try { Render-Slide; Translate-Now $script:GuideWin } catch {} }
+}
+$script:OrigSetLang4 = ${function:Set-Language}
+function Set-Language($lang) {
+    & $script:OrigSetLang4 $lang
+    if ($script:XLang -and $script:XExtra.ContainsKey($script:XLang)) {
+        try { Apply-XExtra $script:XLang } catch { Log "Translation extras failed: $($_.Exception.Message)" }
+    }
+}
+if ($script:XLang) { Set-Language $script:XLang }
 
 # ---------------------------------------------------------------- start
 Log "Loaded $($Tweaks.Count) tweaks and $($Games.Count) game profiles. Detected: $($Spec.Tier) PC, $($Spec.RamGB) GB RAM, $($Spec.GPU)."
