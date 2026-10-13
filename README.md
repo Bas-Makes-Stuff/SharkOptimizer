@@ -6,7 +6,9 @@ A free, open PC optimizer for Windows 10 and 11, written in PowerShell. It match
 
 ## Download
 
-Download the latest ready-to-use ZIP from the [Releases page](https://github.com/Bas-Makes-Stuff/SharkOptimizer/releases/latest).
+For most people, download **`SharkOptimizer-Setup.exe`** from the [latest release](https://github.com/Bas-Makes-Stuff/SharkOptimizer/releases/latest) and run it. The installer creates a Start Menu entry, can create a Desktop shortcut, and includes an uninstaller.
+
+The installer is currently not code-signed. If Windows SmartScreen appears, click **More info** and then **Run anyway** only if you downloaded it from this official GitHub repository. The current release is [SharkOptimizer V1.5.0](https://github.com/Bas-Makes-Stuff/SharkOptimizer/releases/tag/1.5.0).
 
 ## Features
 
@@ -26,11 +28,9 @@ Download the latest ready-to-use ZIP from the [Releases page](https://github.com
 
 ## Quick start
 
-1. Go to the [latest release](https://github.com/Bas-Makes-Stuff/SharkOptimizer/releases/latest), download **SharkOptimizer.zip** under **Assets**, and unzip it somewhere permanent (for example `C:\SharkOptimizer`). Do **not** use Code > Download ZIP for normal use; that is the source-code download.
-2. Start it:
-   - Double-click `Start-SharkOptimizer.cmd` if the release ZIP includes it, **or**
-   - right-click `SharkOptimizer-Launcher.ps1` and choose **Run with PowerShell**.
-3. Click **Yes** on the Windows administrator prompt. A loading screen appears, then the app opens.
+1. Go to the [latest release](https://github.com/Bas-Makes-Stuff/SharkOptimizer/releases/latest), download **`SharkOptimizer-Setup.exe`** under **Assets**, and run it.
+2. In the installer, choose whether to create a Desktop shortcut, then finish installation.
+3. Start SharkOptimizer from the Start Menu or Desktop shortcut. Click **Yes** on the Windows administrator prompt. A loading screen appears, then the app opens.
 4. On the **Dashboard**, click **Create Restore Point** first.
 5. Click **Apply Recommended**, or pick a **Preset** and review it on the Tweaks page.
 6. On **Tweaks**, tick what you want and click **Apply Selected**. Use **Details** on any card to see exactly what it changes.
@@ -42,9 +42,9 @@ Change the language with the language button at the top right, or in **Settings*
 
 ### Snel starten (NL)
 
-1. Ga naar de [laatste release](https://github.com/Bas-Makes-Stuff/SharkOptimizer/releases/latest), download **SharkOptimizer.zip** onder **Assets** en pak het uit op een vaste plek. Gebruik voor normaal gebruik **niet** Code > Download ZIP; dat is de broncode-download.
-2. Dubbelklik op `Start-SharkOptimizer.cmd` als die in de release-ZIP staat, of rechtsklik op `SharkOptimizer-Launcher.ps1` en kies **Uitvoeren met PowerShell**.
-3. Klik op **Ja** bij de beheerdersmelding.
+1. Ga naar de [laatste release](https://github.com/Bas-Makes-Stuff/SharkOptimizer/releases/latest), download **`SharkOptimizer-Setup.exe`** onder **Assets** en voer het uit.
+2. Kies in de installer of je een snelkoppeling op je bureaublad wilt, en rond de installatie af.
+3. Start SharkOptimizer via het Startmenu of de snelkoppeling. Klik op **Ja** bij de beheerdersmelding.
 4. Maak eerst een herstelpunt op het Dashboard. Gebruik daarna **Aanbevolen toepassen** of kies zelf tweaks.
 5. Taal wisselen kan met de taalknop rechtsboven of via **Instellingen**.
 
@@ -63,16 +63,21 @@ English and Nederlands are fully translated. Español, Deutsch, Français, Portu
 
 | File | What it does |
 |------|--------------|
-| `SharkOptimizer.ps1` | The app |
+| `SharkOptimizer-Setup.exe` | Recommended installer, available on the Releases page |
+| `SharkOptimizer.ps1` | The app source |
 | `SharkOptimizer-Launcher.ps1` | Animated loading screen, startup checks and error report |
-| `Start-SharkOptimizer.cmd` | Double-click starter (optional) |
+| `Start-SharkOptimizer.cmd` | Portable/manual starter |
 | `shark.ico` | Icon (optional) |
 
 Settings, logs and undo information are stored in `C:\ProgramData\SharkOptimizer`.
 
+## Uninstalling
+
+Uninstall SharkOptimizer from **Settings > Apps > Installed apps** or **Control Panel > Programs and Features**. Tweaks you applied stay active after uninstalling. Open SharkOptimizer first and use **Restore > Undo All Tweaks** if you want to return them to their saved original values. The installer will remind you about this.
+
 ## Troubleshooting
 
-- **"Windows protected your PC" or a blocked script:** click **More info**, then **Run anyway**. Or right-click the downloaded ZIP, choose **Properties**, tick **Unblock**, and unzip again. The scripts are plain text, so you can read them first.
+- **"Windows protected your PC":** click **More info > Run anyway** only when the installer came from this official GitHub repo.
 - **The app closes on start:** the loading screen shows the error with **Copy details** and **Open logs** buttons. Open an issue and paste the text.
 - **Something feels off after a tweak:** open **Restore**, undo the last tweak you applied, and restart.
 - **Reporting a problem:** open **Settings > Help and data > Copy System Report** and paste the result into your issue.
