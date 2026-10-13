@@ -1,16 +1,32 @@
-# SharkOptimizer launcher v2: animated loading screen (shark, bubbles, waves), requirement checks, one admin prompt, clear error report.
-# Keep this file in the same folder as SharkOptimizer.ps1. Start it with Start-SharkOptimizer.cmd.
+# SharkOptimizer launcher v3 (hardened): animated loading screen, requirement checks, one admin prompt,
+# single instance, clear error report with Retry, and a quiet fallback that still starts the app if the animation fails.
+# Keep this file in the same folder as SharkOptimizer.ps1. Start it with Start-SharkOptimizer.cmd or the Desktop shortcut.
 $ErrorActionPreference = 'Stop'
 $Root = $PSScriptRoot
 $Main = Join-Path $Root 'SharkOptimizer.ps1'
 $PsExe = Join-Path $env:SystemRoot 'System32\WindowsPowerShell\v1.0\powershell.exe'
+$DataDir = Join-Path $env:ProgramData 'SharkOptimizer'
+try { New-Item $DataDir -ItemType Directory -Force | Out-Null } catch {}
+$LauncherLog = Join-Path $DataDir 'launcher.log'
+function Write-LLog($m) {
+    try {
+        if ((Test-Path $LauncherLog) -and ((Get-Item $LauncherLog).Length -gt 200KB)) { Remove-Item $LauncherLog -Force -ErrorAction SilentlyContinue }
+        Add-Content -Path $LauncherLog -Value ("[{0}] {1}" -f (Get-Date -Format 'yyyy-MM-dd HH:mm:ss'), $m) -ErrorAction SilentlyContinue
+    } catch {}
+}
+Write-LLog 'Launcher started.'
 
 Add-Type -AssemblyName PresentationFramework, PresentationCore, WindowsBase
 trap {
     $m = "Launcher error: $($_.Exception.Message)`r`n$($_.InvocationInfo.PositionMessage)"
-    try { New-Item (Join-Path $env:ProgramData 'SharkOptimizer') -ItemType Directory -Force | Out-Null; Set-Content (Join-Path $env:ProgramData 'SharkOptimizer\launcher-crash.txt') $m } catch {}
-    try { [void][Windows.MessageBox]::Show($m + "`r`n`r`nSharkOptimizer will now start without the loading screen.", 'SharkOptimizer launcher', 'OK', 'Error') } catch {}
-    try { if ((Test-Path $Main) -and (-not $proc -or $proc.HasExited)) { Start-Process $PsExe -WindowStyle Hidden -ArgumentList "-NoProfile -ExecutionPolicy Bypass -STA -File `"$Main`"" } } catch {}
+    Write-LLog $m
+    try { Add-Content (Join-Path $DataDir 'launcher-crash.txt') ("[{0}] {1}`r`n" -f (Get-Date -Format s), $m) } catch {}
+    $started = $false
+    try {
+        if ($proc -and -not $proc.HasExited) { $started = $true }
+        elseif (Test-Path $Main) { Start-Process $PsExe -WindowStyle Hidden -ArgumentList "-NoProfile -ExecutionPolicy Bypass -STA -File `"$Main`""; $started = $true; Write-LLog 'Fallback: started the app without the loading screen.' }
+    } catch { Write-LLog "Fallback failed: $($_.Exception.Message)" }
+    if (-not $started) { try { [void][Windows.MessageBox]::Show($m, 'SharkOptimizer launcher', 'OK', 'Error') } catch {} }
     exit 1
 }
 function Show-Msg($text, $icon = 'Error') { [void][Windows.MessageBox]::Show($text, 'SharkOptimizer', 'OK', $icon) }
@@ -18,22 +34,41 @@ function Show-Msg($text, $icon = 'Error') { [void][Windows.MessageBox]::Show($te
 # ---- 1. one admin prompt
 $isAdmin = ([Security.Principal.WindowsPrincipal][Security.Principal.WindowsIdentity]::GetCurrent()).IsInRole([Security.Principal.WindowsBuiltInRole]::Administrator)
 if (-not $isAdmin) {
+    Write-LLog 'Not elevated: asking for administrator rights.'
     try { Start-Process $PsExe -Verb RunAs -WindowStyle Hidden -ArgumentList "-NoProfile -ExecutionPolicy Bypass -STA -WindowStyle Hidden -File `"$PSCommandPath`"" }
-    catch { Show-Msg 'SharkOptimizer needs administrator rights to change Windows settings. Please accept the prompt next time.' 'Warning' }
+    catch { Write-LLog 'Administrator prompt was declined.'; Show-Msg 'SharkOptimizer needs administrator rights to change Windows settings. Please accept the prompt next time.' 'Warning' }
     exit
 }
 
-# ---- 2. requirement checks
+# ---- 2. only one launcher at a time
+try {
+    $createdNew = $false
+    $script:LauncherMutex = New-Object System.Threading.Mutex($true, 'Local\SharkOptimizerLauncher', [ref]$createdNew)
+    if (-not $createdNew) { Write-LLog 'Another launcher is already running. Exiting.'; exit }
+} catch {}
+
+# ---- 3. requirement checks
 $problems = @()
 if ($PSVersionTable.PSVersion -lt [version]'5.1') { $problems += 'Windows PowerShell 5.1 or newer is required.' }
 if ([Environment]::OSVersion.Version.Build -lt 10240) { $problems += 'Windows 10 or Windows 11 is required.' }
-if (-not (Test-Path $Main)) { $problems += 'SharkOptimizer.ps1 was not found. Keep it in the same folder as this launcher.' }
-if ($problems.Count) { Show-Msg ("SharkOptimizer cannot start:`n`n- " + ($problems -join "`n- ")); exit }
-Get-ChildItem $Root -Filter *.ps1 -ErrorAction SilentlyContinue | Unblock-File -ErrorAction SilentlyContinue
+if ($ExecutionContext.SessionState.LanguageMode -ne 'FullLanguage') { $problems += 'PowerShell is running in a restricted mode (Constrained Language Mode), which blocks SharkOptimizer.' }
+try {
+    $gpo = @(Get-ExecutionPolicy -List | Where-Object { $_.Scope -in 'MachinePolicy', 'UserPolicy' -and $_.ExecutionPolicy -in 'AllSigned', 'Restricted' })
+    if ($gpo.Count) { $problems += 'A Group Policy on this PC only allows signed PowerShell scripts, which blocks SharkOptimizer.' }
+} catch {}
+if (-not (Test-Path -LiteralPath $Main)) { $problems += 'SharkOptimizer.ps1 was not found. Keep it in the same folder as this launcher.' }
+else {
+    try {
+        $tk = $null; $pe = $null
+        [void][Management.Automation.Language.Parser]::ParseFile($Main, [ref]$tk, [ref]$pe)
+        if ($pe -and $pe.Count) { $problems += "SharkOptimizer.ps1 is damaged (line $($pe[0].Extent.StartLineNumber): $($pe[0].Message)). Restore a backup or download it again." }
+    } catch {}
+}
+if ($problems.Count) { Write-LLog ('Preflight problems: ' + ($problems -join ' | ')); Show-Msg ("SharkOptimizer cannot start:`n`n- " + ($problems -join "`n- ")); exit }
+try { Get-ChildItem -LiteralPath $Root -Filter *.ps1 -ErrorAction SilentlyContinue | Unblock-File -ErrorAction SilentlyContinue } catch {}
 
-# ---- window finder (is the app window visible yet?)
-if (-not ('WinFind' -as [type])) {
-    Add-Type -TypeDefinition @"
+# ---- window finder: only used as a fallback for older app versions that do not write the ready marker
+$WinFindCs = @"
 using System;
 using System.Runtime.InteropServices;
 using System.Text;
@@ -57,10 +92,12 @@ public static class WinFind {
     }
 }
 "@
+function Test-AppWindow($processId) {
+    if (-not ('WinFind' -as [type])) { Add-Type -TypeDefinition $WinFindCs }
+    [WinFind]::HasVisibleWindow($processId, 'SharkOptimizer')
 }
 
-# ---- 3. language, accent colour and version (read from the app's settings)
-$DataDir = Join-Path $env:ProgramData 'SharkOptimizer'
+# ---- 4. language, accent colour and version (read from the app's settings)
 $lang = 'en'; $accent = '#1FB6FF'; $ver = ''
 $codes = 'nl', 'es', 'de', 'fr', 'pt', 'ru', 'zh'
 try {
@@ -75,7 +112,7 @@ try {
     }
     $vm = [regex]::Match([IO.File]::ReadAllText($Main), "\`$AppVer = '([0-9][0-9.]*)'")
     if ($vm.Success) { $ver = 'v' + $vm.Groups[1].Value }
-} catch {}
+} catch { Write-LLog "Settings could not be read: $($_.Exception.Message)" }
 function Mix-White($hex, $t) {
     $c = [Windows.Media.ColorConverter]::ConvertFromString($hex)
     '#{0:X2}{1:X2}{2:X2}' -f [int]($c.R + (255 - $c.R) * $t), [int]($c.G + (255 - $c.G) * $t), [int]($c.B + (255 - $c.B) * $t)
@@ -83,18 +120,29 @@ function Mix-White($hex, $t) {
 $accent2 = Mix-White $accent 0.45
 
 $TT = @{
- en = @('Checking requirements...', 'Starting SharkOptimizer...', 'Detecting your hardware...', 'Loading tweaks...', 'Preparing game profiles...', 'Almost ready...', 'Tune Windows for gaming', 'Ready', 'SharkOptimizer stopped while starting.', 'SharkOptimizer is taking too long to start.', 'Copy details', 'Open logs', 'Close')
- nl = @('Vereisten controleren...', 'SharkOptimizer starten...', 'Je hardware detecteren...', 'Tweaks laden...', 'Gameprofielen voorbereiden...', 'Bijna klaar...', 'Stem Windows af op gamen', 'Klaar', 'SharkOptimizer stopte tijdens het starten.', 'SharkOptimizer start te langzaam.', 'Details kopiëren', 'Logs openen', 'Sluiten')
- es = @('Comprobando requisitos...', 'Iniciando SharkOptimizer...', 'Detectando tu hardware...', 'Cargando ajustes...', 'Preparando perfiles de juegos...', 'Casi listo...', 'Optimiza Windows para jugar', 'Listo', 'SharkOptimizer se detuvo al iniciar.', 'SharkOptimizer tarda demasiado en iniciar.', 'Copiar detalles', 'Abrir registros', 'Cerrar')
- de = @('Anforderungen werden geprüft...', 'SharkOptimizer wird gestartet...', 'Hardware wird erkannt...', 'Tweaks werden geladen...', 'Spielprofile werden vorbereitet...', 'Fast fertig...', 'Windows fürs Gaming optimieren', 'Bereit', 'SharkOptimizer wurde beim Start beendet.', 'SharkOptimizer startet zu langsam.', 'Details kopieren', 'Protokolle öffnen', 'Schließen')
- fr = @('Vérification de la configuration...', 'Démarrage de SharkOptimizer...', 'Détection de votre matériel...', 'Chargement des réglages...', 'Préparation des profils de jeux...', 'Presque prêt...', 'Optimisez Windows pour le jeu', 'Prêt', "SharkOptimizer s'est arrêté au démarrage.", 'SharkOptimizer met trop de temps à démarrer.', 'Copier les détails', 'Ouvrir les journaux', 'Fermer')
- pt = @('Verificando requisitos...', 'Iniciando o SharkOptimizer...', 'Detectando seu hardware...', 'Carregando ajustes...', 'Preparando perfis de jogos...', 'Quase pronto...', 'Otimize o Windows para jogar', 'Pronto', 'O SharkOptimizer parou ao iniciar.', 'O SharkOptimizer está demorando para iniciar.', 'Copiar detalhes', 'Abrir registros', 'Fechar')
- ru = @('Проверка требований...', 'Запуск SharkOptimizer...', 'Определение вашего оборудования...', 'Загрузка твиков...', 'Подготовка игровых профилей...', 'Почти готово...', 'Настройте Windows для игр', 'Готово', 'SharkOptimizer остановился при запуске.', 'SharkOptimizer запускается слишком долго.', 'Копировать данные', 'Открыть журналы', 'Закрыть')
- zh = @('正在检查运行要求...', '正在启动 SharkOptimizer...', '正在检测你的硬件...', '正在加载优化项...', '正在准备游戏配置...', '马上就好...', '为游戏优化 Windows', '已就绪', 'SharkOptimizer 在启动时停止了。', 'SharkOptimizer 启动时间过长。', '复制详情', '打开日志', '关闭')
+ en = @('Checking requirements...', 'Starting SharkOptimizer...', 'Detecting your hardware...', 'Loading tweaks...', 'Preparing game profiles...', 'Almost ready...', 'Tune Windows for gaming', 'Ready', 'SharkOptimizer stopped while starting.', 'SharkOptimizer is taking too long to start.', 'Copy details', 'Open logs', 'Close', 'SharkOptimizer is already running. Close it and start again?', 'Retry')
+ nl = @('Vereisten controleren...', 'SharkOptimizer starten...', 'Je hardware detecteren...', 'Tweaks laden...', 'Gameprofielen voorbereiden...', 'Bijna klaar...', 'Stem Windows af op gamen', 'Klaar', 'SharkOptimizer stopte tijdens het starten.', 'SharkOptimizer start te langzaam.', 'Details kopiëren', 'Logs openen', 'Sluiten', 'SharkOptimizer draait al. Afsluiten en opnieuw starten?', 'Opnieuw')
+ es = @('Comprobando requisitos...', 'Iniciando SharkOptimizer...', 'Detectando tu hardware...', 'Cargando ajustes...', 'Preparando perfiles de juegos...', 'Casi listo...', 'Optimiza Windows para jugar', 'Listo', 'SharkOptimizer se detuvo al iniciar.', 'SharkOptimizer tarda demasiado en iniciar.', 'Copiar detalles', 'Abrir registros', 'Cerrar', 'SharkOptimizer ya se está ejecutando. ¿Cerrarlo y volver a iniciarlo?', 'Reintentar')
+ de = @('Anforderungen werden geprüft...', 'SharkOptimizer wird gestartet...', 'Hardware wird erkannt...', 'Tweaks werden geladen...', 'Spielprofile werden vorbereitet...', 'Fast fertig...', 'Windows fürs Gaming optimieren', 'Bereit', 'SharkOptimizer wurde beim Start beendet.', 'SharkOptimizer startet zu langsam.', 'Details kopieren', 'Protokolle öffnen', 'Schließen', 'SharkOptimizer läuft bereits. Beenden und neu starten?', 'Wiederholen')
+ fr = @('Vérification de la configuration...', 'Démarrage de SharkOptimizer...', 'Détection de votre matériel...', 'Chargement des réglages...', 'Préparation des profils de jeux...', 'Presque prêt...', 'Optimisez Windows pour le jeu', 'Prêt', "SharkOptimizer s'est arrêté au démarrage.", 'SharkOptimizer met trop de temps à démarrer.', 'Copier les détails', 'Ouvrir les journaux', 'Fermer', "SharkOptimizer est déjà en cours d'exécution. Le fermer et le relancer ?", 'Réessayer')
+ pt = @('Verificando requisitos...', 'Iniciando o SharkOptimizer...', 'Detectando seu hardware...', 'Carregando ajustes...', 'Preparando perfis de jogos...', 'Quase pronto...', 'Otimize o Windows para jogar', 'Pronto', 'O SharkOptimizer parou ao iniciar.', 'O SharkOptimizer está demorando para iniciar.', 'Copiar detalhes', 'Abrir registros', 'Fechar', 'O SharkOptimizer já está em execução. Fechar e iniciar de novo?', 'Tentar novamente')
+ ru = @('Проверка требований...', 'Запуск SharkOptimizer...', 'Определение вашего оборудования...', 'Загрузка твиков...', 'Подготовка игровых профилей...', 'Почти готово...', 'Настройте Windows для игр', 'Готово', 'SharkOptimizer остановился при запуске.', 'SharkOptimizer запускается слишком долго.', 'Копировать данные', 'Открыть журналы', 'Закрыть', 'SharkOptimizer уже запущен. Закрыть и запустить заново?', 'Повторить')
+ zh = @('正在检查运行要求...', '正在启动 SharkOptimizer...', '正在检测你的硬件...', '正在加载优化项...', '正在准备游戏配置...', '马上就好...', '为游戏优化 Windows', '已就绪', 'SharkOptimizer 在启动时停止了。', 'SharkOptimizer 启动时间过长。', '复制详情', '打开日志', '关闭', 'SharkOptimizer 已在运行。要关闭并重新启动吗？', '重试')
 }
-$S = $TT[$lang]
+$S = $TT[$lang]; if (-not $S) { $S = $TT['en'] }
 
-# ---- 4. splash window
+# ---- 5. already running?
+try {
+    $running = @(Get-CimInstance Win32_Process -Filter "Name='powershell.exe' AND CommandLine LIKE '%SharkOptimizer.ps1%'" -ErrorAction Stop | Where-Object { $_.ProcessId -ne $PID })
+    if ($running.Count) {
+        Write-LLog "App already running (pid $($running[0].ProcessId))."
+        if ([Windows.MessageBox]::Show($S[13], 'SharkOptimizer', 'YesNo', 'Question') -ne 'Yes') { exit }
+        foreach ($rp in $running) { try { Stop-Process -Id $rp.ProcessId -Force -ErrorAction Stop } catch { Write-LLog "Could not stop pid $($rp.ProcessId)" } }
+        Start-Sleep -Milliseconds 800
+    }
+} catch { Write-LLog "Running-instance check skipped: $($_.Exception.Message)" }
+
+# ---- 6. splash window
 $xaml = @'
 <Window xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
   Title="SharkOptimizer" Width="460" SizeToContent="Height" WindowStyle="None" AllowsTransparency="True" Background="Transparent"
@@ -134,9 +182,9 @@ $xaml = @'
     <StackPanel x:Name="dots" Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,10,0,0"/>
     <StackPanel x:Name="errPanel" Visibility="Collapsed" Margin="0,14,0,0">
      <TextBox x:Name="errBox" Height="120" IsReadOnly="True" TextWrapping="Wrap" VerticalScrollBarVisibility="Auto" FontFamily="Consolas" FontSize="11.5" Background="#0F1A2C" Foreground="#FF9C9C" BorderBrush="#1E2E4B"/>
-     <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,8,0,0">
-      <Button x:Name="btnCopy"/><Button x:Name="btnLogs"/><Button x:Name="btnClose" Background="__ACC__" Foreground="#06121F"/>
-     </StackPanel>
+     <WrapPanel HorizontalAlignment="Center" Margin="0,8,0,0">
+      <Button x:Name="btnRetry" Background="__ACC__" Foreground="#06121F"/><Button x:Name="btnCopy"/><Button x:Name="btnLogs"/><Button x:Name="btnClose"/>
+     </WrapPanel>
     </StackPanel>
    </StackPanel>
   </Grid>
@@ -153,11 +201,15 @@ try {
 } catch {}
 foreach ($n in 'logo','glow','bar','status','tag','verTxt','dots','errPanel','errBox','bubbles','waves') { Set-Variable -Name ('u_' + $n) -Value $splash.FindName($n) }
 $u_tag.Text = $S[6]; $u_verTxt.Text = $ver
-$splash.FindName('btnCopy').Content = $S[10]; $splash.FindName('btnLogs').Content = $S[11]; $splash.FindName('btnClose').Content = $S[12]
+$splash.FindName('btnCopy').Content = $S[10]; $splash.FindName('btnLogs').Content = $S[11]; $splash.FindName('btnClose').Content = $S[12]; $splash.FindName('btnRetry').Content = $S[14]
+try { $splash.Dispatcher.add_UnhandledException({ param($sender, $e) try { Write-LLog ('UI error: ' + $e.Exception.Message) } catch {}; $e.Handled = $true }) } catch {}
 
-$logDir = $DataDir; New-Item $logDir -ItemType Directory -Force | Out-Null
-$outFile = Join-Path $logDir 'launch-output.txt'; $errFile = Join-Path $logDir 'launch-error.txt'; $inFile = Join-Path $logDir 'empty-input.txt'
-'' | Set-Content $inFile; Remove-Item $outFile, $errFile -Force -ErrorAction SilentlyContinue
+# every launch uses its own output files, so a running app can never block the next launch
+$runId = (Get-Date -Format 'yyyyMMdd-HHmmss') + '-' + [guid]::NewGuid().ToString('N').Substring(0, 6)
+$outFile = Join-Path $DataDir "launch-$runId.out.txt"; $errFile = Join-Path $DataDir "launch-$runId.err.txt"; $inFile = Join-Path $DataDir "launch-$runId.in.txt"
+$readyFile = Join-Path $DataDir 'ready.flag'
+try { Get-ChildItem -LiteralPath $DataDir -Filter 'launch-*' -ErrorAction SilentlyContinue | Where-Object { $_.LastWriteTime -lt (Get-Date).AddDays(-2) } | Remove-Item -Force -ErrorAction SilentlyContinue } catch {}
+'' | Set-Content $inFile; Remove-Item $readyFile -Force -ErrorAction SilentlyContinue
 
 function New-Anim($from, $to, $sec, $forever = $false, $auto = $false, $begin = 0) {
     $a = New-Object Windows.Media.Animation.DoubleAnimation; $a.From = $from; $a.To = $to
@@ -172,12 +224,10 @@ function New-Linear($from, $to, $sec, $begin = 0) {
     if ($begin -gt 0) { $a.BeginTime = [TimeSpan]::FromSeconds($begin) }; $a
 }
 $bc = [Windows.Media.BrushConverter]::new()
-# logo transforms
 $tt = New-Object Windows.Media.TranslateTransform; $rt = New-Object Windows.Media.RotateTransform
 $tg = New-Object Windows.Media.TransformGroup; [void]$tg.Children.Add($rt); [void]$tg.Children.Add($tt); $u_logo.RenderTransform = $tg
 $bt = New-Object Windows.Media.TranslateTransform; $u_bar.RenderTransform = $bt
 $gs = New-Object Windows.Media.ScaleTransform; $u_glow.RenderTransform = $gs
-# bubbles
 $rnd = New-Object Random 7
 $bubbleList = @()
 for ($i = 0; $i -lt 12; $i++) {
@@ -189,7 +239,6 @@ for ($i = 0; $i -lt 12; $i++) {
     [void]$u_bubbles.Children.Add($el)
     $bubbleList += , @($el, (4 + $rnd.NextDouble() * 4), ($rnd.NextDouble() * 4))
 }
-# waves (two layers, seamless loop)
 function New-Wave($w, $amp, $period, $y0, $alpha) {
     $pts = New-Object Windows.Media.PointCollection; $total = $w * 3
     for ($x = 0; $x -le $total; $x += 8) { [void]$pts.Add(([Windows.Point]::new($x, $y0 + $amp * [math]::Sin(2 * [math]::PI * $x / $period)))) }
@@ -203,7 +252,6 @@ $wave1 = New-Wave $waveW 5 $waveW 24 38; $wave2 = New-Wave $waveW 7 ($waveW / 2)
 $w1t = New-Object Windows.Media.TranslateTransform; $w2t = New-Object Windows.Media.TranslateTransform
 $wave1.RenderTransform = $w1t; $wave2.RenderTransform = $w2t
 [void]$u_waves.Children.Add($wave2); [void]$u_waves.Children.Add($wave1)
-# progress dots
 $dotEls = @()
 for ($i = 0; $i -lt 6; $i++) {
     $d = New-Object Windows.Shapes.Ellipse; $d.Width = 7; $d.Height = 7; $d.Margin = '4,0'; $d.Fill = $bc.ConvertFromString('#26324D')
@@ -216,57 +264,78 @@ function Set-Dots($idx) {
 }
 
 $splash.Add_ContentRendered({
-    $splash.BeginAnimation([Windows.UIElement]::OpacityProperty, (New-Anim 0 1 0.45))
-    $tt.BeginAnimation([Windows.Media.TranslateTransform]::YProperty, (New-Anim -6 6 1.2 $true $true))
-    $rt.BeginAnimation([Windows.Media.RotateTransform]::AngleProperty, (New-Anim -5 5 1.7 $true $true))
-    $bt.BeginAnimation([Windows.Media.TranslateTransform]::XProperty, (New-Anim -120 320 1.5 $true $false))
-    $gs.BeginAnimation([Windows.Media.ScaleTransform]::ScaleXProperty, (New-Anim 0.88 1.12 1.6 $true $true))
-    $gs.BeginAnimation([Windows.Media.ScaleTransform]::ScaleYProperty, (New-Anim 0.88 1.12 1.6 $true $true))
-    $u_glow.BeginAnimation([Windows.UIElement]::OpacityProperty, (New-Anim 0.55 1 1.6 $true $true))
-    $w1t.BeginAnimation([Windows.Media.TranslateTransform]::XProperty, (New-Linear 0 (-$waveW) 6))
-    $w2t.BeginAnimation([Windows.Media.TranslateTransform]::XProperty, (New-Linear 0 (-$waveW) 9))
-    foreach ($b in $bubbleList) { $b[0].BeginAnimation([Windows.Controls.Canvas]::TopProperty, (New-Linear 360 -14 $b[1] $b[2])) }
+    try {
+        $splash.BeginAnimation([Windows.UIElement]::OpacityProperty, (New-Anim 0 1 0.45))
+        $tt.BeginAnimation([Windows.Media.TranslateTransform]::YProperty, (New-Anim -6 6 1.2 $true $true))
+        $rt.BeginAnimation([Windows.Media.RotateTransform]::AngleProperty, (New-Anim -5 5 1.7 $true $true))
+        $bt.BeginAnimation([Windows.Media.TranslateTransform]::XProperty, (New-Anim -120 320 1.5 $true $false))
+        $gs.BeginAnimation([Windows.Media.ScaleTransform]::ScaleXProperty, (New-Anim 0.88 1.12 1.6 $true $true))
+        $gs.BeginAnimation([Windows.Media.ScaleTransform]::ScaleYProperty, (New-Anim 0.88 1.12 1.6 $true $true))
+        $u_glow.BeginAnimation([Windows.UIElement]::OpacityProperty, (New-Anim 0.55 1 1.6 $true $true))
+        $w1t.BeginAnimation([Windows.Media.TranslateTransform]::XProperty, (New-Linear 0 (-$waveW) 6))
+        $w2t.BeginAnimation([Windows.Media.TranslateTransform]::XProperty, (New-Linear 0 (-$waveW) 9))
+        foreach ($b in $bubbleList) { $b[0].BeginAnimation([Windows.Controls.Canvas]::TopProperty, (New-Linear 360 -14 $b[1] $b[2])) }
+    } catch { Write-LLog "Animation failed (the app still starts): $($_.Exception.Message)" }
 })
 $splash.Add_MouseLeftButtonDown({ try { $splash.DragMove() } catch {} })
 $splash.Add_KeyDown({ if ($_.Key -eq 'Escape') { $splash.Close() } })
 
-# ---- 5. start the app (hidden, output captured so errors can be shown)
+# ---- 7. start the app (hidden, output captured so errors can be shown)
+Write-LLog 'Starting the app.'
 $proc = Start-Process $PsExe -PassThru -WindowStyle Hidden -WorkingDirectory $Root `
     -RedirectStandardOutput $outFile -RedirectStandardError $errFile -RedirectStandardInput $inFile `
     -ArgumentList "-NoProfile -ExecutionPolicy Bypass -STA -File `"$Main`""
+Write-LLog "App process started (pid $($proc.Id))."
 
 $script:msgIdx = 0; $script:done = $false; $started = Get-Date
 $u_status.Text = $S[0]; Set-Dots 0
 
 function Show-Failure($title) {
     $script:done = $true
-    $tt.BeginAnimation([Windows.Media.TranslateTransform]::YProperty, $null); $rt.BeginAnimation([Windows.Media.RotateTransform]::AngleProperty, $null)
-    $bt.BeginAnimation([Windows.Media.TranslateTransform]::XProperty, $null)
+    Write-LLog "Failure: $title"
+    try {
+        $tt.BeginAnimation([Windows.Media.TranslateTransform]::YProperty, $null); $rt.BeginAnimation([Windows.Media.RotateTransform]::AngleProperty, $null)
+        $bt.BeginAnimation([Windows.Media.TranslateTransform]::XProperty, $null)
+    } catch {}
     $u_status.Text = $title; $u_status.Foreground = [Windows.Media.Brushes]::Orange
     $u_bar.Visibility = 'Collapsed'
     $detail = ''
-    foreach ($f in $errFile, $outFile) { if (Test-Path $f) { $t = (Get-Content $f -Raw -ErrorAction SilentlyContinue); if ($t) { $detail += $t.Trim() + "`r`n" } } }
+    foreach ($f in $errFile, $outFile) { try { if (Test-Path $f) { $t = (Get-Content $f -Raw -ErrorAction SilentlyContinue); if ($t) { $detail += $t.Trim() + "`r`n" } } } catch {} }
     if (-not $detail) { $detail = 'No error text was captured. Open the logs folder for more information.' }
     $u_errBox.Text = "SharkOptimizer $ver  |  $((Get-Item $Main).LastWriteTime.ToString('yyyy-MM-dd HH:mm'))  |  Windows build $([Environment]::OSVersion.Version.Build)  |  PowerShell $($PSVersionTable.PSVersion)`r`n`r`n$detail"
     $u_errPanel.Visibility = 'Visible'
 }
-$splash.FindName('btnCopy').Add_Click({ [Windows.Clipboard]::SetText($u_errBox.Text) })
-$splash.FindName('btnLogs').Add_Click({ Start-Process explorer.exe $logDir })
+$splash.FindName('btnCopy').Add_Click({ try { [Windows.Clipboard]::SetText($u_errBox.Text) } catch {} })
+$splash.FindName('btnLogs').Add_Click({ try { Start-Process explorer.exe $DataDir } catch {} })
 $splash.FindName('btnClose').Add_Click({ $splash.Close() })
+$splash.FindName('btnRetry').Add_Click({
+    try {
+        try { if ($proc -and -not $proc.HasExited) { Stop-Process -Id $proc.Id -Force -ErrorAction SilentlyContinue } } catch {}
+        try { $script:LauncherMutex.ReleaseMutex() } catch {}
+        Start-Process $PsExe -WindowStyle Hidden -ArgumentList "-NoProfile -ExecutionPolicy Bypass -STA -WindowStyle Hidden -File `"$PSCommandPath`""
+    } catch { Write-LLog "Retry failed: $($_.Exception.Message)" }
+    $splash.Close()
+})
 
-$timer = New-Object Windows.Threading.DispatcherTimer; $timer.Interval = [TimeSpan]::FromMilliseconds(400)
+$timer = New-Object Windows.Threading.DispatcherTimer; $timer.Interval = [TimeSpan]::FromMilliseconds(300)
 $script:tick = 0
 $timer.Add_Tick({
-    if ($script:done) { return }
-    $script:tick++
-    if ($script:tick % 4 -eq 0 -and $script:msgIdx -lt 5) { $script:msgIdx++; $u_status.Text = $S[$script:msgIdx]; Set-Dots $script:msgIdx }
-    if ([WinFind]::HasVisibleWindow($proc.Id, 'SharkOptimizer')) {
-        $script:done = $true; $timer.Stop(); $u_status.Text = $S[7]; Set-Dots 5
-        $fade = New-Anim 1 0 0.4; $fade.Add_Completed({ $splash.Close() })
-        $splash.BeginAnimation([Windows.UIElement]::OpacityProperty, $fade)
-    }
-    elseif ($proc.HasExited) { $timer.Stop(); Show-Failure $S[8] }
-    elseif (((Get-Date) - $started).TotalSeconds -gt 120) { $timer.Stop(); Show-Failure $S[9] }
+    try {
+        if ($script:done) { return }
+        $script:tick++
+        if ($script:tick % 5 -eq 0 -and $script:msgIdx -lt 5) { $script:msgIdx++; $u_status.Text = $S[$script:msgIdx]; Set-Dots $script:msgIdx }
+        $isReady = Test-Path $readyFile
+        if (-not $isReady -and $script:tick -gt 80 -and -not $proc.HasExited) { try { $isReady = Test-AppWindow $proc.Id } catch {} }
+        if ($isReady) {
+            $script:done = $true; $timer.Stop(); $u_status.Text = $S[7]; Set-Dots 5
+            Write-LLog 'App is ready.'
+            $fade = New-Anim 1 0 0.4; $fade.Add_Completed({ $splash.Close() })
+            $splash.BeginAnimation([Windows.UIElement]::OpacityProperty, $fade)
+        }
+        elseif ($proc.HasExited) { $timer.Stop(); Show-Failure $S[8] }
+        elseif (((Get-Date) - $started).TotalSeconds -gt 120) { $timer.Stop(); Show-Failure $S[9] }
+    } catch { Write-LLog "Timer error: $($_.Exception.Message)" }
 })
 $timer.Start()
 [void]$splash.ShowDialog()
+Write-LLog 'Launcher finished.'
