@@ -71,7 +71,11 @@ try {
  $profile=[Activator]::CreateInstance($assembly.GetType('SharkOptimizer.NativeApp.GameSessionProfile'),$true)
  if($profile.Automatic -or $profile.AutomaticCloseApps){throw 'Automatic actions were enabled by default.'}
  $state.GameSessions.Profiles.Add($game.Id,$profile)
- $background=Start-Fixture $backgroundFixture; $originalPriority=$background.PriorityClass
+ $background=Start-Fixture $backgroundFixture
+ # CI workers can give child processes a low inherited priority. Establish the
+ # normal-priority precondition before testing a real change and restoration.
+ $background.PriorityClass=[Diagnostics.ProcessPriorityClass]::Normal
+ $background.Refresh(); $originalPriority=$background.PriorityClass
  $profile.ProcessMode='LowerPriority'; $profile.SelectedProcesses.Add('autobackground')
  $child=Start-Fixture $fixture
  Poll
@@ -86,7 +90,7 @@ try {
  if(!$state.ActiveSessionReport -or $state.ActiveSessionReport.Mode -ne 'Automatic'){throw 'Detected external game did not start a session.'}
  $type.GetMethod('ShowPage',$flags).Invoke($window,@('Game Session'))
  if(!$type.GetField('_sessionEndButton',$flags).GetValue($window).IsEnabled -or $type.GetField('_sessionStartButton',$flags).GetValue($window).IsEnabled){throw 'Opening Game Boost did not show the active session controls.'}
- $background.Refresh(); if($background.PriorityClass -ne 'BelowNormal' -or $state.SessionPriorities.Count -ne 1){throw 'Saved automatic app action did not capture and lower fixture priority.'}
+ $background.Refresh(); if($background.PriorityClass -ne 'BelowNormal' -or $state.SessionPriorities.Count -ne 1){throw ('Saved automatic app action did not capture and lower fixture priority. Original='+$originalPriority+'; current='+$background.PriorityClass+'; records='+$state.SessionPriorities.Count+'; notes='+($type.GetField('_sessionActionNotes',$flags).GetValue($window) -join '; '))}
  $id=$state.ActiveSessionReport.Id; Poll
  if($state.ActiveSessionReport.Id -ne $id -or $state.SessionHistory.Count -ne 0){throw 'Polling duplicated the session.'}
  Await-Work ($type.GetMethod('EndGameSession',$flags).Invoke($window,@($true)))
