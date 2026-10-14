@@ -75,6 +75,8 @@ try {
  $child=Start-Fixture $fixture
  Wait-ForSession
  if(!$state.ActiveSessionReport -or $state.ActiveSessionReport.Mode -ne 'Automatic'){throw 'Detected external game did not start a session.'}
+ $type.GetMethod('ShowPage',$flags).Invoke($window,@('Game Session'))
+ if(!$type.GetField('_sessionEndButton',$flags).GetValue($window).IsEnabled -or $type.GetField('_sessionStartButton',$flags).GetValue($window).IsEnabled){throw 'Opening Game Boost did not show the active session controls.'}
  $background.Refresh(); if($background.PriorityClass -ne 'BelowNormal' -or $state.SessionPriorities.Count -ne 1){throw 'Saved automatic app action did not capture and lower fixture priority.'}
  $id=$state.ActiveSessionReport.Id; Poll
  if($state.ActiveSessionReport.Id -ne $id -or $state.SessionHistory.Count -ne 0){throw 'Polling duplicated the session.'}

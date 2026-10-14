@@ -1323,6 +1323,11 @@ namespace SharkOptimizer.NativeApp
             _sessionProcessList = new StackPanel { Margin = new Thickness(0, 10, 0, 0) }; appsStack.Children.Add(_sessionProcessList); appsCard.Child = appsStack; panel.Children.Add(appsCard);
             LoadSessionProfile();
             panel.Children.Add(BuildSessionReports());
+            bool sessionActive = _sessionStarting || (_sessionTimer != null && _sessionTimer.IsEnabled);
+            SetSessionControlsEnabled(!sessionActive);
+            _sessionStartButton.IsEnabled = !sessionActive;
+            _sessionEndButton.IsEnabled = sessionActive || SessionRecoveryPending;
+            if (sessionActive) _sessionStatus.Text = _automaticSessionGameId != null ? Localization.Translate("Automatic Game Boost") + " · " + _automaticActiveProbe.Name : Localization.Translate("Session active");
             return panel;
         }
 
