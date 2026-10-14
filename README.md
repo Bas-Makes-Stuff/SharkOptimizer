@@ -82,6 +82,12 @@ Uninstall from **Settings > Apps > Installed apps** or **Control Panel > Program
 
 SharkOptimizer can change Windows settings, registry values, services, and network adapter options. Review each change and its warning before applying it. Some advanced changes can affect Windows features or security.
 
+## License and copyright
+
+Copyright © 2026 Bas Makes Stuff. All rights reserved.
+
+SharkOptimizer is proprietary software. You may use the official app, but reuse, modification, redistribution, and sale of its code or original assets require written permission. See [LICENSE](LICENSE). Third-party fonts and icons retain their own licenses.
+
 ## Credits
 
 - Font: [Poppins](https://fonts.google.com/specimen/Poppins), licensed under the SIL Open Font License.
