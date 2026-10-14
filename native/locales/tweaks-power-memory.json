@@ -1,0 +1,182 @@
+{
+  "Prevents Windows from powering down disks while the PC is connected to AC power.": {
+    "nl": "Voorkomt dat Windows schijven uitschakelt wanneer de pc op netstroom werkt.",
+    "es": "Impide que Windows apague los discos mientras el PC está conectado a la corriente.",
+    "de": "Verhindert, dass Windows Datenträger im Netzbetrieb abschaltet.",
+    "fr": "Empêche Windows d’éteindre les disques lorsque le PC est branché sur secteur.",
+    "pt": "Impede que o Windows desligue discos enquanto o PC estiver conectado à tomada.",
+    "ru": "Запрещает Windows отключать диски при питании ПК от сети.",
+    "zh": "电脑连接交流电源时阻止 Windows 关闭磁盘供电。"
+  },
+  "Increases power use and drive activity. The exact AC setting is saved for undo.": {
+    "nl": "Verhoogt het stroomverbruik en de schijfactiviteit. De exacte netstroominstelling wordt opgeslagen om terug te draaien.",
+    "es": "Aumenta el consumo y la actividad del disco. Se guarda el ajuste exacto de CA para deshacerlo.",
+    "de": "Erhöht Stromverbrauch und Laufwerksaktivität. Die genaue Netzbetriebseinstellung wird zum Rückgängigmachen gespeichert.",
+    "fr": "Augmente la consommation et l’activité du disque. Le réglage exact sur secteur est enregistré pour l’annulation.",
+    "pt": "Aumenta o consumo e a atividade do disco. A configuração exata para tomada é salva para desfazer.",
+    "ru": "Повышает энергопотребление и активность диска. Точная настройка питания от сети сохраняется для отмены.",
+    "zh": "增加耗电和磁盘活动。准确的交流电设置会保存以便撤销。"
+  },
+  "Sets the wireless adapter power-saving mode to maximum performance on AC and battery.": {
+    "nl": "Stelt de energiebesparingsmodus van de draadloze adapter in op maximale prestaties bij netstroom en accu.",
+    "es": "Establece el ahorro de energía del adaptador inalámbrico en máximo rendimiento con corriente y batería.",
+    "de": "Stellt den Energiesparmodus des WLAN-Adapters bei Netz- und Akkubetrieb auf maximale Leistung.",
+    "fr": "Définit le mode d’économie d’énergie de l’adaptateur sans fil sur performances maximales sur secteur et batterie.",
+    "pt": "Define a economia de energia do adaptador sem fio para desempenho máximo na tomada e na bateria.",
+    "ru": "Устанавливает режим максимальной производительности беспроводного адаптера при питании от сети и батареи.",
+    "zh": "将无线适配器在交流电和电池供电时的节能模式设为最高性能。"
+  },
+  "Can noticeably reduce laptop battery life. The exact AC and battery values are saved for undo.": {
+    "nl": "Kan de accuduur van laptops merkbaar verkorten. De exacte waarden voor netstroom en accu worden opgeslagen om terug te draaien.",
+    "es": "Puede reducir notablemente la autonomía del portátil. Se guardan los valores exactos de corriente y batería para deshacerlos.",
+    "de": "Kann die Akkulaufzeit von Laptops deutlich verkürzen. Die genauen Werte für Netz- und Akkubetrieb werden zum Rückgängigmachen gespeichert.",
+    "fr": "Peut réduire nettement l’autonomie des portables. Les valeurs exactes sur secteur et batterie sont enregistrées pour l’annulation.",
+    "pt": "Pode reduzir bastante a autonomia de notebooks. Os valores exatos para tomada e bateria são salvos para desfazer.",
+    "ru": "Может заметно сократить время работы ноутбука от батареи. Точные значения для сети и батареи сохраняются для отмены.",
+    "zh": "可能明显缩短笔记本电池续航。交流电和电池的准确设置值会保存以便撤销。"
+  },
+  "Creates a dedicated Ultimate Performance plan and keeps the current plan for undo.": {
+    "nl": "Maakt een apart energiebeheerschema voor ultieme prestaties en bewaart het huidige schema om terug te draaien.",
+    "es": "Crea un plan independiente de Máximo rendimiento y guarda el plan actual para deshacerlo.",
+    "de": "Erstellt einen eigenen Plan für Ultimative Leistung und bewahrt den aktuellen Plan zum Rückgängigmachen auf.",
+    "fr": "Crée un mode Performances ultimes dédié et conserve le mode actuel pour l’annulation.",
+    "pt": "Cria um plano dedicado de Desempenho Máximo e guarda o plano atual para desfazer.",
+    "ru": "Создаёт отдельную схему максимальной производительности и сохраняет текущую схему для отмены.",
+    "zh": "创建专用的卓越性能电源计划，并保留当前计划以便撤销。"
+  },
+  "Uses more power and heat, especially on laptops. The prior active power plan is saved and restored when undone.": {
+    "nl": "Verhoogt stroomverbruik en warmte, vooral op laptops. Het vorige actieve energiebeheerschema wordt opgeslagen en hersteld bij terugdraaien.",
+    "es": "Aumenta el consumo y el calor, especialmente en portátiles. El plan activo anterior se guarda y restaura al deshacer.",
+    "de": "Erhöht Stromverbrauch und Wärme, besonders auf Laptops. Der zuvor aktive Energiesparplan wird gespeichert und beim Rückgängigmachen wiederhergestellt.",
+    "fr": "Augmente la consommation et la chaleur, surtout sur les portables. Le mode d’alimentation précédent est enregistré et restauré lors de l’annulation.",
+    "pt": "Aumenta o consumo e o calor, especialmente em notebooks. O plano de energia anterior é salvo e restaurado ao desfazer.",
+    "ru": "Повышает энергопотребление и нагрев, особенно на ноутбуках. Прежняя активная схема питания сохраняется и восстанавливается при отмене.",
+    "zh": "增加耗电和发热，尤其是在笔记本电脑上。此前启用的电源计划会保存，并在撤销时还原。"
+  },
+  "Turns off Windows hibernation and removes its hibernation file.": {
+    "nl": "Schakelt de Windows-sluimerstand uit en verwijdert het bijbehorende bestand.",
+    "es": "Desactiva la hibernación de Windows y elimina su archivo de hibernación.",
+    "de": "Deaktiviert den Windows-Ruhezustand und entfernt dessen Datei.",
+    "fr": "Désactive la veille prolongée Windows et supprime son fichier.",
+    "pt": "Desativa a hibernação do Windows e remove seu arquivo de hibernação.",
+    "ru": "Отключает гибернацию Windows и удаляет её файл.",
+    "zh": "关闭 Windows 休眠并删除休眠文件。"
+  },
+  "Hibernate and Fast Startup stop working until you undo this. The previous hibernation state is saved.": {
+    "nl": "Sluimerstand en Snel opstarten werken niet meer totdat je dit terugdraait. De vorige sluimerstandstatus wordt opgeslagen.",
+    "es": "La hibernación y el Inicio rápido dejan de funcionar hasta que lo deshagas. Se guarda el estado anterior de hibernación.",
+    "de": "Ruhezustand und Schnellstart funktionieren erst wieder nach dem Rückgängigmachen. Der vorherige Ruhezustandsstatus wird gespeichert.",
+    "fr": "La veille prolongée et le démarrage rapide ne fonctionnent plus jusqu’à l’annulation. L’état précédent de la veille prolongée est enregistré.",
+    "pt": "A hibernação e a Inicialização Rápida param de funcionar até você desfazer. O estado anterior da hibernação é salvo.",
+    "ru": "Гибернация и быстрый запуск перестанут работать до отмены. Прежнее состояние гибернации сохраняется.",
+    "zh": "休眠和快速启动将停止工作，直到您撤销。原始休眠状态会保存。"
+  },
+  "Turns off RAM page compression through the Windows memory-management provider.": {
+    "nl": "Schakelt compressie van RAM-pagina's uit via de Windows-geheugenbeheerprovider.",
+    "es": "Desactiva la compresión de páginas de RAM mediante el proveedor de administración de memoria de Windows.",
+    "de": "Deaktiviert die RAM-Seitenkomprimierung über den Windows-Speicherverwaltungsanbieter.",
+    "fr": "Désactive la compression des pages RAM via le fournisseur de gestion de mémoire Windows.",
+    "pt": "Desativa a compressão de páginas da RAM pelo provedor de gerenciamento de memória do Windows.",
+    "ru": "Отключает сжатие страниц ОЗУ через поставщика управления памятью Windows.",
+    "zh": "通过 Windows 内存管理提供程序关闭内存页压缩。"
+  },
+  "For PCs with at least 16 GB RAM. Memory pressure can increase and performance can get worse when RAM fills up. Compare your workload and undo if needed; a restart may be required.": {
+    "nl": "Voor pc's met minstens 16 GB RAM. De geheugendruk kan stijgen en prestaties kunnen afnemen als het RAM vol raakt. Vergelijk je werklast en draai zo nodig terug; opnieuw opstarten kan nodig zijn.",
+    "es": "Para PC con al menos 16 GB de RAM. La presión de memoria puede aumentar y el rendimiento empeorar cuando se llena la RAM. Compara tu carga de trabajo y deshaz si es necesario; puede requerir reiniciar.",
+    "de": "Für PCs mit mindestens 16 GB RAM. Der Speicherdruck kann steigen und die Leistung bei vollem RAM sinken. Vergleiche deine Arbeitslast und mache die Änderung bei Bedarf rückgängig; ein Neustart kann erforderlich sein.",
+    "fr": "Pour les PC ayant au moins 16 Go de RAM. La pression mémoire peut augmenter et les performances diminuer lorsque la RAM est pleine. Comparez votre charge de travail et annulez si nécessaire ; un redémarrage peut être requis.",
+    "pt": "Para PCs com pelo menos 16 GB de RAM. A pressão de memória pode aumentar e o desempenho piorar quando a RAM estiver cheia. Compare sua carga de trabalho e desfaça se necessário; pode exigir reinicialização.",
+    "ru": "Для ПК с ОЗУ не менее 16 ГБ. Нагрузка на память может вырасти, а производительность — ухудшиться при заполнении ОЗУ. Сравните свою нагрузку и при необходимости отмените; может потребоваться перезагрузка.",
+    "zh": "适用于至少有 16 GB 内存的电脑。内存压力可能增加，内存用满时性能可能下降。请比较实际工作负载，必要时撤销；可能需要重启。"
+  },
+  "Enables Message Signaled Interrupts for detected display devices when the driver exposes that registry option.": {
+    "nl": "Schakelt Message Signaled Interrupts in voor gedetecteerde beeldschermapparaten als de driver deze registeroptie aanbiedt.",
+    "es": "Activa Message Signaled Interrupts para los dispositivos de pantalla detectados cuando el controlador expone esa opción del registro.",
+    "de": "Aktiviert Message Signaled Interrupts für erkannte Anzeigegeräte, wenn der Treiber diese Registrierungsoption bereitstellt.",
+    "fr": "Active Message Signaled Interrupts pour les périphériques d’affichage détectés lorsque le pilote expose cette option du registre.",
+    "pt": "Ativa Message Signaled Interrupts para dispositivos de vídeo detectados quando o driver disponibiliza essa opção no registro.",
+    "ru": "Включает Message Signaled Interrupts для обнаруженных устройств отображения, если драйвер предоставляет эту настройку реестра.",
+    "zh": "当驱动提供相应注册表选项时，为检测到的显示设备启用消息信号中断。"
+  },
+  "Requires a restart. An unsupported GPU or driver may cause a black screen; create a Windows restore point first. Only detected display devices are changed and each previous value is saved.": {
+    "nl": "Opnieuw opstarten vereist. Een niet-ondersteunde GPU of driver kan een zwart scherm veroorzaken; maak eerst een Windows-herstelpunt. Alleen gedetecteerde beeldschermapparaten worden gewijzigd en elke vorige waarde wordt opgeslagen.",
+    "es": "Requiere reiniciar. Una GPU o controlador no compatible puede provocar una pantalla negra; crea primero un punto de restauración de Windows. Solo se modifican los dispositivos de pantalla detectados y se guarda cada valor anterior.",
+    "de": "Neustart erforderlich. Eine nicht unterstützte GPU oder ein Treiber kann einen schwarzen Bildschirm verursachen; erstelle zuerst einen Windows-Wiederherstellungspunkt. Nur erkannte Anzeigegeräte werden geändert, jeder vorherige Wert wird gespeichert.",
+    "fr": "Nécessite un redémarrage. Un GPU ou pilote incompatible peut provoquer un écran noir ; créez d’abord un point de restauration Windows. Seuls les périphériques d’affichage détectés sont modifiés et chaque valeur précédente est enregistrée.",
+    "pt": "Exige reinicialização. Uma GPU ou driver incompatível pode causar tela preta; crie primeiro um ponto de restauração do Windows. Somente dispositivos de vídeo detectados são alterados e cada valor anterior é salvo.",
+    "ru": "Требуется перезагрузка. Неподдерживаемая видеокарта или драйвер могут вызвать чёрный экран; сначала создайте точку восстановления Windows. Меняются только обнаруженные устройства отображения, каждое прежнее значение сохраняется.",
+    "zh": "需要重启。不支持的 GPU 或驱动可能导致黑屏；请先创建 Windows 还原点。仅更改检测到的显示设备，且会保存每个原始值。"
+  },
+  "Enables constant timer interrupts through Windows Boot Configuration.": {
+    "nl": "Schakelt constante timeronderbrekingen in via de Windows-opstartconfiguratie.",
+    "es": "Activa interrupciones constantes del temporizador mediante la configuración de arranque de Windows.",
+    "de": "Aktiviert konstante Timer-Interrupts über die Windows-Startkonfiguration.",
+    "fr": "Active des interruptions de minuterie constantes via la configuration de démarrage Windows.",
+    "pt": "Ativa interrupções constantes do temporizador pela configuração de inicialização do Windows.",
+    "ru": "Включает постоянные прерывания таймера через конфигурацию загрузки Windows.",
+    "zh": "通过 Windows 启动配置启用固定计时器中断。"
+  },
+  "May increase idle power use and heat. Requires a restart; the exact prior boot setting is saved for undo.": {
+    "nl": "Kan stroomverbruik en warmte in rust verhogen. Opnieuw opstarten vereist; de exacte vorige opstartinstelling wordt opgeslagen om terug te draaien.",
+    "es": "Puede aumentar el consumo y el calor en reposo. Requiere reiniciar; se guarda el ajuste exacto de arranque anterior para deshacerlo.",
+    "de": "Kann Stromverbrauch und Wärme im Leerlauf erhöhen. Neustart erforderlich; die genaue vorherige Starteinstellung wird zum Rückgängigmachen gespeichert.",
+    "fr": "Peut augmenter la consommation et la chaleur au repos. Nécessite un redémarrage ; le réglage de démarrage précédent exact est enregistré pour l’annulation.",
+    "pt": "Pode aumentar o consumo e o calor em repouso. Exige reinicialização; a configuração exata de inicialização anterior é salva para desfazer.",
+    "ru": "Может повысить энергопотребление и нагрев в простое. Требуется перезагрузка; точная прежняя настройка загрузки сохраняется для отмены.",
+    "zh": "可能增加空闲耗电和发热。需要重启；准确的原始启动设置会保存以便撤销。"
+  },
+  "Hides Windows tips and promotional content on the lock screen.": {
+    "nl": "Verbergt Windows-tips en promotie-inhoud op het vergrendelscherm.",
+    "es": "Oculta consejos y contenido promocional de Windows en la pantalla de bloqueo.",
+    "de": "Blendet Windows-Tipps und Werbeinhalte auf dem Sperrbildschirm aus.",
+    "fr": "Masque les conseils Windows et les contenus promotionnels sur l’écran de verrouillage.",
+    "pt": "Oculta dicas do Windows e conteúdo promocional na tela de bloqueio.",
+    "ru": "Скрывает советы Windows и рекламное содержимое на экране блокировки.",
+    "zh": "隐藏锁屏上的 Windows 提示和推广内容。"
+  },
+  "Spotlight tips will no longer appear on the lock screen.": {
+    "nl": "Spotlight-tips verschijnen niet meer op het vergrendelscherm.",
+    "es": "Los consejos de Spotlight dejarán de aparecer en la pantalla de bloqueo.",
+    "de": "Spotlight-Tipps erscheinen nicht mehr auf dem Sperrbildschirm.",
+    "fr": "Les conseils Spotlight ne s’afficheront plus sur l’écran de verrouillage.",
+    "pt": "As dicas do Spotlight não aparecerão mais na tela de bloqueio.",
+    "ru": "Советы Spotlight больше не будут появляться на экране блокировки.",
+    "zh": "聚焦提示将不再显示在锁屏上。"
+  },
+  "Disables Microsoft Edge Startup Boost and background mode for this user.": {
+    "nl": "Schakelt Microsoft Edge-opstartboost en achtergrondmodus uit voor deze gebruiker.",
+    "es": "Desactiva el impulso de inicio y el modo en segundo plano de Microsoft Edge para este usuario.",
+    "de": "Deaktiviert Startverstärkung und Hintergrundmodus von Microsoft Edge für diesen Benutzer.",
+    "fr": "Désactive le démarrage accéléré et le mode arrière-plan de Microsoft Edge pour cet utilisateur.",
+    "pt": "Desativa a inicialização rápida e o modo em segundo plano do Microsoft Edge para este usuário.",
+    "ru": "Отключает ускорение запуска и фоновый режим Microsoft Edge для этого пользователя.",
+    "zh": "为此用户禁用 Microsoft Edge 启动增强和后台模式。"
+  },
+  "Edge may take slightly longer to open after being fully closed.": {
+    "nl": "Edge kan iets langer nodig hebben om te openen nadat het volledig is gesloten.",
+    "es": "Edge puede tardar un poco más en abrirse después de cerrarlo por completo.",
+    "de": "Edge kann nach vollständigem Schließen etwas länger zum Öffnen benötigen.",
+    "fr": "Edge peut mettre un peu plus de temps à s’ouvrir après avoir été entièrement fermé.",
+    "pt": "O Edge pode demorar um pouco mais para abrir depois de ser totalmente fechado.",
+    "ru": "После полного закрытия Edge может открываться немного дольше.",
+    "zh": "完全关闭后，Edge 再次打开可能稍慢。"
+  },
+  "Sets the current-user background-app policy to deny background execution.": {
+    "nl": "Stelt het achtergrondappbeleid voor de huidige gebruiker in op het weigeren van uitvoering op de achtergrond.",
+    "es": "Establece la directiva de aplicaciones en segundo plano del usuario actual para denegar su ejecución en segundo plano.",
+    "de": "Stellt die Hintergrund-App-Richtlinie des aktuellen Benutzers auf Verweigerung der Hintergrundausführung.",
+    "fr": "Définit la stratégie d’applications en arrière-plan de l’utilisateur actuel pour refuser l’exécution en arrière-plan.",
+    "pt": "Define a política de aplicativos em segundo plano do usuário atual para negar execução em segundo plano.",
+    "ru": "Устанавливает запрет фонового выполнения приложений в политике текущего пользователя.",
+    "zh": "将当前用户后台应用策略设为拒绝后台运行。"
+  },
+  "Mail, calendar, and other Store apps may stop showing notifications while closed.": {
+    "nl": "Mail, Agenda en andere Store-apps tonen mogelijk geen meldingen meer als ze gesloten zijn.",
+    "es": "Correo, Calendario y otras aplicaciones de la Store pueden dejar de mostrar notificaciones cuando están cerradas.",
+    "de": "Mail, Kalender und andere Store-Apps zeigen im geschlossenen Zustand möglicherweise keine Benachrichtigungen mehr.",
+    "fr": "Courrier, Calendrier et les autres applications du Store peuvent ne plus afficher de notifications lorsqu’elles sont fermées.",
+    "pt": "Email, Calendário e outros aplicativos da Store podem parar de mostrar notificações quando fechados.",
+    "ru": "Почта, календарь и другие приложения Store могут перестать показывать уведомления, когда закрыты.",
+    "zh": "邮件、日历和其他 Store 应用在关闭时可能不再显示通知。"
+  }
+}

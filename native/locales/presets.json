@@ -1,0 +1,227 @@
+{
+  "Preset could not be saved": {
+    "nl": "Voorinstelling kon niet worden opgeslagen",
+    "es": "No se pudo guardar el preajuste",
+    "de": "Vorlage konnte nicht gespeichert werden",
+    "fr": "Impossible d’enregistrer le préréglage",
+    "pt": "Não foi possível salvar a predefinição",
+    "ru": "Не удалось сохранить набор",
+    "zh": "无法保存预设"
+  },
+  "Save preset changes": {
+    "nl": "Wijzigingen aan voorinstelling opslaan",
+    "es": "Guardar cambios del preajuste",
+    "de": "Vorlagenänderungen speichern",
+    "fr": "Enregistrer les changements du préréglage",
+    "pt": "Salvar alterações da predefinição",
+    "ru": "Сохранить изменения набора",
+    "zh": "保存预设更改"
+  },
+  "Save preset": {
+    "nl": "Voorinstelling opslaan",
+    "es": "Guardar preajuste",
+    "de": "Vorlage speichern",
+    "fr": "Enregistrer le préréglage",
+    "pt": "Salvar predefinição",
+    "ru": "Сохранить набор",
+    "zh": "保存预设"
+  },
+  "Name this preset": {
+    "nl": "Geef deze voorinstelling een naam",
+    "es": "Pon nombre a este preajuste",
+    "de": "Benenne diese Vorlage",
+    "fr": "Nommez ce préréglage",
+    "pt": "Dê um nome a esta predefinição",
+    "ru": "Назовите этот набор",
+    "zh": "为此预设命名"
+  },
+  "Select options on Optimize first.": {
+    "nl": "Selecteer eerst opties bij Optimaliseren.",
+    "es": "Selecciona primero opciones en Optimizar.",
+    "de": "Wähle zuerst Optionen auf Optimieren aus.",
+    "fr": "Sélectionnez d’abord des options dans Optimiser.",
+    "pt": "Selecione primeiro opções em Otimizar.",
+    "ru": "Сначала выберите параметры в разделе оптимизации.",
+    "zh": "请先在优化页面选择选项。"
+  },
+  "Your presets": {
+    "nl": "Jouw voorinstellingen",
+    "es": "Tus preajustes",
+    "de": "Deine Vorlagen",
+    "fr": "Vos préréglages",
+    "pt": "Suas predefinições",
+    "ru": "Ваши наборы",
+    "zh": "您的预设"
+  },
+  "Manage saved selections. Review and Edit select options on Optimize; they never apply Windows changes.": {
+    "nl": "Beheer opgeslagen selecties. Bekijken en Bewerken selecteren opties bij Optimaliseren; ze passen nooit Windows-wijzigingen toe.",
+    "es": "Administra las selecciones guardadas. Revisar y Editar seleccionan opciones en Optimizar; nunca aplican cambios de Windows.",
+    "de": "Verwalte gespeicherte Auswahlen. Prüfen und Bearbeiten wählen Optionen auf Optimieren aus; sie wenden keine Windows-Änderungen an.",
+    "fr": "Gérez les sélections enregistrées. Examiner et Modifier sélectionnent des options dans Optimiser ; ils n’appliquent jamais de changements Windows.",
+    "pt": "Gerencie seleções salvas. Revisar e Editar selecionam opções em Otimizar; nunca aplicam alterações do Windows.",
+    "ru": "Управляйте сохранёнными наборами. Просмотр и редактирование выбирают параметры оптимизации, но не применяют изменения Windows.",
+    "zh": "管理已保存的选择。检查和编辑只会在优化页面选择选项，不会应用 Windows 更改。"
+  },
+  "Rename": {
+    "nl": "Hernoemen",
+    "es": "Renombrar",
+    "de": "Umbenennen",
+    "fr": "Renommer",
+    "pt": "Renomear",
+    "ru": "Переименовать",
+    "zh": "重命名"
+  },
+  "Rename preset": {
+    "nl": "Voorinstelling hernoemen",
+    "es": "Renombrar preajuste",
+    "de": "Vorlage umbenennen",
+    "fr": "Renommer le préréglage",
+    "pt": "Renomear predefinição",
+    "ru": "Переименовать набор",
+    "zh": "重命名预设"
+  },
+  "Preset name": {
+    "nl": "Naam voorinstelling",
+    "es": "Nombre del preajuste",
+    "de": "Vorlagenname",
+    "fr": "Nom du préréglage",
+    "pt": "Nome da predefinição",
+    "ru": "Название набора",
+    "zh": "预设名称"
+  },
+  "A preset already has that name.": {
+    "nl": "Er bestaat al een voorinstelling met die naam.",
+    "es": "Ya existe un preajuste con ese nombre.",
+    "de": "Eine Vorlage hat bereits diesen Namen.",
+    "fr": "Un préréglage porte déjà ce nom.",
+    "pt": "Já existe uma predefinição com esse nome.",
+    "ru": "Набор с таким названием уже существует.",
+    "zh": "已存在同名预设。"
+  },
+  "Copy code": {
+    "nl": "Code kopiëren",
+    "es": "Copiar código",
+    "de": "Code kopieren",
+    "fr": "Copier le code",
+    "pt": "Copiar código",
+    "ru": "Копировать код",
+    "zh": "复制代码"
+  },
+  "Share code copied.": {
+    "nl": "Deelcode gekopieerd.",
+    "es": "Código para compartir copiado.",
+    "de": "Freigabecode kopiert.",
+    "fr": "Code de partage copié.",
+    "pt": "Código de compartilhamento copiado.",
+    "ru": "Код для обмена скопирован.",
+    "zh": "分享代码已复制。"
+  },
+  "Delete preset": {
+    "nl": "Voorinstelling verwijderen",
+    "es": "Eliminar preajuste",
+    "de": "Vorlage löschen",
+    "fr": "Supprimer le préréglage",
+    "pt": "Excluir predefinição",
+    "ru": "Удалить набор",
+    "zh": "删除预设"
+  },
+  "Delete “{0}”? Applied Windows changes are kept.": {
+    "nl": "“{0}” verwijderen? Toegepaste Windows-wijzigingen blijven behouden.",
+    "es": "¿Eliminar «{0}»? Se conservan los cambios de Windows aplicados.",
+    "de": "„{0}“ löschen? Angewendete Windows-Änderungen bleiben erhalten.",
+    "fr": "Supprimer « {0} » ? Les changements Windows appliqués sont conservés.",
+    "pt": "Excluir “{0}”? As alterações aplicadas do Windows serão mantidas.",
+    "ru": "Удалить «{0}»? Применённые изменения Windows сохраняются.",
+    "zh": "删除“{0}”？已应用的 Windows 更改将保留。"
+  },
+  "Compare with": {
+    "nl": "Vergelijken met",
+    "es": "Comparar con",
+    "de": "Vergleichen mit",
+    "fr": "Comparer avec",
+    "pt": "Comparar com",
+    "ru": "Сравнить с",
+    "zh": "比较对象"
+  },
+  "Compare presets": {
+    "nl": "Voorinstellingen vergelijken",
+    "es": "Comparar preajustes",
+    "de": "Vorlagen vergleichen",
+    "fr": "Comparer les préréglages",
+    "pt": "Comparar predefinições",
+    "ru": "Сравнить наборы",
+    "zh": "比较预设"
+  },
+  "In both presets:": {
+    "nl": "In beide voorinstellingen:",
+    "es": "En ambos preajustes:",
+    "de": "In beiden Vorlagen:",
+    "fr": "Dans les deux préréglages :",
+    "pt": "Nas duas predefinições:",
+    "ru": "В обоих наборах:",
+    "zh": "两个预设共有："
+  },
+  "Only in “{0}”:": {
+    "nl": "Alleen in “{0}”:",
+    "es": "Solo en «{0}»:",
+    "de": "Nur in „{0}“:",
+    "fr": "Uniquement dans « {0} » :",
+    "pt": "Somente em “{0}”:",
+    "ru": "Только в «{0}»:",
+    "zh": "仅在“{0}”中："
+  },
+  "Import JSON": {
+    "nl": "JSON importeren",
+    "es": "Importar JSON",
+    "de": "JSON importieren",
+    "fr": "Importer JSON",
+    "pt": "Importar JSON",
+    "ru": "Импортировать JSON",
+    "zh": "导入 JSON"
+  },
+  "Import code": {
+    "nl": "Code importeren",
+    "es": "Importar código",
+    "de": "Code importieren",
+    "fr": "Importer un code",
+    "pt": "Importar código",
+    "ru": "Импортировать код",
+    "zh": "导入代码"
+  },
+  "Paste a SHARK1 share code": {
+    "nl": "Plak een SHARK1-deelcode",
+    "es": "Pega un código SHARK1 para compartir",
+    "de": "Füge einen SHARK1-Freigabecode ein",
+    "fr": "Collez un code de partage SHARK1",
+    "pt": "Cole um código de compartilhamento SHARK1",
+    "ru": "Вставьте код обмена SHARK1",
+    "zh": "粘贴 SHARK1 分享代码"
+  },
+  "Preset files must be no larger than 1 MB.": {
+    "nl": "Voorinstellingsbestanden mogen maximaal 1 MB zijn.",
+    "es": "Los archivos de preajustes no deben superar 1 MB.",
+    "de": "Vorlagendateien dürfen höchstens 1 MB groß sein.",
+    "fr": "Les fichiers de préréglages ne doivent pas dépasser 1 Mo.",
+    "pt": "Os arquivos de predefinições não podem exceder 1 MB.",
+    "ru": "Файлы наборов не должны превышать 1 МБ.",
+    "zh": "预设文件不得超过 1 MB。"
+  },
+  "Review preset import": {
+    "nl": "Import van voorinstellingen bekijken",
+    "es": "Revisar importación de preajustes",
+    "de": "Vorlagenimport prüfen",
+    "fr": "Examiner l’importation des préréglages",
+    "pt": "Revisar importação de predefinições",
+    "ru": "Проверить импорт наборов",
+    "zh": "检查预设导入"
+  },
+  "Import these presets? Existing presets will be kept. Only supported option IDs are included.": {
+    "nl": "Deze voorinstellingen importeren? Bestaande voorinstellingen blijven behouden. Alleen ondersteunde optie-ID's worden meegenomen.",
+    "es": "¿Importar estos preajustes? Se conservarán los existentes. Solo se incluyen ID de opciones compatibles.",
+    "de": "Diese Vorlagen importieren? Vorhandene Vorlagen bleiben erhalten. Nur unterstützte Options-IDs werden übernommen.",
+    "fr": "Importer ces préréglages ? Les préréglages existants sont conservés. Seuls les identifiants d’options pris en charge sont inclus.",
+    "pt": "Importar estas predefinições? As existentes serão mantidas. Somente IDs de opções compatíveis serão incluídos.",
+    "ru": "Импортировать эти наборы? Существующие наборы сохранятся. Включаются только поддерживаемые ID параметров.",
+    "zh": "导入这些预设？现有预设将保留。仅包括受支持的选项 ID。"
+  }
+}

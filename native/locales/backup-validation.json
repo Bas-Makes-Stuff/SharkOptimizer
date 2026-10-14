@@ -1,0 +1,263 @@
+{
+  "A backup can contain up to 100 custom definitions.": {
+    "nl": "Een back-up kan maximaal 100 aangepaste definities bevatten.",
+    "es": "Una copia puede contener hasta 100 definiciones personalizadas.",
+    "de": "Eine Sicherung kann bis zu 100 eigene Definitionen enthalten.",
+    "fr": "Une sauvegarde peut contenir jusqu’à 100 définitions personnalisées.",
+    "pt": "Um backup pode conter até 100 definições personalizadas.",
+    "ru": "Резервная копия может содержать до 100 пользовательских определений.",
+    "zh": "备份最多可包含 100 个自定义定义。"
+  },
+  "A backup can contain up to 100 presets.": {
+    "nl": "Een back-up kan maximaal 100 voorinstellingen bevatten.",
+    "es": "Una copia puede contener hasta 100 preajustes.",
+    "de": "Eine Sicherung kann bis zu 100 Vorlagen enthalten.",
+    "fr": "Une sauvegarde peut contenir jusqu’à 100 préréglages.",
+    "pt": "Um backup pode conter até 100 predefinições.",
+    "ru": "Резервная копия может содержать до 100 наборов.",
+    "zh": "备份最多可包含 100 个预设。"
+  },
+  "A benchmark snapshot contains invalid measurements.": {
+    "nl": "Een meetmomentopname bevat ongeldige waarden.",
+    "es": "Una captura de medición contiene valores no válidos.",
+    "de": "Eine Messaufnahme enthält ungültige Werte.",
+    "fr": "Un instantané de mesure contient des valeurs invalides.",
+    "pt": "Uma captura de medição contém valores inválidos.",
+    "ru": "Снимок замеров содержит недопустимые значения.",
+    "zh": "测量快照包含无效数据。"
+  },
+  "A custom game entry is invalid.": {
+    "nl": "Een aangepast game-item is ongeldig.",
+    "es": "Una entrada de juego personalizado no es válida.",
+    "de": "Ein eigener Spieleintrag ist ungültig.",
+    "fr": "Une entrée de jeu personnalisé est invalide.",
+    "pt": "Uma entrada de jogo personalizado é inválida.",
+    "ru": "Недопустимая запись пользовательской игры.",
+    "zh": "自定义游戏条目无效。"
+  },
+  "A custom game uses the ID of a built-in profile. Rename its ID before importing.": {
+    "nl": "Een aangepaste game gebruikt de ID van een ingebouwd profiel. Wijzig de ID voordat je importeert.",
+    "es": "Un juego personalizado usa el ID de un perfil integrado. Cambia su ID antes de importar.",
+    "de": "Ein eigenes Spiel verwendet die ID eines integrierten Profils. Ändere die ID vor dem Import.",
+    "fr": "Un jeu personnalisé utilise l’identifiant d’un profil intégré. Modifiez-le avant l’importation.",
+    "pt": "Um jogo personalizado usa o ID de um perfil integrado. Altere o ID antes de importar.",
+    "ru": "Пользовательская игра использует ID встроенного профиля. Измените ID перед импортом.",
+    "zh": "自定义游戏使用了内置配置的 ID。导入前请更改其 ID。"
+  },
+  "A custom-game profile is invalid.": {
+    "nl": "Een aangepast gameprofiel is ongeldig.",
+    "es": "Un perfil de juego personalizado no es válido.",
+    "de": "Ein eigenes Spielprofil ist ungültig.",
+    "fr": "Un profil de jeu personnalisé est invalide.",
+    "pt": "Um perfil de jogo personalizado é inválido.",
+    "ru": "Недопустимый пользовательский игровой профиль.",
+    "zh": "自定义游戏配置无效。"
+  },
+  "A game-path entry is invalid.": {
+    "nl": "Een gamepad-item is ongeldig.",
+    "es": "Una entrada de ruta de juego no es válida.",
+    "de": "Ein Spielpfadeintrag ist ungültig.",
+    "fr": "Une entrée de chemin de jeu est invalide.",
+    "pt": "Uma entrada de caminho de jogo é inválida.",
+    "ru": "Недопустимая запись пути игры.",
+    "zh": "游戏路径条目无效。"
+  },
+  "A game-tip entry is invalid.": {
+    "nl": "Een gametip-item is ongeldig.",
+    "es": "Una entrada de consejo de juego no es válida.",
+    "de": "Ein Spieltippeintrag ist ungültig.",
+    "fr": "Une entrée de conseil de jeu est invalide.",
+    "pt": "Uma entrada de dica de jogo é inválida.",
+    "ru": "Недопустимая запись игрового совета.",
+    "zh": "游戏建议条目无效。"
+  },
+  "A preserved legacy backup entry is invalid.": {
+    "nl": "Een bewaard oud back-upitem is ongeldig.",
+    "es": "Una entrada de copia antigua conservada no es válida.",
+    "de": "Ein aufbewahrter alter Sicherungseintrag ist ungültig.",
+    "fr": "Une entrée de sauvegarde ancienne conservée est invalide.",
+    "pt": "Uma entrada preservada de backup antigo é inválida.",
+    "ru": "Недопустимая сохранённая запись старой резервной копии.",
+    "zh": "保留的旧版备份条目无效。"
+  },
+  "A preset entry is invalid.": {
+    "nl": "Een voorinstellingsitem is ongeldig.",
+    "es": "Una entrada de preajuste no es válida.",
+    "de": "Ein Vorlageneintrag ist ungültig.",
+    "fr": "Une entrée de préréglage est invalide.",
+    "pt": "Uma entrada de predefinição é inválida.",
+    "ru": "Недопустимая запись набора.",
+    "zh": "预设条目无效。"
+  },
+  "Benchmark history must contain up to 60 valid BEFORE/AFTER runs.": {
+    "nl": "Meetgeschiedenis moet maximaal 60 geldige VOOR/NA-metingen bevatten.",
+    "es": "El historial debe contener hasta 60 mediciones ANTES/DESPUÉS válidas.",
+    "de": "Der Messverlauf darf bis zu 60 gültige VORHER/NACHHER-Messungen enthalten.",
+    "fr": "L’historique doit contenir au maximum 60 mesures AVANT/APRÈS valides.",
+    "pt": "O histórico deve conter até 60 medições ANTES/DEPOIS válidas.",
+    "ru": "История должна содержать до 60 допустимых замеров ДО/ПОСЛЕ.",
+    "zh": "测量历史必须包含最多 60 次有效的调整前后测量。"
+  },
+  "Custom-game executables must be file names ending in .exe.": {
+    "nl": "Uitvoerbare bestanden van aangepaste games moeten bestandsnamen zijn die eindigen op .exe.",
+    "es": "Los ejecutables de juegos personalizados deben ser nombres de archivo terminados en .exe.",
+    "de": "Ausführbare Dateien eigener Spiele müssen Dateinamen mit der Endung .exe sein.",
+    "fr": "Les exécutables de jeux personnalisés doivent être des noms de fichier se terminant par .exe.",
+    "pt": "Executáveis de jogos personalizados devem ser nomes de arquivo terminados em .exe.",
+    "ru": "Исполняемые файлы пользовательских игр должны быть именами файлов с расширением .exe.",
+    "zh": "自定义游戏可执行文件必须是以 .exe 结尾的文件名。"
+  },
+  "Legacy benchmarks must be an object.": {
+    "nl": "Oude meetgegevens moeten een object zijn.",
+    "es": "Las mediciones antiguas deben ser un objeto.",
+    "de": "Alte Messdaten müssen ein Objekt sein.",
+    "fr": "Les anciennes mesures doivent être un objet.",
+    "pt": "As medições antigas devem ser um objeto.",
+    "ru": "Старые замеры должны быть объектом.",
+    "zh": "旧版测量数据必须是对象。"
+  },
+  "Legacy custom games must be a list.": {
+    "nl": "Oude aangepaste games moeten een lijst zijn.",
+    "es": "Los juegos personalizados antiguos deben ser una lista.",
+    "de": "Alte eigene Spiele müssen eine Liste sein.",
+    "fr": "Les anciens jeux personnalisés doivent être une liste.",
+    "pt": "Os jogos personalizados antigos devem ser uma lista.",
+    "ru": "Старые пользовательские игры должны быть списком.",
+    "zh": "旧版自定义游戏必须是列表。"
+  },
+  "Legacy settings must be an object.": {
+    "nl": "Oude instellingen moeten een object zijn.",
+    "es": "Los ajustes antiguos deben ser un objeto.",
+    "de": "Alte Einstellungen müssen ein Objekt sein.",
+    "fr": "Les anciens réglages doivent être un objet.",
+    "pt": "As configurações antigas devem ser um objeto.",
+    "ru": "Старые настройки должны быть объектом.",
+    "zh": "旧版设置必须是对象。"
+  },
+  "Preset names must be unique.": {
+    "nl": "Namen van voorinstellingen moeten uniek zijn.",
+    "es": "Los nombres de preajustes deben ser únicos.",
+    "de": "Vorlagennamen müssen eindeutig sein.",
+    "fr": "Les noms de préréglages doivent être uniques.",
+    "pt": "Os nomes de predefinições devem ser únicos.",
+    "ru": "Названия наборов должны быть уникальны.",
+    "zh": "预设名称必须唯一。"
+  },
+  "Saved game paths must be full executable paths.": {
+    "nl": "Opgeslagen gamepaden moeten volledige paden naar uitvoerbare bestanden zijn.",
+    "es": "Las rutas guardadas deben ser rutas completas a ejecutables.",
+    "de": "Gespeicherte Spielpfade müssen vollständige Pfade zu ausführbaren Dateien sein.",
+    "fr": "Les chemins enregistrés doivent être des chemins complets vers les exécutables.",
+    "pt": "Os caminhos salvos devem ser caminhos completos para executáveis.",
+    "ru": "Сохранённые пути игр должны быть полными путями к исполняемым файлам.",
+    "zh": "保存的游戏路径必须是完整的可执行文件路径。"
+  },
+  "Setup backups must be no larger than 4 MB.": {
+    "nl": "Instellingenback-ups mogen maximaal 4 MB zijn.",
+    "es": "Las copias de configuración no deben superar 4 MB.",
+    "de": "Einrichtungssicherungen dürfen höchstens 4 MB groß sein.",
+    "fr": "Les sauvegardes de configuration ne doivent pas dépasser 4 Mo.",
+    "pt": "Backups de configuração não podem exceder 4 MB.",
+    "ru": "Резервные копии настроек не должны превышать 4 МБ.",
+    "zh": "设置备份不得超过 4 MB。"
+  },
+  "The appearance preferences are not supported.": {
+    "nl": "De uiterlijkvoorkeuren worden niet ondersteund.",
+    "es": "Las preferencias de apariencia no son compatibles.",
+    "de": "Die Aussehenseinstellungen werden nicht unterstützt.",
+    "fr": "Les préférences d’apparence ne sont pas prises en charge.",
+    "pt": "As preferências de aparência não são suportadas.",
+    "ru": "Настройки внешнего вида не поддерживаются.",
+    "zh": "不支持这些外观偏好。"
+  },
+  "The backup contains no app preferences or profiles.": {
+    "nl": "De back-up bevat geen appvoorkeuren of profielen.",
+    "es": "La copia no contiene preferencias ni perfiles de la aplicación.",
+    "de": "Die Sicherung enthält keine App-Einstellungen oder Profile.",
+    "fr": "La sauvegarde ne contient aucune préférence ni profil d’application.",
+    "pt": "O backup não contém preferências ou perfis do aplicativo.",
+    "ru": "Резервная копия не содержит настроек или профилей приложения.",
+    "zh": "备份不包含应用偏好或配置。"
+  },
+  "The backup contains no supported app data.": {
+    "nl": "De back-up bevat geen ondersteunde appgegevens.",
+    "es": "La copia no contiene datos compatibles de la aplicación.",
+    "de": "Die Sicherung enthält keine unterstützten App-Daten.",
+    "fr": "La sauvegarde ne contient aucune donnée d’application prise en charge.",
+    "pt": "O backup não contém dados compatíveis do aplicativo.",
+    "ru": "Резервная копия не содержит поддерживаемых данных приложения.",
+    "zh": "备份不包含受支持的应用数据。"
+  },
+  "The backup has no data files.": {
+    "nl": "De back-up bevat geen gegevensbestanden.",
+    "es": "La copia no contiene archivos de datos.",
+    "de": "Die Sicherung enthält keine Datendateien.",
+    "fr": "La sauvegarde ne contient aucun fichier de données.",
+    "pt": "O backup não contém arquivos de dados.",
+    "ru": "В резервной копии нет файлов данных.",
+    "zh": "备份没有数据文件。"
+  },
+  "The custom-game list is too large.": {
+    "nl": "De lijst met aangepaste games is te groot.",
+    "es": "La lista de juegos personalizados es demasiado grande.",
+    "de": "Die Liste eigener Spiele ist zu groß.",
+    "fr": "La liste de jeux personnalisés est trop volumineuse.",
+    "pt": "A lista de jogos personalizados é grande demais.",
+    "ru": "Список пользовательских игр слишком велик.",
+    "zh": "自定义游戏列表过大。"
+  },
+  "The game-path list is too large.": {
+    "nl": "De lijst met gamepaden is te groot.",
+    "es": "La lista de rutas de juegos es demasiado grande.",
+    "de": "Die Spielpfadliste ist zu groß.",
+    "fr": "La liste de chemins de jeux est trop volumineuse.",
+    "pt": "A lista de caminhos de jogos é grande demais.",
+    "ru": "Список путей игр слишком велик.",
+    "zh": "游戏路径列表过大。"
+  },
+  "The native setup data is invalid.": {
+    "nl": "De native instellingsgegevens zijn ongeldig.",
+    "es": "Los datos de configuración nativos no son válidos.",
+    "de": "Die nativen Einrichtungsdaten sind ungültig.",
+    "fr": "Les données de configuration natives sont invalides.",
+    "pt": "Os dados de configuração nativos são inválidos.",
+    "ru": "Данные настроек нативного приложения недопустимы.",
+    "zh": "原生设置数据无效。"
+  },
+  "The saved cleanup schedule preference is invalid.": {
+    "nl": "De opgeslagen opruimplanning is ongeldig.",
+    "es": "La preferencia guardada de limpieza programada no es válida.",
+    "de": "Die gespeicherte Bereinigungsplanung ist ungültig.",
+    "fr": "La préférence de nettoyage planifié enregistrée est invalide.",
+    "pt": "A preferência salva de limpeza agendada é inválida.",
+    "ru": "Сохранённая настройка расписания очистки недопустима.",
+    "zh": "保存的清理计划偏好无效。"
+  },
+  "The saved interface language is unsupported.": {
+    "nl": "De opgeslagen interfacetaal wordt niet ondersteund.",
+    "es": "El idioma guardado de la interfaz no es compatible.",
+    "de": "Die gespeicherte Oberflächensprache wird nicht unterstützt.",
+    "fr": "La langue d’interface enregistrée n’est pas prise en charge.",
+    "pt": "O idioma salvo da interface não é suportado.",
+    "ru": "Сохранённый язык интерфейса не поддерживается.",
+    "zh": "不支持保存的界面语言。"
+  },
+  "The setup backup exceeds 4 MB.": {
+    "nl": "De instellingenback-up is groter dan 4 MB.",
+    "es": "La copia de configuración supera 4 MB.",
+    "de": "Die Einrichtungssicherung ist größer als 4 MB.",
+    "fr": "La sauvegarde de configuration dépasse 4 Mo.",
+    "pt": "O backup de configuração excede 4 MB.",
+    "ru": "Резервная копия настроек превышает 4 МБ.",
+    "zh": "设置备份超过 4 MB。"
+  },
+  "This is not a supported SharkOptimizer setup backup.": {
+    "nl": "Dit is geen ondersteunde SharkOptimizer-instellingenback-up.",
+    "es": "Esta no es una copia de configuración compatible de SharkOptimizer.",
+    "de": "Dies ist keine unterstützte SharkOptimizer-Einrichtungssicherung.",
+    "fr": "Ce n’est pas une sauvegarde de configuration SharkOptimizer prise en charge.",
+    "pt": "Este não é um backup de configuração compatível do SharkOptimizer.",
+    "ru": "Это не поддерживаемая резервная копия настроек SharkOptimizer.",
+    "zh": "这不是受支持的 SharkOptimizer 设置备份。"
+  }
+}

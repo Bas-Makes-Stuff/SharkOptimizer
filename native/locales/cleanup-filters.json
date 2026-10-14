@@ -1,0 +1,10 @@
+{
+  "System":{"nl":"Systeem","es":"Sistema","de":"System","fr":"Système","pt":"Sistema","ru":"Система","zh":"系统"},
+  "Search Boost-Ups":{"nl":"Boost-Ups zoeken","es":"Buscar Boost-Ups","de":"Boost-Ups suchen","fr":"Rechercher des Boost-Ups","pt":"Pesquisar Boost-Ups","ru":"Поиск действий Boost-Up","zh":"搜索清理操作"},
+  "Clear selection":{"nl":"Selectie wissen","es":"Borrar selección","de":"Auswahl aufheben","fr":"Effacer la sélection","pt":"Limpar seleção","ru":"Снять выбор","zh":"清除选择"},
+  "Run selected":{"nl":"Selectie uitvoeren","es":"Ejecutar selección","de":"Auswahl ausführen","fr":"Exécuter la sélection","pt":"Executar selecionados","ru":"Выполнить выбранное","zh":"执行所选操作"},
+  "No Boost-Ups match these filters.":{"nl":"Geen Boost-Ups passen bij deze filters.","es":"Ningún Boost-Up coincide con estos filtros.","de":"Keine Boost-Ups entsprechen diesen Filtern.","fr":"Aucun Boost-Up ne correspond à ces filtres.","pt":"Nenhum Boost-Up corresponde a estes filtros.","ru":"Нет действий Boost-Up, соответствующих фильтрам.","zh":"没有符合这些筛选条件的清理操作。"},
+  "Select at least one available action.":{"nl":"Selecteer minimaal één beschikbare actie.","es":"Selecciona al menos una acción disponible.","de":"Wähle mindestens eine verfügbare Aktion aus.","fr":"Sélectionnez au moins une action disponible.","pt":"Selecione pelo menos uma ação disponível.","ru":"Выберите хотя бы одно доступное действие.","zh":"请至少选择一项可用操作。"},
+  "Running {0} of {1}: {2}":{"nl":"Uitvoeren {0} van {1}: {2}","es":"Ejecutando {0} de {1}: {2}","de":"Ausführung {0} von {1}: {2}","fr":"Exécution {0} sur {1} : {2}","pt":"Executando {0} de {1}: {2}","ru":"Выполнение {0} из {1}: {2}","zh":"正在执行第 {0}/{1} 项：{2}"},
+  "{0} cleanup history entries":{"nl":"{0} vermeldingen in opruimgeschiedenis","es":"{0} entradas del historial de limpieza","de":"{0} Einträge im Bereinigungsverlauf","fr":"{0} entrées d’historique de nettoyage","pt":"{0} entradas do histórico de limpeza","ru":"Записей истории очистки: {0}","zh":"{0} 条清理历史记录"}
+}

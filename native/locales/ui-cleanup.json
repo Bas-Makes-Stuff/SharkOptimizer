@@ -1,0 +1,10 @@
+{
+  "Preferences": {"nl":"Voorkeuren","de":"Einstellungen","es":"Preferencias","fr":"Préférences","pt":"Preferências","ru":"Параметры","zh":"偏好设置"},
+  "Startup & updates": {"nl":"Opstarten en updates","de":"Start und Updates","es":"Inicio y actualizaciones","fr":"Démarrage et mises à jour","pt":"Inicialização e atualizações","ru":"Запуск и обновления","zh":"启动与更新"},
+  "Data & recovery": {"nl":"Gegevens en herstel","de":"Daten und Wiederherstellung","es":"Datos y recuperación","fr":"Données et récupération","pt":"Dados e recuperação","ru":"Данные и восстановление","zh":"数据与恢复"},
+  "Maintenance": {"nl":"Onderhoud","de":"Wartung","es":"Mantenimiento","fr":"Maintenance","pt":"Manutenção","ru":"Обслуживание","zh":"维护"},
+  "Selection actions": {"nl":"Selectieacties","de":"Auswahlaktionen","es":"Acciones de selección","fr":"Actions de sélection","pt":"Ações de seleção","ru":"Действия с выбором","zh":"选择操作"},
+  "Search cleanup…": {"nl":"Opruimacties zoeken…","de":"Bereinigungsaktionen suchen…","es":"Buscar acciones de limpieza…","fr":"Rechercher un nettoyage…","pt":"Pesquisar ações de limpeza…","ru":"Поиск действий очистки…","zh":"搜索清理操作…"},
+  "No cleanup actions match these filters.": {"nl":"Geen opruimacties komen overeen met deze filters.","de":"Keine Bereinigungsaktionen entsprechen diesen Filtern.","es":"Ninguna acción de limpieza coincide con estos filtros.","fr":"Aucune action de nettoyage ne correspond à ces filtres.","pt":"Nenhuma ação de limpeza corresponde a estes filtros.","ru":"Нет действий очистки, соответствующих этим фильтрам.","zh":"没有符合这些筛选条件的清理操作。"},
+  "Cleanup details": {"nl":"Opruimdetails","de":"Details zur Bereinigung","es":"Detalles de limpieza","fr":"Détails du nettoyage","pt":"Detalhes da limpeza","ru":"Подробности очистки","zh":"清理详情"}
+}

@@ -1,0 +1,245 @@
+{
+  "Could not save session report: {0}": {
+    "nl": "Kon het sessierapport niet opslaan: {0}",
+    "es": "No se pudo guardar el informe de sesión: {0}",
+    "de": "Sitzungsbericht konnte nicht gespeichert werden: {0}",
+    "fr": "Impossible d’enregistrer le rapport de session : {0}",
+    "pt": "Não foi possível salvar o relatório da sessão: {0}",
+    "ru": "Не удалось сохранить отчёт сеанса: {0}",
+    "zh": "无法保存会话报告：{0}"
+  },
+  "Could not save Windows Update recovery; the service was left unchanged.": {
+    "nl": "Kon herstelgegevens voor Windows Update niet opslaan; de service bleef ongewijzigd.",
+    "es": "No se pudo guardar la recuperación de Windows Update; el servicio no se modificó.",
+    "de": "Windows-Update-Wiederherstellung konnte nicht gespeichert werden; der Dienst blieb unverändert.",
+    "fr": "Impossible d’enregistrer la récupération de Windows Update ; le service reste inchangé.",
+    "pt": "Não foi possível salvar a recuperação do Windows Update; o serviço não foi alterado.",
+    "ru": "Не удалось сохранить данные восстановления Windows Update; служба не изменена.",
+    "zh": "无法保存 Windows Update 恢复信息；服务未更改。"
+  },
+  "Windows Update service was not running; left unchanged.": {
+    "nl": "Windows Update-service was niet actief; ongewijzigd gelaten.",
+    "es": "El servicio de Windows Update no estaba en ejecución; no se modificó.",
+    "de": "Windows-Update-Dienst lief nicht; unverändert gelassen.",
+    "fr": "Le service Windows Update n’était pas actif ; laissé inchangé.",
+    "pt": "O serviço Windows Update não estava em execução; não foi alterado.",
+    "ru": "Служба Windows Update не работала; оставлена без изменений.",
+    "zh": "Windows Update 服务未运行；保持不变。"
+  },
+  "Stopped Windows Update service temporarily.": {
+    "nl": "Windows Update-service tijdelijk gestopt.",
+    "es": "Servicio de Windows Update detenido temporalmente.",
+    "de": "Windows-Update-Dienst vorübergehend gestoppt.",
+    "fr": "Service Windows Update arrêté temporairement.",
+    "pt": "Serviço Windows Update interrompido temporariamente.",
+    "ru": "Служба Windows Update временно остановлена.",
+    "zh": "已暂时停止 Windows Update 服务。"
+  },
+  "Resumed Windows Update service.": {
+    "nl": "Windows Update-service hervat.",
+    "es": "Servicio de Windows Update reanudado.",
+    "de": "Windows-Update-Dienst fortgesetzt.",
+    "fr": "Service Windows Update relancé.",
+    "pt": "Serviço Windows Update retomado.",
+    "ru": "Служба Windows Update возобновлена.",
+    "zh": "已恢复 Windows Update 服务。"
+  },
+  "Could not pause Windows Update service: {0}": {
+    "nl": "Kon Windows Update-service niet pauzeren: {0}",
+    "es": "No se pudo pausar el servicio de Windows Update: {0}",
+    "de": "Windows-Update-Dienst konnte nicht pausiert werden: {0}",
+    "fr": "Impossible de suspendre Windows Update : {0}",
+    "pt": "Não foi possível pausar o serviço Windows Update: {0}",
+    "ru": "Не удалось приостановить службу Windows Update: {0}",
+    "zh": "无法暂停 Windows Update 服务：{0}"
+  },
+  "Could not resume Windows Update service: {0}": {
+    "nl": "Kon Windows Update-service niet hervatten: {0}",
+    "es": "No se pudo reanudar el servicio de Windows Update: {0}",
+    "de": "Windows-Update-Dienst konnte nicht fortgesetzt werden: {0}",
+    "fr": "Impossible de relancer Windows Update : {0}",
+    "pt": "Não foi possível retomar o serviço Windows Update: {0}",
+    "ru": "Не удалось возобновить службу Windows Update: {0}",
+    "zh": "无法恢复 Windows Update 服务：{0}"
+  },
+  "Trimmed working sets: {0} apps; skipped: {1}. Windows can reload memory as needed.": {
+    "nl": "Werksets verkleind: {0} apps; overgeslagen: {1}. Windows kan geheugen zo nodig opnieuw laden.",
+    "es": "Conjuntos de trabajo reducidos: {0} aplicaciones; omitidas: {1}. Windows puede recargar memoria cuando sea necesario.",
+    "de": "Arbeitssätze verkleinert: {0} Apps; übersprungen: {1}. Windows kann Speicher bei Bedarf erneut laden.",
+    "fr": "Jeux de travail réduits : {0} applications ; ignorées : {1}. Windows peut recharger la mémoire si nécessaire.",
+    "pt": "Conjuntos de trabalho reduzidos: {0} aplicativos; ignorados: {1}. O Windows pode recarregar memória conforme necessário.",
+    "ru": "Рабочие наборы сокращены: приложений {0}; пропущено {1}. Windows может снова загрузить память при необходимости.",
+    "zh": "已缩减工作集：{0} 个应用；跳过：{1} 个。Windows 可按需重新加载内存。"
+  },
+  "{0} · {1} min · restoration pending · {2}": {
+    "nl": "{0} · {1} min · herstel in afwachting · {2}",
+    "es": "{0} · {1} min · restauración pendiente · {2}",
+    "de": "{0} · {1} Min. · Wiederherstellung ausstehend · {2}",
+    "fr": "{0} · {1} min · restauration en attente · {2}",
+    "pt": "{0} · {1} min · restauração pendente · {2}",
+    "ru": "{0} · {1} мин · ожидается восстановление · {2}",
+    "zh": "{0} · {1} 分钟 · 等待还原 · {2}"
+  },
+  "{0} · {1} min · ended · {2}": {
+    "nl": "{0} · {1} min · beëindigd · {2}",
+    "es": "{0} · {1} min · terminada · {2}",
+    "de": "{0} · {1} Min. · beendet · {2}",
+    "fr": "{0} · {1} min · terminée · {2}",
+    "pt": "{0} · {1} min · encerrada · {2}",
+    "ru": "{0} · {1} мин · завершён · {2}",
+    "zh": "{0} · {1} 分钟 · 已结束 · {2}"
+  },
+  "Game Boost ended · {0} · restoration pending": {
+    "nl": "Gameboost beëindigd · {0} · herstel in afwachting",
+    "es": "Modo de juego terminado · {0} · restauración pendiente",
+    "de": "Spielmodus beendet · {0} · Wiederherstellung ausstehend",
+    "fr": "Mode jeu terminé · {0} · restauration en attente",
+    "pt": "Modo de jogo encerrado · {0} · restauração pendente",
+    "ru": "Игровой режим завершён · {0} · ожидается восстановление",
+    "zh": "游戏模式已结束 · {0} · 等待还原"
+  },
+  "Game Boost ended · {0} · temporary settings restored": {
+    "nl": "Gameboost beëindigd · {0} · tijdelijke instellingen hersteld",
+    "es": "Modo de juego terminado · {0} · ajustes temporales restaurados",
+    "de": "Spielmodus beendet · {0} · temporäre Einstellungen wiederhergestellt",
+    "fr": "Mode jeu terminé · {0} · réglages temporaires restaurés",
+    "pt": "Modo de jogo encerrado · {0} · configurações temporárias restauradas",
+    "ru": "Игровой режим завершён · {0} · временные настройки восстановлены",
+    "zh": "游戏模式已结束 · {0} · 临时设置已还原"
+  },
+  "Profile saved for {0}. Protected apps apply to every profile.": {
+    "nl": "Profiel opgeslagen voor {0}. Beschermde apps gelden voor elk profiel.",
+    "es": "Perfil guardado para {0}. Las aplicaciones protegidas se aplican a todos los perfiles.",
+    "de": "Profil für {0} gespeichert. Geschützte Apps gelten für jedes Profil.",
+    "fr": "Profil enregistré pour {0}. Les applications protégées s’appliquent à tous les profils.",
+    "pt": "Perfil salvo para {0}. Aplicativos protegidos valem para todos os perfis.",
+    "ru": "Профиль сохранён для {0}. Защищённые приложения учитываются во всех профилях.",
+    "zh": "已为 {0} 保存配置。受保护应用适用于所有配置。"
+  },
+  "Loaded profile for {0}.": {
+    "nl": "Profiel geladen voor {0}.",
+    "es": "Perfil cargado para {0}.",
+    "de": "Profil für {0} geladen.",
+    "fr": "Profil chargé pour {0}.",
+    "pt": "Perfil carregado para {0}.",
+    "ru": "Профиль для {0} загружен.",
+    "zh": "已加载 {0} 的配置。"
+  },
+  "Could not save profile: {0}": {
+    "nl": "Kon profiel niet opslaan: {0}",
+    "es": "No se pudo guardar el perfil: {0}",
+    "de": "Profil konnte nicht gespeichert werden: {0}",
+    "fr": "Impossible d’enregistrer le profil : {0}",
+    "pt": "Não foi possível salvar o perfil: {0}",
+    "ru": "Не удалось сохранить профиль: {0}",
+    "zh": "无法保存配置：{0}"
+  },
+  "Skipped changed app: {0}": {
+    "nl": "Gewijzigde app overgeslagen: {0}",
+    "es": "Aplicación cambiada omitida: {0}",
+    "de": "Geänderte App übersprungen: {0}",
+    "fr": "Application modifiée ignorée : {0}",
+    "pt": "Aplicativo alterado ignorado: {0}",
+    "ru": "Изменившееся приложение пропущено: {0}",
+    "zh": "已跳过身份变化的应用：{0}"
+  },
+  "Already at low priority: {0}": {
+    "nl": "Heeft al lage prioriteit: {0}",
+    "es": "Ya tiene prioridad baja: {0}",
+    "de": "Bereits mit niedriger Priorität: {0}",
+    "fr": "Déjà en priorité basse : {0}",
+    "pt": "Já está com prioridade baixa: {0}",
+    "ru": "Уже имеет низкий приоритет: {0}",
+    "zh": "已处于低优先级：{0}"
+  },
+  "Lowered priority: {0}": {
+    "nl": "Prioriteit verlaagd: {0}",
+    "es": "Prioridad reducida: {0}",
+    "de": "Priorität gesenkt: {0}",
+    "fr": "Priorité réduite : {0}",
+    "pt": "Prioridade reduzida: {0}",
+    "ru": "Приоритет снижен: {0}",
+    "zh": "已降低优先级：{0}"
+  },
+  "Restored priority: {0}": {
+    "nl": "Prioriteit hersteld: {0}",
+    "es": "Prioridad restaurada: {0}",
+    "de": "Priorität wiederhergestellt: {0}",
+    "fr": "Priorité restaurée : {0}",
+    "pt": "Prioridade restaurada: {0}",
+    "ru": "Приоритет восстановлен: {0}",
+    "zh": "已恢复优先级：{0}"
+  },
+  "App already exited: {0}": {
+    "nl": "App was al afgesloten: {0}",
+    "es": "La aplicación ya se cerró: {0}",
+    "de": "App bereits beendet: {0}",
+    "fr": "Application déjà fermée : {0}",
+    "pt": "O aplicativo já foi encerrado: {0}",
+    "ru": "Приложение уже завершено: {0}",
+    "zh": "应用已退出：{0}"
+  },
+  "Skipped replaced app: {0}": {
+    "nl": "Vervangen app overgeslagen: {0}",
+    "es": "Aplicación reemplazada omitida: {0}",
+    "de": "Ersetzte App übersprungen: {0}",
+    "fr": "Application remplacée ignorée : {0}",
+    "pt": "Aplicativo substituído ignorado: {0}",
+    "ru": "Заменённое приложение пропущено: {0}",
+    "zh": "已跳过被替换的应用：{0}"
+  },
+  "Could not lower {0}: {1}": {
+    "nl": "Kon prioriteit van {0} niet verlagen: {1}",
+    "es": "No se pudo reducir la prioridad de {0}: {1}",
+    "de": "Priorität von {0} konnte nicht gesenkt werden: {1}",
+    "fr": "Impossible de réduire la priorité de {0} : {1}",
+    "pt": "Não foi possível reduzir a prioridade de {0}: {1}",
+    "ru": "Не удалось снизить приоритет {0}: {1}",
+    "zh": "无法降低 {0} 的优先级：{1}"
+  },
+  "Could not restore app priority: {0}": {
+    "nl": "Kon appprioriteit niet herstellen: {0}",
+    "es": "No se pudo restaurar la prioridad de la aplicación: {0}",
+    "de": "App-Priorität konnte nicht wiederhergestellt werden: {0}",
+    "fr": "Impossible de restaurer la priorité de l’application : {0}",
+    "pt": "Não foi possível restaurar a prioridade do aplicativo: {0}",
+    "ru": "Не удалось восстановить приоритет приложения: {0}",
+    "zh": "无法恢复应用优先级：{0}"
+  },
+  "Could not save session recovery: {0}": {
+    "nl": "Kon sessieherstelgegevens niet opslaan: {0}",
+    "es": "No se pudo guardar la recuperación de sesión: {0}",
+    "de": "Sitzungswiederherstellung konnte nicht gespeichert werden: {0}",
+    "fr": "Impossible d’enregistrer la récupération de session : {0}",
+    "pt": "Não foi possível salvar a recuperação da sessão: {0}",
+    "ru": "Не удалось сохранить данные восстановления сеанса: {0}",
+    "zh": "无法保存会话恢复信息：{0}"
+  },
+  "Could not save the priority recovery record.": {
+    "nl": "Kon het prioriteitherstelrecord niet opslaan.",
+    "es": "No se pudo guardar el registro de recuperación de prioridad.",
+    "de": "Prioritätswiederherstellung konnte nicht gespeichert werden.",
+    "fr": "Impossible d’enregistrer la récupération de priorité.",
+    "pt": "Não foi possível salvar o registro de recuperação de prioridade.",
+    "ru": "Не удалось сохранить запись восстановления приоритета.",
+    "zh": "无法保存优先级恢复记录。"
+  },
+  "The saved app identity is invalid.": {
+    "nl": "De opgeslagen appidentiteit is ongeldig.",
+    "es": "La identidad guardada de la aplicación no es válida.",
+    "de": "Die gespeicherte App-Identität ist ungültig.",
+    "fr": "L’identité enregistrée de l’application est invalide.",
+    "pt": "A identidade salva do aplicativo é inválida.",
+    "ru": "Сохранённые данные идентификации приложения недопустимы.",
+    "zh": "保存的应用身份无效。"
+  },
+  "The saved original priority is invalid.": {
+    "nl": "De opgeslagen oorspronkelijke prioriteit is ongeldig.",
+    "es": "La prioridad original guardada no es válida.",
+    "de": "Die gespeicherte ursprüngliche Priorität ist ungültig.",
+    "fr": "La priorité d’origine enregistrée est invalide.",
+    "pt": "A prioridade original salva é inválida.",
+    "ru": "Сохранённый исходный приоритет недопустим.",
+    "zh": "保存的原始优先级无效。"
+  }
+}

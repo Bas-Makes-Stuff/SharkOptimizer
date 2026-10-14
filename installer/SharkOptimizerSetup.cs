@@ -1,4 +1,5 @@
 using System;
+using System.ComponentModel;
 using System.Diagnostics;
 using System.Drawing;
 using System.IO;
@@ -12,12 +13,13 @@ using Microsoft.Win32;
 [assembly: AssemblyDescription("SharkOptimizer Windows installer")]
 [assembly: AssemblyCompany("Bas Makes Stuff")]
 [assembly: AssemblyProduct("SharkOptimizer")]
-[assembly: AssemblyFileVersion("1.5.1.0")]
-[assembly: AssemblyInformationalVersion("1.5.1")]
+[assembly: AssemblyVersion("2.1.1.0")]
+[assembly: AssemblyFileVersion("2.1.1.0")]
+[assembly: AssemblyInformationalVersion("2.1.1")]
 
 internal static class SetupProgram
 {
-    internal const string Version = "1.5.1";
+    internal const string Version = "2.1.1";
     internal static string InstallRoot = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ProgramFiles), "SharkOptimizer");
     internal const string UninstallKey = @"SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\SharkOptimizer";
 
@@ -26,9 +28,22 @@ internal static class SetupProgram
     {
         Application.EnableVisualStyles();
         Application.SetCompatibleTextRenderingDefault(false);
+        if (args.Length == 3 && String.Equals(args[0], "/cleanup", StringComparison.OrdinalIgnoreCase))
+        {
+            UninstallCleanup.Run(args[1], args[2]); return;
+        }
         if (args.Length > 0 && String.Equals(args[0], "/uninstall", StringComparison.OrdinalIgnoreCase))
         {
             Uninstall();
+            return;
+        }
+        if (args.Length > 0 && String.Equals(args[0], "/update", StringComparison.OrdinalIgnoreCase))
+        {
+            int waitPid = 0; if (args.Length > 1) Int32.TryParse(args[1], out waitPid);
+            string root = null;
+            try { using (RegistryKey key = Registry.LocalMachine.OpenSubKey(UninstallKey)) root = key == null ? null : Convert.ToString(key.GetValue("InstallLocation")); } catch { }
+            if (String.IsNullOrWhiteSpace(root) || !Directory.Exists(root)) { MessageBox.Show("SharkOptimizer's installed folder could not be found. Run the downloaded setup normally to repair the installation.", "SharkOptimizer Update", MessageBoxButtons.OK, MessageBoxIcon.Error); return; }
+            Application.Run(new UpdateInstaller(root, waitPid));
             return;
         }
         Application.Run(new SetupWizard());
@@ -44,23 +59,17 @@ internal static class SetupProgram
 
         try
         {
-            RemoveShortcuts();
-            try { Registry.LocalMachine.DeleteSubKeyTree(UninstallKey, false); } catch { }
-            string cleanup = Path.Combine(Path.GetTempPath(), "SharkOptimizer-Uninstall-" + Guid.NewGuid().ToString("N") + ".ps1");
-            string script = "$ErrorActionPreference='SilentlyContinue'\r\n" +
-                "Wait-Process -Id " + Process.GetCurrentProcess().Id + " -ErrorAction SilentlyContinue\r\n" +
-                "Start-Sleep -Milliseconds 300\r\n" +
-                "$root='" + root.Replace("'", "''") + "'\r\n" +
-                "Remove-Item -LiteralPath $root -Recurse -Force -ErrorAction SilentlyContinue\r\n" +
-                "Remove-Item -LiteralPath $PSCommandPath -Force -ErrorAction SilentlyContinue\r\n";
-            File.WriteAllText(cleanup, script, Encoding.UTF8);
-            Process.Start(new ProcessStartInfo {
-                FileName = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Windows), @"System32\WindowsPowerShell\v1.0\powershell.exe"),
-                Arguments = "-NoProfile -ExecutionPolicy Bypass -WindowStyle Hidden -File \"" + cleanup + "\"",
-                CreateNoWindow = true, UseShellExecute = false, WindowStyle = ProcessWindowStyle.Hidden
-            });
-            MessageBox.Show("SharkOptimizer is being removed. Saved settings and change history were kept.",
-                "Uninstall SharkOptimizer", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            UninstallCleanup.ValidateRoot(root);
+            UninstallCleanup.RequireAppClosed(root);
+            string helper = UninstallCleanup.PrepareHelper();
+            RemoveShortcuts(root);
+            SharkOptimizer.Platform.StartupRegistration.Disable();
+            try { using (Process process = Process.Start(new ProcessStartInfo(Path.Combine(Environment.SystemDirectory, "schtasks.exe"), "/Delete /TN \"SharkOptimizer Weekly Cleanup\" /F") { CreateNoWindow = true, UseShellExecute = false, WindowStyle = ProcessWindowStyle.Hidden })) if (process != null) process.WaitForExit(10000); } catch { }
+            using (Process helperProcess = Process.Start(new ProcessStartInfo {
+                FileName = helper,
+                Arguments = "/cleanup \"" + root + "\" " + Process.GetCurrentProcess().Id,
+                CreateNoWindow = true, UseShellExecute = false, WindowStyle = ProcessWindowStyle.Hidden, WorkingDirectory = Path.GetTempPath()
+            })) { if (helperProcess == null) throw new InvalidOperationException("The uninstall cleanup could not start."); }
         }
         catch (Exception ex)
         {
@@ -69,16 +78,129 @@ internal static class SetupProgram
         }
     }
 
-    private static void RemoveShortcuts()
+    private static void RemoveShortcuts(string root)
     {
         string[] paths = {
-            Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.CommonPrograms), "SharkOptimizer"),
-            Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Programs), "SharkOptimizer"),
+            Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.CommonPrograms), "SharkOptimizer", "SharkOptimizer.lnk"),
+            Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Programs), "SharkOptimizer", "SharkOptimizer.lnk"),
             Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.DesktopDirectory), "SharkOptimizer.lnk")
         };
         foreach (string path in paths) {
-            try { if (Directory.Exists(path)) Directory.Delete(path, true); else if (File.Exists(path)) File.Delete(path); } catch { }
+            if (File.Exists(path)) UninstallCleanup.RemoveOwnedShortcut(path, root);
         }
+        UninstallCleanup.RemoveEmptyDirectory(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Programs), "SharkOptimizer"));
+        UninstallCleanup.RemoveEmptyDirectory(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.CommonPrograms), "SharkOptimizer"));
+    }
+}
+
+internal sealed class UpdateInstaller : Form
+{
+    private readonly string installRoot;
+    private readonly int waitPid;
+    private readonly Label status = new Label();
+    private readonly ProgressBar progress = new ProgressBar();
+
+    internal UpdateInstaller(string root, int processId)
+    {
+        installRoot = Path.GetFullPath(root); waitPid = processId;
+        Text = "SharkOptimizer Update"; ClientSize = new Size(480, 156); FormBorderStyle = FormBorderStyle.FixedDialog;
+        StartPosition = FormStartPosition.CenterScreen; MaximizeBox = false; MinimizeBox = false; ShowInTaskbar = true;
+        try { Icon = Icon.ExtractAssociatedIcon(Application.ExecutablePath); } catch { }
+        var title = new Label { Text = "Updating SharkOptimizer", Font = new Font("Segoe UI", 15, FontStyle.Bold), ForeColor = Color.FromArgb(30, 42, 62), AutoSize = true, Location = new Point(24, 20) };
+        status.Text = "Waiting for SharkOptimizer to close…"; status.Font = new Font("Segoe UI", 9.5f); status.ForeColor = Color.FromArgb(98, 112, 136); status.AutoSize = true; status.Location = new Point(26, 60);
+        progress.Location = new Point(26, 92); progress.Size = new Size(426, 18); progress.Style = ProgressBarStyle.Marquee; progress.MarqueeAnimationSpeed = 24;
+        Controls.Add(title); Controls.Add(status); Controls.Add(progress);
+        bool updating = true;
+        FormClosing += delegate(object sender, FormClosingEventArgs e) { if (updating) e.Cancel = true; };
+        var worker = new BackgroundWorker();
+        worker.DoWork += delegate(object sender, DoWorkEventArgs e) { WaitForAppExit(); e.Result = InstallUpdate(); };
+        worker.RunWorkerCompleted += delegate(object sender, RunWorkerCompletedEventArgs e)
+        {
+            updating = false;
+            progress.Style = ProgressBarStyle.Blocks;
+            if (e.Error != null)
+            {
+                status.Text = "The update could not be installed."; progress.Value = 0;
+                MessageBox.Show(this, "SharkOptimizer was not updated." + Environment.NewLine + Environment.NewLine + e.Error.Message, "SharkOptimizer Update", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                Close(); return;
+            }
+            status.Text = "Update installed. Starting SharkOptimizer…"; progress.Value = 100;
+            string app = Convert.ToString(e.Result);
+            try { Process.Start(new ProcessStartInfo(app) { WorkingDirectory = installRoot, UseShellExecute = true }); }
+            catch (Exception ex) { MessageBox.Show(this, "The update installed, but SharkOptimizer could not reopen automatically." + Environment.NewLine + ex.Message, "SharkOptimizer Update", MessageBoxButtons.OK, MessageBoxIcon.Information); }
+            Close();
+        };
+        Shown += delegate { worker.RunWorkerAsync(); };
+    }
+
+    private void WaitForAppExit()
+    {
+        if (waitPid <= 0) return;
+        try
+        {
+            using (Process app = Process.GetProcessById(waitPid))
+                if (!app.WaitForExit(60000)) throw new TimeoutException("SharkOptimizer did not close within one minute. Close it and run the update again.");
+        }
+        catch (ArgumentException) { }
+    }
+
+    private string InstallUpdate()
+    {
+        string appPath = Path.Combine(installRoot, "SharkOptimizer.exe");
+        var transaction = new InstallTransaction(installRoot);
+        try
+        {
+            string app = transaction.StageResource("SharkOptimizer.Payload.SharkOptimizer.Native.exe", "app.exe");
+            string icon = transaction.StageResource("SharkOptimizer.Payload.shark.ico", "shark.ico");
+            string setup = transaction.StageSetup();
+            InstallTransaction.ValidatePayload(app, icon);
+            transaction.ReplaceFile(app, appPath);
+            transaction.ReplaceFile(icon, Path.Combine(installRoot, "data", "shark.ico"));
+            transaction.ReplaceFile(setup, Path.Combine(installRoot, "Uninstall-SharkOptimizer.exe"));
+            SetupProgram.InstallRoot = installRoot;
+            UpdateShortcuts(transaction);
+            transaction.ChangingMetadata();
+            if (SharkOptimizer.Platform.StartupRegistration.IsEnabled()) SharkOptimizer.Platform.StartupRegistration.Enable(appPath);
+            using (RegistryKey key = Registry.LocalMachine.CreateSubKey(SetupProgram.UninstallKey))
+            {
+                if (key == null) throw new InvalidOperationException("The Windows uninstall record could not be updated.");
+                key.SetValue("DisplayName", "SharkOptimizer"); key.SetValue("DisplayVersion", SetupProgram.Version); key.SetValue("Publisher", "Bas Makes Stuff");
+                key.SetValue("InstallLocation", installRoot); key.SetValue("DisplayIcon", appPath); key.SetValue("UninstallString", "\"" + Path.Combine(installRoot, "Uninstall-SharkOptimizer.exe") + "\" /uninstall");
+                key.SetValue("NoModify", 1, RegistryValueKind.DWord); key.SetValue("NoRepair", 1, RegistryValueKind.DWord);
+            }
+            transaction.Commit();
+            return appPath;
+        }
+        catch (Exception ex) { throw transaction.Recover(ex); }
+    }
+
+    private void UpdateShortcuts(InstallTransaction transaction)
+    {
+        string programs = Environment.GetFolderPath(Environment.SpecialFolder.Programs);
+        string menu = Path.Combine(programs, "SharkOptimizer", "SharkOptimizer.lnk");
+        transaction.CaptureFile(menu); CreateShortcut(menu);
+        string desktop = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.DesktopDirectory), "SharkOptimizer.lnk");
+        if (File.Exists(desktop)) { transaction.CaptureFile(desktop); CreateShortcut(desktop); }
+    }
+
+    private void CreateShortcut(string path)
+    {
+        Directory.CreateDirectory(Path.GetDirectoryName(path));
+        Type shellType = Type.GetTypeFromProgID("WScript.Shell"); object shell = Activator.CreateInstance(shellType);
+        try
+        {
+            object shortcut = shellType.InvokeMember("CreateShortcut", BindingFlags.InvokeMethod, null, shell, new object[] { path });
+            try
+            {
+                Type type = shortcut.GetType(); type.InvokeMember("TargetPath", BindingFlags.SetProperty, null, shortcut, new object[] { Path.Combine(installRoot, "SharkOptimizer.exe") });
+                type.InvokeMember("WorkingDirectory", BindingFlags.SetProperty, null, shortcut, new object[] { installRoot });
+                type.InvokeMember("Description", BindingFlags.SetProperty, null, shortcut, new object[] { "SharkOptimizer " + SetupProgram.Version });
+                type.InvokeMember("IconLocation", BindingFlags.SetProperty, null, shortcut, new object[] { Path.Combine(installRoot, "SharkOptimizer.exe") });
+                type.InvokeMember("Save", BindingFlags.InvokeMethod, null, shortcut, null);
+            }
+            finally { if (Marshal.IsComObject(shortcut)) Marshal.ReleaseComObject(shortcut); }
+        }
+        finally { if (Marshal.IsComObject(shell)) Marshal.ReleaseComObject(shell); }
     }
 }
 
@@ -105,6 +227,7 @@ internal sealed class SetupWizard : Form
     internal SetupWizard()
     {
         Text = "SharkOptimizer Setup";
+        FormClosing += delegate(object sender, FormClosingEventArgs e) { if (page == 2) e.Cancel = true; };
         ClientSize = new Size(780, 500);
         MinimumSize = new Size(780, 500);
         MaximumSize = new Size(780, 500);
@@ -149,7 +272,7 @@ internal sealed class SetupWizard : Form
         Button browse = new Button { Text = "Browse...", Location = new Point(444, 157), Size = new Size(76, 32) };
         browse.Click += delegate { using (FolderBrowserDialog dialog = new FolderBrowserDialog()) { dialog.Description = "Choose where SharkOptimizer should be installed."; dialog.SelectedPath = folder.Text; if (dialog.ShowDialog(this) == DialogResult.OK) folder.Text = dialog.SelectedPath; } };
         body.Controls.Add(browse);
-        desktopLink.Text = "Create a desktop shortcut"; desktopLink.Checked = true; desktopLink.AutoSize = true; desktopLink.Location = new Point(44, 212); body.Controls.Add(desktopLink);
+        desktopLink.Text = "Create a desktop shortcut (tray startup is enabled)"; desktopLink.Checked = true; desktopLink.AutoSize = true; desktopLink.Location = new Point(44, 212); body.Controls.Add(desktopLink);
         launchApp.Text = "Launch SharkOptimizer when setup closes"; launchApp.Checked = true; launchApp.AutoSize = true; launchApp.Location = new Point(44, 115); body.Controls.Add(launchApp);
         progress.Location = new Point(44, 175); progress.Size = new Size(470, 18); progress.Visible = false; body.Controls.Add(progress);
         status.Location = new Point(44, 207); status.Size = new Size(470, 48); status.Font = new Font("Segoe UI", 9.5f); status.ForeColor = Color.FromArgb(98, 112, 136); body.Controls.Add(status);
@@ -215,7 +338,7 @@ internal sealed class SetupWizard : Form
         if (page == 1) { Install(); return; }
         if (page == 3) {
             bool launch = launchApp.Checked;
-            string app = Path.Combine(folder.Text, "Start-SharkOptimizer.bat");
+            string app = Path.Combine(folder.Text, "SharkOptimizer.exe");
             Close();
             if (launch) try { Process.Start(new ProcessStartInfo(app) { WorkingDirectory = folder.Text, UseShellExecute = true }); } catch { }
         }
@@ -234,43 +357,46 @@ internal sealed class SetupWizard : Form
             if (choice != DialogResult.Yes) return;
         }
         ShowPage(2); progress.Value = 0; status.Text = "Preparing installation..."; Application.DoEvents();
+        InstallTransaction transaction = null;
         try {
-            string data = Path.Combine(root, "data"), fonts = Path.Combine(root, "data", "fonts");
-            Directory.CreateDirectory(fonts);
-            string[] names = { "Start-SharkOptimizer.bat", "SharkOptimizer.ps1", "SharkOptimizer-Launcher.ps1", "Poppins-Regular.ttf", "Poppins-Bold.ttf", "shark.ico" };
-            string[] resources = { "SharkOptimizer.Payload.Start-SharkOptimizer.bat", "SharkOptimizer.Payload.SharkOptimizer.ps1", "SharkOptimizer.Payload.SharkOptimizer-Launcher.ps1", "SharkOptimizer.Payload.Poppins-Regular.ttf", "SharkOptimizer.Payload.Poppins-Bold.ttf", "SharkOptimizer.Payload.shark.ico" };
-            for (int i = 0; i < names.Length; i++) {
-                status.Text = "Installing " + names[i] + "..."; Application.DoEvents();
-                string destination = i == 0 ? Path.Combine(root, names[i]) : (i < 3 ? Path.Combine(data, names[i]) : Path.Combine(fonts, names[i]));
-                using (Stream input = Assembly.GetExecutingAssembly().GetManifestResourceStream(resources[i])) {
-                    if (input == null) throw new InvalidOperationException("Setup payload is missing " + names[i] + ".");
-                    using (FileStream output = new FileStream(destination, FileMode.Create, FileAccess.Write, FileShare.None)) input.CopyTo(output);
-                }
-                progress.Value = (i + 1) * 70 / names.Length; Application.DoEvents();
-            }
+            transaction = new InstallTransaction(root);
+            string stagedApp = transaction.StageResource("SharkOptimizer.Payload.SharkOptimizer.Native.exe", "app.exe");
+            string stagedIcon = transaction.StageResource("SharkOptimizer.Payload.shark.ico", "shark.ico");
+            string stagedSetup = transaction.StageSetup();
+            InstallTransaction.ValidatePayload(stagedApp, stagedIcon);
+            status.Text = "Installing SharkOptimizer..."; Application.DoEvents();
+            transaction.ReplaceFile(stagedApp, Path.Combine(root, "SharkOptimizer.exe"));
+            transaction.ReplaceFile(stagedIcon, Path.Combine(root, "data", "shark.ico"));
+            progress.Value = 70;
             status.Text = "Creating shortcuts and uninstall information..."; Application.DoEvents();
             string uninstaller = Path.Combine(root, "Uninstall-SharkOptimizer.exe");
-            File.Copy(Application.ExecutablePath, uninstaller, true);
-            try { File.Delete(Path.Combine(root, "unins000.exe")); File.Delete(Path.Combine(root, "unins000.dat")); } catch { }
-            CreateShortcut(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Programs), "SharkOptimizer", "SharkOptimizer.lnk"), root);
-            if (desktopLink.Checked) CreateShortcut(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.DesktopDirectory), "SharkOptimizer.lnk"), root);
-            RemovePreviousInnoEntry();
+            transaction.ReplaceFile(stagedSetup, uninstaller);
+            string menu = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Programs), "SharkOptimizer", "SharkOptimizer.lnk");
+            transaction.CaptureFile(menu); CreateShortcut(menu, root);
+            if (desktopLink.Checked) { string desktop = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.DesktopDirectory), "SharkOptimizer.lnk"); transaction.CaptureFile(desktop); CreateShortcut(desktop, root); }
+            status.Text = "Registering tray startup for this Windows account..."; Application.DoEvents();
+            transaction.ChangingMetadata();
+            SharkOptimizer.Platform.StartupRegistration.Enable(Path.Combine(root, "SharkOptimizer.exe"));
             using (RegistryKey key = Registry.LocalMachine.CreateSubKey(SetupProgram.UninstallKey)) {
+                if (key == null) throw new InvalidOperationException("The Windows uninstall record could not be created.");
                 key.SetValue("DisplayName", "SharkOptimizer");
                 key.SetValue("DisplayVersion", SetupProgram.Version);
                 key.SetValue("Publisher", "Bas Makes Stuff");
                 key.SetValue("InstallLocation", root);
-                key.SetValue("DisplayIcon", Path.Combine(data, "shark.ico"));
+                key.SetValue("DisplayIcon", Path.Combine(root, "SharkOptimizer.exe"));
                 key.SetValue("UninstallString", "\"" + uninstaller + "\" /uninstall");
                 key.SetValue("NoModify", 1, RegistryValueKind.DWord);
                 key.SetValue("NoRepair", 1, RegistryValueKind.DWord);
             }
+            transaction.Commit(); transaction = null;
+            try { File.Delete(Path.Combine(root, "unins000.exe")); File.Delete(Path.Combine(root, "unins000.dat")); RemovePreviousInnoEntry(); } catch { }
             progress.Value = 100; status.Text = "Finishing setup..."; Application.DoEvents();
             SetupProgram.InstallRoot = root;
             ShowPage(3);
         }
         catch (Exception ex) {
-            MessageBox.Show(this, "Setup could not finish the installation.\n\n" + ex.Message, "SharkOptimizer Setup", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            Exception failure = transaction == null ? ex : transaction.Recover(ex);
+            MessageBox.Show(this, "Setup could not finish the installation.\n\n" + failure.Message, "SharkOptimizer Setup", MessageBoxButtons.OK, MessageBoxIcon.Error);
             ShowPage(1);
         }
     }
@@ -283,10 +409,10 @@ internal sealed class SetupWizard : Form
         try {
             object shortcut = shellType.InvokeMember("CreateShortcut", BindingFlags.InvokeMethod, null, shell, new object[] { path });
             Type type = shortcut.GetType();
-            type.InvokeMember("TargetPath", BindingFlags.SetProperty, null, shortcut, new object[] { Path.Combine(root, "Start-SharkOptimizer.bat") });
+            type.InvokeMember("TargetPath", BindingFlags.SetProperty, null, shortcut, new object[] { Path.Combine(root, "SharkOptimizer.exe") });
             type.InvokeMember("WorkingDirectory", BindingFlags.SetProperty, null, shortcut, new object[] { root });
             type.InvokeMember("Description", BindingFlags.SetProperty, null, shortcut, new object[] { "SharkOptimizer " + SetupProgram.Version });
-            type.InvokeMember("IconLocation", BindingFlags.SetProperty, null, shortcut, new object[] { Path.Combine(root, "data", "shark.ico") });
+            type.InvokeMember("IconLocation", BindingFlags.SetProperty, null, shortcut, new object[] { Path.Combine(root, "SharkOptimizer.exe") });
             type.InvokeMember("Save", BindingFlags.InvokeMethod, null, shortcut, null);
             if (Marshal.IsComObject(shortcut)) Marshal.ReleaseComObject(shortcut);
         }

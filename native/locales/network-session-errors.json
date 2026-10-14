@@ -1,0 +1,155 @@
+{
+  "The network check reached its time limit.": {
+    "nl": "De netwerkcontrole heeft de tijdslimiet bereikt.",
+    "es": "La comprobación de red alcanzó su límite de tiempo.",
+    "de": "Die Netzwerkprüfung hat ihr Zeitlimit erreicht.",
+    "fr": "La vérification réseau a atteint sa limite de temps.",
+    "pt": "A verificação de rede atingiu o limite de tempo.",
+    "ru": "Проверка сети достигла лимита времени.",
+    "zh": "网络检查已达到时间限制。"
+  },
+  "The network command timed out and could not be closed.": {
+    "nl": "Het netwerkcommando heeft de tijdslimiet bereikt en kon niet worden gesloten.",
+    "es": "El comando de red agotó el tiempo y no se pudo cerrar.",
+    "de": "Der Netzwerkbefehl hat das Zeitlimit überschritten und konnte nicht beendet werden.",
+    "fr": "La commande réseau a expiré et n’a pas pu être fermée.",
+    "pt": "O comando de rede excedeu o tempo e não pôde ser encerrado.",
+    "ru": "Время сетевой команды истекло, завершить её не удалось.",
+    "zh": "网络命令超时且无法关闭。"
+  },
+  "The network tool returned no output.": {
+    "nl": "Het netwerkhulpmiddel gaf geen uitvoer.",
+    "es": "La herramienta de red no devolvió resultados.",
+    "de": "Das Netzwerkwerkzeug lieferte keine Ausgabe.",
+    "fr": "L’outil réseau n’a renvoyé aucun résultat.",
+    "pt": "A ferramenta de rede não retornou resultados.",
+    "ru": "Сетевой инструмент не выдал результат.",
+    "zh": "网络工具未返回输出。"
+  },
+  "Unsupported network command.": {
+    "nl": "Niet-ondersteund netwerkcommando.",
+    "es": "Comando de red no compatible.",
+    "de": "Nicht unterstützter Netzwerkbefehl.",
+    "fr": "Commande réseau non prise en charge.",
+    "pt": "Comando de rede não suportado.",
+    "ru": "Неподдерживаемая сетевая команда.",
+    "zh": "不支持的网络命令。"
+  },
+  "Windows could not start the network tool.": {
+    "nl": "Windows kon het netwerkhulpmiddel niet starten.",
+    "es": "Windows no pudo iniciar la herramienta de red.",
+    "de": "Windows konnte das Netzwerkwerkzeug nicht starten.",
+    "fr": "Windows n’a pas pu lancer l’outil réseau.",
+    "pt": "O Windows não conseguiu iniciar a ferramenta de rede.",
+    "ru": "Windows не удалось запустить сетевой инструмент.",
+    "zh": "Windows 无法启动网络工具。"
+  },
+  "Windows returned exit code {0}.": {
+    "nl": "Windows gaf afsluitcode {0} terug.",
+    "es": "Windows devolvió el código de salida {0}.",
+    "de": "Windows meldete Rückgabecode {0}.",
+    "fr": "Windows a renvoyé le code de sortie {0}.",
+    "pt": "O Windows retornou o código de saída {0}.",
+    "ru": "Windows вернула код выхода {0}.",
+    "zh": "Windows 返回退出代码 {0}。"
+  },
+  "The host has no usable IP address.": {
+    "nl": "De host heeft geen bruikbaar IP-adres.",
+    "es": "El destino no tiene una dirección IP utilizable.",
+    "de": "Der Host hat keine nutzbare IP-Adresse.",
+    "fr": "L’hôte n’a pas d’adresse IP utilisable.",
+    "pt": "O destino não tem um endereço IP utilizável.",
+    "ru": "У узла нет пригодного IP-адреса.",
+    "zh": "主机没有可用 IP 地址。"
+  },
+  "Ping export failed": {
+    "nl": "Ping exporteren mislukt",
+    "es": "Error al exportar ping",
+    "de": "Ping-Export fehlgeschlagen",
+    "fr": "Échec de l’exportation du ping",
+    "pt": "Falha ao exportar ping",
+    "ru": "Ошибка экспорта пинга",
+    "zh": "延迟数据导出失败"
+  },
+  "A game-session profile is invalid.": {
+    "nl": "Een gamesessieprofiel is ongeldig.",
+    "es": "Un perfil de sesión de juego no es válido.",
+    "de": "Ein Spielsitzungsprofil ist ungültig.",
+    "fr": "Un profil de session de jeu est invalide.",
+    "pt": "Um perfil de sessão de jogo é inválido.",
+    "ru": "Недопустимый профиль игрового сеанса.",
+    "zh": "游戏会话配置无效。"
+  },
+  "A session list can contain up to 100 process names.": {
+    "nl": "Een sessielijst kan maximaal 100 procesnamen bevatten.",
+    "es": "Una lista de sesión puede contener hasta 100 nombres de procesos.",
+    "de": "Eine Sitzungsliste kann bis zu 100 Prozessnamen enthalten.",
+    "fr": "Une liste de session peut contenir jusqu’à 100 noms de processus.",
+    "pt": "Uma lista de sessão pode conter até 100 nomes de processos.",
+    "ru": "Список сеанса может содержать до 100 имён процессов.",
+    "zh": "会话列表最多可包含 100 个进程名称。"
+  },
+  "Game-session settings must be smaller than 1 MB.": {
+    "nl": "Gamesessie-instellingen moeten kleiner zijn dan 1 MB.",
+    "es": "Los ajustes de sesión deben ocupar menos de 1 MB.",
+    "de": "Spielsitzungseinstellungen müssen kleiner als 1 MB sein.",
+    "fr": "Les réglages de session doivent faire moins de 1 Mo.",
+    "pt": "As configurações da sessão devem ter menos de 1 MB.",
+    "ru": "Настройки игрового сеанса должны быть меньше 1 МБ.",
+    "zh": "游戏会话设置必须小于 1 MB。"
+  },
+  "Imported your previous game-session profiles and protected-app list.": {
+    "nl": "Je vorige gamesessieprofielen en lijst met beschermde apps geïmporteerd.",
+    "es": "Se importaron tus perfiles de sesión y la lista de aplicaciones protegidas anteriores.",
+    "de": "Vorherige Spielsitzungsprofile und Liste geschützter Apps importiert.",
+    "fr": "Vos anciens profils de session et la liste d’applications protégées ont été importés.",
+    "pt": "Seus perfis de sessão e lista de aplicativos protegidos anteriores foram importados.",
+    "ru": "Импортированы прежние профили игровых сеансов и список защищённых приложений.",
+    "zh": "已导入旧版游戏会话配置和受保护应用列表。"
+  },
+  "Previous session settings could not be loaded: {0}": {
+    "nl": "Vorige sessie-instellingen konden niet worden geladen: {0}",
+    "es": "No se pudieron cargar los ajustes de sesión anteriores: {0}",
+    "de": "Vorherige Sitzungseinstellungen konnten nicht geladen werden: {0}",
+    "fr": "Impossible de charger les anciens réglages de session : {0}",
+    "pt": "Não foi possível carregar as configurações da sessão anterior: {0}",
+    "ru": "Не удалось загрузить прежние настройки сеанса: {0}",
+    "zh": "无法加载旧版会话设置：{0}"
+  },
+  "The game-session app action is unsupported.": {
+    "nl": "De appactie van de gamesessie wordt niet ondersteund.",
+    "es": "La acción de aplicaciones de la sesión no es compatible.",
+    "de": "Die App-Aktion der Spielsitzung wird nicht unterstützt.",
+    "fr": "L’action d’applications de la session n’est pas prise en charge.",
+    "pt": "A ação de aplicativos da sessão não é suportada.",
+    "ru": "Действие с приложениями игрового сеанса не поддерживается.",
+    "zh": "不支持此游戏会话应用操作。"
+  },
+  "The game-session settings are invalid.": {
+    "nl": "De gamesessie-instellingen zijn ongeldig.",
+    "es": "Los ajustes de sesión de juego no son válidos.",
+    "de": "Die Spielsitzungseinstellungen sind ungültig.",
+    "fr": "Les réglages de session de jeu sont invalides.",
+    "pt": "As configurações da sessão de jogo são inválidas.",
+    "ru": "Настройки игрового сеанса недопустимы.",
+    "zh": "游戏会话设置无效。"
+  },
+  "The previous session settings exceed 1 MB.": {
+    "nl": "De vorige sessie-instellingen zijn groter dan 1 MB.",
+    "es": "Los ajustes de sesión anteriores superan 1 MB.",
+    "de": "Die vorherigen Sitzungseinstellungen überschreiten 1 MB.",
+    "fr": "Les anciens réglages de session dépassent 1 Mo.",
+    "pt": "As configurações da sessão anterior excedem 1 MB.",
+    "ru": "Прежние настройки сеанса превышают 1 МБ.",
+    "zh": "旧版会话设置超过 1 MB。"
+  },
+  "Use process names such as discord or steam, without paths.": {
+    "nl": "Gebruik procesnamen zoals discord of steam, zonder paden.",
+    "es": "Usa nombres de procesos como discord o steam, sin rutas.",
+    "de": "Verwende Prozessnamen wie discord oder steam ohne Pfade.",
+    "fr": "Utilisez des noms de processus comme discord ou steam, sans chemin.",
+    "pt": "Use nomes de processos como discord ou steam, sem caminhos.",
+    "ru": "Используйте имена процессов, например discord или steam, без путей.",
+    "zh": "使用 discord 或 steam 等进程名称，不要包含路径。"
+  }
+}

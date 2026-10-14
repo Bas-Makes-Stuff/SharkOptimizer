@@ -1,9 +1,9 @@
 @echo off
-rem SharkOptimizer 1.5.1 startup entry point
+rem SharkOptimizer 2.1.1 startup entry point
 setlocal
 
 set "ROOT=%~dp0"
-set "LAUNCHER=%ROOT%data\SharkOptimizer-Launcher.ps1"
+set "LAUNCHER=%ROOT%legacy\SharkOptimizer-Launcher.ps1"
 set "POWERSHELL=%SystemRoot%\System32\WindowsPowerShell\v1.0\powershell.exe"
 
 if not exist "%LAUNCHER%" (

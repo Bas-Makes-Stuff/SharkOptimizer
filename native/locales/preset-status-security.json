@@ -1,0 +1,128 @@
+{
+  "No preset selected.": {
+    "nl": "Geen voorinstelling geselecteerd.",
+    "es": "Ningún preajuste seleccionado.",
+    "de": "Keine Vorlage ausgewählt.",
+    "fr": "Aucun préréglage sélectionné.",
+    "pt": "Nenhuma predefinição selecionada.",
+    "ru": "Набор не выбран.",
+    "zh": "未选择预设。"
+  },
+  "No saved presets yet. Save a selection on Optimize, or import a preset file or share code.": {
+    "nl": "Nog geen voorinstellingen opgeslagen. Sla een selectie op bij Optimaliseren of importeer een bestand of deelcode.",
+    "es": "Todavía no hay preajustes guardados. Guarda una selección en Optimizar o importa un archivo o código compartido.",
+    "de": "Noch keine Vorlagen gespeichert. Speichere eine Auswahl auf Optimieren oder importiere eine Datei oder einen Freigabecode.",
+    "fr": "Aucun préréglage enregistré. Enregistrez une sélection dans Optimiser ou importez un fichier ou un code de partage.",
+    "pt": "Ainda não há predefinições salvas. Salve uma seleção em Otimizar ou importe um arquivo ou código compartilhado.",
+    "ru": "Сохранённых наборов пока нет. Сохраните выбор в разделе оптимизации либо импортируйте файл или код обмена.",
+    "zh": "尚无已保存预设。请在优化页面保存选择，或导入预设文件或分享代码。"
+  },
+  "Save your selected options or manage your own presets and share codes.": {
+    "nl": "Sla je geselecteerde opties op of beheer je voorinstellingen en deelcodes.",
+    "es": "Guarda las opciones seleccionadas o administra tus preajustes y códigos compartidos.",
+    "de": "Speichere ausgewählte Optionen oder verwalte eigene Vorlagen und Freigabecodes.",
+    "fr": "Enregistrez les options sélectionnées ou gérez vos préréglages et codes de partage.",
+    "pt": "Salve as opções selecionadas ou gerencie suas predefinições e códigos compartilhados.",
+    "ru": "Сохраните выбранные параметры или управляйте своими наборами и кодами обмена.",
+    "zh": "保存所选选项，或管理自己的预设和分享代码。"
+  },
+  "Editing “{0}”. Adjust the selected options, then save preset changes. Already applied options in this preset are kept.": {
+    "nl": "“{0}” bewerken. Pas de geselecteerde opties aan en sla daarna de wijzigingen op. Al toegepaste opties in deze voorinstelling blijven behouden.",
+    "es": "Editando «{0}». Ajusta las opciones seleccionadas y guarda los cambios. Se conservan las opciones ya aplicadas del preajuste.",
+    "de": "„{0}“ wird bearbeitet. Passe die ausgewählten Optionen an und speichere die Änderungen. Bereits angewendete Optionen dieser Vorlage bleiben erhalten.",
+    "fr": "Modification de « {0} ». Ajustez les options sélectionnées, puis enregistrez les changements. Les options déjà appliquées de ce préréglage sont conservées.",
+    "pt": "Editando “{0}”. Ajuste as opções selecionadas e salve as alterações. As opções já aplicadas desta predefinição serão mantidas.",
+    "ru": "Редактирование «{0}». Измените выбранные параметры и сохраните набор. Уже применённые параметры этого набора сохраняются.",
+    "zh": "正在编辑“{0}”。调整所选选项，然后保存预设更改。此预设中已应用的选项会保留。"
+  },
+  "Saved “{0}” with {1} options.": {
+    "nl": "“{0}” opgeslagen met {1} opties.",
+    "es": "«{0}» guardado con {1} opciones.",
+    "de": "„{0}“ mit {1} Optionen gespeichert.",
+    "fr": "« {0} » enregistré avec {1} options.",
+    "pt": "“{0}” salvo com {1} opções.",
+    "ru": "«{0}» сохранён с параметрами: {1}.",
+    "zh": "已保存“{0}”，包含 {1} 个选项。"
+  },
+  "• {0} · {1} options": {
+    "nl": "• {0} · {1} opties",
+    "es": "• {0} · {1} opciones",
+    "de": "• {0} · {1} Optionen",
+    "fr": "• {0} · {1} options",
+    "pt": "• {0} · {1} opções",
+    "ru": "• {0} · параметров: {1}",
+    "zh": "• {0} · {1} 个选项"
+  },
+  "The import would exceed 100 saved presets.": {
+    "nl": "Met deze import worden er meer dan 100 voorinstellingen opgeslagen.",
+    "es": "La importación superaría los 100 preajustes guardados.",
+    "de": "Der Import würde 100 gespeicherte Vorlagen überschreiten.",
+    "fr": "L’importation dépasserait 100 préréglages enregistrés.",
+    "pt": "A importação excederia 100 predefinições salvas.",
+    "ru": "После импорта число сохранённых наборов превысит 100.",
+    "zh": "导入将超过 100 个已保存预设的限制。"
+  },
+  "Review": {
+    "nl": "Bekijken",
+    "es": "Revisar",
+    "de": "Prüfen",
+    "fr": "Examiner",
+    "pt": "Revisar",
+    "ru": "Просмотр",
+    "zh": "检查"
+  },
+  "Edit options": {
+    "nl": "Opties bewerken",
+    "es": "Editar opciones",
+    "de": "Optionen bearbeiten",
+    "fr": "Modifier les options",
+    "pt": "Editar opções",
+    "ru": "Изменить параметры",
+    "zh": "编辑选项"
+  },
+  "Duplicate": {
+    "nl": "Dupliceren",
+    "es": "Duplicar",
+    "de": "Duplizieren",
+    "fr": "Dupliquer",
+    "pt": "Duplicar",
+    "ru": "Дублировать",
+    "zh": "复制"
+  },
+  "TPM: True enabled · True activated": {
+    "nl": "TPM: ingeschakeld · geactiveerd",
+    "es": "TPM: habilitado · activado",
+    "de": "TPM: eingeschaltet · aktiviert",
+    "fr": "TPM : activé · opérationnel",
+    "pt": "TPM: habilitado · ativado",
+    "ru": "TPM: включён · активирован",
+    "zh": "TPM：已启用 · 已激活"
+  },
+  "TPM: True enabled · False activated": {
+    "nl": "TPM: ingeschakeld · niet geactiveerd",
+    "es": "TPM: habilitado · no activado",
+    "de": "TPM: eingeschaltet · nicht aktiviert",
+    "fr": "TPM : activé · non opérationnel",
+    "pt": "TPM: habilitado · não ativado",
+    "ru": "TPM: включён · не активирован",
+    "zh": "TPM：已启用 · 未激活"
+  },
+  "TPM: False enabled · True activated": {
+    "nl": "TPM: uitgeschakeld · geactiveerd",
+    "es": "TPM: deshabilitado · activado",
+    "de": "TPM: ausgeschaltet · aktiviert",
+    "fr": "TPM : désactivé · opérationnel",
+    "pt": "TPM: desabilitado · ativado",
+    "ru": "TPM: отключён · активирован",
+    "zh": "TPM：未启用 · 已激活"
+  },
+  "TPM: False enabled · False activated": {
+    "nl": "TPM: uitgeschakeld · niet geactiveerd",
+    "es": "TPM: deshabilitado · no activado",
+    "de": "TPM: ausgeschaltet · nicht aktiviert",
+    "fr": "TPM : désactivé · non opérationnel",
+    "pt": "TPM: desabilitado · não ativado",
+    "ru": "TPM: отключён · не активирован",
+    "zh": "TPM：未启用 · 未激活"
+  }
+}

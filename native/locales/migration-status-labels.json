@@ -1,0 +1,65 @@
+{
+  "Imported {0} undo record(s) from the previous app. Registry values and service startup settings were copied.": {
+    "nl": "{0} herstelrecord(s) uit de vorige app geïmporteerd. Registerwaarden en opstartinstellingen van services zijn gekopieerd.",
+    "es": "Se importaron {0} registros de restauración de la aplicación anterior. Se copiaron valores del registro y ajustes de inicio de servicios.",
+    "de": "{0} Wiederherstellungsdatensätze aus der vorherigen App importiert. Registrierungswerte und Dienststarteinstellungen wurden kopiert.",
+    "fr": "{0} enregistrements d’annulation importés de l’ancienne application. Les valeurs du registre et réglages de démarrage des services ont été copiés.",
+    "pt": "Importados {0} registros de restauração do aplicativo anterior. Valores do registro e configurações de inicialização dos serviços foram copiados.",
+    "ru": "Импортировано записей отмены из прежнего приложения: {0}. Значения реестра и настройки запуска служб скопированы.",
+    "zh": "已从旧版应用导入 {0} 条撤销记录。注册表值和服务启动设置已复制。"
+  },
+  "Unimported entries: {0}. The original history remains in the previous app.": {
+    "nl": "Niet-geïmporteerde items: {0}. De oorspronkelijke geschiedenis blijft in de vorige app.",
+    "es": "Entradas sin importar: {0}. El historial original permanece en la aplicación anterior.",
+    "de": "Nicht importierte Einträge: {0}. Der ursprüngliche Verlauf bleibt in der vorherigen App erhalten.",
+    "fr": "Entrées non importées : {0}. L’historique d’origine reste dans l’ancienne application.",
+    "pt": "Entradas não importadas: {0}. O histórico original permanece no aplicativo anterior.",
+    "ru": "Неимпортированных записей: {0}. Исходная история остаётся в прежнем приложении.",
+    "zh": "未导入条目：{0}。原始历史仍保留在旧版应用中。"
+  },
+  "Previous undo history was found, but its entries could not be imported. The original history remains in the previous app.": {
+    "nl": "Vorige herstelgeschiedenis gevonden, maar de items konden niet worden geïmporteerd. De oorspronkelijke geschiedenis blijft in de vorige app.",
+    "es": "Se encontró historial anterior de restauración, pero no se pudieron importar sus entradas. El original permanece en la aplicación anterior.",
+    "de": "Vorheriger Wiederherstellungsverlauf gefunden, aber die Einträge konnten nicht importiert werden. Der ursprüngliche Verlauf bleibt in der vorherigen App erhalten.",
+    "fr": "Ancien historique d’annulation trouvé, mais ses entrées n’ont pas pu être importées. L’original reste dans l’ancienne application.",
+    "pt": "Histórico anterior encontrado, mas suas entradas não puderam ser importadas. O original permanece no aplicativo anterior.",
+    "ru": "Найдена прежняя история отмены, но записи не удалось импортировать. Исходная история остаётся в прежнем приложении.",
+    "zh": "找到了旧版撤销历史，但无法导入其条目。原始历史仍保留在旧版应用中。"
+  },
+  "Previous version · {0}": {
+    "nl": "Vorige versie · {0}",
+    "es": "Versión anterior · {0}",
+    "de": "Vorherige Version · {0}",
+    "fr": "Ancienne version · {0}",
+    "pt": "Versão anterior · {0}",
+    "ru": "Прежняя версия · {0}",
+    "zh": "旧版 · {0}"
+  },
+  "Choose this accent": {
+    "nl": "Dit accent kiezen",
+    "es": "Elegir este color de acento",
+    "de": "Diese Akzentfarbe wählen",
+    "fr": "Choisir cette couleur d’accent",
+    "pt": "Escolher esta cor de destaque",
+    "ru": "Выбрать этот акцентный цвет",
+    "zh": "选择此强调色"
+  },
+  "Select this change": {
+    "nl": "Deze wijziging selecteren",
+    "es": "Seleccionar este cambio",
+    "de": "Diese Änderung auswählen",
+    "fr": "Sélectionner ce changement",
+    "pt": "Selecionar esta alteração",
+    "ru": "Выбрать это изменение",
+    "zh": "选择此更改"
+  },
+  "APPLIED": {
+    "nl": "TOEGEPAST",
+    "es": "APLICADO",
+    "de": "ANGEWENDET",
+    "fr": "APPLIQUÉ",
+    "pt": "APLICADO",
+    "ru": "ПРИМЕНЕНО",
+    "zh": "已应用"
+  }
+}

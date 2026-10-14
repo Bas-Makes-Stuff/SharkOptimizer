@@ -1,0 +1,38 @@
+{
+  "Saved app state exceeds 16 MB.": {
+    "nl": "Opgeslagen appstatus is groter dan 16 MB.",
+    "es": "El estado guardado de la aplicación supera 16 MB.",
+    "de": "Gespeicherter App-Zustand überschreitet 16 MB.",
+    "fr": "L’état enregistré de l’application dépasse 16 Mo.",
+    "pt": "O estado salvo do aplicativo excede 16 MB.",
+    "ru": "Сохранённое состояние приложения превышает 16 МБ.",
+    "zh": "保存的应用状态超过 16 MB。"
+  },
+  "Saved app state is invalid.": {
+    "nl": "Opgeslagen appstatus is ongeldig.",
+    "es": "El estado guardado de la aplicación no es válido.",
+    "de": "Gespeicherter App-Zustand ist ungültig.",
+    "fr": "L’état enregistré de l’application est invalide.",
+    "pt": "O estado salvo do aplicativo é inválido.",
+    "ru": "Сохранённое состояние приложения недопустимо.",
+    "zh": "保存的应用状态无效。"
+  },
+  "Saved app state could not be loaded: {0}": {
+    "nl": "Opgeslagen appstatus kon niet worden geladen: {0}",
+    "es": "No se pudo cargar el estado guardado de la aplicación: {0}",
+    "de": "Gespeicherter App-Zustand konnte nicht geladen werden: {0}",
+    "fr": "Impossible de charger l’état enregistré de l’application : {0}",
+    "pt": "Não foi possível carregar o estado salvo do aplicativo: {0}",
+    "ru": "Не удалось загрузить сохранённое состояние приложения: {0}",
+    "zh": "无法加载保存的应用状态：{0}"
+  },
+  "Recovered saved app state from the previous copy. Review Restore before making new changes.": {
+    "nl": "Opgeslagen appstatus hersteld uit de vorige kopie. Bekijk Herstel voordat je nieuwe wijzigingen maakt.",
+    "es": "Estado recuperado de la copia anterior. Revisa Restaurar antes de hacer nuevos cambios.",
+    "de": "App-Zustand aus der vorherigen Kopie wiederhergestellt. Prüfe Wiederherstellen vor neuen Änderungen.",
+    "fr": "État restauré depuis la copie précédente. Consultez Restaurer avant de nouveaux changements.",
+    "pt": "Estado recuperado da cópia anterior. Confira Restaurar antes de fazer novas alterações.",
+    "ru": "Состояние приложения восстановлено из предыдущей копии. Проверьте раздел восстановления перед новыми изменениями.",
+    "zh": "已从之前的副本恢复应用状态。进行新更改前请检查还原页面。"
+  }
+}

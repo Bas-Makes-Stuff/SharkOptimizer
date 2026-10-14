@@ -1,0 +1,209 @@
+{
+  "Restore your changes": {
+    "nl": "Je wijzigingen herstellen",
+    "es": "Restaurar tus cambios",
+    "de": "Änderungen wiederherstellen",
+    "fr": "Restaurer vos changements",
+    "pt": "Restaurar suas alterações",
+    "ru": "Восстановить изменения",
+    "zh": "还原您的更改"
+  },
+  "Applied optimizations save the previous registry values and service states so you can undo them later.": {
+    "nl": "Toegepaste optimalisaties bewaren vorige registerwaarden en servicestatussen zodat je ze later kunt terugdraaien.",
+    "es": "Las optimizaciones aplicadas guardan los valores anteriores del registro y los estados de servicios para deshacerlos después.",
+    "de": "Angewendete Optimierungen speichern vorherige Registrierungswerte und Dienstzustände zum späteren Rückgängigmachen.",
+    "fr": "Les optimisations appliquées enregistrent les anciennes valeurs du registre et états des services pour permettre leur annulation.",
+    "pt": "As otimizações aplicadas salvam valores anteriores do registro e estados dos serviços para desfazer depois.",
+    "ru": "Применённые оптимизации сохраняют прежние значения реестра и состояния служб для последующей отмены.",
+    "zh": "已应用的优化会保存原始注册表值和服务状态，以便之后撤销。"
+  },
+  "Nothing to restore yet": {
+    "nl": "Nog niets te herstellen",
+    "es": "Todavía no hay nada que restaurar",
+    "de": "Noch nichts wiederherzustellen",
+    "fr": "Rien à restaurer pour le moment",
+    "pt": "Ainda não há nada para restaurar",
+    "ru": "Пока нечего восстанавливать",
+    "zh": "尚无可还原内容"
+  },
+  "Applied changes will appear here with an undo action.": {
+    "nl": "Toegepaste wijzigingen verschijnen hier met een terugdraaioptie.",
+    "es": "Los cambios aplicados aparecerán aquí con una opción para deshacerlos.",
+    "de": "Angewendete Änderungen erscheinen hier mit einer Aktion zum Rückgängigmachen.",
+    "fr": "Les changements appliqués apparaîtront ici avec une action d’annulation.",
+    "pt": "As alterações aplicadas aparecerão aqui com uma ação para desfazer.",
+    "ru": "Применённые изменения появятся здесь с возможностью отмены.",
+    "zh": "已应用的更改将在此显示，并提供撤销操作。"
+  },
+  "Applied {0}": {
+    "nl": "Toegepast {0}",
+    "es": "Aplicado {0}",
+    "de": "Angewendet {0}",
+    "fr": "Appliqué le {0}",
+    "pt": "Aplicado em {0}",
+    "ru": "Применено {0}",
+    "zh": "应用时间 {0}"
+  },
+  "Undo failed": {
+    "nl": "Terugdraaien mislukt",
+    "es": "Error al deshacer",
+    "de": "Rückgängigmachen fehlgeschlagen",
+    "fr": "Échec de l’annulation",
+    "pt": "Falha ao desfazer",
+    "ru": "Ошибка отмены",
+    "zh": "撤销失败"
+  },
+  "Restore incomplete": {
+    "nl": "Herstel onvolledig",
+    "es": "Restauración incompleta",
+    "de": "Wiederherstellung unvollständig",
+    "fr": "Restauration incomplète",
+    "pt": "Restauração incompleta",
+    "ru": "Восстановление не завершено",
+    "zh": "还原未完成"
+  },
+  "Undo all {0} tracked changes?": {
+    "nl": "Alle {0} geregistreerde wijzigingen terugdraaien?",
+    "es": "¿Deshacer los {0} cambios registrados?",
+    "de": "Alle {0} erfassten Änderungen rückgängig machen?",
+    "fr": "Annuler les {0} changements suivis ?",
+    "pt": "Desfazer todas as {0} alterações registradas?",
+    "ru": "Отменить все отслеживаемые изменения: {0}?",
+    "zh": "撤销全部 {0} 个已记录更改？"
+  },
+  "Some changes could not be restored and remain tracked:": {
+    "nl": "Sommige wijzigingen konden niet worden hersteld en blijven geregistreerd:",
+    "es": "No se pudieron restaurar algunos cambios y siguen registrados:",
+    "de": "Einige Änderungen konnten nicht wiederhergestellt werden und bleiben erfasst:",
+    "fr": "Certains changements n’ont pas pu être restaurés et restent suivis :",
+    "pt": "Algumas alterações não puderam ser restauradas e continuam registradas:",
+    "ru": "Некоторые изменения не удалось восстановить, они остаются записанными:",
+    "zh": "部分更改无法还原，仍保持记录："
+  },
+  "Windows could not restore every saved setting. The change remains in Restore so you can retry.": {
+    "nl": "Windows kon niet alle opgeslagen instellingen herstellen. De wijziging blijft bij Herstel zodat je opnieuw kunt proberen.",
+    "es": "Windows no pudo restaurar todos los ajustes guardados. El cambio sigue en Restaurar para que puedas reintentarlo.",
+    "de": "Windows konnte nicht alle gespeicherten Einstellungen wiederherstellen. Die Änderung bleibt in Wiederherstellen für einen erneuten Versuch.",
+    "fr": "Windows n’a pas pu restaurer tous les réglages enregistrés. Le changement reste dans Restaurer pour réessayer.",
+    "pt": "O Windows não conseguiu restaurar todas as configurações salvas. A alteração continua em Restaurar para tentar novamente.",
+    "ru": "Windows не удалось восстановить все сохранённые настройки. Изменение остаётся в разделе восстановления для повторной попытки.",
+    "zh": "Windows 无法还原所有已保存设置。此更改仍在还原页面保留，以便重试。"
+  },
+  "Select at least one available change.": {
+    "nl": "Selecteer minstens één beschikbare wijziging.",
+    "es": "Selecciona al menos un cambio disponible.",
+    "de": "Wähle mindestens eine verfügbare Änderung aus.",
+    "fr": "Sélectionnez au moins un changement disponible.",
+    "pt": "Selecione pelo menos uma alteração disponível.",
+    "ru": "Выберите хотя бы одно доступное изменение.",
+    "zh": "请至少选择一个可用更改。"
+  },
+  "Review these notes before applying:": {
+    "nl": "Bekijk deze opmerkingen voordat je toepast:",
+    "es": "Revisa estas notas antes de aplicar:",
+    "de": "Prüfe diese Hinweise vor dem Anwenden:",
+    "fr": "Lisez ces notes avant d’appliquer :",
+    "pt": "Revise estas observações antes de aplicar:",
+    "ru": "Прочтите эти замечания перед применением:",
+    "zh": "应用前请查看这些说明："
+  },
+  "Continue?": {
+    "nl": "Doorgaan?",
+    "es": "¿Continuar?",
+    "de": "Fortfahren?",
+    "fr": "Continuer ?",
+    "pt": "Continuar?",
+    "ru": "Продолжить?",
+    "zh": "继续？"
+  },
+  "Review changes": {
+    "nl": "Wijzigingen bekijken",
+    "es": "Revisar cambios",
+    "de": "Änderungen prüfen",
+    "fr": "Examiner les changements",
+    "pt": "Revisar alterações",
+    "ru": "Проверить изменения",
+    "zh": "检查更改"
+  },
+  "Apply failed": {
+    "nl": "Toepassen mislukt",
+    "es": "Error al aplicar",
+    "de": "Anwenden fehlgeschlagen",
+    "fr": "Échec de l’application",
+    "pt": "Falha ao aplicar",
+    "ru": "Ошибка применения",
+    "zh": "应用失败"
+  },
+  "The selected changes could not be fully applied. Changes from this batch were rolled back.": {
+    "nl": "De geselecteerde wijzigingen konden niet volledig worden toegepast. Wijzigingen uit deze batch zijn teruggedraaid.",
+    "es": "No se pudieron aplicar todos los cambios seleccionados. Se revirtieron los cambios de este lote.",
+    "de": "Die ausgewählten Änderungen konnten nicht vollständig angewendet werden. Änderungen dieses Durchlaufs wurden zurückgesetzt.",
+    "fr": "Les changements sélectionnés n’ont pas pu être entièrement appliqués. Ceux de ce lot ont été annulés.",
+    "pt": "As alterações selecionadas não puderam ser aplicadas por completo. As alterações deste lote foram revertidas.",
+    "ru": "Выбранные изменения не удалось применить полностью. Изменения этого набора действий отменены.",
+    "zh": "未能完全应用所选更改。本次批次中的更改已回滚。"
+  },
+  "The selected changes could not be fully applied. Some changes remain tracked in Restore because Windows could not roll them back:": {
+    "nl": "De geselecteerde wijzigingen konden niet volledig worden toegepast. Sommige blijven bij Herstel geregistreerd omdat Windows ze niet kon terugdraaien:",
+    "es": "No se pudieron aplicar todos los cambios seleccionados. Algunos siguen registrados en Restaurar porque Windows no pudo revertirlos:",
+    "de": "Die ausgewählten Änderungen konnten nicht vollständig angewendet werden. Einige bleiben in Wiederherstellen erfasst, da Windows sie nicht zurücksetzen konnte:",
+    "fr": "Les changements sélectionnés n’ont pas pu être entièrement appliqués. Certains restent suivis dans Restaurer car Windows n’a pas pu les annuler :",
+    "pt": "As alterações selecionadas não puderam ser aplicadas por completo. Algumas continuam em Restaurar porque o Windows não conseguiu revertê-las:",
+    "ru": "Выбранные изменения не удалось применить полностью. Некоторые остаются в разделе восстановления, поскольку Windows не удалось их отменить:",
+    "zh": "未能完全应用所选更改。部分更改因 Windows 无法回滚而仍在还原页面记录："
+  },
+  "Could not save the remaining restore history: {0}": {
+    "nl": "Kon de resterende herstelgeschiedenis niet opslaan: {0}",
+    "es": "No se pudo guardar el historial de restauración restante: {0}",
+    "de": "Verbleibender Wiederherstellungsverlauf konnte nicht gespeichert werden: {0}",
+    "fr": "Impossible d’enregistrer l’historique de restauration restant : {0}",
+    "pt": "Não foi possível salvar o histórico de restauração restante: {0}",
+    "ru": "Не удалось сохранить оставшуюся историю восстановления: {0}",
+    "zh": "无法保存剩余还原历史：{0}"
+  },
+  "No tracked changes to verify.": {
+    "nl": "Geen geregistreerde wijzigingen om te controleren.",
+    "es": "No hay cambios registrados para verificar.",
+    "de": "Keine erfassten Änderungen zum Prüfen.",
+    "fr": "Aucun changement suivi à vérifier.",
+    "pt": "Não há alterações registradas para verificar.",
+    "ru": "Нет записанных изменений для проверки.",
+    "zh": "没有可验证的已记录更改。"
+  },
+  "Verified {0} tracked item(s); {1} need review.": {
+    "nl": "{0} geregistreerde item(s) gecontroleerd; {1} moeten worden bekeken.",
+    "es": "Se verificaron {0} elementos registrados; {1} necesitan revisión.",
+    "de": "{0} erfasste Elemente geprüft; {1} müssen überprüft werden.",
+    "fr": "{0} éléments suivis vérifiés ; {1} nécessitent un examen.",
+    "pt": "Verificados {0} itens registrados; {1} precisam de revisão.",
+    "ru": "Проверено записанных элементов: {0}; требуют проверки: {1}.",
+    "zh": "已验证 {0} 个记录项；{1} 个需要检查。"
+  },
+  "OK    {0}": {
+    "nl": "OK    {0}",
+    "es": "CORRECTO    {0}",
+    "de": "OK    {0}",
+    "fr": "OK    {0}",
+    "pt": "OK    {0}",
+    "ru": "OK    {0}",
+    "zh": "正常    {0}"
+  },
+  "CHECK {0}": {
+    "nl": "CONTROLEER {0}",
+    "es": "REVISAR {0}",
+    "de": "PRÜFEN {0}",
+    "fr": "VÉRIFIER {0}",
+    "pt": "VERIFICAR {0}",
+    "ru": "ПРОВЕРИТЬ {0}",
+    "zh": "检查 {0}"
+  },
+  "UNVERIFIED  {0} (undo is available in Restore)": {
+    "nl": "ONGECONTROLEERD  {0} (terugdraaien kan via Herstel)",
+    "es": "SIN VERIFICAR  {0} (se puede deshacer en Restaurar)",
+    "de": "UNGEPRÜFT  {0} (Rückgängigmachen ist in Wiederherstellen verfügbar)",
+    "fr": "NON VÉRIFIÉ  {0} (annulation disponible dans Restaurer)",
+    "pt": "NÃO VERIFICADO  {0} (é possível desfazer em Restaurar)",
+    "ru": "НЕ ПРОВЕРЕНО  {0} (можно отменить в разделе восстановления)",
+    "zh": "未验证  {0}（可在还原页面撤销）"
+  }
+}

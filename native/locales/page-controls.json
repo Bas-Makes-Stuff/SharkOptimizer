@@ -1,0 +1,326 @@
+{
+  "Check for updates": {
+    "nl": "Controleren op updates",
+    "es": "Buscar actualizaciones",
+    "de": "Nach Updates suchen",
+    "fr": "Rechercher des mises à jour",
+    "pt": "Verificar atualizações",
+    "ru": "Проверить обновления",
+    "zh": "检查更新"
+  },
+  "Check for updates automatically after startup": {
+    "nl": "Automatisch controleren op updates na opstarten",
+    "es": "Buscar actualizaciones automáticamente al iniciar",
+    "de": "Nach dem Start automatisch nach Updates suchen",
+    "fr": "Rechercher automatiquement les mises à jour au démarrage",
+    "pt": "Verificar atualizações automaticamente ao iniciar",
+    "ru": "Автоматически проверять обновления после запуска",
+    "zh": "启动后自动检查更新"
+  },
+  "Checking…": {
+    "nl": "Controleren…",
+    "es": "Comprobando…",
+    "de": "Wird geprüft…",
+    "fr": "Vérification…",
+    "pt": "Verificando…",
+    "ru": "Проверка…",
+    "zh": "正在检查…"
+  },
+  "Downloading…": {
+    "nl": "Downloaden…",
+    "es": "Descargando…",
+    "de": "Wird heruntergeladen…",
+    "fr": "Téléchargement…",
+    "pt": "Baixando…",
+    "ru": "Загрузка…",
+    "zh": "正在下载…"
+  },
+  "Choose a game": {
+    "nl": "Kies een game",
+    "es": "Elegir un juego",
+    "de": "Spiel auswählen",
+    "fr": "Choisir un jeu",
+    "pt": "Escolher um jogo",
+    "ru": "Выбрать игру",
+    "zh": "选择游戏"
+  },
+  "Details & cautions": {
+    "nl": "Details en aandachtspunten",
+    "es": "Detalles y precauciones",
+    "de": "Details und Hinweise",
+    "fr": "Détails et précautions",
+    "pt": "Detalhes e cuidados",
+    "ru": "Подробности и предупреждения",
+    "zh": "详情与注意事项"
+  },
+  "Disable": {
+    "nl": "Uitschakelen",
+    "es": "Desactivar",
+    "de": "Deaktivieren",
+    "fr": "Désactiver",
+    "pt": "Desativar",
+    "ru": "Отключить",
+    "zh": "禁用"
+  },
+  "Finish editing": {
+    "nl": "Bewerken afronden",
+    "es": "Terminar edición",
+    "de": "Bearbeitung beenden",
+    "fr": "Terminer la modification",
+    "pt": "Concluir edição",
+    "ru": "Завершить редактирование",
+    "zh": "完成编辑"
+  },
+  "Game profiles": {
+    "nl": "Gameprofielen",
+    "es": "Perfiles de juegos",
+    "de": "Spielprofile",
+    "fr": "Profils de jeux",
+    "pt": "Perfis de jogos",
+    "ru": "Игровые профили",
+    "zh": "游戏配置"
+  },
+  "Launch game": {
+    "nl": "Game starten",
+    "es": "Iniciar juego",
+    "de": "Spiel starten",
+    "fr": "Lancer le jeu",
+    "pt": "Iniciar jogo",
+    "ru": "Запустить игру",
+    "zh": "启动游戏"
+  },
+  "Make Windows work for you.": {
+    "nl": "Laat Windows voor jou werken.",
+    "es": "Haz que Windows trabaje para ti.",
+    "de": "Lass Windows für dich arbeiten.",
+    "fr": "Adaptez Windows à vos besoins.",
+    "pt": "Faça o Windows trabalhar para você.",
+    "ru": "Настройте Windows под себя.",
+    "zh": "让 Windows 更适合您。"
+  },
+  "Manage presets": {
+    "nl": "Voorinstellingen beheren",
+    "es": "Administrar preajustes",
+    "de": "Vorlagen verwalten",
+    "fr": "Gérer les préréglages",
+    "pt": "Gerenciar predefinições",
+    "ru": "Управлять наборами",
+    "zh": "管理预设"
+  },
+  "No optimizations match that search.": {
+    "nl": "Geen optimalisaties gevonden voor deze zoekopdracht.",
+    "es": "Ninguna optimización coincide con la búsqueda.",
+    "de": "Keine Optimierungen passen zur Suche.",
+    "fr": "Aucune optimisation ne correspond à cette recherche.",
+    "pt": "Nenhuma otimização corresponde à pesquisa.",
+    "ru": "Нет оптимизаций по этому запросу.",
+    "zh": "没有匹配搜索的优化选项。"
+  },
+  "Quick presets": {
+    "nl": "Snelle voorinstellingen",
+    "es": "Preajustes rápidos",
+    "de": "Schnellvorlagen",
+    "fr": "Préréglages rapides",
+    "pt": "Predefinições rápidas",
+    "ru": "Быстрые наборы",
+    "zh": "快捷预设"
+  },
+  "Remove game": {
+    "nl": "Game verwijderen",
+    "es": "Eliminar juego",
+    "de": "Spiel entfernen",
+    "fr": "Retirer le jeu",
+    "pt": "Remover jogo",
+    "ru": "Удалить игру",
+    "zh": "移除游戏"
+  },
+  "REVIEW FIRST": {
+    "nl": "EERST BEKIJKEN",
+    "es": "REVISAR PRIMERO",
+    "de": "ZUERST PRÜFEN",
+    "fr": "EXAMINER D’ABORD",
+    "pt": "REVISE PRIMEIRO",
+    "ru": "СНАЧАЛА ПРОВЕРЬТЕ",
+    "zh": "请先检查"
+  },
+  "Review profile options": {
+    "nl": "Profielopties bekijken",
+    "es": "Revisar opciones del perfil",
+    "de": "Profiloptionen prüfen",
+    "fr": "Examiner les options du profil",
+    "pt": "Revisar opções do perfil",
+    "ru": "Проверить параметры профиля",
+    "zh": "检查配置选项"
+  },
+  "Save selection": {
+    "nl": "Selectie opslaan",
+    "es": "Guardar selección",
+    "de": "Auswahl speichern",
+    "fr": "Enregistrer la sélection",
+    "pt": "Salvar seleção",
+    "ru": "Сохранить выбор",
+    "zh": "保存选择"
+  },
+  "Search optimizations…": {
+    "nl": "Optimalisaties zoeken…",
+    "es": "Buscar optimizaciones…",
+    "de": "Optimierungen suchen…",
+    "fr": "Rechercher des optimisations…",
+    "pt": "Buscar otimizações…",
+    "ru": "Поиск оптимизаций…",
+    "zh": "搜索优化选项…"
+  },
+  "Select preset": {
+    "nl": "Voorinstelling kiezen",
+    "es": "Seleccionar preajuste",
+    "de": "Vorlage auswählen",
+    "fr": "Choisir un préréglage",
+    "pt": "Selecionar predefinição",
+    "ru": "Выбрать набор",
+    "zh": "选择预设"
+  },
+  "State file": {
+    "nl": "Statusbestand",
+    "es": "Archivo de estado",
+    "de": "Zustandsdatei",
+    "fr": "Fichier d’état",
+    "pt": "Arquivo de estado",
+    "ru": "Файл состояния",
+    "zh": "状态文件"
+  },
+  "Suggested Windows options": {
+    "nl": "Voorgestelde Windows-opties",
+    "es": "Opciones de Windows sugeridas",
+    "de": "Vorgeschlagene Windows-Optionen",
+    "fr": "Options Windows suggérées",
+    "pt": "Opções sugeridas do Windows",
+    "ru": "Рекомендуемые параметры Windows",
+    "zh": "建议的 Windows 选项"
+  },
+  "Undo": {
+    "nl": "Terugdraaien",
+    "es": "Deshacer",
+    "de": "Rückgängig machen",
+    "fr": "Annuler",
+    "pt": "Desfazer",
+    "ru": "Отменить",
+    "zh": "撤销"
+  },
+  "Undo all": {
+    "nl": "Alles terugdraaien",
+    "es": "Deshacer todo",
+    "de": "Alles rückgängig machen",
+    "fr": "Tout annuler",
+    "pt": "Desfazer tudo",
+    "ru": "Отменить всё",
+    "zh": "全部撤销"
+  },
+  "Updates": {
+    "nl": "Updates",
+    "es": "Actualizaciones",
+    "de": "Updates",
+    "fr": "Mises à jour",
+    "pt": "Atualizações",
+    "ru": "Обновления",
+    "zh": "更新"
+  },
+  "View": {
+    "nl": "Bekijken",
+    "es": "Ver",
+    "de": "Ansehen",
+    "fr": "Voir",
+    "pt": "Ver",
+    "ru": "Просмотр",
+    "zh": "查看"
+  },
+  "SharkOptimizer · Ready when you are": {
+    "nl": "SharkOptimizer · Klaar wanneer jij klaar bent",
+    "es": "SharkOptimizer · Listo cuando tú lo estés",
+    "de": "SharkOptimizer · Bereit, wenn du es bist",
+    "fr": "SharkOptimizer · Prêt quand vous l’êtes",
+    "pt": "SharkOptimizer · Pronto quando você estiver",
+    "ru": "SharkOptimizer · Готов, когда готовы вы",
+    "zh": "SharkOptimizer · 随时准备就绪"
+  },
+  "Find installed games, review their tips, and choose safe Windows-level changes.": {
+    "nl": "Vind geïnstalleerde games, bekijk hun tips en kies veilige Windows-aanpassingen.",
+    "es": "Encuentra juegos instalados, revisa sus consejos y elige cambios seguros de Windows.",
+    "de": "Finde installierte Spiele, lies ihre Tipps und wähle sichere Windows-Änderungen.",
+    "fr": "Trouvez les jeux installés, consultez leurs conseils et choisissez des changements Windows sûrs.",
+    "pt": "Encontre jogos instalados, confira suas dicas e escolha alterações seguras do Windows.",
+    "ru": "Найдите установленные игры, изучите советы и выберите безопасные изменения Windows.",
+    "zh": "查找已安装游戏、查看建议，并选择安全的 Windows 设置更改。"
+  },
+  "Presets select options for you to review. Nothing is applied automatically.": {
+    "nl": "Voorinstellingen selecteren opties die je kunt bekijken. Niets wordt automatisch toegepast.",
+    "es": "Los preajustes seleccionan opciones para revisar. Nada se aplica automáticamente.",
+    "de": "Vorlagen wählen Optionen zur Prüfung aus. Nichts wird automatisch angewendet.",
+    "fr": "Les préréglages sélectionnent des options à examiner. Rien n’est appliqué automatiquement.",
+    "pt": "As predefinições selecionam opções para revisão. Nada é aplicado automaticamente.",
+    "ru": "Наборы выбирают параметры для проверки. Ничего не применяется автоматически.",
+    "zh": "预设会选择供您检查的选项。不会自动应用任何更改。"
+  },
+  "Scan common library folders to find supported games.": {
+    "nl": "Scan veelgebruikte bibliotheekmappen om ondersteunde games te vinden.",
+    "es": "Analiza carpetas habituales de bibliotecas para encontrar juegos compatibles.",
+    "de": "Scanne übliche Bibliotheksordner, um unterstützte Spiele zu finden.",
+    "fr": "Analysez les dossiers de bibliothèques courants pour trouver les jeux compatibles.",
+    "pt": "Verifique pastas comuns de bibliotecas para encontrar jogos compatíveis.",
+    "ru": "Просканируйте обычные папки библиотек для поиска поддерживаемых игр.",
+    "zh": "扫描常见游戏库文件夹以查找支持的游戏。"
+  },
+  "Select a few changes, review their details, and make them yours.": {
+    "nl": "Kies enkele wijzigingen, bekijk de details en stem ze af op jouw wensen.",
+    "es": "Elige algunos cambios, revisa sus detalles y adáptalos a ti.",
+    "de": "Wähle einige Änderungen, prüfe ihre Details und passe sie an dich an.",
+    "fr": "Choisissez quelques changements, examinez leurs détails et adaptez-les à vos besoins.",
+    "pt": "Escolha algumas alterações, revise os detalhes e adapte ao seu uso.",
+    "ru": "Выберите несколько изменений, изучите подробности и настройте под себя.",
+    "zh": "选择几项更改、查看详情，并按需调整。"
+  },
+  "Select a profile on the left to see its recommendations and in-game tips.": {
+    "nl": "Kies links een profiel om aanbevelingen en tips voor de game te bekijken.",
+    "es": "Selecciona un perfil a la izquierda para ver recomendaciones y consejos del juego.",
+    "de": "Wähle links ein Profil für Empfehlungen und Tipps im Spiel.",
+    "fr": "Sélectionnez un profil à gauche pour ses recommandations et conseils en jeu.",
+    "pt": "Selecione um perfil à esquerda para ver recomendações e dicas do jogo.",
+    "ru": "Выберите профиль слева для просмотра рекомендаций и игровых советов.",
+    "zh": "选择左侧配置以查看推荐和游戏内建议。"
+  },
+  "Keep up to 60 runs. Compare uses the median of the latest three BEFORE and AFTER samples, ignoring unavailable measurements.": {
+    "nl": "Bewaar maximaal 60 metingen. Vergelijken gebruikt de mediaan van de laatste drie VOOR- en NA-metingen en negeert ontbrekende waarden.",
+    "es": "Guarda hasta 60 mediciones. Comparar usa la mediana de las tres últimas muestras ANTES y DESPUÉS, omitiendo valores no disponibles.",
+    "de": "Speichert bis zu 60 Messungen. Vergleichen nutzt den Median der letzten drei VORHER- und NACHHER-Messungen und ignoriert fehlende Werte.",
+    "fr": "Conserve jusqu’à 60 mesures. Comparer utilise la médiane des trois dernières mesures AVANT et APRÈS, en ignorant les valeurs indisponibles.",
+    "pt": "Guarda até 60 medições. Comparar usa a mediana das três últimas amostras ANTES e DEPOIS, ignorando valores indisponíveis.",
+    "ru": "Хранит до 60 замеров. Сравнение использует медиану трёх последних замеров ДО и ПОСЛЕ, игнорируя недоступные значения.",
+    "zh": "最多保存 60 次测量。比较使用最近三次调整前后测量的中位数，忽略不可用数据。"
+  },
+  "No available options match this profile.": {
+    "nl": "Geen beschikbare opties komen overeen met dit profiel.",
+    "es": "Ninguna opción disponible coincide con este perfil.",
+    "de": "Keine verfügbaren Optionen passen zu diesem Profil.",
+    "fr": "Aucune option disponible ne correspond à ce profil.",
+    "pt": "Nenhuma opção disponível corresponde a este perfil.",
+    "ru": "Нет доступных параметров для этого профиля.",
+    "zh": "没有与此配置匹配的可用选项。"
+  },
+  "Windows optimization and game tools": {
+    "nl": "Windows-optimalisatie en gamehulpmiddelen",
+    "es": "Optimización de Windows y herramientas de juegos",
+    "de": "Windows-Optimierung und Spielwerkzeuge",
+    "fr": "Optimisation Windows et outils de jeu",
+    "pt": "Otimização do Windows e ferramentas de jogos",
+    "ru": "Оптимизация Windows и игровые инструменты",
+    "zh": "Windows 优化与游戏工具"
+  },
+  "Choose the interface language. Your choice is saved for the next launch.": {
+    "nl": "Kies de interfacetaal. Je keuze wordt opgeslagen voor de volgende start.",
+    "es": "Elige el idioma de la interfaz. Tu elección se guarda para el próximo inicio.",
+    "de": "Wähle die Oberflächensprache. Deine Auswahl wird für den nächsten Start gespeichert.",
+    "fr": "Choisissez la langue de l’interface. Votre choix est conservé au prochain lancement.",
+    "pt": "Escolha o idioma da interface. Sua escolha é salva para a próxima abertura.",
+    "ru": "Выберите язык интерфейса. Выбор сохраняется для следующего запуска.",
+    "zh": "选择界面语言。您的选择会保存供下次启动使用。"
+  }
+}

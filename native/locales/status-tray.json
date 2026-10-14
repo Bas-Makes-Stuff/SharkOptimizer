@@ -1,0 +1,182 @@
+{
+  "Open SharkOptimizer": {
+    "nl": "SharkOptimizer openen",
+    "es": "Abrir SharkOptimizer",
+    "de": "SharkOptimizer öffnen",
+    "fr": "Ouvrir SharkOptimizer",
+    "pt": "Abrir SharkOptimizer",
+    "ru": "Открыть SharkOptimizer",
+    "zh": "打开 SharkOptimizer"
+  },
+  "Exit": {
+    "nl": "Afsluiten",
+    "es": "Salir",
+    "de": "Beenden",
+    "fr": "Quitter",
+    "pt": "Sair",
+    "ru": "Выход",
+    "zh": "退出"
+  },
+  "Error": {
+    "nl": "Fout",
+    "es": "Error",
+    "de": "Fehler",
+    "fr": "Erreur",
+    "pt": "Erro",
+    "ru": "Ошибка",
+    "zh": "错误"
+  },
+  "Startup error": {
+    "nl": "Opstartfout",
+    "es": "Error de inicio",
+    "de": "Startfehler",
+    "fr": "Erreur de démarrage",
+    "pt": "Erro de inicialização",
+    "ru": "Ошибка запуска",
+    "zh": "启动错误"
+  },
+  "SharkOptimizer could not start in the tray.": {
+    "nl": "SharkOptimizer kon niet in het systeemvak starten.",
+    "es": "SharkOptimizer no pudo iniciarse en la bandeja.",
+    "de": "SharkOptimizer konnte nicht im Infobereich starten.",
+    "fr": "SharkOptimizer n’a pas pu démarrer dans la zone de notification.",
+    "pt": "O SharkOptimizer não conseguiu iniciar na bandeja.",
+    "ru": "SharkOptimizer не удалось запустить в трее.",
+    "zh": "SharkOptimizer 无法在托盘中启动。"
+  },
+  "SharkOptimizer could not finish starting.": {
+    "nl": "SharkOptimizer kon het opstarten niet voltooien.",
+    "es": "SharkOptimizer no pudo terminar de iniciarse.",
+    "de": "SharkOptimizer konnte den Start nicht abschließen.",
+    "fr": "SharkOptimizer n’a pas pu terminer son démarrage.",
+    "pt": "O SharkOptimizer não conseguiu concluir a inicialização.",
+    "ru": "SharkOptimizer не удалось завершить запуск.",
+    "zh": "SharkOptimizer 无法完成启动。"
+  },
+  "Scanning {0}…": {
+    "nl": "{0} scannen…",
+    "es": "Analizando {0}…",
+    "de": "{0} wird gescannt…",
+    "fr": "Analyse de {0}…",
+    "pt": "Verificando {0}…",
+    "ru": "Сканирование {0}…",
+    "zh": "正在扫描 {0}…"
+  },
+  "Scanning common game folders…": {
+    "nl": "Veelgebruikte gamemappen scannen…",
+    "es": "Analizando carpetas habituales de juegos…",
+    "de": "Übliche Spieleordner werden gescannt…",
+    "fr": "Analyse des dossiers de jeux courants…",
+    "pt": "Verificando pastas comuns de jogos…",
+    "ru": "Сканирование обычных папок игр…",
+    "zh": "正在扫描常见游戏文件夹…"
+  },
+  "Saved scan · {0} installed profile detected.": {
+    "nl": "Opgeslagen scan · {0} geïnstalleerd profiel gevonden.",
+    "es": "Análisis guardado · {0} perfil instalado detectado.",
+    "de": "Gespeicherter Scan · {0} installiertes Profil erkannt.",
+    "fr": "Analyse enregistrée · {0} profil installé détecté.",
+    "pt": "Verificação salva · {0} perfil instalado detectado.",
+    "ru": "Сохранённый поиск · установленных профилей: {0}.",
+    "zh": "已保存扫描 · 检测到 {0} 个已安装配置。"
+  },
+  "Saved scan · {0} installed profiles detected.": {
+    "nl": "Opgeslagen scan · {0} geïnstalleerde profielen gevonden.",
+    "es": "Análisis guardado · {0} perfiles instalados detectados.",
+    "de": "Gespeicherter Scan · {0} installierte Profile erkannt.",
+    "fr": "Analyse enregistrée · {0} profils installés détectés.",
+    "pt": "Verificação salva · {0} perfis instalados detectados.",
+    "ru": "Сохранённый поиск · установленных профилей: {0}.",
+    "zh": "已保存扫描 · 检测到 {0} 个已安装配置。"
+  },
+  "Game scan complete · found {0} supported profiles.": {
+    "nl": "Gamescan voltooid · {0} ondersteunde profielen gevonden.",
+    "es": "Análisis de juegos terminado · {0} perfiles compatibles encontrados.",
+    "de": "Spielescan abgeschlossen · {0} unterstützte Profile gefunden.",
+    "fr": "Analyse des jeux terminée · {0} profils compatibles trouvés.",
+    "pt": "Verificação de jogos concluída · {0} perfis compatíveis encontrados.",
+    "ru": "Поиск игр завершён · найдено поддерживаемых профилей: {0}.",
+    "zh": "游戏扫描完成 · 找到 {0} 个支持的配置。"
+  },
+  "Scan failed: {0}": {
+    "nl": "Scan mislukt: {0}",
+    "es": "Error de análisis: {0}",
+    "de": "Scan fehlgeschlagen: {0}",
+    "fr": "Échec de l’analyse : {0}",
+    "pt": "Falha na verificação: {0}",
+    "ru": "Ошибка сканирования: {0}",
+    "zh": "扫描失败：{0}"
+  },
+  "Game scan failed: {0}": {
+    "nl": "Gamescan mislukt: {0}",
+    "es": "Error al analizar juegos: {0}",
+    "de": "Spielescan fehlgeschlagen: {0}",
+    "fr": "Échec de l’analyse des jeux : {0}",
+    "pt": "Falha ao verificar jogos: {0}",
+    "ru": "Ошибка поиска игр: {0}",
+    "zh": "游戏扫描失败：{0}"
+  },
+  "BEFORE captured at {0}. Repeat up to three samples under similar conditions, then Compare.": {
+    "nl": "VOOR vastgelegd om {0}. Herhaal maximaal drie metingen onder vergelijkbare omstandigheden en kies dan Vergelijken.",
+    "es": "ANTES capturado a las {0}. Repite hasta tres muestras en condiciones similares y luego Comparar.",
+    "de": "VORHER um {0} erfasst. Wiederhole bis zu drei Messungen unter ähnlichen Bedingungen und wähle Vergleichen.",
+    "fr": "AVANT mesuré à {0}. Répétez jusqu’à trois mesures dans des conditions similaires, puis Comparez.",
+    "pt": "ANTES medido às {0}. Repita até três amostras em condições semelhantes e depois Compare.",
+    "ru": "ДО записано в {0}. Выполните до трёх замеров в похожих условиях, затем сравните.",
+    "zh": "调整前数据采集于 {0}。在相似条件下最多重复三次，然后比较。"
+  },
+  "AFTER captured at {0}. Repeat up to three samples under similar conditions, then Compare.": {
+    "nl": "NA vastgelegd om {0}. Herhaal maximaal drie metingen onder vergelijkbare omstandigheden en kies dan Vergelijken.",
+    "es": "DESPUÉS capturado a las {0}. Repite hasta tres muestras en condiciones similares y luego Comparar.",
+    "de": "NACHHER um {0} erfasst. Wiederhole bis zu drei Messungen unter ähnlichen Bedingungen und wähle Vergleichen.",
+    "fr": "APRÈS mesuré à {0}. Répétez jusqu’à trois mesures dans des conditions similaires, puis Comparez.",
+    "pt": "DEPOIS medido às {0}. Repita até três amostras em condições semelhantes e depois Compare.",
+    "ru": "ПОСЛЕ записано в {0}. Выполните до трёх замеров в похожих условиях, затем сравните.",
+    "zh": "调整后数据采集于 {0}。在相似条件下最多重复三次，然后比较。"
+  },
+  "Benchmark could not be saved: {0}": {
+    "nl": "Meting kon niet worden opgeslagen: {0}",
+    "es": "No se pudo guardar la medición: {0}",
+    "de": "Messung konnte nicht gespeichert werden: {0}",
+    "fr": "Impossible d’enregistrer la mesure : {0}",
+    "pt": "Não foi possível salvar a medição: {0}",
+    "ru": "Не удалось сохранить замер: {0}",
+    "zh": "无法保存测量：{0}"
+  },
+  "Capture both BEFORE and AFTER snapshots before comparing.": {
+    "nl": "Leg zowel VOOR- als NA-metingen vast voordat je vergelijkt.",
+    "es": "Captura ANTES y DESPUÉS antes de comparar.",
+    "de": "Erfasse VORHER- und NACHHER-Messungen vor dem Vergleich.",
+    "fr": "Mesurez AVANT et APRÈS avant de comparer.",
+    "pt": "Meça ANTES e DEPOIS antes de comparar.",
+    "ru": "Запишите замеры ДО и ПОСЛЕ перед сравнением.",
+    "zh": "比较前请先采集调整前和调整后快照。"
+  },
+  "System report saved to {0}": {
+    "nl": "Systeemrapport opgeslagen in {0}",
+    "es": "Informe del sistema guardado en {0}",
+    "de": "Systembericht gespeichert unter {0}",
+    "fr": "Rapport système enregistré dans {0}",
+    "pt": "Relatório do sistema salvo em {0}",
+    "ru": "Отчёт о системе сохранён в {0}",
+    "zh": "系统报告已保存至 {0}"
+  },
+  "Selected optimizations applied.": {
+    "nl": "Geselecteerde optimalisaties toegepast.",
+    "es": "Optimizaciones seleccionadas aplicadas.",
+    "de": "Ausgewählte Optimierungen angewendet.",
+    "fr": "Optimisations sélectionnées appliquées.",
+    "pt": "Otimizações selecionadas aplicadas.",
+    "ru": "Выбранные оптимизации применены.",
+    "zh": "已应用所选优化。"
+  },
+  "Could not save preference: {0}": {
+    "nl": "Kon voorkeur niet opslaan: {0}",
+    "es": "No se pudo guardar la preferencia: {0}",
+    "de": "Einstellung konnte nicht gespeichert werden: {0}",
+    "fr": "Impossible d’enregistrer la préférence : {0}",
+    "pt": "Não foi possível salvar a preferência: {0}",
+    "ru": "Не удалось сохранить настройку: {0}",
+    "zh": "无法保存偏好：{0}"
+  }
+}

@@ -1,0 +1,317 @@
+{
+  "Boost-Up": {
+    "nl": "Opruimen",
+    "es": "Limpieza",
+    "de": "Bereinigung",
+    "fr": "Nettoyage",
+    "pt": "Limpeza",
+    "ru": "Очистка",
+    "zh": "清理"
+  },
+  "Scan cleanup folders": {
+    "nl": "Opruimmappen scannen",
+    "es": "Analizar carpetas de limpieza",
+    "de": "Bereinigungsordner scannen",
+    "fr": "Analyser les dossiers à nettoyer",
+    "pt": "Verificar pastas de limpeza",
+    "ru": "Сканировать папки очистки",
+    "zh": "扫描清理文件夹"
+  },
+  "Clean selected": {
+    "nl": "Selectie opruimen",
+    "es": "Limpiar seleccionados",
+    "de": "Auswahl bereinigen",
+    "fr": "Nettoyer la sélection",
+    "pt": "Limpar selecionados",
+    "ru": "Очистить выбранное",
+    "zh": "清理所选项"
+  },
+  "Recycle Bin": {
+    "nl": "Prullenbak",
+    "es": "Papelera de reciclaje",
+    "de": "Papierkorb",
+    "fr": "Corbeille",
+    "pt": "Lixeira",
+    "ru": "Корзина",
+    "zh": "回收站"
+  },
+  "Empty Recycle Bin": {
+    "nl": "Prullenbak legen",
+    "es": "Vaciar papelera",
+    "de": "Papierkorb leeren",
+    "fr": "Vider la corbeille",
+    "pt": "Esvaziar Lixeira",
+    "ru": "Очистить корзину",
+    "zh": "清空回收站"
+  },
+  "User temporary files": {
+    "nl": "Tijdelijke gebruikersbestanden",
+    "es": "Archivos temporales del usuario",
+    "de": "Temporäre Benutzerdateien",
+    "fr": "Fichiers temporaires de l’utilisateur",
+    "pt": "Arquivos temporários do usuário",
+    "ru": "Временные файлы пользователя",
+    "zh": "用户临时文件"
+  },
+  "Windows temporary files": {
+    "nl": "Tijdelijke Windows-bestanden",
+    "es": "Archivos temporales de Windows",
+    "de": "Temporäre Windows-Dateien",
+    "fr": "Fichiers temporaires Windows",
+    "pt": "Arquivos temporários do Windows",
+    "ru": "Временные файлы Windows",
+    "zh": "Windows 临时文件"
+  },
+  "Crash dumps": {
+    "nl": "Crashdumps",
+    "es": "Volcados de errores",
+    "de": "Absturzabbilder",
+    "fr": "Fichiers de vidage après plantage",
+    "pt": "Despejos de falhas",
+    "ru": "Дампы сбоев",
+    "zh": "崩溃转储"
+  },
+  "Windows error reports": {
+    "nl": "Windows-foutrapporten",
+    "es": "Informes de errores de Windows",
+    "de": "Windows-Fehlerberichte",
+    "fr": "Rapports d’erreurs Windows",
+    "pt": "Relatórios de erros do Windows",
+    "ru": "Отчёты об ошибках Windows",
+    "zh": "Windows 错误报告"
+  },
+  "Queued Windows error reports": {
+    "nl": "Windows-foutrapporten in wachtrij",
+    "es": "Informes de errores de Windows en cola",
+    "de": "Windows-Fehlerberichte in der Warteschlange",
+    "fr": "Rapports d’erreurs Windows en attente",
+    "pt": "Relatórios de erros do Windows na fila",
+    "ru": "Отчёты об ошибках Windows в очереди",
+    "zh": "排队的 Windows 错误报告"
+  },
+  "DirectX shader cache": {
+    "nl": "DirectX-shadercache",
+    "es": "Caché de sombreadores de DirectX",
+    "de": "DirectX-Shadercache",
+    "fr": "Cache de shaders DirectX",
+    "pt": "Cache de shaders DirectX",
+    "ru": "Кэш шейдеров DirectX",
+    "zh": "DirectX 着色器缓存"
+  },
+  "NVIDIA DirectX shader cache": {
+    "nl": "NVIDIA DirectX-shadercache",
+    "es": "Caché de sombreadores DirectX de NVIDIA",
+    "de": "NVIDIA-DirectX-Shadercache",
+    "fr": "Cache de shaders DirectX NVIDIA",
+    "pt": "Cache de shaders DirectX da NVIDIA",
+    "ru": "Кэш шейдеров DirectX NVIDIA",
+    "zh": "NVIDIA DirectX 着色器缓存"
+  },
+  "NVIDIA OpenGL shader cache": {
+    "nl": "NVIDIA OpenGL-shadercache",
+    "es": "Caché de sombreadores OpenGL de NVIDIA",
+    "de": "NVIDIA-OpenGL-Shadercache",
+    "fr": "Cache de shaders OpenGL NVIDIA",
+    "pt": "Cache de shaders OpenGL da NVIDIA",
+    "ru": "Кэш шейдеров OpenGL NVIDIA",
+    "zh": "NVIDIA OpenGL 着色器缓存"
+  },
+  "AMD shader cache": {
+    "nl": "AMD-shadercache",
+    "es": "Caché de sombreadores de AMD",
+    "de": "AMD-Shadercache",
+    "fr": "Cache de shaders AMD",
+    "pt": "Cache de shaders da AMD",
+    "ru": "Кэш шейдеров AMD",
+    "zh": "AMD 着色器缓存"
+  },
+  "Explorer recent-file history": {
+    "nl": "Geschiedenis van recente bestanden in Verkenner",
+    "es": "Historial de archivos recientes del Explorador",
+    "de": "Verlauf zuletzt verwendeter Dateien im Explorer",
+    "fr": "Historique des fichiers récents de l’Explorateur",
+    "pt": "Histórico de arquivos recentes do Explorador",
+    "ru": "История недавних файлов Проводника",
+    "zh": "资源管理器最近文件历史记录"
+  },
+  "Browser caches": {
+    "nl": "Browsercaches",
+    "es": "Cachés de navegadores",
+    "de": "Browsercaches",
+    "fr": "Caches des navigateurs",
+    "pt": "Caches dos navegadores",
+    "ru": "Кэши браузеров",
+    "zh": "浏览器缓存"
+  },
+  "Scan these folders to see what can be cleaned.": {
+    "nl": "Scan deze mappen om te zien wat je kunt opruimen.",
+    "es": "Analiza estas carpetas para ver qué se puede limpiar.",
+    "de": "Scanne diese Ordner, um bereinigbare Dateien zu finden.",
+    "fr": "Analysez ces dossiers pour voir ce qui peut être nettoyé.",
+    "pt": "Verifique estas pastas para ver o que pode ser limpo.",
+    "ru": "Просканируйте эти папки, чтобы узнать, что можно очистить.",
+    "zh": "扫描这些文件夹以查看可清理的内容。"
+  },
+  "Scanning selected cleanup folders…": {
+    "nl": "Geselecteerde opruimmappen scannen…",
+    "es": "Analizando carpetas seleccionadas…",
+    "de": "Ausgewählte Bereinigungsordner werden gescannt…",
+    "fr": "Analyse des dossiers sélectionnés…",
+    "pt": "Verificando pastas selecionadas…",
+    "ru": "Сканирование выбранных папок…",
+    "zh": "正在扫描所选清理文件夹…"
+  },
+  "Cleaning selected folders…": {
+    "nl": "Geselecteerde mappen opruimen…",
+    "es": "Limpiando carpetas seleccionadas…",
+    "de": "Ausgewählte Ordner werden bereinigt…",
+    "fr": "Nettoyage des dossiers sélectionnés…",
+    "pt": "Limpando pastas selecionadas…",
+    "ru": "Очистка выбранных папок…",
+    "zh": "正在清理所选文件夹…"
+  },
+  "Select at least one folder that exists.": {
+    "nl": "Selecteer minstens één bestaande map.",
+    "es": "Selecciona al menos una carpeta existente.",
+    "de": "Wähle mindestens einen vorhandenen Ordner aus.",
+    "fr": "Sélectionnez au moins un dossier existant.",
+    "pt": "Selecione pelo menos uma pasta existente.",
+    "ru": "Выберите хотя бы одну существующую папку.",
+    "zh": "请至少选择一个存在的文件夹。"
+  },
+  "Clean selected files": {
+    "nl": "Geselecteerde bestanden opruimen",
+    "es": "Limpiar archivos seleccionados",
+    "de": "Ausgewählte Dateien bereinigen",
+    "fr": "Nettoyer les fichiers sélectionnés",
+    "pt": "Limpar arquivos selecionados",
+    "ru": "Очистить выбранные файлы",
+    "zh": "清理所选文件"
+  },
+  "Recycle Bin emptied.": {
+    "nl": "Prullenbak geleegd.",
+    "es": "Papelera vaciada.",
+    "de": "Papierkorb geleert.",
+    "fr": "Corbeille vidée.",
+    "pt": "Lixeira esvaziada.",
+    "ru": "Корзина очищена.",
+    "zh": "回收站已清空。"
+  },
+  "{0} · {1} cache": {
+    "nl": "{0} · {1} cache",
+    "es": "{0} · caché de {1}",
+    "de": "{0} · {1}-Cache",
+    "fr": "{0} · cache de {1}",
+    "pt": "{0} · cache de {1}",
+    "ru": "{0} · кэш {1}",
+    "zh": "{0} · {1} 缓存"
+  },
+  "{0} · {1} code cache": {
+    "nl": "{0} · {1} codecache",
+    "es": "{0} · caché de código de {1}",
+    "de": "{0} · {1}-Codecache",
+    "fr": "{0} · cache de code de {1}",
+    "pt": "{0} · cache de código de {1}",
+    "ru": "{0} · кэш кода {1}",
+    "zh": "{0} · {1} 代码缓存"
+  },
+  "Not scanned · older than {0} days": {
+    "nl": "Niet gescand · ouder dan {0} dagen",
+    "es": "Sin analizar · más de {0} días",
+    "de": "Nicht gescannt · älter als {0} Tage",
+    "fr": "Non analysé · plus de {0} jours",
+    "pt": "Não verificado · mais de {0} dias",
+    "ru": "Не просканировано · старше {0} дней",
+    "zh": "未扫描 · 超过 {0} 天"
+  },
+  "{0} files · {1} available": {
+    "nl": "{0} bestanden · {1} beschikbaar",
+    "es": "{0} archivos · {1} disponibles",
+    "de": "{0} Dateien · {1} verfügbar",
+    "fr": "{0} fichiers · {1} disponibles",
+    "pt": "{0} arquivos · {1} disponíveis",
+    "ru": "{0} файлов · доступно {1}",
+    "zh": "{0} 个文件 · 可清理 {1}"
+  },
+  "Found {0} older files · {1} available to clean.": {
+    "nl": "{0} oudere bestanden gevonden · {1} op te ruimen.",
+    "es": "Se encontraron {0} archivos antiguos · {1} disponibles para limpiar.",
+    "de": "{0} ältere Dateien gefunden · {1} bereinigbar.",
+    "fr": "{0} fichiers anciens trouvés · {1} à nettoyer.",
+    "pt": "Encontrados {0} arquivos antigos · {1} disponíveis para limpar.",
+    "ru": "Найдено {0} старых файлов · можно очистить {1}.",
+    "zh": "找到 {0} 个旧文件 · 可清理 {1}。"
+  },
+  "Removed {0} files · {1} freed. Some files may have been in use.": {
+    "nl": "{0} bestanden verwijderd · {1} vrijgemaakt. Sommige bestanden waren mogelijk in gebruik.",
+    "es": "Se eliminaron {0} archivos · {1} liberados. Algunos archivos pueden haber estado en uso.",
+    "de": "{0} Dateien entfernt · {1} freigegeben. Einige Dateien waren möglicherweise in Verwendung.",
+    "fr": "{0} fichiers supprimés · {1} libérés. Certains fichiers étaient peut-être utilisés.",
+    "pt": "Removidos {0} arquivos · {1} liberados. Alguns arquivos podem ter estado em uso.",
+    "ru": "Удалено {0} файлов · освобождено {1}. Некоторые файлы могли использоваться.",
+    "zh": "已删除 {0} 个文件 · 已释放 {1}。部分文件可能正在使用。"
+  },
+  "Choose the caches and history you want to clear. Browser passwords, cookies, bookmarks, and documents are not included.": {
+    "nl": "Kies welke caches en geschiedenis je wilt wissen. Browserwachtwoorden, cookies, bladwijzers en documenten zijn niet inbegrepen.",
+    "es": "Elige las cachés y el historial que quieres borrar. No incluye contraseñas del navegador, cookies, marcadores ni documentos.",
+    "de": "Wähle die zu löschenden Caches und Verläufe. Browserpasswörter, Cookies, Lesezeichen und Dokumente sind nicht enthalten.",
+    "fr": "Choisissez les caches et historiques à effacer. Les mots de passe, cookies, favoris et documents ne sont pas inclus.",
+    "pt": "Escolha os caches e históricos que deseja apagar. Senhas do navegador, cookies, favoritos e documentos não estão incluídos.",
+    "ru": "Выберите кэши и историю для очистки. Пароли браузера, файлы cookie, закладки и документы не затрагиваются.",
+    "zh": "选择要清除的缓存和历史记录。不包括浏览器密码、Cookie、书签和文档。"
+  },
+  "Temporary files and caches include items older than 7 days. Recent-file history can be cleared in full. Locked files and linked folders are skipped.": {
+    "nl": "Bij tijdelijke bestanden en caches worden items ouder dan 7 dagen meegenomen. De geschiedenis van recente bestanden kan volledig worden gewist. Vergrendelde bestanden en gekoppelde mappen worden overgeslagen.",
+    "es": "Los archivos temporales y las cachés incluyen elementos de más de 7 días. El historial de archivos recientes se puede borrar por completo. Se omiten los archivos bloqueados y las carpetas enlazadas.",
+    "de": "Bei temporären Dateien und Caches werden Elemente berücksichtigt, die älter als 7 Tage sind. Der Verlauf zuletzt verwendeter Dateien kann vollständig gelöscht werden. Gesperrte Dateien und verknüpfte Ordner werden übersprungen.",
+    "fr": "Les fichiers temporaires et les caches incluent les éléments de plus de 7 jours. L’historique des fichiers récents peut être entièrement effacé. Les fichiers verrouillés et les dossiers liés sont ignorés.",
+    "pt": "Arquivos temporários e caches incluem itens com mais de 7 dias. O histórico de arquivos recentes pode ser apagado por completo. Arquivos bloqueados e pastas vinculadas são ignorados.",
+    "ru": "Для временных файлов и кэшей учитываются элементы старше 7 дней. Историю недавних файлов можно очистить полностью. Заблокированные файлы и связанные папки пропускаются.",
+    "zh": "临时文件和缓存仅包含超过 7 天的项目。最近文件历史记录可全部清除。锁定的文件和链接文件夹会跳过。"
+  },
+  "Review its contents in Windows before emptying; this action cannot be undone.": {
+    "nl": "Bekijk de inhoud in Windows voordat je de prullenbak leegt; dit kan niet worden teruggedraaid.",
+    "es": "Revisa su contenido en Windows antes de vaciarla; esta acción no se puede deshacer.",
+    "de": "Prüfe den Inhalt in Windows vor dem Leeren; diese Aktion kann nicht rückgängig gemacht werden.",
+    "fr": "Vérifiez son contenu dans Windows avant de la vider ; cette action est irréversible.",
+    "pt": "Confira o conteúdo no Windows antes de esvaziar; esta ação não pode ser desfeita.",
+    "ru": "Проверьте содержимое в Windows перед очисткой; это действие нельзя отменить.",
+    "zh": "清空前请在 Windows 中查看其内容；此操作无法撤销。"
+  },
+  "Only cache folders are scanned. Close browsers first for the most complete cleanup.": {
+    "nl": "Alleen cachemappen worden gescand. Sluit eerst je browsers om zo volledig mogelijk op te ruimen.",
+    "es": "Solo se analizan carpetas de caché. Cierra primero los navegadores para una limpieza más completa.",
+    "de": "Es werden nur Cacheordner gescannt. Schließe zuvor die Browser für eine möglichst vollständige Bereinigung.",
+    "fr": "Seuls les dossiers de cache sont analysés. Fermez d’abord les navigateurs pour un nettoyage plus complet.",
+    "pt": "Somente pastas de cache são verificadas. Feche os navegadores antes para uma limpeza mais completa.",
+    "ru": "Сканируются только папки кэша. Сначала закройте браузеры для более полной очистки.",
+    "zh": "仅扫描缓存文件夹。请先关闭浏览器，以便更完整地清理。"
+  },
+  "Empty the Recycle Bin for this Windows account? This permanently deletes its contents.": {
+    "nl": "De prullenbak van dit Windows-account legen? De inhoud wordt permanent verwijderd.",
+    "es": "¿Vaciar la papelera de esta cuenta de Windows? Su contenido se eliminará permanentemente.",
+    "de": "Papierkorb dieses Windows-Kontos leeren? Der Inhalt wird dauerhaft gelöscht.",
+    "fr": "Vider la corbeille de ce compte Windows ? Son contenu sera définitivement supprimé.",
+    "pt": "Esvaziar a Lixeira desta conta do Windows? O conteúdo será apagado permanentemente.",
+    "ru": "Очистить корзину этой учётной записи Windows? Её содержимое будет удалено безвозвратно.",
+    "zh": "清空此 Windows 帐户的回收站？其内容将被永久删除。"
+  },
+  "Windows could not empty the Recycle Bin. It may already be empty or blocked by another process.": {
+    "nl": "Windows kon de prullenbak niet legen. Deze is mogelijk al leeg of wordt door een ander proces geblokkeerd.",
+    "es": "Windows no pudo vaciar la papelera. Puede que ya esté vacía o bloqueada por otro proceso.",
+    "de": "Windows konnte den Papierkorb nicht leeren. Er ist möglicherweise bereits leer oder durch einen anderen Prozess blockiert.",
+    "fr": "Windows n’a pas pu vider la corbeille. Elle est peut-être déjà vide ou bloquée par un autre processus.",
+    "pt": "O Windows não conseguiu esvaziar a Lixeira. Ela pode já estar vazia ou bloqueada por outro processo.",
+    "ru": "Windows не удалось очистить корзину. Возможно, она уже пуста или заблокирована другим процессом.",
+    "zh": "Windows 无法清空回收站。它可能已为空或被其他进程阻止。"
+  },
+  "Remove eligible files from {0} selected folder(s)? Recent-file history is cleared in full. Browser cache files may need to be downloaded again. Locked files and linked folders are skipped.": {
+    "nl": "Geschikte bestanden uit {0} geselecteerde map(pen) verwijderen? De geschiedenis van recente bestanden wordt volledig gewist. Browsercachebestanden moeten mogelijk opnieuw worden gedownload. Vergrendelde bestanden en gekoppelde mappen worden overgeslagen.",
+    "es": "¿Eliminar los archivos aptos de {0} carpetas seleccionadas? El historial de archivos recientes se borra por completo. Puede ser necesario volver a descargar los archivos de caché del navegador. Se omiten los archivos bloqueados y las carpetas enlazadas.",
+    "de": "Geeignete Dateien aus {0} ausgewählten Ordnern entfernen? Der Verlauf zuletzt verwendeter Dateien wird vollständig gelöscht. Browsercachedateien müssen möglicherweise erneut heruntergeladen werden. Gesperrte Dateien und verknüpfte Ordner werden übersprungen.",
+    "fr": "Supprimer les fichiers admissibles de {0} dossiers sélectionnés ? L’historique des fichiers récents sera entièrement effacé. Les fichiers du cache du navigateur devront peut-être être téléchargés à nouveau. Les fichiers verrouillés et dossiers liés sont ignorés.",
+    "pt": "Remover os arquivos elegíveis de {0} pastas selecionadas? O histórico de arquivos recentes será apagado por completo. Os arquivos de cache do navegador podem precisar ser baixados novamente. Arquivos bloqueados e pastas vinculadas são ignorados.",
+    "ru": "Удалить подходящие файлы из {0} выбранных папок? История недавних файлов очищается полностью. Файлы кэша браузера может потребоваться загрузить снова. Заблокированные файлы и связанные папки пропускаются.",
+    "zh": "从 {0} 个所选文件夹中删除符合条件的文件？最近文件历史记录将全部清除。浏览器缓存文件可能需要重新下载。锁定的文件和链接文件夹会跳过。"
+  }
+}

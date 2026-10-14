@@ -1,0 +1,128 @@
+{
+  "Contacting GitHub stable releases…": {
+    "nl": "Stabiele GitHub-releases ophalen…",
+    "es": "Consultando versiones estables de GitHub…",
+    "de": "Stabile GitHub-Versionen werden abgefragt…",
+    "fr": "Consultation des versions stables GitHub…",
+    "pt": "Consultando versões estáveis do GitHub…",
+    "ru": "Запрос стабильных выпусков GitHub…",
+    "zh": "正在查询 GitHub 稳定版本…"
+  },
+  "You are up to date · latest stable release {0}": {
+    "nl": "Je bent up-to-date · laatste stabiele versie {0}",
+    "es": "Estás actualizado · última versión estable {0}",
+    "de": "Du bist auf dem neuesten Stand · neueste stabile Version {0}",
+    "fr": "Vous êtes à jour · dernière version stable {0}",
+    "pt": "Você está atualizado · última versão estável {0}",
+    "ru": "Установлена актуальная версия · последний стабильный выпуск {0}",
+    "zh": "已是最新版本 · 最新稳定版 {0}"
+  },
+  "Version {0} is on GitHub, but its setup file is not attached yet.": {
+    "nl": "Versie {0} staat op GitHub, maar het installatiebestand is nog niet toegevoegd.",
+    "es": "La versión {0} está en GitHub, pero todavía no tiene adjunto el instalador.",
+    "de": "Version {0} ist auf GitHub, aber die Installationsdatei ist noch nicht angehängt.",
+    "fr": "La version {0} est sur GitHub, mais son installateur n’est pas encore joint.",
+    "pt": "A versão {0} está no GitHub, mas o instalador ainda não foi anexado.",
+    "ru": "Версия {0} опубликована на GitHub, но установщик пока не приложен.",
+    "zh": "版本 {0} 已在 GitHub 上发布，但尚未附上安装文件。"
+  },
+  "A newer release is available, but it does not include SharkOptimizer-Setup.exe yet. Open its GitHub release page?": {
+    "nl": "Er is een nieuwere versie, maar SharkOptimizer-Setup.exe is nog niet toegevoegd. De GitHub-releasepagina openen?",
+    "es": "Hay una versión más reciente, pero todavía no incluye SharkOptimizer-Setup.exe. ¿Abrir su página de GitHub?",
+    "de": "Eine neuere Version ist verfügbar, enthält aber noch keine SharkOptimizer-Setup.exe. GitHub-Versionsseite öffnen?",
+    "fr": "Une nouvelle version est disponible, mais elle ne contient pas encore SharkOptimizer-Setup.exe. Ouvrir sa page GitHub ?",
+    "pt": "Há uma versão mais recente, mas ainda não inclui SharkOptimizer-Setup.exe. Abrir a página da versão no GitHub?",
+    "ru": "Доступен новый выпуск, но SharkOptimizer-Setup.exe пока не приложен. Открыть страницу выпуска на GitHub?",
+    "zh": "有较新版本，但尚未包含 SharkOptimizer-Setup.exe。打开其 GitHub 发布页面？"
+  },
+  "SharkOptimizer {0} is available. Download and install it now? The app will close and reopen after updating.": {
+    "nl": "SharkOptimizer {0} is beschikbaar. Nu downloaden en installeren? De app sluit en opent opnieuw na de update.",
+    "es": "SharkOptimizer {0} está disponible. ¿Descargar e instalar ahora? La aplicación se cerrará y volverá a abrirse tras actualizar.",
+    "de": "SharkOptimizer {0} ist verfügbar. Jetzt herunterladen und installieren? Die App wird nach dem Update geschlossen und erneut geöffnet.",
+    "fr": "SharkOptimizer {0} est disponible. Télécharger et installer maintenant ? L’application se fermera puis se rouvrira après la mise à jour.",
+    "pt": "SharkOptimizer {0} está disponível. Baixar e instalar agora? O aplicativo fechará e abrirá novamente após atualizar.",
+    "ru": "Доступен SharkOptimizer {0}. Скачать и установить сейчас? Приложение закроется и откроется после обновления.",
+    "zh": "SharkOptimizer {0} 可用。现在下载并安装？应用将在更新后关闭并重新打开。"
+  },
+  "Version {0} is available when you are ready.": {
+    "nl": "Versie {0} is beschikbaar wanneer je klaar bent.",
+    "es": "La versión {0} está disponible cuando quieras.",
+    "de": "Version {0} ist verfügbar, wenn du bereit bist.",
+    "fr": "La version {0} est disponible quand vous le souhaitez.",
+    "pt": "A versão {0} está disponível quando você quiser.",
+    "ru": "Версия {0} доступна, когда будете готовы.",
+    "zh": "版本 {0} 可在您准备好时安装。"
+  },
+  "Downloading the GitHub setup asset and checking its version…": {
+    "nl": "GitHub-installatiebestand downloaden en de versie controleren…",
+    "es": "Descargando el instalador de GitHub y comprobando su versión…",
+    "de": "GitHub-Installationsdatei wird heruntergeladen und ihre Version geprüft…",
+    "fr": "Téléchargement de l’installateur GitHub et vérification de sa version…",
+    "pt": "Baixando o instalador do GitHub e verificando a versão…",
+    "ru": "Загрузка установщика GitHub и проверка версии…",
+    "zh": "正在下载 GitHub 安装文件并检查版本…"
+  },
+  "Setup is preparing the update…": {
+    "nl": "Installatie bereidt de update voor…",
+    "es": "El instalador está preparando la actualización…",
+    "de": "Das Installationsprogramm bereitet das Update vor…",
+    "fr": "L’installateur prépare la mise à jour…",
+    "pt": "O instalador está preparando a atualização…",
+    "ru": "Установщик подготавливает обновление…",
+    "zh": "安装程序正在准备更新…"
+  },
+  "Update check did not complete.": {
+    "nl": "Updatecontrole niet voltooid.",
+    "es": "No se completó la búsqueda de actualizaciones.",
+    "de": "Updateprüfung wurde nicht abgeschlossen.",
+    "fr": "La recherche de mises à jour n’a pas abouti.",
+    "pt": "A verificação de atualizações não foi concluída.",
+    "ru": "Проверка обновлений не завершена.",
+    "zh": "更新检查未完成。"
+  },
+  "SharkOptimizer could not check or install the GitHub update.": {
+    "nl": "SharkOptimizer kon de GitHub-update niet controleren of installeren.",
+    "es": "SharkOptimizer no pudo buscar o instalar la actualización de GitHub.",
+    "de": "SharkOptimizer konnte das GitHub-Update nicht prüfen oder installieren.",
+    "fr": "SharkOptimizer n’a pas pu vérifier ou installer la mise à jour GitHub.",
+    "pt": "O SharkOptimizer não conseguiu verificar ou instalar a atualização do GitHub.",
+    "ru": "SharkOptimizer не удалось проверить или установить обновление GitHub.",
+    "zh": "SharkOptimizer 无法检查或安装 GitHub 更新。"
+  },
+  "SharkOptimizer updates": {
+    "nl": "SharkOptimizer-updates",
+    "es": "Actualizaciones de SharkOptimizer",
+    "de": "SharkOptimizer-Updates",
+    "fr": "Mises à jour SharkOptimizer",
+    "pt": "Atualizações do SharkOptimizer",
+    "ru": "Обновления SharkOptimizer",
+    "zh": "SharkOptimizer 更新"
+  },
+  "The update preference could not be saved.": {
+    "nl": "De updatevoorkeur kon niet worden opgeslagen.",
+    "es": "No se pudo guardar la preferencia de actualización.",
+    "de": "Die Updateeinstellung konnte nicht gespeichert werden.",
+    "fr": "Impossible d’enregistrer la préférence de mise à jour.",
+    "pt": "Não foi possível salvar a preferência de atualização.",
+    "ru": "Не удалось сохранить настройку обновлений.",
+    "zh": "无法保存更新偏好。"
+  },
+  "Release channel · GitHub stable releases": {
+    "nl": "Releasekanaal · stabiele GitHub-releases",
+    "es": "Canal de versiones · versiones estables de GitHub",
+    "de": "Versionskanal · stabile GitHub-Versionen",
+    "fr": "Canal de diffusion · versions stables GitHub",
+    "pt": "Canal de versões · versões estáveis do GitHub",
+    "ru": "Канал выпусков · стабильные версии GitHub",
+    "zh": "发布通道 · GitHub 稳定版本"
+  },
+  "Check the official SharkOptimizer GitHub releases for a newer setup. Updates download and install through the signed-in Windows session.": {
+    "nl": "Controleer de officiële SharkOptimizer-releases op GitHub op een nieuwere installatie. Updates worden gedownload en geïnstalleerd via de aangemelde Windows-sessie.",
+    "es": "Consulta las versiones oficiales de SharkOptimizer en GitHub para buscar un instalador más reciente. Las actualizaciones se descargan e instalan desde la sesión iniciada de Windows.",
+    "de": "Prüfe offizielle SharkOptimizer-Versionen auf GitHub auf ein neueres Installationsprogramm. Updates werden über die angemeldete Windows-Sitzung heruntergeladen und installiert.",
+    "fr": "Consultez les versions officielles de SharkOptimizer sur GitHub pour un installateur plus récent. Les mises à jour sont téléchargées et installées via la session Windows ouverte.",
+    "pt": "Consulte as versões oficiais do SharkOptimizer no GitHub para um instalador mais recente. Atualizações são baixadas e instaladas pela sessão conectada do Windows.",
+    "ru": "Проверьте официальные выпуски SharkOptimizer на GitHub на наличие нового установщика. Обновления скачиваются и устанавливаются в текущем сеансе Windows.",
+    "zh": "检查 SharkOptimizer 官方 GitHub 发布以获取较新安装程序。更新通过已登录的 Windows 会话下载并安装。"
+  }
+}

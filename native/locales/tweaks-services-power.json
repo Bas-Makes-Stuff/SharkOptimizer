@@ -1,0 +1,182 @@
+{
+  "Disables Windows location features through machine policy.": {
+    "nl": "Schakelt Windows-locatiefuncties uit via computerbeleid.",
+    "es": "Desactiva las funciones de ubicación de Windows mediante una directiva del equipo.",
+    "de": "Deaktiviert Windows-Standortfunktionen über eine Computerrichtlinie.",
+    "fr": "Désactive les fonctions de localisation Windows via une stratégie de l’ordinateur.",
+    "pt": "Desativa recursos de localização do Windows por uma política do computador.",
+    "ru": "Отключает функции определения местоположения Windows через политику компьютера.",
+    "zh": "通过计算机策略禁用 Windows 定位功能。"
+  },
+  "Maps, Weather, and Find My Device may stop working.": {
+    "nl": "Kaarten, Weer en Mijn apparaat zoeken werken mogelijk niet meer.",
+    "es": "Mapas, El tiempo y Encontrar mi dispositivo pueden dejar de funcionar.",
+    "de": "Karten, Wetter und Mein Gerät suchen funktionieren möglicherweise nicht mehr.",
+    "fr": "Cartes, Météo et Localiser mon appareil peuvent cesser de fonctionner.",
+    "pt": "Mapas, Clima e Localizar meu dispositivo podem parar de funcionar.",
+    "ru": "Карты, Погода и поиск устройства могут перестать работать.",
+    "zh": "地图、天气和查找我的设备可能无法工作。"
+  },
+  "Stops Windows from sharing update downloads with other PCs.": {
+    "nl": "Voorkomt dat Windows gedownloade updates deelt met andere pc's.",
+    "es": "Impide que Windows comparta descargas de actualizaciones con otros PC.",
+    "de": "Verhindert, dass Windows heruntergeladene Updates mit anderen PCs teilt.",
+    "fr": "Empêche Windows de partager les téléchargements de mises à jour avec d’autres PC.",
+    "pt": "Impede que o Windows compartilhe downloads de atualizações com outros PCs.",
+    "ru": "Запрещает Windows делиться загруженными обновлениями с другими ПК.",
+    "zh": "阻止 Windows 与其他电脑共享更新下载。"
+  },
+  "Windows will use Microsoft update servers instead of local network peers.": {
+    "nl": "Windows gebruikt Microsoft-updateservers in plaats van andere pc's op het lokale netwerk.",
+    "es": "Windows usará los servidores de actualización de Microsoft en lugar de otros equipos de la red local.",
+    "de": "Windows verwendet Microsoft-Updateserver statt anderer PCs im lokalen Netzwerk.",
+    "fr": "Windows utilisera les serveurs de mise à jour Microsoft plutôt que les autres PC du réseau local.",
+    "pt": "O Windows usará servidores de atualização da Microsoft em vez de outros PCs da rede local.",
+    "ru": "Windows будет использовать серверы обновлений Microsoft вместо других ПК в локальной сети.",
+    "zh": "Windows 将使用 Microsoft 更新服务器，而非本地网络中的其他电脑。"
+  },
+  "Disables OneDrive file sync for this user through Windows policy.": {
+    "nl": "Schakelt OneDrive-bestandssynchronisatie uit voor deze gebruiker via Windows-beleid.",
+    "es": "Desactiva la sincronización de archivos de OneDrive para este usuario mediante una directiva de Windows.",
+    "de": "Deaktiviert die OneDrive-Dateisynchronisierung für diesen Benutzer über eine Windows-Richtlinie.",
+    "fr": "Désactive la synchronisation des fichiers OneDrive pour cet utilisateur via une stratégie Windows.",
+    "pt": "Desativa a sincronização de arquivos do OneDrive para este usuário por uma política do Windows.",
+    "ru": "Отключает синхронизацию файлов OneDrive для этого пользователя через политику Windows.",
+    "zh": "通过 Windows 策略为此用户禁用 OneDrive 文件同步。"
+  },
+  "Files already on this PC remain, but OneDrive will stop syncing until you undo this option.": {
+    "nl": "Bestanden die al op deze pc staan blijven behouden, maar OneDrive stopt met synchroniseren totdat je deze optie terugdraait.",
+    "es": "Los archivos que ya están en este PC se conservan, pero OneDrive dejará de sincronizar hasta que deshagas esta opción.",
+    "de": "Bereits auf diesem PC gespeicherte Dateien bleiben erhalten, aber OneDrive synchronisiert erst wieder, wenn du diese Option rückgängig machst.",
+    "fr": "Les fichiers déjà présents sur ce PC sont conservés, mais OneDrive ne synchronisera plus tant que vous n’annulerez pas cette option.",
+    "pt": "Os arquivos já presentes neste PC permanecem, mas o OneDrive para de sincronizar até você desfazer esta opção.",
+    "ru": "Файлы, уже находящиеся на ПК, сохранятся, но OneDrive перестанет синхронизировать их до отмены этой настройки.",
+    "zh": "电脑上已有文件会保留，但 OneDrive 将停止同步，直到您撤销此选项。"
+  },
+  "Hides Widgets, Task View, and the taskbar search box, and aligns app icons to the left.": {
+    "nl": "Verbergt Widgets, Taakweergave en het zoekvak op de taakbalk en lijnt appiconen links uit.",
+    "es": "Oculta Widgets, Vista de tareas y el cuadro de búsqueda de la barra de tareas, y alinea los iconos a la izquierda.",
+    "de": "Blendet Widgets, Taskansicht und das Suchfeld der Taskleiste aus und richtet App-Symbole links aus.",
+    "fr": "Masque les Widgets, l’affichage des tâches et le champ de recherche de la barre des tâches, puis aligne les icônes à gauche.",
+    "pt": "Oculta Widgets, Visão de Tarefas e a caixa de pesquisa da barra de tarefas, e alinha os ícones à esquerda.",
+    "ru": "Скрывает виджеты, представление задач и поле поиска на панели задач, а значки приложений выравнивает слева.",
+    "zh": "隐藏小组件、任务视图和任务栏搜索框，并将应用图标左对齐。"
+  },
+  "Designed for Windows 11; unavailable items are ignored by older Windows versions.": {
+    "nl": "Ontworpen voor Windows 11; oudere Windows-versies negeren niet-beschikbare onderdelen.",
+    "es": "Diseñado para Windows 11; las versiones anteriores ignoran los elementos no disponibles.",
+    "de": "Für Windows 11 entwickelt; ältere Windows-Versionen ignorieren nicht verfügbare Elemente.",
+    "fr": "Conçu pour Windows 11 ; les versions antérieures ignorent les éléments indisponibles.",
+    "pt": "Projetado para Windows 11; versões anteriores ignoram itens indisponíveis.",
+    "ru": "Предназначено для Windows 11; старые версии Windows игнорируют недоступные элементы.",
+    "zh": "为 Windows 11 设计；旧版 Windows 会忽略不可用的项目。"
+  },
+  "Shortens machine service and user app shutdown waits and enables ending unresponsive apps.": {
+    "nl": "Verkort de wachttijd voor het afsluiten van computerservices en gebruikersapps en staat het beëindigen van niet-reagerende apps toe.",
+    "es": "Reduce las esperas de cierre de servicios del equipo y aplicaciones del usuario, y permite finalizar aplicaciones que no responden.",
+    "de": "Verkürzt die Wartezeiten beim Beenden von Computerdiensten und Benutzer-Apps und ermöglicht das Beenden nicht reagierender Apps.",
+    "fr": "Réduit les délais d’arrêt des services de l’ordinateur et des applications utilisateur, et autorise la fermeture des applications bloquées.",
+    "pt": "Reduz as esperas de encerramento de serviços do computador e aplicativos do usuário, e permite finalizar aplicativos que não respondem.",
+    "ru": "Сокращает ожидание завершения служб компьютера и пользовательских приложений и разрешает завершать зависшие приложения.",
+    "zh": "缩短计算机服务和用户应用的关机等待时间，并允许结束无响应应用。"
+  },
+  "Apps with unsaved work can be closed during shutdown, and slow services may be stopped sooner. Save work before shutting down.": {
+    "nl": "Apps met niet-opgeslagen werk kunnen tijdens het afsluiten worden gesloten en trage services kunnen eerder stoppen. Sla je werk op voordat je afsluit.",
+    "es": "Las aplicaciones con trabajo sin guardar pueden cerrarse al apagar y los servicios lentos pueden detenerse antes. Guarda tu trabajo antes de apagar.",
+    "de": "Apps mit ungespeicherter Arbeit können beim Herunterfahren geschlossen und langsame Dienste früher beendet werden. Speichere deine Arbeit vorher.",
+    "fr": "Les applications contenant du travail non enregistré peuvent être fermées à l’arrêt, et les services lents arrêtés plus tôt. Enregistrez votre travail avant d’éteindre.",
+    "pt": "Aplicativos com trabalho não salvo podem ser fechados ao desligar e serviços lentos podem ser interrompidos mais cedo. Salve seu trabalho antes de desligar.",
+    "ru": "При выключении приложения с несохранёнными данными могут закрыться, а медленные службы — остановиться раньше. Сохраните работу перед выключением.",
+    "zh": "关机时可能关闭包含未保存工作的应用，并更早停止缓慢的服务。关机前请保存工作。"
+  },
+  "Uses Windows' memory-based service-host grouping threshold on PCs with at least 8 GB RAM.": {
+    "nl": "Gebruikt de geheugengebaseerde Windows-drempel voor het groeperen van servicehosts op pc's met minstens 8 GB RAM.",
+    "es": "Usa el umbral de agrupación de hosts de servicios de Windows basado en memoria en PC con al menos 8 GB de RAM.",
+    "de": "Verwendet auf PCs mit mindestens 8 GB RAM den speicherabhängigen Windows-Schwellenwert zur Gruppierung von Diensthosts.",
+    "fr": "Utilise le seuil de regroupement des hôtes de services Windows basé sur la mémoire sur les PC ayant au moins 8 Go de RAM.",
+    "pt": "Usa o limite de agrupamento de hosts de serviços do Windows baseado em memória em PCs com pelo menos 8 GB de RAM.",
+    "ru": "Использует зависящий от памяти порог группировки хостов служб Windows на ПК с ОЗУ не менее 8 ГБ.",
+    "zh": "在至少有 8 GB 内存的电脑上使用 Windows 基于内存的服务主机分组阈值。"
+  },
+  "Requires a restart. If one grouped service crashes, others in its group can stop too.": {
+    "nl": "Opnieuw opstarten vereist. Als één gegroepeerde service crasht, kunnen andere services in de groep ook stoppen.",
+    "es": "Requiere reiniciar. Si falla un servicio agrupado, los demás de su grupo también pueden detenerse.",
+    "de": "Neustart erforderlich. Stürzt ein gruppierter Dienst ab, können andere Dienste derselben Gruppe ebenfalls stoppen.",
+    "fr": "Nécessite un redémarrage. Si un service regroupé plante, les autres de son groupe peuvent aussi s’arrêter.",
+    "pt": "Exige reinicialização. Se um serviço agrupado falhar, outros do mesmo grupo também podem parar.",
+    "ru": "Требуется перезагрузка. При сбое одной сгруппированной службы другие службы группы тоже могут остановиться.",
+    "zh": "需要重启。如果分组中的一个服务崩溃，同组其他服务也可能停止。"
+  },
+  "Prevents Windows paging the kernel and drivers out to disk on high-memory PCs.": {
+    "nl": "Voorkomt dat Windows de kernel en drivers naar schijf wisselt op pc's met veel geheugen.",
+    "es": "Impide que Windows pagine el núcleo y los controladores al disco en PC con mucha memoria.",
+    "de": "Verhindert auf PCs mit viel RAM die Auslagerung von Kernel und Treibern auf den Datenträger.",
+    "fr": "Empêche Windows de déplacer le noyau et les pilotes vers le disque sur les PC dotés de beaucoup de mémoire.",
+    "pt": "Impede que o Windows pagine o kernel e os drivers para o disco em PCs com muita memória.",
+    "ru": "Запрещает Windows выгружать ядро и драйверы на диск на ПК с большим объёмом памяти.",
+    "zh": "在大内存电脑上阻止 Windows 将内核和驱动程序分页到磁盘。"
+  },
+  "Requires a restart and uses more physical memory. Intended for systems with at least 16 GB RAM.": {
+    "nl": "Vereist opnieuw opstarten en gebruikt meer fysiek geheugen. Bedoeld voor systemen met minstens 16 GB RAM.",
+    "es": "Requiere reiniciar y usa más memoria física. Pensado para sistemas con al menos 16 GB de RAM.",
+    "de": "Erfordert einen Neustart und verwendet mehr physischen Speicher. Für Systeme mit mindestens 16 GB RAM gedacht.",
+    "fr": "Nécessite un redémarrage et utilise davantage de mémoire physique. Destiné aux systèmes ayant au moins 16 Go de RAM.",
+    "pt": "Exige reinicialização e usa mais memória física. Destinado a sistemas com pelo menos 16 GB de RAM.",
+    "ru": "Требует перезагрузки и использует больше физической памяти. Предназначено для систем с ОЗУ не менее 16 ГБ.",
+    "zh": "需要重启并使用更多物理内存。适用于至少有 16 GB 内存的系统。"
+  },
+  "Turns off the Windows prefetcher and Superfetch preloading.": {
+    "nl": "Schakelt Windows Prefetcher en vooraf laden via Superfetch uit.",
+    "es": "Desactiva Prefetcher de Windows y la precarga de Superfetch.",
+    "de": "Deaktiviert den Windows-Prefetcher und das Vorladen durch Superfetch.",
+    "fr": "Désactive le Prefetcher Windows et le préchargement Superfetch.",
+    "pt": "Desativa o Prefetcher do Windows e o pré-carregamento do Superfetch.",
+    "ru": "Отключает Windows Prefetcher и предварительную загрузку Superfetch.",
+    "zh": "关闭 Windows 预读取器和 Superfetch 预加载。"
+  },
+  "Requires a restart. Apps may launch more slowly, especially on hard drives.": {
+    "nl": "Opnieuw opstarten vereist. Apps starten mogelijk langzamer, vooral op harde schijven.",
+    "es": "Requiere reiniciar. Las aplicaciones pueden iniciarse más lentamente, especialmente en discos duros.",
+    "de": "Neustart erforderlich. Apps können langsamer starten, besonders auf Festplatten.",
+    "fr": "Nécessite un redémarrage. Les applications peuvent démarrer plus lentement, surtout sur les disques durs.",
+    "pt": "Exige reinicialização. Aplicativos podem iniciar mais devagar, especialmente em discos rígidos.",
+    "ru": "Требуется перезагрузка. Приложения могут запускаться медленнее, особенно на жёстких дисках.",
+    "zh": "需要重启。应用可能启动更慢，尤其是在机械硬盘上。"
+  },
+  "Keeps USB devices powered while the PC is on, which can help with intermittent mouse, keyboard, or headset dropouts.": {
+    "nl": "Houdt USB-apparaten ingeschakeld zolang de pc aan staat, wat kan helpen bij onderbrekingen van muis, toetsenbord of headset.",
+    "es": "Mantiene alimentados los dispositivos USB mientras el PC está encendido, lo que puede ayudar con desconexiones intermitentes del ratón, teclado o auriculares.",
+    "de": "Hält USB-Geräte bei eingeschaltetem PC mit Strom versorgt, was bei zeitweisen Aussetzern von Maus, Tastatur oder Headset helfen kann.",
+    "fr": "Maintient les périphériques USB alimentés lorsque le PC est allumé, ce qui peut aider en cas de coupures intermittentes de souris, clavier ou casque.",
+    "pt": "Mantém dispositivos USB alimentados enquanto o PC está ligado, o que pode ajudar com desconexões intermitentes do mouse, teclado ou headset.",
+    "ru": "Поддерживает питание USB-устройств при включённом ПК, что может помочь при периодических отключениях мыши, клавиатуры или гарнитуры.",
+    "zh": "电脑开启时保持 USB 设备供电，可能改善鼠标、键盘或耳机的间歇性断连。"
+  },
+  "Uses more power, especially on laptops. The exact AC and battery values are saved for undo.": {
+    "nl": "Gebruikt meer stroom, vooral op laptops. De exacte waarden voor netstroom en accu worden opgeslagen om terug te draaien.",
+    "es": "Usa más energía, especialmente en portátiles. Se guardan los valores exactos de corriente y batería para deshacerlos.",
+    "de": "Verbraucht mehr Strom, besonders auf Laptops. Die genauen Werte für Netz- und Akkubetrieb werden zum Rückgängigmachen gespeichert.",
+    "fr": "Consomme plus d’énergie, surtout sur les portables. Les valeurs exactes sur secteur et batterie sont enregistrées pour l’annulation.",
+    "pt": "Usa mais energia, especialmente em notebooks. Os valores exatos para tomada e bateria são salvos para desfazer.",
+    "ru": "Повышает энергопотребление, особенно на ноутбуках. Точные значения для питания от сети и батареи сохраняются для отмены.",
+    "zh": "会增加耗电，尤其是在笔记本电脑上。交流电和电池的准确设置值会保存以便撤销。"
+  },
+  "Keeps PCIe links at full power instead of using Active State Power Management.": {
+    "nl": "Houdt PCIe-verbindingen op volledig vermogen in plaats van Active State Power Management te gebruiken.",
+    "es": "Mantiene los enlaces PCIe a plena potencia en lugar de usar Active State Power Management.",
+    "de": "Hält PCIe-Verbindungen bei voller Leistung statt Active State Power Management zu verwenden.",
+    "fr": "Maintient les liaisons PCIe à pleine puissance au lieu d’utiliser Active State Power Management.",
+    "pt": "Mantém links PCIe em potência máxima em vez de usar Active State Power Management.",
+    "ru": "Поддерживает полное питание соединений PCIe вместо использования Active State Power Management.",
+    "zh": "保持 PCIe 链路全功率运行，而不使用主动状态电源管理。"
+  },
+  "Can increase idle power and heat. The exact AC setting is saved for undo.": {
+    "nl": "Kan stroomverbruik en warmte in rust verhogen. De exacte netstroominstelling wordt opgeslagen om terug te draaien.",
+    "es": "Puede aumentar el consumo y el calor en reposo. Se guarda el ajuste exacto de alimentación de CA para deshacerlo.",
+    "de": "Kann Stromverbrauch und Wärme im Leerlauf erhöhen. Die genaue Netzbetriebseinstellung wird zum Rückgängigmachen gespeichert.",
+    "fr": "Peut augmenter la consommation et la chaleur au repos. Le réglage exact sur secteur est enregistré pour l’annulation.",
+    "pt": "Pode aumentar o consumo e o calor em repouso. A configuração exata para tomada é salva para desfazer.",
+    "ru": "Может повысить энергопотребление и нагрев в простое. Точная настройка питания от сети сохраняется для отмены.",
+    "zh": "可能增加空闲耗电和发热。准确的交流电设置会保存以便撤销。"
+  }
+}

@@ -1,0 +1,128 @@
+{
+  "Try lower material, detail, and UI quality settings.": {
+    "nl": "Probeer lagere kwaliteit voor materialen, details en interface.",
+    "es": "Prueba reducir la calidad de materiales, detalles e interfaz.",
+    "de": "Probiere niedrigere Qualität für Materialien, Details und Oberfläche.",
+    "fr": "Essayez de réduire la qualité des matériaux, détails et de l’interface.",
+    "pt": "Tente reduzir a qualidade de materiais, detalhes e interface.",
+    "ru": "Попробуйте снизить качество материалов, деталей и интерфейса.",
+    "zh": "尝试降低材质、细节和界面质量。"
+  },
+  "Disable V-Sync and cap frame rate near your monitor refresh rate.": {
+    "nl": "Schakel V-Sync uit en beperk de framesnelheid tot ongeveer de verversingssnelheid van je monitor.",
+    "es": "Desactiva V-Sync y limita los FPS cerca de la frecuencia de actualización del monitor.",
+    "de": "Deaktiviere V-Sync und begrenze die Bildrate nahe der Bildwiederholrate deines Monitors.",
+    "fr": "Désactivez V-Sync et limitez les images par seconde près du taux de rafraîchissement de l’écran.",
+    "pt": "Desative V-Sync e limite os FPS perto da taxa de atualização do monitor.",
+    "ru": "Отключите V-Sync и ограничьте частоту кадров около частоты обновления монитора.",
+    "zh": "关闭 V-Sync，并将帧率限制在接近显示器刷新率的水平。"
+  },
+  "Enable NVIDIA Reflex if your GPU supports it.": {
+    "nl": "Schakel NVIDIA Reflex in als je GPU dit ondersteunt.",
+    "es": "Activa NVIDIA Reflex si tu GPU lo admite.",
+    "de": "Aktiviere NVIDIA Reflex, wenn deine GPU es unterstützt.",
+    "fr": "Activez NVIDIA Reflex si votre GPU le prend en charge.",
+    "pt": "Ative NVIDIA Reflex se sua GPU oferecer suporte.",
+    "ru": "Включите NVIDIA Reflex, если видеокарта поддерживает его.",
+    "zh": "如果 GPU 支持，请启用 NVIDIA Reflex。"
+  },
+  "Compare Performance Mode and DirectX 12 on your PC.": {
+    "nl": "Vergelijk Prestatiemodus en DirectX 12 op je pc.",
+    "es": "Compara el Modo Rendimiento y DirectX 12 en tu PC.",
+    "de": "Vergleiche Leistungsmodus und DirectX 12 auf deinem PC.",
+    "fr": "Comparez le mode Performance et DirectX 12 sur votre PC.",
+    "pt": "Compare o Modo Desempenho e DirectX 12 no seu PC.",
+    "ru": "Сравните режим производительности и DirectX 12 на своём ПК.",
+    "zh": "在您的电脑上比较性能模式和 DirectX 12。"
+  },
+  "Shadows Off and lower effects can improve frame rate.": {
+    "nl": "Schaduwen uitzetten en effecten verlagen kan de framesnelheid verbeteren.",
+    "es": "Desactivar sombras y reducir efectos puede mejorar los FPS.",
+    "de": "Deaktivierte Schatten und reduzierte Effekte können die Bildrate verbessern.",
+    "fr": "Désactiver les ombres et réduire les effets peut améliorer la fréquence d’images.",
+    "pt": "Desativar sombras e reduzir efeitos pode melhorar os FPS.",
+    "ru": "Отключение теней и снижение эффектов могут улучшить частоту кадров.",
+    "zh": "关闭阴影并降低特效可能提高帧率。"
+  },
+  "Cap FPS just below your monitor refresh rate for steadier frame times.": {
+    "nl": "Beperk FPS tot net onder de verversingssnelheid van je monitor voor stabielere frametijden.",
+    "es": "Limita los FPS justo por debajo de la frecuencia del monitor para tiempos de fotograma más estables.",
+    "de": "Begrenze FPS knapp unter der Bildwiederholrate deines Monitors für stabilere Framezeiten.",
+    "fr": "Limitez les FPS juste sous le taux de rafraîchissement de l’écran pour des temps d’image plus stables.",
+    "pt": "Limite os FPS logo abaixo da taxa de atualização do monitor para tempos de quadro mais estáveis.",
+    "ru": "Ограничьте FPS чуть ниже частоты обновления монитора для более стабильного времени кадра.",
+    "zh": "将 FPS 限制在略低于显示器刷新率的水平，以获得更稳定的帧时间。"
+  },
+  "Most gains come from in-game video and GPU driver settings.": {
+    "nl": "De meeste winst komt van video-instellingen in de game en GPU-driverinstellingen.",
+    "es": "La mayoría de las mejoras vienen de ajustes de vídeo del juego y del controlador de GPU.",
+    "de": "Die meisten Verbesserungen kommen aus Videoeinstellungen im Spiel und GPU-Treibereinstellungen.",
+    "fr": "Les principaux gains viennent des réglages vidéo du jeu et du pilote GPU.",
+    "pt": "A maioria dos ganhos vem dos ajustes de vídeo do jogo e do driver da GPU.",
+    "ru": "Большинство улучшений дают настройки графики игры и драйвера GPU.",
+    "zh": "大多数改善来自游戏内视频设置和 GPU 驱动设置。"
+  },
+  "Try disabling V-Sync and enabling raw mouse input.": {
+    "nl": "Probeer V-Sync uit te schakelen en directe muisinvoer in te schakelen.",
+    "es": "Prueba desactivar V-Sync y activar la entrada directa del ratón.",
+    "de": "Probiere V-Sync aus und direkte Mauseingabe an.",
+    "fr": "Essayez de désactiver V-Sync et d’activer l’entrée brute de la souris.",
+    "pt": "Tente desativar V-Sync e ativar entrada direta do mouse.",
+    "ru": "Попробуйте отключить V-Sync и включить прямой ввод мыши.",
+    "zh": "尝试关闭 V-Sync 并启用原始鼠标输入。"
+  },
+  "Use an FPS cap if uncapped frame times are inconsistent.": {
+    "nl": "Gebruik een FPS-limiet als frametijden zonder limiet onregelmatig zijn.",
+    "es": "Usa un límite de FPS si los tiempos de fotograma sin límite son inconsistentes.",
+    "de": "Verwende ein FPS-Limit, wenn unbegrenzte Framezeiten schwanken.",
+    "fr": "Utilisez une limite de FPS si les temps d’image sans limite sont irréguliers.",
+    "pt": "Use um limite de FPS se os tempos de quadro sem limite forem inconsistentes.",
+    "ru": "Используйте ограничение FPS, если без него время кадра нестабильно.",
+    "zh": "如果不限帧时帧时间不稳定，请使用 FPS 上限。"
+  },
+  "Compare fullscreen and display options on your system.": {
+    "nl": "Vergelijk volledig scherm en weergaveopties op je systeem.",
+    "es": "Compara las opciones de pantalla completa y visualización en tu sistema.",
+    "de": "Vergleiche Vollbild- und Anzeigeoptionen auf deinem System.",
+    "fr": "Comparez les options plein écran et d’affichage sur votre système.",
+    "pt": "Compare as opções de tela cheia e exibição no seu sistema.",
+    "ru": "Сравните полноэкранный режим и настройки отображения на своей системе.",
+    "zh": "在您的系统上比较全屏和显示选项。"
+  },
+  "Lower texture streaming budget if VRAM is limited.": {
+    "nl": "Verlaag het budget voor textuurstreaming als VRAM beperkt is.",
+    "es": "Reduce el presupuesto de transmisión de texturas si falta VRAM.",
+    "de": "Senke das Texturstreaming-Budget bei wenig VRAM.",
+    "fr": "Réduisez le budget de streaming des textures si la VRAM est limitée.",
+    "pt": "Reduza o orçamento de streaming de texturas se a VRAM for limitada.",
+    "ru": "Уменьшите бюджет потоковой загрузки текстур при нехватке VRAM.",
+    "zh": "如果显存有限，请降低纹理流送预算。"
+  },
+  "Update your GPU driver before adjusting graphics settings.": {
+    "nl": "Werk je GPU-driver bij voordat je grafische instellingen aanpast.",
+    "es": "Actualiza el controlador de GPU antes de ajustar los gráficos.",
+    "de": "Aktualisiere deinen GPU-Treiber vor dem Anpassen der Grafikeinstellungen.",
+    "fr": "Mettez à jour le pilote GPU avant de modifier les réglages graphiques.",
+    "pt": "Atualize o driver da GPU antes de ajustar os gráficos.",
+    "ru": "Обновите драйвер GPU перед изменением настроек графики.",
+    "zh": "调整图形设置前请更新 GPU 驱动。"
+  },
+  "Keep the game on an SSD when possible.": {
+    "nl": "Zet de game indien mogelijk op een SSD.",
+    "es": "Mantén el juego en un SSD si es posible.",
+    "de": "Speichere das Spiel wenn möglich auf einer SSD.",
+    "fr": "Installez le jeu sur un SSD si possible.",
+    "pt": "Mantenha o jogo em um SSD quando possível.",
+    "ru": "По возможности храните игру на SSD.",
+    "zh": "尽可能将游戏放在 SSD 上。"
+  },
+  "Let shaders finish compiling after a game update.": {
+    "nl": "Laat shaders volledig compileren na een game-update.",
+    "es": "Deja que termine la compilación de sombreadores tras actualizar el juego.",
+    "de": "Lass Shader nach einem Spielupdate fertig kompilieren.",
+    "fr": "Laissez les shaders terminer leur compilation après une mise à jour du jeu.",
+    "pt": "Deixe os shaders terminarem de compilar após atualizar o jogo.",
+    "ru": "Дождитесь завершения компиляции шейдеров после обновления игры.",
+    "zh": "游戏更新后请等待着色器编译完成。"
+  }
+}

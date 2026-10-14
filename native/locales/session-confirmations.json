@@ -1,0 +1,101 @@
+{
+  "Game: {0}": {
+    "nl": "Game: {0}",
+    "es": "Juego: {0}",
+    "de": "Spiel: {0}",
+    "fr": "Jeu : {0}",
+    "pt": "Jogo: {0}",
+    "ru": "Игра: {0}",
+    "zh": "游戏：{0}"
+  },
+  "Selected apps: {0}": {
+    "nl": "Geselecteerde apps: {0}",
+    "es": "Aplicaciones seleccionadas: {0}",
+    "de": "Ausgewählte Apps: {0}",
+    "fr": "Applications sélectionnées : {0}",
+    "pt": "Aplicativos selecionados: {0}",
+    "ru": "Выбранные приложения: {0}",
+    "zh": "所选应用：{0}"
+  },
+  "Selected apps: None": {
+    "nl": "Geselecteerde apps: geen",
+    "es": "Aplicaciones seleccionadas: ninguna",
+    "de": "Ausgewählte Apps: keine",
+    "fr": "Applications sélectionnées : aucune",
+    "pt": "Aplicativos selecionados: nenhum",
+    "ru": "Выбранные приложения: нет",
+    "zh": "所选应用：无"
+  },
+  "Game: Manual session": {
+    "nl": "Game: handmatige sessie",
+    "es": "Juego: sesión manual",
+    "de": "Spiel: manuelle Sitzung",
+    "fr": "Jeu : session manuelle",
+    "pt": "Jogo: sessão manual",
+    "ru": "Игра: ручной сеанс",
+    "zh": "游戏：手动会话"
+  },
+  "App action: Lower priority temporarily, then restore original priority.": {
+    "nl": "Appactie: prioriteit tijdelijk verlagen en daarna de oorspronkelijke prioriteit herstellen.",
+    "es": "Acción: reducir temporalmente la prioridad y restaurar la original después.",
+    "de": "App-Aktion: Priorität vorübergehend senken und danach die ursprüngliche wiederherstellen.",
+    "fr": "Action : réduire temporairement la priorité, puis restaurer celle d’origine.",
+    "pt": "Ação: reduzir a prioridade temporariamente e restaurar a original depois.",
+    "ru": "Действие: временно снизить приоритет, затем восстановить исходный.",
+    "zh": "应用操作：暂时降低优先级，然后恢复原始优先级。"
+  },
+  "App action: Ask apps to close normally.": {
+    "nl": "Appactie: apps vragen normaal te sluiten.",
+    "es": "Acción: solicitar el cierre normal de aplicaciones.",
+    "de": "App-Aktion: Apps zum normalen Schließen auffordern.",
+    "fr": "Action : demander la fermeture normale des applications.",
+    "pt": "Ação: solicitar o fechamento normal de aplicativos.",
+    "ru": "Действие: запросить обычное закрытие приложений.",
+    "zh": "应用操作：请求应用正常关闭。"
+  },
+  "Power plan: High performance for this session, then restore the previous plan.": {
+    "nl": "Energiebeheerschema: Hoge prestaties voor deze sessie en daarna het vorige schema herstellen.",
+    "es": "Plan de energía: Alto rendimiento en esta sesión y restaurar el anterior después.",
+    "de": "Energiesparplan: Höchstleistung für diese Sitzung, danach den vorherigen wiederherstellen.",
+    "fr": "Alimentation : Performances élevées pour cette session, puis restaurer le mode précédent.",
+    "pt": "Plano de energia: Alto Desempenho nesta sessão e restaurar o anterior depois.",
+    "ru": "Питание: высокая производительность на время сеанса, затем восстановление прежней схемы.",
+    "zh": "电源计划：此会话使用高性能，之后还原之前的计划。"
+  },
+  "Power plan: Keep current plan.": {
+    "nl": "Energiebeheerschema: huidig schema behouden.",
+    "es": "Plan de energía: mantener el actual.",
+    "de": "Energiesparplan: aktuellen beibehalten.",
+    "fr": "Alimentation : conserver le mode actuel.",
+    "pt": "Plano de energia: manter o atual.",
+    "ru": "Питание: оставить текущую схему.",
+    "zh": "电源计划：保留当前计划。"
+  },
+  "Apps can prompt you to save work. Closed apps are not reopened automatically.": {
+    "nl": "Apps kunnen vragen je werk op te slaan. Gesloten apps worden niet automatisch heropend.",
+    "es": "Las aplicaciones pueden pedirte guardar el trabajo. Las cerradas no se vuelven a abrir automáticamente.",
+    "de": "Apps können zum Speichern auffordern. Geschlossene Apps werden nicht automatisch wieder geöffnet.",
+    "fr": "Les applications peuvent demander d’enregistrer votre travail. Les applications fermées ne sont pas rouvertes automatiquement.",
+    "pt": "Aplicativos podem pedir para salvar o trabalho. Os fechados não serão reabertos automaticamente.",
+    "ru": "Приложения могут предложить сохранить работу. Закрытые приложения не открываются автоматически.",
+    "zh": "应用可能提示保存工作。已关闭应用不会自动重新打开。"
+  },
+  "Temporarily stop the Windows Update service if it is running, then resume it.": {
+    "nl": "Stop de Windows Update-service tijdelijk als deze actief is en hervat deze daarna.",
+    "es": "Detener temporalmente el servicio de Windows Update si está activo y reanudarlo después.",
+    "de": "Windows-Update-Dienst vorübergehend stoppen, falls aktiv, danach fortsetzen.",
+    "fr": "Arrêter temporairement Windows Update s’il est actif, puis le relancer.",
+    "pt": "Interromper temporariamente o Windows Update se estiver ativo e retomá-lo depois.",
+    "ru": "Временно остановить службу Windows Update, если она работает, затем возобновить.",
+    "zh": "如果 Windows Update 服务正在运行，则暂时停止，之后恢复。"
+  },
+  "Trim background app working sets once. Apps may reload memory and briefly slow down.": {
+    "nl": "Verklein werksets van achtergrondapps één keer. Apps kunnen geheugen opnieuw laden en kort vertragen.",
+    "es": "Reducir una vez los conjuntos de trabajo de aplicaciones en segundo plano. Pueden recargar memoria y ralentizarse brevemente.",
+    "de": "Arbeitssätze von Hintergrund-Apps einmal verkleinern. Apps können Speicher erneut laden und kurz langsamer werden.",
+    "fr": "Réduire une fois les jeux de travail des applications en arrière-plan. Elles peuvent recharger la mémoire et ralentir brièvement.",
+    "pt": "Reduzir uma vez os conjuntos de trabalho de aplicativos em segundo plano. Eles podem recarregar memória e ficar lentos brevemente.",
+    "ru": "Однократно сократить рабочие наборы фоновых приложений. Они могут снова загрузить память и кратко замедлиться.",
+    "zh": "一次性缩减后台应用工作集。应用可能重新加载内存并短暂变慢。"
+  }
+}

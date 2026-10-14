@@ -1,0 +1,218 @@
+{
+  "Sets Windows diagnostic-data policy to the required level for supported editions.": {
+    "nl": "Stelt het Windows-beleid voor diagnostische gegevens in op het vereiste niveau voor ondersteunde edities.",
+    "es": "Establece la directiva de datos de diagnóstico de Windows en el nivel requerido para las ediciones compatibles.",
+    "de": "Setzt die Windows-Diagnosedatenrichtlinie für unterstützte Editionen auf die erforderliche Stufe.",
+    "fr": "Définit la stratégie de données de diagnostic Windows au niveau requis pour les éditions compatibles.",
+    "pt": "Define a política de dados de diagnóstico do Windows no nível obrigatório para edições compatíveis.",
+    "ru": "Устанавливает обязательный уровень диагностических данных Windows для поддерживаемых редакций.",
+    "zh": "为支持的版本将 Windows 诊断数据策略设为必需级别。"
+  },
+  "Some diagnostic data required by Windows may still be sent. Restart may be needed.": {
+    "nl": "Sommige door Windows vereiste diagnostische gegevens worden mogelijk nog verzonden. Opnieuw opstarten kan nodig zijn.",
+    "es": "Es posible que se sigan enviando algunos datos de diagnóstico requeridos por Windows. Puede necesitar reiniciar.",
+    "de": "Einige von Windows benötigte Diagnosedaten werden möglicherweise weiterhin gesendet. Ein Neustart kann erforderlich sein.",
+    "fr": "Certaines données de diagnostic requises par Windows peuvent toujours être envoyées. Un redémarrage peut être nécessaire.",
+    "pt": "Alguns dados de diagnóstico exigidos pelo Windows ainda podem ser enviados. Pode ser necessário reiniciar.",
+    "ru": "Некоторые необходимые Windows диагностические данные могут по-прежнему отправляться. Может потребоваться перезагрузка.",
+    "zh": "Windows 必需的部分诊断数据仍可能发送。可能需要重启。"
+  },
+  "Disables selected Compatibility Appraiser, Customer Experience, and disk diagnostic tasks.": {
+    "nl": "Schakelt bepaalde taken voor compatibiliteitsbeoordeling, gebruikerservaring en schijfdiagnose uit.",
+    "es": "Desactiva determinadas tareas de evaluación de compatibilidad, experiencia del cliente y diagnóstico de discos.",
+    "de": "Deaktiviert ausgewählte Aufgaben für Kompatibilitätsbewertung, Benutzererfahrung und Datenträgerdiagnose.",
+    "fr": "Désactive certaines tâches d’évaluation de compatibilité, d’expérience client et de diagnostic des disques.",
+    "pt": "Desativa tarefas selecionadas de avaliação de compatibilidade, experiência do cliente e diagnóstico de discos.",
+    "ru": "Отключает отдельные задачи оценки совместимости, улучшения пользовательского опыта и диагностики дисков.",
+    "zh": "禁用部分兼容性评估、客户体验和磁盘诊断任务。"
+  },
+  "These tasks may contribute to Windows compatibility and diagnostic information. Each task's enabled state is saved and restored individually.": {
+    "nl": "Deze taken kunnen bijdragen aan Windows-compatibiliteits- en diagnosegegevens. De ingeschakelde status van elke taak wordt apart opgeslagen en hersteld.",
+    "es": "Estas tareas pueden aportar información de compatibilidad y diagnóstico de Windows. El estado de habilitación de cada tarea se guarda y restaura individualmente.",
+    "de": "Diese Aufgaben können Windows-Kompatibilitäts- und Diagnosedaten liefern. Der Aktivierungszustand jeder Aufgabe wird einzeln gespeichert und wiederhergestellt.",
+    "fr": "Ces tâches peuvent contribuer aux informations de compatibilité et de diagnostic Windows. L’état d’activation de chaque tâche est enregistré et restauré individuellement.",
+    "pt": "Essas tarefas podem fornecer informações de compatibilidade e diagnóstico do Windows. O estado de ativação de cada tarefa é salvo e restaurado individualmente.",
+    "ru": "Эти задачи могут предоставлять данные о совместимости и диагностике Windows. Состояние включения каждой задачи сохраняется и восстанавливается отдельно.",
+    "zh": "这些任务可能提供 Windows 兼容性和诊断信息。每个任务的启用状态会单独保存和还原。"
+  },
+  "Disables the Windows Error Reporting service policy for this PC.": {
+    "nl": "Schakelt het Windows-beleid voor de foutrapportageservice uit voor deze pc.",
+    "es": "Desactiva la directiva del servicio de informes de errores de Windows para este PC.",
+    "de": "Deaktiviert die Richtlinie des Windows-Fehlerberichtsdienstes für diesen PC.",
+    "fr": "Désactive la stratégie du service de rapport d’erreurs Windows pour ce PC.",
+    "pt": "Desativa a política do serviço de Relatório de Erros do Windows para este PC.",
+    "ru": "Отключает политику службы отчётов об ошибках Windows для этого ПК.",
+    "zh": "为此电脑禁用 Windows 错误报告服务策略。"
+  },
+  "Crash reports will not be collected for diagnosis.": {
+    "nl": "Crashrapporten worden niet verzameld voor diagnose.",
+    "es": "No se recopilarán informes de fallos para diagnóstico.",
+    "de": "Absturzberichte werden nicht zur Diagnose erfasst.",
+    "fr": "Les rapports de plantage ne seront pas collectés pour le diagnostic.",
+    "pt": "Relatórios de falhas não serão coletados para diagnóstico.",
+    "ru": "Отчёты о сбоях не будут собираться для диагностики.",
+    "zh": "将不再收集用于诊断的崩溃报告。"
+  },
+  "Turns off multicast name resolution on this PC.": {
+    "nl": "Schakelt multicastnaamomzetting uit op deze pc.",
+    "es": "Desactiva la resolución de nombres por multidifusión en este PC.",
+    "de": "Deaktiviert die Multicast-Namensauflösung auf diesem PC.",
+    "fr": "Désactive la résolution de noms par multidiffusion sur ce PC.",
+    "pt": "Desativa a resolução de nomes por multicast neste PC.",
+    "ru": "Отключает многоадресное разрешение имён на этом ПК.",
+    "zh": "关闭此电脑上的多播名称解析。"
+  },
+  "Older local-network devices that rely on LLMNR name discovery may no longer resolve by name.": {
+    "nl": "Oudere apparaten op het lokale netwerk die LLMNR gebruiken, zijn mogelijk niet meer via hun naam te vinden.",
+    "es": "Los dispositivos antiguos de la red local que dependen de LLMNR pueden dejar de resolverse por nombre.",
+    "de": "Ältere Geräte im lokalen Netzwerk, die LLMNR verwenden, lassen sich möglicherweise nicht mehr über ihren Namen auflösen.",
+    "fr": "Les anciens appareils du réseau local dépendant de LLMNR peuvent ne plus être accessibles par leur nom.",
+    "pt": "Dispositivos antigos da rede local que dependem de LLMNR podem deixar de ser resolvidos pelo nome.",
+    "ru": "Старые устройства локальной сети, использующие LLMNR, могут перестать определяться по имени.",
+    "zh": "依赖 LLMNR 名称发现的旧版局域网设备可能无法再通过名称解析。"
+  },
+  "Disables inbound Remote Assistance invitations through Windows policy.": {
+    "nl": "Schakelt inkomende uitnodigingen voor Hulp op afstand uit via Windows-beleid.",
+    "es": "Desactiva las invitaciones entrantes de Asistencia remota mediante una directiva de Windows.",
+    "de": "Deaktiviert eingehende Einladungen zur Remoteunterstützung über eine Windows-Richtlinie.",
+    "fr": "Désactive les invitations entrantes d’Assistance à distance via une stratégie Windows.",
+    "pt": "Desativa convites recebidos de Assistência Remota por uma política do Windows.",
+    "ru": "Отключает входящие приглашения удалённого помощника через политику Windows.",
+    "zh": "通过 Windows 策略禁用传入的远程协助邀请。"
+  },
+  "Remote Assistance sessions will not be available until this is undone.": {
+    "nl": "Sessies voor Hulp op afstand zijn niet beschikbaar totdat je dit terugdraait.",
+    "es": "Las sesiones de Asistencia remota no estarán disponibles hasta deshacerlo.",
+    "de": "Remoteunterstützungssitzungen sind erst nach dem Rückgängigmachen wieder verfügbar.",
+    "fr": "Les sessions d’Assistance à distance seront indisponibles jusqu’à l’annulation.",
+    "pt": "Sessões de Assistência Remota ficarão indisponíveis até desfazer.",
+    "ru": "Сеансы удалённого помощника станут недоступны до отмены.",
+    "zh": "远程协助会话将不可用，直到撤销此更改。"
+  },
+  "Shows Windows status messages while signing in and shutting down.": {
+    "nl": "Toont Windows-statusmeldingen tijdens aanmelden en afsluiten.",
+    "es": "Muestra mensajes de estado de Windows al iniciar sesión y apagar.",
+    "de": "Zeigt Windows-Statusmeldungen beim Anmelden und Herunterfahren.",
+    "fr": "Affiche les messages d’état Windows à la connexion et à l’arrêt.",
+    "pt": "Mostra mensagens de status do Windows ao entrar na conta e desligar.",
+    "ru": "Показывает сообщения состояния Windows при входе и выключении.",
+    "zh": "在登录和关机时显示 Windows 状态消息。"
+  },
+  "This is for troubleshooting and does not make boot faster.": {
+    "nl": "Dit is voor probleemoplossing en maakt opstarten niet sneller.",
+    "es": "Sirve para solucionar problemas y no acelera el arranque.",
+    "de": "Dient der Problembehandlung und beschleunigt den Start nicht.",
+    "fr": "Sert au dépannage et n’accélère pas le démarrage.",
+    "pt": "Serve para diagnóstico e não acelera a inicialização.",
+    "ru": "Предназначено для диагностики и не ускоряет загрузку.",
+    "zh": "用于排查问题，不会加快启动。"
+  },
+  "Asks Windows Update not to restart automatically while a user is signed in.": {
+    "nl": "Vraagt Windows Update niet automatisch opnieuw op te starten zolang een gebruiker is aangemeld.",
+    "es": "Solicita a Windows Update que no reinicie automáticamente mientras un usuario tenga la sesión iniciada.",
+    "de": "Fordert Windows Update auf, bei angemeldetem Benutzer nicht automatisch neu zu starten.",
+    "fr": "Demande à Windows Update de ne pas redémarrer automatiquement lorsqu’un utilisateur est connecté.",
+    "pt": "Solicita ao Windows Update que não reinicie automaticamente enquanto um usuário estiver conectado.",
+    "ru": "Запрашивает запрет автоматической перезагрузки Windows Update при вошедшем пользователе.",
+    "zh": "请求 Windows Update 在用户已登录时不要自动重启。"
+  },
+  "Windows may still ask you to restart to finish important updates.": {
+    "nl": "Windows kan nog steeds vragen om opnieuw op te starten om belangrijke updates te voltooien.",
+    "es": "Windows puede seguir pidiendo reiniciar para terminar actualizaciones importantes.",
+    "de": "Windows kann weiterhin einen Neustart zum Abschließen wichtiger Updates anfordern.",
+    "fr": "Windows peut toujours demander un redémarrage pour terminer les mises à jour importantes.",
+    "pt": "O Windows ainda pode pedir reinicialização para concluir atualizações importantes.",
+    "ru": "Windows всё равно может запросить перезагрузку для завершения важных обновлений.",
+    "zh": "Windows 仍可能请求重启以完成重要更新。"
+  },
+  "Reduces the time Windows waits for services to stop during shutdown.": {
+    "nl": "Verkort de tijd die Windows wacht tot services stoppen bij afsluiten.",
+    "es": "Reduce el tiempo que Windows espera a que los servicios se detengan al apagar.",
+    "de": "Verkürzt die Wartezeit von Windows auf das Beenden von Diensten beim Herunterfahren.",
+    "fr": "Réduit le temps d’attente de Windows pour l’arrêt des services à l’extinction.",
+    "pt": "Reduz o tempo que o Windows espera pelos serviços ao desligar.",
+    "ru": "Сокращает время ожидания остановки служб Windows при выключении.",
+    "zh": "缩短 Windows 关机时等待服务停止的时间。"
+  },
+  "A slow service may be terminated sooner during shutdown.": {
+    "nl": "Een trage service kan eerder worden beëindigd bij afsluiten.",
+    "es": "Un servicio lento puede finalizarse antes al apagar.",
+    "de": "Ein langsamer Dienst kann beim Herunterfahren früher beendet werden.",
+    "fr": "Un service lent peut être interrompu plus tôt à l’arrêt.",
+    "pt": "Um serviço lento pode ser encerrado mais cedo ao desligar.",
+    "ru": "Медленная служба может быть завершена раньше при выключении.",
+    "zh": "关机时可能更早终止缓慢的服务。"
+  },
+  "Stops Windows from starting automatic maintenance jobs while the PC is idle.": {
+    "nl": "Voorkomt dat Windows automatisch onderhoud start wanneer de pc niet wordt gebruikt.",
+    "es": "Impide que Windows inicie tareas de mantenimiento automático mientras el PC está inactivo.",
+    "de": "Verhindert den Start automatischer Windows-Wartungsaufgaben bei inaktivem PC.",
+    "fr": "Empêche Windows de lancer des tâches de maintenance automatique lorsque le PC est inactif.",
+    "pt": "Impede que o Windows inicie manutenção automática quando o PC estiver ocioso.",
+    "ru": "Запрещает Windows запускать автоматическое обслуживание во время простоя ПК.",
+    "zh": "阻止 Windows 在电脑空闲时启动自动维护任务。"
+  },
+  "Scheduled maintenance and diagnostics will not run automatically. Windows Optimize Drives remains available.": {
+    "nl": "Gepland onderhoud en diagnose starten niet automatisch. Windows Stations optimaliseren blijft beschikbaar.",
+    "es": "El mantenimiento y diagnóstico programados no se ejecutarán automáticamente. Optimizar unidades de Windows seguirá disponible.",
+    "de": "Geplante Wartung und Diagnose werden nicht automatisch ausgeführt. Windows-Laufwerksoptimierung bleibt verfügbar.",
+    "fr": "La maintenance et les diagnostics planifiés ne s’exécuteront pas automatiquement. L’optimisation des lecteurs Windows reste disponible.",
+    "pt": "Manutenção e diagnósticos agendados não serão executados automaticamente. Otimizar Unidades do Windows continua disponível.",
+    "ru": "Плановое обслуживание и диагностика не будут запускаться автоматически. Оптимизация дисков Windows останется доступна.",
+    "zh": "计划维护和诊断将不会自动运行。Windows 优化驱动器功能仍可用。"
+  },
+  "Reduces file-system writes by disabling last-access timestamp updates.": {
+    "nl": "Vermindert schrijfacties naar het bestandssysteem door updates van de laatste toegangstijd uit te schakelen.",
+    "es": "Reduce las escrituras del sistema de archivos al desactivar las actualizaciones de la fecha de último acceso.",
+    "de": "Reduziert Dateisystem-Schreibvorgänge durch Deaktivieren der Aktualisierung letzter Zugriffszeiten.",
+    "fr": "Réduit les écritures du système de fichiers en désactivant la mise à jour du dernier accès.",
+    "pt": "Reduz gravações no sistema de arquivos ao desativar atualizações da data do último acesso.",
+    "ru": "Сокращает записи в файловую систему, отключая обновление времени последнего доступа.",
+    "zh": "通过禁用最后访问时间戳更新减少文件系统写入。"
+  },
+  "Some backup or auditing tools may use file access timestamps.": {
+    "nl": "Sommige back-up- of audittools gebruiken toegangstijden van bestanden.",
+    "es": "Algunas herramientas de copia de seguridad o auditoría pueden usar las fechas de acceso a archivos.",
+    "de": "Einige Sicherungs- oder Prüftools verwenden Dateizugriffszeiten.",
+    "fr": "Certains outils de sauvegarde ou d’audit peuvent utiliser les dates d’accès aux fichiers.",
+    "pt": "Algumas ferramentas de backup ou auditoria podem usar datas de acesso aos arquivos.",
+    "ru": "Некоторые средства резервного копирования или аудита используют время доступа к файлам.",
+    "zh": "部分备份或审计工具可能使用文件访问时间戳。"
+  },
+  "Stops NTFS from creating new short file names for files and folders.": {
+    "nl": "Voorkomt dat NTFS nieuwe korte namen maakt voor bestanden en mappen.",
+    "es": "Impide que NTFS cree nuevos nombres cortos para archivos y carpetas.",
+    "de": "Verhindert, dass NTFS neue kurze Namen für Dateien und Ordner erstellt.",
+    "fr": "Empêche NTFS de créer de nouveaux noms courts pour les fichiers et dossiers.",
+    "pt": "Impede que o NTFS crie novos nomes curtos para arquivos e pastas.",
+    "ru": "Запрещает NTFS создавать новые короткие имена файлов и папок.",
+    "zh": "阻止 NTFS 为文件和文件夹创建新的短文件名。"
+  },
+  "Some older installers and 16-bit programs may require short file names.": {
+    "nl": "Sommige oudere installatieprogramma's en 16-bits programma's vereisen korte bestandsnamen.",
+    "es": "Algunos instaladores antiguos y programas de 16 bits pueden necesitar nombres cortos.",
+    "de": "Einige ältere Installationsprogramme und 16-Bit-Programme benötigen kurze Dateinamen.",
+    "fr": "Certains anciens installateurs et programmes 16 bits peuvent nécessiter des noms courts.",
+    "pt": "Alguns instaladores antigos e programas de 16 bits podem exigir nomes curtos.",
+    "ru": "Некоторые старые установщики и 16-битные программы требуют короткие имена файлов.",
+    "zh": "部分旧版安装程序和 16 位程序可能需要短文件名。"
+  },
+  "Removes the multimedia network throttle used by some real-time workloads.": {
+    "nl": "Verwijdert de multimedianetwerkbeperking die sommige realtimewerklasten gebruiken.",
+    "es": "Elimina la limitación de red multimedia usada por algunas cargas en tiempo real.",
+    "de": "Entfernt die Multimedia-Netzwerkdrosselung für bestimmte Echtzeitaufgaben.",
+    "fr": "Supprime la limitation réseau multimédia utilisée par certaines tâches en temps réel.",
+    "pt": "Remove a limitação de rede multimídia usada por algumas tarefas em tempo real.",
+    "ru": "Убирает мультимедийное ограничение сети для некоторых задач реального времени.",
+    "zh": "移除部分实时工作负载使用的多媒体网络限流。"
+  },
+  "Heavy background network traffic may use more CPU time.": {
+    "nl": "Zwaar netwerkverkeer op de achtergrond kan meer CPU-tijd gebruiken.",
+    "es": "El tráfico intenso de red en segundo plano puede usar más tiempo de CPU.",
+    "de": "Starker Netzwerkverkehr im Hintergrund kann mehr CPU-Zeit beanspruchen.",
+    "fr": "Un trafic réseau important en arrière-plan peut utiliser davantage de temps processeur.",
+    "pt": "Tráfego intenso de rede em segundo plano pode usar mais tempo de CPU.",
+    "ru": "Интенсивный фоновый сетевой трафик может использовать больше процессорного времени.",
+    "zh": "繁重的后台网络流量可能占用更多 CPU 时间。"
+  }
+}

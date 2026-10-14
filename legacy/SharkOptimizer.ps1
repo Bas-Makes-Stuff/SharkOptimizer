@@ -483,7 +483,7 @@ $xaml = @'
   </DrawingGroup></DrawingImage.Drawing></DrawingImage>
   <Style TargetType="Button"><Setter Property="Foreground" Value="#E8ECF4"/><Setter Property="Background" Value="#16233A"/><Setter Property="Padding" Value="16,9"/><Setter Property="Margin" Value="4"/><Setter Property="Cursor" Value="Hand"/><Setter Property="FontWeight" Value="SemiBold"/>
    <Setter Property="Template"><Setter.Value><ControlTemplate TargetType="Button">
-    <Border x:Name="bd" Background="{TemplateBinding Background}" BorderBrush="#1E2E4B" BorderThickness="1" CornerRadius="10" Padding="{TemplateBinding Padding}" RenderTransformOrigin="0.5,0.5">
+    <Border x:Name="bd" Background="{TemplateBinding Background}" BorderBrush="#1E2E4B" BorderThickness="1" CornerRadius="12" Padding="{TemplateBinding Padding}" RenderTransformOrigin="0.5,0.5">
      <Border.RenderTransform><ScaleTransform x:Name="sc" ScaleX="1" ScaleY="1"/></Border.RenderTransform>
      <ContentPresenter HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" VerticalAlignment="Center"/>
     </Border>
@@ -501,8 +501,8 @@ $xaml = @'
     </ControlTemplate.Triggers></ControlTemplate></Setter.Value></Setter></Style>
   <Style x:Key="NavBtn" TargetType="Button"><Setter Property="Foreground" Value="#C2CCDF"/><Setter Property="Background" Value="#0B1424"/><Setter Property="Cursor" Value="Hand"/><Setter Property="FontWeight" Value="SemiBold"/><Setter Property="Tag" Value=""/>
    <Setter Property="Template"><Setter.Value><ControlTemplate TargetType="Button">
-    <Grid>
-     <Border x:Name="bd" Background="{TemplateBinding Background}" CornerRadius="10" Padding="{TemplateBinding Padding}"><ContentPresenter HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" VerticalAlignment="Center"/></Border>
+     <Grid>
+     <Border x:Name="bd" Background="{TemplateBinding Background}" CornerRadius="12" Padding="{TemplateBinding Padding}"><ContentPresenter HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" VerticalAlignment="Center"/></Border>
      <Border x:Name="ind" Width="3" Height="18" CornerRadius="2" Background="#1FB6FF" HorizontalAlignment="Left" Visibility="Collapsed"/>
     </Grid>
     <ControlTemplate.Triggers>
@@ -517,7 +517,7 @@ $xaml = @'
      <Track.IncreaseRepeatButton><RepeatButton Style="{StaticResource SbPage}" Command="ScrollBar.PageDownCommand"/></Track.IncreaseRepeatButton>
      <Track.Thumb><Thumb><Thumb.Template><ControlTemplate TargetType="Thumb"><Border x:Name="tb" Background="#2A3A5C" CornerRadius="4" Margin="1"/><ControlTemplate.Triggers><Trigger Property="IsMouseOver" Value="True"><Setter TargetName="tb" Property="Background" Value="#1FB6FF"/></Trigger></ControlTemplate.Triggers></ControlTemplate></Thumb.Template></Thumb></Track.Thumb>
     </Track></Grid></ControlTemplate></Setter.Value></Setter></Style>
-  <Style TargetType="TextBox"><Setter Property="Background" Value="#0F1A2C"/><Setter Property="Foreground" Value="#E8ECF4"/><Setter Property="BorderBrush" Value="#1E2E4B"/><Setter Property="CaretBrush" Value="White"/><Setter Property="Padding" Value="10,7"/><Style.Triggers><Trigger Property="IsKeyboardFocused" Value="True"><Setter Property="BorderBrush" Value="#5BE3FF"/></Trigger></Style.Triggers></Style>
+  <Style TargetType="TextBox"><Setter Property="Background" Value="#0F1A2C"/><Setter Property="Foreground" Value="#E8ECF4"/><Setter Property="BorderBrush" Value="#1E2E4B"/><Setter Property="CaretBrush" Value="White"/><Setter Property="Padding" Value="10,7"/><Setter Property="Template"><Setter.Value><ControlTemplate TargetType="TextBox"><Border x:Name="tb" Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="1" CornerRadius="9"><ScrollViewer x:Name="PART_ContentHost" Margin="1"/></Border><ControlTemplate.Triggers><Trigger Property="IsKeyboardFocused" Value="True"><Setter TargetName="tb" Property="BorderBrush" Value="#5BE3FF"/></Trigger><Trigger Property="IsEnabled" Value="False"><Setter TargetName="tb" Property="Opacity" Value="0.5"/></Trigger></ControlTemplate.Triggers></ControlTemplate></Setter.Value></Setter></Style>
   <Style TargetType="CheckBox"><Setter Property="Foreground" Value="#E8ECF4"/><Setter Property="VerticalContentAlignment" Value="Center"/></Style>
   <Style TargetType="ProgressBar"><Setter Property="Height" Value="7"/><Setter Property="Foreground" Value="#35D07F"/><Setter Property="Background" Value="#1E2B45"/><Setter Property="BorderThickness" Value="0"/><Setter Property="Maximum" Value="100"/></Style>
  </Window.Resources>
@@ -852,10 +852,15 @@ function Invoke-Apply($list) {
     $list = @($list)
     if (-not $list.Count) { [void][Windows.MessageBox]::Show('Nothing selected.', 'SharkOptimizer'); return }
     $risky = @($list | Where-Object { $_.Risk -ne 'Safe' })
-    if ($risky.Count) {
-        $msg = "These tweaks change how Windows behaves:`n`n" + (($risky | ForEach-Object { "[$($_.Risk.ToUpper())] $($_.Name)`n   $($_.Warn)" }) -join "`n`n") + "`n`nA restore point is created first. Continue?"
-        if ([Windows.MessageBox]::Show($msg, 'SharkOptimizer - review before applying', 'YesNo', 'Warning') -ne 'Yes') { return $false }
-    }
+    $review = @($list | ForEach-Object {
+        $riskLabel = if ($_.Risk) { $_.Risk.ToUpper() } else { 'SAFE' }
+        $line = "[$riskLabel] $($_.Name) — $($_.Desc)"
+        if ($_.Warn) { $line += "`n   Caution: $($_.Warn)" }
+        if ($_.Reboot) { $line += "`n   A restart is required." }
+        $line
+    })
+    $warning = if ($risky.Count) { 'Some selected changes affect Windows behavior. Review their warnings below. A restore point will be attempted before changes are applied.' } else { 'Review the selected changes. You can undo tracked changes later from Restore.' }
+    if (-not (Show-ActionPreview 'Review changes' ("$($list.Count) changes are ready to apply.") $review $warning 'Apply selected')) { return $false }
     New-RestorePoint
     $reboot = $false
     foreach ($tw in $list) {
@@ -867,8 +872,14 @@ function Invoke-Apply($list) {
     if ($reboot) { Log 'Some tweaks need a restart.'; [void][Windows.MessageBox]::Show('Done. Restart your PC to finish applying all changes.', 'SharkOptimizer') }
     return $true
 }
-function Invoke-Undo($list) {
-    foreach ($tw in @($list)) {
+function Invoke-Undo($list, [bool]$skipReview = $false) {
+    $list = @($list | Where-Object { $_ -and $State.ContainsKey($_.Id) })
+    if (-not $list.Count) { return }
+    if (-not $skipReview) {
+        $review = @($list | ForEach-Object { "Undo: $($_.Name)" })
+        if (-not (Show-ActionPreview 'Review undo' ("$($list.Count) tracked changes will be restored to their saved values.") $review 'Only changes with saved originals are reverted.' 'Undo selected')) { return }
+    }
+    foreach ($tw in $list) {
         if (-not $State.ContainsKey($tw.Id)) { continue }
         Log "Undoing: $($tw.Name)"
         try { Undo-Tweak $tw } catch { Log "  Failed: $($_.Exception.Message)" }
@@ -881,8 +892,11 @@ $ui.btnDashApply.Add_Click({ [void](Invoke-Apply ($Tweaks | Where-Object { $_.Re
 $ui.btnDashRP.Add_Click({ New-RestorePoint })
 $ui.btnRP.Add_Click({ New-RestorePoint })
 $ui.btnUndoAll.Add_Click({
-    if ([Windows.MessageBox]::Show('Revert every applied tweak and game profile?', 'Undo all', 'YesNo', 'Question') -eq 'Yes') {
-        Invoke-Undo ($Tweaks | Where-Object { $State.ContainsKey($_.Id) })
+    $activeTweaks = @($Tweaks | Where-Object { $State.ContainsKey($_.Id) })
+    $activeGames = @($State.Keys | Where-Object { $_ -like 'game_*' })
+    $review = @($activeTweaks | ForEach-Object { "Tweak: $($_.Name)" }) + @($activeGames | ForEach-Object { "Game profile: $($_ -replace '^game_', '')" })
+    if ($review.Count -and (Show-ActionPreview 'Review full restore' ("$($review.Count) applied items will be reverted to their saved values.") $review 'Undo only uses the originals SharkOptimizer recorded.' 'Undo all')) {
+        Invoke-Undo $activeTweaks $true
         foreach ($gk in @($State.Keys | Where-Object { $_ -like 'game_*' })) { Undo-GameKey $gk }
         Save-State; Update-Stats
     }
@@ -1320,7 +1334,7 @@ $timer.Start()
 
 
 # ================================================================ SharkOptimizer Lab (added module)
-$AppVersion = '1.5.1'
+$AppVersion = '2.1.1'
 $window.Title = "SharkOptimizer v$AppVersion"
 $BenchFile = Join-Path $DataDir 'bench.json'
 function Test-Cmd($n) { [bool](Get-Command $n -ErrorAction SilentlyContinue) }
@@ -1798,7 +1812,7 @@ Refresh-GmProcs; Refresh-GmGames
 
 
 # ================================================================ SharkOptimizer Pro UI (added module)
-$ProVersion = '1.5.1'
+$ProVersion = '2.1.1'
 function Has-Fn($n) { [bool](Get-Command $n -CommandType Function -ErrorAction SilentlyContinue) }
 function Step($name, [scriptblock]$body) { try { & $body } catch { Log "UI step '$name' failed: $($_.Exception.Message)" } }
 try { $window.Title = "SharkOptimizer v$ProVersion" } catch {}
@@ -1806,26 +1820,11 @@ $script:CurNav = 'navDash'
 $script:QuickMode = $false
 $script:LastRP = [datetime]::MinValue
 
-# ---------------------------------------------------------------- 1. custom font (Poppins, open license, downloaded once)
+# ---------------------------------------------------------------- 1. custom font (Poppins is bundled; startup works offline)
 Step 'font' {
     $fontDir = Join-Path $PSScriptRoot 'fonts'
-    New-Item $fontDir -ItemType Directory -Force | Out-Null
-    $files = [ordered]@{
-        'Poppins-Regular.ttf' = 'https://raw.githubusercontent.com/google/fonts/main/ofl/poppins/Poppins-Regular.ttf'
-        'Poppins-Bold.ttf'    = 'https://raw.githubusercontent.com/google/fonts/main/ofl/poppins/Poppins-Bold.ttf'
-    }
-    $marker = Join-Path $fontDir '.offline'
-    $recentFail = (Test-Path $marker) -and (((Get-Date) - (Get-Item $marker).LastWriteTime).TotalDays -lt 3)
-    foreach ($fn in @($files.Keys)) {
-        $dest = Join-Path $fontDir $fn
-        if ((Test-Path $dest) -and (Get-Item $dest).Length -gt 50000) { continue }
-        if ($recentFail) { continue }
-        try {
-            [Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12
-            Invoke-WebRequest -Uri $files[$fn] -OutFile $dest -UseBasicParsing -TimeoutSec 8 -ErrorAction Stop
-        } catch { Remove-Item $dest -Force -ErrorAction SilentlyContinue; Set-Content $marker (Get-Date).ToString('s'); Log "Font download skipped: $($_.Exception.Message)"; break }
-    }
-    $ok = $true; foreach ($fn in @($files.Keys)) { $p = Join-Path $fontDir $fn; if (-not ((Test-Path $p) -and (Get-Item $p).Length -gt 50000)) { $ok = $false } }
+    $files = @('Poppins-Regular.ttf','Poppins-Bold.ttf')
+    $ok = $true; foreach ($fn in $files) { $p = Join-Path $fontDir $fn; if (-not ((Test-Path -LiteralPath $p) -and (Get-Item -LiteralPath $p).Length -gt 50000)) { $ok = $false } }
     if ($ok) {
         $base = New-Object Uri(((Resolve-Path $fontDir).Path.TrimEnd('\') + '\'))
         $window.FontFamily = New-Object Windows.Media.FontFamily($base, './#Poppins')
@@ -2174,7 +2173,7 @@ try { Update-ProChrome } catch {}
 
 
 # ================================================================ SharkOptimizer Settings, Dutch and Updates (added module)
-$AppVer = '1.5.1'
+$AppVer = '2.1.1'
 try { $window.Title = "SharkOptimizer v$AppVer" } catch {}
 function Has-Fn($n) { [bool](Get-Command $n -CommandType Function -ErrorAction SilentlyContinue) }
 function Tn($en, $nl) { if ($script:Lang -eq 'nl') { $nl } else { $en } }
@@ -5771,6 +5770,575 @@ function Show-Page($nav) {
     & $script:OrigConsolidatedShowPage $nav
 }
 Set-NavLabels
+
+# ---------------------------------------------------------------- Stage 1 preset editing, comparison, and portable files
+$script:pmSelected = New-Object 'System.Collections.Generic.HashSet[string]'
+$script:PresetEditingName = $null
+$script:pmCancelEditButton = $null
+function Reset-PresetEditing {
+    $script:PresetEditingName = $null
+    if ($script:pmSaveButton) { $script:pmSaveButton.Content = 'Save current selection' }
+    if ($script:pmCancelEditButton) { $script:pmCancelEditButton.Visibility = 'Collapsed' }
+}
+function Get-UniquePresetName($baseName) {
+    $name = ([string]$baseName -replace '[\|\r\n]', ' ').Trim(); if (-not $name) { $name = 'Preset' }
+    if ($name.Length -gt 40) { $name = $name.Substring(0, 40) }
+    $candidate = $name; $n = 2
+    while (@($script:UserPresets | Where-Object { $_.name -ieq $candidate }).Count) {
+        $suffix = " ($n)"; $candidate = $name.Substring(0, [Math]::Min($name.Length, 40 - $suffix.Length)) + $suffix; $n++
+    }
+    $candidate
+}
+function Compare-UserPresets {
+    $chosen = @($script:UserPresets | Where-Object { $script:pmSelected.Contains($_.name) })
+    if ($chosen.Count -lt 2 -or $chosen.Count -gt 4) { [void][Windows.MessageBox]::Show('Select 2 to 4 presets to compare.', 'SharkOptimizer'); return }
+    $allIds = @($chosen | ForEach-Object { $_.ids } | Sort-Object -Unique); $lines = New-Object System.Collections.ArrayList
+    foreach ($id in $allIds) {
+        $tw = Get-Tweak $id; if (-not $tw) { continue }
+        $flags = @($chosen | ForEach-Object { if (@($_.ids) -contains $id) { '✓' } else { '—' } })
+        if (@($flags | Select-Object -Unique).Count -lt 2) { continue }
+        $parts = for ($i=0; $i -lt $chosen.Count; $i++) { "$($chosen[$i].name): $($flags[$i])" }
+        [void]$lines.Add("$($tw.Cat)  ·  $($tw.Name)  |  " + ($parts -join '   |   '))
+    }
+    if (-not $lines.Count) { [void]$lines.Add('These presets contain the same supported tweaks.') }
+    $w = New-Object Windows.Window; $w.Title = 'Compare presets'; $w.Width = 760; $w.Height = 560; $w.Owner = $window; $w.Background = Brush '#08101D'; $w.WindowStartupLocation = 'CenterOwner'
+    $sp = New-Object Windows.Controls.StackPanel; $sp.Margin = '20'; $sp.Children.Add((New-Text 'Preset comparison' 22 '#FFFFFF' $true '0,0,0,4')) | Out-Null
+    $sp.Children.Add((New-Text (($chosen.name) -join '   vs   ') 12 '#7F8FAE' $false '0,0,0,10')) | Out-Null
+    $box = New-Object Windows.Controls.TextBox; $box.IsReadOnly = $true; $box.AcceptsReturn = $true; $box.TextWrapping = 'Wrap'; $box.VerticalScrollBarVisibility = 'Auto'; $box.FontFamily = 'Consolas'; $box.FontSize = 12; $box.MinHeight = 340; $box.Text = $lines -join "`r`n`r`n"; $sp.Children.Add($box) | Out-Null
+    $close = New-Object Windows.Controls.Button; $close.Content = 'Close'; $close.Padding = '18,8'; $close.HorizontalAlignment = 'Right'; $close.Margin = '0,12,0,0'; $close.Tag = $w; $close.Add_Click({ $this.Tag.Close() }); $sp.Children.Add($close) | Out-Null
+    $w.Content = $sp; Tr $w; [void]$w.ShowDialog()
+}
+function Export-UserPresets {
+    if (-not $script:UserPresets.Count) { [void][Windows.MessageBox]::Show('There are no saved presets to export.', 'SharkOptimizer'); return }
+    $dlg = New-Object Microsoft.Win32.SaveFileDialog; $dlg.Title = 'Export SharkOptimizer presets'; $dlg.Filter = 'SharkOptimizer preset file (*.json)|*.json'; $dlg.FileName = 'SharkOptimizer-Presets.json'; $dlg.AddExtension = $true
+    if ($dlg.ShowDialog($window) -ne $true) { return }
+    try {
+        $payload = [ordered]@{ format='SharkOptimizerPresets'; version=1; exported=(Get-Date).ToString('s'); presets=@($script:UserPresets | ForEach-Object { @{ name=$_.name; ids=@($_.ids) } }) }
+        [IO.File]::WriteAllText($dlg.FileName, (ConvertTo-Json -InputObject $payload -Depth 5), (New-Object Text.UTF8Encoding $false)); Say ("Exported {0} presets." -f $script:UserPresets.Count)
+    } catch { Log "Preset export failed: $($_.Exception.Message)"; [void][Windows.MessageBox]::Show($_.Exception.Message, 'Preset export failed', 'OK', 'Error') }
+}
+function Import-UserPresets {
+    $dlg = New-Object Microsoft.Win32.OpenFileDialog; $dlg.Title = 'Import SharkOptimizer presets'; $dlg.Filter = 'SharkOptimizer preset file (*.json)|*.json|All files (*.*)|*.*'; $dlg.Multiselect = $false
+    if ($dlg.ShowDialog($window) -ne $true) { return }
+    try {
+        if ((Get-Item -LiteralPath $dlg.FileName).Length -gt 1MB) { throw 'Preset file is larger than 1 MB.' }
+        $data = Get-Content -LiteralPath $dlg.FileName -Raw -ErrorAction Stop | ConvertFrom-Json -ErrorAction Stop
+        $incoming = if ($data -is [System.Array]) { @($data) } elseif ($data.PSObject.Properties['presets']) { @($data.presets) } else { throw 'This file does not contain a preset list.' }
+        if ($incoming.Count -gt 100) { throw 'A preset file can contain up to 100 presets.' }
+        $valid = New-Object System.Collections.ArrayList; $skipped = 0
+        foreach ($p in $incoming) {
+            if (-not $p.name -or $p.name.ToString().Length -gt 80 -or $null -eq $p.ids) { $skipped++; continue }
+            $ids = @($p.ids | ForEach-Object { [string]$_ } | Where-Object { $_ -match '^[a-z]_[a-z0-9]+$' } | Where-Object { Get-Tweak $_ } | Sort-Object -Unique)
+            if (-not $ids.Count) { $skipped++; continue }; [void]$valid.Add(@{ name=[string]$p.name; ids=$ids })
+        }
+        if (-not $valid.Count) { throw 'No presets with supported tweaks were found in this file.' }
+        $preview = @($valid | ForEach-Object { "$(Get-UniquePresetName $_.name)  ·  $(@($_.ids).Count) supported tweaks" })
+        $warning = if ($skipped) { "$skipped invalid or unsupported entries will be skipped." } else { 'Existing presets will be kept; duplicate names get a suffix.' }
+        if (-not (Show-ActionPreview 'Review preset import' ("$($valid.Count) presets are ready to import.") $preview $warning 'Import presets')) { return }
+        foreach ($p in $valid) { $nm=Get-UniquePresetName $p.name; $script:UserPresets += @{ name=$nm; ids=@($p.ids) } }
+        Save-Presets; Rebuild-PresetList; Say ("Imported {0} presets." -f $valid.Count)
+    } catch { Log "Preset import failed: $($_.Exception.Message)"; [void][Windows.MessageBox]::Show($_.Exception.Message, 'Preset import failed', 'OK', 'Warning') }
+}
+function Rebuild-PresetList {
+    $script:pmList.Children.Clear()
+    if (-not $script:UserPresets.Count) { $script:pmList.Children.Add((New-Text 'No presets yet. Save a selection from the Tweaks page.' 13 '#7F8FAE' $false '4,8,0,8')) | Out-Null }
+    foreach ($p in $script:UserPresets) {
+        $row=New-Object Windows.Controls.Border; $row.Background=Brush '#0F1A2C'; $row.BorderBrush=Brush '#1A2943'; $row.BorderThickness=1; $row.CornerRadius=10; $row.Padding='12,9'; $row.Margin='0,0,0,8'
+        $dp=New-Object Windows.Controls.DockPanel; $actions=New-Object Windows.Controls.WrapPanel; $actions.HorizontalAlignment='Right'; [Windows.Controls.DockPanel]::SetDock($actions,'Right')
+        foreach ($spec in @(@('Use','use'),@('Edit selection','edit'),@('Rename','rename'),@('Duplicate','duplicate'),@('Copy code','copy'),@('Delete','delete'))) {
+            $b=New-Object Windows.Controls.Button; $b.Content=$spec[0]; $b.Tag=@{ n=[string]$p.name; a=[string]$spec[1] }; $b.Padding='9,5'; $b.Margin='2'
+            if ($spec[1] -eq 'use') { $b.Background=Brush '#1FB6FF'; $b.Foreground=Brush '#06121F' }; if ($spec[1] -eq 'delete') { $b.Background=Brush '#3A1F2B' }
+            $b.Add_Click({
+                $t=$this.Tag; $pr=$script:UserPresets | Where-Object { $_.name -eq $t.n } | Select-Object -First 1; if (-not $pr) { return }
+                switch ($t.a) {
+                    'use' { Reset-PresetEditing; $script:pmWin.Close(); Use-Preset $pr.ids }
+                    'edit' { $script:PresetEditingName=$pr.name; $script:Selected.Clear(); foreach($id in $pr.ids) { $tw=Get-Tweak $id; if($tw -and (Test-Applicable $tw)) { [void]$script:Selected.Add($id) } }; $script:CatFilter='All'; $ui.chkRec.IsChecked=$false; $ui.txtSearch.Text=''; Render-Tweaks; Show-Page 'navTweaks'; if($script:pmSaveButton){$script:pmSaveButton.Content='Save changes to preset'}; if($script:pmCancelEditButton){$script:pmCancelEditButton.Visibility='Visible'}; Say ("Editing preset: $($pr.name). Adjust the selection in Optimize, then save it here.") }
+                    'rename' { $newName=Read-Text 'Rename preset' 'Preset name:' $pr.name; if($newName -and $newName.Trim()) { $newName=($newName -replace '[\|\r\n]',' ').Trim(); if($newName.Length -gt 40){$newName=$newName.Substring(0,40)}; if(@($script:UserPresets | Where-Object {$_.name -ieq $newName -and $_.name -ne $pr.name}).Count){[void][Windows.MessageBox]::Show('A preset with that name already exists.','SharkOptimizer');return}; $pr.name=$newName; Save-Presets; Rebuild-PresetList } }
+                    'duplicate' { $nm=Get-UniquePresetName ($pr.name+' copy'); $script:UserPresets+=@{name=$nm;ids=@($pr.ids)}; Save-Presets; Rebuild-PresetList; Say ("Preset duplicated: $nm") }
+                    'copy' { [Windows.Clipboard]::SetText((Encode-PresetCode $pr.name $pr.ids)); Say (Tn 'Share code copied.' 'Deelcode gekopieerd.') }
+                    'delete' { if(Show-ActionPreview 'Delete preset' "Delete '$($pr.name)'? This removes only the saved preset, not applied Windows changes." @("$($pr.name) · $(@($pr.ids).Count) tweaks") '' 'Delete preset') { $script:UserPresets=@($script:UserPresets | Where-Object {$_.name -ne $t.n}); [void]$script:pmSelected.Remove($t.n); if ($script:PresetEditingName -eq $t.n) { Reset-PresetEditing }; Save-Presets; Rebuild-PresetList } }
+                }
+            }); $actions.Children.Add($b)|Out-Null
+        }
+        $left=New-Object Windows.Controls.StackPanel; $left.Orientation='Horizontal'; $choose=New-Object Windows.Controls.CheckBox; $choose.Tag=[string]$p.name; $choose.IsChecked=$script:pmSelected.Contains([string]$p.name); $choose.VerticalAlignment='Center'; $choose.Margin='0,0,8,0'
+        $choose.Add_Click({ if($this.IsChecked){[void]$script:pmSelected.Add($this.Tag)}else{[void]$script:pmSelected.Remove($this.Tag)} })
+        $info=New-Object Windows.Controls.StackPanel; $info.Children.Add((New-Text $p.name 14 '#FFFFFF' $true))|Out-Null; $info.Children.Add((New-Text ("{0} tweaks" -f @($p.ids).Count) 11.5 '#7F8FAE'))|Out-Null
+        $left.Children.Add($choose)|Out-Null; $left.Children.Add($info)|Out-Null; $dp.Children.Add($actions)|Out-Null; $dp.Children.Add($left)|Out-Null; $row.Child=$dp; $script:pmList.Children.Add($row)|Out-Null
+    }; Tr $script:pmWin
+}
+function Show-PresetManager {
+    if($script:pmWin -and $script:pmWin.IsVisible){$script:pmWin.Activate();return}
+    $w=New-Object Windows.Window; $w.Title=Tn 'My Presets' 'Mijn voorinstellingen'; $w.Width=900; $w.Height=620; $w.MinWidth=680; $w.Background=Brush '#08101D'; $w.Owner=$window; $w.WindowStartupLocation='CenterOwner'
+    $grid=New-Object Windows.Controls.Grid; $grid.Margin='18'; foreach($h in 'Auto','*','Auto'){ $r=New-Object Windows.Controls.RowDefinition; $r.Height=$h; $grid.RowDefinitions.Add($r) }
+    $head=New-Object Windows.Controls.StackPanel; $head.Children.Add((New-Text 'My Presets' 22 '#FFFFFF' $true '0,0,0,3'))|Out-Null; $head.Children.Add((New-Text 'Select presets to compare. Edit one by adjusting its tweak selection.' 12 '#7F8FAE' $false '0,0,0,10'))|Out-Null
+    [Windows.Controls.Grid]::SetRow($head,0); $grid.Children.Add($head)|Out-Null
+    $sv=New-Object Windows.Controls.ScrollViewer; $sv.VerticalScrollBarVisibility='Auto'; $script:pmList=New-Object Windows.Controls.StackPanel; $sv.Content=$script:pmList; [Windows.Controls.Grid]::SetRow($sv,1); $grid.Children.Add($sv)|Out-Null
+    $foot=New-Object Windows.Controls.WrapPanel; [Windows.Controls.Grid]::SetRow($foot,2); $foot.Margin='0,10,0,0'
+    $save=New-Object Windows.Controls.Button; $save.Content=if($script:PresetEditingName){'Save changes to preset'}else{'Save current selection'}; $save.Padding='12,8'; $save.Background=Brush '#1FB6FF'; $save.Foreground=Brush '#06121F'; $script:pmSaveButton=$save
+    $cancelEdit=New-Object Windows.Controls.Button; $cancelEdit.Content='Cancel edit'; $cancelEdit.Padding='12,8'; $cancelEdit.Visibility=if($script:PresetEditingName){'Visible'}else{'Collapsed'}; $script:pmCancelEditButton=$cancelEdit
+    $cancelEdit.Add_Click({ Reset-PresetEditing; Say 'Preset editing cancelled.' })
+    $save.Add_Click({
+        $ids=@($script:Selected|Sort-Object); if(-not $ids.Count){[void][Windows.MessageBox]::Show('Select at least one tweak on the Tweaks page first.','SharkOptimizer');return}
+        if($script:PresetEditingName){$target=$script:UserPresets|Where-Object{$_.name -eq $script:PresetEditingName}|Select-Object -First 1; if($target){$target.ids=$ids;Save-Presets;Reset-PresetEditing;Rebuild-PresetList;Say 'Preset changes saved.';return};Reset-PresetEditing}
+        $nm=Read-Text 'Save preset' 'Give your preset a name:' ''; if($nm -and $nm.Trim()){$nm=Get-UniquePresetName $nm;$script:UserPresets+=@{name=$nm;ids=$ids};Save-Presets;Rebuild-PresetList;Say ("Preset saved: $nm")}
+    })
+    $impCode=New-Object Windows.Controls.Button;$impCode.Content='Import code';$impCode.Padding='12,8';$impCode.Add_Click({$code=Read-Text 'Import preset' 'Paste the share code (starts with SHARK1-):' '';if(-not $code){return};$d=Decode-PresetCode $code;if(-not $d -or -not $d.ids.Count){[void][Windows.MessageBox]::Show('That code is not valid or contains no supported tweaks.','SharkOptimizer','OK','Warning');return};$nm=Get-UniquePresetName $d.name;$script:UserPresets+=@{name=$nm;ids=@($d.ids)};Save-Presets;Rebuild-PresetList;Say ("Preset imported: $nm")})
+    $compare=New-Object Windows.Controls.Button;$compare.Content='Compare selected';$compare.Padding='12,8';$compare.Add_Click({Compare-UserPresets})
+    $export=New-Object Windows.Controls.Button;$export.Content='Export file';$export.Padding='12,8';$export.Add_Click({Export-UserPresets})
+    $import=New-Object Windows.Controls.Button;$import.Content='Import file';$import.Padding='12,8';$import.Add_Click({Import-UserPresets})
+    foreach($b in $save,$cancelEdit,$impCode,$compare,$export,$import){$b.Margin='0,0,6,0';$foot.Children.Add($b)|Out-Null}
+    $grid.Children.Add($foot)|Out-Null;$w.Content=$grid;$script:pmWin=$w;Rebuild-PresetList;Tr $w;$w.Show()
+}
+
+# ---------------------------------------------------------------- Stage 1 Boost-Up filtering, preview, progress, and history
+$script:BoostHistoryFile=Join-Path $DataDir 'boost-history.json';$script:BoostHistory=@();$script:BoostSelected=New-Object 'System.Collections.Generic.HashSet[string]'
+try{if(Test-Path $script:BoostHistoryFile){$script:BoostHistory=@(Get-Content $script:BoostHistoryFile -Raw|ConvertFrom-Json|Select-Object -First 50)}}catch{$script:BoostHistory=@()}
+$boostCategoryMap=@{'Junk Cleaner'='Storage cleanup';'Optimize Drives'='Drive maintenance';'Clean Recent Documents'='Privacy';'Clean Thumbnail Cache'='Windows cache';'Clean Font Cache'='Windows cache';'Clear Shader Caches'='Game caches';'Clean Browser Caches'='Browser caches';'Trim Process RAM'='Memory';'Flush DNS Cache'='Network'}
+$boostEstimatePaths=@{
+ 'Junk Cleaner'=@($env:TEMP,'C:\Windows\Temp',"$env:LOCALAPPDATA\CrashDumps",'C:\ProgramData\Microsoft\Windows\WER\ReportArchive','C:\Windows\SoftwareDistribution\Download')
+ 'Clean Recent Documents'=@("$env:APPDATA\Microsoft\Windows\Recent");'Clean Thumbnail Cache'=@("$env:LOCALAPPDATA\Microsoft\Windows\Explorer")
+ 'Clean Font Cache'=@('C:\Windows\ServiceProfiles\LocalService\AppData\Local\FontCache')
+ 'Clear Shader Caches'=@("$env:LOCALAPPDATA\D3DSCache","$env:LOCALAPPDATA\NVIDIA\DXCache","$env:LOCALAPPDATA\NVIDIA\GLCache","$env:LOCALAPPDATA\AMD\DxCache")
+ 'Clean Browser Caches'=@("$env:LOCALAPPDATA\Google\Chrome\User Data\Default\Cache","$env:LOCALAPPDATA\Google\Chrome\User Data\Default\Code Cache","$env:LOCALAPPDATA\Microsoft\Edge\User Data\Default\Cache","$env:LOCALAPPDATA\Microsoft\Edge\User Data\Default\Code Cache","$env:LOCALAPPDATA\BraveSoftware\Brave-Browser\User Data\Default\Cache")
+}
+$boostWarnings=@{
+ 'Junk Cleaner'='Empties the Recycle Bin. Review its contents first; this part cannot be undone.'
+ 'Optimize Drives'=$(if($Spec.SSD){'Runs TRIM on the system SSD.'}else{'Runs drive optimization on the system drive.'})
+ 'Clean Recent Documents'='Clears the Windows Recent files list.';'Clean Thumbnail Cache'='Windows rebuilds thumbnails as you browse folders.'
+ 'Clean Font Cache'='Restarts the font cache service; Windows recreates the cache.'
+ 'Clear Shader Caches'='Games may stutter briefly on the first launch while shaders rebuild.'
+ 'Clean Browser Caches'='Removes cached web resources from the listed browser cache folders.'
+ 'Trim Process RAM'='Temporary working-set trim; Windows and apps may refill memory immediately.'
+ 'Flush DNS Cache'='Clears local DNS lookup entries; it does not change your DNS provider.'
+}
+$script:boostSearch=New-Object Windows.Controls.TextBox;$script:boostSearch.Width=210;$script:boostSearch.Margin='3';$script:boostSearch.Padding='8,5';$script:boostSearch.ToolTip='Search Boost-Ups'
+$script:boostCategory=New-Object Windows.Controls.ComboBox;$script:boostCategory.Width=165;$script:boostCategory.Margin='3';$script:boostCategory.Padding='6,4'
+foreach($cat in (@('All categories')+@($boostCategoryMap.Values|Sort-Object -Unique))){[void]$script:boostCategory.Items.Add($cat)};$script:boostCategory.SelectedIndex=0
+$script:boostSelectionText=New-Text '0 selected' 11.5 '#7F8FAE' $false '8,5,6,0'
+$script:boostProgressText=New-Text 'Ready' 11.5 '#7F8FAE' $false '4,4,0,2'
+$script:boostProgress=New-Object Windows.Controls.ProgressBar;$script:boostProgress.Height=7;$script:boostProgress.Minimum=0;$script:boostProgress.Maximum=1;$script:boostProgress.Value=0;$script:boostProgress.Margin='4,2,4,8'
+$boostPage=$ui.pgBoost.Children[0];$boostTools=New-Object Windows.Controls.StackPanel;$filterRow=New-Object Windows.Controls.WrapPanel
+$filterRow.Children.Add($script:boostSearch)|Out-Null;$filterRow.Children.Add($script:boostCategory)|Out-Null;$buttonRow=New-Object Windows.Controls.WrapPanel
+$script:boostSelectVisible=New-Object Windows.Controls.Button;$script:boostSelectVisible.Content='Select visible';$script:boostSelectVisible.Padding='10,6'
+$script:boostClearSelection=New-Object Windows.Controls.Button;$script:boostClearSelection.Content='Clear selection';$script:boostClearSelection.Padding='10,6'
+$script:boostRunSelected=New-Object Windows.Controls.Button;$script:boostRunSelected.Content='Review & Run selected';$script:boostRunSelected.Padding='12,7';$script:boostRunSelected.Background=Brush '#1FB6FF';$script:boostRunSelected.Foreground=Brush '#06121F'
+$script:boostHistoryButton=New-Object Windows.Controls.Button;$script:boostHistoryButton.Content='Run history';$script:boostHistoryButton.Padding='10,6'
+foreach($b in $script:boostSelectVisible,$script:boostClearSelection,$script:boostRunSelected,$script:boostHistoryButton){$b.Margin='2';$buttonRow.Children.Add($b)|Out-Null}
+foreach($c in $filterRow,$buttonRow,$script:boostSelectionText,$script:boostProgressText,$script:boostProgress){$boostTools.Children.Add($c)|Out-Null}
+$boostPage.Children.Insert(2,$boostTools);$ui.btnBoostAll.Visibility='Collapsed'
+function Save-BoostHistory {try{$script:BoostHistory=@($script:BoostHistory|Select-Object -First 50);Write-JsonAtomic -Path $script:BoostHistoryFile -Value $script:BoostHistory -Depth 4}catch{Log "Boost-Up history save failed: $($_.Exception.Message)"}}
+function Get-BoostEstimate($items){
+    $bytes=[long]0;$scan=[Diagnostics.Stopwatch]::StartNew();$fileLimit=2500;$filesSeen=0
+    foreach($item in @($items)){
+        foreach($path in @($boostEstimatePaths[$item.Name])){
+            if(-not $path -or -not [IO.Directory]::Exists($path)){continue}
+            try{
+                foreach($file in [IO.Directory]::EnumerateFiles($path,'*',[IO.SearchOption]::AllDirectories)){
+                    if($filesSeen -ge $fileLimit -or $scan.Elapsed.TotalMilliseconds -ge 1200){return $bytes}
+                    $filesSeen++;try{$bytes+=(New-Object IO.FileInfo $file).Length}catch{}
+                }
+            }catch{}
+        }
+    }
+    $bytes
+}
+function Update-BoostSelection {$script:boostSelectionText.Text=("{0} selected" -f $script:BoostSelected.Count);$script:boostRunSelected.IsEnabled=($script:BoostSelected.Count -gt 0)}
+function Render-BoostItems {
+    $script:boostChecks=@{};$script:boostStatus=@{};$ui.lstBoost.Children.Clear();$query=$script:boostSearch.Text.Trim();$category=[string]$script:boostCategory.SelectedItem
+    foreach($item in $BoostItems){$cat=[string]$boostCategoryMap[$item.Name];$label="$($item.Name) $($item.Desc) $cat";if(($category -ne 'All categories' -and $category -ne $cat)-or($query -and $label -notlike "*$query*")){continue}
+        $border=New-Object Windows.Controls.Border;$border.Background=Brush '#0F1A2C';$border.BorderBrush=Brush '#1A2943';$border.BorderThickness=1;$border.CornerRadius=12;$border.Padding='12,9';$border.Margin='0,0,0,7';$dock=New-Object Windows.Controls.DockPanel
+        $actions=New-Object Windows.Controls.StackPanel;$actions.Orientation='Horizontal';[Windows.Controls.DockPanel]::SetDock($actions,'Right')
+        $status=New-Text 'Not run yet' 11 '#7F8FAE' $false '0,0,6,0';$script:boostStatus[$item.Name]=$status
+        $previous=$script:BoostHistory|Where-Object{$_.name -eq $item.Name}|Select-Object -First 1;if($previous){$status.Text="$($previous.result) · $($previous.time)";$status.Foreground=Brush $(if($previous.ok){'#35D07F'}else{'#FF6B6B'})}
+        $run=New-Object Windows.Controls.Button;$run.Content='Review & Run';$run.Tag=$item.Name;$run.Padding='10,5';$run.Add_Click({Request-BoostRun @([string]$this.Tag)})
+        $actions.Children.Add($status)|Out-Null;$actions.Children.Add($run)|Out-Null;$left=New-Object Windows.Controls.StackPanel;$left.Orientation='Horizontal'
+        $check=New-Object Windows.Controls.CheckBox;$check.Tag=$item.Name;$check.IsChecked=$script:BoostSelected.Contains($item.Name);$check.VerticalAlignment='Center';$check.Margin='0,0,10,0'
+        $check.Add_Click({if($this.IsChecked){[void]$script:BoostSelected.Add($this.Tag)}else{[void]$script:BoostSelected.Remove($this.Tag)};Update-BoostSelection})
+        $copy=New-Object Windows.Controls.StackPanel;$copy.Children.Add((New-Text $item.Name 14 '#FFFFFF' $true))|Out-Null;$copy.Children.Add((New-Text $item.Desc 11.5 '#7F8FAE' $false '0,2,0,0'))|Out-Null;$copy.Children.Add((New-Text $cat 10.5 '#1FB6FF' $true '0,3,0,0'))|Out-Null
+        $left.Children.Add($check)|Out-Null;$left.Children.Add($copy)|Out-Null;$dock.Children.Add($actions)|Out-Null;$dock.Children.Add($left)|Out-Null;$border.Child=$dock;$ui.lstBoost.Children.Add($border)|Out-Null
+    }
+    if(-not $ui.lstBoost.Children.Count){$ui.lstBoost.Children.Add((New-Text 'No Boost-Ups match these filters.' 12 '#7F8FAE' $false '8,10'))|Out-Null};Update-BoostSelection;if(Has-Fn 'Translate-Now'){Translate-Now $ui.lstBoost}
+}
+function Show-BoostHistory {
+    $w=New-Object Windows.Window;$w.Title='Boost-Up history';$w.Width=680;$w.Height=520;$w.Owner=$window;$w.Background=Brush '#08101D';$w.WindowStartupLocation='CenterOwner';$grid=New-Object Windows.Controls.Grid;$grid.Margin='18'
+    foreach($h in 'Auto','*','Auto'){$r=New-Object Windows.Controls.RowDefinition;$r.Height=$h;$grid.RowDefinitions.Add($r)};$grid.Children.Add((New-Text 'Recent Boost-Ups' 21 '#FFFFFF' $true '0,0,0,10'))|Out-Null
+    $sv=New-Object Windows.Controls.ScrollViewer;$sv.VerticalScrollBarVisibility='Auto';$list=New-Object Windows.Controls.StackPanel
+    if(-not $script:BoostHistory.Count){$list.Children.Add((New-Text 'No Boost-Ups have been run yet.' 12 '#7F8FAE'))|Out-Null}
+    foreach($entry in @($script:BoostHistory|Select-Object -First 50)){$txt="{0} · {1} · {2}" -f $entry.time,$entry.name,$entry.result;$list.Children.Add((New-Text $txt 11.5 $(if($entry.ok){'#C2CCDF'}else{'#FF8A8A'}) $false '0,0,0,7'))|Out-Null}
+    $sv.Content=$list;[Windows.Controls.Grid]::SetRow($sv,1);$grid.Children.Add($sv)|Out-Null;$foot=New-Object Windows.Controls.StackPanel;$foot.Orientation='Horizontal';$foot.HorizontalAlignment='Right';$foot.Margin='0,10,0,0'
+    $clear=New-Object Windows.Controls.Button;$clear.Content='Clear history';$clear.Padding='12,7';$clear.Margin='0,0,8,0';$clear.Add_Click({if(Show-ActionPreview 'Clear Boost-Up history' 'Remove saved run records from this PC?' @("$($script:BoostHistory.Count) history entries") '' 'Clear history'){$script:BoostHistory=@();Save-BoostHistory;$script:historyWin.Close();Show-BoostHistory}})
+    $close=New-Object Windows.Controls.Button;$close.Content='Close';$close.Padding='14,7';$close.Tag=$w;$close.Add_Click({$this.Tag.Close()});$foot.Children.Add($clear)|Out-Null;$foot.Children.Add($close)|Out-Null
+    [Windows.Controls.Grid]::SetRow($foot,2);$grid.Children.Add($foot)|Out-Null;$w.Content=$grid;$script:historyWin=$w;Tr $w;[void]$w.ShowDialog()
+}
+function Run-Boost($name,[bool]$approved=$false,[int]$index=1,[int]$total=1){
+    if(-not $approved){Request-BoostRun @([string]$name);return};$item=$BoostItems|Where-Object{$_.Name -eq $name}|Select-Object -First 1;if(-not $item){return}
+    $status=$script:boostStatus[$name];if($status){$status.Text='Running…';$status.Foreground=Brush '#FFC857'};$script:boostProgressText.Text=('Running {0} of {1}: {2}' -f $index,$total,$name);$script:boostProgress.IsIndeterminate=$true;$script:boostProgress.Value=[Math]::Max(0,$index-1);Flush-UI
+    $started=Get-Date;$ok=$true;try{$result=[string](& $item.Run);if(-not $result){$result='Completed'};if($status){$status.Text="$result · $(Get-Date -Format HH:mm)";$status.Foreground=Brush '#35D07F'};Log "Boost: $name - $result"}catch{$ok=$false;$result=$_.Exception.Message;if($status){$status.Text='Failed';$status.Foreground=Brush '#FF6B6B'};Log "Boost: $name failed - $result"}
+    $script:BoostHistory=@(@{time=(Get-Date -Format 'yyyy-MM-dd HH:mm:ss');name=$name;ok=$ok;result=$result;durationSeconds=[math]::Round(((Get-Date)-$started).TotalSeconds,1)})+@($script:BoostHistory);Save-BoostHistory;$script:boostProgress.IsIndeterminate=$false;$script:boostProgress.Value=$index;Flush-UI;$ok
+}
+function Request-BoostRun($names){
+    $selected=@($BoostItems|Where-Object{@($names)-contains $_.Name});if(-not $selected.Count){return};$bytes=Get-BoostEstimate $selected
+    $estimate=if($bytes -gt 0){"Quick estimate (bounded scan; may be low): about {0:N1} MB. In-use files may not be removable." -f ($bytes/1MB)}else{''}
+    if(@($selected|Where-Object{$_.Name -eq 'Junk Cleaner'}).Count){$estimate="Recycle Bin contents are not included in the estimate.`n$estimate"}
+    $items=@($selected|ForEach-Object{"[$($boostCategoryMap[$_.Name])] $($_.Name)`n$($_.Desc)`nImpact: $($boostWarnings[$_.Name])"})
+    $warning=@($selected|ForEach-Object{$boostWarnings[$_.Name]}|Sort-Object -Unique)-join "`n";if($estimate){$warning="$estimate`n`n$warning"}
+    if(-not(Show-ActionPreview 'Review Boost-Ups' ("$($selected.Count) selected actions will run in order. Estimated time depends on the files and devices involved.") $items $warning 'Run selected')){return}
+    $script:boostProgress.Minimum=0;$script:boostProgress.Maximum=$selected.Count;$script:boostProgress.Value=0;$script:boostProgressText.Text='Starting…';Flush-UI
+    $i=0;foreach($item in $selected){$i++;[void](Run-Boost $item.Name $true $i $selected.Count)};$script:boostProgressText.Text="Finished $($selected.Count) action(s).";$script:boostProgress.Value=$selected.Count;Flush-UI
+}
+$script:boostSearch.Add_TextChanged({Render-BoostItems});$script:boostCategory.Add_SelectionChanged({Render-BoostItems})
+$script:boostSelectVisible.Add_Click({$q=$script:boostSearch.Text.Trim();foreach($item in $BoostItems){$cat=[string]$boostCategoryMap[$item.Name];$label="$($item.Name) $($item.Desc) $cat";if(($script:boostCategory.SelectedItem -eq 'All categories' -or $script:boostCategory.SelectedItem -eq $cat)-and(-not $q -or $label -like "*$q*")){[void]$script:BoostSelected.Add($item.Name)}};Render-BoostItems})
+$script:boostClearSelection.Add_Click({$script:BoostSelected.Clear();Render-BoostItems})
+$script:boostRunSelected.Add_Click({$names=@($BoostItems|Where-Object{$script:BoostSelected.Contains($_.Name)}|ForEach-Object{$_.Name});Request-BoostRun $names})
+$script:boostHistoryButton.Add_Click({Show-BoostHistory});Render-BoostItems
+
+# ---------------------------------------------------------------- Stage 1 review dialog and individual restore controls
+function Show-ActionPreview($title, $summary, $items, $warning = '', $confirmText = 'Continue') {
+    $w = New-Object Windows.Window; $w.Title = $title; $w.Width = 700; $w.Height = 560
+    $w.MinWidth = 520; $w.MinHeight = 400; $w.Background = Brush '#08101D'
+    $ownerWindow = if ($script:historyWin -and $script:historyWin.IsActive) { $script:historyWin } else { $window }
+    $w.Owner = $ownerWindow; $w.WindowStartupLocation = 'CenterOwner'; $w.ResizeMode = 'CanResize'
+    $grid = New-Object Windows.Controls.Grid; $grid.Margin = '20'
+    foreach ($h in 'Auto', '*', 'Auto') { $r = New-Object Windows.Controls.RowDefinition; $r.Height = $h; $grid.RowDefinitions.Add($r) }
+    $head = New-Object Windows.Controls.StackPanel
+    $head.Children.Add((New-Text $title 22 '#FFFFFF' $true '0,0,0,4')) | Out-Null
+    $head.Children.Add((New-Text $summary 13 '#C2CCDF' $false '0,0,0,8')) | Out-Null
+    if ($warning) { $head.Children.Add((New-Text $warning 12 '#FFC857' $false '0,0,0,12')) | Out-Null }
+    [Windows.Controls.Grid]::SetRow($head, 0); $grid.Children.Add($head) | Out-Null
+    $sv = New-Object Windows.Controls.ScrollViewer; $sv.VerticalScrollBarVisibility = 'Auto'; $list = New-Object Windows.Controls.StackPanel
+    foreach ($item in @($items)) {
+        $card = New-Object Windows.Controls.Border; $card.Background = Brush '#0F1A2C'; $card.BorderBrush = Brush '#1A2943'
+        $card.BorderThickness = 1; $card.CornerRadius = 8; $card.Padding = '12,9'; $card.Margin = '0,0,0,6'
+        $card.Child = New-Text ([string]$item) 12 '#C2CCDF' $false; $list.Children.Add($card) | Out-Null
+    }
+    $sv.Content = $list; [Windows.Controls.Grid]::SetRow($sv, 1); $grid.Children.Add($sv) | Out-Null
+    $foot = New-Object Windows.Controls.StackPanel; $foot.Orientation = 'Horizontal'; $foot.HorizontalAlignment = 'Right'; $foot.Margin = '0,12,0,0'
+    $cancel = New-Object Windows.Controls.Button; $cancel.Content = 'Cancel'; $cancel.Padding = '16,8'; $cancel.Margin = '0,0,8,0'
+    $ok = New-Object Windows.Controls.Button; $ok.Content = $confirmText; $ok.Padding = '16,8'; $ok.Background = Brush '#1FB6FF'; $ok.Foreground = Brush '#06121F'
+    $script:Stage1ReviewResult = $false; $script:Stage1ReviewWindow = $w
+    $cancel.Add_Click({ $script:Stage1ReviewWindow.Close() }); $ok.Add_Click({ $script:Stage1ReviewResult = $true; $script:Stage1ReviewWindow.Close() })
+    $foot.Children.Add($cancel) | Out-Null; $foot.Children.Add($ok) | Out-Null
+    [Windows.Controls.Grid]::SetRow($foot, 2); $grid.Children.Add($foot) | Out-Null
+    $w.Content = $grid; Tr $w; [void]$w.ShowDialog(); [bool]$script:Stage1ReviewResult
+}
+
+$script:restoreList = New-Object Windows.Controls.StackPanel
+$script:restoreSignature = $null
+$restoreHost = $ui.txtApplied.Parent; $restoreAt = $restoreHost.Children.IndexOf($ui.txtApplied)
+$restoreHost.Children.Insert($restoreAt + 1, (New-Text 'Undo individual changes' 14 '#FFFFFF' $true '4,14,0,6'))
+$restoreHost.Children.Insert($restoreAt + 2, $script:restoreList)
+function Render-ActiveChanges {
+    if (-not $script:restoreList) { return }
+    $active = @($State.Keys | Sort-Object); $signature = $active -join '|'
+    if ($script:restoreSignature -eq $signature -and $script:restoreList.Children.Count) { return }
+    $script:restoreSignature = $signature; $script:restoreList.Children.Clear()
+    if (-not $active.Count) { $script:restoreList.Children.Add((New-Text 'No tracked changes are currently active.' 12 '#7F8FAE' $false '4,2,0,8')) | Out-Null; return }
+    foreach ($id in $active) {
+        $tw = Get-Tweak $id; $game = $null
+        if ($id -like 'game_*') { $gid = $id -replace '^game_', ''; $game = $Games | Where-Object { $_.Id -eq $gid } | Select-Object -First 1 }
+        $name = if ($tw) { $tw.Name } elseif ($game) { "$($game.Name) profile" } else { "Saved change ($id)" }
+        $row = New-Object Windows.Controls.Border; $row.Background = Brush '#0F1A2C'; $row.BorderBrush = Brush '#1A2943'; $row.BorderThickness = 1
+        $row.CornerRadius = 8; $row.Padding = '10,7'; $row.Margin = '0,0,0,5'; $dock = New-Object Windows.Controls.DockPanel
+        $b = New-Object Windows.Controls.Button; $b.Content = 'Undo'; $b.Tag = @{ id = $id; game = [bool]$game }; $b.Padding = '12,5'; $b.Background = Brush '#3A1F2B'
+        [Windows.Controls.DockPanel]::SetDock($b, 'Right')
+        $b.Add_Click({
+            $item = $this.Tag
+            if ($item.game) {
+                $gid = [string]$item.id -replace '^game_', ''; $g = $Games | Where-Object { $_.Id -eq $gid } | Select-Object -First 1; $label = if ($g) { $g.Name } else { $gid }
+                if (Show-ActionPreview 'Review undo' "Restore the saved values for the $label game profile?" @("Game profile: $label") 'Only recorded settings will be restored.' 'Undo profile') { Undo-GameKey ([string]$item.id); Save-State; Render-Tweaks; Update-Stats }
+            } else { $t = Get-Tweak ([string]$item.id); if ($t) { Invoke-Undo @($t) } }
+        })
+        $dock.Children.Add($b) | Out-Null; $dock.Children.Add((New-Text $name 12.5 '#C2CCDF' $false '4,0')) | Out-Null
+        $row.Child = $dock; $script:restoreList.Children.Add($row) | Out-Null
+    }
+}
+$script:Stage1BaseStats = ${function:Update-Stats}
+function Update-Stats { & $script:Stage1BaseStats; Render-ActiveChanges }
+Render-ActiveChanges
+
+# ---------------------------------------------------------------- Stage 2 + 4: game sessions, repeatable measurement, backups, accessibility
+$script:GameSessionFile = Join-Path $DataDir 'game-sessions.json'
+$script:GameSessionHistoryFile = Join-Path $DataDir 'game-session-history.json'
+$script:GameSessionStore = @{ version=1; alwaysKeep=@(); profiles=@{} }
+$script:GameSessionHistory = @()
+$script:GMProfileKey = '_manual'
+try {
+    if (Test-Path -LiteralPath $script:GameSessionFile) {
+        $saved = Get-Content -LiteralPath $script:GameSessionFile -Raw -ErrorAction Stop | ConvertFrom-Json -ErrorAction Stop
+        if ($saved.alwaysKeep) { $script:GameSessionStore.alwaysKeep = @($saved.alwaysKeep | ForEach-Object { ([string]$_).Trim().ToLowerInvariant() } | Where-Object { $_ -match '^[a-z0-9_.-]+$' } | Select-Object -Unique) }
+        if ($saved.profiles) { foreach ($pr in $saved.profiles.PSObject.Properties) { $script:GameSessionStore.profiles[$pr.Name] = $pr.Value } }
+    }
+    if (Test-Path -LiteralPath $script:GameSessionHistoryFile) { $script:GameSessionHistory = @(Get-Content -LiteralPath $script:GameSessionHistoryFile -Raw -ErrorAction Stop | ConvertFrom-Json -ErrorAction Stop | Select-Object -First 50) }
+} catch { Log "Game Session settings could not be loaded: $($_.Exception.Message)" }
+$script:GM.PriorityChanges = @(); $script:GM.CurrentSession = $null; $script:GM.LastReport = $null
+$script:GMProfileLoading = $false
+function Get-GMProfileKey {
+    $item = $script:cmbGm.SelectedItem
+    if ($item -and $item.Uid) { return [string]$item.Uid }
+    '_manual'
+}
+function Get-GMAllowlist {
+    $raw = if ($script:txtGmAllowlist) { [string]$script:txtGmAllowlist.Text } else { @($script:GameSessionStore.alwaysKeep) -join ', ' }
+    @($raw -split '[,;\r\n]+' | ForEach-Object { ([string]$_).Trim().ToLowerInvariant() -replace '\.exe$','' } | Where-Object { $_ -match '^[a-z0-9_.-]+$' } | Select-Object -Unique)
+}
+function Save-GameSessionStore {
+    try {
+        $payload = [ordered]@{ version=1; alwaysKeep=@(Get-GMAllowlist); profiles=$script:GameSessionStore.profiles }
+        Write-JsonAtomic -Path $script:GameSessionFile -Value $payload -Depth 8
+        $script:GameSessionStore.alwaysKeep = @($payload.alwaysKeep)
+    } catch { Log "Game Session settings could not be saved: $($_.Exception.Message)" }
+}
+function Save-GameModeProfile {
+    if ($script:GMProfileLoading -or -not $script:lstGm) { return }
+    $key = if ($script:GMProfileKey) { [string]$script:GMProfileKey } else { Get-GMProfileKey }
+    $selected = @($script:lstGm.Children | Where-Object { $_ -is [Windows.Controls.CheckBox] -and $_.IsChecked } | ForEach-Object { [string]$_.Tag } | Sort-Object -Unique)
+    $mode = if ($script:cmbGmAction.SelectedIndex -eq 1) { 'LowerPriority' } else { 'AskToClose' }
+    $script:GameSessionStore.profiles[$key] = @{ selectedProcesses=$selected; processMode=$mode; powerPlan=[bool]$script:chkGmPlan.IsChecked; pauseUpdate=[bool]$script:chkGmWU.IsChecked; trimMemory=[bool]$script:chkGmTrim.IsChecked }
+    Save-GameSessionStore
+}
+function Load-GameModeProfile {
+    $script:GMProfileLoading = $true
+    try {
+        $key = Get-GMProfileKey; $script:GMProfileKey=$key; $profile = $script:GameSessionStore.profiles[$key]
+        $script:chkGmPlan.IsChecked = if ($null -ne $profile -and $null -ne $profile.powerPlan) { [bool]$profile.powerPlan } else { $true }
+        $script:chkGmWU.IsChecked = if ($null -ne $profile -and $null -ne $profile.pauseUpdate) { [bool]$profile.pauseUpdate } else { $false }
+        $script:chkGmTrim.IsChecked = if ($null -ne $profile -and $null -ne $profile.trimMemory) { [bool]$profile.trimMemory } else { $false }
+        $script:cmbGmAction.SelectedIndex = if ($profile -and $profile.processMode -eq 'LowerPriority') { 1 } else { 0 }
+        if ($script:txtGmAllowlist) { $script:txtGmAllowlist.Text = @($script:GameSessionStore.alwaysKeep) -join ', ' }
+        Refresh-GmProcs
+        if ($script:gmProfileStatus) { $script:gmProfileStatus.Text = "Rules saved for $key" }
+    } finally { $script:GMProfileLoading = $false }
+}
+function Refresh-GmGames {
+    if (-not $script:GMProfileLoading) { Save-GameModeProfile }
+    $previous = Get-GMProfileKey; $script:GMProfileLoading = $true
+    try {
+        $script:cmbGm.Items.Clear()
+        $none = New-Object Windows.Controls.ComboBoxItem; $none.Content = 'Manual session'; $none.Uid = '_manual'; $none.Tag = $null; [void]$script:cmbGm.Items.Add($none)
+        foreach ($g in $Games) {
+            $paths = @($script:GamePaths[$g.Id] | Where-Object { $_ -and (Test-Path -LiteralPath ([string]$_)) })
+            if ($paths.Count) { $it = New-Object Windows.Controls.ComboBoxItem; $it.Content = $g.Name; $it.Uid = [string]$g.Id; $it.Tag = [string]$paths[0]; [void]$script:cmbGm.Items.Add($it) }
+        }
+        $match = @($script:cmbGm.Items | Where-Object { $_.Uid -eq $previous } | Select-Object -First 1)
+        $script:cmbGm.SelectedItem = if ($match.Count) { $match[0] } else { $script:cmbGm.Items[0] }
+    } finally { $script:GMProfileLoading = $false }
+    Load-GameModeProfile
+}
+function Refresh-GmProcs {
+    if (-not $script:lstGm) { return }
+    $script:lstGm.Children.Clear(); $keep = @(Get-GMAllowlist)
+    $profile = $script:GameSessionStore.profiles[(Get-GMProfileKey)]; $selectedNames = if ($profile) { @($profile.selectedProcesses) } else { @() }
+    $list = @(Get-Process -ErrorAction SilentlyContinue | Where-Object { $_.MainWindowHandle -ne 0 -and $_.Id -ne $PID -and $ProtectedProcs -notcontains $_.ProcessName } | Group-Object ProcessName | ForEach-Object {
+        $group = $_; $first = $group.Group | Select-Object -First 1
+        [pscustomobject]@{ Name=$first.ProcessName; Memory=($group.Group | Measure-Object WorkingSet64 -Sum).Sum; Count=$group.Count }
+    } | Sort-Object Memory -Descending | Select-Object -First 16)
+    foreach ($pr in $list) {
+        $name = [string]$pr.Name; $cb = New-Object Windows.Controls.CheckBox; $cb.Tag = $name; $cb.Margin = '5,3'; $cb.Padding = '2,2'; $cb.IsChecked = ($selectedNames -contains $name)
+        if ($keep -contains $name.ToLowerInvariant()) { $cb.IsChecked = $false; $cb.IsEnabled = $false; $cb.ToolTip = 'This app is protected by your always-keep list.' }
+        $countText = if ($pr.Count -gt 1) { " · $($pr.Count) instances" } else { '' }
+        $cb.Content = New-Text ("{0}   {1:N0} MB{2}" -f $name, ($pr.Memory / 1MB), $countText) 12.5 '#C2CCDF'
+        $cb.Add_Click({ Save-GameModeProfile })
+        $script:lstGm.Children.Add($cb) | Out-Null
+    }
+    if (-not $list.Count) { $script:lstGm.Children.Add((New-Text 'No other app windows are open.' 12 '#7F8FAE' $false '4,0,0,4')) | Out-Null }
+}
+function Save-GameSessionHistory {
+    try { $script:GameSessionHistory = @($script:GameSessionHistory | Select-Object -First 50); Write-JsonAtomic -Path $script:GameSessionHistoryFile -Value $script:GameSessionHistory -Depth 8 }
+    catch { Log "Game Session history could not be saved: $($_.Exception.Message)" }
+}
+function Show-GameSessionReport {
+    $w = New-Object Windows.Window; $w.Title = 'Game Session report'; $w.Width = 720; $w.Height = 560; $w.MinWidth = 540; $w.Background = Brush '#08101D'; $w.Owner = $window; $w.WindowStartupLocation = 'CenterOwner'
+    $grid = New-Object Windows.Controls.Grid; $grid.Margin = '20'; foreach ($h in 'Auto','*','Auto') { $r=New-Object Windows.Controls.RowDefinition; $r.Height=$h; $grid.RowDefinitions.Add($r) }
+    $grid.Children.Add((New-Text 'Recent sessions' 22 '#FFFFFF' $true '0,0,0,10')) | Out-Null
+    $sv=New-Object Windows.Controls.ScrollViewer; $sv.VerticalScrollBarVisibility='Auto'; $body=New-Object Windows.Controls.StackPanel
+    if (-not $script:GameSessionHistory.Count) { $body.Children.Add((New-Text 'No Game Sessions have been recorded yet.' 12 '#7F8FAE')) | Out-Null }
+    foreach ($report in @($script:GameSessionHistory | Select-Object -First 25)) {
+        $card=New-Object Windows.Controls.Border; $card.Background=Brush '#0F1A2C'; $card.BorderBrush=Brush '#1A2943'; $card.BorderThickness=1; $card.CornerRadius=12; $card.Padding='12,10'; $card.Margin='0,0,0,7'
+        $stack=New-Object Windows.Controls.StackPanel; $start=[string]$report.started; $mins=[int][math]::Round([double]$report.durationSeconds/60)
+        $stack.Children.Add((New-Text ("{0} · {1} min · {2}" -f $report.game,$mins,$start) 13 '#FFFFFF' $true '0,0,0,5')) | Out-Null
+        foreach ($check in @($report.checklist)) { $stack.Children.Add((New-Text ([string]$check) 11.5 '#C2CCDF' $false '0,1,0,1')) | Out-Null }
+        $card.Child=$stack; $body.Children.Add($card) | Out-Null
+    }
+    $sv.Content=$body; [Windows.Controls.Grid]::SetRow($sv,1); $grid.Children.Add($sv) | Out-Null
+    $close=New-Object Windows.Controls.Button; $close.Content='Close'; $close.Padding='14,8'; $close.HorizontalAlignment='Right'; $close.Tag=$w; $close.Add_Click({$this.Tag.Close()}); [Windows.Controls.Grid]::SetRow($close,2); $grid.Children.Add($close)|Out-Null
+    $w.Content=$grid; Tr $w; [void]$w.ShowDialog()
+}
+function End-GameMode {
+    if (-not $script:GM.Active) { return }
+    try { if ($script:GM.Timer) { $script:GM.Timer.Stop() } } catch {}
+    $checks = New-Object System.Collections.ArrayList
+    foreach ($change in @($script:GM.PriorityChanges)) {
+        try { $p=Get-Process -Id ([int]$change.id) -ErrorAction Stop; if ($p.ProcessName -eq $change.name) { $p.PriorityClass=[Enum]::Parse([Diagnostics.ProcessPriorityClass],[string]$change.original); [void]$checks.Add("Restored priority: $($change.name)") } else { [void]$checks.Add("Priority restore skipped: process ID changed for $($change.name)") } }
+        catch { $still=Get-Process -Id ([int]$change.id) -ErrorAction SilentlyContinue;if($still){[void]$checks.Add("Could not restore priority: $($change.name)")}else{[void]$checks.Add("Priority restore skipped: $($change.name) is no longer running")} }
+    }
+    if ($script:GM.Plan) { try { powercfg /setactive $script:GM.Plan 2>&1 | Out-Null; [void]$checks.Add('Restored the previous power plan'); Log 'Power plan restored.' } catch { [void]$checks.Add('Could not restore the previous power plan') } }
+    if ($script:GM.WUStopped) { try { Start-Service wuauserv -ErrorAction Stop; [void]$checks.Add('Resumed Windows Update'); Log 'Windows Update service resumed.' } catch { [void]$checks.Add('Could not resume Windows Update') } }
+    $script:GM.Active = $false; $script:GM.PriorityChanges=@(); $script:GM.Timer=$null
+    $script:txtGm.Text = 'Game Session is off.'
+    $session=$script:GM.CurrentSession
+    if ($session) {
+        foreach ($check in $checks) { [void]$session.checklist.Add([string]$check) }
+        $ended=Get-Date; $report=[ordered]@{game=$session.game;started=$session.started.ToString('s');ended=$ended.ToString('s');durationSeconds=[math]::Round(($ended-$session.started).TotalSeconds);mode=$session.mode;checklist=@($session.checklist)}
+        $script:GameSessionHistory=@($report)+@($script:GameSessionHistory|Select-Object -First 49);$script:GM.LastReport=$report;$script:GM.CurrentSession=$null;Save-GameSessionHistory
+        if ($script:gmReportStatus) { $restoreIssue=@($report.checklist|Where-Object{$_ -like 'Could not*'}).Count;$stateLabel=if($restoreIssue){'check report'}else{'restored'};$script:gmReportStatus.Text="Last session: $($report.game) · $([int][math]::Round($report.durationSeconds/60)) min · $stateLabel" }
+    }
+    Log 'Game Session ended.'; Say 'Game Session ended and saved.'; try { Update-ProChrome } catch {}
+}
+function Start-GameMode {
+    if ($script:GM.Active) { Log 'Game Session is already active.'; return }
+    Save-GameModeProfile
+    $sel=$script:cmbGm.SelectedItem; $exe=if($sel -and $sel.Tag){[string]$sel.Tag}else{$null}
+    if ($exe -and -not (Test-Path -LiteralPath $exe)) { [void][Windows.MessageBox]::Show('The selected game executable is missing. Refresh the game scan and choose it again.','SharkOptimizer'); return }
+    $processNames=@($script:lstGm.Children | Where-Object { $_ -is [Windows.Controls.CheckBox] -and $_.IsChecked -and $_.IsEnabled } | ForEach-Object { [string]$_.Tag } | Sort-Object -Unique)
+    $mode=if($script:cmbGmAction.SelectedIndex -eq 1){'LowerPriority'}else{'AskToClose'}
+    $gameName=if($sel -and $sel.Tag){[string]$sel.Content}else{'Manual session'}
+    $preview=@("Game: $gameName","Selected apps: $(if($processNames.Count){$processNames -join ', '}else{'none'})","App action: $(if($mode -eq 'LowerPriority'){'lower priority temporarily'}else{'ask apps to close normally'})")
+    if($script:chkGmPlan.IsChecked){$preview+='Switch to the performance power plan; restore the previous plan when the session ends.'}
+    if($script:chkGmWU.IsChecked){$preview+='Pause Windows Update only while this session runs; resume it when the session ends.'}
+    if($script:chkGmTrim.IsChecked){$preview+='Trim process working sets; memory may refill as apps run.'}
+    $warning=if($mode -eq 'AskToClose'){'Selected apps receive a normal close request and can prompt you to save. SharkOptimizer will not force-close them.'}else{'Priority is lowered temporarily and restored when the session ends. The always-keep list is never changed.'}
+    if(-not (Show-ActionPreview 'Review Game Session' 'Check which temporary actions will run.' $preview $warning 'Start session')){return}
+    $script:GM.Plan=if($script:chkGmPlan.IsChecked){Get-ActivePlan}else{$null}; $script:GM.WUStopped=$false; $script:GM.PriorityChanges=@()
+    $session=[ordered]@{game=$gameName;started=(Get-Date);mode=$mode;checklist=(New-Object System.Collections.ArrayList)}
+    [void]$session.checklist.Add("Loaded profile: $(Get-GMProfileKey)")
+    $script:GM.CurrentSession=$session; $script:GM.Active=$true; $script:GM.Seen=$false; $script:GM.Misses=0; $script:GM.Started=$session.started
+    try {
+        if($script:chkGmPlan.IsChecked -and -not $script:GM.Plan){[void]$session.checklist.Add('Could not read the current power plan; skipped the plan change')}
+        elseif($script:chkGmPlan.IsChecked){
+            $target='8c5e7fda-e8bf-4a96-9a85-a6e23a8c635c';$plans=(powercfg /list) -join "`n"
+            if($plans -match '99999999-9999-9999-9999-999999999999'){$target='99999999-9999-9999-9999-999999999999'}
+            powercfg /setactive $target 2>&1 | Out-Null
+            if($LASTEXITCODE -eq 0){[void]$session.checklist.Add('Applied performance power plan');Log "Power plan set to performance ($target)."}else{[void]$session.checklist.Add('Performance power plan unavailable')}
+        }
+        if($script:chkGmWU.IsChecked){$svc=Get-Service wuauserv -ErrorAction SilentlyContinue;if($svc -and $svc.Status -eq 'Running'){Stop-Service wuauserv -ErrorAction Stop;$script:GM.WUStopped=$true;[void]$session.checklist.Add('Paused Windows Update temporarily')}}
+        foreach($name in $processNames){
+            if((Get-GMAllowlist) -contains $name.ToLowerInvariant()){[void]$session.checklist.Add("Kept allowlisted app: $name");continue}
+            foreach($pr in @(Get-Process -Name $name -ErrorAction SilentlyContinue)){
+                if($mode -eq 'LowerPriority'){
+                    try{$original=$pr.PriorityClass.ToString();if($original -ne 'Idle' -and $original -ne 'BelowNormal'){$script:GM.PriorityChanges+=@{id=$pr.Id;name=$pr.ProcessName;original=$original};$pr.PriorityClass=[Diagnostics.ProcessPriorityClass]::BelowNormal;[void]$session.checklist.Add("Lowered priority: $($pr.ProcessName)")}}catch{[void]$session.checklist.Add("Could not lower priority: $($pr.ProcessName)")}
+                }else{try{if($pr.CloseMainWindow()){[void]$session.checklist.Add("Asked app to close: $($pr.ProcessName)")}else{[void]$session.checklist.Add("App stayed open: $($pr.ProcessName)")}}catch{[void]$session.checklist.Add("Close request failed: $($pr.ProcessName)")}}
+            }
+        }
+        if($script:chkGmTrim.IsChecked){Get-Process -ErrorAction SilentlyContinue|ForEach-Object{try{[void][Boost.Mem]::EmptyWorkingSet($_.Handle)}catch{}};[void]$session.checklist.Add('Trimmed working sets')}
+        if($exe){
+            $script:GM.ProcName=[IO.Path]::GetFileNameWithoutExtension($exe)
+            try{Start-Process -FilePath $exe -WorkingDirectory (Split-Path $exe) -ErrorAction Stop|Out-Null;[void]$session.checklist.Add("Launched game: $gameName")}catch{Log "Could not launch the game: $($_.Exception.Message)";throw}
+            $script:txtGm.Text="Game Session is active · $gameName"
+            $tm=New-Object Windows.Threading.DispatcherTimer;$tm.Interval=[TimeSpan]::FromSeconds(5)
+            $tm.Add_Tick({$running=[bool](Get-Process -Name $script:GM.ProcName -ErrorAction SilentlyContinue);if($running){$script:GM.Seen=$true;$script:GM.Misses=0}else{$script:GM.Misses++;if(($script:GM.Seen -and $script:GM.Misses -ge 2)-or(-not $script:GM.Seen -and ((Get-Date)-$script:GM.Started).TotalSeconds -gt 180)){End-GameMode}}})
+            $script:GM.Timer=$tm;$tm.Start()
+        }else{$script:GM.ProcName=$null;$script:txtGm.Text='Game Session is active · end it manually when you are done.'}
+        Log "Game Session started for $gameName."; Say 'Game Session started.'; try { Update-ProChrome } catch {}
+    } catch { Log "Game Session could not start: $($_.Exception.Message)"; End-GameMode; [void][Windows.MessageBox]::Show($_.Exception.Message,'Game Session could not start','OK','Warning') }
+}
+
+# Game Session controls: per-game rules, explicit allowlist, manual report access.
+$script:chkGmWU.IsChecked=$false; $script:chkGmTrim.IsChecked=$false
+$script:chkGmWU.Content='Pause Windows Update during the session (optional)'
+$gmIndex=$lab.Children.IndexOf($script:lstGm)
+$gmActionLabel=New-Text 'Selected app action' 12 '#C2CCDF' $false '4,8,0,2'
+$script:cmbGmAction=New-Object Windows.Controls.ComboBox;$script:cmbGmAction.Width=300;$script:cmbGmAction.Margin='4,0,0,6'
+[void]$script:cmbGmAction.Items.Add('Ask selected apps to close normally');[void]$script:cmbGmAction.Items.Add('Lower priority temporarily');$script:cmbGmAction.SelectedIndex=0
+$gmAllowLabel=New-Text 'Always keep these apps (process names, comma-separated)' 12 '#C2CCDF' $false '4,6,0,2'
+$script:txtGmAllowlist=New-Object Windows.Controls.TextBox;$script:txtGmAllowlist.Width=500;$script:txtGmAllowlist.HorizontalAlignment='Left';$script:txtGmAllowlist.Text=@($script:GameSessionStore.alwaysKeep)-join ', '
+$script:gmProfileStatus=New-Text 'Rules are saved separately for each game.' 11.5 '#7F8FAE' $false '4,4,0,4'
+$gmProfileRow=New-Object Windows.Controls.WrapPanel
+$gmSaveProfile=New-Object Windows.Controls.Button;$gmSaveProfile.Content='Save game rules';$gmSaveProfile.Padding='11,6';$gmSaveProfile.Add_Click({Save-GameModeProfile;Say 'Game Session rules saved.'})
+$gmSaveAllow=New-Object Windows.Controls.Button;$gmSaveAllow.Content='Save allowlist';$gmSaveAllow.Padding='11,6';$gmSaveAllow.Add_Click({$script:GameSessionStore.alwaysKeep=@(Get-GMAllowlist);Refresh-GmProcs;Save-GameSessionStore;Save-GameModeProfile;Say 'Always-keep apps saved.'})
+$gmReportButton=New-Object Windows.Controls.Button;$gmReportButton.Content='Session report';$gmReportButton.Padding='11,6';$gmReportButton.Add_Click({Show-GameSessionReport})
+foreach($b in $gmSaveProfile,$gmSaveAllow,$gmReportButton){$gmProfileRow.Children.Add($b)|Out-Null}
+$script:gmReportStatus=New-Text 'No sessions recorded yet.' 11.5 '#7F8FAE' $false '4,6,0,4'
+if($script:GameSessionHistory.Count){$last=$script:GameSessionHistory[0];$script:gmReportStatus.Text="Last session: $($last.game) · $([int][math]::Round([double]$last.durationSeconds/60)) min · saved report available"}
+if($gmIndex -ge 0){$insertAt=$gmIndex;foreach($element in @($script:gmProfileStatus,$gmProfileRow,$gmActionLabel,$script:cmbGmAction,$gmAllowLabel,$script:txtGmAllowlist)){$lab.Children.Insert($insertAt,$element);$insertAt++}}
+$closeAppsLabel=$lab.Children|Where-Object{$_ -is [Windows.Controls.TextBlock] -and $_.Text -eq 'Close these apps first:'}|Select-Object -First 1;if($closeAppsLabel){$closeAppsLabel.Text='Apps to manage during this session:'}
+$gmStatusAt=$lab.Children.IndexOf($script:txtGm);if($gmStatusAt -ge 0){$lab.Children.Insert($gmStatusAt+1,$script:gmReportStatus)}
+function Wrap-LabSection($startTitle,$endTitle){
+    $start=-1;$end=$lab.Children.Count
+    for($i=0;$i -lt $lab.Children.Count;$i++){ $child=$lab.Children[$i];if($child -is [Windows.Controls.TextBlock] -and $child.Text -eq $startTitle){$start=$i;break} }
+    if($start -lt 0){return}
+    for($i=$start+1;$i -lt $lab.Children.Count;$i++){ $child=$lab.Children[$i];if($child -is [Windows.Controls.TextBlock] -and $child.Text -eq $endTitle){$end=$i;break} }
+    $content=New-Object Windows.Controls.StackPanel
+    for($i=$start;$i -lt $end;$i++){ $element=$lab.Children[$start];$lab.Children.RemoveAt($start);$content.Children.Add($element)|Out-Null }
+    $card=New-Object Windows.Controls.Border;$card.Background=Brush '#0F1A2C';$card.BorderBrush=Brush '#1A2943';$card.BorderThickness=1;$card.CornerRadius=16;$card.Padding='16,12';$card.Margin='0,10,0,10';$card.Child=$content;$lab.Children.Insert($start,$card)
+}
+Wrap-LabSection 'Before and after benchmark' 'Game Mode';Wrap-LabSection 'Game Mode' 'System check'
+$script:cmbGm.Add_SelectionChanged({if(-not $script:GMProfileLoading){Save-GameModeProfile;Load-GameModeProfile}})
+$script:cmbGmAction.Add_SelectionChanged({Save-GameModeProfile})
+foreach($cb in $script:chkGmPlan,$script:chkGmWU,$script:chkGmTrim){$cb.Add_Click({Save-GameModeProfile})}
+Refresh-GmGames;Refresh-GmProcs
+
+# Repeatable before/after benchmark history. Show medians across the latest three samples.
+$script:BenchProgress=New-Object Windows.Controls.ProgressBar;$script:BenchProgress.IsIndeterminate=$false;$script:BenchProgress.Value=0;$script:BenchProgress.Visibility='Collapsed';$script:BenchProgress.Margin='4,6,0,2'
+$lab.Children.Insert([Math]::Max(0,$lab.Children.IndexOf($script:txtBenchStatus)+1),$script:BenchProgress)
+$script:OriginalGetBench=${function:Get-Bench}
+function Get-Bench {$script:BenchProgress.Visibility='Visible';$script:BenchProgress.IsIndeterminate=$true;$script:txtBenchStatus.Text='Running benchmark samples…';Flush-UI;try{& $script:OriginalGetBench}finally{$script:BenchProgress.IsIndeterminate=$false;$script:BenchProgress.Value=100;$script:BenchProgress.Visibility='Collapsed'}}
+function Save-Bench($slot,$res){
+    $store=@{};if(Test-Path -LiteralPath $BenchFile){try{$old=Get-Content -LiteralPath $BenchFile -Raw|ConvertFrom-Json;foreach($prop in $old.PSObject.Properties){$store[$prop.Name]=$prop.Value}}catch{}}
+    $runs=@($store.Runs|Where-Object{$_});$runs=@(@{slot=$slot;time=(Get-Date).ToString('s');data=$res})+@($runs|Select-Object -First 59)
+    $store[$slot]=$res;$store["${slot}Time"]=(Get-Date).ToString('s');$store.Runs=$runs
+    Write-JsonAtomic -Path $BenchFile -Value $store -Depth 8
+}
+function Get-BenchSampleCount($doc,$slot){$n=@($doc.Runs|Where-Object{$_.slot -eq $slot}).Count;if(-not $n -and $doc.$slot){$n=1};$n}
+function Get-BenchMedian($runs,$key){
+    $values=@($runs|ForEach-Object{if($_.data){$v=$_.data.$key}else{$v=$_.Value};if($null -ne $v){try{[double]$v}catch{}}}|Sort-Object)
+    if(-not $values.Count){return $null};$mid=[int][math]::Floor($values.Count/2);if($values.Count%2){return $values[$mid]};(($values[$mid-1]+$values[$mid])/2)
+}
+function Format-Bench {
+    if(-not(Test-Path -LiteralPath $BenchFile)){return 'No results yet. Save several BEFORE samples, apply tweaks, then save matching AFTER samples.'}
+    try{$d=Get-Content -LiteralPath $BenchFile -Raw|ConvertFrom-Json}catch{return 'Benchmark history could not be read.'}
+    $labels=[ordered]@{PingMs='Ping (ms)';JitterMs='Jitter (ms)';DnsMs='DNS lookup (ms)';CpuIdlePct='CPU idle (%)';RamUsedPct='RAM used (%)';Processes='Processes';Services='Running services';BootSec='Last boot (s)'}
+    $before=@($d.Runs|Where-Object{$_.slot -eq 'Before'}|Sort-Object time -Descending|Select-Object -First 3);$after=@($d.Runs|Where-Object{$_.slot -eq 'After'}|Sort-Object time -Descending|Select-Object -First 3)
+    if(-not $before.Count -and $d.Before){$before=@(@{data=$d.Before})};if(-not $after.Count -and $d.After){$after=@(@{data=$d.After})}
+    $out=New-Object System.Collections.ArrayList;[void]$out.Add(("Before: {0} sample(s) · After: {1} sample(s) · median of up to 3" -f $before.Count,$after.Count));[void]$out.Add('')
+    [void]$out.Add(("{0,-22}{1,12}{2,12}   {3}" -f 'Metric','Before','After','Result'));[void]$out.Add('-'*67)
+    foreach($key in $labels.Keys){$b=Get-BenchMedian $before $key;$a=Get-BenchMedian $after $key;$bs=if($null -ne $b){'{0:N1}' -f $b}else{'—'};$as=if($null -ne $a){'{0:N1}' -f $a}else{'—'};$result=''
+        if($null -ne $b -and $null -ne $a){$diff=[double]$a-[double]$b;if($key -in @('Processes','Services')){$result=('{0:+0.0;-0.0;0.0} · context' -f $diff)}elseif([math]::Abs($diff)-lt 0.05){$result='No clear change'}else{$better=if($key -eq 'CpuIdlePct'){$diff -gt 0}else{$diff -lt 0};$result=('{0:+0.0;-0.0;0.0} · {1}' -f $diff,$(if($better){'better'}else{'worse'}))}}
+        [void]$out.Add(("{0,-22}{1,12}{2,12}   {3}" -f $labels[$key],$bs,$as,$result))
+    }
+    [void]$out.Add('');[void]$out.Add('Latency, RAM use and boot time: lower is better. CPU idle: higher is better. Process and service counts are context, not a score. Repeat samples under similar conditions for a steadier comparison.')
+    $out -join "`r`n"
+}
+foreach($wrap in @($lab.Children|Where-Object{$_ -is [Windows.Controls.Panel]})){foreach($button in @($wrap.Children|Where-Object{$_ -is [Windows.Controls.Button] -and $_.Content -in @('Run BEFORE','Run AFTER')})){$slot=if($button.Content -eq 'Run BEFORE'){'Before'}else{'After'};$button.Tag=$slot;$button.Add_Click({$which=[string]$this.Tag;$doc=$null;try{$doc=Get-Content -LiteralPath $BenchFile -Raw|ConvertFrom-Json}catch{};$n=if($doc){Get-BenchSampleCount $doc $which}else{0};$script:txtBenchStatus.Text="Saved $which sample $n. Repeat up to three times for a steadier comparison.";$script:txtBench.Text=Format-Bench})}}
+$script:txtBench.Text=Format-Bench
+
+# Settings and profile backup. Windows tweak/undo state is deliberately not imported.
+$script:BackupPaths=[ordered]@{'settings.json'=$SettingsFile;'presets.json'=$PresetsFile;'games-cache.json'=$GameCache;'custom-games.json'=$CustomGamesFile;'custom-tweaks.json'=$CustomTweaksFile;'game-sessions.json'=$script:GameSessionFile;'bench.json'=$BenchFile}
+function Export-AppBackup {
+    $dlg=New-Object Microsoft.Win32.SaveFileDialog;$dlg.Title='Export SharkOptimizer backup';$dlg.Filter='SharkOptimizer backup (*.json)|*.json';$dlg.FileName='SharkOptimizer-Backup.json';$dlg.AddExtension=$true
+    if($dlg.ShowDialog($window)-ne $true){return};$files=@{}
+    try{foreach($name in $script:BackupPaths.Keys){$path=$script:BackupPaths[$name];if(Test-Path -LiteralPath $path){$raw=[IO.File]::ReadAllText($path);$null=$raw|ConvertFrom-Json -ErrorAction Stop;$files[$name]=$raw}};$payload=[ordered]@{format='SharkOptimizerBackup';version=1;created=(Get-Date).ToString('s');files=$files};[IO.File]::WriteAllText($dlg.FileName,(ConvertTo-Json -InputObject $payload -Depth 16),(New-Object Text.UTF8Encoding $false));Say ("Backup exported with {0} data files." -f $files.Count)}catch{Log "Backup export failed: $($_.Exception.Message)";[void][Windows.MessageBox]::Show($_.Exception.Message,'Backup export failed','OK','Warning')}
+}
+function Import-AppBackup {
+    $dlg=New-Object Microsoft.Win32.OpenFileDialog;$dlg.Title='Import SharkOptimizer backup';$dlg.Filter='SharkOptimizer backup (*.json)|*.json|All files (*.*)|*.*';$dlg.Multiselect=$false
+    if($dlg.ShowDialog($window)-ne $true){return}
+    try{$file=Get-Item -LiteralPath $dlg.FileName;if($file.Length -gt 4MB){throw 'Backup is larger than 4 MB.'};$data=Get-Content -LiteralPath $dlg.FileName -Raw -ErrorAction Stop|ConvertFrom-Json -ErrorAction Stop;if($data.format -ne 'SharkOptimizerBackup' -or [int]$data.version -ne 1){throw 'This is not a supported SharkOptimizer backup.'};$valid=@{}
+        foreach($prop in $data.files.PSObject.Properties){if(-not $script:BackupPaths.Contains($prop.Name)){continue};$raw=[string]$prop.Value;if($raw.Length -gt 2MB){throw "Backup entry '$($prop.Name)' is too large."};$obj=$raw|ConvertFrom-Json -ErrorAction Stop;if($null -eq $obj){throw "Backup entry '$($prop.Name)' is empty."};$valid[$prop.Name]=$obj}
+        if(-not $valid.Count){throw 'No supported settings or profiles were found in the backup.'};$preview=@($valid.Keys|Sort-Object|ForEach-Object{"$($_) will be replaced; the current file is backed up first."})
+        if(-not(Show-ActionPreview 'Review settings backup' 'Import app preferences and profiles. Windows changes and undo history are not included.' $preview 'Existing app settings will be backed up beside each file. Restart SharkOptimizer after importing.' 'Import backup')){return}
+        foreach($name in $valid.Keys){Write-JsonAtomic -Path $script:BackupPaths[$name] -Value $valid[$name] -Depth 16};[void][Windows.MessageBox]::Show('Backup imported. Restart SharkOptimizer to load the restored settings and profiles.','Backup imported','OK','Information')
+    }catch{Log "Backup import failed: $($_.Exception.Message)";[void][Windows.MessageBox]::Show($_.Exception.Message,'Backup import failed','OK','Warning')}
+}
+Add-SetSection 'Backup and accessibility' 'Export your preferences and profiles, or enlarge text for easier reading.'
+$backupRow=New-Object Windows.Controls.WrapPanel
+$exportBackup=New-Object Windows.Controls.Button;$exportBackup.Content='Export setup backup';$exportBackup.Padding='12,8';$exportBackup.Add_Click({Export-AppBackup})
+$importBackup=New-Object Windows.Controls.Button;$importBackup.Content='Import setup backup';$importBackup.Padding='12,8';$importBackup.Add_Click({Import-AppBackup})
+$backupRow.Children.Add($exportBackup)|Out-Null;$backupRow.Children.Add($importBackup)|Out-Null;$setPanel.Children.Add($backupRow)|Out-Null
+$scaleLabel=New-Text 'Text size' 12 '#C2CCDF' $false '4,8,0,3';$setPanel.Children.Add($scaleLabel)|Out-Null
+$script:scaleCombo=New-Object Windows.Controls.ComboBox;$script:scaleCombo.Width=180;$script:scaleCombo.HorizontalAlignment='Left';$script:scaleCombo.Margin='4,0,0,8'
+foreach($option in @(@('90%','0.9'),@('100%','1'),@('110%','1.1'),@('125%','1.25'))){$item=New-Object Windows.Controls.ComboBoxItem;$item.Content=$option[0];$item.Tag=[double]::Parse($option[1],[Globalization.CultureInfo]::InvariantCulture);[void]$script:scaleCombo.Items.Add($item)}
+$script:TextScale=if($Settings.TextScale){[double]$Settings.TextScale}else{1.0};if($script:TextScale -notin @(0.9,1.0,1.1,1.25)){$script:TextScale=1.0};$script:scaleCombo.SelectedItem=@($script:scaleCombo.Items|Where-Object{[double]$_.Tag -eq $script:TextScale}|Select-Object -First 1)[0];$setPanel.Children.Add($script:scaleCombo)|Out-Null
+$script:FontScaleEntries=@{}
+function Register-FontScaleElement($element,[double]$baseSize){if(-not $element){return};$id=[Runtime.CompilerServices.RuntimeHelpers]::GetHashCode($element).ToString();if(-not $script:FontScaleEntries.ContainsKey($id)){$script:FontScaleEntries[$id]=New-Object System.Collections.ArrayList};foreach($entry in @($script:FontScaleEntries[$id])){if($entry.reference.IsAlive -and [object]::ReferenceEquals($entry.reference.Target,$element)){return}};[void]$script:FontScaleEntries[$id].Add(@{reference=[System.WeakReference]::new($element);base=$baseSize})}
+$script:OriginalNewText24=${function:New-Text}
+function New-Text($text,$size=12,$color='#C2CCDF',$bold=$false,$margin='0'){$tb=& $script:OriginalNewText24 $text $size $color $bold $margin;Register-FontScaleElement $tb ([double]$size);$tb.FontSize=[math]::Round(([double]$size*$script:TextScale),1);$tb}
+function Apply-AccessibilityScale([bool]$discover=$false) {
+    if($discover){$walk=New-Object System.Collections.Stack;$walk.Push($window);while($walk.Count){$el=$walk.Pop();if($el -is [Windows.Controls.Control] -or $el -is [Windows.Controls.TextBlock]){Register-FontScaleElement $el ([double]$el.FontSize)};try{foreach($child in @([Windows.LogicalTreeHelper]::GetChildren($el))){if($child -is [Windows.DependencyObject]){$walk.Push($child)}}}catch{}}}
+    foreach($bucket in @($script:FontScaleEntries.Values)){foreach($entry in @($bucket)){if($entry.reference.IsAlive){try{$entry.reference.Target.FontSize=[math]::Round(([double]$entry.base*$script:TextScale),1)}catch{}}else{[void]$bucket.Remove($entry)}}}
+}
+$script:scaleCombo.Add_SelectionChanged({if($this.SelectedItem){$script:TextScale=[double]$this.SelectedItem.Tag;$Settings.TextScale=$script:TextScale;Save-Settings;Apply-AccessibilityScale $false}})
+$script:OriginalStage24ShowPage=${function:Show-Page}
+function Show-Page($nav){& $script:OriginalStage24ShowPage $nav;Apply-AccessibilityScale $false}
+Apply-AccessibilityScale $true
 
 # ---------------------------------------------------------------- start
 Log "Loaded $($Tweaks.Count) tweaks and $($Games.Count) game profiles. Detected: $($Spec.Tier) PC, $($Spec.RamGB) GB RAM, $($Spec.GPU)."

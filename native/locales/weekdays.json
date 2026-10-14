@@ -1,0 +1,65 @@
+{
+  "Monday": {
+    "nl": "Maandag",
+    "es": "Lunes",
+    "de": "Montag",
+    "fr": "Lundi",
+    "pt": "Segunda-feira",
+    "ru": "Понедельник",
+    "zh": "星期一"
+  },
+  "Tuesday": {
+    "nl": "Dinsdag",
+    "es": "Martes",
+    "de": "Dienstag",
+    "fr": "Mardi",
+    "pt": "Terça-feira",
+    "ru": "Вторник",
+    "zh": "星期二"
+  },
+  "Wednesday": {
+    "nl": "Woensdag",
+    "es": "Miércoles",
+    "de": "Mittwoch",
+    "fr": "Mercredi",
+    "pt": "Quarta-feira",
+    "ru": "Среда",
+    "zh": "星期三"
+  },
+  "Thursday": {
+    "nl": "Donderdag",
+    "es": "Jueves",
+    "de": "Donnerstag",
+    "fr": "Jeudi",
+    "pt": "Quinta-feira",
+    "ru": "Четверг",
+    "zh": "星期四"
+  },
+  "Friday": {
+    "nl": "Vrijdag",
+    "es": "Viernes",
+    "de": "Freitag",
+    "fr": "Vendredi",
+    "pt": "Sexta-feira",
+    "ru": "Пятница",
+    "zh": "星期五"
+  },
+  "Saturday": {
+    "nl": "Zaterdag",
+    "es": "Sábado",
+    "de": "Samstag",
+    "fr": "Samedi",
+    "pt": "Sábado",
+    "ru": "Суббота",
+    "zh": "星期六"
+  },
+  "Sunday": {
+    "nl": "Zondag",
+    "es": "Domingo",
+    "de": "Sonntag",
+    "fr": "Dimanche",
+    "pt": "Domingo",
+    "ru": "Воскресенье",
+    "zh": "星期日"
+  }
+}

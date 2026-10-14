@@ -1,0 +1,83 @@
+{
+  "Interface font": {
+    "nl": "Interfacelettertype",
+    "es": "Fuente de la interfaz",
+    "de": "Oberflächenschrift",
+    "fr": "Police de l’interface",
+    "pt": "Fonte da interface",
+    "ru": "Шрифт интерфейса",
+    "zh": "界面字体"
+  },
+  "Interface size": {
+    "nl": "Interfacegrootte",
+    "es": "Tamaño de la interfaz",
+    "de": "Oberflächengröße",
+    "fr": "Taille de l’interface",
+    "pt": "Tamanho da interface",
+    "ru": "Размер интерфейса",
+    "zh": "界面大小"
+  },
+  "Choose an accent and font. Your changes apply immediately and are saved for the next launch.": {
+    "nl": "Kies een accent en lettertype. Je wijzigingen gelden meteen en worden voor de volgende start opgeslagen.",
+    "es": "Elige un color de acento y una fuente. Los cambios se aplican al instante y se guardan para el próximo inicio.",
+    "de": "Wähle Akzentfarbe und Schrift. Änderungen gelten sofort und werden für den nächsten Start gespeichert.",
+    "fr": "Choisissez une couleur d’accent et une police. Les changements s’appliquent immédiatement et sont conservés au prochain lancement.",
+    "pt": "Escolha uma cor de destaque e uma fonte. As alterações são aplicadas imediatamente e salvas para a próxima abertura.",
+    "ru": "Выберите акцентный цвет и шрифт. Изменения применяются сразу и сохраняются для следующего запуска.",
+    "zh": "选择强调色和字体。更改立即生效，并保存供下次启动使用。"
+  },
+  "The interface size could not be saved.": {
+    "nl": "De interfacegrootte kon niet worden opgeslagen.",
+    "es": "No se pudo guardar el tamaño de la interfaz.",
+    "de": "Die Oberflächengröße konnte nicht gespeichert werden.",
+    "fr": "Impossible d’enregistrer la taille de l’interface.",
+    "pt": "Não foi possível salvar o tamanho da interface.",
+    "ru": "Не удалось сохранить размер интерфейса.",
+    "zh": "无法保存界面大小。"
+  },
+  "Appearance could not be saved.": {
+    "nl": "Het uiterlijk kon niet worden opgeslagen.",
+    "es": "No se pudo guardar la apariencia.",
+    "de": "Das Aussehen konnte nicht gespeichert werden.",
+    "fr": "Impossible d’enregistrer l’apparence.",
+    "pt": "Não foi possível salvar a aparência.",
+    "ru": "Не удалось сохранить внешний вид.",
+    "zh": "无法保存外观。"
+  },
+  "Closing the window sends SharkOptimizer to the notification area. Double-click its tray icon to reopen it, or choose Exit from the tray menu to quit.": {
+    "nl": "Bij sluiten gaat SharkOptimizer naar het systeemvak. Dubbelklik op het pictogram om het opnieuw te openen of kies Afsluiten in het systeemvakmenu om te stoppen.",
+    "es": "Al cerrar la ventana, SharkOptimizer va a la bandeja. Haz doble clic en el icono para abrirlo o elige Salir en su menú para finalizar.",
+    "de": "Beim Schließen geht SharkOptimizer in den Infobereich. Doppelklicke das Symbol zum Öffnen oder wähle Beenden im Menü, um die App zu schließen.",
+    "fr": "Fermer la fenêtre place SharkOptimizer dans la zone de notification. Double-cliquez sur l’icône pour rouvrir ou choisissez Quitter dans son menu pour arrêter.",
+    "pt": "Fechar a janela envia o SharkOptimizer para a bandeja. Clique duas vezes no ícone para abrir ou escolha Sair no menu para encerrar.",
+    "ru": "Закрытие окна сворачивает SharkOptimizer в трей. Дважды щёлкните значок, чтобы открыть, или выберите выход в меню для завершения.",
+    "zh": "关闭窗口会将 SharkOptimizer 移至通知区域。双击托盘图标重新打开，或在托盘菜单选择退出以结束应用。"
+  },
+  "Could not read startup registration: {0}": {
+    "nl": "Kon de opstartregistratie niet lezen: {0}",
+    "es": "No se pudo leer el registro de inicio: {0}",
+    "de": "Autostartregistrierung konnte nicht gelesen werden: {0}",
+    "fr": "Impossible de lire l’enregistrement de démarrage : {0}",
+    "pt": "Não foi possível ler o registro de inicialização: {0}",
+    "ru": "Не удалось прочитать регистрацию автозапуска: {0}",
+    "zh": "无法读取启动注册信息：{0}"
+  },
+  "Could not enable startup: {0}": {
+    "nl": "Kon opstarten niet inschakelen: {0}",
+    "es": "No se pudo activar el inicio: {0}",
+    "de": "Autostart konnte nicht aktiviert werden: {0}",
+    "fr": "Impossible d’activer le démarrage : {0}",
+    "pt": "Não foi possível ativar a inicialização: {0}",
+    "ru": "Не удалось включить автозапуск: {0}",
+    "zh": "无法启用启动：{0}"
+  },
+  "Could not disable startup: {0}": {
+    "nl": "Kon opstarten niet uitschakelen: {0}",
+    "es": "No se pudo desactivar el inicio: {0}",
+    "de": "Autostart konnte nicht deaktiviert werden: {0}",
+    "fr": "Impossible de désactiver le démarrage : {0}",
+    "pt": "Não foi possível desativar a inicialização: {0}",
+    "ru": "Не удалось отключить автозапуск: {0}",
+    "zh": "无法禁用启动：{0}"
+  }
+}

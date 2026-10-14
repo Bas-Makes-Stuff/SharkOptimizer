@@ -1,0 +1,65 @@
+{
+  "Custom registry tweak: review its targets in Settings before applying.": {
+    "nl": "Aangepaste registeraanpassing: bekijk de doelen bij Instellingen voordat je toepast.",
+    "es": "Ajuste personalizado del registro: revisa sus destinos en Configuración antes de aplicar.",
+    "de": "Eigene Registrierungsanpassung: prüfe ihre Ziele in den Einstellungen vor dem Anwenden.",
+    "fr": "Ajustement personnalisé du registre : examinez ses cibles dans les paramètres avant application.",
+    "pt": "Ajuste personalizado do registro: revise os destinos nas Configurações antes de aplicar.",
+    "ru": "Пользовательское изменение реестра: проверьте цели в настройках перед применением.",
+    "zh": "自定义注册表调整：应用前请在设置中检查目标。"
+  },
+  "Restart Windows after applying.": {
+    "nl": "Start Windows opnieuw na toepassen.",
+    "es": "Reinicia Windows después de aplicar.",
+    "de": "Starte Windows nach dem Anwenden neu.",
+    "fr": "Redémarrez Windows après application.",
+    "pt": "Reinicie o Windows após aplicar.",
+    "ru": "Перезагрузите Windows после применения.",
+    "zh": "应用后请重启 Windows。"
+  },
+  "Added {0} options to your selection. {1} already applied; {2} unavailable. Review the selection before applying.": {
+    "nl": "{0} opties toegevoegd aan je selectie. {1} al toegepast; {2} niet beschikbaar. Bekijk de selectie voordat je toepast.",
+    "es": "Se añadieron {0} opciones a tu selección. {1} ya aplicadas; {2} no disponibles. Revisa antes de aplicar.",
+    "de": "{0} Optionen zur Auswahl hinzugefügt. {1} bereits angewendet; {2} nicht verfügbar. Prüfe die Auswahl vor dem Anwenden.",
+    "fr": "{0} options ajoutées à votre sélection. {1} déjà appliquées ; {2} indisponibles. Examinez avant application.",
+    "pt": "{0} opções adicionadas à seleção. {1} já aplicadas; {2} indisponíveis. Revise antes de aplicar.",
+    "ru": "Добавлено параметров: {0}. Уже применено: {1}; недоступно: {2}. Проверьте выбор перед применением.",
+    "zh": "已添加 {0} 个选项到选择。{1} 个已应用；{2} 个不可用。应用前请检查所选内容。"
+  },
+  "Profile files must be no larger than 1 MB.": {
+    "nl": "Profielbestanden mogen maximaal 1 MB zijn.",
+    "es": "Los archivos de perfil no deben superar 1 MB.",
+    "de": "Profildateien dürfen höchstens 1 MB groß sein.",
+    "fr": "Les fichiers de profil ne doivent pas dépasser 1 Mo.",
+    "pt": "Os arquivos de perfil não podem exceder 1 MB.",
+    "ru": "Файлы профилей не должны превышать 1 МБ.",
+    "zh": "配置文件不得超过 1 MB。"
+  },
+  "A profile can contain up to 1000 option entries.": {
+    "nl": "Een profiel kan maximaal 1000 optie-items bevatten.",
+    "es": "Un perfil puede contener hasta 1000 entradas de opciones.",
+    "de": "Ein Profil kann bis zu 1000 Optionseinträge enthalten.",
+    "fr": "Un profil peut contenir jusqu’à 1000 entrées d’options.",
+    "pt": "Um perfil pode conter até 1000 entradas de opções.",
+    "ru": "Профиль может содержать до 1000 записей параметров.",
+    "zh": "配置最多可包含 1000 个选项条目。"
+  },
+  "A profile option entry is invalid.": {
+    "nl": "Een profieloptie-item is ongeldig.",
+    "es": "Una entrada de opción del perfil no es válida.",
+    "de": "Ein Profiloptionseintrag ist ungültig.",
+    "fr": "Une entrée d’option du profil est invalide.",
+    "pt": "Uma entrada de opção do perfil é inválida.",
+    "ru": "Недопустимая запись параметра профиля.",
+    "zh": "配置选项条目无效。"
+  },
+  "Profile exported. Matching option IDs use legacy names for compatibility; native-only options may be unavailable in older builds. Importing selects options for review and does not apply them.": {
+    "nl": "Profiel geëxporteerd. Overeenkomende optie-ID's gebruiken oude namen voor compatibiliteit; alleen in de native app beschikbare opties ontbreken mogelijk in oudere versies. Importeren selecteert opties om te bekijken en past ze niet toe.",
+    "es": "Perfil exportado. Los ID coincidentes usan nombres antiguos para compatibilidad; las opciones solo nativas pueden faltar en versiones anteriores. Importar selecciona opciones para revisar y no las aplica.",
+    "de": "Profil exportiert. Passende Options-IDs nutzen alte Namen zur Kompatibilität; nur native Optionen können in älteren Versionen fehlen. Der Import wählt Optionen zur Prüfung aus und wendet sie nicht an.",
+    "fr": "Profil exporté. Les identifiants correspondants utilisent les anciens noms pour la compatibilité ; les options uniquement natives peuvent être absentes des anciennes versions. L’importation sélectionne les options sans les appliquer.",
+    "pt": "Perfil exportado. IDs correspondentes usam nomes antigos para compatibilidade; opções só nativas podem faltar em versões anteriores. Importar seleciona opções para revisão e não as aplica.",
+    "ru": "Профиль экспортирован. Совпадающие ID используют старые имена для совместимости; новые нативные параметры могут отсутствовать в старых версиях. Импорт выбирает параметры для проверки, не применяя их.",
+    "zh": "配置已导出。匹配的选项 ID 使用旧版名称以保持兼容；仅原生版本提供的选项可能在旧版中不可用。导入只选择供检查的选项，不会应用它们。"
+  }
+}
