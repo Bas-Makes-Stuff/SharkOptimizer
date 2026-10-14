@@ -18,6 +18,8 @@ namespace SharkOptimizer.NativeApp
         public bool PowerPlan { get; set; }
         public bool PauseUpdate { get; set; }
         public bool TrimMemory { get; set; }
+        public bool Automatic { get; set; }
+        public bool AutomaticCloseApps { get; set; }
         public GameSessionProfile() { SelectedProcesses = new List<string>(); ProcessMode = "AskToClose"; }
     }
 
@@ -114,6 +116,7 @@ namespace SharkOptimizer.NativeApp
             _sessionAppAction.SelectedIndex = 0; panel.Children.Add(_sessionAppAction);
             panel.Children.Add(Text("Lower priority keeps apps open and restores their original priority when the session ends. Games and protected apps are excluded.", 10, Brush(MutedColor), false, 0, 4));
             AddSessionExtras(panel);
+            AddAutomaticSessionControls(panel);
             var keep = new Expander { Header = "Protected apps & saved profile", Margin = new Thickness(0, 12, 0, 4) }; var body = new StackPanel();
             body.Children.Add(Text("Always keep these apps running", 12, Brushes.White, true, 0, 8));
             body.Children.Add(Text("Enter process names separated by commas. These apps are excluded from every Game Boost profile.", 10, Brush(MutedColor), false, 0, 5));
@@ -136,7 +139,11 @@ namespace SharkOptimizer.NativeApp
                 profile.PowerPlan = _sessionUsePerformancePlan.IsChecked == true;
                 profile.ProcessMode = SessionLowersPriority ? "LowerPriority" : "AskToClose";
                 profile.PauseUpdate = _sessionPauseUpdate.IsChecked == true; profile.TrimMemory = _sessionTrimMemory.IsChecked == true;
+                profile.Automatic = _automaticSessionCheck.IsChecked == true;
+                profile.AutomaticCloseApps = _automaticCloseAppsCheck.IsChecked == true;
                 profile.SelectedProcesses = _sessionProcessChecks.Where(x => x.IsChecked == true).Select(x => x.Tag as SessionProcessIdentity).Where(x => x != null && !IsProtectedSessionProcess(x.Name) && !next.AlwaysKeep.Contains(x.Name.ToLowerInvariant())).Select(x => x.Name.ToLowerInvariant()).Distinct().ToList();
+                if (profile.Automatic && key == "_manual") throw new InvalidDataException("Choose a detected game before enabling automatic Game Boost.");
+                if (profile.Automatic && !ConfirmAutomaticProfile(key, profile)) return;
                 next.Profiles[key] = profile; GameSessionCodec.Validate(next); _state.GameSessions = next; SaveState();
                 LoadSessionProfile(); _sessionProfileStatus.Text = "Profile saved for " + key + ". Protected apps apply to every profile.";
             } catch (Exception ex) { _state.GameSessions = previous; _sessionProfileStatus.Text = "Could not save profile: " + ex.Message; }
@@ -149,6 +156,8 @@ namespace SharkOptimizer.NativeApp
             if (_sessionAppAction != null) _sessionAppAction.SelectedIndex = profile != null && profile.ProcessMode == "LowerPriority" ? 1 : 0;
             if (_sessionPauseUpdate != null) _sessionPauseUpdate.IsChecked = profile != null && profile.PauseUpdate;
             if (_sessionTrimMemory != null) _sessionTrimMemory.IsChecked = profile != null && profile.TrimMemory;
+            if (_automaticSessionCheck != null) _automaticSessionCheck.IsChecked = profile != null && profile.Automatic;
+            if (_automaticCloseAppsCheck != null) _automaticCloseAppsCheck.IsChecked = profile != null && profile.AutomaticCloseApps;
             RefreshSessionProcesses();
             if (_sessionProfileStatus != null) _sessionProfileStatus.Text = profile == null ? "No saved profile for this game yet." : "Loaded profile for " + SessionProfileKey() + ".";
         }
@@ -205,6 +214,8 @@ namespace SharkOptimizer.NativeApp
             if (_sessionPauseUpdate != null) _sessionPauseUpdate.IsEnabled = enabled;
             if (_sessionTrimMemory != null) _sessionTrimMemory.IsEnabled = enabled;
             if (_sessionKeepNames != null) _sessionKeepNames.IsEnabled = enabled;
+            if (_automaticSessionCheck != null) _automaticSessionCheck.IsEnabled = enabled;
+            if (_automaticCloseAppsCheck != null) _automaticCloseAppsCheck.IsEnabled = enabled;
         }
 
         private static bool IsProtectedSessionProcess(string name)

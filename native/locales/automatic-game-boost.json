@@ -1,0 +1,137 @@
+{
+  "Automatic Game Boost for this game": {
+    "nl": "Automatische Gameboost voor dit spel",
+    "de": "Automatischer Game Boost für dieses Spiel",
+    "es": "Game Boost automático para este juego",
+    "fr": "Game Boost automatique pour ce jeu",
+    "pt": "Game Boost automático para este jogo",
+    "ru": "Автоматический Game Boost для этой игры",
+    "zh": "为此游戏自动启用 Game Boost"
+  },
+  "Allow automatic close requests for selected apps": {
+    "nl": "Sta automatische sluitverzoeken voor geselecteerde apps toe",
+    "de": "Automatische Schließanfragen für ausgewählte Apps erlauben",
+    "es": "Permitir solicitudes automáticas de cierre para las aplicaciones seleccionadas",
+    "fr": "Autoriser les demandes de fermeture automatiques des applications sélectionnées",
+    "pt": "Permitir pedidos automáticos de fechamento dos aplicativos selecionados",
+    "ru": "Разрешить автоматические запросы закрытия выбранных приложений",
+    "zh": "允许自动请求关闭所选应用"
+  },
+  "Save the profile to enable it. SharkOptimizer must be running, including in the tray. Only detected game paths are monitored.": {
+    "nl": "Sla het profiel op om dit in te schakelen. SharkOptimizer moet actief zijn, ook in het systeemvak. Alleen gedetecteerde spelpaden worden gecontroleerd.",
+    "de": "Speichere das Profil zum Aktivieren. SharkOptimizer muss laufen, auch im Infobereich. Nur erkannte Spielpfade werden überwacht.",
+    "es": "Guarda el perfil para activarlo. SharkOptimizer debe estar en ejecución, incluso en la bandeja. Solo se supervisan las rutas de juegos detectadas.",
+    "fr": "Enregistrez le profil pour l’activer. SharkOptimizer doit fonctionner, même dans la zone de notification. Seuls les chemins de jeux détectés sont surveillés.",
+    "pt": "Salve o perfil para ativar. O SharkOptimizer deve estar em execução, inclusive na bandeja. Apenas caminhos de jogos detectados são monitorados.",
+    "ru": "Сохраните профиль для включения. SharkOptimizer должен работать, в том числе в трее. Отслеживаются только обнаруженные пути игр.",
+    "zh": "保存配置以启用此功能。SharkOptimizer 必须保持运行，包括在托盘中。仅监测已检测到的游戏路径。"
+  },
+  "Automatic close requests are disabled.": {
+    "nl": "Automatische sluitverzoeken zijn uitgeschakeld.",
+    "de": "Automatische Schließanfragen sind deaktiviert.",
+    "es": "Las solicitudes automáticas de cierre están desactivadas.",
+    "fr": "Les demandes de fermeture automatiques sont désactivées.",
+    "pt": "Pedidos automáticos de fechamento estão desativados.",
+    "ru": "Автоматические запросы закрытия отключены.",
+    "zh": "已禁用自动关闭请求。"
+  },
+  "These actions will run without a prompt when this game starts. Temporary settings are restored after it exits. Closed apps are not reopened.": {
+    "nl": "Deze acties worden zonder melding uitgevoerd wanneer dit spel start. Tijdelijke instellingen worden hersteld nadat het sluit. Gesloten apps worden niet opnieuw geopend.",
+    "de": "Diese Aktionen werden beim Spielstart ohne Rückfrage ausgeführt. Temporäre Einstellungen werden nach dem Beenden wiederhergestellt. Geschlossene Apps werden nicht erneut geöffnet.",
+    "es": "Estas acciones se ejecutarán sin preguntar al iniciar el juego. Los ajustes temporales se restauran al salir. Las aplicaciones cerradas no se vuelven a abrir.",
+    "fr": "Ces actions seront exécutées sans confirmation au démarrage du jeu. Les paramètres temporaires seront restaurés à sa fermeture. Les applications fermées ne seront pas rouvertes.",
+    "pt": "Estas ações serão executadas sem confirmação ao iniciar o jogo. As configurações temporárias serão restauradas ao sair. Aplicativos fechados não serão reabertos.",
+    "ru": "Эти действия выполняются без запроса при запуске игры. После выхода временные настройки восстанавливаются. Закрытые приложения не открываются снова.",
+    "zh": "游戏启动时将执行这些操作，不再提示。退出后会恢复临时设置。已关闭的应用不会重新打开。"
+  },
+  "Review automatic Game Boost": {
+    "nl": "Automatische Gameboost controleren",
+    "de": "Automatischen Game Boost prüfen",
+    "es": "Revisar Game Boost automático",
+    "fr": "Vérifier le Game Boost automatique",
+    "pt": "Revisar Game Boost automático",
+    "ru": "Проверка автоматического Game Boost",
+    "zh": "查看自动 Game Boost 操作"
+  },
+  "Automatic Game Boost": {
+    "nl": "Automatische Gameboost",
+    "de": "Automatischer Game Boost",
+    "es": "Game Boost automático",
+    "fr": "Game Boost automatique",
+    "pt": "Game Boost automático",
+    "ru": "Автоматический Game Boost",
+    "zh": "自动 Game Boost"
+  },
+  "Click to view your session recap.": {
+    "nl": "Klik om je sessieoverzicht te bekijken.",
+    "de": "Klicken, um die Sitzungsübersicht zu öffnen.",
+    "es": "Haz clic para ver el resumen de la sesión.",
+    "fr": "Cliquez pour consulter le récapitulatif de la session.",
+    "pt": "Clique para ver o resumo da sessão.",
+    "ru": "Нажмите для просмотра итогов сеанса.",
+    "zh": "点击查看会话总结。"
+  },
+  "Choose a detected game before enabling automatic Game Boost.": {
+    "nl": "Kies een gedetecteerd spel voordat je automatische Gameboost inschakelt.",
+    "de": "Wähle ein erkanntes Spiel, bevor du automatischen Game Boost aktivierst.",
+    "es": "Elige un juego detectado antes de activar Game Boost automático.",
+    "fr": "Choisissez un jeu détecté avant d’activer le Game Boost automatique.",
+    "pt": "Escolha um jogo detectado antes de ativar o Game Boost automático.",
+    "ru": "Выберите обнаруженную игру перед включением автоматического Game Boost.",
+    "zh": "启用自动 Game Boost 前，请选择已检测到的游戏。"
+  },
+  "Saved Game Boost profiles and protected apps. Automatic Game Boost must be enabled again after import.": {
+    "nl": "Opgeslagen Gameboost-profielen en beschermde apps. Automatische Gameboost moet na het importeren opnieuw worden ingeschakeld.",
+    "de": "Gespeicherte Game-Boost-Profile und geschützte Apps. Automatischer Game Boost muss nach dem Import erneut aktiviert werden.",
+    "es": "Perfiles de Game Boost y aplicaciones protegidas guardados. Debes volver a activar Game Boost automático después de importar.",
+    "fr": "Profils Game Boost et applications protégées enregistrés. Le Game Boost automatique doit être réactivé après l’importation.",
+    "pt": "Perfis de Game Boost e aplicativos protegidos salvos. O Game Boost automático deve ser reativado após importar.",
+    "ru": "Сохранённые профили Game Boost и защищённые приложения. После импорта автоматический Game Boost нужно включить заново.",
+    "zh": "已保存的 Game Boost 配置和受保护应用。导入后须重新启用自动 Game Boost。"
+  },
+  "Power plan": {
+    "nl": "Energieplan",
+    "de": "Energiesparplan",
+    "es": "Plan de energía",
+    "fr": "Mode d’alimentation",
+    "pt": "Plano de energia",
+    "ru": "План электропитания",
+    "zh": "电源计划"
+  },
+  "Pause Windows Update service": {
+    "nl": "Windows Update-service pauzeren",
+    "de": "Windows-Update-Dienst pausieren",
+    "es": "Pausar el servicio Windows Update",
+    "fr": "Suspendre le service Windows Update",
+    "pt": "Pausar o serviço Windows Update",
+    "ru": "Приостановить службу Windows Update",
+    "zh": "暂停 Windows Update 服务"
+  },
+  "Trim background app memory": {
+    "nl": "Geheugen van achtergrondapps verkleinen",
+    "de": "Speicher von Hintergrund-Apps reduzieren",
+    "es": "Reducir la memoria de aplicaciones en segundo plano",
+    "fr": "Réduire la mémoire des applications en arrière-plan",
+    "pt": "Reduzir a memória de aplicativos em segundo plano",
+    "ru": "Сократить память фоновых приложений",
+    "zh": "修剪后台应用内存"
+  },
+  "Temporary settings restored": {
+    "nl": "Tijdelijke instellingen hersteld",
+    "de": "Temporäre Einstellungen wiederhergestellt",
+    "es": "Ajustes temporales restaurados",
+    "fr": "Paramètres temporaires restaurés",
+    "pt": "Configurações temporárias restauradas",
+    "ru": "Временные настройки восстановлены",
+    "zh": "已恢复临时设置"
+  },
+  "Restoration pending": {
+    "nl": "Herstel in afwachting",
+    "de": "Wiederherstellung ausstehend",
+    "es": "Restauración pendiente",
+    "fr": "Restauration en attente",
+    "pt": "Restauração pendente",
+    "ru": "Ожидается восстановление",
+    "zh": "待恢复"
+  }
+}

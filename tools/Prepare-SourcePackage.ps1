@@ -9,7 +9,7 @@ $outputFile = [IO.Path]::GetFullPath($OutputPath)
 $stage = Join-Path (Split-Path -Parent $outputFile) ('.source-package-' + [Guid]::NewGuid().ToString('N'))
 if (!$stage.StartsWith([IO.Path]::GetFullPath((Split-Path -Parent $outputFile)) + [IO.Path]::DirectorySeparatorChar,[StringComparison]::OrdinalIgnoreCase)) { throw 'Invalid staging path.' }
 [IO.Directory]::CreateDirectory($stage) | Out-Null
-$files = @('VERSION','README.md','RELEASE-GUIDE.md','Start-SharkOptimizer.bat','.github\workflows\release.yml',('release-notes\' + $version + '.md'))
+$files = @('VERSION','LICENSE','README.md','RELEASE-GUIDE.md','Start-SharkOptimizer.bat','.github\workflows\release.yml',('release-notes\' + $version + '.md'))
 foreach ($folder in @('native','installer','shared','tools','legacy')) {
  $sourceRoot = Join-Path $projectRoot $folder
  foreach ($file in Get-ChildItem -LiteralPath $sourceRoot -Recurse -File) {

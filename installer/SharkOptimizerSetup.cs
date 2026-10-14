@@ -12,14 +12,15 @@ using Microsoft.Win32;
 [assembly: AssemblyTitle("SharkOptimizer Setup")]
 [assembly: AssemblyDescription("SharkOptimizer Windows installer")]
 [assembly: AssemblyCompany("Bas Makes Stuff")]
+[assembly: AssemblyCopyright("Copyright © 2026 Bas Makes Stuff. All rights reserved.")]
 [assembly: AssemblyProduct("SharkOptimizer")]
-[assembly: AssemblyVersion("2.0.0.0")]
-[assembly: AssemblyFileVersion("2.0.0.0")]
-[assembly: AssemblyInformationalVersion("2.0.0")]
+[assembly: AssemblyVersion("2.0.1.0")]
+[assembly: AssemblyFileVersion("2.0.1.0")]
+[assembly: AssemblyInformationalVersion("2.0.1")]
 
 internal static class SetupProgram
 {
-    internal const string Version = "2.0.0";
+    internal const string Version = "2.0.1";
     internal static string InstallRoot = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ProgramFiles), "SharkOptimizer");
     internal const string UninstallKey = @"SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\SharkOptimizer";
 

@@ -151,6 +151,7 @@ namespace SharkOptimizer.NativeApp
             if (_activityText != null) { _activityText.Text = String.Join(Environment.NewLine, _activityLines.TakeLastCompat(25)); _activityText.ScrollToEnd(); }
             if (!_previewMode) { string path = Path.Combine(Path.GetDirectoryName(_dataPath), "native-activity.log"); Task.Run(delegate { try { lock (_activityFileLock) { Directory.CreateDirectory(Path.GetDirectoryName(path)); if (File.Exists(path) && new FileInfo(path).Length > 1024 * 1024) File.WriteAllText(path, "", new UTF8Encoding(false)); File.AppendAllText(path, line + Environment.NewLine, new UTF8Encoding(false)); } } catch { } }); }
             if (notify && !_previewMode && _state.Toasts && !IsVisible && _trayIcon != null) {
+                _sessionRecapReady = false;
                 string notification = Localization.Translate(message);
                 _trayIcon.ShowBalloonTip(4000, "SharkOptimizer", notification.Length > 240 ? notification.Substring(0, 240) : notification, error ? System.Windows.Forms.ToolTipIcon.Warning : System.Windows.Forms.ToolTipIcon.Info);
             }

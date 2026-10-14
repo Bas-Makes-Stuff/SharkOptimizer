@@ -18,6 +18,7 @@ namespace SharkOptimizer.NativeApp
             await RecoverMaintenanceServices();
             await RecoverInterruptedSession();
             if (_state.ScanOnStart) await ScanGamesAsync(true);
+            StartAutomaticSessionWatcher();
         }
         internal void OpenFromShortcut() { RestoreFromTray(); }
         internal void StartInTray()

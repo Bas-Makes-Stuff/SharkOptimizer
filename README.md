@@ -1,6 +1,6 @@
 # SharkOptimizer
 
-A free Windows optimizer with Windows tweaks, game profiles, repair tools, and system checks in one app. Version 2.0.0 uses a native C# / WPF interface. Older 1.x releases use PowerShell.
+A free Windows optimizer with Windows tweaks, game profiles, repair tools, and system checks in one app. Version 2.0.1 uses a native C# / WPF interface. Older 1.x releases use PowerShell.
 
 > Made by Bas. Available in English, Nederlands, Español, Deutsch, Français, Português (Brasil), Русский and 简体中文.
 
@@ -8,7 +8,7 @@ A free Windows optimizer with Windows tweaks, game profiles, repair tools, and s
 
 Download **`SharkOptimizer-Setup.exe`** from the [latest GitHub release](https://github.com/Bas-Makes-Stuff/SharkOptimizer/releases/latest), then run the installer. It installs SharkOptimizer, adds a Start Menu entry, offers an optional Desktop shortcut, and includes an uninstaller.
 
-Current release: **2.0.0**. Download the setup EXE above. The app and installer passed the hosted build checks.
+Current public release: **2.0.0**. Version **2.0.1** is in development with opt-in automatic Game Boost. The latest-release download changes only after publication.
 
 The installer is not code-signed. If SmartScreen appears, confirm that you downloaded the setup file from this official repository before choosing **More info > Run anyway**.
 
@@ -68,11 +68,11 @@ Build the native candidate from a source checkout:
 ```powershell
 .\native\extract-translations.ps1
 .\native\build.ps1
-.\installer\build-installer.ps1 -NativeAppPath .\native\out\SharkOptimizer.Native.exe -OutputPath .\release\2.0.0\SharkOptimizer-Setup.exe
-.\tools\Assert-ReleaseVersion.ps1 -AppPath .\native\out\SharkOptimizer.Native.exe -SetupPath .\release\2.0.0\SharkOptimizer-Setup.exe
+.\installer\build-installer.ps1 -NativeAppPath .\native\out\SharkOptimizer.Native.exe -OutputPath .\release\2.0.1\SharkOptimizer-Setup.exe
+.\tools\Assert-ReleaseVersion.ps1 -AppPath .\native\out\SharkOptimizer.Native.exe -SetupPath .\release\2.0.1\SharkOptimizer-Setup.exe
 ```
 
-The installer embeds the native app. Version 2.0.0 is published with one uploaded installer asset. See [native/README.md](native/README.md) for implementation details and [RELEASE-GUIDE.md](RELEASE-GUIDE.md) for future updates. [PR #2](https://github.com/Bas-Makes-Stuff/SharkOptimizer/pull/2) is merged, and the hosted build checks passed. A complete newer-version update installation remains to be verified.
+The installer embeds the native app. Version 2.0.0 is published with one uploaded installer asset; 2.0.1 is a local candidate. See [native/README.md](native/README.md) for implementation details and [RELEASE-GUIDE.md](RELEASE-GUIDE.md) for future updates. A complete newer-version update installation remains to be verified.
 
 ## Uninstall
 
@@ -88,7 +88,7 @@ Copyright © 2026 Bas Makes Stuff. All rights reserved.
 
 SharkOptimizer is proprietary software. You may use the official app, but reuse, modification, redistribution, and sale of its code or original assets require written permission. See [LICENSE](LICENSE). Third-party fonts and icons retain their own licenses.
 
-## Credits
+## Third-party credits
 
 - Font: [Poppins](https://fonts.google.com/specimen/Poppins), licensed under the SIL Open Font License.
 - SharkOptimizer is an independent project and is not affiliated with Hone, ExitLag, GearUP Booster, Microsoft, NVIDIA, AMD, Riot Games, Epic Games, Valve, or other companies mentioned in the app.
