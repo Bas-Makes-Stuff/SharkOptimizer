@@ -95,4 +95,13 @@ jobs:
           RELEASE_TAG: ${{ github.ref_name }}
           RELEASE_VERSION: ${{ needs.build.outputs.version }}
         run: |
+          if gh release view "$RELEASE_TAG" --json assets >/dev/null 2>&1; then
+            existing_asset=$(gh release view "$RELEASE_TAG" --json assets --jq '.assets[] | select(.name == "SharkOptimizer-Setup.exe") | .name')
+            if [ -n "$existing_asset" ]; then
+              echo "Release already contains the installer; preserving the published asset."
+            else
+              gh release upload "$RELEASE_TAG" dist/SharkOptimizer-Setup.exe
+            fi
+            exit 0
+          fi
           gh release create "$RELEASE_TAG" dist/SharkOptimizer-Setup.exe --verify-tag --title "SharkOptimizer $RELEASE_VERSION" --notes-file dist/release-notes.md --latest
