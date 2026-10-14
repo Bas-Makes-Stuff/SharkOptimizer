@@ -72,7 +72,7 @@ Build the native candidate from a source checkout:
 .\tools\Assert-ReleaseVersion.ps1 -AppPath .\native\out\SharkOptimizer.Native.exe -SetupPath .\release\2.0.0\SharkOptimizer-Setup.exe
 ```
 
-The local installer embeds the native app. The public download remains the released PowerShell version until publication. See [native/README.md](native/README.md) for implementation details and [RELEASE-GUIDE.md](RELEASE-GUIDE.md) for the proposed release process. The workflow is prepared locally and still needs a successful GitHub run.
+The local installer embeds the native app. The public download remains the released PowerShell version until publication. See [native/README.md](native/README.md) for implementation details and [RELEASE-GUIDE.md](RELEASE-GUIDE.md) for the release process. The source and workflow are under review in [PR #2](https://github.com/Bas-Makes-Stuff/SharkOptimizer/pull/2). The initial 2.0.0 hosted build passed; the latest policy corrections require a new passing run before publication.
 
 ## Uninstall
 

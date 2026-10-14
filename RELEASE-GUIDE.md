@@ -1,6 +1,6 @@
 # GitHub releases and future updates
 
-The workflow is prepared locally. It has not been uploaded, enabled, or run on GitHub. The first public release still needs approval and the remaining release checks.
+The source and workflow are uploaded to `codex/native-2.0.0-review` in [draft PR #2](https://github.com/Bas-Makes-Stuff/SharkOptimizer/pull/2). The initial 2.0.0 hosted build passed. Latest policy corrections are being checked before release. Installation, uninstall/reinstall, tray reopening, sign-in startup, CPU sampling, and first-launch/saved language behavior have been checked on the development PC. Merge and first publication still require approval; a complete newer-version update needs verification against the published native release.
 
 ## First publication
 

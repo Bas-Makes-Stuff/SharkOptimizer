@@ -9,7 +9,7 @@ The user requested an EXE refresh after the behavior-preference feature. The fol
 - Dashboard CPU/RAM/GPU readings while visible, with background sampling and missing-data states. Sampling stops when the Dashboard is hidden or the app is in the tray.
 - A 60-run benchmark history, median comparisons using the latest three BEFORE/AFTER samples, CSV export, bounded DNS waits, legacy history migration, and setup-backup integration. Process/service counts are context and do not imply a performance gain.
 
-Actual installation/sign-in startup, in-app updating, and Windows Update service changes still need end-to-end verification. Service recovery checks use fixtures and do not stop the real Windows Update service. Missing GPU readings remain unavailable rather than being fabricated.
+Installation, uninstall/reinstall, tray reopening, sign-in startup, CPU sampling, and first-launch/saved language behavior have been checked on the development PC. A complete newer-version GitHub update and live Windows Update service changes remain unverified. Service recovery checks use fixtures and do not stop the real Windows Update service. Missing GPU readings remain unavailable rather than being fabricated.
 
 - App behavior preferences include completion notifications while hidden in the tray, activity-log visibility, background game scanning at startup, and reduced motion. Legacy notification/log/scan preferences migrate once and are included in setup backups. Reduced motion skips the splash and workspace-card movement. Game scans preserve existing saved paths and avoid overlapping scans. The collapsed activity log has text export and a bounded local file.
 
