@@ -1,0 +1,155 @@
+{
+  "FPS & Latency": {
+    "nl": "FPS en latentie",
+    "de": "FPS & Latenz",
+    "es": "FPS y latencia",
+    "fr": "FPS et latence",
+    "pt": "FPS e latência",
+    "ru": "FPS и задержка",
+    "zh": "帧率与延迟"
+  },
+  "Network & Ping": {
+    "nl": "Netwerk en ping",
+    "de": "Netzwerk & Ping",
+    "es": "Red y ping",
+    "fr": "Réseau et ping",
+    "pt": "Rede e ping",
+    "ru": "Сеть и пинг",
+    "zh": "网络与延迟"
+  },
+  "Privacy & Security": {
+    "nl": "Privacy en beveiliging",
+    "de": "Datenschutz & Sicherheit",
+    "es": "Privacidad y seguridad",
+    "fr": "Confidentialité et sécurité",
+    "pt": "Privacidade e segurança",
+    "ru": "Конфиденциальность и безопасность",
+    "zh": "隐私与安全"
+  },
+  "Windows Experience": {
+    "nl": "Windows-ervaring",
+    "de": "Windows-Erlebnis",
+    "es": "Experiencia de Windows",
+    "fr": "Expérience Windows",
+    "pt": "Experiência do Windows",
+    "ru": "Работа с Windows",
+    "zh": "Windows 体验"
+  },
+  "Overview": {
+    "nl": "Overzicht",
+    "de": "Übersicht",
+    "es": "Resumen",
+    "fr": "Vue d’ensemble",
+    "pt": "Visão geral",
+    "ru": "Обзор",
+    "zh": "概览"
+  },
+  "General": {
+    "nl": "Algemeen",
+    "de": "Allgemein",
+    "es": "General",
+    "fr": "Général",
+    "pt": "Geral",
+    "ru": "Общие",
+    "zh": "常规"
+  },
+  "Show all": {
+    "nl": "Alles tonen",
+    "de": "Alle anzeigen",
+    "es": "Ver todo",
+    "fr": "Tout afficher",
+    "pt": "Mostrar tudo",
+    "ru": "Показать всё",
+    "zh": "显示全部"
+  },
+  "Back to overview": {
+    "nl": "Terug naar overzicht",
+    "de": "Zurück zur Übersicht",
+    "es": "Volver al resumen",
+    "fr": "Retour à la vue d’ensemble",
+    "pt": "Voltar à visão geral",
+    "ru": "Вернуться к обзору",
+    "zh": "返回概览"
+  },
+  "All optimizations": {
+    "nl": "Alle optimalisaties",
+    "de": "Alle Optimierungen",
+    "es": "Todas las optimizaciones",
+    "fr": "Toutes les optimisations",
+    "pt": "Todas as otimizações",
+    "ru": "Все оптимизации",
+    "zh": "全部优化"
+  },
+  "Existing settings scan": {
+    "nl": "Scan van bestaande instellingen",
+    "de": "Vorhandene Einstellungen prüfen",
+    "es": "Escaneo de ajustes existentes",
+    "fr": "Analyse des paramètres existants",
+    "pt": "Verificar configurações existentes",
+    "ru": "Проверка текущих настроек",
+    "zh": "扫描现有设置"
+  },
+  "Choose your game": {
+    "nl": "Kies je spel",
+    "de": "Spiel auswählen",
+    "es": "Elige tu juego",
+    "fr": "Choisissez votre jeu",
+    "pt": "Escolha seu jogo",
+    "ru": "Выберите игру",
+    "zh": "选择游戏"
+  },
+  "Session": {
+    "nl": "Sessie",
+    "de": "Sitzung",
+    "es": "Sesión",
+    "fr": "Session",
+    "pt": "Sessão",
+    "ru": "Сеанс",
+    "zh": "会话"
+  },
+  "Profile": {
+    "nl": "Profiel",
+    "de": "Profil",
+    "es": "Perfil",
+    "fr": "Profil",
+    "pt": "Perfil",
+    "ru": "Профиль",
+    "zh": "配置"
+  },
+  "Apps": {
+    "nl": "Apps",
+    "de": "Apps",
+    "es": "Aplicaciones",
+    "fr": "Applications",
+    "pt": "Aplicativos",
+    "ru": "Приложения",
+    "zh": "应用"
+  },
+  "Session preferences": {
+    "nl": "Sessievoorkeuren",
+    "de": "Sitzungseinstellungen",
+    "es": "Preferencias de sesión",
+    "fr": "Préférences de session",
+    "pt": "Preferências da sessão",
+    "ru": "Настройки сеанса",
+    "zh": "会话偏好"
+  },
+  "Temporary session settings are restored when your game closes.": {
+    "nl": "Tijdelijke sessie-instellingen worden hersteld wanneer je spel sluit.",
+    "de": "Temporäre Sitzungseinstellungen werden nach dem Beenden des Spiels wiederhergestellt.",
+    "es": "Los ajustes temporales de la sesión se restauran al cerrar el juego.",
+    "fr": "Les paramètres temporaires sont restaurés à la fermeture du jeu.",
+    "pt": "As configurações temporárias são restauradas quando o jogo fecha.",
+    "ru": "Временные настройки сеанса восстанавливаются после закрытия игры.",
+    "zh": "游戏关闭后会恢复临时会话设置。"
+  },
+  "Quick tools": {
+    "nl": "Snelle hulpmiddelen",
+    "de": "Schnelle Werkzeuge",
+    "es": "Herramientas rápidas",
+    "fr": "Outils rapides",
+    "pt": "Ferramentas rápidas",
+    "ru": "Быстрые инструменты",
+    "zh": "快捷工具"
+  }
+}

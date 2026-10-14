@@ -1,12 +1,12 @@
 # GitHub releases and future updates
 
-Version 2.0.0 is published and its source is merged into main. Version 2.0.1 adds opt-in automatic Game Boost and preserves already-enabled game recommendations. Isolated lifecycle, priority restoration, and recommendation checks passed locally. The 2.0.1 review branch must pass hosted checks before publication. After publication, use an installed 2.0.0 app to verify the real download, installation prompt, upgrade, and reopened version with saved settings preserved.
+Version 2.0.0 is published and its source is merged into main. Version 2.0.2 adds opt-in automatic Game Boost and preserves already-enabled game recommendations. Isolated lifecycle, priority restoration, and recommendation checks passed locally. The 2.0.2 review branch must pass hosted checks before publication. After publication, use an installed 2.0.0 app to verify the real download, installation prompt, upgrade, and reopened version with saved settings preserved.
 
 ## First publication
 
 1. Upload the native source, `installer/`, `shared/`, `tools/`, `VERSION`, language resources, and `.github/workflows/release.yml`. Include the `legacy/` icon, fonts, and PowerShell source used as data by the translation generator. Generated `native/out/`, installer output, previews, local state, and compiled installers belong outside source commits.
 2. Run the workflow on the source branch and inspect the result. Confirm the installer behaves correctly on a clean installation and an existing installation.
-3. After approval, merge the source and workflow, then push the matching version tag `v2.0.1`. Tag pushes publish a release automatically after build checks succeed. Branch pushes, pull requests, and manual workflow runs produce review artifacts without publishing a release.
+3. After approval, merge the source and workflow, then push the matching version tag `v2.0.2`. Tag pushes publish a release automatically after build checks succeed. Branch pushes, pull requests, and manual workflow runs produce review artifacts without publishing a release.
 4. The public release contains one uploaded asset: `SharkOptimizer-Setup.exe`. GitHub's own source archives are also available automatically.
 
 ## Future versions
@@ -14,14 +14,14 @@ Version 2.0.0 is published and its source is merged into main. Version 2.0.1 add
 From a checked-out repository:
 
 ```powershell
-.\tools\Set-Version.ps1 -Version 2.0.1
+.\tools\Set-Version.ps1 -Version 2.0.2
 ```
 
-Add `release-notes/2.0.1.md`, make and check the changes, commit the source, and push it. After the checks and release review, push the matching tag:
+Add `release-notes/2.0.2.md`, make and check the changes, commit the source, and push it. After the checks and release review, push the matching tag:
 
 ```powershell
-git tag -a v2.0.1 -m "SharkOptimizer 2.0.1"
-git push origin v2.0.1
+git tag -a v2.0.2 -m "SharkOptimizer 2.0.2"
+git push origin v2.0.2
 ```
 
 GitHub builds the native app and installer, validates the versions, runs isolated checks, and publishes the installer. The workflow uses GitHub's built-in token; a personal token is not needed for publishing from Actions.

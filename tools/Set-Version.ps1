@@ -3,7 +3,7 @@ $ErrorActionPreference = 'Stop'
 $projectRoot = Split-Path -Parent $PSScriptRoot
 $versionPath = Join-Path $projectRoot 'VERSION'
 $previous = [IO.File]::ReadAllText($versionPath).Trim()
-if ($Version -notmatch '^(0|[1-9][0-9]*)\.(0|[1-9][0-9]*)\.(0|[1-9][0-9]*)$') { throw 'Use major.minor.patch, such as 2.0.1.' }
+if ($Version -notmatch '^(0|[1-9][0-9]*)\.(0|[1-9][0-9]*)\.(0|[1-9][0-9]*)$') { throw 'Use major.minor.patch, such as 2.0.2.' }
 foreach ($part in $Version.Split('.')) { if ([long]$part -gt 65534) { throw 'Assembly version components must be at most 65534.' } }
 if ([version]$Version -lt [version]$previous -and !$AllowUnpublishedRenumber) { throw 'Choose a version at least as new as the current version.' }
 if ($Version -eq $previous) { & (Join-Path $PSScriptRoot 'Assert-ReleaseVersion.ps1'); return }

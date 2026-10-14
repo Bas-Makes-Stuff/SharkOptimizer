@@ -63,7 +63,7 @@ namespace SharkOptimizer.NativeApp
             _automaticCloseAppsCheck = new CheckBox { Content = "Allow automatic close requests for selected apps", Margin = new Thickness(0, 4, 0, 5) };
             panel.Children.Add(_automaticSessionCheck);
             panel.Children.Add(_automaticCloseAppsCheck);
-            panel.Children.Add(Text("Save the profile to enable it. SharkOptimizer must be running, including in the tray. Only detected game paths are monitored.", 10, Brush(MutedColor), false, 0, 4));
+            _automaticSessionCheck.ToolTip = "Save the profile to enable it. SharkOptimizer must be running, including in the tray. Only detected game paths are monitored.";
         }
 
         private bool ConfirmAutomaticProfile(string key, GameSessionProfile profile)

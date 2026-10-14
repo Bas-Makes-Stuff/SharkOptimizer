@@ -53,7 +53,7 @@ namespace SharkOptimizer.NativeApp
             var row = new Grid(); row.ColumnDefinitions.Add(new ColumnDefinition()); row.ColumnDefinitions.Add(new ColumnDefinition { Width = GridLength.Auto });
             var copy = new StackPanel(); copy.Children.Add(Text(tweak.Name, 11.5, Brushes.White, true)); copy.Children.Add(Text(tweak.Description, 10, Brush(MutedColor), false, 0, 4)); copy.Margin = new Thickness(0, 0, 12, 0); row.Children.Add(copy);
             var state = new Border { CornerRadius = new CornerRadius(6), Padding = new Thickness(8, 4, 8, 4), Background = tracked ? LiveNavFill : Brush(SurfaceRaised), VerticalAlignment = VerticalAlignment.Center, Child = Text(tracked ? "Tracked" : "Review", 9, tracked ? LiveAccentBrush : Brush(MutedColor), true) }; Grid.SetColumn(state, 1); row.Children.Add(state);
-            button.Content = row; button.Click += delegate { ShowPage("Optimize"); _recommendedOnlyActive = false; if (_recommendedOnlyFilter != null) _recommendedOnlyFilter.IsChecked = false; _categoryFilter.SelectedIndex = 0; _tweakSearch.Text = tweak.Name; if (!tracked && CanSelectTweak(tweak.Id)) _selectedTweaks.Add(tweak.Id); RenderTweakCards(); }; return button;
+            button.Content = row; button.Click += delegate { _optimizationGroup = null; ShowPage("Optimize"); _recommendedOnlyActive = false; if (_recommendedOnlyFilter != null) _recommendedOnlyFilter.IsChecked = false; _categoryFilter.SelectedIndex = 0; _tweakSearch.Text = tweak.Name; if (!tracked && CanSelectTweak(tweak.Id)) _selectedTweaks.Add(tweak.Id); RenderTweakCards(); }; return button;
         }
 
         private void AddDashboardShortcut(Grid host, string route, int column)
