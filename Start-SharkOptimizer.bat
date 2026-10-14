@@ -1,5 +1,5 @@
 @echo off
-rem SharkOptimizer 2.1.1 startup entry point
+rem SharkOptimizer 2.0.0 startup entry point
 setlocal
 
 set "ROOT=%~dp0"

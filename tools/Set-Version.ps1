@@ -1,18 +1,18 @@
-param([Parameter(Mandatory=$true)][string]$Version)
+param([Parameter(Mandatory=$true)][string]$Version, [switch]$AllowUnpublishedRenumber)
 $ErrorActionPreference = 'Stop'
 $projectRoot = Split-Path -Parent $PSScriptRoot
 $versionPath = Join-Path $projectRoot 'VERSION'
 $previous = [IO.File]::ReadAllText($versionPath).Trim()
-if ($Version -notmatch '^(0|[1-9][0-9]*)\.(0|[1-9][0-9]*)\.(0|[1-9][0-9]*)$') { throw 'Use major.minor.patch, such as 2.1.2.' }
+if ($Version -notmatch '^(0|[1-9][0-9]*)\.(0|[1-9][0-9]*)\.(0|[1-9][0-9]*)$') { throw 'Use major.minor.patch, such as 2.0.1.' }
 foreach ($part in $Version.Split('.')) { if ([long]$part -gt 65534) { throw 'Assembly version components must be at most 65534.' } }
-if ([version]$Version -lt [version]$previous) { throw 'Choose a version at least as new as the current version.' }
+if ([version]$Version -lt [version]$previous -and !$AllowUnpublishedRenumber) { throw 'Choose a version at least as new as the current version.' }
 if ($Version -eq $previous) { & (Join-Path $PSScriptRoot 'Assert-ReleaseVersion.ps1'); return }
 $sources = @()
-foreach ($folder in @('native','installer','shared')) {
+foreach ($folder in @('native','installer','shared','legacy','tools')) {
  $sourceRoot = Join-Path $projectRoot $folder
- $sources += @(Get-ChildItem -LiteralPath $sourceRoot -Recurse -File | Where-Object { $_.Extension -in @('.cs','.json') -and $_.FullName.Substring($sourceRoot.Length) -notmatch '[\\/]out[\\/]' })
+ if (Test-Path -LiteralPath $sourceRoot) { $sources += @(Get-ChildItem -LiteralPath $sourceRoot -Recurse -File | Where-Object { $_.Extension -in @('.cs','.json','.ps1','.md') -and $_.FullName.Substring($sourceRoot.Length) -notmatch '[\\/]out[\\/]' }) }
 }
-$sources += @(Get-Item -LiteralPath (Join-Path $projectRoot 'README.md'),(Join-Path $projectRoot 'native\README.md'))
+foreach ($relative in @('README.md','RELEASE-GUIDE.md','Start-SharkOptimizer.bat')) { $path = Join-Path $projectRoot $relative; if (Test-Path -LiteralPath $path) { $sources += Get-Item -LiteralPath $path } }
 $changes = @(); $pattern = '(?<![0-9])' + [regex]::Escape($previous) + '(?![0-9])'
 foreach ($file in $sources) {
  $original = [IO.File]::ReadAllText($file.FullName); $updated = [regex]::Replace($original,$pattern,$Version)

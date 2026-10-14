@@ -4,6 +4,7 @@ using System.Management;
 using System.Linq;
 using System.Runtime.InteropServices;
 using System.Threading.Tasks;
+using System.Threading;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
@@ -26,16 +27,26 @@ namespace SharkOptimizer.NativeApp
         [DllImport("kernel32.dll", SetLastError = true)] private static extern bool GlobalMemoryStatusEx(ref MemoryStatus status);
         private ulong _idle, _kernel, _user;
         private bool _hasCpu;
+        private double ReadCpu()
+        {
+            double value = ReadCpuDelta();
+            if (value < 0) { Thread.Sleep(200); value = ReadCpuDelta(); }
+            return value;
+        }
+        private double ReadCpuDelta()
+        {
+            ulong idle, kernel, user; double value = -1;
+            if (!GetSystemTimes(out idle, out kernel, out user)) return value;
+            if (_hasCpu && kernel >= _kernel && user >= _user && idle >= _idle) {
+                ulong total = kernel - _kernel + user - _user, idleDelta = idle - _idle;
+                if (total > 0 && idleDelta <= total) value = 100.0 * (total - idleDelta) / total;
+            }
+            _hasCpu = true; _idle = idle; _kernel = kernel; _user = user;
+            return value;
+        }
         internal SystemSample Read()
         {
-            var result = new SystemSample(); ulong idle, kernel, user;
-            if (GetSystemTimes(out idle, out kernel, out user)) {
-                if (_hasCpu && kernel >= _kernel && user >= _user && idle >= _idle) {
-                    ulong total = kernel - _kernel + user - _user, idleDelta = idle - _idle;
-                    if (total > 0 && idleDelta <= total) result.Cpu = 100.0 * (total - idleDelta) / total;
-                }
-                _hasCpu = true; _idle = idle; _kernel = kernel; _user = user;
-            }
+            var result = new SystemSample { Cpu = ReadCpu() };
             var memory = new MemoryStatus { Length = (uint)Marshal.SizeOf(typeof(MemoryStatus)) };
             if (GlobalMemoryStatusEx(ref memory) && memory.TotalPhysical > 0) {
                 result.TotalRam = memory.TotalPhysical; result.AvailableRam = memory.AvailablePhysical;

@@ -1,7 +1,7 @@
 param([string]$SetupPath, [string]$AppPath)
 $ErrorActionPreference = 'Stop'
 $projectRoot = [IO.Path]::GetFullPath((Join-Path $PSScriptRoot '..\..'))
-if (!$SetupPath) { $SetupPath = Join-Path $projectRoot 'release\2.1.1\SharkOptimizer-Setup.exe' }
+if (!$SetupPath) { $SetupPath = Join-Path $projectRoot 'release\2.0.0\SharkOptimizer-Setup.exe' }
 if (!$AppPath) { $AppPath = Join-Path $projectRoot 'native\out\SharkOptimizer.Native.exe' }
 $assembly = [Reflection.Assembly]::LoadFile([IO.Path]::GetFullPath($SetupPath))
 $type = $assembly.GetType('UninstallCleanup', $true)

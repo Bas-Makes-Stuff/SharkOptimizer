@@ -1,6 +1,6 @@
 # SharkOptimizer
 
-A free Windows optimizer with Windows tweaks, game profiles, repair tools, and system checks in one app. The 2.1.1 candidate uses a native C# / WPF interface. The currently published 1.5.1 release uses PowerShell.
+A free Windows optimizer with Windows tweaks, game profiles, repair tools, and system checks in one app. The 2.0.0 candidate uses a native C# / WPF interface. The currently published 1.5.1 release uses PowerShell.
 
 > Made by Bas. Available in English, Nederlands, Español, Deutsch, Français, Português (Brasil), Русский and 简体中文.
 
@@ -8,7 +8,7 @@ A free Windows optimizer with Windows tweaks, game profiles, repair tools, and s
 
 Download **`SharkOptimizer-Setup.exe`** from the [latest GitHub release](https://github.com/Bas-Makes-Stuff/SharkOptimizer/releases/latest), then run the installer. It installs SharkOptimizer, adds a Start Menu entry, offers an optional Desktop shortcut, and includes an uninstaller.
 
-Native candidate version: **2.1.1**. Its app and installer build locally; release verification is ongoing. The download above remains the published 1.5.1 build until the native release is approved and published.
+Native candidate version: **2.0.0**. Its app and installer build locally; release verification is ongoing. The download above remains the published 1.5.1 build until the native release is approved and published.
 
 The installer is not code-signed. If SmartScreen appears, confirm that you downloaded the setup file from this official repository before choosing **More info > Run anyway**.
 
@@ -68,8 +68,8 @@ Build the native candidate from a source checkout:
 ```powershell
 .\native\extract-translations.ps1
 .\native\build.ps1
-.\installer\build-installer.ps1 -NativeAppPath .\native\out\SharkOptimizer.Native.exe -OutputPath .\release\2.1.1\SharkOptimizer-Setup.exe
-.\tools\Assert-ReleaseVersion.ps1 -AppPath .\native\out\SharkOptimizer.Native.exe -SetupPath .\release\2.1.1\SharkOptimizer-Setup.exe
+.\installer\build-installer.ps1 -NativeAppPath .\native\out\SharkOptimizer.Native.exe -OutputPath .\release\2.0.0\SharkOptimizer-Setup.exe
+.\tools\Assert-ReleaseVersion.ps1 -AppPath .\native\out\SharkOptimizer.Native.exe -SetupPath .\release\2.0.0\SharkOptimizer-Setup.exe
 ```
 
 The local installer embeds the native app. The public download remains the released PowerShell version until publication. See [native/README.md](native/README.md) for implementation details and [RELEASE-GUIDE.md](RELEASE-GUIDE.md) for the proposed release process. The workflow is prepared locally and still needs a successful GitHub run.

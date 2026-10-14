@@ -33,8 +33,8 @@ using Microsoft.Win32;
  [assembly: AssemblyTitle("SharkOptimizer")]
  [assembly: AssemblyProduct("SharkOptimizer")]
  [assembly: AssemblyCompany("Bas Makes Stuff")]
- [assembly: AssemblyVersion("2.1.1.0")]
- [assembly: AssemblyFileVersion("2.1.1.0")]
+ [assembly: AssemblyVersion("2.0.0.0")]
+ [assembly: AssemblyFileVersion("2.0.0.0")]
 
 namespace SharkOptimizer.NativeApp
 {
@@ -139,7 +139,7 @@ namespace SharkOptimizer.NativeApp
             var track = new Border { Height = 4, Width = 300, CornerRadius = new CornerRadius(2), Background = Solid(24, 37, 56), HorizontalAlignment = HorizontalAlignment.Center, VerticalAlignment = VerticalAlignment.Center, ClipToBounds = true };
             var progress = new Border { Height = 4, Width = 0, CornerRadius = new CornerRadius(2), Background = Solid(31, 182, 255), HorizontalAlignment = HorizontalAlignment.Left };
             track.Child = progress; Grid.SetRow(track, 4); content.Children.Add(track);
-            var version = Label("Version 2.1.1", 9, Solid(92, 109, 134), FontWeights.Bold); version.Margin = new Thickness(0, 10, 0, 0); Grid.SetRow(version, 5); content.Children.Add(version);
+            var version = Label("Version 2.0.0", 9, Solid(92, 109, 134), FontWeights.Bold); version.Margin = new Thickness(0, 10, 0, 0); Grid.SetRow(version, 5); content.Children.Add(version);
             outer.Child = content; Content = outer;
             Localization.Apply(outer);
             Loaded += delegate
@@ -526,7 +526,7 @@ namespace SharkOptimizer.NativeApp
         private System.Windows.Forms.NotifyIcon _trayIcon;
         private System.Drawing.Icon _trayIconImage;
         private bool _allowExit;
-        private static readonly Version CurrentAppVersion = new Version(2, 1, 1);
+        private static readonly Version CurrentAppVersion = new Version(2, 0, 0);
 
         [DllImport("powrprof.dll", SetLastError = true)] private static extern uint PowerGetActiveScheme(IntPtr userRootPowerKey, out IntPtr activePolicyGuid);
         [DllImport("powrprof.dll", SetLastError = true)] private static extern uint PowerReadACValueIndex(IntPtr userRootPowerKey, ref Guid schemeGuid, ref Guid subgroupGuid, ref Guid settingGuid, out uint valueIndex);
@@ -832,7 +832,7 @@ namespace SharkOptimizer.NativeApp
         internal MainWindow(bool preview)
         {
             _previewMode = preview;
-            Title = "SharkOptimizer 2.1.1"; Width = 1240; Height = 800; MinWidth = 980; MinHeight = 660;
+            Title = "SharkOptimizer 2.0.0"; Width = 1240; Height = 800; MinWidth = 980; MinHeight = 660;
             Icon = BrandAssets.Icon;
             WindowStyle = WindowStyle.None; ResizeMode = ResizeMode.CanResize; WindowStartupLocation = WindowStartupLocation.CenterScreen; Background = Brush(BackgroundColor); Foreground = Brushes.White;
             WindowChrome.SetWindowChrome(this, new WindowChrome { CaptionHeight = 0, CornerRadius = new CornerRadius(14), GlassFrameThickness = new Thickness(0), ResizeBorderThickness = new Thickness(6), UseAeroCaptionButtons = false });
@@ -888,6 +888,7 @@ namespace SharkOptimizer.NativeApp
             _requirementsReady = preview;
             if (!preview) Loaded += async delegate { Task hardware = LoadHardwareRequirements(); await RecoverOnFirstOpen(); await hardware; await ScanExistingTweaks(); };
             Content = BuildShell();
+            IsVisibleChanged += delegate { Dispatcher.BeginInvoke(new Action(RefreshMonitoringVisibility)); };
             Localization.Apply((DependencyObject)Content);
             ((FrameworkElement)Content).LayoutTransform = new ScaleTransform(_state.InterfaceScale, _state.InterfaceScale);
             ShowPage("Dashboard");
@@ -900,7 +901,7 @@ namespace SharkOptimizer.NativeApp
         private void InitializeTrayIcon()
         {
             try { _trayIconImage = System.Drawing.Icon.ExtractAssociatedIcon(Assembly.GetExecutingAssembly().Location); } catch { }
-            _trayIcon = new System.Windows.Forms.NotifyIcon { Icon = _trayIconImage ?? System.Drawing.SystemIcons.Application, Text = "SharkOptimizer 2.1.1", Visible = false };
+            _trayIcon = new System.Windows.Forms.NotifyIcon { Icon = _trayIconImage ?? System.Drawing.SystemIcons.Application, Text = "SharkOptimizer 2.0.0", Visible = false };
             _trayIcon.DoubleClick += delegate { RestoreFromTray(); };
             _trayIcon.BalloonTipClicked += delegate { if (!String.IsNullOrEmpty(_updateNotifiedVersion)) Dispatcher.BeginInvoke(new Action(delegate { RestoreFromTray(); ShowPage("Settings"); if (_selectSettingsSection != null) _selectSettingsSection(1); })); };
             var menu = new System.Windows.Forms.ContextMenuStrip();
@@ -1154,7 +1155,7 @@ namespace SharkOptimizer.NativeApp
             nav.Children.Add(NavSection("MANAGE")); nav.Children.Add(NavButton("Restore", "↶")); nav.Children.Add(NavButton("Settings", "⚙"));
             nav.Children.Add(NavButton("Guide", "?"));
             var footer = new Border { BorderBrush = Brush(BorderColor), BorderThickness = new Thickness(0, 1, 0, 0), Padding = new Thickness(10, 12, 0, 0), Margin = new Thickness(2, 12, 2, 0), VerticalAlignment = VerticalAlignment.Bottom };
-            footer.Padding = new Thickness(0, 12, 0, 0); footer.ToolTip = "Version 2.1.1"; footer.Child = Text("2.1.1", 9, Brush(MutedColor), false);
+            footer.Padding = new Thickness(0, 12, 0, 0); footer.ToolTip = "Version 2.0.0"; footer.Child = Text("2.0.0", 9, Brush(MutedColor), false);
             DockPanel.SetDock(footer, Dock.Bottom); stack.Children.Add(footer);
             var navScroll = new ScrollViewer { Content = nav, VerticalScrollBarVisibility = ScrollBarVisibility.Auto, HorizontalScrollBarVisibility = ScrollBarVisibility.Disabled };
             stack.Children.Add(navScroll); side.Child = stack; return side;
@@ -2640,14 +2641,14 @@ namespace SharkOptimizer.NativeApp
         private void ExportSystemReport()
         {
             var dialog = new Microsoft.Win32.SaveFileDialog { Filter = "Text report (*.txt)|*.txt", FileName = "SharkOptimizer-System-Report.txt" }; if (LocalizedFileDialog.Show(dialog, this) != true) return;
-            try { File.WriteAllText(dialog.FileName, "SharkOptimizer 2.1.1 system report" + Environment.NewLine + DateTime.Now.ToString("F") + Environment.NewLine + Environment.NewLine + BuildSystemSummary() + Environment.NewLine + Environment.NewLine + "Tracked changes: " + _state.Applied.Count + Environment.NewLine + String.Join(Environment.NewLine, _state.Applied.Select(x => "- " + x.Name).ToArray())); _labStatus.Text = "System report saved to " + dialog.FileName; }
+            try { File.WriteAllText(dialog.FileName, "SharkOptimizer 2.0.0 system report" + Environment.NewLine + DateTime.Now.ToString("F") + Environment.NewLine + Environment.NewLine + BuildSystemSummary() + Environment.NewLine + Environment.NewLine + "Tracked changes: " + _state.Applied.Count + Environment.NewLine + String.Join(Environment.NewLine, _state.Applied.Select(x => "- " + x.Name).ToArray())); _labStatus.Text = "System report saved to " + dialog.FileName; }
             catch (Exception ex) { MessageBox.Show(this, ex.Message, "Export failed", MessageBoxButton.OK, MessageBoxImage.Error); }
         }
 
         private void ExportProfile()
         {
             var dialog = new Microsoft.Win32.SaveFileDialog { Filter = "SharkOptimizer profile (*.json)|*.json", FileName = "SharkOptimizer-Profile.json" }; if (LocalizedFileDialog.Show(dialog, this) != true) return;
-            try { var profile = new Dictionary<string, object> { { "App", "SharkOptimizer" }, { "Version", "2.1.1" }, { "Created", DateTime.Now.ToString("s") }, { "Tweaks", _state.Applied.Select(x => x.Id).Where(x => !x.StartsWith("legacy-", StringComparison.OrdinalIgnoreCase)).Select(ExportPresetId).ToList() } }; File.WriteAllText(dialog.FileName, _json.Serialize(profile)); _labStatus.Text = "Profile exported. Matching option IDs use legacy names for compatibility; native-only options may be unavailable in older builds. Importing selects options for review and does not apply them."; }
+            try { var profile = new Dictionary<string, object> { { "App", "SharkOptimizer" }, { "Version", "2.0.0" }, { "Created", DateTime.Now.ToString("s") }, { "Tweaks", _state.Applied.Select(x => x.Id).Where(x => !x.StartsWith("legacy-", StringComparison.OrdinalIgnoreCase)).Select(ExportPresetId).ToList() } }; File.WriteAllText(dialog.FileName, _json.Serialize(profile)); _labStatus.Text = "Profile exported. Matching option IDs use legacy names for compatibility; native-only options may be unavailable in older builds. Importing selects options for review and does not apply them."; }
             catch (Exception ex) { MessageBox.Show(this, ex.Message, "Export failed", MessageBoxButton.OK, MessageBoxImage.Error); }
         }
 
@@ -2751,7 +2752,7 @@ namespace SharkOptimizer.NativeApp
             _updateButton = ActionButton("Check for updates", true); _updateButton.Margin = new Thickness(-5, 7, 0, 0); _updateButton.Click += async delegate { if (HasPendingUpdate()) await InstallPendingUpdate(); else await CheckForUpdates(false); }; updateStack.Children.Add(_updateButton); RefreshUpdateControls();
             updateCard.Child = updateStack; startup.Children.Add(updateCard);
             var card = Card(); var stack = new StackPanel();
-            stack.Children.Add(Text("SharkOptimizer 2.1.1", 20, Brushes.White, true));
+            stack.Children.Add(Text("SharkOptimizer 2.0.0", 20, Brushes.White, true));
             stack.Children.Add(Text("Windows optimization and game tools", 12, Brush(MutedColor), false, 0, 6));
             stack.Children.Add(Text("Closing the window sends SharkOptimizer to the notification area. Double-click its tray icon to reopen it, or choose Exit from the tray menu to quit.", 11, Brush(MutedColor), false, 0, 8));
             var openData = ActionButton("Open data folder", false); openData.Margin = new Thickness(-5, 10, 0, 0); openData.Click += delegate { try { Directory.CreateDirectory(Path.GetDirectoryName(_dataPath)); Process.Start(new ProcessStartInfo(Path.GetDirectoryName(_dataPath)) { UseShellExecute = true }); } catch (Exception ex) { MessageBox.Show(this, ex.Message, "Open data folder", MessageBoxButton.OK, MessageBoxImage.Information); } }; stack.Children.Add(openData);
@@ -2933,7 +2934,7 @@ namespace SharkOptimizer.NativeApp
                     using (var systemRestore = new ManagementClass(scope, new ManagementPath("SystemRestore"), null))
                     using (ManagementBaseObject parameters = systemRestore.GetMethodParameters("CreateRestorePoint"))
                     {
-                        parameters["Description"] = "SharkOptimizer 2.1.1 restore point";
+                        parameters["Description"] = "SharkOptimizer 2.0.0 restore point";
                         parameters["RestorePointType"] = 0;
                         parameters["EventType"] = 100;
                         using (ManagementBaseObject result = systemRestore.InvokeMethod("CreateRestorePoint", parameters, null))
@@ -3650,6 +3651,7 @@ namespace SharkOptimizer.NativeApp
                 name == "Lab" ? "Verify settings, inspect your PC, and move profiles." :
                 name == "Restore" ? "A clear history of changes you can roll back." : name == "Guide" ? "A quick tour of your Windows workspace." : "App preferences and local data.";
             Localization.Apply((DependencyObject)Content);
+            Dispatcher.BeginInvoke(new Action(RefreshMonitoringVisibility));
         }
 
         private static StackPanel ScrollColumn()
