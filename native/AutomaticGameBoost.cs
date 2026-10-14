@@ -3,6 +3,9 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
 using System.Linq;
+using System.ComponentModel;
+using System.Runtime.InteropServices;
+using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -20,6 +23,22 @@ namespace SharkOptimizer.NativeApp
 
     internal sealed partial class MainWindow
     {
+        [DllImport("kernel32.dll", EntryPoint = "OpenProcess", SetLastError = true)]
+        private static extern IntPtr OpenAutomaticProcess(uint access, bool inherit, int processId);
+        [DllImport("kernel32.dll", EntryPoint = "QueryFullProcessImageNameW", CharSet = CharSet.Unicode, SetLastError = true)]
+        private static extern bool QueryAutomaticProcessImage(IntPtr process, uint flags, StringBuilder path, ref uint size);
+        [DllImport("kernel32.dll", EntryPoint = "CloseHandle")]
+        private static extern bool CloseAutomaticProcess(IntPtr process);
+        private static string AutomaticProcessPath(int processId)
+        {
+            IntPtr handle = OpenAutomaticProcess(0x1000, false, processId);
+            if (handle == IntPtr.Zero) throw new Win32Exception(Marshal.GetLastWin32Error());
+            try {
+                var path = new StringBuilder(32768); uint size = (uint)path.Capacity;
+                if (!QueryAutomaticProcessImage(handle, 0, path, ref size)) throw new Win32Exception(Marshal.GetLastWin32Error());
+                return path.ToString();
+            } finally { CloseAutomaticProcess(handle); }
+        }
         private CheckBox _automaticSessionCheck, _automaticCloseAppsCheck;
         private DispatcherTimer _automaticSessionTimer;
         private bool _automaticProbeBusy;
@@ -72,7 +91,8 @@ namespace SharkOptimizer.NativeApp
                 try { processes = Process.GetProcessesByName(name); } catch { probe.Uncertain = true; continue; }
                 foreach (Process process in processes) {
                     try {
-                        if (!process.HasExited && probe.Paths.Any(path => String.Equals(Path.GetFullPath(path), process.MainModule.FileName, StringComparison.OrdinalIgnoreCase))) probe.Running = true;
+                        string runningPath = AutomaticProcessPath(process.Id);
+                        if (probe.Paths.Any(path => String.Equals(Path.GetFullPath(path), runningPath, StringComparison.OrdinalIgnoreCase))) probe.Running = true;
                     } catch { probe.Uncertain = true; } finally { process.Dispose(); }
                 }
             }

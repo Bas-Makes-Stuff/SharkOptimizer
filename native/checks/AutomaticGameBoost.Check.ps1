@@ -20,6 +20,14 @@ function Await-Work($task) {
  $null=$task.GetAwaiter().GetResult()
 }
 function Poll { Await-Work ($type.GetMethod('PollAutomaticSessions',$flags).Invoke($window,@())) }
+function Wait-ForSession {
+ $deadline=[DateTime]::UtcNow.AddSeconds(6)
+ do { Poll; if($state.ActiveSessionReport){return}; Start-Sleep -Milliseconds 100 } while([DateTime]::UtcNow -lt $deadline)
+ $probe=[Activator]::CreateInstance($assembly.GetType('SharkOptimizer.NativeApp.AutomaticGameProbe'),$true)
+ $probe.Paths=$paths
+ $probe=$type.GetMethod('ReadAutomaticGame',[Reflection.BindingFlags]'Static,NonPublic').Invoke($null,@($probe))
+ throw ('External game detection failed. Running='+$probe.Running+'; uncertain='+$probe.Uncertain+'; notes='+($type.GetField('_sessionActionNotes',$flags).GetValue($window) -join '; '))
+}
 function Start-Fixture($path) {
  $process=New-Object Diagnostics.Process
  $process.StartInfo=New-Object Diagnostics.ProcessStartInfo $path
@@ -65,7 +73,7 @@ try {
  Poll
  if($state.ActiveSessionReport){throw 'A process with the same name but a different path triggered Game Boost.'}
  $child=Start-Fixture $fixture
- Poll
+ Wait-ForSession
  if(!$state.ActiveSessionReport -or $state.ActiveSessionReport.Mode -ne 'Automatic'){throw 'Detected external game did not start a session.'}
  $background.Refresh(); if($background.PriorityClass -ne 'BelowNormal' -or $state.SessionPriorities.Count -ne 1){throw 'Saved automatic app action did not capture and lower fixture priority.'}
  $id=$state.ActiveSessionReport.Id; Poll
@@ -76,7 +84,7 @@ try {
  if($state.ActiveSessionReport -or $state.SessionHistory.Count -ne 1){throw 'Manually stopped game was immediately reboosted.'}
  $child.StandardInput.WriteLine(); $null=$child.WaitForExit(5000); $child.Dispose(); $child=$null
  Poll
- $child=Start-Fixture $fixture; Poll
+ $child=Start-Fixture $fixture; Wait-ForSession
  if(!$state.ActiveSessionReport){throw 'A later game launch did not start a new session.'}
  $child.StandardInput.WriteLine(); $null=$child.WaitForExit(5000); $child.Dispose(); $child=$null
  Poll
