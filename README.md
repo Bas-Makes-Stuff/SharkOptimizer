@@ -1,6 +1,6 @@
 # SharkOptimizer
 
-A free Windows optimizer with Windows tweaks, game profiles, repair tools, and system checks in one app. The 2.0.0 candidate uses a native C# / WPF interface. The currently published 1.5.1 release uses PowerShell.
+A free Windows optimizer with Windows tweaks, game profiles, repair tools, and system checks in one app. Version 2.0.0 uses a native C# / WPF interface. Older 1.x releases use PowerShell.
 
 > Made by Bas. Available in English, Nederlands, Español, Deutsch, Français, Português (Brasil), Русский and 简体中文.
 
@@ -8,7 +8,7 @@ A free Windows optimizer with Windows tweaks, game profiles, repair tools, and s
 
 Download **`SharkOptimizer-Setup.exe`** from the [latest GitHub release](https://github.com/Bas-Makes-Stuff/SharkOptimizer/releases/latest), then run the installer. It installs SharkOptimizer, adds a Start Menu entry, offers an optional Desktop shortcut, and includes an uninstaller.
 
-Native candidate version: **2.0.0**. Its app and installer build locally; release verification is ongoing. The download above remains the published 1.5.1 build until the native release is approved and published.
+Current release: **2.0.0**. Download the setup EXE above. The app and installer passed the hosted build checks.
 
 The installer is not code-signed. If SmartScreen appears, confirm that you downloaded the setup file from this official repository before choosing **More info > Run anyway**.
 
@@ -26,7 +26,7 @@ The installer is not code-signed. If SmartScreen appears, confirm that you downl
 - **Eight languages**, accent color choices, and a system report for troubleshooting.
 - **Animated launcher** with startup checks and a useful error report.
 
-The native candidate also includes a background scan of existing Windows tweaks, a compact dashboard with live CPU/GPU/RAM readings, close-to-tray behavior, and background GitHub update downloads that wait for installation confirmation. Existing tweaks detected outside SharkOptimizer are separate from its undo history; settings that cannot be read reliably stay unverified.
+The native app also includes a background scan of existing Windows tweaks, a compact dashboard with live CPU/GPU/RAM readings, close-to-tray behavior, and background GitHub update downloads that wait for installation confirmation. Existing tweaks detected outside SharkOptimizer are separate from its undo history; settings that cannot be read reliably stay unverified.
 
 ## Quick start
 
@@ -58,7 +58,7 @@ Change the language with the language button or in **Settings**. The in-app Guid
 | `native/` | C# / WPF app source, manifest, build script, and generated `out/` executable |
 | `shared/` | Shared Windows startup registration code |
 | `tools/` | Version validation, version changes, and source packaging |
-| `.github/workflows/release.yml` | Proposed Windows build and tag-triggered release workflow |
+| `.github/workflows/release.yml` | Windows build and tag-triggered release workflow |
 | `release/<version>/SharkOptimizer-Setup.exe` | Locally built installer candidate |
 
 The legacy app stores settings, logs, and undo information in `C:\ProgramData\SharkOptimizer`. The native app stores its state under `%LOCALAPPDATA%\SharkOptimizer` and imports supported legacy data. Portable backups preserve app preferences and profiles; they do not apply Windows changes or replace undo history.
@@ -72,7 +72,7 @@ Build the native candidate from a source checkout:
 .\tools\Assert-ReleaseVersion.ps1 -AppPath .\native\out\SharkOptimizer.Native.exe -SetupPath .\release\2.0.0\SharkOptimizer-Setup.exe
 ```
 
-The local installer embeds the native app. The public download remains the released PowerShell version until publication. See [native/README.md](native/README.md) for implementation details and [RELEASE-GUIDE.md](RELEASE-GUIDE.md) for the release process. The source and workflow are under review in [PR #2](https://github.com/Bas-Makes-Stuff/SharkOptimizer/pull/2). The initial 2.0.0 hosted build passed; the latest policy corrections require a new passing run before publication.
+The installer embeds the native app. Version 2.0.0 is published with one uploaded installer asset. See [native/README.md](native/README.md) for implementation details and [RELEASE-GUIDE.md](RELEASE-GUIDE.md) for future updates. [PR #2](https://github.com/Bas-Makes-Stuff/SharkOptimizer/pull/2) is merged, and the hosted build checks passed. A complete newer-version update installation remains to be verified.
 
 ## Uninstall
 
