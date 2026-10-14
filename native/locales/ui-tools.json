@@ -1,0 +1,56 @@
+{
+  "Back to tools": {
+    "nl": "Terug naar hulpmiddelen",
+    "de": "Zurück zu den Werkzeugen",
+    "es": "Volver a herramientas",
+    "fr": "Retour aux outils",
+    "pt": "Voltar às ferramentas",
+    "ru": "Вернуться к инструментам",
+    "zh": "返回工具"
+  },
+  "Cleanup, diagnostics, and Windows utilities.": {
+    "nl": "Opruimen, diagnostiek en Windows-hulpmiddelen.",
+    "de": "Bereinigung, Diagnose und Windows-Werkzeuge.",
+    "es": "Limpieza, diagnósticos y utilidades de Windows.",
+    "fr": "Nettoyage, diagnostics et utilitaires Windows.",
+    "pt": "Limpeza, diagnósticos e utilitários do Windows.",
+    "ru": "Очистка, диагностика и инструменты Windows.",
+    "zh": "清理、诊断和 Windows 实用工具。"
+  },
+  "Temporary files, caches, and cleanup history.": {
+    "nl": "Tijdelijke bestanden, caches en opruimgeschiedenis.",
+    "de": "Temporäre Dateien, Caches und Bereinigungsverlauf.",
+    "es": "Archivos temporales, cachés e historial de limpieza.",
+    "fr": "Fichiers temporaires, caches et historique de nettoyage.",
+    "pt": "Arquivos temporários, caches e histórico de limpeza.",
+    "ru": "Временные файлы, кэши и история очистки.",
+    "zh": "临时文件、缓存和清理历史。"
+  },
+  "Ping, DNS, and connection diagnostics.": {
+    "nl": "Ping-, DNS- en verbindingsdiagnostiek.",
+    "de": "Ping-, DNS- und Verbindungsdiagnose.",
+    "es": "Diagnósticos de ping, DNS y conexión.",
+    "fr": "Diagnostics de ping, DNS et connexion.",
+    "pt": "Diagnósticos de ping, DNS e conexão.",
+    "ru": "Диагностика пинга, DNS и подключения.",
+    "zh": "Ping、DNS 和连接诊断。"
+  },
+  "Startup apps, Windows repair, and installed apps.": {
+    "nl": "Opstartapps, Windows-herstel en geïnstalleerde apps.",
+    "de": "Autostart-Apps, Windows-Reparatur und installierte Apps.",
+    "es": "Aplicaciones de inicio, reparación de Windows y aplicaciones instaladas.",
+    "fr": "Applications au démarrage, réparation Windows et applications installées.",
+    "pt": "Aplicativos de inicialização, reparo do Windows e aplicativos instalados.",
+    "ru": "Автозагрузка, восстановление Windows и установленные приложения.",
+    "zh": "启动应用、Windows 修复和已安装应用。"
+  },
+  "Benchmarks, system checks, and reports.": {
+    "nl": "Benchmarks, systeemcontroles en rapporten.",
+    "de": "Benchmarks, Systemprüfungen und Berichte.",
+    "es": "Pruebas de rendimiento, comprobaciones del sistema e informes.",
+    "fr": "Benchmarks, vérifications du système et rapports.",
+    "pt": "Benchmarks, verificações do sistema e relatórios.",
+    "ru": "Тесты производительности, проверки системы и отчёты.",
+    "zh": "性能测试、系统检查和报告。"
+  }
+}

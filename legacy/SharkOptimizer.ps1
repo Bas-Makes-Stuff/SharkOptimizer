@@ -1334,7 +1334,7 @@ $timer.Start()
 
 
 # ================================================================ SharkOptimizer Lab (added module)
-$AppVersion = '2.0.1'
+$AppVersion = '2.0.2'
 $window.Title = "SharkOptimizer v$AppVersion"
 $BenchFile = Join-Path $DataDir 'bench.json'
 function Test-Cmd($n) { [bool](Get-Command $n -ErrorAction SilentlyContinue) }
@@ -1812,7 +1812,7 @@ Refresh-GmProcs; Refresh-GmGames
 
 
 # ================================================================ SharkOptimizer Pro UI (added module)
-$ProVersion = '2.0.1'
+$ProVersion = '2.0.2'
 function Has-Fn($n) { [bool](Get-Command $n -CommandType Function -ErrorAction SilentlyContinue) }
 function Step($name, [scriptblock]$body) { try { & $body } catch { Log "UI step '$name' failed: $($_.Exception.Message)" } }
 try { $window.Title = "SharkOptimizer v$ProVersion" } catch {}
@@ -2173,7 +2173,7 @@ try { Update-ProChrome } catch {}
 
 
 # ================================================================ SharkOptimizer Settings, Dutch and Updates (added module)
-$AppVer = '2.0.1'
+$AppVer = '2.0.2'
 try { $window.Title = "SharkOptimizer v$AppVer" } catch {}
 function Has-Fn($n) { [bool](Get-Command $n -CommandType Function -ErrorAction SilentlyContinue) }
 function Tn($en, $nl) { if ($script:Lang -eq 'nl') { $nl } else { $en } }

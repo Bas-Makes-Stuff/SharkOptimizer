@@ -15,6 +15,7 @@ try {
  if ($null -ne $scan.Invoke($null,@($ultimate.PSObject.BaseObject))) { throw 'A cloned power plan was guessed as active/inactive.' }
  $results = $type.GetField('_existingTweakResults',$flags).GetValue($window)
  $results['game-mode'] = $true; $results['game-capture'] = $null
+ $type.GetField('_optimizationGroup',$flags).SetValue($window,'FPS & Latency')
  $type.GetMethod('ShowPage',$flags).Invoke($window,@('Optimize'))
  $checks = $type.GetField('_checks',$flags).GetValue($window)
  $gameMode = @($checks | Where-Object { $_.Tag.Id -eq 'game-mode' })[0]

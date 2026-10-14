@@ -21,7 +21,7 @@ namespace SharkOptimizer.NativeApp
             }
             internal void AbortRequest() { var request = _request; if (request != null) try { request.Abort(); } catch { } }
             internal Client() : this(CancellationToken.None) { }
-            internal Client(CancellationToken cancellation) { _cancellation = cancellation; Headers[HttpRequestHeader.UserAgent] = "SharkOptimizer/2.0.1 (Windows updater)"; }
+            internal Client(CancellationToken cancellation) { _cancellation = cancellation; Headers[HttpRequestHeader.UserAgent] = "SharkOptimizer/2.0.2 (Windows updater)"; }
         }
 
         internal static long CopyBounded(Stream input, Stream output, long maximumBytes, int seconds)

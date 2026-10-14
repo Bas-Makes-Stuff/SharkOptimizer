@@ -21,7 +21,7 @@ namespace SharkOptimizer.NativeApp
         }
 
         private static Geometry SidebarIcon(string page, bool selected = false)
-        { return FluentIcons.Get(page, selected); }
+        { return FluentIcons.Get(page == "Tools" ? "Windows" : page, selected); }
 
         private UIElement BuildSettingsNavigation(StackPanel[] sections)
         {
@@ -62,7 +62,8 @@ namespace SharkOptimizer.NativeApp
 
         private static string PageLabel(string page)
         {
-            if (page == "Games") return "Game Library";
+            if (page == "Dashboard") return "Home";
+            if (page == "Games") return "Games";
             if (page == "Game Session") return "Game Boost";
             if (page == "Windows") return "Windows Tools";
             if (page == "Boost-Up") return "Cleanup";

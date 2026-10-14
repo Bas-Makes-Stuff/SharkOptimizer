@@ -34,8 +34,8 @@ using Microsoft.Win32;
  [assembly: AssemblyProduct("SharkOptimizer")]
  [assembly: AssemblyCompany("Bas Makes Stuff")]
  [assembly: AssemblyCopyright("Copyright © 2026 Bas Makes Stuff. All rights reserved.")]
- [assembly: AssemblyVersion("2.0.1.0")]
- [assembly: AssemblyFileVersion("2.0.1.0")]
+ [assembly: AssemblyVersion("2.0.2.0")]
+ [assembly: AssemblyFileVersion("2.0.2.0")]
 
 namespace SharkOptimizer.NativeApp
 {
@@ -140,7 +140,7 @@ namespace SharkOptimizer.NativeApp
             var track = new Border { Height = 4, Width = 300, CornerRadius = new CornerRadius(2), Background = Solid(24, 37, 56), HorizontalAlignment = HorizontalAlignment.Center, VerticalAlignment = VerticalAlignment.Center, ClipToBounds = true };
             var progress = new Border { Height = 4, Width = 0, CornerRadius = new CornerRadius(2), Background = Solid(31, 182, 255), HorizontalAlignment = HorizontalAlignment.Left };
             track.Child = progress; Grid.SetRow(track, 4); content.Children.Add(track);
-            var version = Label("Version 2.0.1", 9, Solid(92, 109, 134), FontWeights.Bold); version.Margin = new Thickness(0, 10, 0, 0); Grid.SetRow(version, 5); content.Children.Add(version);
+            var version = Label("Version 2.0.2", 9, Solid(92, 109, 134), FontWeights.Bold); version.Margin = new Thickness(0, 10, 0, 0); Grid.SetRow(version, 5); content.Children.Add(version);
             outer.Child = content; Content = outer;
             Localization.Apply(outer);
             Loaded += delegate
@@ -527,7 +527,7 @@ namespace SharkOptimizer.NativeApp
         private System.Windows.Forms.NotifyIcon _trayIcon;
         private System.Drawing.Icon _trayIconImage;
         private bool _allowExit;
-        private static readonly Version CurrentAppVersion = new Version(2, 0, 1);
+        private static readonly Version CurrentAppVersion = new Version(2, 0, 2);
 
         [DllImport("powrprof.dll", SetLastError = true)] private static extern uint PowerGetActiveScheme(IntPtr userRootPowerKey, out IntPtr activePolicyGuid);
         [DllImport("powrprof.dll", SetLastError = true)] private static extern uint PowerReadACValueIndex(IntPtr userRootPowerKey, ref Guid schemeGuid, ref Guid subgroupGuid, ref Guid settingGuid, out uint valueIndex);
@@ -843,7 +843,7 @@ namespace SharkOptimizer.NativeApp
         internal MainWindow(bool preview)
         {
             _previewMode = preview;
-            Title = "SharkOptimizer 2.0.1"; Width = 1240; Height = 800; MinWidth = 980; MinHeight = 660;
+            Title = "SharkOptimizer 2.0.2"; Width = 1240; Height = 800; MinWidth = 980; MinHeight = 660;
             Icon = BrandAssets.Icon;
             WindowStyle = WindowStyle.None; ResizeMode = ResizeMode.CanResize; WindowStartupLocation = WindowStartupLocation.CenterScreen; Background = Brush(BackgroundColor); Foreground = Brushes.White;
             WindowChrome.SetWindowChrome(this, new WindowChrome { CaptionHeight = 0, CornerRadius = new CornerRadius(14), GlassFrameThickness = new Thickness(0), ResizeBorderThickness = new Thickness(6), UseAeroCaptionButtons = false });
@@ -912,7 +912,7 @@ namespace SharkOptimizer.NativeApp
         private void InitializeTrayIcon()
         {
             try { _trayIconImage = System.Drawing.Icon.ExtractAssociatedIcon(Assembly.GetExecutingAssembly().Location); } catch { }
-            _trayIcon = new System.Windows.Forms.NotifyIcon { Icon = _trayIconImage ?? System.Drawing.SystemIcons.Application, Text = "SharkOptimizer 2.0.1", Visible = false };
+            _trayIcon = new System.Windows.Forms.NotifyIcon { Icon = _trayIconImage ?? System.Drawing.SystemIcons.Application, Text = "SharkOptimizer 2.0.2", Visible = false };
             _trayIcon.DoubleClick += delegate { RestoreFromTray(); };
             _trayIcon.BalloonTipClicked += delegate { Dispatcher.BeginInvoke(new Action(delegate { if (_sessionRecapReady) { _sessionRecapReady = false; RestoreFromTray(); ShowPage("Game Session"); } else if (!String.IsNullOrEmpty(_updateNotifiedVersion)) { RestoreFromTray(); ShowPage("Settings"); if (_selectSettingsSection != null) _selectSettingsSection(1); } })); };
             var menu = new System.Windows.Forms.ContextMenuStrip();
@@ -1140,6 +1140,7 @@ namespace SharkOptimizer.NativeApp
             AddPage(contentHost, "Optimize", BuildOptimize);
             AddPage(contentHost, "Games", BuildGames);
             AddPage(contentHost, "Game Session", BuildGameSession);
+            AddPage(contentHost, "Tools", BuildToolsOverview);
             AddPage(contentHost, "Windows", BuildWindowsTools);
             AddPage(contentHost, "Boost-Up", BuildBoostUp);
             AddPage(contentHost, "Network", BuildNetwork);
@@ -1160,14 +1161,10 @@ namespace SharkOptimizer.NativeApp
             var mark = new Border { Width = 38, Height = 38, Child = BrandAssets.Image(38) };
             brand.Children.Add(mark); DockPanel.SetDock(brand, Dock.Top); stack.Children.Add(brand);
             var nav = new StackPanel();
-            nav.Children.Add(NavSection("HOME"));
             nav.Children.Add(NavButton("Dashboard", "⌂")); nav.Children.Add(NavButton("Optimize", "◈"));
-            nav.Children.Add(NavSection("GAMING")); nav.Children.Add(NavButton("Games", "▣")); nav.Children.Add(NavButton("Game Session", "▶"));
-            nav.Children.Add(NavSection("TOOLS")); nav.Children.Add(NavButton("Windows", "⊞")); nav.Children.Add(NavButton("Boost-Up", "✦")); nav.Children.Add(NavButton("Network", "⌁")); nav.Children.Add(NavButton("Lab", "⌘"));
-            nav.Children.Add(NavSection("MANAGE")); nav.Children.Add(NavButton("Restore", "↶")); nav.Children.Add(NavButton("Settings", "⚙"));
-            nav.Children.Add(NavButton("Guide", "?"));
+            nav.Children.Add(NavButton("Games", "▣")); nav.Children.Add(NavButton("Tools", "⊞")); nav.Children.Add(NavButton("Settings", "⚙"));
             var footer = new Border { BorderBrush = Brush(BorderColor), BorderThickness = new Thickness(0, 1, 0, 0), Padding = new Thickness(10, 12, 0, 0), Margin = new Thickness(2, 12, 2, 0), VerticalAlignment = VerticalAlignment.Bottom };
-            footer.Padding = new Thickness(0, 12, 0, 0); footer.ToolTip = "Version 2.0.1"; footer.Child = Text("2.0.1", 9, Brush(MutedColor), false);
+            footer.Padding = new Thickness(0, 12, 0, 0); footer.ToolTip = "Version 2.0.2"; footer.Child = Text("2.0.2", 9, Brush(MutedColor), false);
             DockPanel.SetDock(footer, Dock.Bottom); stack.Children.Add(footer);
             var navScroll = new ScrollViewer { Content = nav, VerticalScrollBarVisibility = ScrollBarVisibility.Auto, HorizontalScrollBarVisibility = ScrollBarVisibility.Disabled };
             stack.Children.Add(navScroll); side.Child = stack; return side;
@@ -1204,7 +1201,7 @@ namespace SharkOptimizer.NativeApp
         private void AddPage(Grid host, string name, Func<UIElement> factory)
         {
             var border = new Border { Visibility = Visibility.Collapsed };
-            _pageFactories[name] = factory;
+            _pageFactories[name] = delegate { return RouteContent(name, factory()); };
             _pages[name] = border; host.Children.Add(border);
         }
 
@@ -1233,6 +1230,7 @@ namespace SharkOptimizer.NativeApp
             _finishPresetEditing = ActionButton("Finish editing", false); _finishPresetEditing.Click += delegate { _editingPreset = null; RefreshPresetEditStatus(); };
             savedActions.Children.Add(_savePresetButton); savedActions.Children.Add(managePresets); savedActions.Children.Add(_finishPresetEditing); savedBody.Children.Add(savedActions); savedCard.Child = savedBody; presetSection.Children.Add(savedCard);
             _presetsExpander = new Expander { Header = "Presets · 5 built-in + " + _state.SavedPresets.Count + " saved", Content = presetSection, Foreground = Brushes.White, FontSize = 12, Margin = new Thickness(0, 0, 0, 13), Padding = new Thickness(0, 4, 0, 4) }; panel.Children.Add(_presetsExpander); RefreshPresetEditStatus();
+            panel.Children.Add(OptimizationNavigation());
             var filterBar = new Grid { Margin = new Thickness(0, 0, 0, 10) }; filterBar.ColumnDefinitions.Add(new ColumnDefinition()); filterBar.ColumnDefinitions.Add(new ColumnDefinition { Width = new GridLength(220) });
             var searchHost = new Grid();
             _tweakSearch = new TextBox { Height = 38, Padding = new Thickness(36, 8, 11, 8), Background = Brush(SurfaceColor), Foreground = Brushes.White, BorderBrush = Brush(BorderColor), BorderThickness = new Thickness(1), ToolTip = "Search by name, category, or description" }; searchHost.Children.Add(_tweakSearch);
@@ -1249,15 +1247,17 @@ namespace SharkOptimizer.NativeApp
                 _categoryFilter.Items.Add(choice);
             }
             _categoryFilter.SelectedIndex = 0; _categoryFilter.SelectionChanged += delegate { RenderTweakCards(); };
-            Grid.SetColumn(_categoryFilter, 1); filterBar.Children.Add(_categoryFilter); panel.Children.Add(filterBar);
+            Grid.SetColumn(_categoryFilter, 1); filterBar.Children.Add(_categoryFilter); _categoryFilter.Visibility = Visibility.Collapsed; filterBar.ColumnDefinitions[1].Width = new GridLength(0); panel.Children.Add(filterBar);
             panel.Children.Add(BuildRecommendedControls());
-            panel.Children.Add(BuildExistingTweakScanControls());
+            var scanDetails = new Expander { Header = "Existing settings scan", Content = BuildExistingTweakScanControls(), Margin = new Thickness(0, 12, 0, 10) };
             _tweakList = new StackPanel();
-            panel.Children.Add(_tweakList); RenderTweakCards(); return panel;
+            panel.Children.Add(_tweakList); panel.Children.Add(scanDetails); RenderTweakCards(); return OptimizeSections(panel);
         }
 
         private void SelectPreset(string name)
         {
+            _optimizationGroup = null;
+            if (_presetsExpander != null) _presetsExpander.IsExpanded = false;
             _editingPreset = null; RefreshPresetEditStatus();
             var ids = new HashSet<string>(StringComparer.OrdinalIgnoreCase);
             if (name == "Safe Essentials") ids.UnionWith(new[] { "game-mode", "file-extensions", "startup-delay", "menu-delay", "advertising-id", "start-web-search", "activity-history", "feedback-prompts", "typing-collection", "clipboard-sync", "gamebar-overlay" });
@@ -1296,39 +1296,7 @@ namespace SharkOptimizer.NativeApp
 
         private UIElement BuildGameSession()
         {
-            var panel = ScrollColumn();
-            var intro = Card(); var introStack = new StackPanel();
-            introStack.Children.Add(Text("A calmer start to your game", 20, Brushes.White, true));
-            introStack.Children.Add(Text("Start a session with a game, ask selected apps to close normally, and restore the previous power plan when the game exits.", 11, Brush(MutedColor), false, 0, 5));
-            introStack.Children.Add(Text("Review the selected apps before starting. A close request can prompt you to save work.", 10, Brush(MutedColor), false, 0, 8));
-            intro.Child = introStack; panel.Children.Add(intro);
-
-            var gameCard = Card(); var gameStack = new StackPanel(); gameStack.Children.Add(Text("Game to start", 13, Brushes.White, true));
-            _sessionGamePicker = new ComboBox { Height = 36, Margin = new Thickness(0, 8, 0, 8), Padding = new Thickness(8, 6, 8, 6), Background = Brush(SurfaceColor), Foreground = Brushes.White, BorderBrush = Brush(BorderColor) };
-            gameStack.Children.Add(_sessionGamePicker); RefreshSessionGames();
-            _sessionUsePerformancePlan = new CheckBox { Content = "Switch to High performance power plan for this session", IsChecked = false, Foreground = Brush(MutedColor), Margin = new Thickness(0, 4, 0, 6), ToolTip = "The currently active plan is restored when the session ends." };
-            gameStack.Children.Add(_sessionUsePerformancePlan);
-            var planNote = Text("Optional. Power plan changes may be unavailable on some PCs and use more power.", 10, Brush(MutedColor), false, 0, 2); gameStack.Children.Add(planNote);
-            AddSessionProfileControls(gameStack);
-            _sessionStatus = Text("No game session is running.", 11, Brush(MutedColor), true, 0, 12); gameStack.Children.Add(_sessionStatus);
-            var sessionButtons = new WrapPanel { Margin = new Thickness(-4, 7, 0, 0) };
-            _sessionStartButton = ActionButton("Start game session", true); _sessionStartButton.Click += delegate { StartGameSession(); };
-            _sessionEndButton = ActionButton("End session", false); _sessionEndButton.IsEnabled = SessionRecoveryPending; _sessionEndButton.Click += async delegate { await EndGameSession(true); };
-            sessionButtons.Children.Add(_sessionStartButton); sessionButtons.Children.Add(_sessionEndButton); gameStack.Children.Add(sessionButtons); gameCard.Child = gameStack; panel.Children.Add(gameCard);
-
-            var appsCard = Card(); var appsStack = new StackPanel();
-            var appHeader = new Grid(); appHeader.ColumnDefinitions.Add(new ColumnDefinition()); appHeader.ColumnDefinitions.Add(new ColumnDefinition { Width = GridLength.Auto });
-            var appTitle = new StackPanel(); appTitle.Children.Add(Text("Selected apps", 13, Brushes.White, true)); appTitle.Children.Add(Text("Choose apps for the session action. Protected apps stay untouched.", 10, Brush(MutedColor), false, 0, 3)); appHeader.Children.Add(appTitle);
-            var refresh = ActionButton("Refresh", false); refresh.Click += delegate { RefreshSessionProcesses(); }; Grid.SetColumn(refresh, 1); appHeader.Children.Add(refresh); appsStack.Children.Add(appHeader);
-            _sessionProcessList = new StackPanel { Margin = new Thickness(0, 10, 0, 0) }; appsStack.Children.Add(_sessionProcessList); appsCard.Child = appsStack; panel.Children.Add(appsCard);
-            LoadSessionProfile();
-            panel.Children.Add(BuildSessionReports());
-            bool sessionActive = _sessionStarting || (_sessionTimer != null && _sessionTimer.IsEnabled);
-            SetSessionControlsEnabled(!sessionActive);
-            _sessionStartButton.IsEnabled = !sessionActive;
-            _sessionEndButton.IsEnabled = sessionActive || SessionRecoveryPending;
-            if (sessionActive) _sessionStatus.Text = _automaticSessionGameId != null ? Localization.Translate("Automatic Game Boost") + " · " + _automaticActiveProbe.Name : Localization.Translate("Session active");
-            return panel;
+            return BuildFocusedGameBoost();
         }
 
         private void RefreshSessionGames()
@@ -1822,7 +1790,7 @@ namespace SharkOptimizer.NativeApp
             }
             if (compatible == 0) _gameDetail.Children.Add(Text("No available options match this profile.", 10, Brush(MutedColor), false, 0, 3));
             var buttons = new WrapPanel { Margin = new Thickness(-4, 11, 0, 4) };
-            var select = ActionButton("Review profile options", true); select.Click += delegate { foreach (string id in game.RecommendedTweaks ?? new List<string>()) if (CanSelectTweak(id) && !_state.Applied.Any(x => x.Id == id)) _selectedTweaks.Add(id); _pages["Optimize"].Child = PageScroll(BuildOptimize()); ShowPage("Optimize"); };
+            var select = ActionButton("Review profile options", true); select.Click += delegate { _optimizationGroup = "FPS & Latency"; _recommendedOnlyActive = false; foreach (string id in game.RecommendedTweaks ?? new List<string>()) if (CanSelectTweak(id) && !_state.Applied.Any(x => x.Id == id)) _selectedTweaks.Add(id); _pages["Optimize"].Child = PageScroll(BuildOptimize()); ShowPage("Optimize"); };
             buttons.Children.Add(select);
             if (paths.Count > 0)
             {
@@ -1931,56 +1899,8 @@ namespace SharkOptimizer.NativeApp
         {
             if (_tweakList == null) return;
             _tweakList.Children.Clear(); _checks.Clear(); UpdateApplyButton();
-            string query = _tweakSearch == null ? "" : _tweakSearch.Text.Trim();
-            var categoryChoice = _categoryFilter == null ? null : _categoryFilter.SelectedItem as ComboBoxItem;
-            string categoryFilter = categoryChoice == null ? "All categories" : Convert.ToString(categoryChoice.Tag);
-            var visible = _catalogue.Where(x => (!_recommendedOnlyActive || IsRecommended(x)) && (categoryFilter == "All categories" || x.Category == categoryFilter) &&
-                (String.IsNullOrEmpty(query) || x.Name.IndexOf(query, StringComparison.OrdinalIgnoreCase) >= 0 || x.Category.IndexOf(query, StringComparison.OrdinalIgnoreCase) >= 0 || x.Description.IndexOf(query, StringComparison.OrdinalIgnoreCase) >= 0 || Localization.Translate(x.Name).IndexOf(query, StringComparison.OrdinalIgnoreCase) >= 0 || Localization.Translate(x.Category).IndexOf(query, StringComparison.OrdinalIgnoreCase) >= 0 || Localization.Translate(x.Description).IndexOf(query, StringComparison.OrdinalIgnoreCase) >= 0)).ToList();
-            if (visible.Count == 0) { _tweakList.Children.Add(Text("No optimizations match that search.", 12, Brush(MutedColor), false, 2, 14)); return; }
-            foreach (string category in visible.Select(x => x.Category).Distinct())
-            {
-                _tweakList.Children.Add(Text(category, 15, Brushes.White, true, 2, 10));
-                foreach (TweakDefinition tweak in visible.Where(x => x.Category == category)) _tweakList.Children.Add(TweakCard(tweak));
-            }
+            RenderOptimizationOverview();
             UpdateApplyButton();
-        }
-
-        private UIElement TweakCard(TweakDefinition tweak)
-        {
-            var card = Card(); card.Padding = new Thickness(15, 12, 15, 12); card.Margin = new Thickness(0, 4, 0, 4);
-            var grid = new Grid(); grid.ColumnDefinitions.Add(new ColumnDefinition { Width = GridLength.Auto }); grid.ColumnDefinitions.Add(new ColumnDefinition()); grid.ColumnDefinitions.Add(new ColumnDefinition { Width = GridLength.Auto });
-            bool alreadyApplied = _state.Applied.Any(x => x.Id == tweak.Id);
-            bool alreadyEnabled = AlreadyEnabledOutsideShark(tweak.Id);
-            string requirement = TweakRequirement(tweak);
-            string availability = requirement == null ? null : _requirementsReady ? requirement : "Checking hardware…";
-            var check = new CheckBox { IsChecked = _selectedTweaks.Contains(tweak.Id), IsEnabled = !alreadyApplied && !alreadyEnabled && requirement == null, VerticalAlignment = VerticalAlignment.Center, Margin = new Thickness(1, 0, 14, 0), ToolTip = alreadyApplied ? "Already applied. Undo it from Restore first." : alreadyEnabled ? "Already enabled outside SharkOptimizer. No original value is available for undo." : availability ?? "Select this change" };
-            check.Checked += delegate { _selectedTweaks.Add(tweak.Id); card.BorderBrush = Brush(AccentColor); UpdateApplyButton(); };
-            check.Unchecked += delegate { _selectedTweaks.Remove(tweak.Id); card.BorderBrush = Brush(BorderColor); UpdateApplyButton(); };
-            if (check.IsChecked == true) card.BorderBrush = Brush(AccentColor);
-            check.Tag = tweak; _checks.Add(check); grid.Children.Add(check);
-            var details = new StackPanel { VerticalAlignment = VerticalAlignment.Center };
-            var customDefinition = _state.CustomTweaks.FirstOrDefault(x => x.Id == tweak.Id);
-            var nameLabel = Text(tweak.Name, 12, Brushes.White, true); var descriptionLabel = Text(tweak.Description, 10.5, Brush(MutedColor), false, 0, 3);
-            if (customDefinition != null) { Localization.KeepData(nameLabel); Localization.KeepData(descriptionLabel); }
-            details.Children.Add(nameLabel); details.Children.Add(descriptionLabel);
-            if (availability != null && !alreadyApplied) details.Children.Add(Text(availability, 10, Brush(MutedColor), false, 0, 4));
-            if (!String.IsNullOrEmpty(tweak.Warning) || TweakPolicyScope(tweak) != null) {
-                var warningBody = new StackPanel();
-                if (customDefinition == null) {
-                    if (!String.IsNullOrEmpty(tweak.Warning)) warningBody.Children.Add(Text(tweak.Warning, 10, Brush(Color.FromRgb(255, 190, 96)), false, 0, 4));
-                    if (TweakPolicyScope(tweak) != null) warningBody.Children.Add(Text(TweakPolicyScope(tweak), 10, Brush(Color.FromRgb(255, 190, 96)), false, 0, 4));
-                }
-                else {
-                    warningBody.Children.Add(Text(CustomTweakCodec.ReviewWarning, 10, Brush(Color.FromRgb(255, 190, 96)), false, 0, 4));
-                    if (!String.IsNullOrWhiteSpace(customDefinition.Warning)) { var customWarning = Text(customDefinition.Warning, 10, Brush(Color.FromRgb(255, 190, 96)), false, 0, 4); Localization.KeepData(customWarning); warningBody.Children.Add(customWarning); }
-                    if (customDefinition.Reboot) warningBody.Children.Add(Text(CustomTweakCodec.RestartWarning, 10, Brush(Color.FromRgb(255, 190, 96)), false, 0, 4));
-                }
-                details.Children.Add(new Expander { Header = "Details & cautions", Content = warningBody, Foreground = Brush(MutedColor), FontSize = 9, Margin = new Thickness(0, 5, 12, 0) });
-            }
-            Grid.SetColumn(details, 1); grid.Children.Add(details);
-            var risk = Text(alreadyApplied ? "APPLIED" : alreadyEnabled ? "ALREADY ENABLED" : tweak.Risk.ToUpperInvariant(), 8, Brush(alreadyApplied || alreadyEnabled ? Color.FromRgb(86, 220, 155) : tweak.Risk == "Caution" ? Color.FromRgb(255, 190, 96) : AccentColor), true);
-            var badge = new Border { Background = Brush(SurfaceRaised), CornerRadius = new CornerRadius(8), Padding = new Thickness(9, 5, 9, 5), Child = risk, VerticalAlignment = VerticalAlignment.Center };
-            Grid.SetColumn(badge, 2); grid.Children.Add(badge); card.Child = grid; return card;
         }
 
         private UIElement BuildWindowsTools()
@@ -1997,7 +1917,7 @@ namespace SharkOptimizer.NativeApp
             var startupHeader = new Grid(); startupHeader.ColumnDefinitions.Add(new ColumnDefinition()); startupHeader.ColumnDefinitions.Add(new ColumnDefinition { Width = GridLength.Auto });
             var startupCopy = new StackPanel(); startupCopy.Children.Add(Text("Startup apps", 15, Brushes.White, true)); startupCopy.Children.Add(Text("Toggle Run entries and files in the current-user or shared Startup folders. Scheduled tasks and Store app startup remain in Windows Settings.", 11, Brush(MutedColor), false, 0, 3)); startupHeader.Children.Add(startupCopy);
             var refreshStartup = ActionButton("Refresh", false); refreshStartup.Click += delegate { RefreshStartupApps(); }; Grid.SetColumn(refreshStartup, 1); startupHeader.Children.Add(refreshStartup); startup.Children.Add(startupHeader);
-            _startupList = new StackPanel { Margin = new Thickness(0, 8, 0, 0) }; startup.Children.Add(_startupList); startupCard.Child = startup; panel.Children.Add(startupCard); RefreshStartupApps();
+            _startupList = new StackPanel { Margin = new Thickness(0, 8, 0, 0) }; startup.Children.Add(_startupList); startupCard.Child = startup; panel.Children.Add(startupCard);
             var repairCard = Card(); var repair = new StackPanel(); repair.Children.Add(Text("Windows repair", 15, Brushes.White, true));
             repair.Children.Add(Text("These built-in checks open an elevated console and may take several minutes. Windows will show a UAC prompt.", 11, Brush(MutedColor), false, 0, 3));
             var repairActions = new WrapPanel { Margin = new Thickness(-5, 8, 0, 0) }; var sfc = ActionButton("Run System File Checker", false); sfc.Click += delegate { LaunchRepair("sfc.exe", "/scannow"); }; var dism = ActionButton("Repair Windows image", false); dism.Click += delegate { LaunchRepair("dism.exe", "/Online /Cleanup-Image /RestoreHealth"); }; repairActions.Children.Add(sfc); repairActions.Children.Add(dism); repair.Children.Add(repairActions); repairCard.Child = repair; panel.Children.Add(repairCard);
@@ -2007,7 +1927,7 @@ namespace SharkOptimizer.NativeApp
             var refresh = ActionButton("Refresh", false); refresh.Click += delegate { RefreshWindowsProcesses(); }; Grid.SetColumn(refresh, 1); header.Children.Add(refresh); body.Children.Add(header);
             _processList = new StackPanel { Margin = new Thickness(0, 8, 0, 0) }; body.Children.Add(_processList);
             var close = ActionButton("Request selected apps to close", true); close.Margin = new Thickness(0, 10, 0, 0); close.Click += delegate { RequestSelectedProcessesClose(); }; body.Children.Add(close);
-            card.Child = body; panel.Children.Add(card); RefreshWindowsProcesses(); return panel;
+            card.Child = body; panel.Children.Add(card); return WindowsToolViews(panel);
         }
 
         private sealed class OptionalAppPackage
@@ -2284,7 +2204,7 @@ namespace SharkOptimizer.NativeApp
             AddCleanupTarget("AMD shader cache", Path.Combine(local, "AMD", "DxCache"));
             AddCleanupTarget("Explorer recent-file history", Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "Microsoft", "Windows", "Recent"), 0);
             AddBrowserCleanupTargets(local);
-            panel.Children.Add(BuildCleanupFilters()); panel.Children.Add(_cleanupList); panel.Children.Add(BuildMaintenanceTools()); panel.Children.Add(BuildCleanupHistory()); ApplyCleanupFilter(); return panel;
+            panel.Children.Add(BuildCleanupFilters()); panel.Children.Add(_cleanupList); var maintenance = BuildMaintenanceTools(); var history = BuildCleanupHistory(); ApplyCleanupFilter(); return CleanupViews(panel, recycle, maintenance, history);
         }
 
         private void AddBrowserCleanupTargets(string local)
@@ -2327,11 +2247,11 @@ namespace SharkOptimizer.NativeApp
             _cleanupStatus.Text = "Found " + files + " older files · " + FormatBytes(total) + " available to clean.";
         }
 
-        private async Task CleanSelectedFolders()
+        private async Task CleanSelectedFolders(bool maintenanceOnly = false)
         {
             if (_tweakOperationBusy) return;
-            var paths = _cleanupList.Children.OfType<Border>().Select(x => (CheckBox)x.Tag).Where(x => x.IsChecked == true).Select(x => (CleanupTarget)x.Tag).Where(x => Directory.Exists(x.Path)).ToList();
-            var jobs = _maintenanceJobs.Where(x => x.Check.IsChecked == true).ToList();
+            var paths = SelectedCleanupTargets(maintenanceOnly);
+            var jobs = SelectedMaintenanceJobs(maintenanceOnly);
             if (paths.Count == 0 && jobs.Count == 0) { MessageBox.Show(this, "Select at least one available action.", "Boost-Up", MessageBoxButton.OK, MessageBoxImage.Information); return; }
             string review = paths.Count == 0 ? "" : Localization.Translate("Remove eligible files from " + paths.Count + " selected folder(s)? Recent-file history is cleared in full. Browser cache files may need to be downloaded again. Locked files and linked folders are skipped.");
             foreach (MaintenanceJob job in jobs) review += Environment.NewLine + Environment.NewLine + Localization.Translate(job.Title) + ": " + Localization.Translate(job.Note);
@@ -2667,14 +2587,14 @@ namespace SharkOptimizer.NativeApp
         private void ExportSystemReport()
         {
             var dialog = new Microsoft.Win32.SaveFileDialog { Filter = "Text report (*.txt)|*.txt", FileName = "SharkOptimizer-System-Report.txt" }; if (LocalizedFileDialog.Show(dialog, this) != true) return;
-            try { File.WriteAllText(dialog.FileName, "SharkOptimizer 2.0.1 system report" + Environment.NewLine + DateTime.Now.ToString("F") + Environment.NewLine + Environment.NewLine + BuildSystemSummary() + Environment.NewLine + Environment.NewLine + "Tracked changes: " + _state.Applied.Count + Environment.NewLine + String.Join(Environment.NewLine, _state.Applied.Select(x => "- " + x.Name).ToArray())); _labStatus.Text = "System report saved to " + dialog.FileName; }
+            try { File.WriteAllText(dialog.FileName, "SharkOptimizer 2.0.2 system report" + Environment.NewLine + DateTime.Now.ToString("F") + Environment.NewLine + Environment.NewLine + BuildSystemSummary() + Environment.NewLine + Environment.NewLine + "Tracked changes: " + _state.Applied.Count + Environment.NewLine + String.Join(Environment.NewLine, _state.Applied.Select(x => "- " + x.Name).ToArray())); _labStatus.Text = "System report saved to " + dialog.FileName; }
             catch (Exception ex) { MessageBox.Show(this, ex.Message, "Export failed", MessageBoxButton.OK, MessageBoxImage.Error); }
         }
 
         private void ExportProfile()
         {
             var dialog = new Microsoft.Win32.SaveFileDialog { Filter = "SharkOptimizer profile (*.json)|*.json", FileName = "SharkOptimizer-Profile.json" }; if (LocalizedFileDialog.Show(dialog, this) != true) return;
-            try { var profile = new Dictionary<string, object> { { "App", "SharkOptimizer" }, { "Version", "2.0.1" }, { "Created", DateTime.Now.ToString("s") }, { "Tweaks", _state.Applied.Select(x => x.Id).Where(x => !x.StartsWith("legacy-", StringComparison.OrdinalIgnoreCase)).Select(ExportPresetId).ToList() } }; File.WriteAllText(dialog.FileName, _json.Serialize(profile)); _labStatus.Text = "Profile exported. Matching option IDs use legacy names for compatibility; native-only options may be unavailable in older builds. Importing selects options for review and does not apply them."; }
+            try { var profile = new Dictionary<string, object> { { "App", "SharkOptimizer" }, { "Version", "2.0.2" }, { "Created", DateTime.Now.ToString("s") }, { "Tweaks", _state.Applied.Select(x => x.Id).Where(x => !x.StartsWith("legacy-", StringComparison.OrdinalIgnoreCase)).Select(ExportPresetId).ToList() } }; File.WriteAllText(dialog.FileName, _json.Serialize(profile)); _labStatus.Text = "Profile exported. Matching option IDs use legacy names for compatibility; native-only options may be unavailable in older builds. Importing selects options for review and does not apply them."; }
             catch (Exception ex) { MessageBox.Show(this, ex.Message, "Export failed", MessageBoxButton.OK, MessageBoxImage.Error); }
         }
 
@@ -2778,7 +2698,7 @@ namespace SharkOptimizer.NativeApp
             _updateButton = ActionButton("Check for updates", true); _updateButton.Margin = new Thickness(-5, 7, 0, 0); _updateButton.Click += async delegate { if (HasPendingUpdate()) await InstallPendingUpdate(); else await CheckForUpdates(false); }; updateStack.Children.Add(_updateButton); RefreshUpdateControls();
             updateCard.Child = updateStack; startup.Children.Add(updateCard);
             var card = Card(); var stack = new StackPanel();
-            stack.Children.Add(Text("SharkOptimizer 2.0.1", 20, Brushes.White, true));
+            stack.Children.Add(Text("SharkOptimizer 2.0.2", 20, Brushes.White, true));
             stack.Children.Add(Text("Windows optimization and game tools", 12, Brush(MutedColor), false, 0, 6));
             stack.Children.Add(Text("Closing the window sends SharkOptimizer to the notification area. Double-click its tray icon to reopen it, or choose Exit from the tray menu to quit.", 11, Brush(MutedColor), false, 0, 8));
             var openData = ActionButton("Open data folder", false); openData.Margin = new Thickness(-5, 10, 0, 0); openData.Click += delegate { try { Directory.CreateDirectory(Path.GetDirectoryName(_dataPath)); Process.Start(new ProcessStartInfo(Path.GetDirectoryName(_dataPath)) { UseShellExecute = true }); } catch (Exception ex) { MessageBox.Show(this, ex.Message, "Open data folder", MessageBoxButton.OK, MessageBoxImage.Information); } }; stack.Children.Add(openData);
@@ -2960,7 +2880,7 @@ namespace SharkOptimizer.NativeApp
                     using (var systemRestore = new ManagementClass(scope, new ManagementPath("SystemRestore"), null))
                     using (ManagementBaseObject parameters = systemRestore.GetMethodParameters("CreateRestorePoint"))
                     {
-                        parameters["Description"] = "SharkOptimizer 2.0.1 restore point";
+                        parameters["Description"] = "SharkOptimizer 2.0.2 restore point";
                         parameters["RestorePointType"] = 0;
                         parameters["EventType"] = 100;
                         using (ManagementBaseObject result = systemRestore.InvokeMethod("CreateRestorePoint", parameters, null))
@@ -3658,7 +3578,7 @@ namespace SharkOptimizer.NativeApp
             foreach (var page in _pages) page.Value.Visibility = page.Key == name ? Visibility.Visible : Visibility.Collapsed;
             foreach (var nav in _navButtons)
             {
-                bool selected = nav.Key == name;
+                bool selected = nav.Key == MainRoute(name);
                 nav.Value.Background = selected ? Brush(Color.FromRgb(17, 43, 65)) : Brushes.Transparent;
                 nav.Value.BorderBrush = selected ? Brush(Color.FromRgb(27, 69, 98)) : Brushes.Transparent;
                 nav.Value.Foreground = selected ? Brushes.White : Brush(MutedColor);
@@ -3672,6 +3592,7 @@ namespace SharkOptimizer.NativeApp
                 name == "Games" ? "Game detection, profiles, and settings tips." :
                 name == "Game Session" ? "Launch a game and restore selected settings when you finish." :
                 name == "Windows" ? "Useful Windows controls and apps you can close safely." :
+                name == "Tools" ? "Cleanup, diagnostics, and Windows utilities." :
                 name == "Boost-Up" ? "Clear old temporary files and review the space first." :
                 name == "Network" ? "Ping, DNS, and route checks for your connection." :
                 name == "Lab" ? "Verify settings, inspect your PC, and move profiles." :

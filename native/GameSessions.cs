@@ -116,7 +116,6 @@ namespace SharkOptimizer.NativeApp
             _sessionAppAction.SelectedIndex = 0; panel.Children.Add(_sessionAppAction);
             panel.Children.Add(Text("Lower priority keeps apps open and restores their original priority when the session ends. Games and protected apps are excluded.", 10, Brush(MutedColor), false, 0, 4));
             AddSessionExtras(panel);
-            AddAutomaticSessionControls(panel);
             var keep = new Expander { Header = "Protected apps & saved profile", Margin = new Thickness(0, 12, 0, 4) }; var body = new StackPanel();
             body.Children.Add(Text("Always keep these apps running", 12, Brushes.White, true, 0, 8));
             body.Children.Add(Text("Enter process names separated by commas. These apps are excluded from every Game Boost profile.", 10, Brush(MutedColor), false, 0, 5));
