@@ -55,6 +55,7 @@ $args += (Join-Path $PSScriptRoot 'FluentIcons.cs')
 $args += (Join-Path $PSScriptRoot 'UpdateTransport.cs')
 $args += (Join-Path $PSScriptRoot 'BackgroundUpdates.cs')
 $args += (Join-Path $PSScriptRoot 'ExistingTweaks.cs')
+$args += (Join-Path $PSScriptRoot 'AutomaticGameBoost.cs')
 $args += "/resource:$(Join-Path $PSScriptRoot 'assets\fluent-icons\icons.json'),SharkOptimizer.Icons.json"
 $args += "/resource:$(Join-Path $PSScriptRoot 'assets\fluent-icons\LICENSE.txt'),SharkOptimizer.Icons.License"
 $args += "/resource:$(Join-Path $PSScriptRoot 'assets\fluent-icons\NOTICE.txt'),SharkOptimizer.Icons.Notice"

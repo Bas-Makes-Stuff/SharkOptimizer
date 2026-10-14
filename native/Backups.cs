@@ -267,7 +267,7 @@ namespace SharkOptimizer.NativeApp
             if (setup.GamePaths != null) state.GamePaths = setup.GamePaths;
             if (setup.CustomGames != null) state.CustomGames = setup.CustomGames;
             if (setup.CustomTweaks != null) state.CustomTweaks = setup.CustomTweaks;
-            if (setup.GameSessions != null) { state.GameSessions = setup.GameSessions; state.LegacyGameSessionsImported = true; }
+            if (setup.GameSessions != null) { state.GameSessions = setup.GameSessions; foreach (var profile in state.GameSessions.Profiles.Values) { profile.Automatic = false; profile.AutomaticCloseApps = false; } state.LegacyGameSessionsImported = true; }
             if (setup.SessionHistory != null) {
                 var pending = (state.SessionHistory ?? new List<GameSessionReport>()).Where(x => x != null && x.RecoveryPending).ToList();
                 state.SessionHistory = pending.Concat(setup.SessionHistory.OrderByDescending(x => x.StartedUtc)).GroupBy(x => x.Id, StringComparer.OrdinalIgnoreCase).Select(x => x.First()).Take(50).ToList();
@@ -307,7 +307,7 @@ namespace SharkOptimizer.NativeApp
                 if (incoming.Preferences != null) sections.Add("Preferences and appearance"); if (incoming.Presets != null) sections.Add(incoming.Presets.Count + " saved presets");
                 if (incoming.GamePaths != null || incoming.CustomGames != null) sections.Add("Game library and custom profiles"); if (incoming.IncludesBenchmarks) sections.Add("Benchmark snapshots");
                 if (incoming.CustomTweaks != null) sections.Add(incoming.CustomTweaks.Count + " custom registry definitions; adding definitions does not apply their values.");
-                if (incoming.GameSessions != null) sections.Add("Saved Game Boost profiles and protected apps. Importing does not start a session.");
+                if (incoming.GameSessions != null) sections.Add("Saved Game Boost profiles and protected apps. Automatic Game Boost must be enabled again after import.");
                 if (incoming.SessionHistory != null) sections.Add(incoming.SessionHistory.Count + " archived session reports. Current reports with pending recovery are kept.");
                 if (incoming.CleanupHistory != null) sections.Add(incoming.CleanupHistory.Count + " cleanup history entries");
                 if (MessageBox.Show(this, "Replace the included app data? Current Windows changes and undo records are kept.\n\n" + String.Join(Environment.NewLine, sections.Select(x => "• " + Localization.Translate(x)).ToArray()) + "\n\nThe previous native state is backed up before replacement. Restart the app after importing.", "Review setup backup", MessageBoxButton.YesNo, MessageBoxImage.Question) != MessageBoxResult.Yes) return;

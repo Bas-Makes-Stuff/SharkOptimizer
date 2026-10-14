@@ -173,7 +173,12 @@ namespace SharkOptimizer.NativeApp
             if (!report.RecoveryPending) _state.ActiveSessionReport = null;
             try { SaveState(); } catch (Exception ex) { _sessionActionNotes.Add("Could not save session report: " + ex.Message); }
             RenderSessionReports();
-            LogActivity("Game Boost ended · " + report.Game + (report.RecoveryPending ? " · restoration pending" : " · temporary settings restored"), report.RecoveryPending);
+            LogActivity("Game Boost ended · " + report.Game + (report.RecoveryPending ? " · restoration pending" : " · temporary settings restored"), report.RecoveryPending, false);
+            if (!_previewMode && _state.Toasts && !IsVisible && _trayIcon != null && !_sessionExitInProgress) {
+                _sessionRecapReady = true;
+                string recap = report.Game + " · " + Math.Max(0, (report.EndedUtc - report.StartedUtc).TotalMinutes).ToString("0", CultureInfo.CurrentCulture) + " " + Localization.Translate("min") + "\n" + Localization.Translate(report.RecoveryPending ? "Restoration pending" : "Temporary settings restored") + "\n" + Localization.Translate("Click to view your session recap.");
+                _trayIcon.ShowBalloonTip(6000, "SharkOptimizer", recap, report.RecoveryPending ? System.Windows.Forms.ToolTipIcon.Warning : System.Windows.Forms.ToolTipIcon.Info);
+            }
         }
 
         private UIElement BuildSessionReports()

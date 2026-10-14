@@ -1,4 +1,4 @@
-# SharkOptimizer launcher 2.0.0: animated loading screen, requirement checks, one admin prompt,
+# SharkOptimizer launcher 2.0.1: animated loading screen, requirement checks, one admin prompt,
 # single instance, clear error report with Retry, and a quiet fallback that still starts the app if the animation fails.
 # Keep this file in the same folder as SharkOptimizer.ps1. Start it with the root Start-SharkOptimizer.bat file.
 $ErrorActionPreference = 'Stop'
@@ -98,7 +98,7 @@ function Test-AppWindow($processId) {
 }
 
 # ---- 4. language, accent colour and version (read from the app's settings)
-$LauncherVersion = '2.0.0'
+$LauncherVersion = '2.0.1'
 $lang = 'en'; $accent = '#1FB6FF'; $ver = "v$LauncherVersion"
 $codes = 'nl', 'es', 'de', 'fr', 'pt', 'ru', 'zh'
 try {

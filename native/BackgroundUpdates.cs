@@ -38,6 +38,7 @@ namespace SharkOptimizer.NativeApp
             string key = release.Version + ":" + downloaded;
             if (_updateNotifiedVersion == key || !_state.Toasts || _trayIcon == null) return;
             _updateNotifiedVersion = key;
+            _sessionRecapReady = false;
             _trayIcon.Visible = true;
             _trayIcon.ShowBalloonTip(8000, "SharkOptimizer", Localization.Translate(downloaded ? "An update is downloaded. Open Settings to install it when you are ready." : "A new update is available. Open Settings to download it."), System.Windows.Forms.ToolTipIcon.Info);
         }

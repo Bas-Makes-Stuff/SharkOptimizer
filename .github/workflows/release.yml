@@ -53,7 +53,7 @@ jobs:
         run: |
           ./tools/checks/Version.Check.ps1
           $hostPath = "$env:SystemRoot/System32/WindowsPowerShell/v1.0/powershell.exe"
-          foreach ($check in @('Presets','Backups','Localization','Dashboard','Monitoring','Startup','UpdateTransport','BackgroundUpdates','RestorePointPolicy','PolicyTargets','DataActions','ExistingTweaks','CustomTweaks','Guide')) {
+          foreach ($check in @('Presets','Backups','Localization','Dashboard','Monitoring','Startup','UpdateTransport','BackgroundUpdates','RestorePointPolicy','PolicyTargets','AutomaticGameBoost','DataActions','ExistingTweaks','CustomTweaks','Guide')) {
             & $hostPath -NoProfile -STA -ExecutionPolicy Bypass -File "./native/checks/$check.Check.ps1"
             if ($LASTEXITCODE -ne 0) { throw "Check failed: $check" }
           }
