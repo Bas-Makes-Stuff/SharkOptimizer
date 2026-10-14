@@ -8,7 +8,7 @@ A free Windows optimizer with Windows tweaks, game profiles, repair tools, and s
 
 Download **`SharkOptimizer-Setup.exe`** from the [latest GitHub release](https://github.com/Bas-Makes-Stuff/SharkOptimizer/releases/latest), then run the installer. It installs SharkOptimizer, adds a Start Menu entry, offers an optional Desktop shortcut, and includes an uninstaller.
 
-Current public release: **2.0.1**. Version **2.0.2** is a local UI update under review, with five main navigation entries and grouped tweak cards.
+Current public release: **2.0.2**, with five main navigation entries, grouped tweak cards, green borders for enabled settings, and focused Game Boost and utility views.
 
 The installer is not code-signed. If SmartScreen appears, confirm that you downloaded the setup file from this official repository before choosing **More info > Run anyway**.
 
@@ -72,7 +72,7 @@ Build the native candidate from a source checkout:
 .\tools\Assert-ReleaseVersion.ps1 -AppPath .\native\out\SharkOptimizer.Native.exe -SetupPath .\release\2.0.2\SharkOptimizer-Setup.exe
 ```
 
-The installer embeds the native app. Version 2.0.1 is published with one uploaded installer asset. The 2.0.2 UI candidate is being reviewed locally. See [native/README.md](native/README.md) for implementation details and [RELEASE-GUIDE.md](RELEASE-GUIDE.md) for future updates. A complete newer-version update installation remains to be verified.
+The installer embeds the native app. Version 2.0.2 is published with one uploaded installer asset. See [native/README.md](native/README.md) for implementation details and [RELEASE-GUIDE.md](RELEASE-GUIDE.md) for future updates. The automatic download and confirmed installation flow was verified from 2.0.0 to 2.0.1; the updater also downloaded and verified the published 2.0.2 installer.
 
 ## Uninstall
 
