@@ -125,5 +125,10 @@ namespace SharkOptimizer.NativeApp
             TweakDefinition tweak = _catalogue.FirstOrDefault(x => x.Id == id);
             return tweak != null && !AlreadyEnabledOutsideShark(id) && TweakRequirement(tweak) == null;
         }
+
+        private static string TweakPolicyScope(TweakDefinition tweak)
+        {
+            return tweak.Targets.Any(x => x.Hive == Microsoft.Win32.RegistryHive.LocalMachine && x.KeyPath.StartsWith(@"Software\Policies\", StringComparison.OrdinalIgnoreCase)) ? "This policy applies to all Windows accounts on this PC." : null;
+        }
     }
 }

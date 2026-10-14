@@ -606,7 +606,7 @@ namespace SharkOptimizer.NativeApp
             new TweakDefinition("game-capture", "Disable background recording", "Gaming", "Turns off background Game Bar capture, which can add recording overhead.", "Caution", "Win+G and Windows+Alt+R capture may stop working.",
                 new ValueTarget(@"System\GameConfigStore", "GameDVR_Enabled", 0, RegistryValueKind.DWord),
                 new ValueTarget(@"Software\Microsoft\Windows\CurrentVersion\GameDVR", "AppCaptureEnabled", 0, RegistryValueKind.DWord),
-                new ValueTarget(@"Software\Policies\Microsoft\Windows\GameDVR", "AllowGameDVR", 0, RegistryValueKind.DWord)),
+                new ValueTarget(RegistryHive.LocalMachine, @"Software\Policies\Microsoft\Windows\GameDVR", "AllowGameDVR", 0, RegistryValueKind.DWord)),
             new TweakDefinition("file-extensions", "Show file extensions", "Windows", "Displays file endings such as .exe, .png, and .txt in File Explorer.", "Recommended", "", 
                 new ValueTarget(@"Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced", "HideFileExt", 0, RegistryValueKind.DWord)),
             new TweakDefinition("startup-delay", "Remove startup app delay", "Windows", "Removes the delay Windows adds before starting sign-in apps.", "Recommended", "", 
@@ -626,9 +626,9 @@ namespace SharkOptimizer.NativeApp
                 new ValueTarget(@"Software\Microsoft\Windows\CurrentVersion\Search", "BingSearchEnabled", 0, RegistryValueKind.DWord),
                 new ValueTarget(@"Software\Policies\Microsoft\Windows\Explorer", "DisableSearchBoxSuggestions", 1, RegistryValueKind.DWord)),
             new TweakDefinition("activity-history", "Disable activity history", "Privacy", "Stops Windows publishing and uploading your activity timeline.", "Privacy", "", 
-                new ValueTarget(@"Software\Policies\Microsoft\Windows\System", "EnableActivityFeed", 0, RegistryValueKind.DWord),
-                new ValueTarget(@"Software\Policies\Microsoft\Windows\System", "PublishUserActivities", 0, RegistryValueKind.DWord),
-                new ValueTarget(@"Software\Policies\Microsoft\Windows\System", "UploadUserActivities", 0, RegistryValueKind.DWord)),
+                new ValueTarget(RegistryHive.LocalMachine, @"Software\Policies\Microsoft\Windows\System", "EnableActivityFeed", 0, RegistryValueKind.DWord),
+                new ValueTarget(RegistryHive.LocalMachine, @"Software\Policies\Microsoft\Windows\System", "PublishUserActivities", 0, RegistryValueKind.DWord),
+                new ValueTarget(RegistryHive.LocalMachine, @"Software\Policies\Microsoft\Windows\System", "UploadUserActivities", 0, RegistryValueKind.DWord)),
             new TweakDefinition("feedback-prompts", "Disable feedback prompts", "Privacy", "Stops Windows from periodically asking for feedback.", "Privacy", "", 
                 new ValueTarget(@"Software\Microsoft\Siuf\Rules", "NumberOfSIUFInPeriod", 0, RegistryValueKind.DWord),
                 new ValueTarget(@"Software\Microsoft\Siuf\Rules", "PeriodInNanoSeconds", 0, RegistryValueKind.DWord)),
@@ -636,7 +636,7 @@ namespace SharkOptimizer.NativeApp
                 new ValueTarget(@"Software\Microsoft\InputPersonalization", "RestrictImplicitInkCollection", 1, RegistryValueKind.DWord),
                 new ValueTarget(@"Software\Microsoft\InputPersonalization", "RestrictImplicitTextCollection", 1, RegistryValueKind.DWord)),
             new TweakDefinition("clipboard-sync", "Disable clipboard cloud sync", "Privacy", "Stops clipboard history from syncing between your devices.", "Privacy", "Clipboard history will remain available locally.", 
-                new ValueTarget(@"Software\Policies\Microsoft\Windows\System", "AllowCrossDeviceClipboard", 0, RegistryValueKind.DWord)),
+                new ValueTarget(RegistryHive.LocalMachine, @"Software\Policies\Microsoft\Windows\System", "AllowCrossDeviceClipboard", 0, RegistryValueKind.DWord)),
             new TweakDefinition("hide-recent-files", "Hide recent and frequent files", "Windows", "Removes recent files and frequent folders from File Explorer Home and Quick Access.", "Personal choice", "", 
                 new ValueTarget(@"Software\Microsoft\Windows\CurrentVersion\Explorer", "ShowRecent", 0, RegistryValueKind.DWord),
                 new ValueTarget(@"Software\Microsoft\Windows\CurrentVersion\Explorer", "ShowFrequent", 0, RegistryValueKind.DWord)),
@@ -676,19 +676,28 @@ namespace SharkOptimizer.NativeApp
                 new ValueTarget(@"System\GameConfigStore", "GameDVR_EFSEFeatureFlags", 0, RegistryValueKind.DWord)),
             new TweakDefinition("disable-copilot", "Disable Copilot entry points", "Privacy", "Hides Windows Copilot through the current-user policy setting.", "Personal choice", "This does not uninstall Copilot or remove other AI features.",
                 new ValueTarget(@"Software\Policies\Microsoft\Windows\WindowsCopilot", "TurnOffWindowsCopilot", 1, RegistryValueKind.DWord)),
-            new TweakDefinition("disable-cortana-cloud-search", "Disable Cortana and cloud search", "Privacy", "Turns off Cortana and cloud search integration through current-user policy settings.", "Personal choice", "Windows search will focus on local results.",
-                new ValueTarget(@"Software\Policies\Microsoft\Windows\Windows Search", "AllowCortana", 0, RegistryValueKind.DWord),
-                new ValueTarget(@"Software\Policies\Microsoft\Windows\Windows Search", "AllowCloudSearch", 0, RegistryValueKind.DWord)),
+            new TweakDefinition("disable-cortana-cloud-search", "Disable Cortana and cloud search", "Privacy", "Turns off Cortana and cloud search integration through Windows policy settings.", "Personal choice", "Windows search will focus on local results.",
+                new ValueTarget(RegistryHive.LocalMachine, @"Software\Policies\Microsoft\Windows\Windows Search", "AllowCortana", 0, RegistryValueKind.DWord),
+                new ValueTarget(RegistryHive.LocalMachine, @"Software\Policies\Microsoft\Windows\Windows Search", "AllowCloudSearch", 0, RegistryValueKind.DWord)),
             new TweakDefinition("disable-consumer-suggestions", "Reduce suggested apps", "Privacy", "Stops Windows from promoting suggested consumer apps and content.", "Personal choice", "Windows suggestions and promoted app installs may stop appearing.",
-                new ValueTarget(@"Software\Policies\Microsoft\Windows\CloudContent", "DisableWindowsConsumerFeatures", 1, RegistryValueKind.DWord),
+                new ValueTarget(RegistryHive.LocalMachine, @"Software\Policies\Microsoft\Windows\CloudContent", "DisableWindowsConsumerFeatures", 1, RegistryValueKind.DWord),
+                new ValueTarget(RegistryHive.LocalMachine, @"Software\Policies\Microsoft\Windows\CloudContent", "DisableSoftLanding", 1, RegistryValueKind.DWord),
+                new ValueTarget(@"Software\Policies\Microsoft\Windows\CloudContent", "DisableWindowsSpotlightFeatures", 1, RegistryValueKind.DWord),
                 new ValueTarget(@"Software\Microsoft\Windows\CurrentVersion\ContentDeliveryManager", "SystemPaneSuggestionsEnabled", 0, RegistryValueKind.DWord),
                 new ValueTarget(@"Software\Microsoft\Windows\CurrentVersion\ContentDeliveryManager", "SubscribedContent-338389Enabled", 0, RegistryValueKind.DWord)),
             new TweakDefinition("remove-windows-ads", "Reduce Windows promotional content", "Privacy", "Turns off common Start, Settings, and lock-screen promotional suggestions for this user.", "Personal choice", "Some Windows tips and suggestions will no longer appear.",
                 new ValueTarget(@"Software\Microsoft\Windows\CurrentVersion\ContentDeliveryManager", "SubscribedContent-338387Enabled", 0, RegistryValueKind.DWord),
                 new ValueTarget(@"Software\Microsoft\Windows\CurrentVersion\ContentDeliveryManager", "SubscribedContent-338388Enabled", 0, RegistryValueKind.DWord),
+                new ValueTarget(@"Software\Microsoft\Windows\CurrentVersion\ContentDeliveryManager", "SubscribedContent-338389Enabled", 0, RegistryValueKind.DWord),
                 new ValueTarget(@"Software\Microsoft\Windows\CurrentVersion\ContentDeliveryManager", "SubscribedContent-338393Enabled", 0, RegistryValueKind.DWord),
                 new ValueTarget(@"Software\Microsoft\Windows\CurrentVersion\ContentDeliveryManager", "SubscribedContent-353694Enabled", 0, RegistryValueKind.DWord),
                 new ValueTarget(@"Software\Microsoft\Windows\CurrentVersion\ContentDeliveryManager", "SubscribedContent-353696Enabled", 0, RegistryValueKind.DWord),
+                new ValueTarget(@"Software\Microsoft\Windows\CurrentVersion\ContentDeliveryManager", "SubscribedContent-310093Enabled", 0, RegistryValueKind.DWord),
+                new ValueTarget(@"Software\Microsoft\Windows\CurrentVersion\ContentDeliveryManager", "SystemPaneSuggestionsEnabled", 0, RegistryValueKind.DWord),
+                new ValueTarget(@"Software\Microsoft\Windows\CurrentVersion\ContentDeliveryManager", "RotatingLockScreenOverlayEnabled", 0, RegistryValueKind.DWord),
+                new ValueTarget(@"Software\Microsoft\Windows\CurrentVersion\ContentDeliveryManager", "OemPreInstalledAppsEnabled", 0, RegistryValueKind.DWord),
+                new ValueTarget(@"Software\Microsoft\Windows\CurrentVersion\ContentDeliveryManager", "PreInstalledAppsEnabled", 0, RegistryValueKind.DWord),
+                new ValueTarget(@"Software\Microsoft\Windows\CurrentVersion\ContentDeliveryManager", "SilentInstalledAppsEnabled", 0, RegistryValueKind.DWord),
                 new ValueTarget(@"Software\Microsoft\Windows\CurrentVersion\ContentDeliveryManager", "SoftLandingEnabled", 0, RegistryValueKind.DWord),
                 new ValueTarget(@"Software\Microsoft\Windows\CurrentVersion\ContentDeliveryManager", "ContentDeliveryAllowed", 0, RegistryValueKind.DWord)),
             new TweakDefinition("disable-windows-ai-capture", "Disable Windows AI activity analysis", "Privacy", "Blocks Windows AI snapshot analysis on supported Windows versions.", "Personal choice", "Windows 11 24H2 or newer. This does not uninstall AI features.",
@@ -699,9 +708,9 @@ namespace SharkOptimizer.NativeApp
             new TweakDefinition("disable-location-policy", "Disable Windows location access", "Privacy", "Disables Windows location features through machine policy.", "Caution", "Maps, Weather, and Find My Device may stop working.",
                 new ValueTarget(RegistryHive.LocalMachine, @"SOFTWARE\Policies\Microsoft\Windows\LocationAndSensors", "DisableLocation", 1, RegistryValueKind.DWord)),
             new TweakDefinition("disable-update-sharing", "Disable update sharing", "Privacy", "Stops Windows from sharing update downloads with other PCs.", "Personal choice", "Windows will use Microsoft update servers instead of local network peers.",
-                new ValueTarget(@"Software\Policies\Microsoft\Windows\DeliveryOptimization", "DODownloadMode", 0, RegistryValueKind.DWord)),
-            new TweakDefinition("disable-onedrive-policy", "Pause OneDrive sync by policy", "Windows", "Disables OneDrive file sync for this user through Windows policy.", "Caution", "Files already on this PC remain, but OneDrive will stop syncing until you undo this option.",
-                new ValueTarget(@"Software\Policies\Microsoft\Windows\OneDrive", "DisableFileSyncNGSC", 1, RegistryValueKind.DWord)),
+                new ValueTarget(RegistryHive.LocalMachine, @"Software\Policies\Microsoft\Windows\DeliveryOptimization", "DODownloadMode", 0, RegistryValueKind.DWord)),
+            new TweakDefinition("disable-onedrive-policy", "Pause OneDrive sync by policy", "Windows", "Disables OneDrive file sync through Windows policy.", "Caution", "Files already on this PC remain, but OneDrive will stop syncing until you undo this option.",
+                new ValueTarget(RegistryHive.LocalMachine, @"Software\Policies\Microsoft\Windows\OneDrive", "DisableFileSyncNGSC", 1, RegistryValueKind.DWord)),
             new TweakDefinition("clean-windows-taskbar", "Simplify Windows 11 taskbar", "Personalization", "Hides Widgets, Task View, and the taskbar search box, and aligns app icons to the left.", "Personal choice", "Designed for Windows 11; unavailable items are ignored by older Windows versions.",
                 new ValueTarget(@"Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced", "TaskbarAl", 0, RegistryValueKind.DWord),
                 new ValueTarget(@"Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced", "TaskbarDa", 0, RegistryValueKind.DWord),
@@ -743,7 +752,8 @@ namespace SharkOptimizer.NativeApp
             new TweakDefinition("disable-edge-startup-boost", "Stop Edge background activity", "Windows", "Disables Microsoft Edge Startup Boost and background mode for this user.", "Personal choice", "Edge may take slightly longer to open after being fully closed.",
                 new ValueTarget(@"Software\Policies\Microsoft\Edge", "StartupBoostEnabled", 0, RegistryValueKind.DWord),
                 new ValueTarget(@"Software\Policies\Microsoft\Edge", "BackgroundModeEnabled", 0, RegistryValueKind.DWord)),
-            new TweakDefinition("limit-background-apps", "Limit Store app background activity", "Performance", "Sets the current-user background-app policy to deny background execution.", "Caution", "Mail, calendar, and other Store apps may stop showing notifications while closed.",
+            new TweakDefinition("limit-background-apps", "Limit Store app background activity", "Performance", "Restricts Store app background execution through Windows policy and user settings.", "Caution", "Mail, calendar, and other Store apps may stop showing notifications while closed.",
+                new ValueTarget(RegistryHive.LocalMachine, @"Software\Policies\Microsoft\Windows\AppPrivacy", "LetAppsRunInBackground", 2, RegistryValueKind.DWord),
                 new ValueTarget(@"Software\Microsoft\Windows\CurrentVersion\BackgroundAccessApplications", "GlobalUserDisabled", 1, RegistryValueKind.DWord)),
             WithServices(new TweakDefinition("system-telemetry-policy", "Limit Windows diagnostic data", "Privacy", "Sets Windows diagnostic-data policy to the required level for supported editions.", "Personal choice", "Some diagnostic data required by Windows may still be sent. Restart may be needed.",
                 new ValueTarget(RegistryHive.LocalMachine, @"SOFTWARE\Policies\Microsoft\Windows\DataCollection", "AllowTelemetry", 0, RegistryValueKind.DWord)), "DiagTrack", "dmwappushservice"),
@@ -1941,9 +1951,12 @@ namespace SharkOptimizer.NativeApp
             if (customDefinition != null) { Localization.KeepData(nameLabel); Localization.KeepData(descriptionLabel); }
             details.Children.Add(nameLabel); details.Children.Add(descriptionLabel);
             if (availability != null && !alreadyApplied) details.Children.Add(Text(availability, 10, Brush(MutedColor), false, 0, 4));
-            if (!String.IsNullOrEmpty(tweak.Warning)) {
+            if (!String.IsNullOrEmpty(tweak.Warning) || TweakPolicyScope(tweak) != null) {
                 var warningBody = new StackPanel();
-                if (customDefinition == null) warningBody.Children.Add(Text(tweak.Warning, 10, Brush(Color.FromRgb(255, 190, 96)), false, 0, 4));
+                if (customDefinition == null) {
+                    if (!String.IsNullOrEmpty(tweak.Warning)) warningBody.Children.Add(Text(tweak.Warning, 10, Brush(Color.FromRgb(255, 190, 96)), false, 0, 4));
+                    if (TweakPolicyScope(tweak) != null) warningBody.Children.Add(Text(TweakPolicyScope(tweak), 10, Brush(Color.FromRgb(255, 190, 96)), false, 0, 4));
+                }
                 else {
                     warningBody.Children.Add(Text(CustomTweakCodec.ReviewWarning, 10, Brush(Color.FromRgb(255, 190, 96)), false, 0, 4));
                     if (!String.IsNullOrWhiteSpace(customDefinition.Warning)) { var customWarning = Text(customDefinition.Warning, 10, Brush(Color.FromRgb(255, 190, 96)), false, 0, 4); Localization.KeepData(customWarning); warningBody.Children.Add(customWarning); }
@@ -3053,9 +3066,9 @@ namespace SharkOptimizer.NativeApp
             if (_tweakOperationBusy) return;
             List<TweakDefinition> selected = _catalogue.Where(t => _selectedTweaks.Contains(t.Id) && CanSelectTweak(t.Id) && !_state.Applied.Any(a => a.Id == t.Id)).ToList();
             if (selected.Count == 0) { MessageBox.Show(this, "Select at least one available change.", "SharkOptimizer", MessageBoxButton.OK, MessageBoxImage.Information); return; }
-            if (selected.Any(x => !String.IsNullOrEmpty(x.Warning)))
+            if (selected.Any(x => !String.IsNullOrEmpty(TweakWarningForReview(x))))
             {
-                string warnings = String.Join(Environment.NewLine, selected.Where(x => !String.IsNullOrEmpty(x.Warning)).Select(x => "• " + (Definitions.Any(d => d.Id == x.Id) ? Localization.Translate(x.Name) : x.Name) + ": " + TweakWarningForReview(x)).ToArray());
+                string warnings = String.Join(Environment.NewLine, selected.Where(x => !String.IsNullOrEmpty(TweakWarningForReview(x))).Select(x => "• " + (Definitions.Any(d => d.Id == x.Id) ? Localization.Translate(x.Name) : x.Name) + ": " + TweakWarningForReview(x)).ToArray());
                 if (System.Windows.MessageBox.Show(this, Localization.Translate("Review these notes before applying:") + Environment.NewLine + Environment.NewLine + warnings + Environment.NewLine + Environment.NewLine + Localization.Translate("Continue?"), Localization.Translate("Review changes"), MessageBoxButton.YesNo, MessageBoxImage.Warning) != MessageBoxResult.Yes) return;
             }
             var before = new HashSet<string>(_state.Applied.Select(x => x.Id), StringComparer.OrdinalIgnoreCase);

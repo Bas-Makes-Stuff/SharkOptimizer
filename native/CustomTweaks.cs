@@ -149,7 +149,7 @@ namespace SharkOptimizer.NativeApp
         private string TweakWarningForReview(TweakDefinition definition)
         {
             var custom = _state.CustomTweaks.FirstOrDefault(x => x.Id == definition.Id);
-            if (custom == null) return Localization.Translate(definition.Warning);
+            if (custom == null) return String.Join(Environment.NewLine, new[] { Localization.Translate(definition.Warning), Localization.Translate(TweakPolicyScope(definition)) }.Where(x => !String.IsNullOrEmpty(x)));
             var parts = new List<string> { Localization.Translate(CustomTweakCodec.ReviewWarning) };
             if (!String.IsNullOrWhiteSpace(custom.Warning)) parts.Add(custom.Warning);
             if (custom.Reboot) parts.Add(Localization.Translate(CustomTweakCodec.RestartWarning));
