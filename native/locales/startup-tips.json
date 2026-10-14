@@ -1,0 +1,56 @@
+{
+  "Game Mode prioritizes your game while you play.": {
+    "nl": "Game Mode geeft je game prioriteit tijdens het spelen.",
+    "de": "Der Spielmodus priorisiert dein Spiel während des Spielens.",
+    "es": "El modo Juego prioriza tu juego mientras juegas.",
+    "fr": "Le mode Jeu donne la priorité à votre jeu pendant la partie.",
+    "pt": "O Modo de Jogo prioriza seu jogo durante a partida.",
+    "ru": "Игровой режим отдаёт приоритет игре во время запуска.",
+    "zh": "游戏模式会在游玩时优先处理游戏。"
+  },
+  "Compare DNS response times in the Network tab.": {
+    "nl": "Vergelijk DNS-responstijden in het tabblad Netwerk.",
+    "de": "Vergleiche DNS-Antwortzeiten im Netzwerk-Tab.",
+    "es": "Compara los tiempos de DNS en la pestaña Red.",
+    "fr": "Comparez les temps DNS dans Réseau.",
+    "pt": "Compare os tempos de DNS na aba Rede.",
+    "ru": "Сравните время отклика DNS на странице сети.",
+    "zh": "在网络页面比较 DNS 响应时间。"
+  },
+  "Restore tracks tweaks so you can undo them later.": {
+    "nl": "Herstel houdt tweaks bij zodat je ze kunt terugdraaien.",
+    "de": "Wiederherstellen speichert Tweaks zum späteren Rückgängigmachen.",
+    "es": "Restaurar registra los ajustes para poder deshacerlos.",
+    "fr": "Restaurer suit les réglages pour pouvoir les annuler.",
+    "pt": "Restaurar registra ajustes para você poder desfazê-los.",
+    "ru": "Восстановление сохраняет твики для отмены изменений.",
+    "zh": "还原功能会记录优化项，方便之后撤销。"
+  },
+  "Background recording can cause frame-time spikes.": {
+    "nl": "Achtergrondopname kan frametimepieken veroorzaken.",
+    "de": "Hintergrundaufnahmen können Ruckler verursachen.",
+    "es": "La grabación en segundo plano puede causar tirones.",
+    "fr": "La capture en arrière-plan peut causer des saccades.",
+    "pt": "A gravação em segundo plano pode causar travamentos.",
+    "ru": "Фоновая запись может вызывать скачки времени кадра.",
+    "zh": "后台录制可能导致帧时间波动。"
+  },
+  "Some Windows changes need a restart to take effect.": {
+    "nl": "Sommige Windows-wijzigingen vereisen een herstart.",
+    "de": "Einige Windows-Änderungen erfordern einen Neustart.",
+    "es": "Algunos cambios requieren reiniciar Windows.",
+    "fr": "Certains changements nécessitent un redémarrage.",
+    "pt": "Algumas mudanças exigem reiniciar o Windows.",
+    "ru": "Некоторые изменения требуют перезагрузки Windows.",
+    "zh": "部分 Windows 设置需要重启后生效。"
+  },
+  "Choose tweaks that fit your hardware and setup.": {
+    "nl": "Kies tweaks die bij je hardware en setup passen.",
+    "de": "Wähle Tweaks passend zu deiner Hardware.",
+    "es": "Elige ajustes adecuados para tu equipo.",
+    "fr": "Choisissez des réglages adaptés à votre matériel.",
+    "pt": "Escolha ajustes adequados ao seu hardware.",
+    "ru": "Выбирайте настройки с учётом своего оборудования.",
+    "zh": "根据你的硬件选择合适的优化项。"
+  }
+}

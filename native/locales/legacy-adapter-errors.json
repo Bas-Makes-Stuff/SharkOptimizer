@@ -1,0 +1,38 @@
+{
+  "The saved registry hive is invalid.": {
+    "nl": "De opgeslagen registerhoofdsleutel is ongeldig.",
+    "es": "La rama guardada del registro no es válida.",
+    "de": "Der gespeicherte Registrierungszweig ist ungültig.",
+    "fr": "La ruche du registre enregistrée est invalide.",
+    "pt": "A seção salva do registro é inválida.",
+    "ru": "Сохранённый раздел реестра недопустим.",
+    "zh": "保存的注册表配置单元无效。"
+  },
+  "Windows could not open the saved registry key.": {
+    "nl": "Windows kon de opgeslagen registersleutel niet openen.",
+    "es": "Windows no pudo abrir la clave guardada del registro.",
+    "de": "Windows konnte den gespeicherten Registrierungsschlüssel nicht öffnen.",
+    "fr": "Windows n’a pas pu ouvrir la clé de registre enregistrée.",
+    "pt": "O Windows não conseguiu abrir a chave salva do registro.",
+    "ru": "Windows не удалось открыть сохранённый ключ реестра.",
+    "zh": "Windows 无法打开保存的注册表项。"
+  },
+  "A legacy adapter record can only be restored.": {
+    "nl": "Een oud adapterrecord kan alleen worden hersteld.",
+    "es": "Un registro antiguo del adaptador solo puede restaurarse.",
+    "de": "Ein alter Adapterdatensatz kann nur wiederhergestellt werden.",
+    "fr": "Un ancien enregistrement d’adaptateur peut uniquement être restauré.",
+    "pt": "Um registro antigo do adaptador só pode ser restaurado.",
+    "ru": "Старую запись адаптера можно только восстановить.",
+    "zh": "旧版适配器记录仅可用于还原。"
+  },
+  "Windows could not uniquely match the saved adapter setting '{0}' on {1}. Reconnect the original adapter and check its driver before retrying.": {
+    "nl": "Windows kon de opgeslagen adapterinstelling '{0}' op {1} niet eenduidig koppelen. Verbind de oorspronkelijke adapter opnieuw en controleer de driver voordat je opnieuw probeert.",
+    "es": "Windows no pudo identificar de forma única el ajuste '{0}' en {1}. Reconecta el adaptador original y comprueba su controlador antes de reintentar.",
+    "de": "Windows konnte die gespeicherte Adaptereinstellung '{0}' auf {1} nicht eindeutig zuordnen. Verbinde den ursprünglichen Adapter und prüfe den Treiber vor dem erneuten Versuch.",
+    "fr": "Windows n’a pas pu identifier sans ambiguïté le réglage « {0} » sur {1}. Reconnectez l’adaptateur d’origine et vérifiez son pilote avant de réessayer.",
+    "pt": "O Windows não conseguiu identificar unicamente o ajuste '{0}' em {1}. Reconecte o adaptador original e confira o driver antes de tentar novamente.",
+    "ru": "Windows не удалось однозначно сопоставить настройку «{0}» на {1}. Подключите исходный адаптер и проверьте драйвер перед повторной попыткой.",
+    "zh": "Windows 无法唯一匹配 {1} 上保存的适配器设置“{0}”。请重新连接原适配器并检查驱动，然后重试。"
+  }
+}

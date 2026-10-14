@@ -1,0 +1,173 @@
+{
+  "Session recovery": {
+    "nl": "Sessieherstel",
+    "es": "Recuperación de sesión",
+    "de": "Sitzungswiederherstellung",
+    "fr": "Récupération de session",
+    "pt": "Recuperação da sessão",
+    "ru": "Восстановление сеанса",
+    "zh": "会话恢复"
+  },
+  "Session not started": {
+    "nl": "Sessie niet gestart",
+    "es": "Sesión no iniciada",
+    "de": "Sitzung nicht gestartet",
+    "fr": "Session non démarrée",
+    "pt": "Sessão não iniciada",
+    "ru": "Сеанс не запущен",
+    "zh": "会话未启动"
+  },
+  "Review Game Boost": {
+    "nl": "Gameboost bekijken",
+    "es": "Revisar modo de juego",
+    "de": "Spielmodus prüfen",
+    "fr": "Examiner le mode jeu",
+    "pt": "Revisar modo de jogo",
+    "ru": "Проверить игровой режим",
+    "zh": "检查游戏模式"
+  },
+  "Start this session?": {
+    "nl": "Deze sessie starten?",
+    "es": "¿Iniciar esta sesión?",
+    "de": "Diese Sitzung starten?",
+    "fr": "Démarrer cette session ?",
+    "pt": "Iniciar esta sessão?",
+    "ru": "Запустить этот сеанс?",
+    "zh": "启动此会话？"
+  },
+  "A previous session still has settings waiting to be restored. End session to retry before starting another session.": {
+    "nl": "Een vorige sessie heeft nog instellingen die moeten worden hersteld. Beëindig de sessie om opnieuw te proberen voordat je een nieuwe start.",
+    "es": "Una sesión anterior todavía tiene ajustes pendientes de restaurar. Finaliza la sesión para reintentar antes de iniciar otra.",
+    "de": "Eine vorherige Sitzung hat noch Einstellungen zur Wiederherstellung. Beende die Sitzung für einen erneuten Versuch, bevor du eine neue startest.",
+    "fr": "Une ancienne session a encore des réglages à restaurer. Terminez la session pour réessayer avant d’en démarrer une autre.",
+    "pt": "Uma sessão anterior ainda tem configurações a restaurar. Encerre a sessão para tentar novamente antes de iniciar outra.",
+    "ru": "Остались настройки прошлого сеанса, ожидающие восстановления. Завершите сеанс для повторной попытки перед запуском нового.",
+    "zh": "之前的会话仍有设置等待还原。启动新会话前，请结束会话以重试。"
+  },
+  "Asked app to close: {0}": {
+    "nl": "App gevraagd te sluiten: {0}",
+    "es": "Se solicitó cerrar la aplicación: {0}",
+    "de": "App zum Schließen aufgefordert: {0}",
+    "fr": "Fermeture demandée à l’application : {0}",
+    "pt": "Fechamento solicitado ao aplicativo: {0}",
+    "ru": "Запрошено закрытие приложения: {0}",
+    "zh": "已请求应用关闭：{0}"
+  },
+  "App stayed open: {0}": {
+    "nl": "App bleef geopend: {0}",
+    "es": "La aplicación siguió abierta: {0}",
+    "de": "App blieb geöffnet: {0}",
+    "fr": "Application restée ouverte : {0}",
+    "pt": "O aplicativo permaneceu aberto: {0}",
+    "ru": "Приложение осталось открытым: {0}",
+    "zh": "应用保持打开：{0}"
+  },
+  "Could not close {0}: {1}": {
+    "nl": "Kon {0} niet sluiten: {1}",
+    "es": "No se pudo cerrar {0}: {1}",
+    "de": "{0} konnte nicht geschlossen werden: {1}",
+    "fr": "Impossible de fermer {0} : {1}",
+    "pt": "Não foi possível fechar {0}: {1}",
+    "ru": "Не удалось закрыть {0}: {1}",
+    "zh": "无法关闭 {0}：{1}"
+  },
+  "Could not launch game: {0}": {
+    "nl": "Kon game niet starten: {0}",
+    "es": "No se pudo iniciar el juego: {0}",
+    "de": "Spiel konnte nicht gestartet werden: {0}",
+    "fr": "Impossible de lancer le jeu : {0}",
+    "pt": "Não foi possível iniciar o jogo: {0}",
+    "ru": "Не удалось запустить игру: {0}",
+    "zh": "无法启动游戏：{0}"
+  },
+  "Could not start this game: {0}": {
+    "nl": "Kon deze game niet starten: {0}",
+    "es": "No se pudo iniciar este juego: {0}",
+    "de": "Dieses Spiel konnte nicht gestartet werden: {0}",
+    "fr": "Impossible de lancer ce jeu : {0}",
+    "pt": "Não foi possível iniciar este jogo: {0}",
+    "ru": "Не удалось запустить эту игру: {0}",
+    "zh": "无法启动此游戏：{0}"
+  },
+  "Session active · restoring settings after {0} closes.": {
+    "nl": "Sessie actief · instellingen worden hersteld nadat {0} sluit.",
+    "es": "Sesión activa · se restaurarán los ajustes al cerrar {0}.",
+    "de": "Sitzung aktiv · Einstellungen werden nach dem Schließen von {0} wiederhergestellt.",
+    "fr": "Session active · restauration des réglages après la fermeture de {0}.",
+    "pt": "Sessão ativa · configurações serão restauradas ao fechar {0}.",
+    "ru": "Сеанс активен · настройки восстановятся после закрытия {0}.",
+    "zh": "会话运行中 · {0} 关闭后还原设置。"
+  },
+  "Session setup failed: {0}": {
+    "nl": "Sessie instellen mislukt: {0}",
+    "es": "Error al preparar la sesión: {0}",
+    "de": "Sitzungseinrichtung fehlgeschlagen: {0}",
+    "fr": "Échec de préparation de la session : {0}",
+    "pt": "Falha ao preparar a sessão: {0}",
+    "ru": "Ошибка подготовки сеанса: {0}",
+    "zh": "会话设置失败：{0}"
+  },
+  "High performance plan is unavailable; no power change was made.": {
+    "nl": "Hoge prestaties is niet beschikbaar; energie-instellingen zijn niet gewijzigd.",
+    "es": "El plan de Alto rendimiento no está disponible; no se cambió la energía.",
+    "de": "Höchstleistungsplan nicht verfügbar; keine Energieeinstellung geändert.",
+    "fr": "Le mode Performances élevées est indisponible ; aucun changement d’alimentation effectué.",
+    "pt": "O plano Alto Desempenho está indisponível; nenhuma alteração de energia foi feita.",
+    "ru": "Схема высокой производительности недоступна; питание не изменено.",
+    "zh": "高性能计划不可用；未更改电源设置。"
+  },
+  "Already using the High performance plan.": {
+    "nl": "Het schema Hoge prestaties is al actief.",
+    "es": "Ya se está usando el plan de Alto rendimiento.",
+    "de": "Höchstleistungsplan bereits aktiv.",
+    "fr": "Le mode Performances élevées est déjà actif.",
+    "pt": "O plano Alto Desempenho já está em uso.",
+    "ru": "Схема высокой производительности уже используется.",
+    "zh": "已在使用高性能计划。"
+  },
+  "Could not save a restore point for the power plan, so it was left unchanged.": {
+    "nl": "Kon herstelgegevens voor het energiebeheerschema niet opslaan, daarom bleef het ongewijzigd.",
+    "es": "No se pudo guardar la recuperación del plan de energía, así que no se modificó.",
+    "de": "Wiederherstellungsdaten des Energiesparplans konnten nicht gespeichert werden; er blieb unverändert.",
+    "fr": "Impossible d’enregistrer la récupération du mode d’alimentation ; il reste inchangé.",
+    "pt": "Não foi possível salvar a recuperação do plano de energia; ele não foi alterado.",
+    "ru": "Не удалось сохранить данные восстановления схемы питания, поэтому она не изменена.",
+    "zh": "无法保存电源计划还原信息，因此保持不变。"
+  },
+  "Could not switch power plans; the current plan was left active.": {
+    "nl": "Kon niet wisselen van energiebeheerschema; het huidige schema bleef actief.",
+    "es": "No se pudo cambiar el plan de energía; el actual sigue activo.",
+    "de": "Energiesparplan konnte nicht gewechselt werden; der aktuelle blieb aktiv.",
+    "fr": "Impossible de changer le mode d’alimentation ; le mode actuel reste actif.",
+    "pt": "Não foi possível trocar o plano de energia; o atual continuou ativo.",
+    "ru": "Не удалось переключить схему питания; текущая осталась активной.",
+    "zh": "无法切换电源计划；当前计划继续生效。"
+  },
+  "Could not restore power plan: {0}": {
+    "nl": "Kon energiebeheerschema niet herstellen: {0}",
+    "es": "No se pudo restaurar el plan de energía: {0}",
+    "de": "Energiesparplan konnte nicht wiederhergestellt werden: {0}",
+    "fr": "Impossible de restaurer le mode d’alimentation : {0}",
+    "pt": "Não foi possível restaurar o plano de energia: {0}",
+    "ru": "Не удалось восстановить схему питания: {0}",
+    "zh": "无法还原电源计划：{0}"
+  },
+  "Session ended with restoration pending. End session retries; startup also retries.": {
+    "nl": "Sessie beëindigd met herstel in afwachting. Beëindig sessie probeert opnieuw; bij opstarten wordt ook opnieuw geprobeerd.",
+    "es": "La sesión terminó con restauración pendiente. Finalizar sesión reintenta; también se reintenta al iniciar.",
+    "de": "Sitzung beendet, Wiederherstellung ausstehend. Sitzung beenden versucht es erneut; beim Start erfolgt ebenfalls ein Versuch.",
+    "fr": "Session terminée avec restauration en attente. Terminer la session réessaie ; le démarrage réessaie également.",
+    "pt": "Sessão encerrada com restauração pendente. Encerrar sessão tenta novamente; a inicialização também tenta.",
+    "ru": "Сеанс завершён, восстановление ожидается. Завершение сеанса повторяет попытку; запуск приложения также повторяет её.",
+    "zh": "会话已结束，还原仍待完成。结束会话会重试；应用启动时也会重试。"
+  },
+  "Game session ended. Temporary settings restored.": {
+    "nl": "Gamesessie beëindigd. Tijdelijke instellingen hersteld.",
+    "es": "Sesión de juego terminada. Ajustes temporales restaurados.",
+    "de": "Spielsitzung beendet. Temporäre Einstellungen wiederhergestellt.",
+    "fr": "Session de jeu terminée. Réglages temporaires restaurés.",
+    "pt": "Sessão de jogo encerrada. Configurações temporárias restauradas.",
+    "ru": "Игровой сеанс завершён. Временные настройки восстановлены.",
+    "zh": "游戏会话已结束。临时设置已还原。"
+  }
+}

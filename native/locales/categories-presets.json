@@ -1,0 +1,137 @@
+{
+  "All categories": {
+    "nl": "Alle categorieën",
+    "es": "Todas las categorías",
+    "de": "Alle Kategorien",
+    "fr": "Toutes les catégories",
+    "pt": "Todas as categorias",
+    "ru": "Все категории",
+    "zh": "所有分类"
+  },
+  "Recommended": {
+    "nl": "Aanbevolen",
+    "es": "Recomendado",
+    "de": "Empfohlen",
+    "fr": "Recommandé",
+    "pt": "Recomendado",
+    "ru": "Рекомендуется",
+    "zh": "推荐"
+  },
+  "Personal choice": {
+    "nl": "Persoonlijke keuze",
+    "es": "Elección personal",
+    "de": "Persönliche Wahl",
+    "fr": "Choix personnel",
+    "pt": "Escolha pessoal",
+    "ru": "Личный выбор",
+    "zh": "个人选择"
+  },
+  "Presets · 5 built-in + {0} saved": {
+    "nl": "Voorinstellingen · 5 ingebouwd + {0} opgeslagen",
+    "es": "Preajustes · 5 integrados + {0} guardados",
+    "de": "Vorlagen · 5 integriert + {0} gespeichert",
+    "fr": "Préréglages · 5 intégrés + {0} enregistrés",
+    "pt": "Predefinições · 5 integradas + {0} salvas",
+    "ru": "Наборы · 5 встроенных + {0} сохранённых",
+    "zh": "预设 · 5 个内置 + {0} 个已保存"
+  },
+  "Safe Essentials": {
+    "nl": "Veilige basis",
+    "es": "Básicos seguros",
+    "de": "Sichere Grundlagen",
+    "fr": "Essentiels sûrs",
+    "pt": "Essenciais seguros",
+    "ru": "Безопасные основы",
+    "zh": "安全基础"
+  },
+  "Competitive Gaming": {
+    "nl": "Competitief gamen",
+    "es": "Juego competitivo",
+    "de": "Kompetitives Gaming",
+    "fr": "Jeu compétitif",
+    "pt": "Jogos competitivos",
+    "ru": "Соревновательные игры",
+    "zh": "竞技游戏"
+  },
+  "Max Privacy": {
+    "nl": "Maximale privacy",
+    "es": "Máxima privacidad",
+    "de": "Maximaler Datenschutz",
+    "fr": "Confidentialité maximale",
+    "pt": "Privacidade máxima",
+    "ru": "Максимальная приватность",
+    "zh": "最大隐私保护"
+  },
+  "Low-End PC": {
+    "nl": "Lichte pc",
+    "es": "PC de bajos recursos",
+    "de": "Leistungsschwacher PC",
+    "fr": "PC peu puissant",
+    "pt": "PC básico",
+    "ru": "Маломощный ПК",
+    "zh": "低配置电脑"
+  },
+  "Laptop Safe": {
+    "nl": "Veilig voor laptops",
+    "es": "Seguro para portátiles",
+    "de": "Sicher für Laptops",
+    "fr": "Sûr pour portables",
+    "pt": "Seguro para notebooks",
+    "ru": "Безопасно для ноутбуков",
+    "zh": "笔记本安全设置"
+  },
+  "Privacy": {
+    "nl": "Privacy",
+    "es": "Privacidad",
+    "de": "Datenschutz",
+    "fr": "Confidentialité",
+    "pt": "Privacidade",
+    "ru": "Приватность",
+    "zh": "隐私"
+  },
+  "Advanced": {
+    "nl": "Geavanceerd",
+    "es": "Avanzado",
+    "de": "Erweitert",
+    "fr": "Avancé",
+    "pt": "Avançado",
+    "ru": "Дополнительно",
+    "zh": "高级"
+  },
+  "Power": {
+    "nl": "Energie",
+    "es": "Energía",
+    "de": "Energie",
+    "fr": "Alimentation",
+    "pt": "Energia",
+    "ru": "Питание",
+    "zh": "电源"
+  },
+  "Services": {
+    "nl": "Services",
+    "es": "Servicios",
+    "de": "Dienste",
+    "fr": "Services",
+    "pt": "Serviços",
+    "ru": "Службы",
+    "zh": "服务"
+  },
+  "Custom": {
+    "nl": "Aangepast",
+    "es": "Personalizado",
+    "de": "Benutzerdefiniert",
+    "fr": "Personnalisé",
+    "pt": "Personalizado",
+    "ru": "Пользовательское",
+    "zh": "自定义"
+  },
+  "Active": {
+    "nl": "Actief",
+    "es": "Activo",
+    "de": "Aktiv",
+    "fr": "Actif",
+    "pt": "Ativo",
+    "ru": "Активно",
+    "zh": "已启用"
+  }
+}

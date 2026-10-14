@@ -1,0 +1,200 @@
+{
+  "Windows restore point": {
+    "nl": "Windows-herstelpunt",
+    "es": "Punto de restauración de Windows",
+    "de": "Windows-Wiederherstellungspunkt",
+    "fr": "Point de restauration Windows",
+    "pt": "Ponto de restauração do Windows",
+    "ru": "Точка восстановления Windows",
+    "zh": "Windows 还原点"
+  },
+  "Create restore point": {
+    "nl": "Herstelpunt maken",
+    "es": "Crear punto de restauración",
+    "de": "Wiederherstellungspunkt erstellen",
+    "fr": "Créer un point de restauration",
+    "pt": "Criar ponto de restauração",
+    "ru": "Создать точку восстановления",
+    "zh": "创建还原点"
+  },
+  "Creating…": {
+    "nl": "Aanmaken…",
+    "es": "Creando…",
+    "de": "Wird erstellt…",
+    "fr": "Création…",
+    "pt": "Criando…",
+    "ru": "Создание…",
+    "zh": "正在创建…"
+  },
+  "Create a Windows recovery checkpoint before making system-level changes. Windows may limit new points to one per 24 hours. SharkOptimizer's Restore page separately tracks its own reversible settings.": {
+    "nl": "Maak een Windows-herstelpunt voordat je systeeminstellingen wijzigt. Windows kan nieuwe punten beperken tot één per 24 uur. De pagina Herstel van SharkOptimizer registreert apart de eigen omkeerbare instellingen.",
+    "es": "Crea un punto de restauración de Windows antes de cambiar el sistema. Windows puede limitar los puntos nuevos a uno cada 24 horas. La página Restaurar de SharkOptimizer registra por separado sus propios ajustes reversibles.",
+    "de": "Erstelle vor Systemänderungen einen Windows-Wiederherstellungspunkt. Windows kann neue Punkte auf einen pro 24 Stunden begrenzen. Die Wiederherstellen-Seite erfasst die eigenen umkehrbaren Einstellungen von SharkOptimizer separat.",
+    "fr": "Créez un point de restauration Windows avant les changements système. Windows peut limiter les nouveaux points à un par 24 heures. La page Restaurer de SharkOptimizer suit séparément ses propres réglages réversibles.",
+    "pt": "Crie um ponto de restauração do Windows antes de alterar o sistema. O Windows pode limitar novos pontos a um a cada 24 horas. A página Restaurar do SharkOptimizer registra separadamente seus próprios ajustes reversíveis.",
+    "ru": "Создайте точку восстановления Windows перед системными изменениями. Windows может ограничивать создание точек одной в 24 часа. Раздел восстановления SharkOptimizer отдельно отслеживает его обратимые настройки.",
+    "zh": "更改系统前请创建 Windows 还原点。Windows 可能限制每 24 小时只创建一个新还原点。SharkOptimizer 的还原页面会单独记录自身的可逆设置。"
+  },
+  "Windows accepted the restore point request. It may skip creating a new point if one was created within the last 24 hours.": {
+    "nl": "Windows heeft het verzoek voor een herstelpunt geaccepteerd. Er wordt mogelijk geen nieuw punt gemaakt als er in de laatste 24 uur al een is gemaakt.",
+    "es": "Windows aceptó la solicitud del punto de restauración. Puede omitir crear uno nuevo si ya se creó otro en las últimas 24 horas.",
+    "de": "Windows hat die Anforderung angenommen. Ein neuer Punkt kann übersprungen werden, wenn in den letzten 24 Stunden bereits einer erstellt wurde.",
+    "fr": "Windows a accepté la demande. Il peut ne pas créer de nouveau point si un autre a été créé au cours des dernières 24 heures.",
+    "pt": "O Windows aceitou a solicitação. Pode não criar um novo ponto se já houve outro nas últimas 24 horas.",
+    "ru": "Windows приняла запрос точки восстановления. Новая точка может не создаваться, если другая была создана за последние 24 часа.",
+    "zh": "Windows 已接受还原点请求。如果过去 24 小时内已创建过还原点，可能跳过新建。"
+  },
+  "Windows could not create the restore point (System Restore returned {0}). Check that System Protection is enabled for the Windows drive.": {
+    "nl": "Windows kon het herstelpunt niet maken (Systeemherstel gaf {0} terug). Controleer of Systeembeveiliging aan staat voor het Windows-station.",
+    "es": "Windows no pudo crear el punto de restauración (Restaurar sistema devolvió {0}). Comprueba que Protección del sistema esté activada para la unidad de Windows.",
+    "de": "Windows konnte den Wiederherstellungspunkt nicht erstellen (Systemwiederherstellung meldete {0}). Prüfe, ob der Computerschutz für das Windows-Laufwerk aktiviert ist.",
+    "fr": "Windows n’a pas pu créer le point de restauration (code {0}). Vérifiez que la Protection du système est activée pour le lecteur Windows.",
+    "pt": "O Windows não conseguiu criar o ponto de restauração (código {0}). Verifique se a Proteção do Sistema está ativada para a unidade do Windows.",
+    "ru": "Windows не удалось создать точку восстановления (код {0}). Проверьте, включена ли защита системы для диска Windows.",
+    "zh": "Windows 无法创建还原点（系统还原返回 {0}）。请检查 Windows 驱动器是否启用了系统保护。"
+  },
+  "Could not create a Windows restore point. Check that System Protection is enabled for the Windows drive.": {
+    "nl": "Kon geen Windows-herstelpunt maken. Controleer of Systeembeveiliging aan staat voor het Windows-station.",
+    "es": "No se pudo crear un punto de restauración. Comprueba que Protección del sistema esté activada para la unidad de Windows.",
+    "de": "Windows-Wiederherstellungspunkt konnte nicht erstellt werden. Prüfe den Computerschutz für das Windows-Laufwerk.",
+    "fr": "Impossible de créer un point de restauration Windows. Vérifiez la Protection du système du lecteur Windows.",
+    "pt": "Não foi possível criar um ponto de restauração. Verifique a Proteção do Sistema da unidade do Windows.",
+    "ru": "Не удалось создать точку восстановления Windows. Проверьте защиту системы для диска Windows.",
+    "zh": "无法创建 Windows 还原点。请检查 Windows 驱动器是否启用了系统保护。"
+  },
+  "Scheduled cleanup": {
+    "nl": "Gepland opruimen",
+    "es": "Limpieza programada",
+    "de": "Geplante Bereinigung",
+    "fr": "Nettoyage planifié",
+    "pt": "Limpeza agendada",
+    "ru": "Очистка по расписанию",
+    "zh": "计划清理"
+  },
+  "Once a week, remove files older than two days from your temporary files, crash dumps, and shader caches. It never clears documents or the Recycle Bin.": {
+    "nl": "Verwijder wekelijks bestanden ouder dan twee dagen uit tijdelijke bestanden, crashdumps en shadercaches. Documenten en de prullenbak worden nooit gewist.",
+    "es": "Una vez por semana, elimina archivos de más de dos días de temporales, volcados de errores y cachés de sombreadores. Nunca borra documentos ni la papelera.",
+    "de": "Entfernt einmal wöchentlich Dateien älter als zwei Tage aus temporären Dateien, Absturzabbildern und Shadercaches. Dokumente und Papierkorb werden nie geleert.",
+    "fr": "Supprime chaque semaine les fichiers de plus de deux jours des fichiers temporaires, vidages après plantage et caches de shaders. Ne touche jamais aux documents ni à la corbeille.",
+    "pt": "Uma vez por semana, remove arquivos com mais de dois dias de temporários, despejos de falhas e caches de shaders. Nunca apaga documentos ou a Lixeira.",
+    "ru": "Раз в неделю удаляет файлы старше двух дней из временных файлов, дампов сбоев и кэшей шейдеров. Не удаляет документы и содержимое корзины.",
+    "zh": "每周一次从临时文件、崩溃转储和着色器缓存中删除超过两天的文件。不会清除文档或回收站。"
+  },
+  "Checking schedule…": {
+    "nl": "Planning controleren…",
+    "es": "Comprobando programación…",
+    "de": "Zeitplan wird geprüft…",
+    "fr": "Vérification du planning…",
+    "pt": "Verificando agendamento…",
+    "ru": "Проверка расписания…",
+    "zh": "正在检查计划…"
+  },
+  "24-hour time, for example 20:00": {
+    "nl": "Tijd in 24-uursnotatie, bijvoorbeeld 20:00",
+    "es": "Hora de 24 horas, por ejemplo 20:00",
+    "de": "24-Stunden-Zeit, zum Beispiel 20:00",
+    "fr": "Heure sur 24 heures, par exemple 20:00",
+    "pt": "Horário de 24 horas, por exemplo 20:00",
+    "ru": "Время в 24-часовом формате, например 20:00",
+    "zh": "24 小时制时间，例如 20:00"
+  },
+  "Enable weekly cleanup": {
+    "nl": "Wekelijks opruimen inschakelen",
+    "es": "Activar limpieza semanal",
+    "de": "Wöchentliche Bereinigung aktivieren",
+    "fr": "Activer le nettoyage hebdomadaire",
+    "pt": "Ativar limpeza semanal",
+    "ru": "Включить еженедельную очистку",
+    "zh": "启用每周清理"
+  },
+  "Run now": {
+    "nl": "Nu uitvoeren",
+    "es": "Ejecutar ahora",
+    "de": "Jetzt ausführen",
+    "fr": "Exécuter maintenant",
+    "pt": "Executar agora",
+    "ru": "Запустить сейчас",
+    "zh": "立即运行"
+  },
+  "Run cleanup now": {
+    "nl": "Nu opruimen",
+    "es": "Ejecutar limpieza ahora",
+    "de": "Bereinigung jetzt ausführen",
+    "fr": "Nettoyer maintenant",
+    "pt": "Executar limpeza agora",
+    "ru": "Запустить очистку сейчас",
+    "zh": "立即清理"
+  },
+  "Enter a 24-hour time such as 20:00.": {
+    "nl": "Voer een tijd in 24-uursnotatie in, zoals 20:00.",
+    "es": "Introduce una hora de 24 horas, como 20:00.",
+    "de": "Gib eine 24-Stunden-Zeit wie 20:00 ein.",
+    "fr": "Saisissez une heure sur 24 heures, comme 20:00.",
+    "pt": "Digite um horário de 24 horas, como 20:00.",
+    "ru": "Введите время в 24-часовом формате, например 20:00.",
+    "zh": "请输入 24 小时制时间，例如 20:00。"
+  },
+  "Windows Task Scheduler could not create the cleanup task.": {
+    "nl": "Windows Taakplanner kon de opruimtaak niet maken.",
+    "es": "El Programador de tareas no pudo crear la tarea de limpieza.",
+    "de": "Die Windows-Aufgabenplanung konnte die Bereinigungsaufgabe nicht erstellen.",
+    "fr": "Le Planificateur de tâches Windows n’a pas pu créer la tâche de nettoyage.",
+    "pt": "O Agendador de Tarefas não conseguiu criar a tarefa de limpeza.",
+    "ru": "Планировщику задач Windows не удалось создать задачу очистки.",
+    "zh": "Windows 任务计划程序无法创建清理任务。"
+  },
+  "Windows Task Scheduler could not remove the cleanup task.": {
+    "nl": "Windows Taakplanner kon de opruimtaak niet verwijderen.",
+    "es": "El Programador de tareas no pudo eliminar la tarea de limpieza.",
+    "de": "Die Windows-Aufgabenplanung konnte die Bereinigungsaufgabe nicht entfernen.",
+    "fr": "Le Planificateur de tâches Windows n’a pas pu supprimer la tâche de nettoyage.",
+    "pt": "O Agendador de Tarefas não conseguiu remover a tarefa de limpeza.",
+    "ru": "Планировщику задач Windows не удалось удалить задачу очистки.",
+    "zh": "Windows 任务计划程序无法删除清理任务。"
+  },
+  "Clean eligible files from your temporary, crash dump, and shader cache folders now? Files newer than two days and the Recycle Bin are left alone.": {
+    "nl": "Geschikte bestanden uit je tijdelijke, crashdump- en shadercachemappen nu verwijderen? Bestanden jonger dan twee dagen en de prullenbak blijven behouden.",
+    "es": "¿Limpiar ahora los archivos aptos de temporales, volcados y cachés de sombreadores? Los archivos de menos de dos días y la papelera no se tocan.",
+    "de": "Geeignete Dateien aus temporären, Absturzabbild- und Shadercacheordnern jetzt bereinigen? Dateien jünger als zwei Tage und Papierkorb bleiben unberührt.",
+    "fr": "Nettoyer maintenant les fichiers admissibles des dossiers temporaires, vidages et caches de shaders ? Les fichiers de moins de deux jours et la corbeille restent intacts.",
+    "pt": "Limpar agora arquivos elegíveis das pastas temporárias, despejos e caches de shaders? Arquivos com menos de dois dias e a Lixeira não serão alterados.",
+    "ru": "Очистить подходящие файлы в папках временных файлов, дампов и кэшей шейдеров сейчас? Файлы моложе двух дней и корзина не затрагиваются.",
+    "zh": "现在清理临时文件、崩溃转储和着色器缓存文件夹中的符合条件文件？两天内的新文件和回收站不会被更改。"
+  },
+  "Cleanup is running…": {
+    "nl": "Bezig met opruimen…",
+    "es": "Limpieza en curso…",
+    "de": "Bereinigung läuft…",
+    "fr": "Nettoyage en cours…",
+    "pt": "Limpeza em andamento…",
+    "ru": "Выполняется очистка…",
+    "zh": "正在清理…"
+  },
+  "Cleanup finished. Check the local cleanup log for the number of files removed.": {
+    "nl": "Opruimen voltooid. Bekijk het lokale opruimlog voor het aantal verwijderde bestanden.",
+    "es": "Limpieza terminada. Consulta el registro local para ver cuántos archivos se eliminaron.",
+    "de": "Bereinigung beendet. Die Anzahl entfernter Dateien steht im lokalen Bereinigungsprotokoll.",
+    "fr": "Nettoyage terminé. Consultez le journal local pour le nombre de fichiers supprimés.",
+    "pt": "Limpeza concluída. Confira o registro local para ver quantos arquivos foram removidos.",
+    "ru": "Очистка завершена. Число удалённых файлов указано в локальном журнале очистки.",
+    "zh": "清理已完成。请查看本地清理日志以了解已删除文件数量。"
+  },
+  "Weekly cleanup is ON · {0} at {1} · runs as your Windows account.": {
+    "nl": "Wekelijks opruimen staat AAN · {0} om {1} · uitgevoerd met je Windows-account.",
+    "es": "Limpieza semanal ACTIVADA · {0} a las {1} · se ejecuta con tu cuenta de Windows.",
+    "de": "Wöchentliche Bereinigung EIN · {0} um {1} · läuft mit deinem Windows-Konto.",
+    "fr": "Nettoyage hebdomadaire ACTIVÉ · {0} à {1} · exécuté avec votre compte Windows.",
+    "pt": "Limpeza semanal ATIVADA · {0} às {1} · executada com sua conta do Windows.",
+    "ru": "Еженедельная очистка ВКЛ · {0} в {1} · от вашей учётной записи Windows.",
+    "zh": "每周清理已开启 · {0} {1} · 使用您的 Windows 帐户运行。"
+  },
+  "Weekly cleanup is off.": {
+    "nl": "Wekelijks opruimen staat uit.",
+    "es": "La limpieza semanal está desactivada.",
+    "de": "Wöchentliche Bereinigung ist aus.",
+    "fr": "Le nettoyage hebdomadaire est désactivé.",
+    "pt": "A limpeza semanal está desativada.",
+    "ru": "Еженедельная очистка отключена.",
+    "zh": "每周清理已关闭。"
+  }
+}

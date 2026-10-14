@@ -1,0 +1,227 @@
+{
+  "Already applied. Undo it from Restore first.": {
+    "nl": "Al toegepast. Draai het eerst terug via Herstel.",
+    "es": "Ya está aplicado. Deshazlo primero en Restaurar.",
+    "de": "Bereits angewendet. Zuerst in Wiederherstellen rückgängig machen.",
+    "fr": "Déjà appliqué. Annulez d’abord dans Restaurer.",
+    "pt": "Já aplicado. Desfaça primeiro em Restaurar.",
+    "ru": "Уже применено. Сначала отмените в разделе восстановления.",
+    "zh": "已应用。请先在还原页面撤销。"
+  },
+  "Disabling memory compression requires at least 16 GB installed RAM.": {
+    "nl": "Geheugencompressie uitschakelen vereist minstens 16 GB geïnstalleerd RAM.",
+    "es": "Desactivar la compresión de memoria requiere al menos 16 GB de RAM instalada.",
+    "de": "Deaktivieren der Speicherkomprimierung erfordert mindestens 16 GB installierten RAM.",
+    "fr": "Désactiver la compression mémoire nécessite au moins 16 Go de RAM installée.",
+    "pt": "Desativar compressão de memória exige pelo menos 16 GB de RAM instalada.",
+    "ru": "Отключение сжатия памяти требует установленной ОЗУ не менее 16 ГБ.",
+    "zh": "禁用内存压缩需要至少安装 16 GB 内存。"
+  },
+  "Imported saved presets from the previous PowerShell app.": {
+    "nl": "Opgeslagen voorinstellingen uit de vorige PowerShell-app geïmporteerd.",
+    "es": "Se importaron preajustes de la aplicación PowerShell anterior.",
+    "de": "Gespeicherte Vorlagen aus der vorherigen PowerShell-App importiert.",
+    "fr": "Préréglages importés de l’ancienne application PowerShell.",
+    "pt": "Predefinições importadas do aplicativo PowerShell anterior.",
+    "ru": "Импортированы наборы из прежнего приложения PowerShell.",
+    "zh": "已从旧版 PowerShell 应用导入保存的预设。"
+  },
+  "Keep up to 100 saved presets.": {
+    "nl": "Bewaar maximaal 100 voorinstellingen.",
+    "es": "Guarda hasta 100 preajustes.",
+    "de": "Speichere bis zu 100 Vorlagen.",
+    "fr": "Conservez jusqu’à 100 préréglages.",
+    "pt": "Guarde até 100 predefinições.",
+    "ru": "Можно сохранить до 100 наборов.",
+    "zh": "最多保存 100 个预设。"
+  },
+  "Previous preferences must be an object.": {
+    "nl": "Vorige voorkeuren moeten een object zijn.",
+    "es": "Las preferencias anteriores deben ser un objeto.",
+    "de": "Vorherige Einstellungen müssen ein Objekt sein.",
+    "fr": "Les anciennes préférences doivent être un objet.",
+    "pt": "As preferências anteriores devem ser um objeto.",
+    "ru": "Прежние настройки должны быть объектом.",
+    "zh": "旧版偏好必须是对象。"
+  },
+  "Saved game-session settings were invalid. The current file will be preserved in the state backup.": {
+    "nl": "Opgeslagen gamesessie-instellingen waren ongeldig. Het huidige bestand wordt bewaard in de statusback-up.",
+    "es": "Los ajustes de sesión guardados no eran válidos. El archivo actual se conservará en la copia del estado.",
+    "de": "Gespeicherte Spielsitzungseinstellungen waren ungültig. Die aktuelle Datei bleibt in der Zustandssicherung erhalten.",
+    "fr": "Les réglages de session enregistrés étaient invalides. Le fichier actuel sera conservé dans la sauvegarde d’état.",
+    "pt": "As configurações salvas da sessão eram inválidas. O arquivo atual será preservado no backup de estado.",
+    "ru": "Сохранённые настройки игрового сеанса недопустимы. Текущий файл сохранится в резервной копии состояния.",
+    "zh": "保存的游戏会话设置无效。当前文件将在状态备份中保留。"
+  },
+  "Task Scheduler did not start.": {
+    "nl": "Taakplanner startte niet.",
+    "es": "El Programador de tareas no se inició.",
+    "de": "Aufgabenplanung wurde nicht gestartet.",
+    "fr": "Le Planificateur de tâches n’a pas démarré.",
+    "pt": "O Agendador de Tarefas não iniciou.",
+    "ru": "Планировщик задач не запустился.",
+    "zh": "任务计划程序未启动。"
+  },
+  "Task Scheduler timed out.": {
+    "nl": "Taakplanner heeft de tijdslimiet bereikt.",
+    "es": "El Programador de tareas agotó el tiempo.",
+    "de": "Aufgabenplanung hat das Zeitlimit überschritten.",
+    "fr": "Le Planificateur de tâches a expiré.",
+    "pt": "O Agendador de Tarefas excedeu o tempo.",
+    "ru": "Время ожидания планировщика задач истекло.",
+    "zh": "任务计划程序超时。"
+  },
+  "The previous benchmark data is invalid.": {
+    "nl": "De vorige meetgegevens zijn ongeldig.",
+    "es": "Los datos anteriores de mediciones no son válidos.",
+    "de": "Die vorherigen Messdaten sind ungültig.",
+    "fr": "Les anciennes données de mesure sont invalides.",
+    "pt": "Os dados anteriores de medições são inválidos.",
+    "ru": "Прежние данные замеров недопустимы.",
+    "zh": "旧版测量数据无效。"
+  },
+  "The previous benchmark file exceeds 2 MB.": {
+    "nl": "Het vorige meetbestand is groter dan 2 MB.",
+    "es": "El archivo anterior de mediciones supera 2 MB.",
+    "de": "Die vorherige Messdatei überschreitet 2 MB.",
+    "fr": "L’ancien fichier de mesures dépasse 2 Mo.",
+    "pt": "O arquivo anterior de medições excede 2 MB.",
+    "ru": "Прежний файл замеров превышает 2 МБ.",
+    "zh": "旧版测量文件超过 2 MB。"
+  },
+  "The previous preset file exceeds 1 MB.": {
+    "nl": "Het vorige voorinstellingsbestand is groter dan 1 MB.",
+    "es": "El archivo anterior de preajustes supera 1 MB.",
+    "de": "Die vorherige Vorlagendatei überschreitet 1 MB.",
+    "fr": "L’ancien fichier de préréglages dépasse 1 Mo.",
+    "pt": "O arquivo anterior de predefinições excede 1 MB.",
+    "ru": "Прежний файл наборов превышает 1 МБ.",
+    "zh": "旧版预设文件超过 1 MB。"
+  },
+  "The selected game executable was not found. Scan for games again or choose a different game.": {
+    "nl": "Het gekozen uitvoerbare gamebestand is niet gevonden. Scan opnieuw of kies een andere game.",
+    "es": "No se encontró el ejecutable elegido. Vuelve a buscar juegos o elige otro.",
+    "de": "Die gewählte Spieldatei wurde nicht gefunden. Scanne erneut oder wähle ein anderes Spiel.",
+    "fr": "L’exécutable choisi est introuvable. Relancez l’analyse ou choisissez un autre jeu.",
+    "pt": "O executável escolhido não foi encontrado. Verifique jogos novamente ou escolha outro.",
+    "ru": "Выбранный исполняемый файл игры не найден. Повторите поиск или выберите другую игру.",
+    "zh": "未找到所选游戏可执行文件。请重新扫描游戏或选择其他游戏。"
+  },
+  "This Windows version did not expose memory compression.": {
+    "nl": "Deze Windows-versie biedt geen toegang tot geheugencompressie.",
+    "es": "Esta versión de Windows no expone la compresión de memoria.",
+    "de": "Diese Windows-Version stellt Speicherkomprimierung nicht bereit.",
+    "fr": "Cette version Windows ne propose pas l’accès à la compression mémoire.",
+    "pt": "Esta versão do Windows não disponibilizou compressão de memória.",
+    "ru": "Эта версия Windows не предоставила доступ к сжатию памяти.",
+    "zh": "此 Windows 版本未提供内存压缩访问。"
+  },
+  "Windows could not activate the updated power plan.": {
+    "nl": "Windows kon het bijgewerkte energiebeheerschema niet activeren.",
+    "es": "Windows no pudo activar el plan de energía actualizado.",
+    "de": "Windows konnte den aktualisierten Energiesparplan nicht aktivieren.",
+    "fr": "Windows n’a pas pu activer le mode d’alimentation modifié.",
+    "pt": "O Windows não conseguiu ativar o plano de energia atualizado.",
+    "ru": "Windows не удалось активировать обновлённую схему питания.",
+    "zh": "Windows 无法启用更新后的电源计划。"
+  },
+  "Windows could not change memory compression.": {
+    "nl": "Windows kon geheugencompressie niet wijzigen.",
+    "es": "Windows no pudo cambiar la compresión de memoria.",
+    "de": "Windows konnte die Speicherkomprimierung nicht ändern.",
+    "fr": "Windows n’a pas pu modifier la compression mémoire.",
+    "pt": "O Windows não conseguiu alterar a compressão de memória.",
+    "ru": "Windows не удалось изменить сжатие памяти.",
+    "zh": "Windows 无法更改内存压缩。"
+  },
+  "Windows could not read a supported AC power setting.": {
+    "nl": "Windows kon geen ondersteunde netstroominstelling lezen.",
+    "es": "Windows no pudo leer un ajuste compatible de corriente.",
+    "de": "Windows konnte keine unterstützte Netzbetriebseinstellung lesen.",
+    "fr": "Windows n’a pas pu lire un réglage sur secteur pris en charge.",
+    "pt": "O Windows não conseguiu ler uma configuração compatível para tomada.",
+    "ru": "Windows не удалось прочитать поддерживаемую настройку питания от сети.",
+    "zh": "Windows 无法读取受支持的交流电设置。"
+  },
+  "Windows could not read a supported battery power setting.": {
+    "nl": "Windows kon geen ondersteunde accu-instelling lezen.",
+    "es": "Windows no pudo leer un ajuste compatible de batería.",
+    "de": "Windows konnte keine unterstützte Akkueinstellung lesen.",
+    "fr": "Windows n’a pas pu lire un réglage de batterie pris en charge.",
+    "pt": "O Windows não conseguiu ler uma configuração compatível de bateria.",
+    "ru": "Windows не удалось прочитать поддерживаемую настройку питания от батареи.",
+    "zh": "Windows 无法读取受支持的电池电源设置。"
+  },
+  "Windows could not read memory compression.": {
+    "nl": "Windows kon geheugencompressie niet lezen.",
+    "es": "Windows no pudo leer la compresión de memoria.",
+    "de": "Windows konnte die Speicherkomprimierung nicht lesen.",
+    "fr": "Windows n’a pas pu lire la compression mémoire.",
+    "pt": "O Windows não conseguiu ler a compressão de memória.",
+    "ru": "Windows не удалось прочитать состояние сжатия памяти.",
+    "zh": "Windows 无法读取内存压缩。"
+  },
+  "Windows could not read the active power plan.": {
+    "nl": "Windows kon het actieve energiebeheerschema niet lezen.",
+    "es": "Windows no pudo leer el plan de energía activo.",
+    "de": "Windows konnte den aktiven Energiesparplan nicht lesen.",
+    "fr": "Windows n’a pas pu lire le mode d’alimentation actif.",
+    "pt": "O Windows não conseguiu ler o plano de energia ativo.",
+    "ru": "Windows не удалось прочитать активную схему питания.",
+    "zh": "Windows 无法读取当前电源计划。"
+  },
+  "Windows could not start powercfg.": {
+    "nl": "Windows kon powercfg niet starten.",
+    "es": "Windows no pudo iniciar powercfg.",
+    "de": "Windows konnte powercfg nicht starten.",
+    "fr": "Windows n’a pas pu lancer powercfg.",
+    "pt": "O Windows não conseguiu iniciar powercfg.",
+    "ru": "Windows не удалось запустить powercfg.",
+    "zh": "Windows 无法启动 powercfg。"
+  },
+  "Windows could not update the saved AC power setting.": {
+    "nl": "Windows kon de opgeslagen netstroominstelling niet bijwerken.",
+    "es": "Windows no pudo actualizar el ajuste guardado de corriente.",
+    "de": "Windows konnte die gespeicherte Netzbetriebseinstellung nicht aktualisieren.",
+    "fr": "Windows n’a pas pu modifier le réglage sur secteur enregistré.",
+    "pt": "O Windows não conseguiu atualizar a configuração salva para tomada.",
+    "ru": "Windows не удалось обновить сохранённую настройку питания от сети.",
+    "zh": "Windows 无法更新保存的交流电设置。"
+  },
+  "Windows could not update the saved battery power setting.": {
+    "nl": "Windows kon de opgeslagen accu-instelling niet bijwerken.",
+    "es": "Windows no pudo actualizar el ajuste guardado de batería.",
+    "de": "Windows konnte die gespeicherte Akkueinstellung nicht aktualisieren.",
+    "fr": "Windows n’a pas pu modifier le réglage de batterie enregistré.",
+    "pt": "O Windows não conseguiu atualizar a configuração salva de bateria.",
+    "ru": "Windows не удалось обновить сохранённую настройку батареи.",
+    "zh": "Windows 无法更新保存的电池电源设置。"
+  },
+  "Windows did not confirm the requested hibernation state.": {
+    "nl": "Windows bevestigde de aangevraagde sluimerstandstatus niet.",
+    "es": "Windows no confirmó el estado de hibernación solicitado.",
+    "de": "Windows hat den angeforderten Ruhezustandsstatus nicht bestätigt.",
+    "fr": "Windows n’a pas confirmé l’état de veille prolongée demandé.",
+    "pt": "O Windows não confirmou o estado de hibernação solicitado.",
+    "ru": "Windows не подтвердила запрошенное состояние гибернации.",
+    "zh": "Windows 未确认请求的休眠状态。"
+  },
+  "Windows did not confirm the requested memory-compression state.": {
+    "nl": "Windows bevestigde de aangevraagde geheugencompressiestatus niet.",
+    "es": "Windows no confirmó el estado solicitado de compresión de memoria.",
+    "de": "Windows hat den angeforderten Speicherkomprimierungszustand nicht bestätigt.",
+    "fr": "Windows n’a pas confirmé l’état de compression mémoire demandé.",
+    "pt": "O Windows não confirmou o estado solicitado de compressão de memória.",
+    "ru": "Windows не подтвердила запрошенное состояние сжатия памяти.",
+    "zh": "Windows 未确认请求的内存压缩状态。"
+  },
+  "Windows power configuration timed out.": {
+    "nl": "Windows-energieconfiguratie heeft de tijdslimiet bereikt.",
+    "es": "La configuración de energía de Windows agotó el tiempo.",
+    "de": "Windows-Energiekonfiguration hat das Zeitlimit überschritten.",
+    "fr": "La configuration d’alimentation Windows a expiré.",
+    "pt": "A configuração de energia do Windows excedeu o tempo.",
+    "ru": "Время настройки питания Windows истекло.",
+    "zh": "Windows 电源配置超时。"
+  }
+}

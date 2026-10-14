@@ -1,6 +1,6 @@
 # SharkOptimizer
 
-A free Windows optimizer written in PowerShell. SharkOptimizer groups Windows tweaks, game profiles, repair tools, and system checks in one app. Changes are recorded so you can review and undo them.
+A free Windows optimizer with Windows tweaks, game profiles, repair tools, and system checks in one app. The 2.0.0 candidate uses a native C# / WPF interface. The currently published 1.5.1 release uses PowerShell.
 
 > Made by Bas. Available in English, Nederlands, Español, Deutsch, Français, Português (Brasil), Русский and 简体中文.
 
@@ -8,7 +8,7 @@ A free Windows optimizer written in PowerShell. SharkOptimizer groups Windows tw
 
 Download **`SharkOptimizer-Setup.exe`** from the [latest GitHub release](https://github.com/Bas-Makes-Stuff/SharkOptimizer/releases/latest), then run the installer. It installs SharkOptimizer, adds a Start Menu entry, offers an optional Desktop shortcut, and includes an uninstaller.
 
-Current version: **1.5.1**.
+Native candidate version: **2.0.0**. Its app and installer build locally; release verification is ongoing. The download above remains the published 1.5.1 build until the native release is approved and published.
 
 The installer is not code-signed. If SmartScreen appears, confirm that you downloaded the setup file from this official repository before choosing **More info > Run anyway**.
 
@@ -25,6 +25,8 @@ The installer is not code-signed. If SmartScreen appears, confirm that you downl
 - **Restore support** with restore point guidance and undo for tracked changes.
 - **Eight languages**, accent color choices, and a system report for troubleshooting.
 - **Animated launcher** with startup checks and a useful error report.
+
+The native candidate also includes a background scan of existing Windows tweaks, a compact dashboard with live CPU/GPU/RAM readings, close-to-tray behavior, and background GitHub update downloads that wait for installation confirmation. Existing tweaks detected outside SharkOptimizer are separate from its undo history; settings that cannot be read reliably stay unverified.
 
 ## Quick start
 
@@ -48,15 +50,29 @@ Change the language with the language button or in **Settings**. The in-app Guid
 
 | Path | Purpose |
 |------|---------|
-| `Start-SharkOptimizer.bat` | Starts the PowerShell launcher |
-| `data/SharkOptimizer-Launcher.ps1` | Loading screen and startup checks |
-| `data/SharkOptimizer.ps1` | Main application |
-| `data/fonts/` | Bundled Poppins fonts |
-| `data/shark.ico` | App and installer icon |
+| `Start-SharkOptimizer.bat` | Starts the legacy PowerShell launcher |
+| `legacy/` | Preserved PowerShell app and launcher sources |
+| `legacy/fonts/` | Bundled Poppins fonts shared with the native app |
+| `legacy/shark.ico` | Shared app and installer icon source |
 | `installer/` | Installer source, manifest, and build script |
-| `SharkOptimizer-Setup.exe` | Installer attached to the GitHub release |
+| `native/` | C# / WPF app source, manifest, build script, and generated `out/` executable |
+| `shared/` | Shared Windows startup registration code |
+| `tools/` | Version validation, version changes, and source packaging |
+| `.github/workflows/release.yml` | Proposed Windows build and tag-triggered release workflow |
+| `release/<version>/SharkOptimizer-Setup.exe` | Locally built installer candidate |
 
-Settings, logs, and undo information are stored in `C:\ProgramData\SharkOptimizer`.
+The legacy app stores settings, logs, and undo information in `C:\ProgramData\SharkOptimizer`. The native app stores its state under `%LOCALAPPDATA%\SharkOptimizer` and imports supported legacy data. Portable backups preserve app preferences and profiles; they do not apply Windows changes or replace undo history.
+
+Build the native candidate from a source checkout:
+
+```powershell
+.\native\extract-translations.ps1
+.\native\build.ps1
+.\installer\build-installer.ps1 -NativeAppPath .\native\out\SharkOptimizer.Native.exe -OutputPath .\release\2.0.0\SharkOptimizer-Setup.exe
+.\tools\Assert-ReleaseVersion.ps1 -AppPath .\native\out\SharkOptimizer.Native.exe -SetupPath .\release\2.0.0\SharkOptimizer-Setup.exe
+```
+
+The local installer embeds the native app. The public download remains the released PowerShell version until publication. See [native/README.md](native/README.md) for implementation details and [RELEASE-GUIDE.md](RELEASE-GUIDE.md) for the release process. The source and workflow are under review in [PR #2](https://github.com/Bas-Makes-Stuff/SharkOptimizer/pull/2). The initial 2.0.0 hosted build passed; the latest policy corrections require a new passing run before publication.
 
 ## Uninstall
 
@@ -70,4 +86,3 @@ SharkOptimizer can change Windows settings, registry values, services, and netwo
 
 - Font: [Poppins](https://fonts.google.com/specimen/Poppins), licensed under the SIL Open Font License.
 - SharkOptimizer is an independent project and is not affiliated with Hone, ExitLag, GearUP Booster, Microsoft, NVIDIA, AMD, Riot Games, Epic Games, Valve, or other companies mentioned in the app.
-

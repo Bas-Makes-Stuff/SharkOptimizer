@@ -1,0 +1,20 @@
+{
+  "Expanded {0} previous-app undo record(s) with registry or adapter recovery data. Existing saved values were kept.": {
+    "nl": "{0} herstelrecord(s) uit de vorige app uitgebreid met register- of adapterherstelgegevens. Bestaande opgeslagen waarden zijn behouden.",
+    "es": "Se ampliaron {0} registros anteriores con datos de recuperación del registro o adaptador. Se conservaron los valores guardados existentes.",
+    "de": "{0} alte Wiederherstellungsdatensätze um Registrierungs- oder Adapterdaten erweitert. Vorhandene gespeicherte Werte blieben erhalten.",
+    "fr": "{0} anciens enregistrements d’annulation complétés avec des données de récupération du registre ou d’adaptateur. Les valeurs enregistrées existantes sont conservées.",
+    "pt": "{0} registros anteriores ampliados com dados de recuperação de registro ou adaptador. Os valores salvos existentes foram mantidos.",
+    "ru": "Дополнено прежних записей отмены: {0}, данными восстановления реестра или адаптера. Существующие сохранённые значения оставлены.",
+    "zh": "已为 {0} 条旧版撤销记录补充注册表或适配器恢复数据。现有保存值已保留。"
+  },
+  "Could not expand previous undo history: {0}": {
+    "nl": "Kon vorige herstelgeschiedenis niet uitbreiden: {0}",
+    "es": "No se pudo ampliar el historial anterior de restauración: {0}",
+    "de": "Vorheriger Wiederherstellungsverlauf konnte nicht erweitert werden: {0}",
+    "fr": "Impossible de compléter l’ancien historique d’annulation : {0}",
+    "pt": "Não foi possível ampliar o histórico anterior de restauração: {0}",
+    "ru": "Не удалось дополнить прежнюю историю отмены: {0}",
+    "zh": "无法扩展旧版撤销历史：{0}"
+  }
+}

@@ -1,0 +1,380 @@
+{
+  "Public DNS response-time sample (three uncached A-record queries per provider):": {
+    "nl": "Steekproef van publieke DNS-responstijden (drie A-recordopvragen zonder cache per provider):",
+    "es": "Muestra de respuesta DNS pública (tres consultas A sin caché por proveedor):",
+    "de": "Stichprobe öffentlicher DNS-Antwortzeiten (drei ungecachte A-Abfragen pro Anbieter):",
+    "fr": "Échantillon des temps de réponse DNS publics (trois requêtes A sans cache par fournisseur) :",
+    "pt": "Amostra de resposta DNS pública (três consultas A sem cache por provedor):",
+    "ru": "Замер ответа публичных DNS (три запроса A без кэша на провайдера):",
+    "zh": "公共 DNS 响应时间采样（每个提供商三次未缓存 A 记录查询）："
+  },
+  "This measures DNS response time from this PC; it does not change your network settings.": {
+    "nl": "Dit meet de DNS-responstijd vanaf deze pc; je netwerkinstellingen worden niet gewijzigd.",
+    "es": "Mide la respuesta DNS desde este PC; no cambia los ajustes de red.",
+    "de": "Misst DNS-Antwortzeiten von diesem PC; ändert keine Netzwerkeinstellungen.",
+    "fr": "Mesure le temps de réponse DNS depuis ce PC ; ne modifie pas les réglages réseau.",
+    "pt": "Mede o tempo de resposta DNS deste PC; não altera configurações de rede.",
+    "ru": "Измеряет время ответа DNS с этого ПК; не меняет сетевые настройки.",
+    "zh": "此测试测量此电脑的 DNS 响应时间，不更改网络设置。"
+  },
+  "REGION LATENCY · TCP PORT 443 · 4 SAMPLES": {
+    "nl": "REGIOVERTRAGING · TCP-POORT 443 · 4 METINGEN",
+    "es": "LATENCIA REGIONAL · PUERTO TCP 443 · 4 MUESTRAS",
+    "de": "REGIONALE LATENZ · TCP-PORT 443 · 4 MESSUNGEN",
+    "fr": "LATENCE RÉGIONALE · PORT TCP 443 · 4 MESURES",
+    "pt": "LATÊNCIA REGIONAL · PORTA TCP 443 · 4 AMOSTRAS",
+    "ru": "ЗАДЕРЖКА ПО РЕГИОНАМ · TCP-ПОРТ 443 · 4 ЗАМЕРА",
+    "zh": "区域延迟 · TCP 端口 443 · 4 次采样"
+  },
+  "These are TCP connection times to sample endpoints, not a promise of latency to a particular game server. Test the actual game region too.": {
+    "nl": "Dit zijn TCP-verbindingstijden naar testadressen, geen garantie voor de vertraging naar een specifieke gameserver. Test ook de echte gameregio.",
+    "es": "Son tiempos de conexión TCP a destinos de muestra, no una garantía de latencia a un servidor de juego. Prueba también la región real del juego.",
+    "de": "Dies sind TCP-Verbindungszeiten zu Beispielendpunkten, keine Zusage für die Latenz eines Spielservers. Teste auch die tatsächliche Spielregion.",
+    "fr": "Ce sont des temps de connexion TCP vers des destinations de test, pas une garantie de latence vers un serveur de jeu. Testez aussi la région réelle du jeu.",
+    "pt": "São tempos de conexão TCP a destinos de teste, não uma garantia de latência a um servidor de jogo. Teste também a região real do jogo.",
+    "ru": "Это время TCP-подключения к тестовым узлам, а не гарантия задержки до игрового сервера. Проверьте также фактический регион игры.",
+    "zh": "这些是测试端点的 TCP 连接时间，并不保证特定游戏服务器的延迟。请同时测试实际游戏区域。"
+  },
+  "{0} · {1} · {2} ms average": {
+    "nl": "{0} · {1} · gemiddeld {2} ms",
+    "es": "{0} · {1} · media {2} ms",
+    "de": "{0} · {1} · durchschnittlich {2} ms",
+    "fr": "{0} · {1} · moyenne {2} ms",
+    "pt": "{0} · {1} · média {2} ms",
+    "ru": "{0} · {1} · в среднем {2} мс",
+    "zh": "{0} · {1} · 平均 {2} ms"
+  },
+  "{0} · {1} · unreachable": {
+    "nl": "{0} · {1} · onbereikbaar",
+    "es": "{0} · {1} · inaccesible",
+    "de": "{0} · {1} · nicht erreichbar",
+    "fr": "{0} · {1} · inaccessible",
+    "pt": "{0} · {1} · inacessível",
+    "ru": "{0} · {1} · недоступен",
+    "zh": "{0} · {1} · 无法访问"
+  },
+  "{0} ms · jitter {1} · loss {2}%": {
+    "nl": "{0} ms · jitter {1} · verlies {2}%",
+    "es": "{0} ms · fluctuación {1} · pérdida {2}%",
+    "de": "{0} ms · Jitter {1} · Verlust {2}%",
+    "fr": "{0} ms · gigue {1} · perte {2}%",
+    "pt": "{0} ms · jitter {1} · perda {2}%",
+    "ru": "{0} мс · джиттер {1} · потери {2}%",
+    "zh": "{0} ms · 抖动 {1} · 丢包 {2}%"
+  },
+  "timeout · 100% loss": {
+    "nl": "time-out · 100% verlies",
+    "es": "tiempo agotado · 100% pérdida",
+    "de": "Zeitlimit überschritten · 100% Verlust",
+    "fr": "délai dépassé · 100% perte",
+    "pt": "tempo esgotado · 100% perda",
+    "ru": "время истекло · потери 100%",
+    "zh": "超时 · 100% 丢包"
+  },
+  "EU Frankfurt": {
+    "nl": "EU Frankfurt",
+    "es": "UE Fráncfort",
+    "de": "EU Frankfurt",
+    "fr": "UE Francfort",
+    "pt": "UE Frankfurt",
+    "ru": "Европа, Франкфурт",
+    "zh": "欧洲 法兰克福"
+  },
+  "EU Ireland": {
+    "nl": "EU Ierland",
+    "es": "UE Irlanda",
+    "de": "EU Irland",
+    "fr": "UE Irlande",
+    "pt": "UE Irlanda",
+    "ru": "Европа, Ирландия",
+    "zh": "欧洲 爱尔兰"
+  },
+  "EU London": {
+    "nl": "EU Londen",
+    "es": "UE Londres",
+    "de": "EU London",
+    "fr": "UE Londres",
+    "pt": "UE Londres",
+    "ru": "Европа, Лондон",
+    "zh": "欧洲 伦敦"
+  },
+  "EU Stockholm": {
+    "nl": "EU Stockholm",
+    "es": "UE Estocolmo",
+    "de": "EU Stockholm",
+    "fr": "UE Stockholm",
+    "pt": "UE Estocolmo",
+    "ru": "Европа, Стокгольм",
+    "zh": "欧洲 斯德哥尔摩"
+  },
+  "US East": {
+    "nl": "VS Oost",
+    "es": "EE. UU. Este",
+    "de": "USA Ost",
+    "fr": "États-Unis Est",
+    "pt": "EUA Leste",
+    "ru": "США, восток",
+    "zh": "美国 东部"
+  },
+  "US West": {
+    "nl": "VS West",
+    "es": "EE. UU. Oeste",
+    "de": "USA West",
+    "fr": "États-Unis Ouest",
+    "pt": "EUA Oeste",
+    "ru": "США, запад",
+    "zh": "美国 西部"
+  },
+  "South America": {
+    "nl": "Zuid-Amerika",
+    "es": "Sudamérica",
+    "de": "Südamerika",
+    "fr": "Amérique du Sud",
+    "pt": "América do Sul",
+    "ru": "Южная Америка",
+    "zh": "南美洲"
+  },
+  "Asia Tokyo": {
+    "nl": "Azië Tokio",
+    "es": "Asia Tokio",
+    "de": "Asien Tokio",
+    "fr": "Asie Tokyo",
+    "pt": "Ásia Tóquio",
+    "ru": "Азия, Токио",
+    "zh": "亚洲 东京"
+  },
+  "Asia Singapore": {
+    "nl": "Azië Singapore",
+    "es": "Asia Singapur",
+    "de": "Asien Singapur",
+    "fr": "Asie Singapour",
+    "pt": "Ásia Singapura",
+    "ru": "Азия, Сингапур",
+    "zh": "亚洲 新加坡"
+  },
+  "Oceania Sydney": {
+    "nl": "Oceanië Sydney",
+    "es": "Oceanía Sídney",
+    "de": "Ozeanien Sydney",
+    "fr": "Océanie Sydney",
+    "pt": "Oceania Sydney",
+    "ru": "Океания, Сидней",
+    "zh": "大洋洲 悉尼"
+  },
+  "Cloudflare DNS · {0} ms · jitter {1} · loss {2}%": {
+    "nl": "Cloudflare DNS · {0} ms · jitter {1} · verlies {2}%",
+    "es": "Cloudflare DNS · {0} ms · fluctuación {1} · pérdida {2}%",
+    "de": "Cloudflare DNS · {0} ms · Jitter {1} · Verlust {2}%",
+    "fr": "Cloudflare DNS · {0} ms · gigue {1} · perte {2}%",
+    "pt": "Cloudflare DNS · {0} ms · jitter {1} · perda {2}%",
+    "ru": "Cloudflare DNS · {0} мс · джиттер {1} · потери {2}%",
+    "zh": "Cloudflare DNS · {0} ms · 抖动 {1} · 丢包 {2}%"
+  },
+  "Cloudflare DNS · timeout · 100% loss": {
+    "nl": "Cloudflare DNS · time-out · 100% verlies",
+    "es": "Cloudflare DNS · tiempo agotado · 100% pérdida",
+    "de": "Cloudflare DNS · Zeitlimit überschritten · 100% Verlust",
+    "fr": "Cloudflare DNS · délai dépassé · 100% perte",
+    "pt": "Cloudflare DNS · tempo esgotado · 100% perda",
+    "ru": "Cloudflare DNS · время истекло · потери 100%",
+    "zh": "Cloudflare DNS · 超时 · 100% 丢包"
+  },
+  "Google DNS · {0} ms · jitter {1} · loss {2}%": {
+    "nl": "Google DNS · {0} ms · jitter {1} · verlies {2}%",
+    "es": "Google DNS · {0} ms · fluctuación {1} · pérdida {2}%",
+    "de": "Google DNS · {0} ms · Jitter {1} · Verlust {2}%",
+    "fr": "Google DNS · {0} ms · gigue {1} · perte {2}%",
+    "pt": "Google DNS · {0} ms · jitter {1} · perda {2}%",
+    "ru": "Google DNS · {0} мс · джиттер {1} · потери {2}%",
+    "zh": "Google DNS · {0} ms · 抖动 {1} · 丢包 {2}%"
+  },
+  "Google DNS · timeout · 100% loss": {
+    "nl": "Google DNS · time-out · 100% verlies",
+    "es": "Google DNS · tiempo agotado · 100% pérdida",
+    "de": "Google DNS · Zeitlimit überschritten · 100% Verlust",
+    "fr": "Google DNS · délai dépassé · 100% perte",
+    "pt": "Google DNS · tempo esgotado · 100% perda",
+    "ru": "Google DNS · время истекло · потери 100%",
+    "zh": "Google DNS · 超时 · 100% 丢包"
+  },
+  "EU Frankfurt · {0} ms · jitter {1} · loss {2}%": {
+    "nl": "EU Frankfurt · {0} ms · jitter {1} · verlies {2}%",
+    "es": "UE Fráncfort · {0} ms · fluctuación {1} · pérdida {2}%",
+    "de": "EU Frankfurt · {0} ms · Jitter {1} · Verlust {2}%",
+    "fr": "UE Francfort · {0} ms · gigue {1} · perte {2}%",
+    "pt": "UE Frankfurt · {0} ms · jitter {1} · perda {2}%",
+    "ru": "Европа, Франкфурт · {0} мс · джиттер {1} · потери {2}%",
+    "zh": "欧洲 法兰克福 · {0} ms · 抖动 {1} · 丢包 {2}%"
+  },
+  "EU Frankfurt · timeout · 100% loss": {
+    "nl": "EU Frankfurt · time-out · 100% verlies",
+    "es": "UE Fráncfort · tiempo agotado · 100% pérdida",
+    "de": "EU Frankfurt · Zeitlimit überschritten · 100% Verlust",
+    "fr": "UE Francfort · délai dépassé · 100% perte",
+    "pt": "UE Frankfurt · tempo esgotado · 100% perda",
+    "ru": "Европа, Франкфурт · время истекло · потери 100%",
+    "zh": "欧洲 法兰克福 · 超时 · 100% 丢包"
+  },
+  "EU Ireland · {0} ms · jitter {1} · loss {2}%": {
+    "nl": "EU Ierland · {0} ms · jitter {1} · verlies {2}%",
+    "es": "UE Irlanda · {0} ms · fluctuación {1} · pérdida {2}%",
+    "de": "EU Irland · {0} ms · Jitter {1} · Verlust {2}%",
+    "fr": "UE Irlande · {0} ms · gigue {1} · perte {2}%",
+    "pt": "UE Irlanda · {0} ms · jitter {1} · perda {2}%",
+    "ru": "Европа, Ирландия · {0} мс · джиттер {1} · потери {2}%",
+    "zh": "欧洲 爱尔兰 · {0} ms · 抖动 {1} · 丢包 {2}%"
+  },
+  "EU Ireland · timeout · 100% loss": {
+    "nl": "EU Ierland · time-out · 100% verlies",
+    "es": "UE Irlanda · tiempo agotado · 100% pérdida",
+    "de": "EU Irland · Zeitlimit überschritten · 100% Verlust",
+    "fr": "UE Irlande · délai dépassé · 100% perte",
+    "pt": "UE Irlanda · tempo esgotado · 100% perda",
+    "ru": "Европа, Ирландия · время истекло · потери 100%",
+    "zh": "欧洲 爱尔兰 · 超时 · 100% 丢包"
+  },
+  "EU London · {0} ms · jitter {1} · loss {2}%": {
+    "nl": "EU Londen · {0} ms · jitter {1} · verlies {2}%",
+    "es": "UE Londres · {0} ms · fluctuación {1} · pérdida {2}%",
+    "de": "EU London · {0} ms · Jitter {1} · Verlust {2}%",
+    "fr": "UE Londres · {0} ms · gigue {1} · perte {2}%",
+    "pt": "UE Londres · {0} ms · jitter {1} · perda {2}%",
+    "ru": "Европа, Лондон · {0} мс · джиттер {1} · потери {2}%",
+    "zh": "欧洲 伦敦 · {0} ms · 抖动 {1} · 丢包 {2}%"
+  },
+  "EU London · timeout · 100% loss": {
+    "nl": "EU Londen · time-out · 100% verlies",
+    "es": "UE Londres · tiempo agotado · 100% pérdida",
+    "de": "EU London · Zeitlimit überschritten · 100% Verlust",
+    "fr": "UE Londres · délai dépassé · 100% perte",
+    "pt": "UE Londres · tempo esgotado · 100% perda",
+    "ru": "Европа, Лондон · время истекло · потери 100%",
+    "zh": "欧洲 伦敦 · 超时 · 100% 丢包"
+  },
+  "EU Stockholm · {0} ms · jitter {1} · loss {2}%": {
+    "nl": "EU Stockholm · {0} ms · jitter {1} · verlies {2}%",
+    "es": "UE Estocolmo · {0} ms · fluctuación {1} · pérdida {2}%",
+    "de": "EU Stockholm · {0} ms · Jitter {1} · Verlust {2}%",
+    "fr": "UE Stockholm · {0} ms · gigue {1} · perte {2}%",
+    "pt": "UE Estocolmo · {0} ms · jitter {1} · perda {2}%",
+    "ru": "Европа, Стокгольм · {0} мс · джиттер {1} · потери {2}%",
+    "zh": "欧洲 斯德哥尔摩 · {0} ms · 抖动 {1} · 丢包 {2}%"
+  },
+  "EU Stockholm · timeout · 100% loss": {
+    "nl": "EU Stockholm · time-out · 100% verlies",
+    "es": "UE Estocolmo · tiempo agotado · 100% pérdida",
+    "de": "EU Stockholm · Zeitlimit überschritten · 100% Verlust",
+    "fr": "UE Stockholm · délai dépassé · 100% perte",
+    "pt": "UE Estocolmo · tempo esgotado · 100% perda",
+    "ru": "Европа, Стокгольм · время истекло · потери 100%",
+    "zh": "欧洲 斯德哥尔摩 · 超时 · 100% 丢包"
+  },
+  "US East · {0} ms · jitter {1} · loss {2}%": {
+    "nl": "VS Oost · {0} ms · jitter {1} · verlies {2}%",
+    "es": "EE. UU. Este · {0} ms · fluctuación {1} · pérdida {2}%",
+    "de": "USA Ost · {0} ms · Jitter {1} · Verlust {2}%",
+    "fr": "États-Unis Est · {0} ms · gigue {1} · perte {2}%",
+    "pt": "EUA Leste · {0} ms · jitter {1} · perda {2}%",
+    "ru": "США, восток · {0} мс · джиттер {1} · потери {2}%",
+    "zh": "美国 东部 · {0} ms · 抖动 {1} · 丢包 {2}%"
+  },
+  "US East · timeout · 100% loss": {
+    "nl": "VS Oost · time-out · 100% verlies",
+    "es": "EE. UU. Este · tiempo agotado · 100% pérdida",
+    "de": "USA Ost · Zeitlimit überschritten · 100% Verlust",
+    "fr": "États-Unis Est · délai dépassé · 100% perte",
+    "pt": "EUA Leste · tempo esgotado · 100% perda",
+    "ru": "США, восток · время истекло · потери 100%",
+    "zh": "美国 东部 · 超时 · 100% 丢包"
+  },
+  "US West · {0} ms · jitter {1} · loss {2}%": {
+    "nl": "VS West · {0} ms · jitter {1} · verlies {2}%",
+    "es": "EE. UU. Oeste · {0} ms · fluctuación {1} · pérdida {2}%",
+    "de": "USA West · {0} ms · Jitter {1} · Verlust {2}%",
+    "fr": "États-Unis Ouest · {0} ms · gigue {1} · perte {2}%",
+    "pt": "EUA Oeste · {0} ms · jitter {1} · perda {2}%",
+    "ru": "США, запад · {0} мс · джиттер {1} · потери {2}%",
+    "zh": "美国 西部 · {0} ms · 抖动 {1} · 丢包 {2}%"
+  },
+  "US West · timeout · 100% loss": {
+    "nl": "VS West · time-out · 100% verlies",
+    "es": "EE. UU. Oeste · tiempo agotado · 100% pérdida",
+    "de": "USA West · Zeitlimit überschritten · 100% Verlust",
+    "fr": "États-Unis Ouest · délai dépassé · 100% perte",
+    "pt": "EUA Oeste · tempo esgotado · 100% perda",
+    "ru": "США, запад · время истекло · потери 100%",
+    "zh": "美国 西部 · 超时 · 100% 丢包"
+  },
+  "South America · {0} ms · jitter {1} · loss {2}%": {
+    "nl": "Zuid-Amerika · {0} ms · jitter {1} · verlies {2}%",
+    "es": "Sudamérica · {0} ms · fluctuación {1} · pérdida {2}%",
+    "de": "Südamerika · {0} ms · Jitter {1} · Verlust {2}%",
+    "fr": "Amérique du Sud · {0} ms · gigue {1} · perte {2}%",
+    "pt": "América do Sul · {0} ms · jitter {1} · perda {2}%",
+    "ru": "Южная Америка · {0} мс · джиттер {1} · потери {2}%",
+    "zh": "南美洲 · {0} ms · 抖动 {1} · 丢包 {2}%"
+  },
+  "South America · timeout · 100% loss": {
+    "nl": "Zuid-Amerika · time-out · 100% verlies",
+    "es": "Sudamérica · tiempo agotado · 100% pérdida",
+    "de": "Südamerika · Zeitlimit überschritten · 100% Verlust",
+    "fr": "Amérique du Sud · délai dépassé · 100% perte",
+    "pt": "América do Sul · tempo esgotado · 100% perda",
+    "ru": "Южная Америка · время истекло · потери 100%",
+    "zh": "南美洲 · 超时 · 100% 丢包"
+  },
+  "Asia Tokyo · {0} ms · jitter {1} · loss {2}%": {
+    "nl": "Azië Tokio · {0} ms · jitter {1} · verlies {2}%",
+    "es": "Asia Tokio · {0} ms · fluctuación {1} · pérdida {2}%",
+    "de": "Asien Tokio · {0} ms · Jitter {1} · Verlust {2}%",
+    "fr": "Asie Tokyo · {0} ms · gigue {1} · perte {2}%",
+    "pt": "Ásia Tóquio · {0} ms · jitter {1} · perda {2}%",
+    "ru": "Азия, Токио · {0} мс · джиттер {1} · потери {2}%",
+    "zh": "亚洲 东京 · {0} ms · 抖动 {1} · 丢包 {2}%"
+  },
+  "Asia Tokyo · timeout · 100% loss": {
+    "nl": "Azië Tokio · time-out · 100% verlies",
+    "es": "Asia Tokio · tiempo agotado · 100% pérdida",
+    "de": "Asien Tokio · Zeitlimit überschritten · 100% Verlust",
+    "fr": "Asie Tokyo · délai dépassé · 100% perte",
+    "pt": "Ásia Tóquio · tempo esgotado · 100% perda",
+    "ru": "Азия, Токио · время истекло · потери 100%",
+    "zh": "亚洲 东京 · 超时 · 100% 丢包"
+  },
+  "Asia Singapore · {0} ms · jitter {1} · loss {2}%": {
+    "nl": "Azië Singapore · {0} ms · jitter {1} · verlies {2}%",
+    "es": "Asia Singapur · {0} ms · fluctuación {1} · pérdida {2}%",
+    "de": "Asien Singapur · {0} ms · Jitter {1} · Verlust {2}%",
+    "fr": "Asie Singapour · {0} ms · gigue {1} · perte {2}%",
+    "pt": "Ásia Singapura · {0} ms · jitter {1} · perda {2}%",
+    "ru": "Азия, Сингапур · {0} мс · джиттер {1} · потери {2}%",
+    "zh": "亚洲 新加坡 · {0} ms · 抖动 {1} · 丢包 {2}%"
+  },
+  "Asia Singapore · timeout · 100% loss": {
+    "nl": "Azië Singapore · time-out · 100% verlies",
+    "es": "Asia Singapur · tiempo agotado · 100% pérdida",
+    "de": "Asien Singapur · Zeitlimit überschritten · 100% Verlust",
+    "fr": "Asie Singapour · délai dépassé · 100% perte",
+    "pt": "Ásia Singapura · tempo esgotado · 100% perda",
+    "ru": "Азия, Сингапур · время истекло · потери 100%",
+    "zh": "亚洲 新加坡 · 超时 · 100% 丢包"
+  },
+  "Oceania Sydney · {0} ms · jitter {1} · loss {2}%": {
+    "nl": "Oceanië Sydney · {0} ms · jitter {1} · verlies {2}%",
+    "es": "Oceanía Sídney · {0} ms · fluctuación {1} · pérdida {2}%",
+    "de": "Ozeanien Sydney · {0} ms · Jitter {1} · Verlust {2}%",
+    "fr": "Océanie Sydney · {0} ms · gigue {1} · perte {2}%",
+    "pt": "Oceania Sydney · {0} ms · jitter {1} · perda {2}%",
+    "ru": "Океания, Сидней · {0} мс · джиттер {1} · потери {2}%",
+    "zh": "大洋洲 悉尼 · {0} ms · 抖动 {1} · 丢包 {2}%"
+  },
+  "Oceania Sydney · timeout · 100% loss": {
+    "nl": "Oceanië Sydney · time-out · 100% verlies",
+    "es": "Oceanía Sídney · tiempo agotado · 100% pérdida",
+    "de": "Ozeanien Sydney · Zeitlimit überschritten · 100% Verlust",
+    "fr": "Océanie Sydney · délai dépassé · 100% perte",
+    "pt": "Oceania Sydney · tempo esgotado · 100% perda",
+    "ru": "Океания, Сидней · время истекло · потери 100%",
+    "zh": "大洋洲 悉尼 · 超时 · 100% 丢包"
+  }
+}

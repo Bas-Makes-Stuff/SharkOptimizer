@@ -1,0 +1,254 @@
+{
+  "Opens File Explorer to This PC instead of Home or Quick Access.": {
+    "nl": "Opent Verkenner bij Deze pc in plaats van Start of Snelle toegang.",
+    "es": "Abre el Explorador de archivos en Este equipo en lugar de Inicio o Acceso rápido.",
+    "de": "Öffnet den Explorer mit Dieser PC statt Start oder Schnellzugriff.",
+    "fr": "Ouvre l’Explorateur de fichiers sur Ce PC plutôt que sur l’accueil ou l’accès rapide.",
+    "pt": "Abre o Explorador de Arquivos em Este Computador em vez de Início ou Acesso Rápido.",
+    "ru": "Открывает Проводник на странице «Этот компьютер» вместо главной страницы или быстрого доступа.",
+    "zh": "打开文件资源管理器时显示“此电脑”，而非主页或快速访问。"
+  },
+  "Restores the full right-click menu in Windows 11 instead of opening the compact menu first.": {
+    "nl": "Herstelt het volledige rechtermuisknopmenu in Windows 11 in plaats van eerst het compacte menu te openen.",
+    "es": "Restaura el menú contextual completo de Windows 11 en lugar de abrir primero el menú compacto.",
+    "de": "Stellt in Windows 11 das vollständige Kontextmenü wieder her, statt zuerst das kompakte Menü zu öffnen.",
+    "fr": "Restaure le menu contextuel complet de Windows 11 au lieu d’ouvrir d’abord le menu compact.",
+    "pt": "Restaura o menu completo do botão direito no Windows 11 em vez de abrir primeiro o menu compacto.",
+    "ru": "Возвращает полное контекстное меню Windows 11 вместо первоначального открытия компактного меню.",
+    "zh": "恢复 Windows 11 完整右键菜单，而不是先打开精简菜单。"
+  },
+  "Windows Explorer may need to restart or you may need to sign out and back in. This only affects Windows 11.": {
+    "nl": "Windows Verkenner moet mogelijk opnieuw starten of je moet je afmelden en opnieuw aanmelden. Dit heeft alleen effect op Windows 11.",
+    "es": "Puede ser necesario reiniciar el Explorador de Windows o cerrar sesión y volver a entrar. Solo afecta a Windows 11.",
+    "de": "Der Explorer muss möglicherweise neu gestartet werden oder du musst dich ab- und wieder anmelden. Betrifft nur Windows 11.",
+    "fr": "Il peut être nécessaire de redémarrer l’Explorateur Windows ou de fermer puis rouvrir la session. Cela concerne uniquement Windows 11.",
+    "pt": "Pode ser necessário reiniciar o Explorador de Windows ou sair e entrar novamente na conta. Afeta apenas o Windows 11.",
+    "ru": "Может потребоваться перезапуск Проводника либо выход из системы и повторный вход. Влияет только на Windows 11.",
+    "zh": "可能需要重启 Windows 资源管理器，或注销后重新登录。仅影响 Windows 11。"
+  },
+  "Prevents shaking a window from minimizing other open windows.": {
+    "nl": "Voorkomt dat het schudden van een venster andere geopende vensters minimaliseert.",
+    "es": "Impide que al agitar una ventana se minimicen las demás ventanas abiertas.",
+    "de": "Verhindert, dass das Schütteln eines Fensters andere offene Fenster minimiert.",
+    "fr": "Empêche la réduction des autres fenêtres ouvertes lorsque vous secouez une fenêtre.",
+    "pt": "Impede que sacudir uma janela minimize as outras janelas abertas.",
+    "ru": "Запрещает сворачивать остальные открытые окна при встряхивании окна.",
+    "zh": "防止摇动窗口时最小化其他已打开的窗口。"
+  },
+  "Sets the shortest key-repeat delay and fastest repeat rate in Windows.": {
+    "nl": "Stelt de kortste toetsherhalingsvertraging en snelste herhalingssnelheid in Windows in.",
+    "es": "Establece el menor retraso y la mayor velocidad de repetición de teclas en Windows.",
+    "de": "Stellt die kürzeste Tastenwiederholungsverzögerung und höchste Wiederholungsrate in Windows ein.",
+    "fr": "Définit le délai de répétition des touches le plus court et la vitesse la plus rapide dans Windows.",
+    "pt": "Define o menor atraso e a maior velocidade de repetição de teclas no Windows.",
+    "ru": "Устанавливает минимальную задержку и максимальную скорость повтора клавиш в Windows.",
+    "zh": "将 Windows 按键重复延迟设为最短、重复速度设为最快。"
+  },
+  "Disables Sticky Keys, Filter Keys, and Toggle Keys shortcut prompts.": {
+    "nl": "Schakelt sneltoetsmeldingen voor Plaktoetsen, Filtertoetsen en Wisseltoetsen uit.",
+    "es": "Desactiva los avisos de atajos de Teclas especiales, Teclas de filtro y Teclas de alternancia.",
+    "de": "Deaktiviert Tastenkürzelabfragen für Einrastfunktion, Anschlagverzögerung und Umschalttasten.",
+    "fr": "Désactive les invites de raccourcis des touches rémanentes, filtres et bascules.",
+    "pt": "Desativa avisos de atalhos das Teclas de Aderência, Teclas de Filtragem e Teclas de Alternância.",
+    "ru": "Отключает уведомления сочетаний клавиш для залипания, фильтрации и озвучивания переключателей.",
+    "zh": "禁用粘滞键、筛选键和切换键的快捷键提示。"
+  },
+  "This changes the keyboard accessibility shortcut settings.": {
+    "nl": "Dit wijzigt de sneltoetsinstellingen voor toetsenbordtoegankelijkheid.",
+    "es": "Esto cambia los ajustes de atajos de accesibilidad del teclado.",
+    "de": "Ändert die Tastenkürzeleinstellungen der Tastatur-Bedienungshilfen.",
+    "fr": "Cela modifie les raccourcis d’accessibilité du clavier.",
+    "pt": "Isso altera as configurações de atalhos de acessibilidade do teclado.",
+    "ru": "Изменяет настройки сочетаний клавиш специальных возможностей клавиатуры.",
+    "zh": "这会更改键盘辅助功能快捷键设置。"
+  },
+  "Hides the Windows welcome and setup prompts shown after feature updates.": {
+    "nl": "Verbergt de Windows-welkomst- en instellingsmeldingen na functie-updates.",
+    "es": "Oculta los avisos de bienvenida y configuración de Windows tras actualizaciones de funciones.",
+    "de": "Blendet Windows-Willkommens- und Einrichtungsabfragen nach Funktionsupdates aus.",
+    "fr": "Masque les invites de bienvenue et de configuration Windows après les mises à jour de fonctionnalités.",
+    "pt": "Oculta avisos de boas-vindas e configuração do Windows após atualizações de recursos.",
+    "ru": "Скрывает приветственные уведомления и предложения настройки Windows после обновлений компонентов.",
+    "zh": "隐藏功能更新后显示的 Windows 欢迎和设置提示。"
+  },
+  "Reduces selected animations and transparency effects in Windows.": {
+    "nl": "Vermindert bepaalde animaties en transparantie-effecten in Windows.",
+    "es": "Reduce determinadas animaciones y efectos de transparencia de Windows.",
+    "de": "Reduziert ausgewählte Animationen und Transparenzeffekte in Windows.",
+    "fr": "Réduit certaines animations et certains effets de transparence Windows.",
+    "pt": "Reduz algumas animações e efeitos de transparência do Windows.",
+    "ru": "Сокращает отдельные анимации и эффекты прозрачности Windows.",
+    "zh": "减少 Windows 中部分动画和透明效果。"
+  },
+  "Some interface animations and transparency will be disabled.": {
+    "nl": "Sommige interfaceanimaties en transparantie worden uitgeschakeld.",
+    "es": "Se desactivarán algunas animaciones y transparencias de la interfaz.",
+    "de": "Einige Oberflächenanimationen und Transparenzeffekte werden deaktiviert.",
+    "fr": "Certaines animations et transparences de l’interface seront désactivées.",
+    "pt": "Algumas animações e transparências da interface serão desativadas.",
+    "ru": "Некоторые анимации и эффекты прозрачности интерфейса будут отключены.",
+    "zh": "部分界面动画和透明效果将禁用。"
+  },
+  "Hides the Game Bar startup prompt and controller shortcut overlay.": {
+    "nl": "Verbergt de Game Bar-opstartmelding en de overlay voor controllersneltoetsen.",
+    "es": "Oculta el aviso de inicio de Game Bar y la superposición de atajos del mando.",
+    "de": "Blendet die Game-Bar-Startabfrage und die Controller-Tastenkürzelanzeige aus.",
+    "fr": "Masque l’invite de démarrage de Game Bar et la superposition du raccourci de manette.",
+    "pt": "Oculta o aviso de inicialização da Game Bar e a sobreposição de atalho do controle.",
+    "ru": "Скрывает стартовое уведомление Game Bar и оверлей сочетания кнопок контроллера.",
+    "zh": "隐藏 Game Bar 启动提示和控制器快捷键浮层。"
+  },
+  "This does not disable Windows Game Mode.": {
+    "nl": "Dit schakelt Windows Gamemodus niet uit.",
+    "es": "Esto no desactiva el Modo Juego de Windows.",
+    "de": "Deaktiviert den Windows-Spielmodus nicht.",
+    "fr": "Cela ne désactive pas le mode Jeu de Windows.",
+    "pt": "Isso não desativa o Modo de Jogo do Windows.",
+    "ru": "Не отключает игровой режим Windows.",
+    "zh": "这不会禁用 Windows 游戏模式。"
+  },
+  "Disables Windows pointer acceleration for more direct mouse movement.": {
+    "nl": "Schakelt Windows-aanwijzerversnelling uit voor directere muisbewegingen.",
+    "es": "Desactiva la aceleración del puntero de Windows para un movimiento más directo del ratón.",
+    "de": "Deaktiviert die Windows-Zeigerbeschleunigung für direktere Mausbewegungen.",
+    "fr": "Désactive l’accélération du pointeur Windows pour des mouvements de souris plus directs.",
+    "pt": "Desativa a aceleração do ponteiro do Windows para movimentos mais diretos do mouse.",
+    "ru": "Отключает ускорение указателя Windows для более прямого движения мыши.",
+    "zh": "禁用 Windows 指针加速，使鼠标移动更直接。"
+  },
+  "Sign out and back in for the change to take effect.": {
+    "nl": "Meld je af en opnieuw aan om de wijziging te activeren.",
+    "es": "Cierra sesión y vuelve a entrar para que el cambio tenga efecto.",
+    "de": "Melde dich ab und wieder an, damit die Änderung wirksam wird.",
+    "fr": "Fermez puis rouvrez la session pour appliquer le changement.",
+    "pt": "Saia e entre novamente na conta para aplicar a alteração.",
+    "ru": "Выйдите из системы и войдите снова, чтобы изменение вступило в силу.",
+    "zh": "注销后重新登录以使更改生效。"
+  },
+  "Changes the Windows fullscreen behavior flags used by some games.": {
+    "nl": "Wijzigt de Windows-vlaggen voor volledig scherm die sommige games gebruiken.",
+    "es": "Cambia los indicadores de comportamiento de pantalla completa de Windows usados por algunos juegos.",
+    "de": "Ändert die Windows-Kennzeichen zum Vollbildverhalten, die einige Spiele verwenden.",
+    "fr": "Modifie les indicateurs de comportement plein écran Windows utilisés par certains jeux.",
+    "pt": "Altera os sinalizadores de comportamento de tela cheia do Windows usados por alguns jogos.",
+    "ru": "Меняет флаги полноэкранного режима Windows, используемые некоторыми играми.",
+    "zh": "更改部分游戏使用的 Windows 全屏行为标志。"
+  },
+  "May cause tearing or lower performance in some DirectX 12 games.": {
+    "nl": "Kan tearing of lagere prestaties veroorzaken in sommige DirectX 12-games.",
+    "es": "Puede causar desgarro de imagen o menor rendimiento en algunos juegos DirectX 12.",
+    "de": "Kann in einigen DirectX-12-Spielen Bildrisse oder geringere Leistung verursachen.",
+    "fr": "Peut provoquer des déchirures d’image ou réduire les performances de certains jeux DirectX 12.",
+    "pt": "Pode causar rasgos na imagem ou reduzir o desempenho em alguns jogos DirectX 12.",
+    "ru": "Может вызывать разрывы изображения или снижение производительности в некоторых играх DirectX 12.",
+    "zh": "可能在部分 DirectX 12 游戏中造成画面撕裂或性能下降。"
+  },
+  "Hides Windows Copilot through the current-user policy setting.": {
+    "nl": "Verbergt Windows Copilot via de beleidsinstelling voor de huidige gebruiker.",
+    "es": "Oculta Windows Copilot mediante la directiva del usuario actual.",
+    "de": "Blendet Windows Copilot über die Richtlinieneinstellung des aktuellen Benutzers aus.",
+    "fr": "Masque Windows Copilot via la stratégie de l’utilisateur actuel.",
+    "pt": "Oculta o Windows Copilot pela política do usuário atual.",
+    "ru": "Скрывает Windows Copilot через политику текущего пользователя.",
+    "zh": "通过当前用户策略设置隐藏 Windows Copilot。"
+  },
+  "This does not uninstall Copilot or remove other AI features.": {
+    "nl": "Dit verwijdert Copilot of andere AI-functies niet.",
+    "es": "Esto no desinstala Copilot ni elimina otras funciones de IA.",
+    "de": "Deinstalliert Copilot nicht und entfernt keine anderen KI-Funktionen.",
+    "fr": "Cela ne désinstalle pas Copilot et ne supprime pas les autres fonctions d’IA.",
+    "pt": "Isso não desinstala o Copilot nem remove outros recursos de IA.",
+    "ru": "Не удаляет Copilot или другие функции ИИ.",
+    "zh": "这不会卸载 Copilot 或移除其他 AI 功能。"
+  },
+  "Turns off Cortana and cloud search integration through current-user policy settings.": {
+    "nl": "Schakelt Cortana en cloudzoekintegratie uit via beleidsinstellingen voor de huidige gebruiker.",
+    "es": "Desactiva Cortana y la integración de búsqueda en la nube mediante directivas del usuario actual.",
+    "de": "Deaktiviert Cortana und die Cloudsuchintegration über Richtlinien des aktuellen Benutzers.",
+    "fr": "Désactive Cortana et l’intégration de recherche cloud via les stratégies de l’utilisateur actuel.",
+    "pt": "Desativa Cortana e integração de pesquisa na nuvem pelas políticas do usuário atual.",
+    "ru": "Отключает Cortana и интеграцию облачного поиска через политики текущего пользователя.",
+    "zh": "通过当前用户策略设置关闭 Cortana 和云搜索集成。"
+  },
+  "Windows search will focus on local results.": {
+    "nl": "Windows Zoeken richt zich op lokale resultaten.",
+    "es": "La búsqueda de Windows se centrará en resultados locales.",
+    "de": "Die Windows-Suche konzentriert sich auf lokale Ergebnisse.",
+    "fr": "La recherche Windows se concentrera sur les résultats locaux.",
+    "pt": "A pesquisa do Windows focará nos resultados locais.",
+    "ru": "Поиск Windows будет сосредоточен на локальных результатах.",
+    "zh": "Windows 搜索将侧重于本地结果。"
+  },
+  "Stops Windows from promoting suggested consumer apps and content.": {
+    "nl": "Voorkomt dat Windows voorgestelde consumentenapps en inhoud promoot.",
+    "es": "Impide que Windows promocione aplicaciones y contenido de consumo sugeridos.",
+    "de": "Verhindert, dass Windows vorgeschlagene Verbraucher-Apps und Inhalte bewirbt.",
+    "fr": "Empêche Windows de promouvoir des applications et contenus grand public suggérés.",
+    "pt": "Impede que o Windows promova aplicativos e conteúdos de consumo sugeridos.",
+    "ru": "Запрещает Windows продвигать рекомендуемые потребительские приложения и содержимое.",
+    "zh": "阻止 Windows 推广建议的消费类应用和内容。"
+  },
+  "Windows suggestions and promoted app installs may stop appearing.": {
+    "nl": "Windows-suggesties en gepromote app-installaties verschijnen mogelijk niet meer.",
+    "es": "Las sugerencias de Windows y las instalaciones promocionadas pueden dejar de aparecer.",
+    "de": "Windows-Vorschläge und beworbene App-Installationen erscheinen möglicherweise nicht mehr.",
+    "fr": "Les suggestions Windows et les installations d’applications promues peuvent ne plus apparaître.",
+    "pt": "Sugestões do Windows e instalações de aplicativos promovidos podem deixar de aparecer.",
+    "ru": "Подсказки Windows и рекламируемые установки приложений могут перестать появляться.",
+    "zh": "Windows 建议和推广应用安装可能不再显示。"
+  },
+  "Turns off common Start, Settings, and lock-screen promotional suggestions for this user.": {
+    "nl": "Schakelt veelvoorkomende promotiesuggesties in Start, Instellingen en het vergrendelscherm uit voor deze gebruiker.",
+    "es": "Desactiva las sugerencias promocionales habituales de Inicio, Configuración y pantalla de bloqueo para este usuario.",
+    "de": "Deaktiviert übliche Werbevorschläge in Start, Einstellungen und Sperrbildschirm für diesen Benutzer.",
+    "fr": "Désactive les suggestions promotionnelles courantes de Démarrer, Paramètres et de l’écran de verrouillage pour cet utilisateur.",
+    "pt": "Desativa sugestões promocionais comuns em Iniciar, Configurações e tela de bloqueio para este usuário.",
+    "ru": "Отключает обычные рекламные предложения в меню «Пуск», параметрах и на экране блокировки для этого пользователя.",
+    "zh": "为此用户关闭开始菜单、设置和锁屏中的常见推广建议。"
+  },
+  "Some Windows tips and suggestions will no longer appear.": {
+    "nl": "Sommige Windows-tips en suggesties verschijnen niet meer.",
+    "es": "Algunos consejos y sugerencias de Windows dejarán de aparecer.",
+    "de": "Einige Windows-Tipps und Vorschläge erscheinen nicht mehr.",
+    "fr": "Certains conseils et suggestions Windows ne seront plus affichés.",
+    "pt": "Algumas dicas e sugestões do Windows não aparecerão mais.",
+    "ru": "Некоторые советы и подсказки Windows больше не появятся.",
+    "zh": "部分 Windows 提示和建议将不再显示。"
+  },
+  "Blocks Windows AI snapshot analysis on supported Windows versions.": {
+    "nl": "Blokkeert Windows AI-momentopnameanalyse op ondersteunde Windows-versies.",
+    "es": "Bloquea el análisis de capturas con IA de Windows en versiones compatibles.",
+    "de": "Blockiert die KI-Snapshotanalyse von Windows auf unterstützten Windows-Versionen.",
+    "fr": "Bloque l’analyse des instantanés par l’IA Windows sur les versions compatibles.",
+    "pt": "Bloqueia a análise de capturas por IA do Windows nas versões compatíveis.",
+    "ru": "Блокирует анализ снимков средствами ИИ Windows в поддерживаемых версиях Windows.",
+    "zh": "在支持的 Windows 版本中阻止 Windows AI 快照分析。"
+  },
+  "Windows 11 24H2 or newer. This does not uninstall AI features.": {
+    "nl": "Windows 11 24H2 of nieuwer. Dit verwijdert AI-functies niet.",
+    "es": "Windows 11 24H2 o posterior. No desinstala funciones de IA.",
+    "de": "Windows 11 24H2 oder neuer. Deinstalliert keine KI-Funktionen.",
+    "fr": "Windows 11 24H2 ou plus récent. Cela ne désinstalle pas les fonctions d’IA.",
+    "pt": "Windows 11 24H2 ou posterior. Isso não desinstala recursos de IA.",
+    "ru": "Windows 11 24H2 или новее. Не удаляет функции ИИ.",
+    "zh": "适用于 Windows 11 24H2 或更新版本。这不会卸载 AI 功能。"
+  },
+  "Limits machine-wide app compatibility inventory and Steps Recorder data collection.": {
+    "nl": "Beperkt computerbrede inventarisatie van appcompatibiliteit en gegevensverzameling door Stappenbeschrijving.",
+    "es": "Limita el inventario de compatibilidad de aplicaciones del equipo y la recopilación de datos de la Grabación de acciones.",
+    "de": "Beschränkt die computerweite App-Kompatibilitätsinventarisierung und Datenerfassung der Schrittaufzeichnung.",
+    "fr": "Limite l’inventaire de compatibilité des applications de l’ordinateur et la collecte de données de l’Enregistreur d’actions.",
+    "pt": "Limita o inventário de compatibilidade de aplicativos do computador e a coleta de dados do Gravador de Passos.",
+    "ru": "Ограничивает сбор сведений о совместимости приложений на компьютере и данных средства записи действий.",
+    "zh": "限制整台计算机的应用兼容性清单和步骤记录器数据收集。"
+  },
+  "Windows compatibility diagnostics may have less app information.": {
+    "nl": "Windows-compatibiliteitsdiagnose beschikt mogelijk over minder appgegevens.",
+    "es": "Los diagnósticos de compatibilidad de Windows pueden disponer de menos información de aplicaciones.",
+    "de": "Die Windows-Kompatibilitätsdiagnose verfügt möglicherweise über weniger App-Informationen.",
+    "fr": "Les diagnostics de compatibilité Windows peuvent disposer de moins d’informations sur les applications.",
+    "pt": "Os diagnósticos de compatibilidade do Windows podem ter menos informações sobre aplicativos.",
+    "ru": "Диагностика совместимости Windows может получать меньше сведений о приложениях.",
+    "zh": "Windows 兼容性诊断可能获得较少的应用信息。"
+  }
+}

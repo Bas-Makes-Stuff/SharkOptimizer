@@ -1,0 +1,47 @@
+{
+  "Unsupported Windows tool.": {
+    "nl": "Niet-ondersteund Windows-hulpmiddel.",
+    "es": "Herramienta de Windows no compatible.",
+    "de": "Nicht unterstütztes Windows-Werkzeug.",
+    "fr": "Outil Windows non pris en charge.",
+    "pt": "Ferramenta do Windows não suportada.",
+    "ru": "Неподдерживаемый инструмент Windows.",
+    "zh": "不支持的 Windows 工具。"
+  },
+  "Windows could not start {0}.": {
+    "nl": "Windows kon {0} niet starten.",
+    "es": "Windows no pudo iniciar {0}.",
+    "de": "Windows konnte {0} nicht starten.",
+    "fr": "Windows n’a pas pu lancer {0}.",
+    "pt": "O Windows não conseguiu iniciar {0}.",
+    "ru": "Windows не удалось запустить {0}.",
+    "zh": "Windows 无法启动 {0}。"
+  },
+  "Windows tool {0} exceeded its time limit.": {
+    "nl": "Windows-hulpmiddel {0} heeft de tijdslimiet bereikt.",
+    "es": "La herramienta {0} de Windows agotó el tiempo.",
+    "de": "Windows-Werkzeug {0} hat sein Zeitlimit überschritten.",
+    "fr": "L’outil Windows {0} a dépassé sa limite de temps.",
+    "pt": "A ferramenta {0} do Windows excedeu o tempo.",
+    "ru": "Инструмент Windows {0} превысил лимит времени.",
+    "zh": "Windows 工具 {0} 超过时间限制。"
+  },
+  "Windows tool {0} did not finish returning its output.": {
+    "nl": "Windows-hulpmiddel {0} heeft de uitvoer niet volledig teruggegeven.",
+    "es": "La herramienta {0} de Windows no terminó de devolver los resultados.",
+    "de": "Windows-Werkzeug {0} hat seine Ausgabe nicht vollständig geliefert.",
+    "fr": "L’outil Windows {0} n’a pas terminé de renvoyer ses résultats.",
+    "pt": "A ferramenta {0} do Windows não terminou de retornar os resultados.",
+    "ru": "Инструмент Windows {0} не завершил вывод результата.",
+    "zh": "Windows 工具 {0} 未完成输出。"
+  },
+  "Windows tool {0} exceeded the output limit.": {
+    "nl": "Windows-hulpmiddel {0} heeft de uitvoerlimiet overschreden.",
+    "es": "La herramienta {0} de Windows superó el límite de salida.",
+    "de": "Windows-Werkzeug {0} hat das Ausgabelimit überschritten.",
+    "fr": "L’outil Windows {0} a dépassé la limite de sortie.",
+    "pt": "A ferramenta {0} do Windows excedeu o limite de saída.",
+    "ru": "Инструмент Windows {0} превысил лимит вывода.",
+    "zh": "Windows 工具 {0} 超过输出限制。"
+  }
+}

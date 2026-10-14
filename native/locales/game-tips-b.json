@@ -1,0 +1,155 @@
+{
+  "Close overlays you do not use while playing.": {
+    "nl": "Sluit overlays die je niet gebruikt tijdens het spelen.",
+    "es": "Cierra las superposiciones que no uses al jugar.",
+    "de": "Schließe Overlays, die du beim Spielen nicht nutzt.",
+    "fr": "Fermez les superpositions inutilisées pendant le jeu.",
+    "pt": "Feche sobreposições que não usa enquanto joga.",
+    "ru": "Закройте оверлеи, которые не используете во время игры.",
+    "zh": "玩游戏时关闭不用的叠加层。"
+  },
+  "Test settings across a few servers; streamed content can affect performance.": {
+    "nl": "Test instellingen op enkele servers; gestreamde inhoud kan prestaties beïnvloeden.",
+    "es": "Prueba los ajustes en varios servidores; el contenido transmitido puede afectar al rendimiento.",
+    "de": "Teste Einstellungen auf mehreren Servern; gestreamte Inhalte können die Leistung beeinflussen.",
+    "fr": "Testez les réglages sur plusieurs serveurs ; le contenu chargé en streaming peut affecter les performances.",
+    "pt": "Teste os ajustes em alguns servidores; conteúdo transmitido pode afetar o desempenho.",
+    "ru": "Проверьте настройки на нескольких серверах; потоковое содержимое может влиять на производительность.",
+    "zh": "在几个服务器上测试设置；流送内容可能影响性能。"
+  },
+  "Lower anti-aliasing and grass quality if frame times spike.": {
+    "nl": "Verlaag anti-aliasing en graskwaliteit bij pieken in frametijden.",
+    "es": "Reduce el suavizado y la calidad del césped si hay picos en tiempos de fotograma.",
+    "de": "Senke Kantenglättung und Grasqualität bei Framezeitspitzen.",
+    "fr": "Réduisez l’anticrénelage et la qualité de l’herbe en cas de pics de temps d’image.",
+    "pt": "Reduza a suavização e a qualidade da grama se houver picos no tempo de quadro.",
+    "ru": "Снизьте сглаживание и качество травы при скачках времени кадра.",
+    "zh": "如果帧时间突增，请降低抗锯齿和草地质量。"
+  },
+  "Do not modify game files for optimization.": {
+    "nl": "Wijzig gamebestanden niet voor optimalisatie.",
+    "es": "No modifiques archivos del juego para optimizar.",
+    "de": "Ändere keine Spieldateien zur Optimierung.",
+    "fr": "Ne modifiez pas les fichiers du jeu pour l’optimiser.",
+    "pt": "Não modifique arquivos do jogo para otimizar.",
+    "ru": "Не изменяйте файлы игры ради оптимизации.",
+    "zh": "不要为优化而修改游戏文件。"
+  },
+  "Adjust Graphics Quality in Roblox settings.": {
+    "nl": "Pas Grafische kwaliteit aan in de Roblox-instellingen.",
+    "es": "Ajusta la calidad gráfica en la configuración de Roblox.",
+    "de": "Passe die Grafikqualität in den Roblox-Einstellungen an.",
+    "fr": "Ajustez la qualité graphique dans les paramètres Roblox.",
+    "pt": "Ajuste a qualidade gráfica nas configurações do Roblox.",
+    "ru": "Настройте качество графики в параметрах Roblox.",
+    "zh": "在 Roblox 设置中调整图形质量。"
+  },
+  "Close extra browser tabs if CPU use is high.": {
+    "nl": "Sluit extra browsertabbladen bij hoog CPU-gebruik.",
+    "es": "Cierra pestañas adicionales del navegador si el uso de CPU es alto.",
+    "de": "Schließe zusätzliche Browsertabs bei hoher CPU-Auslastung.",
+    "fr": "Fermez les onglets supplémentaires du navigateur si le CPU est très utilisé.",
+    "pt": "Feche abas extras do navegador se o uso de CPU estiver alto.",
+    "ru": "Закройте лишние вкладки браузера при высокой нагрузке CPU.",
+    "zh": "如果 CPU 使用率高，请关闭多余浏览器标签页。"
+  },
+  "Use Windows-level changes only; avoid modifying game files.": {
+    "nl": "Gebruik alleen Windows-aanpassingen; vermijd wijzigingen aan gamebestanden.",
+    "es": "Usa solo cambios de Windows; evita modificar archivos del juego.",
+    "de": "Verwende nur Windows-Änderungen; vermeide Änderungen an Spieldateien.",
+    "fr": "Utilisez uniquement des changements Windows ; évitez de modifier les fichiers du jeu.",
+    "pt": "Use apenas alterações do Windows; evite modificar arquivos do jogo.",
+    "ru": "Используйте только изменения Windows; не меняйте файлы игры.",
+    "zh": "仅使用 Windows 设置更改；避免修改游戏文件。"
+  },
+  "Try V-Sync off if you want lower input latency.": {
+    "nl": "Probeer V-Sync uit voor lagere invoervertraging.",
+    "es": "Prueba desactivar V-Sync para reducir la latencia de entrada.",
+    "de": "Probiere V-Sync aus für geringere Eingabeverzögerung.",
+    "fr": "Essayez de désactiver V-Sync pour réduire la latence d’entrée.",
+    "pt": "Tente desativar V-Sync para reduzir a latência de entrada.",
+    "ru": "Попробуйте отключить V-Sync для меньшей задержки ввода.",
+    "zh": "如果希望降低输入延迟，请尝试关闭 V-Sync。"
+  },
+  "Lower effects quality if you see frame-time spikes.": {
+    "nl": "Verlaag de effectenkwaliteit bij pieken in frametijden.",
+    "es": "Reduce la calidad de efectos si hay picos de tiempo de fotograma.",
+    "de": "Senke die Effektqualität bei Framezeitspitzen.",
+    "fr": "Réduisez la qualité des effets en cas de pics de temps d’image.",
+    "pt": "Reduza a qualidade dos efeitos se houver picos no tempo de quadro.",
+    "ru": "Снизьте качество эффектов при скачках времени кадра.",
+    "zh": "如果出现帧时间突增，请降低特效质量。"
+  },
+  "Try Reduce Buffering and V-Sync off.": {
+    "nl": "Probeer Reduce Buffering aan en V-Sync uit.",
+    "es": "Prueba activar Reducir almacenamiento en búfer y desactivar V-Sync.",
+    "de": "Probiere Reduce Buffering an und V-Sync aus.",
+    "fr": "Essayez Reduce Buffering activé et V-Sync désactivé.",
+    "pt": "Tente ativar Reduzir Buffer e desativar V-Sync.",
+    "ru": "Попробуйте включить Reduce Buffering и отключить V-Sync.",
+    "zh": "尝试启用减少缓冲并关闭 V-Sync。"
+  },
+  "Lower shadow and effects detail if performance is inconsistent.": {
+    "nl": "Verlaag schaduw- en effectdetails bij onregelmatige prestaties.",
+    "es": "Reduce el detalle de sombras y efectos si el rendimiento es irregular.",
+    "de": "Senke Schatten- und Effektdetails bei schwankender Leistung.",
+    "fr": "Réduisez les détails des ombres et effets si les performances sont irrégulières.",
+    "pt": "Reduza os detalhes de sombras e efeitos se o desempenho for irregular.",
+    "ru": "Снизьте детализацию теней и эффектов при нестабильной производительности.",
+    "zh": "如果性能不稳定，请降低阴影和特效细节。"
+  },
+  "Install on an SSD and lower draw distance if needed.": {
+    "nl": "Installeer op een SSD en verlaag de tekenafstand indien nodig.",
+    "es": "Instala en un SSD y reduce la distancia de dibujado si hace falta.",
+    "de": "Installiere auf einer SSD und senke bei Bedarf die Sichtweite.",
+    "fr": "Installez sur un SSD et réduisez la distance d’affichage si nécessaire.",
+    "pt": "Instale em um SSD e reduza a distância de renderização se necessário.",
+    "ru": "Установите на SSD и при необходимости снизьте дальность прорисовки.",
+    "zh": "安装到 SSD，必要时降低绘制距离。"
+  },
+  "Close other apps before joining large servers on a memory-limited PC.": {
+    "nl": "Sluit andere apps voordat je grote servers betreedt op een pc met weinig geheugen.",
+    "es": "Cierra otras aplicaciones antes de entrar en servidores grandes si tu PC tiene poca memoria.",
+    "de": "Schließe andere Apps vor großen Servern auf einem PC mit wenig Speicher.",
+    "fr": "Fermez les autres applications avant de rejoindre de grands serveurs sur un PC à mémoire limitée.",
+    "pt": "Feche outros aplicativos antes de entrar em servidores grandes em um PC com pouca memória.",
+    "ru": "Закройте другие приложения перед входом на крупные серверы на ПК с ограниченной памятью.",
+    "zh": "在内存有限的电脑上加入大型服务器前，请关闭其他应用。"
+  },
+  "Use in-game graphics options first and compare changes in a practice session.": {
+    "nl": "Gebruik eerst grafische opties in de game en vergelijk wijzigingen in een oefensessie.",
+    "es": "Usa primero los ajustes gráficos del juego y compara los cambios en una sesión de práctica.",
+    "de": "Nutze zuerst Grafikoptionen im Spiel und vergleiche Änderungen in einer Übungssitzung.",
+    "fr": "Utilisez d’abord les options graphiques du jeu et comparez les changements en entraînement.",
+    "pt": "Use primeiro os gráficos do jogo e compare alterações em uma sessão de treino.",
+    "ru": "Сначала настройте графику игры и сравните изменения в тренировочном сеансе.",
+    "zh": "先使用游戏内图形选项，并在练习会话中比较更改。"
+  },
+  "Keep the game files unchanged; this profile only recommends Windows settings.": {
+    "nl": "Laat gamebestanden ongewijzigd; dit profiel beveelt alleen Windows-instellingen aan.",
+    "es": "Mantén los archivos del juego sin cambios; este perfil solo recomienda ajustes de Windows.",
+    "de": "Lass Spieldateien unverändert; dieses Profil empfiehlt nur Windows-Einstellungen.",
+    "fr": "Conservez les fichiers du jeu ; ce profil recommande uniquement des réglages Windows.",
+    "pt": "Mantenha os arquivos do jogo inalterados; este perfil só recomenda ajustes do Windows.",
+    "ru": "Оставьте файлы игры без изменений; профиль рекомендует только настройки Windows.",
+    "zh": "保持游戏文件不变；此配置只推荐 Windows 设置。"
+  },
+  "Anti-cheat: {0}. This profile only recommends Windows settings; it does not change game files, inject into the game, or alter its process priority.": {
+    "nl": "Anti-cheat: {0}. Dit profiel beveelt alleen Windows-instellingen aan; het wijzigt geen gamebestanden, injecteert niets in de game en verandert de procesprioriteit niet.",
+    "es": "Antitrampas: {0}. Este perfil solo recomienda ajustes de Windows; no modifica archivos, no inyecta en el juego ni cambia su prioridad de proceso.",
+    "de": "Anti-Cheat: {0}. Dieses Profil empfiehlt nur Windows-Einstellungen; es verändert keine Spieldateien, injiziert nichts und ändert keine Prozesspriorität.",
+    "fr": "Anti-triche : {0}. Ce profil recommande uniquement des réglages Windows ; il ne modifie pas les fichiers du jeu, n’injecte rien et ne change pas sa priorité.",
+    "pt": "Antitrapaça: {0}. Este perfil só recomenda ajustes do Windows; não altera arquivos, não injeta no jogo nem muda a prioridade do processo.",
+    "ru": "Античит: {0}. Профиль рекомендует только настройки Windows; не изменяет файлы игры, не внедряет код и не меняет приоритет процесса.",
+    "zh": "反作弊：{0}。此配置只推荐 Windows 设置；不会更改游戏文件、注入游戏或改变进程优先级。"
+  },
+  "Does {0} use anti-cheat software? Choose Yes if you are unsure. The profile will still recommend Windows-level settings only.": {
+    "nl": "Gebruikt {0} anti-cheatsoftware? Kies Ja als je het niet zeker weet. Het profiel blijft alleen Windows-instellingen aanbevelen.",
+    "es": "¿{0} usa software antitrampas? Elige Sí si no estás seguro. El perfil solo recomendará ajustes de Windows.",
+    "de": "Verwendet {0} Anti-Cheat-Software? Wähle Ja, wenn du unsicher bist. Das Profil empfiehlt weiterhin nur Windows-Einstellungen.",
+    "fr": "{0} utilise-t-il un logiciel anti-triche ? Choisissez Oui en cas de doute. Le profil recommandera uniquement des réglages Windows.",
+    "pt": "{0} usa software antitrapaça? Escolha Sim se não souber. O perfil só recomendará ajustes do Windows.",
+    "ru": "Использует ли {0} античит? Выберите «Да», если не уверены. Профиль будет рекомендовать только настройки Windows.",
+    "zh": "{0} 是否使用反作弊软件？不确定时请选择是。此配置仍仅推荐 Windows 设置。"
+  }
+}

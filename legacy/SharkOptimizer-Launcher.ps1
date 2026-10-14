@@ -1,4 +1,4 @@
-﻿# SharkOptimizer launcher 1.5.1: animated loading screen, requirement checks, one admin prompt,
+# SharkOptimizer launcher 2.0.0: animated loading screen, requirement checks, one admin prompt,
 # single instance, clear error report with Retry, and a quiet fallback that still starts the app if the animation fails.
 # Keep this file in the same folder as SharkOptimizer.ps1. Start it with the root Start-SharkOptimizer.bat file.
 $ErrorActionPreference = 'Stop'
@@ -98,7 +98,7 @@ function Test-AppWindow($processId) {
 }
 
 # ---- 4. language, accent colour and version (read from the app's settings)
-$LauncherVersion = '1.5.1'
+$LauncherVersion = '2.0.0'
 $lang = 'en'; $accent = '#1FB6FF'; $ver = "v$LauncherVersion"
 $codes = 'nl', 'es', 'de', 'fr', 'pt', 'ru', 'zh'
 try {
@@ -134,6 +134,17 @@ $TT = @{
  zh = @('正在检查运行要求...', '正在启动 SharkOptimizer...', '正在检测你的硬件...', '正在加载优化项...', '正在准备游戏配置...', '马上就好...', '为游戏优化 Windows', '已就绪', 'SharkOptimizer 在启动时停止了。', 'SharkOptimizer 启动时间过长。', '复制详情', '打开日志', '关闭', 'SharkOptimizer 已在运行。要关闭并重新启动吗？', '重试')
 }
 $S = $TT[$lang]; if (-not $S) { $S = $TT['en'] }
+$TipSets = @{
+ en = @('Game Mode prioritizes your game while you play.', 'Compare DNS response times in the Network tab.', 'Restore tracks tweaks so you can undo them later.', 'Background recording can cause frame-time spikes.', 'Some Windows changes need a restart to take effect.', 'Choose tweaks that fit your hardware and setup.')
+ nl = @('Game Mode geeft je game prioriteit tijdens het spelen.', 'Vergelijk DNS-responstijden in het tabblad Netwerk.', 'Herstel houdt tweaks bij zodat je ze kunt terugdraaien.', 'Achtergrondopname kan frametimepieken veroorzaken.', 'Sommige Windows-wijzigingen vereisen een herstart.', 'Kies tweaks die bij je hardware en setup passen.')
+ es = @('El modo Juego prioriza tu juego mientras juegas.', 'Compara los tiempos de DNS en la pestaña Red.', 'Restaurar registra los ajustes para poder deshacerlos.', 'La grabación en segundo plano puede causar tirones.', 'Algunos cambios requieren reiniciar Windows.', 'Elige ajustes adecuados para tu equipo.')
+ de = @('Der Spielmodus priorisiert dein Spiel während des Spielens.', 'Vergleiche DNS-Antwortzeiten im Netzwerk-Tab.', 'Wiederherstellen speichert Tweaks zum späteren Rückgängigmachen.', 'Hintergrundaufnahmen können Ruckler verursachen.', 'Einige Windows-Änderungen erfordern einen Neustart.', 'Wähle Tweaks passend zu deiner Hardware.')
+ fr = @('Le mode Jeu donne la priorité à votre jeu pendant la partie.', 'Comparez les temps DNS dans Réseau.', 'Restaurer suit les réglages pour pouvoir les annuler.', 'La capture en arrière-plan peut causer des saccades.', 'Certains changements nécessitent un redémarrage.', 'Choisissez des réglages adaptés à votre matériel.')
+ pt = @('O Modo de Jogo prioriza seu jogo durante a partida.', 'Compare os tempos de DNS na aba Rede.', 'Restaurar registra ajustes para você poder desfazê-los.', 'A gravação em segundo plano pode causar travamentos.', 'Algumas mudanças exigem reiniciar o Windows.', 'Escolha ajustes adequados ao seu hardware.')
+ ru = @('Игровой режим отдаёт приоритет игре во время запуска.', 'Сравните время отклика DNS на странице сети.', 'Восстановление сохраняет твики для отмены изменений.', 'Фоновая запись может вызывать скачки времени кадра.', 'Некоторые изменения требуют перезагрузки Windows.', 'Выбирайте настройки с учётом своего оборудования.')
+ zh = @('游戏模式会在游玩时优先处理游戏。', '在网络页面比较 DNS 响应时间。', '还原功能会记录优化项，方便之后撤销。', '后台录制可能导致帧时间波动。', '部分 Windows 设置需要重启后生效。', '根据你的硬件选择合适的优化项。')
+}
+$Tips = $TipSets[$lang]; if (-not $Tips) { $Tips = $TipSets['en'] }
 
 # ---- 5. already running?
 try {
@@ -164,9 +175,6 @@ $xaml = @'
   <Border.Background><LinearGradientBrush StartPoint="0,0" EndPoint="0,1"><GradientStop Color="#0E1A33" Offset="0"/><GradientStop Color="#08101D" Offset="1"/></LinearGradientBrush></Border.Background>
   <Grid>
    <Canvas x:Name="bubbles" Width="400" Height="350" HorizontalAlignment="Center" VerticalAlignment="Top" IsHitTestVisible="False" ClipToBounds="True"/>
-   <Canvas x:Name="waves" Width="392" Height="46" HorizontalAlignment="Center" VerticalAlignment="Bottom" IsHitTestVisible="False" ClipToBounds="True">
-    <Canvas.OpacityMask><LinearGradientBrush StartPoint="0,0" EndPoint="1,0"><GradientStop Color="#00000000" Offset="0"/><GradientStop Color="#FF000000" Offset="0.18"/><GradientStop Color="#FF000000" Offset="0.82"/><GradientStop Color="#00000000" Offset="1"/></LinearGradientBrush></Canvas.OpacityMask>
-   </Canvas>
    <StackPanel HorizontalAlignment="Center" Margin="30,30,30,28">
     <Grid Width="150" Height="124" HorizontalAlignment="Center">
      <Ellipse x:Name="glow" Width="150" Height="150" RenderTransformOrigin="0.5,0.5">
@@ -203,7 +211,7 @@ try {
     $fr = Join-Path $Root 'fonts\Poppins-Regular.ttf'
     if (Test-Path $fr) { $splash.FontFamily = New-Object Windows.Media.FontFamily((New-Object Uri(((Resolve-Path (Join-Path $Root 'fonts')).Path.TrimEnd('\') + '\'))), './#Poppins') }
 } catch {}
-foreach ($n in 'logo','glow','bar','status','tag','verTxt','dots','errPanel','errBox','bubbles','waves') { Set-Variable -Name ('u_' + $n) -Value $splash.FindName($n) }
+foreach ($n in 'logo','glow','bar','status','tag','verTxt','dots','errPanel','errBox','bubbles') { Set-Variable -Name ('u_' + $n) -Value $splash.FindName($n) }
 $u_tag.Text = $S[6]; $u_verTxt.Text = $ver
 $splash.FindName('btnCopy').Content = $S[10]; $splash.FindName('btnLogs').Content = $S[11]; $splash.FindName('btnClose').Content = $S[12]; $splash.FindName('btnRetry').Content = $S[14]
 try { $splash.Dispatcher.add_UnhandledException({ param($sender, $e) try { Write-LLog ('UI error: ' + $e.Exception.Message) } catch {}; $e.Handled = $true }) } catch {}
@@ -243,19 +251,6 @@ for ($i = 0; $i -lt 12; $i++) {
     [void]$u_bubbles.Children.Add($el)
     $bubbleList += , @($el, (4 + $rnd.NextDouble() * 4), ($rnd.NextDouble() * 4))
 }
-function New-Wave($w, $amp, $period, $y0, $alpha) {
-    $pts = New-Object Windows.Media.PointCollection; $total = $w * 3
-    for ($x = 0; $x -le $total; $x += 8) { [void]$pts.Add(([Windows.Point]::new($x, $y0 + $amp * [math]::Sin(2 * [math]::PI * $x / $period)))) }
-    [void]$pts.Add(([Windows.Point]::new($total, 60))); [void]$pts.Add(([Windows.Point]::new(0, 60)))
-    $pg = New-Object Windows.Shapes.Polygon; $pg.Points = $pts
-    $c = [Windows.Media.ColorConverter]::ConvertFromString($accent); $c.A = $alpha
-    $pg.Fill = New-Object Windows.Media.SolidColorBrush($c); $pg
-}
-$waveW = 392
-$wave1 = New-Wave $waveW 5 $waveW 24 38; $wave2 = New-Wave $waveW 7 ($waveW / 2) 30 26
-$w1t = New-Object Windows.Media.TranslateTransform; $w2t = New-Object Windows.Media.TranslateTransform
-$wave1.RenderTransform = $w1t; $wave2.RenderTransform = $w2t
-[void]$u_waves.Children.Add($wave2); [void]$u_waves.Children.Add($wave1)
 $dotEls = @()
 for ($i = 0; $i -lt 6; $i++) {
     $d = New-Object Windows.Shapes.Ellipse; $d.Width = 7; $d.Height = 7; $d.Margin = '4,0'; $d.Fill = $bc.ConvertFromString('#26324D')
@@ -276,8 +271,6 @@ $splash.Add_ContentRendered({
         $gs.BeginAnimation([Windows.Media.ScaleTransform]::ScaleXProperty, (New-Anim 0.88 1.12 1.6 $true $true))
         $gs.BeginAnimation([Windows.Media.ScaleTransform]::ScaleYProperty, (New-Anim 0.88 1.12 1.6 $true $true))
         $u_glow.BeginAnimation([Windows.UIElement]::OpacityProperty, (New-Anim 0.55 1 1.6 $true $true))
-        $w1t.BeginAnimation([Windows.Media.TranslateTransform]::XProperty, (New-Linear 0 (-$waveW) 6))
-        $w2t.BeginAnimation([Windows.Media.TranslateTransform]::XProperty, (New-Linear 0 (-$waveW) 9))
         foreach ($b in $bubbleList) { $b[0].BeginAnimation([Windows.Controls.Canvas]::TopProperty, (New-Linear 360 -14 $b[1] $b[2])) }
     } catch { Write-LLog "Animation failed (the app still starts): $($_.Exception.Message)" }
 })
@@ -292,10 +285,19 @@ $proc = Start-Process $PsExe -PassThru -WindowStyle Hidden -WorkingDirectory $Ro
 Write-LLog "App process started (pid $($proc.Id))."
 
 $script:msgIdx = 0; $script:done = $false; $started = Get-Date
+$script:tipIdx = -1
+$tipTimer = New-Object Windows.Threading.DispatcherTimer
+$tipTimer.Interval = [TimeSpan]::FromSeconds(5)
+$tipTimer.Add_Tick({
+    if ($script:done) { $tipTimer.Stop(); return }
+    $script:tipIdx = ($script:tipIdx + 1) % $Tips.Count
+    $u_tag.Text = $Tips[$script:tipIdx]
+})
 $u_status.Text = $S[0]; Set-Dots 0
 
 function Show-Failure($title) {
     $script:done = $true
+    $tipTimer.Stop()
     Write-LLog "Failure: $title"
     try {
         $tt.BeginAnimation([Windows.Media.TranslateTransform]::YProperty, $null); $rt.BeginAnimation([Windows.Media.RotateTransform]::AngleProperty, $null)
@@ -313,6 +315,7 @@ $splash.FindName('btnCopy').Add_Click({ try { [Windows.Clipboard]::SetText($u_er
 $splash.FindName('btnLogs').Add_Click({ try { Start-Process explorer.exe $DataDir } catch {} })
 $splash.FindName('btnClose').Add_Click({ $splash.Close() })
 $splash.FindName('btnRetry').Add_Click({
+    $tipTimer.Stop()
     try {
         try { if ($proc -and -not $proc.HasExited) { Stop-Process -Id $proc.Id -Force -ErrorAction SilentlyContinue } } catch {}
         try { $script:LauncherMutex.ReleaseMutex() } catch {}
@@ -331,7 +334,7 @@ $timer.Add_Tick({
         $isReady = Test-Path $readyFile
         if (-not $isReady -and $script:tick -gt 80 -and -not $proc.HasExited) { try { $isReady = Test-AppWindow $proc.Id } catch {} }
         if ($isReady) {
-            $script:done = $true; $timer.Stop(); $u_status.Text = $S[7]; Set-Dots 5
+            $script:done = $true; $timer.Stop(); $tipTimer.Stop(); $u_status.Text = $S[7]; Set-Dots 5
             Write-LLog 'App is ready.'
             $fade = New-Anim 1 0 0.4; $fade.Add_Completed({ $splash.Close() })
             $splash.BeginAnimation([Windows.UIElement]::OpacityProperty, $fade)
@@ -340,6 +343,8 @@ $timer.Add_Tick({
         elseif (((Get-Date) - $started).TotalSeconds -gt 120) { $timer.Stop(); Show-Failure $S[9] }
     } catch { Write-LLog "Timer error: $($_.Exception.Message)" }
 })
+$splash.Add_Closed({ $tipTimer.Stop() })
+$tipTimer.Start()
 $timer.Start()
 [void]$splash.ShowDialog()
 Write-LLog 'Launcher finished.'

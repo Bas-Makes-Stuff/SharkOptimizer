@@ -1,0 +1,137 @@
+{
+  "Previous benchmark history could not be imported: {0}": {
+    "nl": "Vorige meetgeschiedenis kon niet worden geïmporteerd: {0}",
+    "es": "No se pudo importar el historial anterior de mediciones: {0}",
+    "de": "Vorheriger Messverlauf konnte nicht importiert werden: {0}",
+    "fr": "Impossible d’importer l’ancien historique de mesures : {0}",
+    "pt": "Não foi possível importar o histórico anterior de medições: {0}",
+    "ru": "Не удалось импортировать прежнюю историю замеров: {0}",
+    "zh": "无法导入旧版测量历史：{0}"
+  },
+  "Previous presets were not imported: {0} You can import a repaired preset file manually.": {
+    "nl": "Vorige voorinstellingen zijn niet geïmporteerd: {0} Je kunt een hersteld bestand handmatig importeren.",
+    "es": "No se importaron los preajustes anteriores: {0} Puedes importar manualmente un archivo reparado.",
+    "de": "Vorherige Vorlagen wurden nicht importiert: {0} Du kannst eine reparierte Datei manuell importieren.",
+    "fr": "Les anciens préréglages n’ont pas été importés : {0} Vous pouvez importer manuellement un fichier réparé.",
+    "pt": "As predefinições anteriores não foram importadas: {0} Você pode importar manualmente um arquivo corrigido.",
+    "ru": "Прежние наборы не импортированы: {0} Можно вручную импортировать исправленный файл.",
+    "zh": "未导入旧版预设：{0} 您可以手动导入修复后的预设文件。"
+  },
+  "Previous behavior preferences could not be imported: {0}": {
+    "nl": "Vorige gedragsvoorkeuren konden niet worden geïmporteerd: {0}",
+    "es": "No se pudieron importar las preferencias anteriores de comportamiento: {0}",
+    "de": "Vorherige Verhaltenseinstellungen konnten nicht importiert werden: {0}",
+    "fr": "Impossible d’importer les anciennes préférences de comportement : {0}",
+    "pt": "Não foi possível importar as preferências anteriores de comportamento: {0}",
+    "ru": "Не удалось импортировать прежние настройки поведения: {0}",
+    "zh": "无法导入旧版行为偏好：{0}"
+  },
+  "Previous language preference could not be imported: {0}": {
+    "nl": "Vorige taalvoorkeur kon niet worden geïmporteerd: {0}",
+    "es": "No se pudo importar la preferencia anterior de idioma: {0}",
+    "de": "Vorherige Spracheinstellung konnte nicht importiert werden: {0}",
+    "fr": "Impossible d’importer l’ancienne préférence de langue : {0}",
+    "pt": "Não foi possível importar a preferência anterior de idioma: {0}",
+    "ru": "Не удалось импортировать прежний язык интерфейса: {0}",
+    "zh": "无法导入旧版语言偏好：{0}"
+  },
+  "Could not import previous undo history: {0}": {
+    "nl": "Kon vorige herstelgeschiedenis niet importeren: {0}",
+    "es": "No se pudo importar el historial anterior de restauración: {0}",
+    "de": "Vorheriger Wiederherstellungsverlauf konnte nicht importiert werden: {0}",
+    "fr": "Impossible d’importer l’ancien historique d’annulation : {0}",
+    "pt": "Não foi possível importar o histórico anterior de restauração: {0}",
+    "ru": "Не удалось импортировать прежнюю историю отмены: {0}",
+    "zh": "无法导入旧版撤销历史：{0}"
+  },
+  "Windows returned an unrecognized enabled state for scheduled task {0}.": {
+    "nl": "Windows gaf een onbekende inschakelstatus voor geplande taak {0}.",
+    "es": "Windows devolvió un estado de habilitación desconocido para la tarea {0}.",
+    "de": "Windows meldete einen unbekannten Aktivierungszustand für Aufgabe {0}.",
+    "fr": "Windows a renvoyé un état d’activation inconnu pour la tâche {0}.",
+    "pt": "O Windows retornou um estado de ativação desconhecido para a tarefa {0}.",
+    "ru": "Windows вернула неизвестное состояние включения задачи {0}.",
+    "zh": "Windows 返回了计划任务 {0} 无法识别的启用状态。"
+  },
+  "Windows could not read the enabled state for scheduled task {0}.": {
+    "nl": "Windows kon de inschakelstatus van geplande taak {0} niet lezen.",
+    "es": "Windows no pudo leer el estado de habilitación de la tarea {0}.",
+    "de": "Windows konnte den Aktivierungszustand der Aufgabe {0} nicht lesen.",
+    "fr": "Windows n’a pas pu lire l’état d’activation de la tâche {0}.",
+    "pt": "O Windows não conseguiu ler o estado de ativação da tarefa {0}.",
+    "ru": "Windows не удалось прочитать состояние включения задачи {0}.",
+    "zh": "Windows 无法读取计划任务 {0} 的启用状态。"
+  },
+  "Windows could not enable scheduled task {0}. {1}": {
+    "nl": "Windows kon geplande taak {0} niet inschakelen. {1}",
+    "es": "Windows no pudo activar la tarea {0}. {1}",
+    "de": "Windows konnte Aufgabe {0} nicht aktivieren. {1}",
+    "fr": "Windows n’a pas pu activer la tâche {0}. {1}",
+    "pt": "O Windows não conseguiu ativar a tarefa {0}. {1}",
+    "ru": "Windows не удалось включить задачу {0}. {1}",
+    "zh": "Windows 无法启用计划任务 {0}。{1}"
+  },
+  "Windows could not disable scheduled task {0}. {1}": {
+    "nl": "Windows kon geplande taak {0} niet uitschakelen. {1}",
+    "es": "Windows no pudo desactivar la tarea {0}. {1}",
+    "de": "Windows konnte Aufgabe {0} nicht deaktivieren. {1}",
+    "fr": "Windows n’a pas pu désactiver la tâche {0}. {1}",
+    "pt": "O Windows não conseguiu desativar a tarefa {0}. {1}",
+    "ru": "Windows не удалось отключить задачу {0}. {1}",
+    "zh": "Windows 无法禁用计划任务 {0}。{1}"
+  },
+  "Windows could not enable {0} on {1} (WMI result {2}).": {
+    "nl": "Windows kon {0} op {1} niet inschakelen (WMI-resultaat {2}).",
+    "es": "Windows no pudo activar {0} en {1} (resultado WMI {2}).",
+    "de": "Windows konnte {0} auf {1} nicht aktivieren (WMI-Ergebnis {2}).",
+    "fr": "Windows n’a pas pu activer {0} sur {1} (résultat WMI {2}).",
+    "pt": "O Windows não conseguiu ativar {0} em {1} (resultado WMI {2}).",
+    "ru": "Windows не удалось включить {0} на {1} (результат WMI {2}).",
+    "zh": "Windows 无法在 {1} 上启用 {0}（WMI 结果 {2}）。"
+  },
+  "Windows could not disable {0} on {1} (WMI result {2}).": {
+    "nl": "Windows kon {0} op {1} niet uitschakelen (WMI-resultaat {2}).",
+    "es": "Windows no pudo desactivar {0} en {1} (resultado WMI {2}).",
+    "de": "Windows konnte {0} auf {1} nicht deaktivieren (WMI-Ergebnis {2}).",
+    "fr": "Windows n’a pas pu désactiver {0} sur {1} (résultat WMI {2}).",
+    "pt": "O Windows não conseguiu desativar {0} em {1} (resultado WMI {2}).",
+    "ru": "Windows не удалось отключить {0} на {1} (результат WMI {2}).",
+    "zh": "Windows 无法在 {1} 上禁用 {0}（WMI 结果 {2}）。"
+  },
+  "Could not restore or update the startup mode for service {0}.": {
+    "nl": "Kon de opstartmodus van service {0} niet herstellen of bijwerken.",
+    "es": "No se pudo restaurar o actualizar el modo de inicio del servicio {0}.",
+    "de": "Startmodus von Dienst {0} konnte nicht wiederhergestellt oder aktualisiert werden.",
+    "fr": "Impossible de restaurer ou modifier le mode de démarrage du service {0}.",
+    "pt": "Não foi possível restaurar ou atualizar o modo de inicialização do serviço {0}.",
+    "ru": "Не удалось восстановить или обновить режим запуска службы {0}.",
+    "zh": "无法还原或更新服务 {0} 的启动模式。"
+  },
+  "The Service Control Manager timed out.": {
+    "nl": "Servicebeheer heeft de tijdslimiet bereikt.",
+    "es": "El Administrador de control de servicios agotó el tiempo.",
+    "de": "Die Dienststeuerung hat das Zeitlimit überschritten.",
+    "fr": "Le gestionnaire de contrôle des services a expiré.",
+    "pt": "O Gerenciador de Controle de Serviços excedeu o tempo.",
+    "ru": "Время ожидания диспетчера управления службами истекло.",
+    "zh": "服务控制管理器超时。"
+  },
+  "Windows could not enable adapter power features on {1} (WMI result {2}).": {
+    "nl": "Windows kon energiefuncties van de adapter op {1} niet inschakelen (WMI-resultaat {2}).",
+    "es": "Windows no pudo activar funciones de energía del adaptador en {1} (resultado WMI {2}).",
+    "de": "Windows konnte Adapterenergiefunktionen auf {1} nicht aktivieren (WMI-Ergebnis {2}).",
+    "fr": "Windows n’a pas pu activer fonctions d’alimentation de l’adaptateur sur {1} (résultat WMI {2}).",
+    "pt": "O Windows não conseguiu ativar funções de energia do adaptador em {1} (resultado WMI {2}).",
+    "ru": "Windows не удалось включить функции питания адаптера на {1} (результат WMI {2}).",
+    "zh": "Windows 无法在 {1} 上启用 适配器电源功能（WMI 结果 {2}）。"
+  },
+  "Windows could not disable adapter power features on {1} (WMI result {2}).": {
+    "nl": "Windows kon energiefuncties van de adapter op {1} niet uitschakelen (WMI-resultaat {2}).",
+    "es": "Windows no pudo desactivar funciones de energía del adaptador en {1} (resultado WMI {2}).",
+    "de": "Windows konnte Adapterenergiefunktionen auf {1} nicht deaktivieren (WMI-Ergebnis {2}).",
+    "fr": "Windows n’a pas pu désactiver fonctions d’alimentation de l’adaptateur sur {1} (résultat WMI {2}).",
+    "pt": "O Windows não conseguiu desativar funções de energia do adaptador em {1} (resultado WMI {2}).",
+    "ru": "Windows не удалось отключить функции питания адаптера на {1} (результат WMI {2}).",
+    "zh": "Windows 无法在 {1} 上禁用 适配器电源功能（WMI 结果 {2}）。"
+  }
+}

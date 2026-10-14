@@ -1,0 +1,98 @@
+name: Build and release SharkOptimizer
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+    tags: ['v*', '[0-9]*']
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: sharkoptimizer-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: windows-2022
+    timeout-minutes: 20
+    outputs:
+      version: ${{ steps.version.outputs.version }}
+    defaults:
+      run:
+        shell: pwsh
+    steps:
+      - uses: actions/checkout@v6.1.0
+        with:
+          persist-credentials: false
+      - name: Validate release version
+        id: version
+        run: |
+          if ($env:GITHUB_REF_TYPE -eq 'tag') {
+            ./tools/Assert-ReleaseVersion.ps1 -Tag $env:GITHUB_REF_NAME
+          } else {
+            ./tools/Assert-ReleaseVersion.ps1
+          }
+          $version = (Get-Content -LiteralPath VERSION -Raw).Trim()
+          "version=$version" | Out-File -FilePath $env:GITHUB_OUTPUT -Append -Encoding utf8
+      - name: Generate translations and build native app
+        run: |
+          ./native/extract-translations.ps1
+          ./native/build.ps1
+      - name: Build installer
+        env:
+          RELEASE_VERSION: ${{ steps.version.outputs.version }}
+        run: |
+          ./installer/build-installer.ps1 -NativeAppPath ./native/out/SharkOptimizer.Native.exe -OutputPath "./release/$env:RELEASE_VERSION/SharkOptimizer-Setup.exe"
+          ./tools/Assert-ReleaseVersion.ps1 -AppPath ./native/out/SharkOptimizer.Native.exe -SetupPath "./release/$env:RELEASE_VERSION/SharkOptimizer-Setup.exe"
+      - name: Run isolated checks
+        env:
+          RELEASE_VERSION: ${{ steps.version.outputs.version }}
+        run: |
+          ./tools/checks/Version.Check.ps1
+          $hostPath = "$env:SystemRoot/System32/WindowsPowerShell/v1.0/powershell.exe"
+          foreach ($check in @('Presets','Backups','Localization','Dashboard','Monitoring','Startup','UpdateTransport','BackgroundUpdates','RestorePointPolicy','PolicyTargets','DataActions','ExistingTweaks','CustomTweaks','Guide')) {
+            & $hostPath -NoProfile -STA -ExecutionPolicy Bypass -File "./native/checks/$check.Check.ps1"
+            if ($LASTEXITCODE -ne 0) { throw "Check failed: $check" }
+          }
+          & $hostPath -NoProfile -STA -ExecutionPolicy Bypass -File ./installer/checks/Uninstall.Check.ps1 -SetupPath "./release/$env:RELEASE_VERSION/SharkOptimizer-Setup.exe"
+          if ($LASTEXITCODE -ne 0) { throw 'Uninstall filesystem check failed.' }
+      - name: Prepare release artifact
+        env:
+          RELEASE_VERSION: ${{ steps.version.outputs.version }}
+        run: |
+          $notes = "./release-notes/$env:RELEASE_VERSION.md"
+          if (!(Test-Path -LiteralPath $notes)) { throw 'Add release notes for this version before publishing.' }
+          New-Item -ItemType Directory -Path ./dist -Force | Out-Null
+          Copy-Item -LiteralPath "./release/$env:RELEASE_VERSION/SharkOptimizer-Setup.exe" -Destination ./dist/SharkOptimizer-Setup.exe
+          Copy-Item -LiteralPath $notes -Destination ./dist/release-notes.md
+      - uses: actions/upload-artifact@v7.0.2
+        with:
+          name: sharkoptimizer-setup
+          path: dist/
+          if-no-files-found: error
+          retention-days: 14
+
+  publish:
+    if: github.event_name == 'push' && github.ref_type == 'tag'
+    needs: build
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    permissions:
+      contents: write
+      actions: read
+    steps:
+      - uses: actions/download-artifact@v8
+        with:
+          name: sharkoptimizer-setup
+          path: dist
+      - name: Publish installer release
+        env:
+          GH_TOKEN: ${{ github.token }}
+          GH_REPO: ${{ github.repository }}
+          RELEASE_TAG: ${{ github.ref_name }}
+          RELEASE_VERSION: ${{ needs.build.outputs.version }}
+        run: |
+          gh release create "$RELEASE_TAG" dist/SharkOptimizer-Setup.exe --verify-tag --title "SharkOptimizer $RELEASE_VERSION" --notes-file dist/release-notes.md --latest

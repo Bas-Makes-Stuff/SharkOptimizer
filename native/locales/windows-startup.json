@@ -1,0 +1,47 @@
+{
+  "{0}  ·  {1}  ·  Current user": {
+    "nl": "{0}  ·  {1}  ·  Huidige gebruiker",
+    "es": "{0}  ·  {1}  ·  Usuario actual",
+    "de": "{0}  ·  {1}  ·  Aktueller Benutzer",
+    "fr": "{0}  ·  {1}  ·  Utilisateur actuel",
+    "pt": "{0}  ·  {1}  ·  Usuário atual",
+    "ru": "{0}  ·  {1}  ·  Текущий пользователь",
+    "zh": "{0}  ·  {1}  ·  当前用户"
+  },
+  "{0}  ·  {1}  ·  All users": {
+    "nl": "{0}  ·  {1}  ·  Alle gebruikers",
+    "es": "{0}  ·  {1}  ·  Todos los usuarios",
+    "de": "{0}  ·  {1}  ·  Alle Benutzer",
+    "fr": "{0}  ·  {1}  ·  Tous les utilisateurs",
+    "pt": "{0}  ·  {1}  ·  Todos os usuários",
+    "ru": "{0}  ·  {1}  ·  Все пользователи",
+    "zh": "{0}  ·  {1}  ·  所有用户"
+  },
+  "{0}  ·  Current user · Startup folder": {
+    "nl": "{0}  ·  Huidige gebruiker · Opstartmap",
+    "es": "{0}  ·  Usuario actual · Carpeta de inicio",
+    "de": "{0}  ·  Aktueller Benutzer · Autostartordner",
+    "fr": "{0}  ·  Utilisateur actuel · Dossier de démarrage",
+    "pt": "{0}  ·  Usuário atual · Pasta de inicialização",
+    "ru": "{0}  ·  Текущий пользователь · Папка автозагрузки",
+    "zh": "{0}  ·  当前用户 · 启动文件夹"
+  },
+  "{0}  ·  All users · Startup folder": {
+    "nl": "{0}  ·  Alle gebruikers · Opstartmap",
+    "es": "{0}  ·  Todos los usuarios · Carpeta de inicio",
+    "de": "{0}  ·  Alle Benutzer · Autostartordner",
+    "fr": "{0}  ·  Tous les utilisateurs · Dossier de démarrage",
+    "pt": "{0}  ·  Todos os usuários · Pasta de inicialização",
+    "ru": "{0}  ·  Все пользователи · Папка автозагрузки",
+    "zh": "{0}  ·  所有用户 · 启动文件夹"
+  },
+  "{0} · Disabled by SharkOptimizer": {
+    "nl": "{0} · Uitgeschakeld door SharkOptimizer",
+    "es": "{0} · Desactivado por SharkOptimizer",
+    "de": "{0} · Von SharkOptimizer deaktiviert",
+    "fr": "{0} · Désactivé par SharkOptimizer",
+    "pt": "{0} · Desativado pelo SharkOptimizer",
+    "ru": "{0} · Отключено SharkOptimizer",
+    "zh": "{0} · 已被 SharkOptimizer 禁用"
+  }
+}

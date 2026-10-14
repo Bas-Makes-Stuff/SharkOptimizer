@@ -1,0 +1,191 @@
+{
+  "Lets Windows prioritize your game while you play.": {
+    "nl": "Laat Windows je game voorrang geven tijdens het spelen.",
+    "es": "Permite a Windows dar prioridad al juego mientras juegas.",
+    "de": "Lässt Windows dein Spiel während des Spielens priorisieren.",
+    "fr": "Permet à Windows de donner la priorité à votre jeu pendant la partie.",
+    "pt": "Permite ao Windows priorizar o jogo enquanto você joga.",
+    "ru": "Позволяет Windows отдавать приоритет игре во время игры.",
+    "zh": "让 Windows 在您玩游戏时优先处理游戏。"
+  },
+  "Turns off background Game Bar capture, which can add recording overhead.": {
+    "nl": "Schakelt achtergrondopname via Game Bar uit, die extra opnamebelasting kan veroorzaken.",
+    "es": "Desactiva la grabación en segundo plano de Game Bar, que puede añadir carga de grabación.",
+    "de": "Deaktiviert die Hintergrundaufnahme der Game Bar, die zusätzliche Aufnahmelast verursachen kann.",
+    "fr": "Désactive l’enregistrement en arrière-plan de Game Bar, qui peut ajouter une charge d’enregistrement.",
+    "pt": "Desativa a gravação em segundo plano da Game Bar, que pode adicionar carga de gravação.",
+    "ru": "Отключает фоновую запись Game Bar, которая может создавать дополнительную нагрузку.",
+    "zh": "关闭 Game Bar 后台录制，该功能可能增加录制开销。"
+  },
+  "Win+G and Windows+Alt+R capture may stop working.": {
+    "nl": "Opnemen met Win+G en Windows+Alt+R werkt mogelijk niet meer.",
+    "es": "La captura con Win+G y Windows+Alt+R puede dejar de funcionar.",
+    "de": "Aufnahmen mit Win+G und Windows+Alt+R funktionieren möglicherweise nicht mehr.",
+    "fr": "La capture avec Win+G et Windows+Alt+R peut cesser de fonctionner.",
+    "pt": "A captura com Win+G e Windows+Alt+R pode parar de funcionar.",
+    "ru": "Запись через Win+G и Windows+Alt+R может перестать работать.",
+    "zh": "Win+G 和 Windows+Alt+R 录制可能无法工作。"
+  },
+  "Displays file endings such as .exe, .png, and .txt in File Explorer.": {
+    "nl": "Toont bestandsextensies zoals .exe, .png en .txt in Verkenner.",
+    "es": "Muestra extensiones como .exe, .png y .txt en el Explorador de archivos.",
+    "de": "Zeigt Dateiendungen wie .exe, .png und .txt im Explorer an.",
+    "fr": "Affiche les extensions telles que .exe, .png et .txt dans l’Explorateur de fichiers.",
+    "pt": "Mostra extensões como .exe, .png e .txt no Explorador de Arquivos.",
+    "ru": "Показывает расширения файлов, например .exe, .png и .txt, в Проводнике.",
+    "zh": "在文件资源管理器中显示 .exe、.png 和 .txt 等文件扩展名。"
+  },
+  "Removes the delay Windows adds before starting sign-in apps.": {
+    "nl": "Verwijdert de vertraging die Windows toevoegt voordat aanmeldapps starten.",
+    "es": "Elimina el retraso que Windows añade antes de iniciar las aplicaciones al iniciar sesión.",
+    "de": "Entfernt die von Windows hinzugefügte Verzögerung vor dem Start von Anmelde-Apps.",
+    "fr": "Supprime le délai ajouté par Windows avant de lancer les applications à la connexion.",
+    "pt": "Remove o atraso que o Windows adiciona antes de iniciar aplicativos ao entrar na conta.",
+    "ru": "Убирает задержку Windows перед запуском приложений при входе в систему.",
+    "zh": "移除 Windows 在启动登录应用前添加的延迟。"
+  },
+  "Disables the Windows 11 Widgets board through machine policy.": {
+    "nl": "Schakelt het Windows 11-widgetpaneel uit via computerbeleid.",
+    "es": "Desactiva el panel de widgets de Windows 11 mediante una directiva del equipo.",
+    "de": "Deaktiviert das Widgetboard von Windows 11 über eine Computerrichtlinie.",
+    "fr": "Désactive le panneau Widgets de Windows 11 via une stratégie de l’ordinateur.",
+    "pt": "Desativa o painel de Widgets do Windows 11 por uma política do computador.",
+    "ru": "Отключает панель виджетов Windows 11 через политику компьютера.",
+    "zh": "通过计算机策略禁用 Windows 11 小组件面板。"
+  },
+  "The Widgets board and its web content will be unavailable. This option is for Windows 11.": {
+    "nl": "Het widgetpaneel en de webinhoud zijn niet meer beschikbaar. Deze optie is voor Windows 11.",
+    "es": "El panel de widgets y su contenido web no estarán disponibles. Esta opción es para Windows 11.",
+    "de": "Das Widgetboard und seine Webinhalte sind nicht mehr verfügbar. Diese Option ist für Windows 11.",
+    "fr": "Le panneau Widgets et son contenu web seront indisponibles. Cette option concerne Windows 11.",
+    "pt": "O painel de Widgets e seu conteúdo da web ficarão indisponíveis. Esta opção é para Windows 11.",
+    "ru": "Панель виджетов и её веб-содержимое станут недоступны. Эта настройка предназначена для Windows 11.",
+    "zh": "小组件面板及其网页内容将不可用。此选项适用于 Windows 11。"
+  },
+  "Hides the Chat button from the Windows 11 taskbar through machine policy.": {
+    "nl": "Verbergt de Chat-knop op de Windows 11-taakbalk via computerbeleid.",
+    "es": "Oculta el botón Chat de la barra de tareas de Windows 11 mediante una directiva del equipo.",
+    "de": "Blendet die Chat-Schaltfläche der Windows-11-Taskleiste über eine Computerrichtlinie aus.",
+    "fr": "Masque le bouton Conversation de la barre des tâches Windows 11 via une stratégie de l’ordinateur.",
+    "pt": "Oculta o botão Chat da barra de tarefas do Windows 11 por uma política do computador.",
+    "ru": "Скрывает кнопку чата на панели задач Windows 11 через политику компьютера.",
+    "zh": "通过计算机策略隐藏 Windows 11 任务栏上的聊天按钮。"
+  },
+  "This option is for Windows 11.": {
+    "nl": "Deze optie is voor Windows 11.",
+    "es": "Esta opción es para Windows 11.",
+    "de": "Diese Option ist für Windows 11.",
+    "fr": "Cette option concerne Windows 11.",
+    "pt": "Esta opção é para Windows 11.",
+    "ru": "Эта настройка предназначена для Windows 11.",
+    "zh": "此选项适用于 Windows 11。"
+  },
+  "Removes the delay before Windows menus open.": {
+    "nl": "Verwijdert de vertraging voordat Windows-menu's openen.",
+    "es": "Elimina el retraso antes de abrir los menús de Windows.",
+    "de": "Entfernt die Verzögerung beim Öffnen von Windows-Menüs.",
+    "fr": "Supprime le délai avant l’ouverture des menus Windows.",
+    "pt": "Remove o atraso antes de abrir os menus do Windows.",
+    "ru": "Убирает задержку перед открытием меню Windows.",
+    "zh": "移除 Windows 菜单打开前的延迟。"
+  },
+  "Switches Windows and supported apps to the dark theme.": {
+    "nl": "Zet Windows en ondersteunde apps op het donkere thema.",
+    "es": "Cambia Windows y las aplicaciones compatibles al tema oscuro.",
+    "de": "Stellt Windows und unterstützte Apps auf das dunkle Design um.",
+    "fr": "Active le thème sombre pour Windows et les applications compatibles.",
+    "pt": "Muda o Windows e os aplicativos compatíveis para o tema escuro.",
+    "ru": "Переключает Windows и поддерживаемые приложения на тёмную тему.",
+    "zh": "将 Windows 和支持的应用切换为深色主题。"
+  },
+  "Stops apps from using your Windows advertising identifier.": {
+    "nl": "Voorkomt dat apps je Windows-advertentie-ID gebruiken.",
+    "es": "Impide que las aplicaciones utilicen tu identificador de publicidad de Windows.",
+    "de": "Verhindert, dass Apps deine Windows-Werbe-ID verwenden.",
+    "fr": "Empêche les applications d’utiliser votre identifiant publicitaire Windows.",
+    "pt": "Impede que aplicativos usem seu identificador de publicidade do Windows.",
+    "ru": "Запрещает приложениям использовать рекламный идентификатор Windows.",
+    "zh": "阻止应用使用您的 Windows 广告标识符。"
+  },
+  "Keeps Start search focused on your PC instead of web suggestions.": {
+    "nl": "Richt zoeken in Start op je pc in plaats van websuggesties.",
+    "es": "Centra la búsqueda de Inicio en tu PC en lugar de sugerencias web.",
+    "de": "Beschränkt die Startsuche auf deinen PC statt auf Webvorschläge.",
+    "fr": "Centre la recherche du menu Démarrer sur votre PC plutôt que sur les suggestions web.",
+    "pt": "Foca a pesquisa do menu Iniciar no seu PC em vez de sugestões da web.",
+    "ru": "Сосредотачивает поиск в меню «Пуск» на ПК вместо веб-подсказок.",
+    "zh": "使开始菜单搜索侧重于电脑内容而非网页建议。"
+  },
+  "Stops Windows publishing and uploading your activity timeline.": {
+    "nl": "Voorkomt dat Windows je activiteitentijdlijn publiceert en uploadt.",
+    "es": "Impide que Windows publique y cargue tu cronología de actividades.",
+    "de": "Verhindert, dass Windows deinen Aktivitätsverlauf veröffentlicht und hochlädt.",
+    "fr": "Empêche Windows de publier et de téléverser votre chronologie d’activités.",
+    "pt": "Impede que o Windows publique e envie sua linha do tempo de atividades.",
+    "ru": "Запрещает Windows публиковать и загружать историю действий.",
+    "zh": "阻止 Windows 发布和上传您的活动时间线。"
+  },
+  "Stops Windows from periodically asking for feedback.": {
+    "nl": "Voorkomt dat Windows regelmatig om feedback vraagt.",
+    "es": "Impide que Windows solicite comentarios periódicamente.",
+    "de": "Verhindert regelmäßige Feedback-Anfragen von Windows.",
+    "fr": "Empêche Windows de demander régulièrement des commentaires.",
+    "pt": "Impede que o Windows peça comentários periodicamente.",
+    "ru": "Отключает периодические запросы отзывов Windows.",
+    "zh": "阻止 Windows 定期请求反馈。"
+  },
+  "Restricts Windows collection of handwriting and typing data for personalization.": {
+    "nl": "Beperkt het verzamelen van handschrift- en typegegevens door Windows voor personalisatie.",
+    "es": "Restringe la recopilación de datos de escritura a mano y teclado por Windows para personalización.",
+    "de": "Beschränkt die Erfassung von Handschrift- und Eingabedaten durch Windows zur Personalisierung.",
+    "fr": "Limite la collecte par Windows des données d’écriture manuscrite et de saisie pour la personnalisation.",
+    "pt": "Restringe a coleta de dados de escrita à mão e digitação pelo Windows para personalização.",
+    "ru": "Ограничивает сбор Windows данных рукописного и клавиатурного ввода для персонализации.",
+    "zh": "限制 Windows 为个性化收集手写和键入数据。"
+  },
+  "Stops clipboard history from syncing between your devices.": {
+    "nl": "Voorkomt synchronisatie van klembordgeschiedenis tussen je apparaten.",
+    "es": "Impide la sincronización del historial del portapapeles entre tus dispositivos.",
+    "de": "Verhindert die Synchronisierung des Zwischenablageverlaufs zwischen deinen Geräten.",
+    "fr": "Empêche la synchronisation de l’historique du presse-papiers entre vos appareils.",
+    "pt": "Impede a sincronização do histórico da área de transferência entre seus dispositivos.",
+    "ru": "Отключает синхронизацию истории буфера обмена между устройствами.",
+    "zh": "阻止剪贴板历史记录在您的设备间同步。"
+  },
+  "Clipboard history will remain available locally.": {
+    "nl": "Klembordgeschiedenis blijft lokaal beschikbaar.",
+    "es": "El historial del portapapeles seguirá disponible localmente.",
+    "de": "Der Zwischenablageverlauf bleibt lokal verfügbar.",
+    "fr": "L’historique du presse-papiers restera disponible localement.",
+    "pt": "O histórico da área de transferência continuará disponível localmente.",
+    "ru": "История буфера обмена останется доступна локально.",
+    "zh": "剪贴板历史记录仍可在本地使用。"
+  },
+  "Removes recent files and frequent folders from File Explorer Home and Quick Access.": {
+    "nl": "Verwijdert recente bestanden en veelgebruikte mappen uit Start en Snelle toegang in Verkenner.",
+    "es": "Elimina los archivos recientes y carpetas frecuentes de Inicio y Acceso rápido del Explorador de archivos.",
+    "de": "Entfernt zuletzt verwendete Dateien und häufige Ordner aus Start und Schnellzugriff im Explorer.",
+    "fr": "Retire les fichiers récents et dossiers fréquents de l’accueil et de l’accès rapide de l’Explorateur de fichiers.",
+    "pt": "Remove arquivos recentes e pastas frequentes de Início e Acesso Rápido do Explorador de Arquivos.",
+    "ru": "Убирает недавние файлы и часто используемые папки с главной страницы и панели быстрого доступа Проводника.",
+    "zh": "从文件资源管理器主页和快速访问中移除最近文件及常用文件夹。"
+  },
+  "Makes hidden files and folders visible in File Explorer.": {
+    "nl": "Maakt verborgen bestanden en mappen zichtbaar in Verkenner.",
+    "es": "Muestra los archivos y carpetas ocultos en el Explorador de archivos.",
+    "de": "Macht versteckte Dateien und Ordner im Explorer sichtbar.",
+    "fr": "Affiche les fichiers et dossiers cachés dans l’Explorateur de fichiers.",
+    "pt": "Mostra arquivos e pastas ocultos no Explorador de Arquivos.",
+    "ru": "Показывает скрытые файлы и папки в Проводнике.",
+    "zh": "在文件资源管理器中显示隐藏文件和文件夹。"
+  },
+  "Take care when editing hidden system files.": {
+    "nl": "Wees voorzichtig bij het bewerken van verborgen systeembestanden.",
+    "es": "Ten cuidado al editar archivos ocultos del sistema.",
+    "de": "Sei vorsichtig beim Bearbeiten versteckter Systemdateien.",
+    "fr": "Soyez prudent lorsque vous modifiez des fichiers système cachés.",
+    "pt": "Tenha cuidado ao editar arquivos ocultos do sistema.",
+    "ru": "Будьте осторожны при изменении скрытых системных файлов.",
+    "zh": "编辑隐藏的系统文件时请谨慎。"
+  }
+}

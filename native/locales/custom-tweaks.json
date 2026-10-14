@@ -1,0 +1,335 @@
+{
+  "Custom tweaks could not be saved": {
+    "nl": "Aangepaste aanpassingen konden niet worden opgeslagen",
+    "es": "No se pudieron guardar los ajustes personalizados",
+    "de": "Eigene Anpassungen konnten nicht gespeichert werden",
+    "fr": "Impossible d’enregistrer les ajustements personnalisés",
+    "pt": "Não foi possível salvar os ajustes personalizados",
+    "ru": "Не удалось сохранить пользовательские изменения",
+    "zh": "无法保存自定义调整"
+  },
+  "Import definitions": {
+    "nl": "Definities importeren",
+    "es": "Importar definiciones",
+    "de": "Definitionen importieren",
+    "fr": "Importer des définitions",
+    "pt": "Importar definições",
+    "ru": "Импортировать определения",
+    "zh": "导入定义"
+  },
+  "Manage definitions": {
+    "nl": "Definities beheren",
+    "es": "Administrar definiciones",
+    "de": "Definitionen verwalten",
+    "fr": "Gérer les définitions",
+    "pt": "Gerenciar definições",
+    "ru": "Управлять определениями",
+    "zh": "管理定义"
+  },
+  "Export JSON": {
+    "nl": "JSON exporteren",
+    "es": "Exportar JSON",
+    "de": "JSON exportieren",
+    "fr": "Exporter JSON",
+    "pt": "Exportar JSON",
+    "ru": "Экспортировать JSON",
+    "zh": "导出 JSON"
+  },
+  "Save example": {
+    "nl": "Voorbeeld opslaan",
+    "es": "Guardar ejemplo",
+    "de": "Beispiel speichern",
+    "fr": "Enregistrer un exemple",
+    "pt": "Salvar exemplo",
+    "ru": "Сохранить пример",
+    "zh": "保存示例"
+  },
+  "Advanced · Custom registry tweaks": {
+    "nl": "Geavanceerd · Aangepaste registeraanpassingen",
+    "es": "Avanzado · Ajustes personalizados del registro",
+    "de": "Erweitert · Eigene Registrierungsanpassungen",
+    "fr": "Avancé · Ajustements personnalisés du registre",
+    "pt": "Avançado · Ajustes personalizados do registro",
+    "ru": "Дополнительно · Пользовательские изменения реестра",
+    "zh": "高级 · 自定义注册表调整"
+  },
+  "Review custom definitions": {
+    "nl": "Aangepaste definities bekijken",
+    "es": "Revisar definiciones personalizadas",
+    "de": "Eigene Definitionen prüfen",
+    "fr": "Examiner les définitions personnalisées",
+    "pt": "Revisar definições personalizadas",
+    "ru": "Проверить пользовательские определения",
+    "zh": "检查自定义定义"
+  },
+  "Definition import failed": {
+    "nl": "Definities importeren mislukt",
+    "es": "Error al importar definiciones",
+    "de": "Definitionsimport fehlgeschlagen",
+    "fr": "Échec de l’importation des définitions",
+    "pt": "Falha ao importar definições",
+    "ru": "Ошибка импорта определений",
+    "zh": "定义导入失败"
+  },
+  "Definition export failed": {
+    "nl": "Definities exporteren mislukt",
+    "es": "Error al exportar definiciones",
+    "de": "Definitionsexport fehlgeschlagen",
+    "fr": "Échec de l’exportation des définitions",
+    "pt": "Falha ao exportar definições",
+    "ru": "Ошибка экспорта определений",
+    "zh": "定义导出失败"
+  },
+  "Custom registry definitions": {
+    "nl": "Aangepaste registerdefinities",
+    "es": "Definiciones personalizadas del registro",
+    "de": "Eigene Registrierungsdefinitionen",
+    "fr": "Définitions personnalisées du registre",
+    "pt": "Definições personalizadas do registro",
+    "ru": "Пользовательские определения реестра",
+    "zh": "自定义注册表定义"
+  },
+  "Review custom targets": {
+    "nl": "Aangepaste doelen bekijken",
+    "es": "Revisar destinos personalizados",
+    "de": "Eigene Ziele prüfen",
+    "fr": "Examiner les cibles personnalisées",
+    "pt": "Revisar destinos personalizados",
+    "ru": "Проверить пользовательские цели",
+    "zh": "检查自定义目标"
+  },
+  "Available on Optimize": {
+    "nl": "Beschikbaar bij Optimaliseren",
+    "es": "Disponible en Optimizar",
+    "de": "Auf Optimieren verfügbar",
+    "fr": "Disponible dans Optimiser",
+    "pt": "Disponível em Otimizar",
+    "ru": "Доступно в разделе оптимизации",
+    "zh": "在优化页面可用"
+  },
+  "Remove definition": {
+    "nl": "Definitie verwijderen",
+    "es": "Eliminar definición",
+    "de": "Definition entfernen",
+    "fr": "Supprimer la définition",
+    "pt": "Remover definição",
+    "ru": "Удалить определение",
+    "zh": "删除定义"
+  },
+  "No definition selected.": {
+    "nl": "Geen definitie geselecteerd.",
+    "es": "Ninguna definición seleccionada.",
+    "de": "Keine Definition ausgewählt.",
+    "fr": "Aucune définition sélectionnée.",
+    "pt": "Nenhuma definição selecionada.",
+    "ru": "Определение не выбрано.",
+    "zh": "未选择定义。"
+  },
+  "No custom definitions yet. Import a JSON file from Settings.": {
+    "nl": "Nog geen aangepaste definities. Importeer een JSON-bestand via Instellingen.",
+    "es": "Todavía no hay definiciones personalizadas. Importa un archivo JSON desde Configuración.",
+    "de": "Noch keine eigenen Definitionen. Importiere eine JSON-Datei in den Einstellungen.",
+    "fr": "Aucune définition personnalisée pour le moment. Importez un fichier JSON depuis les paramètres.",
+    "pt": "Ainda não há definições personalizadas. Importe um arquivo JSON nas Configurações.",
+    "ru": "Пользовательских определений пока нет. Импортируйте файл JSON в настройках.",
+    "zh": "尚无自定义定义。请从设置中导入 JSON 文件。"
+  },
+  "{0} definitions · {1} enabled on Optimize": {
+    "nl": "{0} definities · {1} ingeschakeld bij Optimaliseren",
+    "es": "{0} definiciones · {1} habilitadas en Optimizar",
+    "de": "{0} Definitionen · {1} auf Optimieren aktiviert",
+    "fr": "{0} définitions · {1} activées dans Optimiser",
+    "pt": "{0} definições · {1} habilitadas em Otimizar",
+    "ru": "Определений: {0} · включено в оптимизации: {1}",
+    "zh": "{0} 个定义 · {1} 个在优化页面启用"
+  },
+  "Import your own registry definitions, review their exact targets, and make them available on Optimize. Enabling a definition does not apply it. Applied values stay tracked in Restore when a definition is disabled or removed.": {
+    "nl": "Importeer je eigen registerdefinities, bekijk de exacte doelen en maak ze beschikbaar bij Optimaliseren. Een definitie inschakelen past deze niet toe. Toegepaste waarden blijven bij Herstel geregistreerd als je een definitie uitschakelt of verwijdert.",
+    "es": "Importa tus definiciones del registro, revisa sus destinos exactos y hazlas disponibles en Optimizar. Habilitar una definición no la aplica. Los valores aplicados siguen registrados en Restaurar cuando se deshabilita o elimina una definición.",
+    "de": "Importiere eigene Registrierungsdefinitionen, prüfe ihre genauen Ziele und stelle sie auf Optimieren bereit. Das Aktivieren einer Definition wendet sie nicht an. Angewendete Werte bleiben in Wiederherstellen erfasst, wenn eine Definition deaktiviert oder entfernt wird.",
+    "fr": "Importez vos définitions du registre, examinez leurs cibles exactes et rendez-les disponibles dans Optimiser. Activer une définition ne l’applique pas. Les valeurs appliquées restent suivies dans Restaurer si une définition est désactivée ou supprimée.",
+    "pt": "Importe suas definições do registro, revise os destinos exatos e disponibilize-as em Otimizar. Habilitar uma definição não a aplica. Os valores aplicados continuam registrados em Restaurar quando uma definição é desabilitada ou removida.",
+    "ru": "Импортируйте свои определения реестра, проверьте точные цели и включите их в список оптимизации. Включение определения не применяет его. Применённые значения остаются в разделе восстановления при отключении или удалении определения.",
+    "zh": "导入自己的注册表定义、检查其确切目标，并使其在优化页面可用。启用定义不会应用它。禁用或删除定义后，已应用的值仍在还原页面记录。"
+  },
+  "Import these definitions? Matching IDs will replace existing definitions. Windows values and undo history are kept.": {
+    "nl": "Deze definities importeren? Overeenkomende ID's vervangen bestaande definities. Windows-waarden en herstelgeschiedenis blijven bewaard.",
+    "es": "¿Importar estas definiciones? Los ID coincidentes reemplazarán las existentes. Se conservan los valores de Windows y el historial para deshacer cambios.",
+    "de": "Diese Definitionen importieren? Übereinstimmende IDs ersetzen vorhandene Definitionen. Windows-Werte und der Verlauf zum Rückgängigmachen bleiben erhalten.",
+    "fr": "Importer ces définitions ? Les identifiants correspondants remplaceront les définitions existantes. Les valeurs Windows et l’historique d’annulation sont conservés.",
+    "pt": "Importar estas definições? IDs correspondentes substituirão as existentes. Os valores do Windows e o histórico de restauração serão mantidos.",
+    "ru": "Импортировать эти определения? Совпадающие ID заменят существующие определения. Значения Windows и история отмены сохраняются.",
+    "zh": "导入这些定义？相同 ID 将替换现有定义。Windows 值和撤销历史将保留。"
+  },
+  "Review the exact targets in Manage definitions before applying anything on Optimize.": {
+    "nl": "Bekijk de exacte doelen bij Definities beheren voordat je iets toepast bij Optimaliseren.",
+    "es": "Revisa los destinos exactos en Administrar definiciones antes de aplicar nada en Optimizar.",
+    "de": "Prüfe die genauen Ziele in Definitionen verwalten, bevor du auf Optimieren etwas anwendest.",
+    "fr": "Examinez les cibles exactes dans Gérer les définitions avant d’appliquer quoi que ce soit dans Optimiser.",
+    "pt": "Revise os destinos exatos em Gerenciar definições antes de aplicar qualquer ajuste em Otimizar.",
+    "ru": "Проверьте точные цели в управлении определениями перед применением изменений в разделе оптимизации.",
+    "zh": "在优化页面应用任何调整前，请先在管理定义中检查确切目标。"
+  },
+  "Definitions only choose what Optimize offers. No registry changes happen in this manager.": {
+    "nl": "Definities bepalen alleen wat Optimaliseren aanbiedt. Deze beheerder wijzigt het register niet.",
+    "es": "Las definiciones solo determinan lo que ofrece Optimizar. Este administrador no modifica el registro.",
+    "de": "Definitionen bestimmen nur das Angebot auf Optimieren. Dieser Manager ändert keine Registrierungswerte.",
+    "fr": "Les définitions déterminent uniquement les options d’Optimiser. Ce gestionnaire ne modifie pas le registre.",
+    "pt": "As definições apenas determinam as opções de Otimizar. Este gerenciador não altera o registro.",
+    "ru": "Определения лишь определяют доступные варианты оптимизации. Этот менеджер не изменяет реестр.",
+    "zh": "定义只决定优化页面提供哪些选项。此管理器不会更改注册表。"
+  },
+  "Remove “{0}”? Applied values remain tracked in Restore.": {
+    "nl": "“{0}” verwijderen? Toegepaste waarden blijven bij Herstel geregistreerd.",
+    "es": "¿Eliminar «{0}»? Los valores aplicados siguen registrados en Restaurar.",
+    "de": "„{0}“ entfernen? Angewendete Werte bleiben in Wiederherstellen erfasst.",
+    "fr": "Supprimer « {0} » ? Les valeurs appliquées restent suivies dans Restaurer.",
+    "pt": "Remover “{0}”? Os valores aplicados continuam registrados em Restaurar.",
+    "ru": "Удалить «{0}»? Применённые значения остаются в разделе восстановления.",
+    "zh": "删除“{0}”？已应用的值仍在还原页面记录。"
+  },
+  "• {0} · {1} registry values · enabled": {
+    "nl": "• {0} · {1} registerwaarden · ingeschakeld",
+    "es": "• {0} · {1} valores del registro · habilitada",
+    "de": "• {0} · {1} Registrierungswerte · aktiviert",
+    "fr": "• {0} · {1} valeurs du registre · activée",
+    "pt": "• {0} · {1} valores do registro · habilitada",
+    "ru": "• {0} · значений реестра: {1} · включено",
+    "zh": "• {0} · {1} 个注册表值 · 已启用"
+  },
+  "• {0} · {1} registry values · disabled": {
+    "nl": "• {0} · {1} registerwaarden · uitgeschakeld",
+    "es": "• {0} · {1} valores del registro · deshabilitada",
+    "de": "• {0} · {1} Registrierungswerte · deaktiviert",
+    "fr": "• {0} · {1} valeurs du registre · désactivée",
+    "pt": "• {0} · {1} valores do registro · desabilitada",
+    "ru": "• {0} · значений реестра: {1} · отключено",
+    "zh": "• {0} · {1} 个注册表值 · 已禁用"
+  },
+  "Keep up to 100 custom definitions.": {
+    "nl": "Bewaar maximaal 100 aangepaste definities.",
+    "es": "Mantén como máximo 100 definiciones personalizadas.",
+    "de": "Speichere höchstens 100 eigene Definitionen.",
+    "fr": "Conservez au maximum 100 définitions personnalisées.",
+    "pt": "Mantenha no máximo 100 definições personalizadas.",
+    "ru": "Можно сохранить не более 100 пользовательских определений.",
+    "zh": "最多保留 100 个自定义定义。"
+  },
+  "Custom-tweak files must be no larger than 1 MB.": {
+    "nl": "Bestanden met aangepaste aanpassingen mogen maximaal 1 MB zijn.",
+    "es": "Los archivos de ajustes personalizados no deben superar 1 MB.",
+    "de": "Dateien mit eigenen Anpassungen dürfen höchstens 1 MB groß sein.",
+    "fr": "Les fichiers d’ajustements personnalisés ne doivent pas dépasser 1 Mo.",
+    "pt": "Os arquivos de ajustes personalizados não podem exceder 1 MB.",
+    "ru": "Файлы пользовательских изменений не должны превышать 1 МБ.",
+    "zh": "自定义调整文件不得超过 1 MB。"
+  },
+  "The file has no definitions.": {
+    "nl": "Het bestand bevat geen definities.",
+    "es": "El archivo no contiene definiciones.",
+    "de": "Die Datei enthält keine Definitionen.",
+    "fr": "Le fichier ne contient aucune définition.",
+    "pt": "O arquivo não contém definições.",
+    "ru": "В файле нет определений.",
+    "zh": "文件中没有定义。"
+  },
+  "Registry values cannot be null.": {
+    "nl": "Registerwaarden mogen niet null zijn.",
+    "es": "Los valores del registro no pueden ser null.",
+    "de": "Registrierungswerte dürfen nicht null sein.",
+    "fr": "Les valeurs du registre ne peuvent pas être null.",
+    "pt": "Os valores do registro não podem ser null.",
+    "ru": "Значения реестра не могут быть null.",
+    "zh": "注册表值不能为 null。"
+  },
+  "String registry values must be text.": {
+    "nl": "String-registerwaarden moeten tekst zijn.",
+    "es": "Los valores String del registro deben ser texto.",
+    "de": "String-Registrierungswerte müssen Text sein.",
+    "fr": "Les valeurs String du registre doivent être du texte.",
+    "pt": "Os valores String do registro devem ser texto.",
+    "ru": "Значения реестра типа String должны быть текстом.",
+    "zh": "String 类型的注册表值必须是文本。"
+  },
+  "MultiString values must be a text list.": {
+    "nl": "MultiString-waarden moeten een tekstlijst zijn.",
+    "es": "Los valores MultiString deben ser una lista de textos.",
+    "de": "MultiString-Werte müssen eine Textliste sein.",
+    "fr": "Les valeurs MultiString doivent être une liste de textes.",
+    "pt": "Os valores MultiString devem ser uma lista de textos.",
+    "ru": "Значения MultiString должны быть списком строк.",
+    "zh": "MultiString 值必须是文本列表。"
+  },
+  "MultiString entries must be text.": {
+    "nl": "MultiString-items moeten tekst zijn.",
+    "es": "Los elementos MultiString deben ser texto.",
+    "de": "MultiString-Einträge müssen Text sein.",
+    "fr": "Les entrées MultiString doivent être du texte.",
+    "pt": "As entradas MultiString devem ser texto.",
+    "ru": "Элементы MultiString должны быть текстом.",
+    "zh": "MultiString 条目必须是文本。"
+  },
+  "Binary values must be a list of bytes.": {
+    "nl": "Binaire waarden moeten een lijst met bytes zijn.",
+    "es": "Los valores binarios deben ser una lista de bytes.",
+    "de": "Binärwerte müssen eine Byteliste sein.",
+    "fr": "Les valeurs binaires doivent être une liste d’octets.",
+    "pt": "Os valores binários devem ser uma lista de bytes.",
+    "ru": "Двоичные значения должны быть списком байтов.",
+    "zh": "二进制值必须是字节列表。"
+  },
+  "Binary entries cannot be null.": {
+    "nl": "Binaire items mogen niet null zijn.",
+    "es": "Los elementos binarios no pueden ser null.",
+    "de": "Binäreinträge dürfen nicht null sein.",
+    "fr": "Les entrées binaires ne peuvent pas être null.",
+    "pt": "As entradas binárias não podem ser null.",
+    "ru": "Элементы двоичных значений не могут быть null.",
+    "zh": "二进制条目不能为 null。"
+  },
+  "Binary entries must be integers from 0 to 255.": {
+    "nl": "Binaire items moeten gehele getallen van 0 tot 255 zijn.",
+    "es": "Los elementos binarios deben ser enteros de 0 a 255.",
+    "de": "Binäreinträge müssen ganze Zahlen von 0 bis 255 sein.",
+    "fr": "Les entrées binaires doivent être des entiers de 0 à 255.",
+    "pt": "As entradas binárias devem ser inteiros de 0 a 255.",
+    "ru": "Элементы двоичных значений должны быть целыми числами от 0 до 255.",
+    "zh": "二进制条目必须是 0 到 255 的整数。"
+  },
+  "Integer registry values cannot have a fractional part.": {
+    "nl": "Gehele registerwaarden mogen geen decimaal deel hebben.",
+    "es": "Los valores enteros del registro no pueden tener parte fraccionaria.",
+    "de": "Ganzzahlige Registrierungswerte dürfen keine Nachkommastellen haben.",
+    "fr": "Les valeurs entières du registre ne peuvent pas avoir de partie fractionnaire.",
+    "pt": "Os valores inteiros do registro não podem ter parte fracionária.",
+    "ru": "Целочисленные значения реестра не могут иметь дробную часть.",
+    "zh": "整数注册表值不能包含小数部分。"
+  },
+  "DWord value is outside the 32-bit range.": {
+    "nl": "DWord-waarde valt buiten het 32-bits bereik.",
+    "es": "El valor DWord está fuera del rango de 32 bits.",
+    "de": "DWord-Wert liegt außerhalb des 32-Bit-Bereichs.",
+    "fr": "La valeur DWord est hors de la plage 32 bits.",
+    "pt": "O valor DWord está fora do intervalo de 32 bits.",
+    "ru": "Значение DWord вне 32-битного диапазона.",
+    "zh": "DWord 值超出 32 位范围。"
+  },
+  "QWord value is outside the 64-bit range.": {
+    "nl": "QWord-waarde valt buiten het 64-bits bereik.",
+    "es": "El valor QWord está fuera del rango de 64 bits.",
+    "de": "QWord-Wert liegt außerhalb des 64-Bit-Bereichs.",
+    "fr": "La valeur QWord est hors de la plage 64 bits.",
+    "pt": "O valor QWord está fora do intervalo de 64 bits.",
+    "ru": "Значение QWord вне 64-битного диапазона.",
+    "zh": "QWord 值超出 64 位范围。"
+  },
+  "Unsupported registry value type.": {
+    "nl": "Niet-ondersteund registerwaardetype.",
+    "es": "Tipo de valor del registro no compatible.",
+    "de": "Nicht unterstützter Registrierungswerttyp.",
+    "fr": "Type de valeur du registre non pris en charge.",
+    "pt": "Tipo de valor do registro não suportado.",
+    "ru": "Неподдерживаемый тип значения реестра.",
+    "zh": "不支持的注册表值类型。"
+  }
+}

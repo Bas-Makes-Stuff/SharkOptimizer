@@ -1,0 +1,452 @@
+{
+  "Storage": {
+    "nl": "Opslag",
+    "es": "Almacenamiento",
+    "de": "Speicher",
+    "fr": "Stockage",
+    "pt": "Armazenamento",
+    "ru": "Хранилище",
+    "zh": "存储"
+  },
+  "Installed apps": {
+    "nl": "Geïnstalleerde apps",
+    "es": "Aplicaciones instaladas",
+    "de": "Installierte Apps",
+    "fr": "Applications installées",
+    "pt": "Aplicativos instalados",
+    "ru": "Установленные приложения",
+    "zh": "已安装的应用"
+  },
+  "Troubleshoot": {
+    "nl": "Problemen oplossen",
+    "es": "Solucionar problemas",
+    "de": "Problembehandlung",
+    "fr": "Résolution des problèmes",
+    "pt": "Solução de problemas",
+    "ru": "Устранение неполадок",
+    "zh": "疑难解答"
+  },
+  "Task Manager": {
+    "nl": "Taakbeheer",
+    "es": "Administrador de tareas",
+    "de": "Task-Manager",
+    "fr": "Gestionnaire des tâches",
+    "pt": "Gerenciador de Tarefas",
+    "ru": "Диспетчер задач",
+    "zh": "任务管理器"
+  },
+  "Windows repair": {
+    "nl": "Windows herstellen",
+    "es": "Reparación de Windows",
+    "de": "Windows-Reparatur",
+    "fr": "Réparation de Windows",
+    "pt": "Reparo do Windows",
+    "ru": "Восстановление Windows",
+    "zh": "Windows 修复"
+  },
+  "Run System File Checker": {
+    "nl": "Systeembestandscontrole uitvoeren",
+    "es": "Ejecutar el Comprobador de archivos de sistema",
+    "de": "Systemdateiprüfung ausführen",
+    "fr": "Exécuter le vérificateur des fichiers système",
+    "pt": "Executar o Verificador de Arquivos do Sistema",
+    "ru": "Запустить проверку системных файлов",
+    "zh": "运行系统文件检查器"
+  },
+  "Repair Windows image": {
+    "nl": "Windows-image herstellen",
+    "es": "Reparar imagen de Windows",
+    "de": "Windows-Abbild reparieren",
+    "fr": "Réparer l’image Windows",
+    "pt": "Reparar a imagem do Windows",
+    "ru": "Восстановить образ Windows",
+    "zh": "修复 Windows 映像"
+  },
+  "System File Checker": {
+    "nl": "Systeembestandscontrole",
+    "es": "Comprobador de archivos de sistema",
+    "de": "Systemdateiprüfung",
+    "fr": "Vérificateur des fichiers système",
+    "pt": "Verificador de Arquivos do Sistema",
+    "ru": "Проверка системных файлов",
+    "zh": "系统文件检查器"
+  },
+  "DISM image repair": {
+    "nl": "DISM-imageherstel",
+    "es": "Reparación de imagen DISM",
+    "de": "DISM-Abbildreparatur",
+    "fr": "Réparation d’image DISM",
+    "pt": "Reparo de imagem DISM",
+    "ru": "Восстановление образа DISM",
+    "zh": "DISM 映像修复"
+  },
+  "Close background apps": {
+    "nl": "Achtergrondapps sluiten",
+    "es": "Cerrar aplicaciones en segundo plano",
+    "de": "Hintergrund-Apps schließen",
+    "fr": "Fermer les applications en arrière-plan",
+    "pt": "Fechar aplicativos em segundo plano",
+    "ru": "Закрыть фоновые приложения",
+    "zh": "关闭后台应用"
+  },
+  "Request selected apps to close": {
+    "nl": "Geselecteerde apps vragen te sluiten",
+    "es": "Solicitar el cierre de las aplicaciones seleccionadas",
+    "de": "Ausgewählte Apps zum Schließen auffordern",
+    "fr": "Demander la fermeture des applications sélectionnées",
+    "pt": "Solicitar fechamento dos aplicativos selecionados",
+    "ru": "Запросить закрытие выбранных приложений",
+    "zh": "请求关闭所选应用"
+  },
+  "Optional Windows apps": {
+    "nl": "Optionele Windows-apps",
+    "es": "Aplicaciones opcionales de Windows",
+    "de": "Optionale Windows-Apps",
+    "fr": "Applications Windows facultatives",
+    "pt": "Aplicativos opcionais do Windows",
+    "ru": "Необязательные приложения Windows",
+    "zh": "可选 Windows 应用"
+  },
+  "Include and remove apps for all users": {
+    "nl": "Apps van alle gebruikers meenemen en verwijderen",
+    "es": "Incluir y eliminar aplicaciones de todos los usuarios",
+    "de": "Apps für alle Benutzer erfassen und entfernen",
+    "fr": "Inclure et supprimer les applications de tous les utilisateurs",
+    "pt": "Incluir e remover aplicativos de todos os usuários",
+    "ru": "Включить и удалить приложения всех пользователей",
+    "zh": "包括并删除所有用户的应用"
+  },
+  "Scan installed apps": {
+    "nl": "Geïnstalleerde apps scannen",
+    "es": "Analizar aplicaciones instaladas",
+    "de": "Installierte Apps scannen",
+    "fr": "Analyser les applications installées",
+    "pt": "Verificar aplicativos instalados",
+    "ru": "Сканировать установленные приложения",
+    "zh": "扫描已安装的应用"
+  },
+  "Remove selected apps": {
+    "nl": "Geselecteerde apps verwijderen",
+    "es": "Eliminar aplicaciones seleccionadas",
+    "de": "Ausgewählte Apps entfernen",
+    "fr": "Supprimer les applications sélectionnées",
+    "pt": "Remover aplicativos selecionados",
+    "ru": "Удалить выбранные приложения",
+    "zh": "删除所选应用"
+  },
+  "Open Microsoft Store": {
+    "nl": "Microsoft Store openen",
+    "es": "Abrir Microsoft Store",
+    "de": "Microsoft Store öffnen",
+    "fr": "Ouvrir Microsoft Store",
+    "pt": "Abrir Microsoft Store",
+    "ru": "Открыть Microsoft Store",
+    "zh": "打开 Microsoft Store"
+  },
+  "Remove optional apps": {
+    "nl": "Optionele apps verwijderen",
+    "es": "Eliminar aplicaciones opcionales",
+    "de": "Optionale Apps entfernen",
+    "fr": "Supprimer les applications facultatives",
+    "pt": "Remover aplicativos opcionais",
+    "ru": "Удалить необязательные приложения",
+    "zh": "删除可选应用"
+  },
+  "Restore point unavailable": {
+    "nl": "Herstelpunt niet beschikbaar",
+    "es": "Punto de restauración no disponible",
+    "de": "Wiederherstellungspunkt nicht verfügbar",
+    "fr": "Point de restauration indisponible",
+    "pt": "Ponto de restauração indisponível",
+    "ru": "Точка восстановления недоступна",
+    "zh": "还原点不可用"
+  },
+  "Open Windows tool": {
+    "nl": "Windows-hulpmiddel openen",
+    "es": "Abrir herramienta de Windows",
+    "de": "Windows-Werkzeug öffnen",
+    "fr": "Ouvrir un outil Windows",
+    "pt": "Abrir ferramenta do Windows",
+    "ru": "Открыть инструмент Windows",
+    "zh": "打开 Windows 工具"
+  },
+  "No closable app windows were found.": {
+    "nl": "Geen appvensters gevonden die kunnen worden gesloten.",
+    "es": "No se encontraron ventanas de aplicaciones que se puedan cerrar.",
+    "de": "Keine schließbaren App-Fenster gefunden.",
+    "fr": "Aucune fenêtre d’application pouvant être fermée n’a été trouvée.",
+    "pt": "Nenhuma janela de aplicativo que possa ser fechada foi encontrada.",
+    "ru": "Не найдены окна приложений, которые можно закрыть.",
+    "zh": "未找到可关闭的应用窗口。"
+  },
+  "Select one or more apps first.": {
+    "nl": "Selecteer eerst één of meer apps.",
+    "es": "Selecciona primero una o más aplicaciones.",
+    "de": "Wähle zuerst eine oder mehrere Apps aus.",
+    "fr": "Sélectionnez d’abord une ou plusieurs applications.",
+    "pt": "Selecione primeiro um ou mais aplicativos.",
+    "ru": "Сначала выберите одно или несколько приложений.",
+    "zh": "请先选择一个或多个应用。"
+  },
+  "Select at least one app to remove.": {
+    "nl": "Selecteer minstens één app om te verwijderen.",
+    "es": "Selecciona al menos una aplicación para eliminar.",
+    "de": "Wähle mindestens eine zu entfernende App aus.",
+    "fr": "Sélectionnez au moins une application à supprimer.",
+    "pt": "Selecione pelo menos um aplicativo para remover.",
+    "ru": "Выберите хотя бы одно приложение для удаления.",
+    "zh": "请至少选择一个要删除的应用。"
+  },
+  "Scanning optional apps…": {
+    "nl": "Optionele apps scannen…",
+    "es": "Analizando aplicaciones opcionales…",
+    "de": "Optionale Apps werden gescannt…",
+    "fr": "Analyse des applications facultatives…",
+    "pt": "Verificando aplicativos opcionais…",
+    "ru": "Сканирование необязательных приложений…",
+    "zh": "正在扫描可选应用…"
+  },
+  "Scope changed. Scan installed apps again.": {
+    "nl": "Bereik gewijzigd. Scan de geïnstalleerde apps opnieuw.",
+    "es": "Ámbito cambiado. Vuelve a analizar las aplicaciones instaladas.",
+    "de": "Bereich geändert. Scanne die installierten Apps erneut.",
+    "fr": "Portée modifiée. Analysez à nouveau les applications installées.",
+    "pt": "Escopo alterado. Verifique novamente os aplicativos instalados.",
+    "ru": "Область изменена. Снова просканируйте установленные приложения.",
+    "zh": "范围已更改。请重新扫描已安装的应用。"
+  },
+  "None of the listed optional apps are installed in this scope.": {
+    "nl": "Geen van de genoemde optionele apps is binnen dit bereik geïnstalleerd.",
+    "es": "Ninguna de las aplicaciones opcionales de la lista está instalada en este ámbito.",
+    "de": "Keine der aufgeführten optionalen Apps ist in diesem Bereich installiert.",
+    "fr": "Aucune application facultative répertoriée n’est installée dans cette portée.",
+    "pt": "Nenhum dos aplicativos opcionais listados está instalado neste escopo.",
+    "ru": "В этой области не установлено ни одно из перечисленных необязательных приложений.",
+    "zh": "此范围内未安装列表中的任何可选应用。"
+  },
+  "Requesting a Windows restore point…": {
+    "nl": "Windows-herstelpunt aanvragen…",
+    "es": "Solicitando un punto de restauración de Windows…",
+    "de": "Windows-Wiederherstellungspunkt wird angefordert…",
+    "fr": "Demande d’un point de restauration Windows…",
+    "pt": "Solicitando ponto de restauração do Windows…",
+    "ru": "Запрос точки восстановления Windows…",
+    "zh": "正在请求 Windows 还原点…"
+  },
+  "Continue removing the selected apps?": {
+    "nl": "Doorgaan met het verwijderen van de geselecteerde apps?",
+    "es": "¿Continuar eliminando las aplicaciones seleccionadas?",
+    "de": "Mit dem Entfernen der ausgewählten Apps fortfahren?",
+    "fr": "Continuer la suppression des applications sélectionnées ?",
+    "pt": "Continuar removendo os aplicativos selecionados?",
+    "ru": "Продолжить удаление выбранных приложений?",
+    "zh": "继续删除所选应用？"
+  },
+  "Remove these apps for all users?": {
+    "nl": "Deze apps voor alle gebruikers verwijderen?",
+    "es": "¿Eliminar estas aplicaciones de todos los usuarios?",
+    "de": "Diese Apps für alle Benutzer entfernen?",
+    "fr": "Supprimer ces applications pour tous les utilisateurs ?",
+    "pt": "Remover estes aplicativos de todos os usuários?",
+    "ru": "Удалить эти приложения для всех пользователей?",
+    "zh": "为所有用户删除这些应用？"
+  },
+  "Remove these apps for your Windows account?": {
+    "nl": "Deze apps voor je Windows-account verwijderen?",
+    "es": "¿Eliminar estas aplicaciones de tu cuenta de Windows?",
+    "de": "Diese Apps für dein Windows-Konto entfernen?",
+    "fr": "Supprimer ces applications pour votre compte Windows ?",
+    "pt": "Remover estes aplicativos da sua conta do Windows?",
+    "ru": "Удалить эти приложения для вашей учётной записи Windows?",
+    "zh": "为您的 Windows 帐户删除这些应用？"
+  },
+  "Local app data can be deleted. This cannot be undone through SharkOptimizer's Restore page.": {
+    "nl": "Lokale appgegevens kunnen worden verwijderd. De pagina Herstel van SharkOptimizer kan dit niet terugdraaien.",
+    "es": "Los datos locales de las aplicaciones pueden eliminarse. No se puede deshacer desde la página Restaurar de SharkOptimizer.",
+    "de": "Lokale App-Daten können gelöscht werden. Dies lässt sich über die Wiederherstellen-Seite von SharkOptimizer nicht rückgängig machen.",
+    "fr": "Les données locales des applications peuvent être supprimées. La page Restaurer de SharkOptimizer ne permet pas d’annuler cette action.",
+    "pt": "Os dados locais dos aplicativos podem ser apagados. Isso não pode ser desfeito pela página Restaurar do SharkOptimizer.",
+    "ru": "Локальные данные приложений могут быть удалены. Страница восстановления SharkOptimizer не может отменить это действие.",
+    "zh": "本地应用数据可能被删除。无法通过 SharkOptimizer 的还原页面撤销。"
+  },
+  "Windows could not open this tool.": {
+    "nl": "Windows kon dit hulpmiddel niet openen.",
+    "es": "Windows no pudo abrir esta herramienta.",
+    "de": "Windows konnte dieses Werkzeug nicht öffnen.",
+    "fr": "Windows n’a pas pu ouvrir cet outil.",
+    "pt": "O Windows não conseguiu abrir esta ferramenta.",
+    "ru": "Windows не удалось открыть этот инструмент.",
+    "zh": "Windows 无法打开此工具。"
+  },
+  "Windows could not start the repair tool.": {
+    "nl": "Windows kon het herstelhulpmiddel niet starten.",
+    "es": "Windows no pudo iniciar la herramienta de reparación.",
+    "de": "Windows konnte das Reparaturwerkzeug nicht starten.",
+    "fr": "Windows n’a pas pu démarrer l’outil de réparation.",
+    "pt": "O Windows não conseguiu iniciar a ferramenta de reparo.",
+    "ru": "Windows не удалось запустить инструмент восстановления.",
+    "zh": "Windows 无法启动修复工具。"
+  },
+  "Windows could not update this Startup-folder entry.": {
+    "nl": "Windows kon dit item in de opstartmap niet bijwerken.",
+    "es": "Windows no pudo actualizar esta entrada de la carpeta de inicio.",
+    "de": "Windows konnte diesen Eintrag im Autostartordner nicht aktualisieren.",
+    "fr": "Windows n’a pas pu modifier cette entrée du dossier de démarrage.",
+    "pt": "O Windows não conseguiu atualizar esta entrada da pasta de inicialização.",
+    "ru": "Windows не удалось обновить этот элемент папки автозагрузки.",
+    "zh": "Windows 无法更新此启动文件夹项。"
+  },
+  "Windows could not update this startup entry.": {
+    "nl": "Windows kon dit opstartitem niet bijwerken.",
+    "es": "Windows no pudo actualizar esta entrada de inicio.",
+    "de": "Windows konnte diesen Autostarteintrag nicht aktualisieren.",
+    "fr": "Windows n’a pas pu modifier cette entrée de démarrage.",
+    "pt": "O Windows não conseguiu atualizar esta entrada de inicialização.",
+    "ru": "Windows не удалось обновить этот элемент автозагрузки.",
+    "zh": "Windows 无法更新此启动项。"
+  },
+  "No Run entries or Startup-folder files were found.": {
+    "nl": "Geen Run-registeritems of bestanden in opstartmappen gevonden.",
+    "es": "No se encontraron entradas Run ni archivos en la carpeta de inicio.",
+    "de": "Keine Run-Einträge oder Dateien in Autostartordnern gefunden.",
+    "fr": "Aucune entrée Run ni aucun fichier de dossier de démarrage n’a été trouvé.",
+    "pt": "Nenhuma entrada Run ou arquivo da pasta de inicialização foi encontrado.",
+    "ru": "Не найдены записи Run или файлы в папках автозагрузки.",
+    "zh": "未找到 Run 注册表项或启动文件夹文件。"
+  },
+  "Quick access to common Windows controls and a gentle app closer. Changes happen only when you choose an action.": {
+    "nl": "Snelle toegang tot veelgebruikte Windows-instellingen en normaal sluiten van apps. Er gebeurt alleen iets als je een actie kiest.",
+    "es": "Acceso rápido a controles habituales de Windows y al cierre normal de aplicaciones. Los cambios solo se realizan cuando eliges una acción.",
+    "de": "Schneller Zugriff auf häufige Windows-Einstellungen und normales Schließen von Apps. Änderungen erfolgen erst, wenn du eine Aktion auswählst.",
+    "fr": "Accès rapide aux commandes Windows courantes et à la fermeture normale des applications. Les changements ont lieu uniquement lorsque vous choisissez une action.",
+    "pt": "Acesso rápido a controles comuns do Windows e ao fechamento normal de aplicativos. As alterações só ocorrem quando você escolhe uma ação.",
+    "ru": "Быстрый доступ к основным настройкам Windows и обычному закрытию приложений. Изменения происходят только при выборе действия.",
+    "zh": "快速访问常用 Windows 控件并正常关闭应用。只有选择操作后才会进行更改。"
+  },
+  "Toggle Run entries and files in the current-user or shared Startup folders. Scheduled tasks and Store app startup remain in Windows Settings.": {
+    "nl": "Schakel Run-registeritems en bestanden in persoonlijke of gedeelde opstartmappen in of uit. Geplande taken en het opstarten van Store-apps beheer je in Windows-instellingen.",
+    "es": "Activa o desactiva entradas Run y archivos de las carpetas de inicio del usuario actual o compartidas. Las tareas programadas y el inicio de aplicaciones de la Store se gestionan en Configuración de Windows.",
+    "de": "Schalte Run-Einträge und Dateien in persönlichen oder gemeinsamen Autostartordnern um. Geplante Aufgaben und der Autostart von Store-Apps bleiben in den Windows-Einstellungen.",
+    "fr": "Activez ou désactivez les entrées Run et fichiers des dossiers de démarrage personnels ou partagés. Les tâches planifiées et le démarrage des applications du Store restent dans les paramètres Windows.",
+    "pt": "Ative ou desative entradas Run e arquivos das pastas de inicialização do usuário atual ou compartilhadas. Tarefas agendadas e inicialização de aplicativos da Store continuam nas Configurações do Windows.",
+    "ru": "Включайте и отключайте записи Run и файлы личных или общих папок автозагрузки. Запланированные задачи и автозапуск приложений Store управляются в параметрах Windows.",
+    "zh": "启用或禁用 Run 注册表项以及当前用户或共享启动文件夹中的文件。计划任务和 Store 应用启动仍在 Windows 设置中管理。"
+  },
+  "These built-in checks open an elevated console and may take several minutes. Windows will show a UAC prompt.": {
+    "nl": "Deze ingebouwde controles openen een console met beheerdersrechten en kunnen enkele minuten duren. Windows toont een UAC-melding.",
+    "es": "Estas comprobaciones integradas abren una consola con privilegios de administrador y pueden tardar varios minutos. Windows mostrará un aviso de UAC.",
+    "de": "Diese integrierten Prüfungen öffnen eine Konsole mit Administratorrechten und können mehrere Minuten dauern. Windows zeigt eine UAC-Abfrage an.",
+    "fr": "Ces vérifications intégrées ouvrent une console administrateur et peuvent prendre plusieurs minutes. Windows affichera une demande UAC.",
+    "pt": "Estas verificações integradas abrem um console de administrador e podem levar vários minutos. O Windows exibirá uma solicitação do UAC.",
+    "ru": "Эти встроенные проверки открывают консоль администратора и могут занять несколько минут. Windows покажет запрос UAC.",
+    "zh": "这些内置检查会打开管理员控制台，可能需要几分钟。Windows 将显示 UAC 提示。"
+  },
+  "Select app windows and ask them to close normally. Unsaved work can prompt you to save.": {
+    "nl": "Selecteer appvensters en vraag ze normaal te sluiten. Bij niet-opgeslagen werk kunnen ze vragen om op te slaan.",
+    "es": "Selecciona ventanas de aplicaciones y solicita su cierre normal. Si hay trabajo sin guardar, pueden pedirte que lo guardes.",
+    "de": "Wähle App-Fenster aus und fordere sie zum normalen Schließen auf. Bei ungespeicherter Arbeit kann eine Speicherabfrage erscheinen.",
+    "fr": "Sélectionnez des fenêtres d’applications et demandez leur fermeture normale. Le travail non enregistré peut déclencher une demande de sauvegarde.",
+    "pt": "Selecione janelas de aplicativos e solicite o fechamento normal. Trabalhos não salvos podem gerar uma solicitação para salvar.",
+    "ru": "Выберите окна приложений и запросите обычное закрытие. При наличии несохранённых данных приложения могут предложить сохранить их.",
+    "zh": "选择应用窗口并请求正常关闭。若有未保存的工作，应用可能提示您保存。"
+  },
+  "Review installed optional apps before removing them. App removal can delete local app data and cannot be undone in Restore. Apps can usually be reinstalled from Microsoft Store.": {
+    "nl": "Bekijk geïnstalleerde optionele apps voordat je ze verwijdert. Verwijderen kan lokale appgegevens wissen en kan niet via Herstel worden teruggedraaid. Je kunt apps meestal opnieuw installeren via Microsoft Store.",
+    "es": "Revisa las aplicaciones opcionales instaladas antes de eliminarlas. La eliminación puede borrar datos locales y no se puede deshacer en Restaurar. Normalmente se pueden reinstalar desde Microsoft Store.",
+    "de": "Prüfe die installierten optionalen Apps vor dem Entfernen. Dabei können lokale App-Daten gelöscht werden; Wiederherstellen kann dies nicht rückgängig machen. Apps lassen sich meist über den Microsoft Store neu installieren.",
+    "fr": "Examinez les applications facultatives installées avant de les supprimer. La suppression peut effacer des données locales et ne peut pas être annulée dans Restaurer. Les applications peuvent généralement être réinstallées depuis Microsoft Store.",
+    "pt": "Confira os aplicativos opcionais instalados antes de removê-los. A remoção pode apagar dados locais e não pode ser desfeita em Restaurar. Geralmente é possível reinstalar os aplicativos pela Microsoft Store.",
+    "ru": "Проверьте установленные необязательные приложения перед удалением. Удаление может стереть локальные данные; раздел восстановления не отменяет его. Обычно приложения можно переустановить из Microsoft Store.",
+    "zh": "删除前请检查已安装的可选应用。删除应用可能删除本地应用数据，且无法在还原页面撤销。通常可从 Microsoft Store 重新安装应用。"
+  },
+  "Scan to see which of the 20 optional apps are installed. Nothing is selected automatically.": {
+    "nl": "Scan om te zien welke van de 20 optionele apps zijn geïnstalleerd. Er wordt niets automatisch geselecteerd.",
+    "es": "Analiza para ver cuáles de las 20 aplicaciones opcionales están instaladas. Nada se selecciona automáticamente.",
+    "de": "Scanne, um installierte Apps aus den 20 optionalen Apps zu finden. Nichts wird automatisch ausgewählt.",
+    "fr": "Analysez pour voir lesquelles des 20 applications facultatives sont installées. Rien n’est sélectionné automatiquement.",
+    "pt": "Verifique quais dos 20 aplicativos opcionais estão instalados. Nada é selecionado automaticamente.",
+    "ru": "Просканируйте, чтобы узнать, какие из 20 необязательных приложений установлены. Ничего не выбирается автоматически.",
+    "zh": "扫描以查看 20 个可选应用中哪些已安装。不会自动选择任何应用。"
+  },
+  "{0} optional app(s) found. Choose only the apps you want to remove.": {
+    "nl": "{0} optionele app(s) gevonden. Kies alleen de apps die je wilt verwijderen.",
+    "es": "Se encontraron {0} aplicaciones opcionales. Elige solo las que quieras eliminar.",
+    "de": "{0} optionale Apps gefunden. Wähle nur die Apps aus, die du entfernen möchtest.",
+    "fr": "{0} applications facultatives trouvées. Choisissez uniquement celles à supprimer.",
+    "pt": "Encontrados {0} aplicativos opcionais. Escolha somente os que deseja remover.",
+    "ru": "Найдено необязательных приложений: {0}. Выберите только те, которые хотите удалить.",
+    "zh": "找到 {0} 个可选应用。只选择您要删除的应用。"
+  },
+  "Windows could not scan app packages: {0}": {
+    "nl": "Windows kon app-pakketten niet scannen: {0}",
+    "es": "Windows no pudo analizar los paquetes de aplicaciones: {0}",
+    "de": "Windows konnte die App-Pakete nicht scannen: {0}",
+    "fr": "Windows n’a pas pu analyser les packages d’applications : {0}",
+    "pt": "O Windows não conseguiu verificar os pacotes de aplicativos: {0}",
+    "ru": "Windows не удалось просканировать пакеты приложений: {0}",
+    "zh": "Windows 无法扫描应用包：{0}"
+  },
+  "Removing {0}…": {
+    "nl": "{0} verwijderen…",
+    "es": "Eliminando {0}…",
+    "de": "{0} wird entfernt…",
+    "fr": "Suppression de {0}…",
+    "pt": "Removendo {0}…",
+    "ru": "Удаление {0}…",
+    "zh": "正在删除 {0}…"
+  },
+  "Removed {0} package(s). {1} could not be removed.": {
+    "nl": "{0} pakket(ten) verwijderd. {1} konden niet worden verwijderd.",
+    "es": "Se eliminaron {0} paquetes. No se pudieron eliminar {1}.",
+    "de": "{0} Pakete entfernt. {1} konnten nicht entfernt werden.",
+    "fr": "{0} packages supprimés. {1} n’ont pas pu être supprimés.",
+    "pt": "Removidos {0} pacotes. Não foi possível remover {1}.",
+    "ru": "Удалено пакетов: {0}. Не удалось удалить: {1}.",
+    "zh": "已删除 {0} 个包。{1} 个无法删除。"
+  },
+  "{0} will open in an administrator console. It can take several minutes. Continue?": {
+    "nl": "{0} opent in een beheerdersconsole. Dit kan enkele minuten duren. Doorgaan?",
+    "es": "{0} se abrirá en una consola de administrador. Puede tardar varios minutos. ¿Continuar?",
+    "de": "{0} wird in einer Administratorkonsole geöffnet. Dies kann mehrere Minuten dauern. Fortfahren?",
+    "fr": "{0} s’ouvrira dans une console administrateur. Cela peut prendre plusieurs minutes. Continuer ?",
+    "pt": "{0} será aberto em um console de administrador. Pode levar vários minutos. Continuar?",
+    "ru": "{0} откроется в консоли администратора. Это может занять несколько минут. Продолжить?",
+    "zh": "{0} 将在管理员控制台中打开。可能需要几分钟。是否继续？"
+  },
+  "Could not read startup entries: {0}": {
+    "nl": "Kon opstartitems niet lezen: {0}",
+    "es": "No se pudieron leer las entradas de inicio: {0}",
+    "de": "Autostarteinträge konnten nicht gelesen werden: {0}",
+    "fr": "Impossible de lire les entrées de démarrage : {0}",
+    "pt": "Não foi possível ler as entradas de inicialização: {0}",
+    "ru": "Не удалось прочитать элементы автозагрузки: {0}",
+    "zh": "无法读取启动项：{0}"
+  },
+  "Could not read {0}: {1}": {
+    "nl": "Kon {0} niet lezen: {1}",
+    "es": "No se pudo leer {0}: {1}",
+    "de": "{0} konnte nicht gelesen werden: {1}",
+    "fr": "Impossible de lire {0} : {1}",
+    "pt": "Não foi possível ler {0}: {1}",
+    "ru": "Не удалось прочитать {0}: {1}",
+    "zh": "无法读取 {0}：{1}"
+  },
+  "Ask {0} selected app window(s) to close? Apps may ask you to save work.": {
+    "nl": "{0} geselecteerde appvenster(s) vragen te sluiten? Apps kunnen vragen je werk op te slaan.",
+    "es": "¿Solicitar el cierre de {0} ventanas seleccionadas? Las aplicaciones pueden pedirte que guardes tu trabajo.",
+    "de": "{0} ausgewählte App-Fenster zum Schließen auffordern? Apps können zum Speichern auffordern.",
+    "fr": "Demander la fermeture de {0} fenêtres sélectionnées ? Les applications peuvent demander d’enregistrer votre travail.",
+    "pt": "Solicitar o fechamento de {0} janelas selecionadas? Os aplicativos podem pedir que você salve seu trabalho.",
+    "ru": "Запросить закрытие выбранных окон: {0}? Приложения могут предложить сохранить работу.",
+    "zh": "请求关闭 {0} 个所选应用窗口？应用可能提示您保存工作。"
+  },
+  "A file already exists at the destination. Rename or move it first, then refresh the list.": {
+    "nl": "Er bestaat al een bestand op de bestemming. Hernoem of verplaats het eerst en vernieuw daarna de lijst.",
+    "es": "Ya existe un archivo en el destino. Cámbiale el nombre o muévelo y luego actualiza la lista.",
+    "de": "Am Ziel existiert bereits eine Datei. Benenne sie um oder verschiebe sie, und aktualisiere dann die Liste.",
+    "fr": "Un fichier existe déjà à cet emplacement. Renommez-le ou déplacez-le, puis actualisez la liste.",
+    "pt": "Já existe um arquivo no destino. Renomeie ou mova o arquivo primeiro e atualize a lista.",
+    "ru": "В месте назначения уже есть файл. Сначала переименуйте или переместите его, затем обновите список.",
+    "zh": "目标位置已存在文件。请先重命名或移动该文件，再刷新列表。"
+  }
+}

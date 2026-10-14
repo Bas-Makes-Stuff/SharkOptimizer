@@ -1,0 +1,254 @@
+{
+  "Sets the policy bandwidth reserve to zero where an application requests QoS.": {
+    "nl": "Zet de beleidsreserve voor bandbreedte op nul wanneer een app QoS aanvraagt.",
+    "es": "Establece en cero la reserva de ancho de banda de la directiva cuando una aplicación solicita QoS.",
+    "de": "Setzt die Bandbreitenreserve der Richtlinie auf null, wenn eine Anwendung QoS anfordert.",
+    "fr": "Définit à zéro la réserve de bande passante de la stratégie lorsqu’une application demande QoS.",
+    "pt": "Define a reserva de largura de banda da política como zero quando um aplicativo solicita QoS.",
+    "ru": "Устанавливает нулевой резерв пропускной способности в политике при запросе QoS приложением.",
+    "zh": "应用请求 QoS 时，将策略带宽预留设为零。"
+  },
+  "This does not increase the speed of your internet connection.": {
+    "nl": "Dit verhoogt de snelheid van je internetverbinding niet.",
+    "es": "Esto no aumenta la velocidad de tu conexión a Internet.",
+    "de": "Erhöht die Geschwindigkeit deiner Internetverbindung nicht.",
+    "fr": "Cela n’augmente pas la vitesse de votre connexion Internet.",
+    "pt": "Isso não aumenta a velocidade da sua conexão com a internet.",
+    "ru": "Не увеличивает скорость интернет-соединения.",
+    "zh": "这不会提高互联网连接速度。"
+  },
+  "Stops Windows TCP heuristics from changing the receive-window scaling choice automatically.": {
+    "nl": "Voorkomt dat Windows TCP-heuristiek de keuze voor schaling van het ontvangstvenster automatisch wijzigt.",
+    "es": "Impide que la heurística TCP de Windows cambie automáticamente la opción de escalado de la ventana de recepción.",
+    "de": "Verhindert, dass die Windows-TCP-Heuristik die Skalierung des Empfangsfensters automatisch ändert.",
+    "fr": "Empêche l’heuristique TCP Windows de modifier automatiquement le choix de mise à l’échelle de la fenêtre de réception.",
+    "pt": "Impede que a heurística TCP do Windows altere automaticamente a opção de escala da janela de recepção.",
+    "ru": "Запрещает эвристике TCP Windows автоматически менять масштабирование окна приёма.",
+    "zh": "阻止 Windows TCP 启发式自动更改接收窗口缩放选择。"
+  },
+  "May change throughput behavior on some connections. The current netsh setting is read first and restored exactly on undo.": {
+    "nl": "Kan de doorvoer bij sommige verbindingen beïnvloeden. De huidige netsh-instelling wordt eerst gelezen en exact hersteld bij terugdraaien.",
+    "es": "Puede cambiar el comportamiento del caudal en algunas conexiones. Primero se lee el ajuste actual de netsh y se restaura exactamente al deshacer.",
+    "de": "Kann den Durchsatz einiger Verbindungen beeinflussen. Die aktuelle netsh-Einstellung wird zuerst gelesen und beim Rückgängigmachen exakt wiederhergestellt.",
+    "fr": "Peut modifier le débit de certaines connexions. Le réglage netsh actuel est lu au préalable et restauré exactement lors de l’annulation.",
+    "pt": "Pode alterar o comportamento de vazão em algumas conexões. A configuração atual do netsh é lida primeiro e restaurada exatamente ao desfazer.",
+    "ru": "Может изменить пропускную способность некоторых соединений. Текущая настройка netsh сначала считывается и точно восстанавливается при отмене.",
+    "zh": "可能改变部分连接的吞吐表现。会先读取当前 netsh 设置，并在撤销时准确还原。"
+  },
+  "Turns off the IPv6-over-IPv4 Teredo tunnel.": {
+    "nl": "Schakelt de IPv6-over-IPv4 Teredo-tunnel uit.",
+    "es": "Desactiva el túnel Teredo de IPv6 sobre IPv4.",
+    "de": "Deaktiviert den IPv6-über-IPv4-Teredo-Tunnel.",
+    "fr": "Désactive le tunnel Teredo IPv6 sur IPv4.",
+    "pt": "Desativa o túnel Teredo de IPv6 sobre IPv4.",
+    "ru": "Отключает туннель Teredo IPv6 через IPv4.",
+    "zh": "关闭通过 IPv4 传输 IPv6 的 Teredo 隧道。"
+  },
+  "Xbox party chat and some peer-to-peer games use Teredo. The current tunnel type is saved and restored on undo.": {
+    "nl": "Xbox-partychat en sommige peer-to-peergames gebruiken Teredo. Het huidige tunneltype wordt opgeslagen en hersteld bij terugdraaien.",
+    "es": "El chat de grupo de Xbox y algunos juegos entre pares usan Teredo. El tipo de túnel actual se guarda y restaura al deshacer.",
+    "de": "Xbox-Gruppenchat und einige Peer-to-Peer-Spiele verwenden Teredo. Der aktuelle Tunneltyp wird gespeichert und beim Rückgängigmachen wiederhergestellt.",
+    "fr": "Le chat de groupe Xbox et certains jeux pair à pair utilisent Teredo. Le type de tunnel actuel est enregistré et restauré lors de l’annulation.",
+    "pt": "O chat de grupo do Xbox e alguns jogos ponto a ponto usam Teredo. O tipo de túnel atual é salvo e restaurado ao desfazer.",
+    "ru": "Групповой чат Xbox и некоторые одноранговые игры используют Teredo. Текущий тип туннеля сохраняется и восстанавливается при отмене.",
+    "zh": "Xbox 群聊和部分点对点游戏使用 Teredo。当前隧道类型会保存并在撤销时还原。"
+  },
+  "Sets TCPNoDelay and TcpAckFrequency on active Ethernet and Wi-Fi adapters, matching the legacy Nagle option.": {
+    "nl": "Stelt TCPNoDelay en TcpAckFrequency in op actieve Ethernet- en wifi-adapters, overeenkomstig de oude Nagle-optie.",
+    "es": "Establece TCPNoDelay y TcpAckFrequency en los adaptadores Ethernet y Wi-Fi activos, igual que la opción Nagle anterior.",
+    "de": "Setzt TCPNoDelay und TcpAckFrequency auf aktiven Ethernet- und WLAN-Adaptern, entsprechend der alten Nagle-Option.",
+    "fr": "Définit TCPNoDelay et TcpAckFrequency sur les adaptateurs Ethernet et Wi-Fi actifs, comme l’ancienne option Nagle.",
+    "pt": "Define TCPNoDelay e TcpAckFrequency nos adaptadores Ethernet e Wi-Fi ativos, correspondendo à opção Nagle anterior.",
+    "ru": "Устанавливает TCPNoDelay и TcpAckFrequency для активных адаптеров Ethernet и Wi-Fi, как прежняя настройка Nagle.",
+    "zh": "为活动以太网和 Wi-Fi 适配器设置 TCPNoDelay 和 TcpAckFrequency，与旧版 Nagle 选项一致。"
+  },
+  "This can increase packet traffic and may not improve ping. Only active Ethernet and Wi-Fi adapters are changed; undo restores each saved value.": {
+    "nl": "Dit kan het pakketverkeer verhogen en verbetert ping mogelijk niet. Alleen actieve Ethernet- en wifi-adapters worden gewijzigd; terugdraaien herstelt elke opgeslagen waarde.",
+    "es": "Puede aumentar el tráfico de paquetes y no mejorar el ping. Solo se cambian los adaptadores Ethernet y Wi-Fi activos; deshacer restaura cada valor guardado.",
+    "de": "Kann den Paketverkehr erhöhen und verbessert den Ping möglicherweise nicht. Nur aktive Ethernet- und WLAN-Adapter werden geändert; Rückgängigmachen stellt jeden gespeicherten Wert wieder her.",
+    "fr": "Cela peut augmenter le trafic de paquets sans améliorer le ping. Seuls les adaptateurs Ethernet et Wi-Fi actifs sont modifiés ; l’annulation restaure chaque valeur enregistrée.",
+    "pt": "Pode aumentar o tráfego de pacotes sem melhorar o ping. Somente adaptadores Ethernet e Wi-Fi ativos são alterados; desfazer restaura cada valor salvo.",
+    "ru": "Может увеличить число пакетов, не улучшая пинг. Меняются только активные адаптеры Ethernet и Wi-Fi; отмена восстанавливает каждое сохранённое значение.",
+    "zh": "可能增加数据包流量，且未必改善延迟。仅更改活动以太网和 Wi-Fi 适配器；撤销会恢复每个保存的值。"
+  },
+  "Disables NetBIOS over TCP/IP on active Ethernet and Wi-Fi adapters.": {
+    "nl": "Schakelt NetBIOS over TCP/IP uit op actieve Ethernet- en wifi-adapters.",
+    "es": "Desactiva NetBIOS sobre TCP/IP en los adaptadores Ethernet y Wi-Fi activos.",
+    "de": "Deaktiviert NetBIOS über TCP/IP auf aktiven Ethernet- und WLAN-Adaptern.",
+    "fr": "Désactive NetBIOS sur TCP/IP sur les adaptateurs Ethernet et Wi-Fi actifs.",
+    "pt": "Desativa NetBIOS sobre TCP/IP nos adaptadores Ethernet e Wi-Fi ativos.",
+    "ru": "Отключает NetBIOS через TCP/IP на активных адаптерах Ethernet и Wi-Fi.",
+    "zh": "在活动以太网和 Wi-Fi 适配器上禁用 TCP/IP 上的 NetBIOS。"
+  },
+  "Older file sharing or local network devices may rely on NetBIOS names. Undo restores each adapter's saved setting.": {
+    "nl": "Oudere bestandsdeling of lokale netwerkapparaten kunnen NetBIOS-namen nodig hebben. Terugdraaien herstelt de opgeslagen instelling van elke adapter.",
+    "es": "Los sistemas antiguos de archivos compartidos o dispositivos de red local pueden depender de nombres NetBIOS. Deshacer restaura el ajuste guardado de cada adaptador.",
+    "de": "Ältere Dateifreigaben oder lokale Netzwerkgeräte können NetBIOS-Namen benötigen. Rückgängigmachen stellt die gespeicherte Einstellung jedes Adapters wieder her.",
+    "fr": "Les anciens systèmes de partage de fichiers ou appareils réseau locaux peuvent dépendre des noms NetBIOS. L’annulation restaure le réglage enregistré de chaque adaptateur.",
+    "pt": "Compartilhamentos antigos de arquivos ou dispositivos da rede local podem depender de nomes NetBIOS. Desfazer restaura a configuração salva de cada adaptador.",
+    "ru": "Старые средства общего доступа к файлам и устройства локальной сети могут использовать имена NetBIOS. Отмена восстанавливает сохранённую настройку каждого адаптера.",
+    "zh": "旧版文件共享或局域网设备可能依赖 NetBIOS 名称。撤销会恢复每个适配器保存的设置。"
+  },
+  "Turns off RSC for IPv4 and IPv6 on active Ethernet and Wi-Fi adapters.": {
+    "nl": "Schakelt RSC voor IPv4 en IPv6 uit op actieve Ethernet- en wifi-adapters.",
+    "es": "Desactiva RSC para IPv4 e IPv6 en los adaptadores Ethernet y Wi-Fi activos.",
+    "de": "Deaktiviert RSC für IPv4 und IPv6 auf aktiven Ethernet- und WLAN-Adaptern.",
+    "fr": "Désactive RSC pour IPv4 et IPv6 sur les adaptateurs Ethernet et Wi-Fi actifs.",
+    "pt": "Desativa RSC para IPv4 e IPv6 nos adaptadores Ethernet e Wi-Fi ativos.",
+    "ru": "Отключает RSC для IPv4 и IPv6 на активных адаптерах Ethernet и Wi-Fi.",
+    "zh": "为活动以太网和 Wi-Fi 适配器关闭 IPv4 和 IPv6 的 RSC。"
+  },
+  "This driver setting may restart an adapter and briefly interrupt the network. Higher CPU use is possible; undo restores each adapter's saved IPv4 and IPv6 state.": {
+    "nl": "Deze driverinstelling kan een adapter opnieuw starten en het netwerk kort onderbreken. CPU-gebruik kan stijgen; terugdraaien herstelt de opgeslagen IPv4- en IPv6-status van elke adapter.",
+    "es": "Este ajuste del controlador puede reiniciar un adaptador e interrumpir brevemente la red. Puede aumentar el uso de CPU; deshacer restaura el estado IPv4 e IPv6 guardado de cada adaptador.",
+    "de": "Diese Treibereinstellung kann einen Adapter neu starten und das Netzwerk kurz unterbrechen. Höhere CPU-Auslastung ist möglich; Rückgängigmachen stellt den gespeicherten IPv4- und IPv6-Zustand jedes Adapters wieder her.",
+    "fr": "Ce réglage du pilote peut redémarrer un adaptateur et interrompre brièvement le réseau. Une utilisation CPU plus élevée est possible ; l’annulation restaure les états IPv4 et IPv6 enregistrés de chaque adaptateur.",
+    "pt": "Esta configuração do driver pode reiniciar um adaptador e interromper a rede brevemente. O uso de CPU pode aumentar; desfazer restaura os estados IPv4 e IPv6 salvos de cada adaptador.",
+    "ru": "Настройка драйвера может перезапустить адаптер и кратко прервать сеть. Нагрузка CPU может вырасти; отмена восстанавливает сохранённые состояния IPv4 и IPv6 каждого адаптера.",
+    "zh": "此驱动设置可能重启适配器并短暂中断网络。CPU 使用率可能增加；撤销会恢复每个适配器保存的 IPv4 和 IPv6 状态。"
+  },
+  "Turns off LSOv2 for IPv4 and IPv6 on active Ethernet and Wi-Fi adapters.": {
+    "nl": "Schakelt LSOv2 voor IPv4 en IPv6 uit op actieve Ethernet- en wifi-adapters.",
+    "es": "Desactiva LSOv2 para IPv4 e IPv6 en los adaptadores Ethernet y Wi-Fi activos.",
+    "de": "Deaktiviert LSOv2 für IPv4 und IPv6 auf aktiven Ethernet- und WLAN-Adaptern.",
+    "fr": "Désactive LSOv2 pour IPv4 et IPv6 sur les adaptateurs Ethernet et Wi-Fi actifs.",
+    "pt": "Desativa LSOv2 para IPv4 e IPv6 nos adaptadores Ethernet e Wi-Fi ativos.",
+    "ru": "Отключает LSOv2 для IPv4 и IPv6 на активных адаптерах Ethernet и Wi-Fi.",
+    "zh": "为活动以太网和 Wi-Fi 适配器关闭 IPv4 和 IPv6 的 LSOv2。"
+  },
+  "This driver setting may restart an adapter and briefly interrupt the network. CPU use during large uploads may increase; undo restores each adapter's saved IPv4 and IPv6 state.": {
+    "nl": "Deze driverinstelling kan een adapter opnieuw starten en het netwerk kort onderbreken. CPU-gebruik tijdens grote uploads kan stijgen; terugdraaien herstelt de opgeslagen IPv4- en IPv6-status van elke adapter.",
+    "es": "Este ajuste del controlador puede reiniciar un adaptador e interrumpir brevemente la red. Puede aumentar el uso de CPU en cargas grandes; deshacer restaura el estado IPv4 e IPv6 guardado de cada adaptador.",
+    "de": "Diese Treibereinstellung kann einen Adapter neu starten und das Netzwerk kurz unterbrechen. Große Uploads können mehr CPU beanspruchen; Rückgängigmachen stellt den gespeicherten IPv4- und IPv6-Zustand jedes Adapters wieder her.",
+    "fr": "Ce réglage du pilote peut redémarrer un adaptateur et interrompre brièvement le réseau. Les gros envois peuvent utiliser davantage le CPU ; l’annulation restaure les états IPv4 et IPv6 enregistrés de chaque adaptateur.",
+    "pt": "Esta configuração do driver pode reiniciar um adaptador e interromper a rede brevemente. Uploads grandes podem usar mais CPU; desfazer restaura os estados IPv4 e IPv6 salvos de cada adaptador.",
+    "ru": "Настройка драйвера может перезапустить адаптер и кратко прервать сеть. При больших загрузках в сеть нагрузка CPU может вырасти; отмена восстанавливает сохранённые состояния IPv4 и IPv6 каждого адаптера.",
+    "zh": "此驱动设置可能重启适配器并短暂中断网络。大量上传时 CPU 使用率可能增加；撤销会恢复每个适配器保存的 IPv4 和 IPv6 状态。"
+  },
+  "Disables enabled adapter offload and selective-suspend features on active Ethernet and Wi-Fi adapters.": {
+    "nl": "Schakelt ingeschakelde offload- en selectieve-onderbrekingsfuncties uit op actieve Ethernet- en wifi-adapters.",
+    "es": "Desactiva las funciones habilitadas de descarga y suspensión selectiva en adaptadores Ethernet y Wi-Fi activos.",
+    "de": "Deaktiviert eingeschaltete Offload- und selektive Energiesparfunktionen auf aktiven Ethernet- und WLAN-Adaptern.",
+    "fr": "Désactive les fonctions actives de déchargement et de suspension sélective des adaptateurs Ethernet et Wi-Fi actifs.",
+    "pt": "Desativa funções habilitadas de offload e suspensão seletiva nos adaptadores Ethernet e Wi-Fi ativos.",
+    "ru": "Отключает включённые функции разгрузки и выборочной приостановки активных адаптеров Ethernet и Wi-Fi.",
+    "zh": "禁用活动以太网和 Wi-Fi 适配器上已启用的卸载与选择性暂停功能。"
+  },
+  "Some features can affect wake-on-LAN, battery use, or wireless power behavior. Adapter state may briefly reset; undo restores the capabilities that were enabled before.": {
+    "nl": "Sommige functies kunnen wake-on-LAN, accuverbruik of draadloos energiebeheer beïnvloeden. De adapterstatus kan kort worden gereset; terugdraaien herstelt de functies die eerder waren ingeschakeld.",
+    "es": "Algunas funciones pueden afectar a wake-on-LAN, la batería o la gestión de energía inalámbrica. El adaptador puede restablecerse brevemente; deshacer restaura las funciones antes habilitadas.",
+    "de": "Einige Funktionen beeinflussen Wake-on-LAN, Akkunutzung oder WLAN-Energiesparen. Der Adapterzustand kann kurz zurückgesetzt werden; Rückgängigmachen stellt die zuvor aktivierten Funktionen wieder her.",
+    "fr": "Certaines fonctions peuvent affecter Wake-on-LAN, la batterie ou la gestion d’énergie sans fil. L’adaptateur peut être brièvement réinitialisé ; l’annulation restaure les fonctions auparavant actives.",
+    "pt": "Algumas funções podem afetar wake-on-LAN, bateria ou energia sem fio. O adaptador pode reiniciar brevemente; desfazer restaura as funções anteriormente habilitadas.",
+    "ru": "Некоторые функции влияют на Wake-on-LAN, расход батареи или питание беспроводной сети. Адаптер может кратко сброситься; отмена восстанавливает ранее включённые функции.",
+    "zh": "部分功能可能影响网络唤醒、电池耗电或无线电源行为。适配器状态可能短暂重置；撤销会恢复原先启用的功能。"
+  },
+  "Sets active Ethernet and Wi-Fi adapters to Cloudflare DNS (1.1.1.1 and 1.0.0.1).": {
+    "nl": "Stelt actieve Ethernet- en wifi-adapters in op Cloudflare DNS (1.1.1.1 en 1.0.0.1).",
+    "es": "Configura los adaptadores Ethernet y Wi-Fi activos con Cloudflare DNS (1.1.1.1 y 1.0.0.1).",
+    "de": "Stellt aktive Ethernet- und WLAN-Adapter auf Cloudflare DNS (1.1.1.1 und 1.0.0.1) um.",
+    "fr": "Configure les adaptateurs Ethernet et Wi-Fi actifs avec Cloudflare DNS (1.1.1.1 et 1.0.0.1).",
+    "pt": "Configura adaptadores Ethernet e Wi-Fi ativos com Cloudflare DNS (1.1.1.1 e 1.0.0.1).",
+    "ru": "Устанавливает Cloudflare DNS (1.1.1.1 и 1.0.0.1) для активных адаптеров Ethernet и Wi-Fi.",
+    "zh": "将活动以太网和 Wi-Fi 适配器设为 Cloudflare DNS（1.1.1.1 和 1.0.0.1）。"
+  },
+  "DNS response time varies by provider and location. Managed networks may require their own DNS. Undo restores each adapter's original DNS server list or automatic assignment.": {
+    "nl": "DNS-responstijd verschilt per provider en locatie. Beheerde netwerken kunnen hun eigen DNS vereisen. Terugdraaien herstelt de oorspronkelijke DNS-serverlijst of automatische toewijzing van elke adapter.",
+    "es": "La respuesta DNS varía según proveedor y ubicación. Las redes administradas pueden requerir su propio DNS. Deshacer restaura la lista original de servidores DNS o la asignación automática de cada adaptador.",
+    "de": "DNS-Antwortzeiten variieren nach Anbieter und Standort. Verwaltete Netzwerke können eigene DNS-Server benötigen. Rückgängigmachen stellt die ursprüngliche DNS-Serverliste oder automatische Zuweisung jedes Adapters wieder her.",
+    "fr": "Le temps de réponse DNS varie selon le fournisseur et le lieu. Les réseaux gérés peuvent exiger leur propre DNS. L’annulation restaure la liste DNS d’origine ou l’attribution automatique de chaque adaptateur.",
+    "pt": "O tempo de resposta DNS varia por provedor e local. Redes gerenciadas podem exigir seu próprio DNS. Desfazer restaura a lista DNS original ou a atribuição automática de cada adaptador.",
+    "ru": "Время ответа DNS зависит от провайдера и местоположения. Управляемым сетям может требоваться собственный DNS. Отмена восстанавливает исходный список DNS-серверов или автоматическое назначение каждого адаптера.",
+    "zh": "DNS 响应时间因提供商和位置而异。受管理网络可能要求使用其自己的 DNS。撤销会恢复每个适配器原始的 DNS 服务器列表或自动分配。"
+  },
+  "Disables matching Energy Efficient Ethernet or Green Ethernet advanced properties on active Ethernet adapters.": {
+    "nl": "Schakelt overeenkomende geavanceerde eigenschappen voor Energy Efficient Ethernet of Green Ethernet uit op actieve Ethernet-adapters.",
+    "es": "Desactiva las propiedades avanzadas coincidentes de Energy Efficient Ethernet o Green Ethernet en adaptadores Ethernet activos.",
+    "de": "Deaktiviert passende erweiterte Eigenschaften für Energy Efficient Ethernet oder Green Ethernet auf aktiven Ethernet-Adaptern.",
+    "fr": "Désactive les propriétés avancées correspondantes d’Energy Efficient Ethernet ou Green Ethernet sur les adaptateurs Ethernet actifs.",
+    "pt": "Desativa propriedades avançadas correspondentes de Energy Efficient Ethernet ou Green Ethernet nos adaptadores Ethernet ativos.",
+    "ru": "Отключает подходящие расширенные параметры Energy Efficient Ethernet или Green Ethernet на активных адаптерах Ethernet.",
+    "zh": "禁用活动以太网适配器上匹配的节能以太网或绿色以太网高级属性。"
+  },
+  "Driver property names and supported values vary. Matching adapters may reset and briefly interrupt connectivity; unsupported drivers are skipped and saved values are restored on undo.": {
+    "nl": "Namen van drivereigenschappen en ondersteunde waarden verschillen. Overeenkomende adapters kunnen resetten en de verbinding kort onderbreken; niet-ondersteunde drivers worden overgeslagen en opgeslagen waarden worden hersteld bij terugdraaien.",
+    "es": "Los nombres de propiedades y valores admitidos varían por controlador. Los adaptadores coincidentes pueden restablecerse e interrumpir la conexión brevemente; se omiten los controladores no compatibles y deshacer restaura los valores guardados.",
+    "de": "Treibernamen und unterstützte Werte variieren. Passende Adapter können zurückgesetzt werden und die Verbindung kurz unterbrechen; nicht unterstützte Treiber werden übersprungen und gespeicherte Werte beim Rückgängigmachen wiederhergestellt.",
+    "fr": "Les noms des propriétés et valeurs prises en charge varient selon le pilote. Les adaptateurs correspondants peuvent être réinitialisés et interrompre brièvement la connexion ; les pilotes incompatibles sont ignorés et l’annulation restaure les valeurs enregistrées.",
+    "pt": "Nomes de propriedades e valores suportados variam por driver. Adaptadores correspondentes podem reiniciar e interromper a conexão brevemente; drivers incompatíveis são ignorados e valores salvos são restaurados ao desfazer.",
+    "ru": "Названия параметров и поддерживаемые значения зависят от драйвера. Подходящие адаптеры могут сброситься и кратко прервать связь; неподдерживаемые драйверы пропускаются, а сохранённые значения восстанавливаются при отмене.",
+    "zh": "驱动属性名称和支持的值各不相同。匹配的适配器可能重置并短暂中断连接；不支持的驱动会跳过，撤销时会恢复保存的值。"
+  },
+  "Disables the Flow Control advanced property on active Ethernet adapters when the driver exposes a Disabled value.": {
+    "nl": "Schakelt de geavanceerde eigenschap Flow Control uit op actieve Ethernet-adapters als de driver een uitgeschakelde waarde aanbiedt.",
+    "es": "Desactiva la propiedad avanzada Flow Control en adaptadores Ethernet activos cuando el controlador ofrece un valor de desactivación.",
+    "de": "Deaktiviert die erweiterte Eigenschaft Flow Control auf aktiven Ethernet-Adaptern, wenn der Treiber einen Deaktivierungswert bereitstellt.",
+    "fr": "Désactive la propriété avancée Flow Control des adaptateurs Ethernet actifs lorsque le pilote propose une valeur de désactivation.",
+    "pt": "Desativa a propriedade avançada Flow Control nos adaptadores Ethernet ativos quando o driver oferece um valor de desativação.",
+    "ru": "Отключает расширенный параметр Flow Control активных адаптеров Ethernet, если драйвер предоставляет значение отключения.",
+    "zh": "当驱动提供禁用值时，关闭活动以太网适配器的流量控制高级属性。"
+  },
+  "Heavy local file transfers may behave differently. The adapter may briefly reconnect; undo restores its exact saved registry values.": {
+    "nl": "Grote lokale bestandsoverdrachten kunnen anders verlopen. De adapter kan kort opnieuw verbinden; terugdraaien herstelt de exacte opgeslagen registerwaarden.",
+    "es": "Las transferencias locales intensas pueden comportarse de otra manera. El adaptador puede reconectarse brevemente; deshacer restaura los valores exactos guardados del registro.",
+    "de": "Große lokale Dateiübertragungen können sich anders verhalten. Der Adapter kann sich kurz neu verbinden; Rückgängigmachen stellt seine exakt gespeicherten Registrierungswerte wieder her.",
+    "fr": "Les gros transferts de fichiers locaux peuvent se comporter différemment. L’adaptateur peut se reconnecter brièvement ; l’annulation restaure ses valeurs exactes du registre enregistrées.",
+    "pt": "Transferências locais intensas podem se comportar de forma diferente. O adaptador pode reconectar brevemente; desfazer restaura seus valores exatos do registro salvos.",
+    "ru": "Большие локальные передачи файлов могут работать иначе. Адаптер может кратко переподключиться; отмена точно восстанавливает сохранённые значения реестра.",
+    "zh": "大量本地文件传输的表现可能变化。适配器可能短暂重新连接；撤销会准确恢复保存的注册表值。"
+  },
+  "Disables Interrupt Moderation on active Ethernet adapters that expose the option.": {
+    "nl": "Schakelt Interrupt Moderation uit op actieve Ethernet-adapters die deze optie aanbieden.",
+    "es": "Desactiva Interrupt Moderation en adaptadores Ethernet activos que ofrecen la opción.",
+    "de": "Deaktiviert Interrupt Moderation auf aktiven Ethernet-Adaptern, die diese Option bereitstellen.",
+    "fr": "Désactive Interrupt Moderation sur les adaptateurs Ethernet actifs proposant cette option.",
+    "pt": "Desativa Interrupt Moderation nos adaptadores Ethernet ativos que oferecem essa opção.",
+    "ru": "Отключает Interrupt Moderation на активных адаптерах Ethernet, предоставляющих эту настройку.",
+    "zh": "在提供此选项的活动以太网适配器上禁用中断调节。"
+  },
+  "This may raise CPU use during network activity and briefly reconnect the adapter. Undo restores its exact saved registry values.": {
+    "nl": "Dit kan CPU-gebruik tijdens netwerkactiviteit verhogen en de adapter kort opnieuw verbinden. Terugdraaien herstelt de exacte opgeslagen registerwaarden.",
+    "es": "Puede aumentar el uso de CPU durante la actividad de red y reconectar el adaptador brevemente. Deshacer restaura sus valores exactos guardados del registro.",
+    "de": "Kann bei Netzwerkaktivität die CPU-Auslastung erhöhen und den Adapter kurz neu verbinden. Rückgängigmachen stellt seine exakt gespeicherten Registrierungswerte wieder her.",
+    "fr": "Cela peut augmenter l’utilisation CPU pendant l’activité réseau et reconnecter brièvement l’adaptateur. L’annulation restaure ses valeurs exactes du registre enregistrées.",
+    "pt": "Pode aumentar o uso de CPU durante atividade de rede e reconectar o adaptador brevemente. Desfazer restaura seus valores exatos do registro salvos.",
+    "ru": "Может увеличить нагрузку CPU при сетевой активности и кратко переподключить адаптер. Отмена точно восстанавливает сохранённые значения реестра.",
+    "zh": "可能增加网络活动时的 CPU 使用率，并使适配器短暂重新连接。撤销会准确恢复保存的注册表值。"
+  },
+  "Enables RSS on active Ethernet and Wi-Fi adapters so supported network processing can spread across CPU cores.": {
+    "nl": "Schakelt RSS in op actieve Ethernet- en wifi-adapters zodat ondersteunde netwerkverwerking over CPU-kernen kan worden verdeeld.",
+    "es": "Activa RSS en adaptadores Ethernet y Wi-Fi activos para repartir el procesamiento de red compatible entre núcleos de CPU.",
+    "de": "Aktiviert RSS auf aktiven Ethernet- und WLAN-Adaptern, damit unterstützte Netzwerkverarbeitung über CPU-Kerne verteilt werden kann.",
+    "fr": "Active RSS sur les adaptateurs Ethernet et Wi-Fi actifs afin de répartir le traitement réseau compatible sur les cœurs CPU.",
+    "pt": "Ativa RSS nos adaptadores Ethernet e Wi-Fi ativos para distribuir o processamento de rede compatível entre núcleos da CPU.",
+    "ru": "Включает RSS на активных адаптерах Ethernet и Wi-Fi для распределения поддерживаемой обработки сети между ядрами CPU.",
+    "zh": "为活动以太网和 Wi-Fi 适配器启用 RSS，使受支持的网络处理可分散到多个 CPU 核心。"
+  },
+  "Requires driver support and may change adapter behavior. Each adapter's original RSS state is saved for undo.": {
+    "nl": "Vereist driverondersteuning en kan het adaptergedrag wijzigen. De oorspronkelijke RSS-status van elke adapter wordt opgeslagen om terug te draaien.",
+    "es": "Requiere soporte del controlador y puede cambiar el comportamiento del adaptador. Se guarda el estado RSS original de cada adaptador para deshacerlo.",
+    "de": "Erfordert Treiberunterstützung und kann das Adapterverhalten ändern. Der ursprüngliche RSS-Zustand jedes Adapters wird zum Rückgängigmachen gespeichert.",
+    "fr": "Nécessite la prise en charge du pilote et peut modifier le comportement de l’adaptateur. L’état RSS d’origine de chaque adaptateur est enregistré pour l’annulation.",
+    "pt": "Exige suporte do driver e pode alterar o comportamento do adaptador. O estado RSS original de cada adaptador é salvo para desfazer.",
+    "ru": "Требует поддержки драйвера и может изменить поведение адаптера. Исходное состояние RSS каждого адаптера сохраняется для отмены.",
+    "zh": "需要驱动支持，可能改变适配器行为。每个适配器的原始 RSS 状态会保存以便撤销。"
+  },
+  "Sets the legacy TIME_WAIT and ephemeral port values for systems that frequently open short-lived connections.": {
+    "nl": "Stelt de oude TIME_WAIT- en tijdelijke-poortwaarden in voor systemen die vaak kortdurende verbindingen openen.",
+    "es": "Establece los valores anteriores de TIME_WAIT y puertos efímeros para sistemas que abren frecuentemente conexiones de corta duración.",
+    "de": "Setzt die alten TIME_WAIT- und temporären Portwerte für Systeme, die häufig kurzlebige Verbindungen öffnen.",
+    "fr": "Définit les anciennes valeurs TIME_WAIT et de ports éphémères pour les systèmes ouvrant fréquemment des connexions brèves.",
+    "pt": "Define os valores anteriores de TIME_WAIT e portas efêmeras para sistemas que abrem frequentemente conexões curtas.",
+    "ru": "Устанавливает прежние значения TIME_WAIT и временных портов для систем, часто открывающих кратковременные соединения.",
+    "zh": "为经常建立短时连接的系统设置旧版 TIME_WAIT 和临时端口值。"
+  },
+  "This is a system-wide TCP setting and usually does not improve game ping. Use only if you understand the workload; undo restores the previous values.": {
+    "nl": "Dit is een computerbrede TCP-instelling die gameping meestal niet verbetert. Gebruik dit alleen als je de werklast begrijpt; terugdraaien herstelt de vorige waarden.",
+    "es": "Es un ajuste TCP de todo el sistema y normalmente no mejora el ping en juegos. Úsalo solo si entiendes la carga de trabajo; deshacer restaura los valores anteriores.",
+    "de": "Dies ist eine systemweite TCP-Einstellung und verbessert den Spiele-Ping meist nicht. Nur verwenden, wenn du die Arbeitslast verstehst; Rückgängigmachen stellt die vorherigen Werte wieder her.",
+    "fr": "Il s’agit d’un réglage TCP global qui n’améliore généralement pas le ping en jeu. Utilisez-le uniquement si vous comprenez la charge de travail ; l’annulation restaure les valeurs précédentes.",
+    "pt": "É uma configuração TCP de todo o sistema e geralmente não melhora o ping em jogos. Use apenas se entender a carga de trabalho; desfazer restaura os valores anteriores.",
+    "ru": "Это общесистемная настройка TCP, обычно не улучшающая пинг в играх. Используйте только при понимании нагрузки; отмена восстанавливает прежние значения.",
+    "zh": "这是系统范围的 TCP 设置，通常不会改善游戏延迟。仅在了解工作负载时使用；撤销会恢复原始值。"
+  }
+}

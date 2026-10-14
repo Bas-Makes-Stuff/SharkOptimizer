@@ -1,0 +1,281 @@
+{
+  "SHARK OPTIMIZER SYSTEM CHECK": {
+    "nl": "SHARK OPTIMIZER SYSTEEMCONTROLE",
+    "es": "COMPROBACIÓN DEL SISTEMA SHARK OPTIMIZER",
+    "de": "SHARK OPTIMIZER SYSTEMPRÜFUNG",
+    "fr": "VÉRIFICATION SYSTÈME SHARK OPTIMIZER",
+    "pt": "VERIFICAÇÃO DO SISTEMA SHARK OPTIMIZER",
+    "ru": "ПРОВЕРКА СИСТЕМЫ SHARK OPTIMIZER",
+    "zh": "SHARK OPTIMIZER 系统检查"
+  },
+  "CPU: {0} · {1} cores / {2} threads": {
+    "nl": "CPU: {0} · {1} kernen / {2} threads",
+    "es": "CPU: {0} · {1} núcleos / {2} hilos",
+    "de": "CPU: {0} · {1} Kerne / {2} Threads",
+    "fr": "CPU : {0} · {1} cœurs / {2} threads",
+    "pt": "CPU: {0} · {1} núcleos / {2} threads",
+    "ru": "CPU: {0} · {1} ядер / {2} потоков",
+    "zh": "CPU：{0} · {1} 核 / {2} 线程"
+  },
+  "CPU details unavailable.": {
+    "nl": "CPU-details niet beschikbaar.",
+    "es": "Detalles de CPU no disponibles.",
+    "de": "CPU-Details nicht verfügbar.",
+    "fr": "Détails CPU indisponibles.",
+    "pt": "Detalhes da CPU indisponíveis.",
+    "ru": "Сведения о CPU недоступны.",
+    "zh": "CPU 详细信息不可用。"
+  },
+  "GPU: {0} · driver {1}": {
+    "nl": "GPU: {0} · driver {1}",
+    "es": "GPU: {0} · controlador {1}",
+    "de": "GPU: {0} · Treiber {1}",
+    "fr": "GPU : {0} · pilote {1}",
+    "pt": "GPU: {0} · driver {1}",
+    "ru": "GPU: {0} · драйвер {1}",
+    "zh": "GPU：{0} · 驱动 {1}"
+  },
+  "GPU: {0} · driver {1} · driver date {2}": {
+    "nl": "GPU: {0} · driver {1} · driverdatum {2}",
+    "es": "GPU: {0} · controlador {1} · fecha {2}",
+    "de": "GPU: {0} · Treiber {1} · Treiberdatum {2}",
+    "fr": "GPU : {0} · pilote {1} · date du pilote {2}",
+    "pt": "GPU: {0} · driver {1} · data do driver {2}",
+    "ru": "GPU: {0} · драйвер {1} · дата драйвера {2}",
+    "zh": "GPU：{0} · 驱动 {1} · 驱动日期 {2}"
+  },
+  "GPU: {0} · driver {1} · display {2} Hz": {
+    "nl": "GPU: {0} · driver {1} · scherm {2} Hz",
+    "es": "GPU: {0} · controlador {1} · pantalla {2} Hz",
+    "de": "GPU: {0} · Treiber {1} · Anzeige {2} Hz",
+    "fr": "GPU : {0} · pilote {1} · écran {2} Hz",
+    "pt": "GPU: {0} · driver {1} · tela {2} Hz",
+    "ru": "GPU: {0} · драйвер {1} · экран {2} Гц",
+    "zh": "GPU：{0} · 驱动 {1} · 显示 {2} Hz"
+  },
+  "GPU: {0} · driver {1} · driver date {2} · display {3} Hz": {
+    "nl": "GPU: {0} · driver {1} · driverdatum {2} · scherm {3} Hz",
+    "es": "GPU: {0} · controlador {1} · fecha {2} · pantalla {3} Hz",
+    "de": "GPU: {0} · Treiber {1} · Treiberdatum {2} · Anzeige {3} Hz",
+    "fr": "GPU : {0} · pilote {1} · date du pilote {2} · écran {3} Hz",
+    "pt": "GPU: {0} · driver {1} · data do driver {2} · tela {3} Hz",
+    "ru": "GPU: {0} · драйвер {1} · дата драйвера {2} · экран {3} Гц",
+    "zh": "GPU：{0} · 驱动 {1} · 驱动日期 {2} · 显示 {3} Hz"
+  },
+  "Graphics and display details unavailable.": {
+    "nl": "Grafische en schermdetails niet beschikbaar.",
+    "es": "Detalles gráficos y de pantalla no disponibles.",
+    "de": "Grafik- und Anzeigedetails nicht verfügbar.",
+    "fr": "Détails graphiques et d’affichage indisponibles.",
+    "pt": "Detalhes gráficos e de tela indisponíveis.",
+    "ru": "Сведения о графике и экране недоступны.",
+    "zh": "图形和显示详细信息不可用。"
+  },
+  "Memory: {0} module(s) · configured {1} MHz": {
+    "nl": "Geheugen: {0} module(s) · ingesteld op {1} MHz",
+    "es": "Memoria: {0} módulos · configurados a {1} MHz",
+    "de": "Speicher: {0} Module · eingestellt auf {1} MHz",
+    "fr": "Mémoire : {0} modules · configurés à {1} MHz",
+    "pt": "Memória: {0} módulos · configurados em {1} MHz",
+    "ru": "Память: модулей {0} · настроено {1} МГц",
+    "zh": "内存：{0} 个模块 · 配置频率 {1} MHz"
+  },
+  "Memory: {0} module(s) · configured {1} MHz · one module detected; dual-channel memory uses matched modules": {
+    "nl": "Geheugen: {0} module(s) · ingesteld op {1} MHz · één module gevonden; dual-channelgeheugen gebruikt bijpassende modules",
+    "es": "Memoria: {0} módulos · configurados a {1} MHz · se detectó un módulo; la memoria de doble canal usa módulos emparejados",
+    "de": "Speicher: {0} Module · eingestellt auf {1} MHz · ein Modul erkannt; Dual-Channel-Speicher verwendet passende Module",
+    "fr": "Mémoire : {0} modules · configurés à {1} MHz · un module détecté ; la mémoire double canal utilise des modules assortis",
+    "pt": "Memória: {0} módulos · configurados em {1} MHz · um módulo detectado; memória de dois canais usa módulos correspondentes",
+    "ru": "Память: модулей {0} · настроено {1} МГц · обнаружен один модуль; двухканальная память использует подходящие пары модулей",
+    "zh": "内存：{0} 个模块 · 配置频率 {1} MHz · 检测到一个模块；双通道内存使用匹配模块"
+  },
+  "Memory module speed unavailable.": {
+    "nl": "Snelheid van geheugenmodules niet beschikbaar.",
+    "es": "Velocidad de módulos de memoria no disponible.",
+    "de": "Geschwindigkeit der Speichermodule nicht verfügbar.",
+    "fr": "Vitesse des modules mémoire indisponible.",
+    "pt": "Velocidade dos módulos de memória indisponível.",
+    "ru": "Скорость модулей памяти недоступна.",
+    "zh": "内存模块速度不可用。"
+  },
+  "Memory module details unavailable.": {
+    "nl": "Details van geheugenmodules niet beschikbaar.",
+    "es": "Detalles de módulos de memoria no disponibles.",
+    "de": "Details der Speichermodule nicht verfügbar.",
+    "fr": "Détails des modules mémoire indisponibles.",
+    "pt": "Detalhes dos módulos de memória indisponíveis.",
+    "ru": "Сведения о модулях памяти недоступны.",
+    "zh": "内存模块详细信息不可用。"
+  },
+  "Network: no active adapter detected.": {
+    "nl": "Netwerk: geen actieve adapter gevonden.",
+    "es": "Red: no se detectó ningún adaptador activo.",
+    "de": "Netzwerk: kein aktiver Adapter erkannt.",
+    "fr": "Réseau : aucun adaptateur actif détecté.",
+    "pt": "Rede: nenhum adaptador ativo detectado.",
+    "ru": "Сеть: активный адаптер не обнаружен.",
+    "zh": "网络：未检测到活动适配器。"
+  },
+  "Network: Wi-Fi connection detected; Ethernet often gives steadier game latency. · {0}": {
+    "nl": "Netwerk: wifi gevonden; Ethernet geeft vaak stabielere gamevertraging. · {0}",
+    "es": "Red: conexión Wi-Fi detectada; Ethernet suele dar una latencia más estable en juegos. · {0}",
+    "de": "Netzwerk: WLAN erkannt; Ethernet bietet oft stabilere Spiellatenz. · {0}",
+    "fr": "Réseau : connexion Wi-Fi détectée ; Ethernet offre souvent une latence plus stable en jeu. · {0}",
+    "pt": "Rede: Wi-Fi detectado; Ethernet costuma dar latência mais estável em jogos. · {0}",
+    "ru": "Сеть: обнаружен Wi-Fi; Ethernet часто обеспечивает более стабильную задержку в играх. · {0}",
+    "zh": "网络：检测到 Wi-Fi；以太网通常能提供更稳定的游戏延迟。· {0}"
+  },
+  "Network: wired or other connection detected · {0}": {
+    "nl": "Netwerk: bekabelde of andere verbinding gevonden · {0}",
+    "es": "Red: conexión por cable u otra detectada · {0}",
+    "de": "Netzwerk: Kabel- oder andere Verbindung erkannt · {0}",
+    "fr": "Réseau : connexion filaire ou autre détectée · {0}",
+    "pt": "Rede: conexão cabeada ou outra detectada · {0}",
+    "ru": "Сеть: обнаружено проводное или другое соединение · {0}",
+    "zh": "网络：检测到有线或其他连接 · {0}"
+  },
+  "Network adapter details unavailable.": {
+    "nl": "Details van netwerkadapters niet beschikbaar.",
+    "es": "Detalles de adaptadores de red no disponibles.",
+    "de": "Netzwerkadapterdetails nicht verfügbar.",
+    "fr": "Détails des adaptateurs réseau indisponibles.",
+    "pt": "Detalhes dos adaptadores de rede indisponíveis.",
+    "ru": "Сведения о сетевых адаптерах недоступны.",
+    "zh": "网络适配器详细信息不可用。"
+  },
+  "Secure Boot: unavailable (legacy BIOS or restricted access).": {
+    "nl": "Secure Boot: niet beschikbaar (oud BIOS of beperkte toegang).",
+    "es": "Arranque seguro: no disponible (BIOS antiguo o acceso restringido).",
+    "de": "Sicherer Start: nicht verfügbar (Legacy-BIOS oder eingeschränkter Zugriff).",
+    "fr": "Démarrage sécurisé : indisponible (ancien BIOS ou accès restreint).",
+    "pt": "Inicialização Segura: indisponível (BIOS antigo ou acesso restrito).",
+    "ru": "Безопасная загрузка: недоступна (устаревший BIOS или ограниченный доступ).",
+    "zh": "安全启动：不可用（旧式 BIOS 或访问受限）。"
+  },
+  "Secure Boot: on": {
+    "nl": "Secure Boot: aan",
+    "es": "Arranque seguro: activado",
+    "de": "Sicherer Start: ein",
+    "fr": "Démarrage sécurisé : activé",
+    "pt": "Inicialização Segura: ativada",
+    "ru": "Безопасная загрузка: включена",
+    "zh": "安全启动：开启"
+  },
+  "Secure Boot: off": {
+    "nl": "Secure Boot: uit",
+    "es": "Arranque seguro: desactivado",
+    "de": "Sicherer Start: aus",
+    "fr": "Démarrage sécurisé : désactivé",
+    "pt": "Inicialização Segura: desativada",
+    "ru": "Безопасная загрузка: отключена",
+    "zh": "安全启动：关闭"
+  },
+  "Secure Boot status unavailable.": {
+    "nl": "Secure Boot-status niet beschikbaar.",
+    "es": "Estado del arranque seguro no disponible.",
+    "de": "Status des sicheren Starts nicht verfügbar.",
+    "fr": "État du démarrage sécurisé indisponible.",
+    "pt": "Status da Inicialização Segura indisponível.",
+    "ru": "Состояние безопасной загрузки недоступно.",
+    "zh": "安全启动状态不可用。"
+  },
+  "TPM: not detected or not available through Windows management.": {
+    "nl": "TPM: niet gevonden of niet beschikbaar via Windows-beheer.",
+    "es": "TPM: no detectado o no disponible mediante la administración de Windows.",
+    "de": "TPM: nicht erkannt oder über die Windows-Verwaltung nicht verfügbar.",
+    "fr": "TPM : non détecté ou indisponible via la gestion Windows.",
+    "pt": "TPM: não detectado ou indisponível pelo gerenciamento do Windows.",
+    "ru": "TPM: не обнаружен или недоступен через управление Windows.",
+    "zh": "TPM：未检测到或无法通过 Windows 管理访问。"
+  },
+  "TPM: {0} enabled · {1} activated": {
+    "nl": "TPM: {0} ingeschakeld · {1} geactiveerd",
+    "es": "TPM: {0} habilitado · {1} activado",
+    "de": "TPM: {0} eingeschaltet · {1} aktiviert",
+    "fr": "TPM : {0} activé · {1} opérationnel",
+    "pt": "TPM: {0} habilitado · {1} ativado",
+    "ru": "TPM: {0} включён · {1} активирован",
+    "zh": "TPM：{0} 已启用 · {1} 已激活"
+  },
+  "TPM status unavailable.": {
+    "nl": "TPM-status niet beschikbaar.",
+    "es": "Estado de TPM no disponible.",
+    "de": "TPM-Status nicht verfügbar.",
+    "fr": "État du TPM indisponible.",
+    "pt": "Status do TPM indisponível.",
+    "ru": "Состояние TPM недоступно.",
+    "zh": "TPM 状态不可用。"
+  },
+  "Virtualization-Based Security: running": {
+    "nl": "Virtualisatiegebaseerde beveiliging: actief",
+    "es": "Seguridad basada en virtualización: en ejecución",
+    "de": "Virtualisierungsbasierte Sicherheit: aktiv",
+    "fr": "Sécurité basée sur la virtualisation : active",
+    "pt": "Segurança baseada em virtualização: em execução",
+    "ru": "Безопасность на основе виртуализации: работает",
+    "zh": "基于虚拟化的安全性：正在运行"
+  },
+  "Virtualization-Based Security: not running": {
+    "nl": "Virtualisatiegebaseerde beveiliging: niet actief",
+    "es": "Seguridad basada en virtualización: no se ejecuta",
+    "de": "Virtualisierungsbasierte Sicherheit: nicht aktiv",
+    "fr": "Sécurité basée sur la virtualisation : inactive",
+    "pt": "Segurança baseada em virtualização: não está em execução",
+    "ru": "Безопасность на основе виртуализации: не работает",
+    "zh": "基于虚拟化的安全性：未运行"
+  },
+  "System drive: {0}% free · {1}": {
+    "nl": "Systeemschijf: {0}% vrij · {1}",
+    "es": "Unidad del sistema: {0}% libre · {1}",
+    "de": "Systemlaufwerk: {0}% frei · {1}",
+    "fr": "Disque système : {0}% libre · {1}",
+    "pt": "Unidade do sistema: {0}% livre · {1}",
+    "ru": "Системный диск: свободно {0}% · {1}",
+    "zh": "系统驱动器：{0}% 可用 · {1}"
+  },
+  "System drive capacity unavailable.": {
+    "nl": "Capaciteit van systeemschijf niet beschikbaar.",
+    "es": "Capacidad de la unidad del sistema no disponible.",
+    "de": "Kapazität des Systemlaufwerks nicht verfügbar.",
+    "fr": "Capacité du disque système indisponible.",
+    "pt": "Capacidade da unidade do sistema indisponível.",
+    "ru": "Ёмкость системного диска недоступна.",
+    "zh": "系统驱动器容量不可用。"
+  },
+  "Tip: low free space can affect updates and game installs. Consider freeing storage.": {
+    "nl": "Tip: weinig vrije ruimte kan updates en game-installaties beïnvloeden. Overweeg ruimte vrij te maken.",
+    "es": "Consejo: poco espacio libre puede afectar a actualizaciones e instalaciones de juegos. Considera liberar almacenamiento.",
+    "de": "Tipp: Wenig freier Speicher kann Updates und Spielinstallationen beeinträchtigen. Erwäge, Speicherplatz freizugeben.",
+    "fr": "Conseil : un espace libre insuffisant peut affecter les mises à jour et installations de jeux. Pensez à libérer du stockage.",
+    "pt": "Dica: pouco espaço livre pode afetar atualizações e instalações de jogos. Considere liberar armazenamento.",
+    "ru": "Совет: нехватка места может мешать обновлениям и установке игр. Освободите место при необходимости.",
+    "zh": "提示：可用空间不足可能影响更新和游戏安装。请考虑释放存储空间。"
+  },
+  "Check driver updates and BIOS memory profiles at your PC or component manufacturer. Recommendations here are informational.": {
+    "nl": "Controleer driverupdates en BIOS-geheugenprofielen bij de fabrikant van je pc of onderdelen. Deze aanbevelingen zijn informatief.",
+    "es": "Consulta actualizaciones de controladores y perfiles de memoria del BIOS con el fabricante del PC o componentes. Estas recomendaciones son informativas.",
+    "de": "Prüfe Treiberupdates und BIOS-Speicherprofile beim PC- oder Komponentenhersteller. Diese Empfehlungen dienen der Information.",
+    "fr": "Consultez les mises à jour de pilotes et profils mémoire BIOS auprès du fabricant du PC ou des composants. Ces recommandations sont informatives.",
+    "pt": "Consulte atualizações de drivers e perfis de memória do BIOS no fabricante do PC ou componentes. Estas recomendações são informativas.",
+    "ru": "Проверьте обновления драйверов и профили памяти BIOS у производителя ПК или компонентов. Эти рекомендации носят информационный характер.",
+    "zh": "请向电脑或组件制造商查询驱动更新和 BIOS 内存配置。此处建议仅供参考。"
+  },
+  "{0} logical processors": {
+    "nl": "{0} logische processors",
+    "es": "{0} procesadores lógicos",
+    "de": "{0} logische Prozessoren",
+    "fr": "{0} processeurs logiques",
+    "pt": "{0} processadores lógicos",
+    "ru": "Логических процессоров: {0}",
+    "zh": "{0} 个逻辑处理器"
+  },
+  "{0} free": {
+    "nl": "{0} vrij",
+    "es": "{0} libres",
+    "de": "{0} frei",
+    "fr": "{0} libres",
+    "pt": "{0} livres",
+    "ru": "Свободно {0}",
+    "zh": "{0} 可用"
+  }
+}

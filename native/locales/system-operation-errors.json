@@ -1,0 +1,128 @@
+{
+  "Windows could not change the power configuration. {0}": {
+    "nl": "Windows kon de energieconfiguratie niet wijzigen. {0}",
+    "es": "Windows no pudo cambiar la configuración de energía. {0}",
+    "de": "Windows konnte die Energiekonfiguration nicht ändern. {0}",
+    "fr": "Windows n’a pas pu modifier la configuration d’alimentation. {0}",
+    "pt": "O Windows não conseguiu alterar a configuração de energia. {0}",
+    "ru": "Windows не удалось изменить конфигурацию питания. {0}",
+    "zh": "Windows 无法更改电源配置。{0}"
+  },
+  "Windows Boot Configuration could not be read. {0}": {
+    "nl": "Windows-opstartconfiguratie kon niet worden gelezen. {0}",
+    "es": "No se pudo leer la configuración de arranque de Windows. {0}",
+    "de": "Windows-Startkonfiguration konnte nicht gelesen werden. {0}",
+    "fr": "Impossible de lire la configuration de démarrage Windows. {0}",
+    "pt": "Não foi possível ler a configuração de inicialização do Windows. {0}",
+    "ru": "Не удалось прочитать конфигурацию загрузки Windows. {0}",
+    "zh": "无法读取 Windows 启动配置。{0}"
+  },
+  "Windows could not update the boot option '{0}'. {1}": {
+    "nl": "Windows kon opstartoptie '{0}' niet bijwerken. {1}",
+    "es": "Windows no pudo actualizar la opción de arranque '{0}'. {1}",
+    "de": "Windows konnte die Startoption '{0}' nicht aktualisieren. {1}",
+    "fr": "Windows n’a pas pu modifier l’option de démarrage « {0} ». {1}",
+    "pt": "O Windows não conseguiu atualizar a opção de inicialização '{0}'. {1}",
+    "ru": "Windows не удалось обновить параметр загрузки «{0}». {1}",
+    "zh": "Windows 无法更新启动选项“{0}”。{1}"
+  },
+  "Windows could not read TCP heuristics. {0}": {
+    "nl": "Windows kon TCP-heuristiek niet lezen. {0}",
+    "es": "Windows no pudo leer la heurística TCP. {0}",
+    "de": "Windows konnte die TCP-Heuristik nicht lesen. {0}",
+    "fr": "Windows n’a pas pu lire l’heuristique TCP. {0}",
+    "pt": "O Windows não conseguiu ler a heurística TCP. {0}",
+    "ru": "Windows не удалось прочитать эвристику TCP. {0}",
+    "zh": "Windows 无法读取 TCP 启发式。{0}"
+  },
+  "Windows could not read Teredo state. {0}": {
+    "nl": "Windows kon de Teredo-status niet lezen. {0}",
+    "es": "Windows no pudo leer el estado de Teredo. {0}",
+    "de": "Windows konnte den Teredo-Zustand nicht lesen. {0}",
+    "fr": "Windows n’a pas pu lire l’état Teredo. {0}",
+    "pt": "O Windows não conseguiu ler o estado do Teredo. {0}",
+    "ru": "Windows не удалось прочитать состояние Teredo. {0}",
+    "zh": "Windows 无法读取 Teredo 状态。{0}"
+  },
+  "Windows could not update network setting '{0}'. {1}": {
+    "nl": "Windows kon netwerkinstelling '{0}' niet bijwerken. {1}",
+    "es": "Windows no pudo actualizar el ajuste de red '{0}'. {1}",
+    "de": "Windows konnte die Netzwerkeinstellung '{0}' nicht aktualisieren. {1}",
+    "fr": "Windows n’a pas pu modifier le réglage réseau « {0} ». {1}",
+    "pt": "O Windows não conseguiu atualizar a configuração de rede '{0}'. {1}",
+    "ru": "Windows не удалось обновить сетевую настройку «{0}». {1}",
+    "zh": "Windows 无法更新网络设置“{0}”。{1}"
+  },
+  "Could not open the {0} registry key {1}": {
+    "nl": "Kon registersleutel {1} in {0} niet openen",
+    "es": "No se pudo abrir la clave {1} del registro {0}",
+    "de": "Registrierungsschlüssel {1} in {0} konnte nicht geöffnet werden",
+    "fr": "Impossible d’ouvrir la clé de registre {1} dans {0}",
+    "pt": "Não foi possível abrir a chave {1} do registro {0}",
+    "ru": "Не удалось открыть ключ реестра {1} в {0}",
+    "zh": "无法打开 {0} 注册表项 {1}"
+  },
+  "Windows could not list power plans during restore. {0}": {
+    "nl": "Windows kon energiebeheerschema's niet opvragen tijdens herstel. {0}",
+    "es": "Windows no pudo listar los planes de energía al restaurar. {0}",
+    "de": "Windows konnte während der Wiederherstellung keine Energiesparpläne auflisten. {0}",
+    "fr": "Windows n’a pas pu lister les modes d’alimentation pendant la restauration. {0}",
+    "pt": "O Windows não conseguiu listar planos de energia durante a restauração. {0}",
+    "ru": "Windows не удалось получить список схем питания при восстановлении. {0}",
+    "zh": "Windows 无法在还原期间列出电源计划。{0}"
+  },
+  "Windows could not update '{0}' on {1} (WMI result {2}).": {
+    "nl": "Windows kon '{0}' op {1} niet bijwerken (WMI-resultaat {2}).",
+    "es": "Windows no pudo actualizar '{0}' en {1} (resultado WMI {2}).",
+    "de": "Windows konnte '{0}' auf {1} nicht aktualisieren (WMI-Ergebnis {2}).",
+    "fr": "Windows n’a pas pu modifier « {0} » sur {1} (résultat WMI {2}).",
+    "pt": "O Windows não conseguiu atualizar '{0}' em {1} (resultado WMI {2}).",
+    "ru": "Windows не удалось обновить «{0}» на {1} (результат WMI {2}).",
+    "zh": "Windows 无法在 {1} 上更新“{0}”（WMI 结果 {2}）。"
+  },
+  "Windows could not set DNS on {0} (WMI result {1}).": {
+    "nl": "Windows kon DNS niet instellen op {0} (WMI-resultaat {1}).",
+    "es": "Windows no pudo configurar DNS en {0} (resultado WMI {1}).",
+    "de": "Windows konnte DNS auf {0} nicht festlegen (WMI-Ergebnis {1}).",
+    "fr": "Windows n’a pas pu configurer DNS sur {0} (résultat WMI {1}).",
+    "pt": "O Windows não conseguiu configurar DNS em {0} (resultado WMI {1}).",
+    "ru": "Windows не удалось настроить DNS на {0} (результат WMI {1}).",
+    "zh": "Windows 无法在 {0} 上设置 DNS（WMI 结果 {1}）。"
+  },
+  "Network adapter '{0}' is no longer available. Reconnect it and retry the change.": {
+    "nl": "Netwerkadapter '{0}' is niet meer beschikbaar. Verbind deze opnieuw en probeer de wijziging opnieuw.",
+    "es": "El adaptador '{0}' ya no está disponible. Reconéctalo y vuelve a intentar el cambio.",
+    "de": "Netzwerkadapter '{0}' ist nicht mehr verfügbar. Verbinde ihn erneut und wiederhole die Änderung.",
+    "fr": "L’adaptateur « {0} » n’est plus disponible. Reconnectez-le et réessayez.",
+    "pt": "O adaptador '{0}' não está mais disponível. Reconecte e tente a alteração novamente.",
+    "ru": "Сетевой адаптер «{0}» больше недоступен. Подключите его и повторите изменение.",
+    "zh": "网络适配器“{0}”已不可用。请重新连接并重试更改。"
+  },
+  "Windows returned an unsupported startup mode for service {0}.": {
+    "nl": "Windows gaf een niet-ondersteunde opstartmodus voor service {0}.",
+    "es": "Windows devolvió un modo de inicio no compatible para el servicio {0}.",
+    "de": "Windows meldete einen nicht unterstützten Startmodus für Dienst {0}.",
+    "fr": "Windows a renvoyé un mode de démarrage non pris en charge pour le service {0}.",
+    "pt": "O Windows retornou um modo de inicialização não suportado para o serviço {0}.",
+    "ru": "Windows вернула неподдерживаемый режим запуска службы {0}.",
+    "zh": "Windows 返回了服务 {0} 不支持的启动模式。"
+  },
+  "Could not save restore history: {0}": {
+    "nl": "Kon herstelgeschiedenis niet opslaan: {0}",
+    "es": "No se pudo guardar el historial de restauración: {0}",
+    "de": "Wiederherstellungsverlauf konnte nicht gespeichert werden: {0}",
+    "fr": "Impossible d’enregistrer l’historique de restauration : {0}",
+    "pt": "Não foi possível salvar o histórico de restauração: {0}",
+    "ru": "Не удалось сохранить историю восстановления: {0}",
+    "zh": "无法保存还原历史：{0}"
+  },
+  "Restored: {0}": {
+    "nl": "Hersteld: {0}",
+    "es": "Restaurado: {0}",
+    "de": "Wiederhergestellt: {0}",
+    "fr": "Restauré : {0}",
+    "pt": "Restaurado: {0}",
+    "ru": "Восстановлено: {0}",
+    "zh": "已还原：{0}"
+  }
+}

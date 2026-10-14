@@ -1,0 +1,92 @@
+{
+  "Previous session history exceeds 2 MB.": {
+    "nl": "Vorige sessiegeschiedenis is groter dan 2 MB.",
+    "es": "El historial anterior de sesiones supera 2 MB.",
+    "de": "Vorheriger Sitzungsverlauf überschreitet 2 MB.",
+    "fr": "L’ancien historique de sessions dépasse 2 Mo.",
+    "pt": "O histórico anterior de sessões excede 2 MB.",
+    "ru": "Прежняя история сеансов превышает 2 МБ.",
+    "zh": "旧版会话历史超过 2 MB。"
+  },
+  "Previous session history must contain up to 50 reports.": {
+    "nl": "Vorige sessiegeschiedenis mag maximaal 50 rapporten bevatten.",
+    "es": "El historial anterior debe contener hasta 50 informes.",
+    "de": "Vorheriger Sitzungsverlauf darf bis zu 50 Berichte enthalten.",
+    "fr": "L’ancien historique doit contenir au maximum 50 rapports.",
+    "pt": "O histórico anterior deve conter até 50 relatórios.",
+    "ru": "Прежняя история должна содержать до 50 отчётов.",
+    "zh": "旧版会话历史最多可包含 50 份报告。"
+  },
+  "A previous session report is invalid.": {
+    "nl": "Een vorig sessierapport is ongeldig.",
+    "es": "Un informe anterior de sesión no es válido.",
+    "de": "Ein vorheriger Sitzungsbericht ist ungültig.",
+    "fr": "Un ancien rapport de session est invalide.",
+    "pt": "Um relatório anterior de sessão é inválido.",
+    "ru": "Прежний отчёт сеанса недопустим.",
+    "zh": "旧版会话报告无效。"
+  },
+  "A previous session duration is invalid.": {
+    "nl": "Een vorige sessieduur is ongeldig.",
+    "es": "La duración de una sesión anterior no es válida.",
+    "de": "Eine vorherige Sitzungsdauer ist ungültig.",
+    "fr": "La durée d’une ancienne session est invalide.",
+    "pt": "A duração de uma sessão anterior é inválida.",
+    "ru": "Длительность прежнего сеанса недопустима.",
+    "zh": "旧版会话时长无效。"
+  },
+  "A previous session checklist is invalid.": {
+    "nl": "Een vorige sessiecontrolelijst is ongeldig.",
+    "es": "La lista de acciones de una sesión anterior no es válida.",
+    "de": "Eine vorherige Sitzungsaktionsliste ist ungültig.",
+    "fr": "La liste d’actions d’une ancienne session est invalide.",
+    "pt": "A lista de ações de uma sessão anterior é inválida.",
+    "ru": "Список действий прежнего сеанса недопустим.",
+    "zh": "旧版会话操作列表无效。"
+  },
+  "Previous session history could not be imported: {0}": {
+    "nl": "Vorige sessiegeschiedenis kon niet worden geïmporteerd: {0}",
+    "es": "No se pudo importar el historial anterior de sesiones: {0}",
+    "de": "Vorheriger Sitzungsverlauf konnte nicht importiert werden: {0}",
+    "fr": "Impossible d’importer l’ancien historique de sessions : {0}",
+    "pt": "Não foi possível importar o histórico anterior de sessões: {0}",
+    "ru": "Не удалось импортировать прежнюю историю сеансов: {0}",
+    "zh": "无法导入旧版会话历史：{0}"
+  },
+  "Previous-app report. Its timestamps use this PC's local time zone; this report does not start recovery actions.": {
+    "nl": "Rapport uit de vorige app. Tijdstempels gebruiken de lokale tijdzone van deze pc; dit rapport start geen herstelacties.",
+    "es": "Informe de la aplicación anterior. Sus horas usan la zona local de este PC; no inicia acciones de recuperación.",
+    "de": "Bericht der vorherigen App. Zeitstempel nutzen die lokale Zeitzone dieses PCs; der Bericht startet keine Wiederherstellung.",
+    "fr": "Rapport de l’ancienne application. Les heures utilisent le fuseau local de ce PC ; le rapport ne lance aucune récupération.",
+    "pt": "Relatório do aplicativo anterior. Os horários usam o fuso local deste PC; o relatório não inicia recuperação.",
+    "ru": "Отчёт прежнего приложения. Время использует местный часовой пояс этого ПК; отчёт не запускает восстановление.",
+    "zh": "旧版应用报告。时间戳使用此电脑的本地时区；此报告不会启动恢复操作。"
+  },
+  "Session history can contain up to 50 reports.": {
+    "nl": "Sessiegeschiedenis kan maximaal 50 rapporten bevatten.",
+    "es": "El historial de sesiones puede contener hasta 50 informes.",
+    "de": "Sitzungsverlauf kann bis zu 50 Berichte enthalten.",
+    "fr": "L’historique de sessions peut contenir jusqu’à 50 rapports.",
+    "pt": "O histórico de sessões pode conter até 50 relatórios.",
+    "ru": "История сеансов может содержать до 50 отчётов.",
+    "zh": "会话历史最多可包含 50 份报告。"
+  },
+  "A saved session report is invalid.": {
+    "nl": "Een opgeslagen sessierapport is ongeldig.",
+    "es": "Un informe guardado de sesión no es válido.",
+    "de": "Ein gespeicherter Sitzungsbericht ist ungültig.",
+    "fr": "Un rapport de session enregistré est invalide.",
+    "pt": "Um relatório salvo de sessão é inválido.",
+    "ru": "Сохранённый отчёт сеанса недопустим.",
+    "zh": "保存的会话报告无效。"
+  },
+  "{0} archived session reports. Current reports with pending recovery are kept.": {
+    "nl": "{0} gearchiveerde sessierapporten. Huidige rapporten met herstel in afwachting blijven behouden.",
+    "es": "{0} informes archivados. Se conservan los actuales con recuperación pendiente.",
+    "de": "{0} archivierte Sitzungsberichte. Aktuelle Berichte mit ausstehender Wiederherstellung bleiben erhalten.",
+    "fr": "{0} rapports archivés. Les rapports actuels avec récupération en attente sont conservés.",
+    "pt": "{0} relatórios arquivados. Os atuais com recuperação pendente serão mantidos.",
+    "ru": "Архивных отчётов: {0}. Текущие отчёты с ожидающим восстановлением сохраняются.",
+    "zh": "{0} 份归档会话报告。当前等待恢复的报告将保留。"
+  }
+}

@@ -1,0 +1,3 @@
+Microsoft Fluent UI System Icons
+https://github.com/microsoft/fluentui-system-icons
+Revision: a347af95478f989038cccbf085978865264c048a

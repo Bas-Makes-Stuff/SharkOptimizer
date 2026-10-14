@@ -1,0 +1,254 @@
+{
+  "Sets the Windows foreground scheduling preference used by desktop apps and games.": {
+    "nl": "Stelt de Windows-planningsvoorkeur voor voorgrondtaken van desktopapps en games in.",
+    "es": "Establece la preferencia de planificación en primer plano de Windows para aplicaciones de escritorio y juegos.",
+    "de": "Setzt die Windows-Planungspräferenz für Vordergrundaufgaben von Desktop-Apps und Spielen.",
+    "fr": "Définit la préférence de planification au premier plan de Windows pour les applications de bureau et les jeux.",
+    "pt": "Define a preferência de agendamento em primeiro plano do Windows para aplicativos de desktop e jogos.",
+    "ru": "Устанавливает приоритет планирования Windows для настольных приложений и игр на переднем плане.",
+    "zh": "设置桌面应用和游戏使用的 Windows 前台调度偏好。"
+  },
+  "The effect varies by workload and may not change game frame rates.": {
+    "nl": "Het effect hangt af van de werklast en verandert de framesnelheid van games mogelijk niet.",
+    "es": "El efecto depende de la carga y puede no cambiar los FPS en juegos.",
+    "de": "Die Wirkung hängt von der Arbeitslast ab und ändert die Bildrate in Spielen möglicherweise nicht.",
+    "fr": "L’effet varie selon la charge et peut ne pas modifier la fréquence d’images en jeu.",
+    "pt": "O efeito varia com a carga e pode não alterar os FPS em jogos.",
+    "ru": "Эффект зависит от нагрузки и может не изменить частоту кадров в играх.",
+    "zh": "效果因工作负载而异，可能不会改变游戏帧率。"
+  },
+  "Sets the Windows Multimedia Class Scheduler Games profile for foreground game workloads.": {
+    "nl": "Stelt het Games-profiel van Windows Multimedia Class Scheduler in voor gamewerklasten op de voorgrond.",
+    "es": "Configura el perfil Games del planificador de clases multimedia de Windows para juegos en primer plano.",
+    "de": "Setzt das Games-Profil des Windows Multimedia Class Scheduler für Spiele im Vordergrund.",
+    "fr": "Configure le profil Games du planificateur de classes multimédia Windows pour les jeux au premier plan.",
+    "pt": "Configura o perfil Games do agendador de classes multimídia do Windows para jogos em primeiro plano.",
+    "ru": "Настраивает профиль Games планировщика мультимедийных классов Windows для игр на переднем плане.",
+    "zh": "为前台游戏工作负载设置 Windows 多媒体类调度程序的 Games 配置。"
+  },
+  "May change scheduling behavior for games and other multimedia workloads; undo it if audio or streaming behaves differently.": {
+    "nl": "Kan de planning van games en andere multimediawerklasten wijzigen; draai terug als audio of streaming anders werkt.",
+    "es": "Puede cambiar la planificación de juegos y otras tareas multimedia; deshazlo si el audio o la transmisión funcionan de forma diferente.",
+    "de": "Kann die Planung von Spielen und anderen Multimediaaufgaben ändern; mache die Änderung rückgängig, wenn Audio oder Streaming sich anders verhalten.",
+    "fr": "Peut modifier la planification des jeux et autres tâches multimédias ; annulez si l’audio ou la diffusion se comportent différemment.",
+    "pt": "Pode alterar o agendamento de jogos e outras tarefas multimídia; desfaça se o áudio ou streaming se comportarem de forma diferente.",
+    "ru": "Может изменить планирование игр и других мультимедийных задач; отмените, если звук или трансляции работают иначе.",
+    "zh": "可能改变游戏和其他多媒体负载的调度行为；如果音频或流媒体表现变化，请撤销。"
+  },
+  "Disables Windows power throttling for background desktop processes.": {
+    "nl": "Schakelt Windows-energiebeperking uit voor desktopprocessen op de achtergrond.",
+    "es": "Desactiva la limitación de energía de Windows para procesos de escritorio en segundo plano.",
+    "de": "Deaktiviert die Windows-Energiedrosselung für Desktopprozesse im Hintergrund.",
+    "fr": "Désactive la limitation d’énergie Windows pour les processus de bureau en arrière-plan.",
+    "pt": "Desativa a limitação de energia do Windows para processos de desktop em segundo plano.",
+    "ru": "Отключает ограничение энергопотребления Windows для фоновых настольных процессов.",
+    "zh": "禁用 Windows 对后台桌面进程的电源限制。"
+  },
+  "May increase idle power use and battery drain.": {
+    "nl": "Kan stroomverbruik in rust en accuverbruik verhogen.",
+    "es": "Puede aumentar el consumo en reposo y el gasto de batería.",
+    "de": "Kann Stromverbrauch im Leerlauf und Akkuverbrauch erhöhen.",
+    "fr": "Peut augmenter la consommation au repos et décharger davantage la batterie.",
+    "pt": "Pode aumentar o consumo em repouso e o gasto de bateria.",
+    "ru": "Может повысить энергопотребление в простое и расход батареи.",
+    "zh": "可能增加空闲耗电和电池消耗。"
+  },
+  "Enables hardware-accelerated GPU scheduling where the driver and Windows version support it.": {
+    "nl": "Schakelt hardwareversnelde GPU-planning in waar de driver en Windows-versie dit ondersteunen.",
+    "es": "Activa la programación de GPU acelerada por hardware si el controlador y Windows la admiten.",
+    "de": "Aktiviert hardwarebeschleunigte GPU-Planung, wenn Treiber und Windows-Version sie unterstützen.",
+    "fr": "Active la planification GPU accélérée par le matériel si le pilote et Windows la prennent en charge.",
+    "pt": "Ativa agendamento de GPU acelerado por hardware quando o driver e o Windows oferecem suporte.",
+    "ru": "Включает аппаратное планирование GPU при поддержке драйвера и версии Windows.",
+    "zh": "在驱动和 Windows 版本支持时启用硬件加速 GPU 调度。"
+  },
+  "Requires a restart. Older GPUs or drivers can stutter; undo it if performance gets worse.": {
+    "nl": "Opnieuw opstarten vereist. Oudere GPU's of drivers kunnen haperen; draai terug als prestaties afnemen.",
+    "es": "Requiere reiniciar. Las GPU o controladores antiguos pueden producir tirones; deshazlo si empeora el rendimiento.",
+    "de": "Neustart erforderlich. Ältere GPUs oder Treiber können ruckeln; mache die Änderung bei schlechterer Leistung rückgängig.",
+    "fr": "Nécessite un redémarrage. Les anciens GPU ou pilotes peuvent provoquer des saccades ; annulez si les performances diminuent.",
+    "pt": "Exige reinicialização. GPUs ou drivers antigos podem causar travamentos; desfaça se o desempenho piorar.",
+    "ru": "Требуется перезагрузка. Старые GPU или драйверы могут вызывать рывки; отмените при ухудшении производительности.",
+    "zh": "需要重启。旧版 GPU 或驱动可能出现卡顿；如果性能下降，请撤销。"
+  },
+  "Disables the Windows display overlay path that can cause flicker on some GPU setups.": {
+    "nl": "Schakelt het Windows-weergaveoverlaypad uit dat bij sommige GPU-configuraties flikkering kan veroorzaken.",
+    "es": "Desactiva la ruta de superposición de pantalla de Windows que puede causar parpadeo en algunas GPU.",
+    "de": "Deaktiviert den Windows-Anzeigeoverlaypfad, der bei manchen GPU-Konfigurationen Flackern verursachen kann.",
+    "fr": "Désactive le chemin de superposition d’affichage Windows pouvant provoquer un scintillement sur certaines configurations GPU.",
+    "pt": "Desativa o caminho de sobreposição de vídeo do Windows que pode causar cintilação em algumas configurações de GPU.",
+    "ru": "Отключает путь экранных оверлеев Windows, способный вызывать мерцание в некоторых конфигурациях GPU.",
+    "zh": "禁用可能在部分 GPU 配置中造成闪烁的 Windows 显示叠加路径。"
+  },
+  "Requires a restart and may increase power use or reduce display efficiency. Use only when troubleshooting flicker.": {
+    "nl": "Vereist opnieuw opstarten en kan stroomverbruik verhogen of weergave-efficiëntie verlagen. Gebruik alleen om flikkering op te lossen.",
+    "es": "Requiere reiniciar y puede aumentar el consumo o reducir la eficiencia de pantalla. Úsalo solo para resolver parpadeos.",
+    "de": "Erfordert einen Neustart und kann Stromverbrauch erhöhen oder Anzeigeeffizienz senken. Nur zur Behebung von Flackern verwenden.",
+    "fr": "Nécessite un redémarrage et peut augmenter la consommation ou réduire l’efficacité d’affichage. À utiliser uniquement pour diagnostiquer un scintillement.",
+    "pt": "Exige reinicialização e pode aumentar o consumo ou reduzir a eficiência de vídeo. Use apenas para solucionar cintilação.",
+    "ru": "Требует перезагрузки и может повысить энергопотребление или снизить эффективность вывода. Используйте только для устранения мерцания.",
+    "zh": "需要重启，可能增加耗电或降低显示效率。仅用于排查闪烁问题。"
+  },
+  "Makes shutdown perform a full kernel shutdown instead of saving a hibernation session.": {
+    "nl": "Laat afsluiten de kernel volledig beëindigen in plaats van een sluimersessie op te slaan.",
+    "es": "Hace que al apagar se cierre completamente el núcleo en lugar de guardar una sesión de hibernación.",
+    "de": "Führt beim Herunterfahren einen vollständigen Kernelabschluss durch statt eine Ruhezustandssitzung zu speichern.",
+    "fr": "Effectue un arrêt complet du noyau au lieu d’enregistrer une session de veille prolongée.",
+    "pt": "Faz o desligamento encerrar totalmente o kernel em vez de salvar uma sessão de hibernação.",
+    "ru": "При выключении полностью завершает ядро вместо сохранения сеанса гибернации.",
+    "zh": "关机时完全关闭内核，而不是保存休眠会话。"
+  },
+  "Cold starts may take longer. Hibernation and Fast Startup behavior change; restart Windows after applying.": {
+    "nl": "Koude starts kunnen langer duren. Sluimerstand en Snel opstarten werken anders; start Windows opnieuw na toepassen.",
+    "es": "Los arranques en frío pueden tardar más. Cambia la hibernación y el Inicio rápido; reinicia Windows después de aplicar.",
+    "de": "Kaltstarts können länger dauern. Ruhezustand und Schnellstart ändern ihr Verhalten; starte Windows nach dem Anwenden neu.",
+    "fr": "Les démarrages à froid peuvent être plus longs. Le comportement de la veille prolongée et du démarrage rapide change ; redémarrez Windows après application.",
+    "pt": "Inicializações a frio podem demorar mais. A hibernação e a Inicialização Rápida mudam; reinicie o Windows após aplicar.",
+    "ru": "Холодный запуск может занять больше времени. Поведение гибернации и быстрого запуска изменится; перезагрузите Windows после применения.",
+    "zh": "冷启动可能更久。休眠和快速启动行为会变化；应用后请重启 Windows。"
+  },
+  "Restores per-process timer resolution requests on supported Windows versions.": {
+    "nl": "Herstelt timerresolutieaanvragen per proces op ondersteunde Windows-versies.",
+    "es": "Restaura las solicitudes de resolución del temporizador por proceso en versiones compatibles de Windows.",
+    "de": "Stellt prozessbezogene Timerauflösungsanforderungen auf unterstützten Windows-Versionen wieder her.",
+    "fr": "Restaure les demandes de résolution de minuterie par processus sur les versions Windows compatibles.",
+    "pt": "Restaura solicitações de resolução do temporizador por processo nas versões compatíveis do Windows.",
+    "ru": "Восстанавливает запросы разрешения таймера отдельных процессов в поддерживаемых версиях Windows.",
+    "zh": "在支持的 Windows 版本中恢复各进程的计时器精度请求。"
+  },
+  "May slightly increase power use. Only affects apps that request a finer timer; restart Windows after applying.": {
+    "nl": "Kan stroomverbruik licht verhogen. Heeft alleen effect op apps die een fijnere timer aanvragen; start Windows opnieuw na toepassen.",
+    "es": "Puede aumentar ligeramente el consumo. Solo afecta a aplicaciones que solicitan un temporizador más preciso; reinicia Windows después de aplicar.",
+    "de": "Kann Stromverbrauch leicht erhöhen. Betrifft nur Apps, die einen feineren Timer anfordern; starte Windows nach dem Anwenden neu.",
+    "fr": "Peut augmenter légèrement la consommation. Affecte uniquement les applications demandant une minuterie plus précise ; redémarrez Windows après application.",
+    "pt": "Pode aumentar um pouco o consumo. Afeta somente aplicativos que solicitam um temporizador mais preciso; reinicie o Windows após aplicar.",
+    "ru": "Может немного повысить энергопотребление. Влияет только на приложения, запрашивающие более точный таймер; перезагрузите Windows после применения.",
+    "zh": "可能略微增加耗电。仅影响请求更高精度计时器的应用；应用后请重启 Windows。"
+  },
+  "Prevents Windows Update from replacing device drivers with newer catalog drivers.": {
+    "nl": "Voorkomt dat Windows Update apparaatdrivers vervangt door nieuwere catalogusdrivers.",
+    "es": "Impide que Windows Update reemplace controladores de dispositivos por versiones más nuevas del catálogo.",
+    "de": "Verhindert, dass Windows Update Gerätetreiber durch neuere Katalogtreiber ersetzt.",
+    "fr": "Empêche Windows Update de remplacer les pilotes par des versions plus récentes du catalogue.",
+    "pt": "Impede que o Windows Update substitua drivers por versões mais novas do catálogo.",
+    "ru": "Запрещает Windows Update заменять драйверы устройств более новыми драйверами каталога.",
+    "zh": "阻止 Windows Update 用更新的目录驱动替换设备驱动。"
+  },
+  "You will need to check for graphics and chipset driver updates from their manufacturers.": {
+    "nl": "Je moet zelf bij de fabrikanten controleren op updates voor grafische en chipsetdrivers.",
+    "es": "Tendrás que buscar actualizaciones de controladores gráficos y del chipset en sus fabricantes.",
+    "de": "Du musst bei den Herstellern nach Grafik- und Chipsatztreiberupdates suchen.",
+    "fr": "Vous devrez rechercher les mises à jour des pilotes graphiques et du chipset auprès de leurs fabricants.",
+    "pt": "Você precisará procurar atualizações de drivers gráficos e de chipset nos fabricantes.",
+    "ru": "Обновления драйверов графики и чипсета нужно будет проверять у производителей.",
+    "zh": "您需要向制造商检查显卡和芯片组驱动更新。"
+  },
+  "Stops the service that allows remote computers to modify this PC's registry.": {
+    "nl": "Stopt de service waarmee externe computers het register van deze pc kunnen wijzigen.",
+    "es": "Detiene el servicio que permite a equipos remotos modificar el registro de este PC.",
+    "de": "Stoppt den Dienst, der anderen Computern Änderungen an der Registrierung dieses PCs erlaubt.",
+    "fr": "Arrête le service permettant aux ordinateurs distants de modifier le registre de ce PC.",
+    "pt": "Interrompe o serviço que permite a computadores remotos alterar o registro deste PC.",
+    "ru": "Останавливает службу, позволяющую удалённым компьютерам изменять реестр этого ПК.",
+    "zh": "停止允许远程电脑修改此电脑注册表的服务。"
+  },
+  "Remote registry administration from another PC will no longer be available.": {
+    "nl": "Registerbeheer op afstand vanaf een andere pc is niet meer beschikbaar.",
+    "es": "La administración remota del registro desde otro PC dejará de estar disponible.",
+    "de": "Remoteverwaltung der Registrierung von einem anderen PC ist nicht mehr verfügbar.",
+    "fr": "L’administration distante du registre depuis un autre PC ne sera plus disponible.",
+    "pt": "A administração remota do registro por outro PC ficará indisponível.",
+    "ru": "Удалённое управление реестром с другого ПК станет недоступно.",
+    "zh": "将无法再从另一台电脑远程管理注册表。"
+  },
+  "Stops background indexing for Windows Search.": {
+    "nl": "Stopt achtergrondindexering voor Windows Zoeken.",
+    "es": "Detiene la indexación en segundo plano de Windows Search.",
+    "de": "Stoppt die Hintergrundindizierung für Windows Search.",
+    "fr": "Arrête l’indexation en arrière-plan de Windows Search.",
+    "pt": "Interrompe a indexação em segundo plano do Windows Search.",
+    "ru": "Останавливает фоновую индексацию Windows Search.",
+    "zh": "停止 Windows 搜索的后台索引。"
+  },
+  "Start menu and File Explorer searches may take longer and search content may be incomplete.": {
+    "nl": "Zoeken in Start en Verkenner kan langer duren en zoekinhoud kan onvolledig zijn.",
+    "es": "Las búsquedas de Inicio y del Explorador pueden tardar más y el contenido puede estar incompleto.",
+    "de": "Suchen in Startmenü und Explorer können länger dauern und Suchinhalte unvollständig sein.",
+    "fr": "Les recherches dans Démarrer et l’Explorateur peuvent prendre plus de temps et les résultats être incomplets.",
+    "pt": "Buscas no Iniciar e no Explorador podem demorar mais e o conteúdo pode ficar incompleto.",
+    "ru": "Поиск в меню «Пуск» и Проводнике может занять больше времени, а результаты могут быть неполными.",
+    "zh": "开始菜单和文件资源管理器搜索可能更慢，搜索内容可能不完整。"
+  },
+  "Disables Fax, Retail Demo, Windows Media Player sharing, and Maps Broker when those services are installed.": {
+    "nl": "Schakelt Fax, Retail Demo, Windows Media Player-deling en Maps Broker uit als die services geïnstalleerd zijn.",
+    "es": "Desactiva Fax, Retail Demo, uso compartido de Windows Media Player y Maps Broker si están instalados.",
+    "de": "Deaktiviert Fax, Retail Demo, Windows-Media-Player-Freigabe und Maps Broker, wenn diese Dienste installiert sind.",
+    "fr": "Désactive Fax, Retail Demo, le partage Windows Media Player et Maps Broker si ces services sont installés.",
+    "pt": "Desativa Fax, Retail Demo, compartilhamento do Windows Media Player e Maps Broker quando instalados.",
+    "ru": "Отключает Fax, Retail Demo, общий доступ Windows Media Player и Maps Broker, если эти службы установлены.",
+    "zh": "禁用已安装的传真、零售演示、Windows Media Player 共享和 Maps Broker 服务。"
+  },
+  "Faxing, media library sharing, or location features can stop working. Only services found on this PC are changed.": {
+    "nl": "Faxen, delen van de mediabibliotheek of locatiefuncties kunnen stoppen met werken. Alleen services die op deze pc zijn gevonden worden gewijzigd.",
+    "es": "El fax, el uso compartido de bibliotecas multimedia o la ubicación pueden dejar de funcionar. Solo se cambian los servicios encontrados en este PC.",
+    "de": "Fax, Medienbibliotheksfreigabe oder Standortfunktionen können ausfallen. Nur auf diesem PC gefundene Dienste werden geändert.",
+    "fr": "Le fax, le partage de bibliothèque multimédia ou la localisation peuvent cesser de fonctionner. Seuls les services trouvés sur ce PC sont modifiés.",
+    "pt": "Fax, compartilhamento de biblioteca de mídia ou localização podem parar de funcionar. Somente serviços encontrados neste PC são alterados.",
+    "ru": "Факс, общий доступ к медиатеке или функции местоположения могут перестать работать. Меняются только службы, найденные на этом ПК.",
+    "zh": "传真、媒体库共享或定位功能可能无法工作。仅更改此电脑上找到的服务。"
+  },
+  "Stops the Windows printing service.": {
+    "nl": "Stopt de Windows-afdrukservice.",
+    "es": "Detiene el servicio de impresión de Windows.",
+    "de": "Stoppt den Windows-Druckdienst.",
+    "fr": "Arrête le service d’impression Windows.",
+    "pt": "Interrompe o serviço de impressão do Windows.",
+    "ru": "Останавливает службу печати Windows.",
+    "zh": "停止 Windows 打印服务。"
+  },
+  "Local and network printing, including Print to PDF, may stop working.": {
+    "nl": "Lokaal en via het netwerk afdrukken, inclusief Afdrukken naar PDF, werkt mogelijk niet meer.",
+    "es": "La impresión local y de red, incluida Imprimir a PDF, puede dejar de funcionar.",
+    "de": "Lokales und Netzwerkdrucken einschließlich PDF-Druck kann ausfallen.",
+    "fr": "L’impression locale et réseau, y compris vers PDF, peut cesser de fonctionner.",
+    "pt": "A impressão local e de rede, incluindo Imprimir em PDF, pode parar de funcionar.",
+    "ru": "Локальная и сетевая печать, включая печать в PDF, может перестать работать.",
+    "zh": "本地和网络打印（包括打印为 PDF）可能无法工作。"
+  },
+  "Stops SysMain, the Windows service that manages prefetching and application launch caching.": {
+    "nl": "Stopt SysMain, de Windows-service voor vooraf laden en cachebeheer bij het starten van apps.",
+    "es": "Detiene SysMain, el servicio de Windows que gestiona la precarga y la caché de inicio de aplicaciones.",
+    "de": "Stoppt SysMain, den Windows-Dienst für Vorladen und Zwischenspeichern von App-Starts.",
+    "fr": "Arrête SysMain, le service Windows gérant le préchargement et le cache de lancement des applications.",
+    "pt": "Interrompe SysMain, o serviço do Windows que gerencia pré-carregamento e cache de inicialização de aplicativos.",
+    "ru": "Останавливает SysMain — службу Windows для предварительной загрузки и кэширования запуска приложений.",
+    "zh": "停止管理预读取和应用启动缓存的 Windows SysMain 服务。"
+  },
+  "App launch behavior may change, especially on hard drives. Test first and undo if launches get slower.": {
+    "nl": "Het starten van apps kan veranderen, vooral op harde schijven. Test eerst en draai terug als apps langzamer starten.",
+    "es": "El inicio de aplicaciones puede cambiar, especialmente en discos duros. Prueba primero y deshazlo si se vuelven más lentas.",
+    "de": "App-Starts können sich ändern, besonders auf Festplatten. Teste zuerst und mache die Änderung bei langsameren Starts rückgängig.",
+    "fr": "Le lancement des applications peut changer, surtout sur les disques durs. Testez d’abord et annulez si les lancements ralentissent.",
+    "pt": "A inicialização de aplicativos pode mudar, especialmente em discos rígidos. Teste primeiro e desfaça se ficarem mais lentos.",
+    "ru": "Запуск приложений может измениться, особенно на жёстких дисках. Сначала проверьте и отмените, если запуск замедлится.",
+    "zh": "应用启动表现可能变化，尤其是在机械硬盘上。请先测试，如果启动变慢则撤销。"
+  },
+  "Stops the NVIDIA telemetry container service when it is installed.": {
+    "nl": "Stopt de NVIDIA-telemetriecontainerservice als deze geïnstalleerd is.",
+    "es": "Detiene el servicio de contenedor de telemetría NVIDIA si está instalado.",
+    "de": "Stoppt den NVIDIA-Telemetriecontainerdienst, falls installiert.",
+    "fr": "Arrête le service de conteneur de télémétrie NVIDIA s’il est installé.",
+    "pt": "Interrompe o serviço de contêiner de telemetria NVIDIA quando instalado.",
+    "ru": "Останавливает службу контейнера телеметрии NVIDIA, если она установлена.",
+    "zh": "停止已安装的 NVIDIA 遥测容器服务。"
+  },
+  "NVIDIA driver and game features should continue to work; driver updates may reinstall or re-enable this service.": {
+    "nl": "NVIDIA-driver- en gamefuncties zouden moeten blijven werken; driverupdates kunnen deze service opnieuw installeren of inschakelen.",
+    "es": "Las funciones de controladores y juegos NVIDIA deberían seguir funcionando; las actualizaciones pueden reinstalar o habilitar el servicio.",
+    "de": "NVIDIA-Treiber- und Spielfunktionen sollten weiter funktionieren; Treiberupdates können den Dienst erneut installieren oder aktivieren.",
+    "fr": "Les fonctions des pilotes et jeux NVIDIA devraient continuer à fonctionner ; les mises à jour peuvent réinstaller ou réactiver ce service.",
+    "pt": "Os recursos de drivers e jogos NVIDIA devem continuar funcionando; atualizações podem reinstalar ou reativar este serviço.",
+    "ru": "Функции драйверов и игр NVIDIA должны продолжить работу; обновления драйверов могут переустановить или включить эту службу.",
+    "zh": "NVIDIA 驱动和游戏功能应继续工作；驱动更新可能重新安装或启用此服务。"
+  }
+}

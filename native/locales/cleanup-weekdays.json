@@ -1,0 +1,65 @@
+{
+  "Weekly cleanup is ON · SUN at {1} · runs as your Windows account.": {
+    "nl": "Wekelijks opruimen staat AAN · Zondag om {1} · uitgevoerd met je Windows-account.",
+    "es": "Limpieza semanal ACTIVADA · Domingo a las {1} · se ejecuta con tu cuenta de Windows.",
+    "de": "Wöchentliche Bereinigung EIN · Sonntag um {1} · läuft mit deinem Windows-Konto.",
+    "fr": "Nettoyage hebdomadaire ACTIVÉ · Dimanche à {1} · exécuté avec votre compte Windows.",
+    "pt": "Limpeza semanal ATIVADA · Domingo às {1} · executada com sua conta do Windows.",
+    "ru": "Еженедельная очистка ВКЛ · Воскресенье в {1} · от вашей учётной записи Windows.",
+    "zh": "每周清理已开启 · 星期日 {1} · 使用您的 Windows 帐户运行。"
+  },
+  "Weekly cleanup is ON · TUE at {1} · runs as your Windows account.": {
+    "nl": "Wekelijks opruimen staat AAN · Dinsdag om {1} · uitgevoerd met je Windows-account.",
+    "es": "Limpieza semanal ACTIVADA · Martes a las {1} · se ejecuta con tu cuenta de Windows.",
+    "de": "Wöchentliche Bereinigung EIN · Dienstag um {1} · läuft mit deinem Windows-Konto.",
+    "fr": "Nettoyage hebdomadaire ACTIVÉ · Mardi à {1} · exécuté avec votre compte Windows.",
+    "pt": "Limpeza semanal ATIVADA · Terça-feira às {1} · executada com sua conta do Windows.",
+    "ru": "Еженедельная очистка ВКЛ · Вторник в {1} · от вашей учётной записи Windows.",
+    "zh": "每周清理已开启 · 星期二 {1} · 使用您的 Windows 帐户运行。"
+  },
+  "Weekly cleanup is ON · WED at {1} · runs as your Windows account.": {
+    "nl": "Wekelijks opruimen staat AAN · Woensdag om {1} · uitgevoerd met je Windows-account.",
+    "es": "Limpieza semanal ACTIVADA · Miércoles a las {1} · se ejecuta con tu cuenta de Windows.",
+    "de": "Wöchentliche Bereinigung EIN · Mittwoch um {1} · läuft mit deinem Windows-Konto.",
+    "fr": "Nettoyage hebdomadaire ACTIVÉ · Mercredi à {1} · exécuté avec votre compte Windows.",
+    "pt": "Limpeza semanal ATIVADA · Quarta-feira às {1} · executada com sua conta do Windows.",
+    "ru": "Еженедельная очистка ВКЛ · Среда в {1} · от вашей учётной записи Windows.",
+    "zh": "每周清理已开启 · 星期三 {1} · 使用您的 Windows 帐户运行。"
+  },
+  "Weekly cleanup is ON · SAT at {1} · runs as your Windows account.": {
+    "nl": "Wekelijks opruimen staat AAN · Zaterdag om {1} · uitgevoerd met je Windows-account.",
+    "es": "Limpieza semanal ACTIVADA · Sábado a las {1} · se ejecuta con tu cuenta de Windows.",
+    "de": "Wöchentliche Bereinigung EIN · Samstag um {1} · läuft mit deinem Windows-Konto.",
+    "fr": "Nettoyage hebdomadaire ACTIVÉ · Samedi à {1} · exécuté avec votre compte Windows.",
+    "pt": "Limpeza semanal ATIVADA · Sábado às {1} · executada com sua conta do Windows.",
+    "ru": "Еженедельная очистка ВКЛ · Суббота в {1} · от вашей учётной записи Windows.",
+    "zh": "每周清理已开启 · 星期六 {1} · 使用您的 Windows 帐户运行。"
+  },
+  "Weekly cleanup is ON · THU at {1} · runs as your Windows account.": {
+    "nl": "Wekelijks opruimen staat AAN · Donderdag om {1} · uitgevoerd met je Windows-account.",
+    "es": "Limpieza semanal ACTIVADA · Jueves a las {1} · se ejecuta con tu cuenta de Windows.",
+    "de": "Wöchentliche Bereinigung EIN · Donnerstag um {1} · läuft mit deinem Windows-Konto.",
+    "fr": "Nettoyage hebdomadaire ACTIVÉ · Jeudi à {1} · exécuté avec votre compte Windows.",
+    "pt": "Limpeza semanal ATIVADA · Quinta-feira às {1} · executada com sua conta do Windows.",
+    "ru": "Еженедельная очистка ВКЛ · Четверг в {1} · от вашей учётной записи Windows.",
+    "zh": "每周清理已开启 · 星期四 {1} · 使用您的 Windows 帐户运行。"
+  },
+  "Weekly cleanup is ON · FRI at {1} · runs as your Windows account.": {
+    "nl": "Wekelijks opruimen staat AAN · Vrijdag om {1} · uitgevoerd met je Windows-account.",
+    "es": "Limpieza semanal ACTIVADA · Viernes a las {1} · se ejecuta con tu cuenta de Windows.",
+    "de": "Wöchentliche Bereinigung EIN · Freitag um {1} · läuft mit deinem Windows-Konto.",
+    "fr": "Nettoyage hebdomadaire ACTIVÉ · Vendredi à {1} · exécuté avec votre compte Windows.",
+    "pt": "Limpeza semanal ATIVADA · Sexta-feira às {1} · executada com sua conta do Windows.",
+    "ru": "Еженедельная очистка ВКЛ · Пятница в {1} · от вашей учётной записи Windows.",
+    "zh": "每周清理已开启 · 星期五 {1} · 使用您的 Windows 帐户运行。"
+  },
+  "Weekly cleanup is ON · MON at {1} · runs as your Windows account.": {
+    "nl": "Wekelijks opruimen staat AAN · Maandag om {1} · uitgevoerd met je Windows-account.",
+    "es": "Limpieza semanal ACTIVADA · Lunes a las {1} · se ejecuta con tu cuenta de Windows.",
+    "de": "Wöchentliche Bereinigung EIN · Montag um {1} · läuft mit deinem Windows-Konto.",
+    "fr": "Nettoyage hebdomadaire ACTIVÉ · Lundi à {1} · exécuté avec votre compte Windows.",
+    "pt": "Limpeza semanal ATIVADA · Segunda-feira às {1} · executada com sua conta do Windows.",
+    "ru": "Еженедельная очистка ВКЛ · Понедельник в {1} · от вашей учётной записи Windows.",
+    "zh": "每周清理已开启 · 星期一 {1} · 使用您的 Windows 帐户运行。"
+  }
+}

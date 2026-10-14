@@ -1,0 +1,191 @@
+{
+  "Remove lock screen tips": {
+    "nl": "Tips op vergrendelscherm verwijderen",
+    "es": "Quitar consejos de la pantalla de bloqueo",
+    "de": "Sperrbildschirmtipps entfernen",
+    "fr": "Retirer les conseils de l’écran de verrouillage",
+    "pt": "Remover dicas da tela de bloqueio",
+    "ru": "Убрать советы экрана блокировки",
+    "zh": "移除锁屏提示"
+  },
+  "Reduce service shutdown wait": {
+    "nl": "Wachttijd voor afsluiten van services verkorten",
+    "es": "Reducir espera de cierre de servicios",
+    "de": "Wartezeit beim Beenden von Diensten verkürzen",
+    "fr": "Réduire l’attente d’arrêt des services",
+    "pt": "Reduzir espera de encerramento de serviços",
+    "ru": "Сократить ожидание завершения служб",
+    "zh": "缩短服务关闭等待时间"
+  },
+  "No supported settings were found on this PC.": {
+    "nl": "Geen ondersteunde instellingen gevonden op deze pc.",
+    "es": "No se encontraron ajustes compatibles en este PC.",
+    "de": "Keine unterstützten Einstellungen auf diesem PC gefunden.",
+    "fr": "Aucun réglage pris en charge trouvé sur ce PC.",
+    "pt": "Nenhuma configuração compatível foi encontrada neste PC.",
+    "ru": "На этом ПК не найдены поддерживаемые настройки.",
+    "zh": "此电脑上未找到受支持设置。"
+  },
+  "The saved adapter feature is unsupported.": {
+    "nl": "De opgeslagen adapterfunctie wordt niet ondersteund.",
+    "es": "La función guardada del adaptador no es compatible.",
+    "de": "Die gespeicherte Adapterfunktion wird nicht unterstützt.",
+    "fr": "La fonction d’adaptateur enregistrée n’est pas prise en charge.",
+    "pt": "O recurso salvo do adaptador não é suportado.",
+    "ru": "Сохранённая функция адаптера не поддерживается.",
+    "zh": "不支持保存的适配器功能。"
+  },
+  "The saved advanced adapter feature is unsupported.": {
+    "nl": "De opgeslagen geavanceerde adapterfunctie wordt niet ondersteund.",
+    "es": "La función avanzada guardada del adaptador no es compatible.",
+    "de": "Die gespeicherte erweiterte Adapterfunktion wird nicht unterstützt.",
+    "fr": "La fonction avancée d’adaptateur enregistrée n’est pas prise en charge.",
+    "pt": "O recurso avançado salvo do adaptador não é suportado.",
+    "ru": "Сохранённая расширенная функция адаптера не поддерживается.",
+    "zh": "不支持保存的高级适配器功能。"
+  },
+  "The saved service name is invalid.": {
+    "nl": "De opgeslagen servicenaam is ongeldig.",
+    "es": "El nombre guardado del servicio no es válido.",
+    "de": "Der gespeicherte Dienstname ist ungültig.",
+    "fr": "Le nom de service enregistré est invalide.",
+    "pt": "O nome salvo do serviço é inválido.",
+    "ru": "Сохранённое имя службы недопустимо.",
+    "zh": "保存的服务名称无效。"
+  },
+  "The saved network setting is unsupported.": {
+    "nl": "De opgeslagen netwerkinstelling wordt niet ondersteund.",
+    "es": "El ajuste de red guardado no es compatible.",
+    "de": "Die gespeicherte Netzwerkeinstellung wird nicht unterstützt.",
+    "fr": "Le réglage réseau enregistré n’est pas pris en charge.",
+    "pt": "A configuração de rede salva não é suportada.",
+    "ru": "Сохранённая настройка сети не поддерживается.",
+    "zh": "不支持保存的网络设置。"
+  },
+  "The TCP heuristics state could not be recognized, so no change was made.": {
+    "nl": "De TCP-heuristiekstatus werd niet herkend, daarom is niets gewijzigd.",
+    "es": "No se reconoció el estado de heurística TCP, por lo que no se cambió nada.",
+    "de": "Der TCP-Heuristikzustand wurde nicht erkannt, daher wurde nichts geändert.",
+    "fr": "L’état de l’heuristique TCP n’a pas été reconnu ; aucun changement effectué.",
+    "pt": "O estado da heurística TCP não foi reconhecido; nada foi alterado.",
+    "ru": "Состояние эвристики TCP не распознано, изменения не внесены.",
+    "zh": "无法识别 TCP 启发式状态，因此未进行更改。"
+  },
+  "The Teredo configuration could not be recognized, so no change was made.": {
+    "nl": "De Teredo-configuratie werd niet herkend, daarom is niets gewijzigd.",
+    "es": "No se reconoció la configuración de Teredo, por lo que no se cambió nada.",
+    "de": "Die Teredo-Konfiguration wurde nicht erkannt, daher wurde nichts geändert.",
+    "fr": "La configuration Teredo n’a pas été reconnue ; aucun changement effectué.",
+    "pt": "A configuração Teredo não foi reconhecida; nada foi alterado.",
+    "ru": "Конфигурация Teredo не распознана, изменения не внесены.",
+    "zh": "无法识别 Teredo 配置，因此未进行更改。"
+  },
+  "This package is outside the optional-app list.": {
+    "nl": "Dit pakket staat niet op de lijst met optionele apps.",
+    "es": "Este paquete no está en la lista de aplicaciones opcionales.",
+    "de": "Dieses Paket steht nicht in der Liste optionaler Apps.",
+    "fr": "Ce package n’est pas dans la liste d’applications facultatives.",
+    "pt": "Este pacote não está na lista de aplicativos opcionais.",
+    "ru": "Пакет не входит в список необязательных приложений.",
+    "zh": "此包不在可选应用列表中。"
+  },
+  "Invalid DNS response.": {
+    "nl": "Ongeldig DNS-antwoord.",
+    "es": "Respuesta DNS no válida.",
+    "de": "Ungültige DNS-Antwort.",
+    "fr": "Réponse DNS invalide.",
+    "pt": "Resposta DNS inválida.",
+    "ru": "Недопустимый ответ DNS.",
+    "zh": "DNS 响应无效。"
+  },
+  "This profile does not contain a tweak list.": {
+    "nl": "Dit profiel bevat geen lijst met aanpassingen.",
+    "es": "Este perfil no contiene una lista de ajustes.",
+    "de": "Dieses Profil enthält keine Anpassungsliste.",
+    "fr": "Ce profil ne contient pas de liste d’ajustements.",
+    "pt": "Este perfil não contém uma lista de ajustes.",
+    "ru": "Профиль не содержит список изменений.",
+    "zh": "此配置不包含调整列表。"
+  },
+  "This profile does not contain supported tweak IDs.": {
+    "nl": "Dit profiel bevat geen ondersteunde aanpassings-ID's.",
+    "es": "Este perfil no contiene ID de ajustes compatibles.",
+    "de": "Dieses Profil enthält keine unterstützten Anpassungs-IDs.",
+    "fr": "Ce profil ne contient pas d’identifiants d’ajustements pris en charge.",
+    "pt": "Este perfil não contém IDs de ajustes compatíveis.",
+    "ru": "Профиль не содержит поддерживаемые ID изменений.",
+    "zh": "此配置不包含受支持的调整 ID。"
+  },
+  "Choose an available accent and font.": {
+    "nl": "Kies een beschikbaar accent en lettertype.",
+    "es": "Elige un color de acento y una fuente disponibles.",
+    "de": "Wähle eine verfügbare Akzentfarbe und Schrift.",
+    "fr": "Choisissez une couleur d’accent et une police disponibles.",
+    "pt": "Escolha uma cor de destaque e fonte disponíveis.",
+    "ru": "Выберите доступный акцентный цвет и шрифт.",
+    "zh": "选择可用的强调色和字体。"
+  },
+  "GitHub returned release data in an unsupported format.": {
+    "nl": "GitHub gaf releasegegevens in een niet-ondersteund formaat.",
+    "es": "GitHub devolvió datos de versión en un formato no compatible.",
+    "de": "GitHub lieferte Versionsdaten in einem nicht unterstützten Format.",
+    "fr": "GitHub a renvoyé des données de version dans un format non pris en charge.",
+    "pt": "O GitHub retornou dados da versão em formato não suportado.",
+    "ru": "GitHub вернул данные выпуска в неподдерживаемом формате.",
+    "zh": "GitHub 返回了不支持格式的发布数据。"
+  },
+  "The latest GitHub release has an invalid version tag.": {
+    "nl": "De nieuwste GitHub-release heeft een ongeldig versielabel.",
+    "es": "La última versión de GitHub tiene una etiqueta de versión no válida.",
+    "de": "Die neueste GitHub-Version hat ein ungültiges Versionstag.",
+    "fr": "La dernière version GitHub a une étiquette de version invalide.",
+    "pt": "A última versão do GitHub tem uma etiqueta de versão inválida.",
+    "ru": "У последнего выпуска GitHub недопустимая метка версии.",
+    "zh": "最新 GitHub 发布的版本标签无效。"
+  },
+  "The setup download URL is not an official HTTPS GitHub release asset.": {
+    "nl": "De download-URL is geen officieel HTTPS-installatiebestand van een GitHub-release.",
+    "es": "La URL del instalador no es un recurso oficial HTTPS de una versión de GitHub.",
+    "de": "Die Download-URL ist kein offizielles HTTPS-GitHub-Versionsasset.",
+    "fr": "L’URL de l’installateur n’est pas un fichier officiel de version GitHub en HTTPS.",
+    "pt": "A URL do instalador não é um recurso oficial HTTPS de uma versão do GitHub.",
+    "ru": "URL установщика не является официальным HTTPS-ресурсом выпуска GitHub.",
+    "zh": "安装下载 URL 不是官方 HTTPS GitHub 发布资源。"
+  },
+  "The setup asset size is invalid or exceeds the 100 MB update limit.": {
+    "nl": "De grootte van het installatiebestand is ongeldig of groter dan de updatelimiet van 100 MB.",
+    "es": "El tamaño del instalador no es válido o supera el límite de actualización de 100 MB.",
+    "de": "Die Installationsdateigröße ist ungültig oder überschreitet das Updatelimit von 100 MB.",
+    "fr": "La taille de l’installateur est invalide ou dépasse la limite de 100 Mo.",
+    "pt": "O tamanho do instalador é inválido ou excede o limite de atualização de 100 MB.",
+    "ru": "Размер установщика недопустим или превышает лимит обновления 100 МБ.",
+    "zh": "安装资源大小无效或超过 100 MB 更新限制。"
+  },
+  "The downloaded setup file size does not match GitHub's release metadata.": {
+    "nl": "De grootte van het gedownloade installatiebestand komt niet overeen met de GitHub-releasegegevens.",
+    "es": "El tamaño del instalador descargado no coincide con los metadatos de GitHub.",
+    "de": "Die heruntergeladene Dateigröße entspricht nicht den GitHub-Versionsmetadaten.",
+    "fr": "La taille du fichier téléchargé ne correspond pas aux métadonnées GitHub.",
+    "pt": "O tamanho do instalador baixado não corresponde aos metadados do GitHub.",
+    "ru": "Размер загруженного установщика не совпадает с метаданными GitHub.",
+    "zh": "下载的安装文件大小与 GitHub 发布元数据不匹配。"
+  },
+  "The setup file's SHA-256 digest does not match GitHub's release metadata.": {
+    "nl": "De SHA-256-hash van het installatiebestand komt niet overeen met de GitHub-releasegegevens.",
+    "es": "El resumen SHA-256 del instalador no coincide con los metadatos de GitHub.",
+    "de": "Die SHA-256-Prüfsumme der Installationsdatei entspricht nicht den GitHub-Versionsmetadaten.",
+    "fr": "L’empreinte SHA-256 du fichier ne correspond pas aux métadonnées GitHub.",
+    "pt": "O hash SHA-256 do instalador não corresponde aos metadados do GitHub.",
+    "ru": "Хеш SHA-256 установщика не совпадает с метаданными GitHub.",
+    "zh": "安装文件的 SHA-256 摘要与 GitHub 发布元数据不匹配。"
+  },
+  "The downloaded setup's product version does not match GitHub release {0}.": {
+    "nl": "De productversie van het gedownloade installatiebestand komt niet overeen met GitHub-release {0}.",
+    "es": "La versión del instalador descargado no coincide con la versión {0} de GitHub.",
+    "de": "Die Produktversion des heruntergeladenen Installationsprogramms entspricht nicht GitHub-Version {0}.",
+    "fr": "La version du produit téléchargé ne correspond pas à la version GitHub {0}.",
+    "pt": "A versão do instalador baixado não corresponde à versão {0} do GitHub.",
+    "ru": "Версия загруженного установщика не совпадает с выпуском GitHub {0}.",
+    "zh": "下载的安装程序产品版本与 GitHub 发布 {0} 不匹配。"
+  }
+}

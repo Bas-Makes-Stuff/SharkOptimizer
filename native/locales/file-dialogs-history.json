@@ -1,0 +1,191 @@
+{
+  "Text file": {
+    "nl": "Tekstbestand",
+    "es": "Archivo de texto",
+    "de": "Textdatei",
+    "fr": "Fichier texte",
+    "pt": "Arquivo de texto",
+    "ru": "Текстовый файл",
+    "zh": "文本文件"
+  },
+  "Text report": {
+    "nl": "Tekstrapport",
+    "es": "Informe de texto",
+    "de": "Textbericht",
+    "fr": "Rapport texte",
+    "pt": "Relatório de texto",
+    "ru": "Текстовый отчёт",
+    "zh": "文本报告"
+  },
+  "Ping samples": {
+    "nl": "Pingmetingen",
+    "es": "Muestras de ping",
+    "de": "Ping-Messungen",
+    "fr": "Mesures de ping",
+    "pt": "Amostras de ping",
+    "ru": "Замеры пинга",
+    "zh": "延迟测量"
+  },
+  "SharkOptimizer backup": {
+    "nl": "SharkOptimizer-back-up",
+    "es": "Copia de SharkOptimizer",
+    "de": "SharkOptimizer-Sicherung",
+    "fr": "Sauvegarde SharkOptimizer",
+    "pt": "Backup do SharkOptimizer",
+    "ru": "Резервная копия SharkOptimizer",
+    "zh": "SharkOptimizer 备份"
+  },
+  "SharkOptimizer presets": {
+    "nl": "SharkOptimizer-voorinstellingen",
+    "es": "Preajustes de SharkOptimizer",
+    "de": "SharkOptimizer-Vorlagen",
+    "fr": "Préréglages SharkOptimizer",
+    "pt": "Predefinições do SharkOptimizer",
+    "ru": "Наборы SharkOptimizer",
+    "zh": "SharkOptimizer 预设"
+  },
+  "SharkOptimizer profile": {
+    "nl": "SharkOptimizer-profiel",
+    "es": "Perfil de SharkOptimizer",
+    "de": "SharkOptimizer-Profil",
+    "fr": "Profil SharkOptimizer",
+    "pt": "Perfil do SharkOptimizer",
+    "ru": "Профиль SharkOptimizer",
+    "zh": "SharkOptimizer 配置"
+  },
+  "Custom registry tweaks": {
+    "nl": "Aangepaste registeraanpassingen",
+    "es": "Ajustes personalizados del registro",
+    "de": "Eigene Registrierungsanpassungen",
+    "fr": "Ajustements personnalisés du registre",
+    "pt": "Ajustes personalizados do registro",
+    "ru": "Пользовательские изменения реестра",
+    "zh": "自定义注册表调整"
+  },
+  "Import custom registry definitions": {
+    "nl": "Aangepaste registerdefinities importeren",
+    "es": "Importar definiciones personalizadas del registro",
+    "de": "Eigene Registrierungsdefinitionen importieren",
+    "fr": "Importer des définitions personnalisées du registre",
+    "pt": "Importar definições personalizadas do registro",
+    "ru": "Импортировать пользовательские определения реестра",
+    "zh": "导入自定义注册表定义"
+  },
+  "Game applications": {
+    "nl": "Gameprogramma's",
+    "es": "Aplicaciones de juegos",
+    "de": "Spielanwendungen",
+    "fr": "Applications de jeux",
+    "pt": "Aplicativos de jogos",
+    "ru": "Игровые приложения",
+    "zh": "游戏应用"
+  },
+  "Choose a game executable": {
+    "nl": "Kies een uitvoerbaar gamebestand",
+    "es": "Elegir un ejecutable de juego",
+    "de": "Ausführbare Spieldatei auswählen",
+    "fr": "Choisir un exécutable de jeu",
+    "pt": "Escolher executável de jogo",
+    "ru": "Выбрать исполняемый файл игры",
+    "zh": "选择游戏可执行文件"
+  },
+  "Import an optimization profile": {
+    "nl": "Optimalisatieprofiel importeren",
+    "es": "Importar un perfil de optimización",
+    "de": "Optimierungsprofil importieren",
+    "fr": "Importer un profil d’optimisation",
+    "pt": "Importar perfil de otimização",
+    "ru": "Импортировать профиль оптимизации",
+    "zh": "导入优化配置"
+  },
+  "Preferences and appearance": {
+    "nl": "Voorkeuren en uiterlijk",
+    "es": "Preferencias y apariencia",
+    "de": "Einstellungen und Aussehen",
+    "fr": "Préférences et apparence",
+    "pt": "Preferências e aparência",
+    "ru": "Настройки и внешний вид",
+    "zh": "偏好和外观"
+  },
+  "{0} saved presets": {
+    "nl": "{0} opgeslagen voorinstellingen",
+    "es": "{0} preajustes guardados",
+    "de": "{0} gespeicherte Vorlagen",
+    "fr": "{0} préréglages enregistrés",
+    "pt": "{0} predefinições salvas",
+    "ru": "Сохранённых наборов: {0}",
+    "zh": "{0} 个已保存预设"
+  },
+  "Game library and custom profiles": {
+    "nl": "Gamebibliotheek en aangepaste profielen",
+    "es": "Biblioteca de juegos y perfiles personalizados",
+    "de": "Spielebibliothek und eigene Profile",
+    "fr": "Bibliothèque de jeux et profils personnalisés",
+    "pt": "Biblioteca de jogos e perfis personalizados",
+    "ru": "Библиотека игр и пользовательские профили",
+    "zh": "游戏库和自定义配置"
+  },
+  "Benchmark snapshots": {
+    "nl": "Meetmomentopnamen",
+    "es": "Capturas de mediciones",
+    "de": "Messaufnahmen",
+    "fr": "Instantanés de mesures",
+    "pt": "Capturas de medições",
+    "ru": "Снимки замеров",
+    "zh": "测量快照"
+  },
+  "{0} custom registry definitions; adding definitions does not apply their values.": {
+    "nl": "{0} aangepaste registerdefinities; toevoegen past hun waarden niet toe.",
+    "es": "{0} definiciones personalizadas del registro; añadirlas no aplica sus valores.",
+    "de": "{0} eigene Registrierungsdefinitionen; das Hinzufügen wendet ihre Werte nicht an.",
+    "fr": "{0} définitions personnalisées du registre ; leur ajout n’applique pas leurs valeurs.",
+    "pt": "{0} definições personalizadas do registro; adicioná-las não aplica seus valores.",
+    "ru": "Пользовательских определений реестра: {0}; добавление не применяет их значения.",
+    "zh": "{0} 个自定义注册表定义；添加定义不会应用其值。"
+  },
+  "Saved Game Boost profiles and protected apps. Importing does not start a session.": {
+    "nl": "Opgeslagen Gameboost-profielen en beschermde apps. Importeren start geen sessie.",
+    "es": "Perfiles de modo de juego y aplicaciones protegidas guardados. Importar no inicia una sesión.",
+    "de": "Gespeicherte Spielmodusprofile und geschützte Apps. Der Import startet keine Sitzung.",
+    "fr": "Profils de mode jeu et applications protégées enregistrés. L’importation ne démarre pas de session.",
+    "pt": "Perfis de modo de jogo e aplicativos protegidos salvos. Importar não inicia uma sessão.",
+    "ru": "Сохранённые профили игрового режима и защищённые приложения. Импорт не запускает сеанс.",
+    "zh": "已保存的游戏模式配置和受保护应用。导入不会启动会话。"
+  },
+  "BEFORE · {0} · ping {1}": {
+    "nl": "VOOR · {0} · ping {1}",
+    "es": "ANTES · {0} · ping {1}",
+    "de": "VORHER · {0} · Ping {1}",
+    "fr": "AVANT · {0} · ping {1}",
+    "pt": "ANTES · {0} · ping {1}",
+    "ru": "ДО · {0} · пинг {1}",
+    "zh": "调整前 · {0} · 延迟 {1}"
+  },
+  "AFTER · {0} · ping {1}": {
+    "nl": "NA · {0} · ping {1}",
+    "es": "DESPUÉS · {0} · ping {1}",
+    "de": "NACHHER · {0} · Ping {1}",
+    "fr": "APRÈS · {0} · ping {1}",
+    "pt": "DEPOIS · {0} · ping {1}",
+    "ru": "ПОСЛЕ · {0} · пинг {1}",
+    "zh": "调整后 · {0} · 延迟 {1}"
+  },
+  "Jitter {0} · DNS {1} · CPU use {2} · RAM used {3}": {
+    "nl": "Jitter {0} · DNS {1} · CPU-gebruik {2} · RAM gebruikt {3}",
+    "es": "Fluctuación {0} · DNS {1} · Uso de CPU {2} · RAM usada {3}",
+    "de": "Jitter {0} · DNS {1} · CPU-Auslastung {2} · RAM-Nutzung {3}",
+    "fr": "Gigue {0} · DNS {1} · Utilisation CPU {2} · RAM utilisée {3}",
+    "pt": "Jitter {0} · DNS {1} · Uso de CPU {2} · RAM usada {3}",
+    "ru": "Джиттер {0} · DNS {1} · Нагрузка CPU {2} · RAM занято {3}",
+    "zh": "抖动 {0} · DNS {1} · CPU 使用率 {2} · 已用内存 {3}"
+  },
+  "Processes {0} · Services {1} · Last boot {2}": {
+    "nl": "Processen {0} · Services {1} · Laatste opstart {2}",
+    "es": "Procesos {0} · Servicios {1} · Último arranque {2}",
+    "de": "Prozesse {0} · Dienste {1} · Letzter Start {2}",
+    "fr": "Processus {0} · Services {1} · Dernier démarrage {2}",
+    "pt": "Processos {0} · Serviços {1} · Última inicialização {2}",
+    "ru": "Процессы {0} · Службы {1} · Последняя загрузка {2}",
+    "zh": "进程 {0} · 服务 {1} · 上次启动 {2}"
+  }
+}

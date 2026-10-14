@@ -1,0 +1,191 @@
+{
+  "{0} must be true or false.": {
+    "nl": "{0} moet true of false zijn.",
+    "es": "{0} debe ser true o false.",
+    "de": "{0} muss true oder false sein.",
+    "fr": "{0} doit être true ou false.",
+    "pt": "{0} deve ser true ou false.",
+    "ru": "{0} должно быть true или false.",
+    "zh": "{0} 必须为 true 或 false。"
+  },
+  "Unsupported custom-tweak format.": {
+    "nl": "Niet-ondersteund formaat voor aangepaste aanpassingen.",
+    "es": "Formato de ajustes personalizados no compatible.",
+    "de": "Nicht unterstütztes Format für eigene Anpassungen.",
+    "fr": "Format d’ajustements personnalisés non pris en charge.",
+    "pt": "Formato de ajustes personalizados não suportado.",
+    "ru": "Неподдерживаемый формат пользовательских изменений.",
+    "zh": "不支持的自定义调整格式。"
+  },
+  "Custom-tweak files must contain a list of up to 100 definitions.": {
+    "nl": "Bestanden met aangepaste aanpassingen moeten een lijst met maximaal 100 definities bevatten.",
+    "es": "Los archivos de ajustes personalizados deben contener una lista de hasta 100 definiciones.",
+    "de": "Dateien mit eigenen Anpassungen müssen eine Liste mit höchstens 100 Definitionen enthalten.",
+    "fr": "Les fichiers d’ajustements personnalisés doivent contenir une liste de 100 définitions au maximum.",
+    "pt": "Os arquivos de ajustes personalizados devem conter uma lista de até 100 definições.",
+    "ru": "Файлы пользовательских изменений должны содержать список не более чем из 100 определений.",
+    "zh": "自定义调整文件必须包含最多 100 个定义的列表。"
+  },
+  "A custom-tweak entry is not an object.": {
+    "nl": "Een aangepaste-aanpassingsitem is geen object.",
+    "es": "Una entrada de ajuste personalizado no es un objeto.",
+    "de": "Ein Eintrag einer eigenen Anpassung ist kein Objekt.",
+    "fr": "Une entrée d’ajustement personnalisé n’est pas un objet.",
+    "pt": "Uma entrada de ajuste personalizado não é um objeto.",
+    "ru": "Элемент пользовательского изменения не является объектом.",
+    "zh": "自定义调整条目不是对象。"
+  },
+  "Registry entries must be a list of up to 100 values.": {
+    "nl": "Registeritems moeten een lijst met maximaal 100 waarden zijn.",
+    "es": "Las entradas del registro deben ser una lista de hasta 100 valores.",
+    "de": "Registrierungseinträge müssen eine Liste mit höchstens 100 Werten sein.",
+    "fr": "Les entrées du registre doivent être une liste de 100 valeurs au maximum.",
+    "pt": "As entradas do registro devem ser uma lista de até 100 valores.",
+    "ru": "Записи реестра должны быть списком не более чем из 100 значений.",
+    "zh": "注册表条目必须是最多 100 个值的列表。"
+  },
+  "A registry entry is invalid.": {
+    "nl": "Een registeritem is ongeldig.",
+    "es": "Una entrada del registro no es válida.",
+    "de": "Ein Registrierungseintrag ist ungültig.",
+    "fr": "Une entrée du registre est invalide.",
+    "pt": "Uma entrada do registro é inválida.",
+    "ru": "Недопустимая запись реестра.",
+    "zh": "注册表条目无效。"
+  },
+  "Custom-tweak IDs must be unique.": {
+    "nl": "ID's van aangepaste aanpassingen moeten uniek zijn.",
+    "es": "Los ID de ajustes personalizados deben ser únicos.",
+    "de": "IDs eigener Anpassungen müssen eindeutig sein.",
+    "fr": "Les identifiants des ajustements personnalisés doivent être uniques.",
+    "pt": "Os IDs dos ajustes personalizados devem ser únicos.",
+    "ru": "ID пользовательских изменений должны быть уникальны.",
+    "zh": "自定义调整 ID 必须唯一。"
+  },
+  "Use a unique custom ID that does not replace a built-in tweak or legacy alias.": {
+    "nl": "Gebruik een unieke aangepaste ID die geen ingebouwde aanpassing of oude alias vervangt.",
+    "es": "Usa un ID personalizado único que no reemplace un ajuste integrado ni un alias antiguo.",
+    "de": "Verwende eine eindeutige eigene ID, die keine integrierte Anpassung oder alte Alias-ID ersetzt.",
+    "fr": "Utilisez un identifiant personnalisé unique qui ne remplace ni un ajustement intégré ni un ancien alias.",
+    "pt": "Use um ID personalizado único que não substitua um ajuste integrado ou um alias antigo.",
+    "ru": "Используйте уникальный пользовательский ID, не заменяющий встроенное изменение или старый псевдоним.",
+    "zh": "使用唯一的自定义 ID，不得替换内置调整或旧版别名。"
+  },
+  "A custom-tweak label is invalid or too long.": {
+    "nl": "Een label voor een aangepaste aanpassing is ongeldig of te lang.",
+    "es": "Una etiqueta de ajuste personalizado no es válida o es demasiado larga.",
+    "de": "Eine Beschriftung einer eigenen Anpassung ist ungültig oder zu lang.",
+    "fr": "Un libellé d’ajustement personnalisé est invalide ou trop long.",
+    "pt": "Um rótulo de ajuste personalizado é inválido ou longo demais.",
+    "ru": "Подпись пользовательского изменения недопустима или слишком длинная.",
+    "zh": "自定义调整标签无效或过长。"
+  },
+  "A custom tweak needs between 1 and 100 registry values.": {
+    "nl": "Een aangepaste aanpassing heeft 1 tot 100 registerwaarden nodig.",
+    "es": "Un ajuste personalizado necesita entre 1 y 100 valores del registro.",
+    "de": "Eine eigene Anpassung benötigt zwischen 1 und 100 Registrierungswerte.",
+    "fr": "Un ajustement personnalisé nécessite de 1 à 100 valeurs du registre.",
+    "pt": "Um ajuste personalizado precisa de 1 a 100 valores do registro.",
+    "ru": "Пользовательское изменение должно содержать от 1 до 100 значений реестра.",
+    "zh": "自定义调整需要包含 1 到 100 个注册表值。"
+  },
+  "The same registry value appears more than once in a tweak.": {
+    "nl": "Dezelfde registerwaarde komt meerdere keren voor in een aanpassing.",
+    "es": "El mismo valor del registro aparece más de una vez en un ajuste.",
+    "de": "Derselbe Registrierungswert kommt in einer Anpassung mehrfach vor.",
+    "fr": "La même valeur du registre apparaît plusieurs fois dans un ajustement.",
+    "pt": "O mesmo valor do registro aparece mais de uma vez em um ajuste.",
+    "ru": "Одно и то же значение реестра встречается в изменении несколько раз.",
+    "zh": "同一注册表值在调整中出现多次。"
+  },
+  "A registry address is invalid.": {
+    "nl": "Een registeradres is ongeldig.",
+    "es": "Una dirección del registro no es válida.",
+    "de": "Eine Registrierungsadresse ist ungültig.",
+    "fr": "Une adresse du registre est invalide.",
+    "pt": "Um endereço do registro é inválido.",
+    "ru": "Недопустимый адрес реестра.",
+    "zh": "注册表地址无效。"
+  },
+  "Use an HKCU, HKLM, HKCR, HKU, or HKCC registry path.": {
+    "nl": "Gebruik een registerpad met HKCU, HKLM, HKCR, HKU of HKCC.",
+    "es": "Usa una ruta del registro HKCU, HKLM, HKCR, HKU o HKCC.",
+    "de": "Verwende einen Registrierungspfad mit HKCU, HKLM, HKCR, HKU oder HKCC.",
+    "fr": "Utilisez un chemin de registre HKCU, HKLM, HKCR, HKU ou HKCC.",
+    "pt": "Use um caminho de registro HKCU, HKLM, HKCR, HKU ou HKCC.",
+    "ru": "Используйте путь реестра HKCU, HKLM, HKCR, HKU или HKCC.",
+    "zh": "使用 HKCU、HKLM、HKCR、HKU 或 HKCC 注册表路径。"
+  },
+  "A registry key component is invalid.": {
+    "nl": "Een onderdeel van de registersleutel is ongeldig.",
+    "es": "Un componente de la clave del registro no es válido.",
+    "de": "Ein Teil des Registrierungsschlüssels ist ungültig.",
+    "fr": "Un composant de la clé de registre est invalide.",
+    "pt": "Um componente da chave de registro é inválido.",
+    "ru": "Недопустимый компонент ключа реестра.",
+    "zh": "注册表项组成部分无效。"
+  },
+  "Choose a supported registry value type.": {
+    "nl": "Kies een ondersteund registerwaardetype.",
+    "es": "Elige un tipo de valor del registro compatible.",
+    "de": "Wähle einen unterstützten Registrierungswerttyp.",
+    "fr": "Choisissez un type de valeur du registre pris en charge.",
+    "pt": "Escolha um tipo de valor do registro suportado.",
+    "ru": "Выберите поддерживаемый тип значения реестра.",
+    "zh": "选择支持的注册表值类型。"
+  },
+  "Custom binary values must be no larger than 64 KB.": {
+    "nl": "Aangepaste binaire waarden mogen maximaal 64 KB zijn.",
+    "es": "Los valores binarios personalizados no deben superar 64 KB.",
+    "de": "Eigene Binärwerte dürfen höchstens 64 KB groß sein.",
+    "fr": "Les valeurs binaires personnalisées ne doivent pas dépasser 64 Ko.",
+    "pt": "Os valores binários personalizados não podem exceder 64 KB.",
+    "ru": "Пользовательские двоичные значения не должны превышать 64 КБ.",
+    "zh": "自定义二进制值不得超过 64 KB。"
+  },
+  "The previous custom-tweak file exceeds 1 MB.": {
+    "nl": "Het vorige bestand met aangepaste aanpassingen is groter dan 1 MB.",
+    "es": "El archivo anterior de ajustes personalizados supera 1 MB.",
+    "de": "Die vorherige Datei mit eigenen Anpassungen ist größer als 1 MB.",
+    "fr": "Le précédent fichier d’ajustements personnalisés dépasse 1 Mo.",
+    "pt": "O arquivo anterior de ajustes personalizados excede 1 MB.",
+    "ru": "Прежний файл пользовательских изменений превышает 1 МБ.",
+    "zh": "旧版自定义调整文件超过 1 MB。"
+  },
+  "Imported custom definitions from the previous app. No registry values were applied.": {
+    "nl": "Aangepaste definities uit de vorige app geïmporteerd. Er zijn geen registerwaarden toegepast.",
+    "es": "Se importaron las definiciones personalizadas de la aplicación anterior. No se aplicó ningún valor del registro.",
+    "de": "Eigene Definitionen aus der vorherigen App importiert. Keine Registrierungswerte wurden angewendet.",
+    "fr": "Définitions personnalisées importées depuis l’ancienne application. Aucune valeur du registre n’a été appliquée.",
+    "pt": "Definições personalizadas importadas do aplicativo anterior. Nenhum valor do registro foi aplicado.",
+    "ru": "Импортированы пользовательские определения из прежнего приложения. Значения реестра не применялись.",
+    "zh": "已从旧版应用导入自定义定义。未应用任何注册表值。"
+  },
+  "Previous custom tweaks could not be loaded: {0}": {
+    "nl": "Vorige aangepaste aanpassingen konden niet worden geladen: {0}",
+    "es": "No se pudieron cargar los ajustes personalizados anteriores: {0}",
+    "de": "Vorherige eigene Anpassungen konnten nicht geladen werden: {0}",
+    "fr": "Impossible de charger les anciens ajustements personnalisés : {0}",
+    "pt": "Não foi possível carregar os ajustes personalizados anteriores: {0}",
+    "ru": "Не удалось загрузить прежние пользовательские изменения: {0}",
+    "zh": "无法加载旧版自定义调整：{0}"
+  },
+  "A custom definition was not loaded: {0}": {
+    "nl": "Een aangepaste definitie is niet geladen: {0}",
+    "es": "No se cargó una definición personalizada: {0}",
+    "de": "Eine eigene Definition wurde nicht geladen: {0}",
+    "fr": "Une définition personnalisée n’a pas été chargée : {0}",
+    "pt": "Uma definição personalizada não foi carregada: {0}",
+    "ru": "Пользовательское определение не загружено: {0}",
+    "zh": "未加载自定义定义：{0}"
+  },
+  "Duplicate custom ID.": {
+    "nl": "Dubbele aangepaste ID.",
+    "es": "ID personalizado duplicado.",
+    "de": "Doppelte eigene ID.",
+    "fr": "Identifiant personnalisé en double.",
+    "pt": "ID personalizado duplicado.",
+    "ru": "Повторяющийся пользовательский ID.",
+    "zh": "自定义 ID 重复。"
+  }
+}

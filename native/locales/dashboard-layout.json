@@ -1,0 +1,14 @@
+{
+ "Welcome to SharkOptimizer":{"nl":"Welkom bij SharkOptimizer","de":"Willkommen bei SharkOptimizer","es":"Bienvenido a SharkOptimizer","fr":"Bienvenue dans SharkOptimizer","pt":"Bem-vindo ao SharkOptimizer","ru":"Добро пожаловать в SharkOptimizer","zh":"欢迎使用 SharkOptimizer"},
+ "Your optimizations":{"nl":"Jouw optimalisaties","de":"Deine Optimierungen","es":"Tus optimizaciones","fr":"Vos optimisations","pt":"Suas otimizações","ru":"Ваши оптимизации","zh":"你的优化设置"},
+ "Review optimization":{"nl":"Optimalisatie bekijken","de":"Optimierung prüfen","es":"Revisar optimización","fr":"Examiner l’optimisation","pt":"Revisar otimização","ru":"Просмотреть оптимизацию","zh":"查看优化设置"},
+ "Tracked":{"nl":"Bijgehouden","de":"Erfasst","es":"Registrado","fr":"Enregistré","pt":"Registrado","ru":"Сохранено","zh":"已记录"},
+ "Shortcuts":{"nl":"Snelkoppelingen","de":"Schnellzugriff","es":"Accesos directos","fr":"Raccourcis","pt":"Atalhos","ru":"Быстрый доступ","zh":"快捷入口"},
+ "Tracked changes":{"nl":"Bijgehouden wijzigingen","de":"Erfasste Änderungen","es":"Cambios registrados","fr":"Modifications enregistrées","pt":"Alterações registradas","ru":"Сохранённые изменения","zh":"已记录的更改"},
+ "Available tweaks":{"nl":"Beschikbare tweaks","de":"Verfügbare Tweaks","es":"Ajustes disponibles","fr":"Réglages disponibles","pt":"Ajustes disponíveis","ru":"Доступные настройки","zh":"可用优化项"},
+ "Appearance":{"nl":"Vormgeving","de":"Darstellung","es":"Apariencia","fr":"Apparence","pt":"Aparência","ru":"Внешний вид","zh":"外观"},
+ "Blue":{"nl":"Blauw","de":"Blau","es":"Azul","fr":"Bleu","pt":"Azul","ru":"Синий","zh":"蓝色"},
+ "Green":{"nl":"Groen","de":"Grün","es":"Verde","fr":"Vert","pt":"Verde","ru":"Зелёный","zh":"绿色"},
+ "Purple":{"nl":"Paars","de":"Lila","es":"Morado","fr":"Violet","pt":"Roxo","ru":"Фиолетовый","zh":"紫色"},
+ "Orange":{"nl":"Oranje","de":"Orange","es":"Naranja","fr":"Orange","pt":"Laranja","ru":"Оранжевый","zh":"橙色"}
+}

@@ -1,0 +1,317 @@
+{
+  "SharkOptimizer Lab": {
+    "nl": "SharkOptimizer-lab",
+    "es": "Laboratorio SharkOptimizer",
+    "de": "SharkOptimizer-Labor",
+    "fr": "Laboratoire SharkOptimizer",
+    "pt": "Laboratório SharkOptimizer",
+    "ru": "Лаборатория SharkOptimizer",
+    "zh": "SharkOptimizer 实验室"
+  },
+  "Verify applied tweaks": {
+    "nl": "Toegepaste aanpassingen controleren",
+    "es": "Verificar ajustes aplicados",
+    "de": "Angewendete Anpassungen prüfen",
+    "fr": "Vérifier les ajustements appliqués",
+    "pt": "Verificar ajustes aplicados",
+    "ru": "Проверить применённые изменения",
+    "zh": "验证已应用的调整"
+  },
+  "Export system report": {
+    "nl": "Systeemrapport exporteren",
+    "es": "Exportar informe del sistema",
+    "de": "Systembericht exportieren",
+    "fr": "Exporter le rapport système",
+    "pt": "Exportar relatório do sistema",
+    "ru": "Экспортировать отчёт о системе",
+    "zh": "导出系统报告"
+  },
+  "Export selected profile": {
+    "nl": "Geselecteerd profiel exporteren",
+    "es": "Exportar perfil seleccionado",
+    "de": "Ausgewähltes Profil exportieren",
+    "fr": "Exporter le profil sélectionné",
+    "pt": "Exportar perfil selecionado",
+    "ru": "Экспортировать выбранный профиль",
+    "zh": "导出所选配置"
+  },
+  "Import profile": {
+    "nl": "Profiel importeren",
+    "es": "Importar perfil",
+    "de": "Profil importieren",
+    "fr": "Importer un profil",
+    "pt": "Importar perfil",
+    "ru": "Импортировать профиль",
+    "zh": "导入配置"
+  },
+  "System information": {
+    "nl": "Systeeminformatie",
+    "es": "Información del sistema",
+    "de": "Systeminformationen",
+    "fr": "Informations système",
+    "pt": "Informações do sistema",
+    "ru": "Сведения о системе",
+    "zh": "系统信息"
+  },
+  "Run hardware check": {
+    "nl": "Hardwarecontrole uitvoeren",
+    "es": "Ejecutar comprobación de hardware",
+    "de": "Hardwareprüfung ausführen",
+    "fr": "Vérifier le matériel",
+    "pt": "Executar verificação de hardware",
+    "ru": "Проверить оборудование",
+    "zh": "运行硬件检查"
+  },
+  "Before and after snapshot": {
+    "nl": "Momentopname voor en na",
+    "es": "Captura de antes y después",
+    "de": "Vorher-Nachher-Aufnahme",
+    "fr": "Mesure avant et après",
+    "pt": "Medição antes e depois",
+    "ru": "Замеры до и после",
+    "zh": "前后快照"
+  },
+  "Capture BEFORE": {
+    "nl": "VOOR vastleggen",
+    "es": "Capturar ANTES",
+    "de": "VORHER erfassen",
+    "fr": "Mesurer AVANT",
+    "pt": "Medir ANTES",
+    "ru": "Замер ДО",
+    "zh": "采集调整前数据"
+  },
+  "Capture AFTER": {
+    "nl": "NA vastleggen",
+    "es": "Capturar DESPUÉS",
+    "de": "NACHHER erfassen",
+    "fr": "Mesurer APRÈS",
+    "pt": "Medir DEPOIS",
+    "ru": "Замер ПОСЛЕ",
+    "zh": "采集调整后数据"
+  },
+  "Compare": {
+    "nl": "Vergelijken",
+    "es": "Comparar",
+    "de": "Vergleichen",
+    "fr": "Comparer",
+    "pt": "Comparar",
+    "ru": "Сравнить",
+    "zh": "比较"
+  },
+  "Compare changes with care": {
+    "nl": "Wijzigingen zorgvuldig vergelijken",
+    "es": "Compara los cambios con cuidado",
+    "de": "Änderungen sorgfältig vergleichen",
+    "fr": "Comparer les changements avec soin",
+    "pt": "Compare as alterações com cuidado",
+    "ru": "Сравнивайте изменения внимательно",
+    "zh": "谨慎比较更改"
+  },
+  "Benchmark history": {
+    "nl": "Meetgeschiedenis",
+    "es": "Historial de mediciones",
+    "de": "Messverlauf",
+    "fr": "Historique des mesures",
+    "pt": "Histórico de medições",
+    "ru": "История замеров",
+    "zh": "测量历史"
+  },
+  "Export history CSV": {
+    "nl": "Geschiedenis als CSV exporteren",
+    "es": "Exportar historial en CSV",
+    "de": "Verlauf als CSV exportieren",
+    "fr": "Exporter l’historique en CSV",
+    "pt": "Exportar histórico em CSV",
+    "ru": "Экспортировать историю в CSV",
+    "zh": "导出历史记录 CSV"
+  },
+  "Benchmark history exported.": {
+    "nl": "Meetgeschiedenis geëxporteerd.",
+    "es": "Historial de mediciones exportado.",
+    "de": "Messverlauf exportiert.",
+    "fr": "Historique des mesures exporté.",
+    "pt": "Histórico de medições exportado.",
+    "ru": "История замеров экспортирована.",
+    "zh": "测量历史已导出。"
+  },
+  "No recorded samples yet.": {
+    "nl": "Nog geen metingen opgeslagen.",
+    "es": "Todavía no hay mediciones registradas.",
+    "de": "Noch keine Messungen gespeichert.",
+    "fr": "Aucune mesure enregistrée pour le moment.",
+    "pt": "Ainda não há medições registradas.",
+    "ru": "Сохранённых замеров пока нет.",
+    "zh": "尚无已记录的测量。"
+  },
+  "Export failed: {0}": {
+    "nl": "Exporteren mislukt: {0}",
+    "es": "Error al exportar: {0}",
+    "de": "Export fehlgeschlagen: {0}",
+    "fr": "Échec de l’exportation : {0}",
+    "pt": "Falha na exportação: {0}",
+    "ru": "Ошибка экспорта: {0}",
+    "zh": "导出失败：{0}"
+  },
+  "Checking hardware and Windows security status…": {
+    "nl": "Hardware en Windows-beveiligingsstatus controleren…",
+    "es": "Comprobando hardware y estado de seguridad de Windows…",
+    "de": "Hardware und Windows-Sicherheitsstatus werden geprüft…",
+    "fr": "Vérification du matériel et de la sécurité Windows…",
+    "pt": "Verificando hardware e segurança do Windows…",
+    "ru": "Проверка оборудования и безопасности Windows…",
+    "zh": "正在检查硬件和 Windows 安全状态…"
+  },
+  "Check applied settings, review your system summary, and export a setup profile for another PC.": {
+    "nl": "Controleer toegepaste instellingen, bekijk je systeemoverzicht en exporteer een instellingenprofiel voor een andere pc.",
+    "es": "Comprueba los ajustes aplicados, revisa el resumen del sistema y exporta un perfil de configuración para otro PC.",
+    "de": "Prüfe angewendete Einstellungen, sieh die Systemübersicht an und exportiere ein Einstellungsprofil für einen anderen PC.",
+    "fr": "Vérifiez les réglages appliqués, consultez le résumé système et exportez un profil de configuration pour un autre PC.",
+    "pt": "Verifique os ajustes aplicados, consulte o resumo do sistema e exporte um perfil de configuração para outro PC.",
+    "ru": "Проверьте применённые настройки, просмотрите сведения о системе и экспортируйте профиль настроек для другого ПК.",
+    "zh": "检查已应用的设置、查看系统摘要，并为另一台电脑导出设置配置。"
+  },
+  "Samples ping, jitter, DNS, idle CPU, RAM, processes, services, and the last recorded Windows boot time. Repeat both runs under similar conditions.": {
+    "nl": "Meet ping, jitter, DNS, CPU in rust, RAM, processen, services en de laatst geregistreerde Windows-opstarttijd. Voer beide metingen onder vergelijkbare omstandigheden uit.",
+    "es": "Mide ping, fluctuación, DNS, CPU en reposo, RAM, procesos, servicios y el último tiempo de arranque de Windows registrado. Repite ambas mediciones en condiciones similares.",
+    "de": "Misst Ping, Jitter, DNS, CPU im Leerlauf, RAM, Prozesse, Dienste und die zuletzt erfasste Windows-Startzeit. Führe beide Messungen unter ähnlichen Bedingungen durch.",
+    "fr": "Mesure le ping, la gigue, le DNS, le processeur au repos, la RAM, les processus, les services et le dernier temps de démarrage Windows enregistré. Répétez les deux mesures dans des conditions similaires.",
+    "pt": "Mede ping, jitter, DNS, CPU em repouso, RAM, processos, serviços e o último tempo de inicialização do Windows registrado. Repita ambas as medições em condições semelhantes.",
+    "ru": "Измеряет пинг, джиттер, DNS, нагрузку CPU в простое, RAM, процессы, службы и последнее записанное время загрузки Windows. Выполняйте оба замера в похожих условиях.",
+    "zh": "测量延迟、抖动、DNS、空闲 CPU、内存、进程、服务和最近记录的 Windows 启动时间。请在相似条件下重复两次测量。"
+  },
+  "Restart after system changes, compare the same game or workload, and undo changes that cause problems. Windows updates or driver installers can reset some settings.": {
+    "nl": "Start opnieuw op na systeemwijzigingen, vergelijk dezelfde game of werklast en draai wijzigingen terug die problemen veroorzaken. Windows-updates en driverinstallaties kunnen sommige instellingen terugzetten.",
+    "es": "Reinicia después de cambiar el sistema, compara el mismo juego o carga de trabajo y deshaz los cambios que causen problemas. Las actualizaciones de Windows o los instaladores de controladores pueden restablecer algunos ajustes.",
+    "de": "Starte nach Systemänderungen neu, vergleiche dasselbe Spiel oder dieselbe Arbeitslast und mache problematische Änderungen rückgängig. Windows-Updates oder Treiberinstallationen können Einstellungen zurücksetzen.",
+    "fr": "Redémarrez après les changements système, comparez le même jeu ou la même charge de travail et annulez les changements problématiques. Les mises à jour Windows ou les installations de pilotes peuvent réinitialiser certains réglages.",
+    "pt": "Reinicie após alterações no sistema, compare o mesmo jogo ou carga de trabalho e desfaça alterações que causem problemas. Atualizações do Windows ou instalações de drivers podem redefinir alguns ajustes.",
+    "ru": "Перезагрузитесь после изменений системы, сравнивайте одну и ту же игру или нагрузку и отменяйте изменения, вызывающие проблемы. Обновления Windows и установщики драйверов могут сбросить некоторые настройки.",
+    "zh": "更改系统后请重启，使用相同的游戏或工作负载比较，并撤销引发问题的更改。Windows 更新或驱动安装程序可能重置部分设置。"
+  },
+  "Sampling ping, DNS, CPU, memory, services, and boot data… pause other workloads for a cleaner comparison.": {
+    "nl": "Ping, DNS, CPU, geheugen, services en opstartgegevens meten… pauzeer andere taken voor een zuiverdere vergelijking.",
+    "es": "Midiendo ping, DNS, CPU, memoria, servicios y datos de arranque… pausa otras tareas para una comparación más precisa.",
+    "de": "Ping, DNS, CPU, Speicher, Dienste und Startdaten werden gemessen… pausiere andere Aufgaben für einen genaueren Vergleich.",
+    "fr": "Mesure du ping, DNS, processeur, mémoire, services et données de démarrage… mettez les autres tâches en pause pour une comparaison plus précise.",
+    "pt": "Medindo ping, DNS, CPU, memória, serviços e dados de inicialização… pause outras tarefas para uma comparação mais precisa.",
+    "ru": "Измерение пинга, DNS, CPU, памяти, служб и данных загрузки… приостановите другие задачи для более точного сравнения.",
+    "zh": "正在测量延迟、DNS、CPU、内存、服务和启动数据…请暂停其他任务以获得更准确的比较。"
+  },
+  "Setup backup": {
+    "nl": "Instellingenback-up",
+    "es": "Copia de seguridad de configuración",
+    "de": "Sicherung der Einrichtung",
+    "fr": "Sauvegarde de configuration",
+    "pt": "Backup de configuração",
+    "ru": "Резервная копия настроек",
+    "zh": "设置备份"
+  },
+  "Export setup backup": {
+    "nl": "Instellingenback-up exporteren",
+    "es": "Exportar copia de configuración",
+    "de": "Einrichtungssicherung exportieren",
+    "fr": "Exporter la sauvegarde de configuration",
+    "pt": "Exportar backup de configuração",
+    "ru": "Экспортировать резервную копию настроек",
+    "zh": "导出设置备份"
+  },
+  "Import setup backup": {
+    "nl": "Instellingenback-up importeren",
+    "es": "Importar copia de configuración",
+    "de": "Einrichtungssicherung importieren",
+    "fr": "Importer une sauvegarde de configuration",
+    "pt": "Importar backup de configuração",
+    "ru": "Импортировать резервную копию настроек",
+    "zh": "导入设置备份"
+  },
+  "Setup backup saved.": {
+    "nl": "Instellingenback-up opgeslagen.",
+    "es": "Copia de configuración guardada.",
+    "de": "Einrichtungssicherung gespeichert.",
+    "fr": "Sauvegarde de configuration enregistrée.",
+    "pt": "Backup de configuração salvo.",
+    "ru": "Резервная копия настроек сохранена.",
+    "zh": "设置备份已保存。"
+  },
+  "Backup exported": {
+    "nl": "Back-up geëxporteerd",
+    "es": "Copia exportada",
+    "de": "Sicherung exportiert",
+    "fr": "Sauvegarde exportée",
+    "pt": "Backup exportado",
+    "ru": "Резервная копия экспортирована",
+    "zh": "备份已导出"
+  },
+  "Backup export failed": {
+    "nl": "Back-up exporteren mislukt",
+    "es": "Error al exportar la copia",
+    "de": "Sicherungsexport fehlgeschlagen",
+    "fr": "Échec de l’exportation de la sauvegarde",
+    "pt": "Falha ao exportar backup",
+    "ru": "Ошибка экспорта резервной копии",
+    "zh": "备份导出失败"
+  },
+  "Review setup backup": {
+    "nl": "Instellingenback-up bekijken",
+    "es": "Revisar copia de configuración",
+    "de": "Einrichtungssicherung prüfen",
+    "fr": "Examiner la sauvegarde de configuration",
+    "pt": "Revisar backup de configuração",
+    "ru": "Проверить резервную копию настроек",
+    "zh": "检查设置备份"
+  },
+  "Backup imported": {
+    "nl": "Back-up geïmporteerd",
+    "es": "Copia importada",
+    "de": "Sicherung importiert",
+    "fr": "Sauvegarde importée",
+    "pt": "Backup importado",
+    "ru": "Резервная копия импортирована",
+    "zh": "备份已导入"
+  },
+  "Backup import failed": {
+    "nl": "Back-up importeren mislukt",
+    "es": "Error al importar la copia",
+    "de": "Sicherungsimport fehlgeschlagen",
+    "fr": "Échec de l’importation de la sauvegarde",
+    "pt": "Falha ao importar backup",
+    "ru": "Ошибка импорта резервной копии",
+    "zh": "备份导入失败"
+  },
+  "Keep a portable copy of your preferences, presets, game profiles, and benchmark snapshots. Importing does not apply Windows changes or replace your undo history. Cleanup schedule preferences are included; importing does not create a scheduled task.": {
+    "nl": "Bewaar een overdraagbare kopie van je voorkeuren, voorinstellingen, gameprofielen en metingen. Importeren past geen Windows-wijzigingen toe en vervangt je herstelgeschiedenis niet. Voorkeuren voor gepland opruimen zijn inbegrepen; importeren maakt geen geplande taak aan.",
+    "es": "Guarda una copia portátil de tus preferencias, preajustes, perfiles de juegos y mediciones. Importar no aplica cambios de Windows ni reemplaza el historial para deshacerlos. Incluye las preferencias de limpieza programada; importar no crea una tarea programada.",
+    "de": "Speichere eine übertragbare Kopie deiner Einstellungen, Vorlagen, Spielprofile und Messungen. Der Import wendet keine Windows-Änderungen an und ersetzt den Verlauf zum Rückgängigmachen nicht. Einstellungen zur geplanten Bereinigung sind enthalten; der Import erstellt keine geplante Aufgabe.",
+    "fr": "Conservez une copie portable de vos préférences, préréglages, profils de jeux et mesures. L’importation n’applique aucun changement Windows et ne remplace pas l’historique d’annulation. Les préférences de nettoyage planifié sont incluses ; l’importation ne crée pas de tâche planifiée.",
+    "pt": "Guarde uma cópia portátil das preferências, predefinições, perfis de jogos e medições. A importação não aplica alterações do Windows nem substitui o histórico de restauração. As preferências de limpeza agendada estão incluídas; importar não cria uma tarefa agendada.",
+    "ru": "Сохраните переносимую копию настроек, наборов, игровых профилей и замеров. Импорт не применяет изменения Windows и не заменяет историю отмены. Настройки очистки по расписанию включены; импорт не создаёт запланированную задачу.",
+    "zh": "保存偏好、预设、游戏配置和测量快照的可移植副本。导入不会应用 Windows 更改或替换撤销历史。包括计划清理偏好，但导入不会创建计划任务。"
+  },
+  "Replace the included app data? Current Windows changes and undo records are kept.": {
+    "nl": "Bijgevoegde appgegevens vervangen? Huidige Windows-wijzigingen en herstelgegevens blijven bewaard.",
+    "es": "¿Reemplazar los datos de la aplicación incluidos? Se conservan los cambios actuales de Windows y los registros para deshacerlos.",
+    "de": "Enthaltene App-Daten ersetzen? Aktuelle Windows-Änderungen und Wiederherstellungsdaten bleiben erhalten.",
+    "fr": "Remplacer les données d’application incluses ? Les changements Windows actuels et les données d’annulation sont conservés.",
+    "pt": "Substituir os dados do aplicativo incluídos? As alterações atuais do Windows e os registros de restauração serão mantidos.",
+    "ru": "Заменить включённые данные приложения? Текущие изменения Windows и записи отмены сохраняются.",
+    "zh": "替换包含的应用数据？当前 Windows 更改和撤销记录将保留。"
+  },
+  "The previous native state is backed up before replacement. Restart the app after importing.": {
+    "nl": "De vorige native appstatus wordt vóór vervanging opgeslagen als back-up. Start de app opnieuw na het importeren.",
+    "es": "Se guarda una copia del estado nativo anterior antes de reemplazarlo. Reinicia la aplicación después de importar.",
+    "de": "Der bisherige Zustand der nativen App wird vor dem Ersetzen gesichert. Starte die App nach dem Import neu.",
+    "fr": "L’état précédent de l’application native est sauvegardé avant le remplacement. Redémarrez l’application après l’importation.",
+    "pt": "O estado nativo anterior é salvo em backup antes da substituição. Reinicie o aplicativo após importar.",
+    "ru": "Перед заменой сохраняется резервная копия прежнего состояния нативного приложения. Перезапустите приложение после импорта.",
+    "zh": "替换前会备份原有原生应用状态。导入后请重新启动应用。"
+  },
+  "Backup imported. Exit SharkOptimizer from the tray menu, then reopen it to load the restored preferences and profiles.": {
+    "nl": "Back-up geïmporteerd. Sluit SharkOptimizer af via het systeemvakmenu en open het opnieuw om de herstelde voorkeuren en profielen te laden.",
+    "es": "Copia importada. Sal de SharkOptimizer desde el menú de la bandeja y vuelve a abrirlo para cargar las preferencias y perfiles restaurados.",
+    "de": "Sicherung importiert. Beende SharkOptimizer über das Infobereichmenü und öffne es erneut, um die wiederhergestellten Einstellungen und Profile zu laden.",
+    "fr": "Sauvegarde importée. Quittez SharkOptimizer via le menu de la zone de notification, puis rouvrez-le pour charger les préférences et profils restaurés.",
+    "pt": "Backup importado. Saia do SharkOptimizer pelo menu da bandeja e abra novamente para carregar as preferências e perfis restaurados.",
+    "ru": "Резервная копия импортирована. Завершите SharkOptimizer через меню в трее и откройте снова, чтобы загрузить восстановленные настройки и профили.",
+    "zh": "备份已导入。请通过托盘菜单退出 SharkOptimizer，然后重新打开以加载还原的偏好和配置。"
+  }
+}

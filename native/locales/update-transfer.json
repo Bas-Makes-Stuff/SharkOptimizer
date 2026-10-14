@@ -1,0 +1,4 @@
+{
+ "Update transfer timed out.":{"nl":"De updateoverdracht duurde te lang.","de":"Die Update-Übertragung hat zu lange gedauert.","es":"Se agotó el tiempo de transferencia de la actualización.","fr":"Le transfert de la mise à jour a expiré.","pt":"A transferência da atualização excedeu o tempo limite.","ru":"Истекло время передачи обновления.","zh":"更新传输超时。"},
+ "The update response is larger than expected.":{"nl":"Het updateantwoord is groter dan verwacht.","de":"Die Update-Antwort ist größer als erwartet.","es":"La respuesta de actualización es mayor de lo esperado.","fr":"La réponse de mise à jour est plus volumineuse que prévu.","pt":"A resposta da atualização é maior que o esperado.","ru":"Ответ обновления превышает ожидаемый размер.","zh":"更新响应超出预期大小。"}
+}

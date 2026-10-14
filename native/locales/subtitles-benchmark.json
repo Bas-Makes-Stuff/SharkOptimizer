@@ -1,0 +1,191 @@
+{
+  "Review changes before they touch your PC.": {
+    "nl": "Bekijk wijzigingen voordat ze je pc aanpassen.",
+    "es": "Revisa los cambios antes de modificar tu PC.",
+    "de": "Prüfe Änderungen, bevor sie deinen PC verändern.",
+    "fr": "Examinez les changements avant qu’ils modifient votre PC.",
+    "pt": "Revise as alterações antes de modificar seu PC.",
+    "ru": "Проверьте изменения перед применением к ПК.",
+    "zh": "更改电脑前请先检查。"
+  },
+  "Game detection, profiles, and settings tips.": {
+    "nl": "Gamedetectie, profielen en instellingstips.",
+    "es": "Detección de juegos, perfiles y consejos de ajustes.",
+    "de": "Spielerkennung, Profile und Einstellungstipps.",
+    "fr": "Détection des jeux, profils et conseils de réglage.",
+    "pt": "Detecção de jogos, perfis e dicas de ajustes.",
+    "ru": "Поиск игр, профили и советы по настройкам.",
+    "zh": "游戏检测、配置和设置建议。"
+  },
+  "Launch a game and restore selected settings when you finish.": {
+    "nl": "Start een game en herstel de gekozen instellingen als je klaar bent.",
+    "es": "Inicia un juego y restaura los ajustes elegidos al terminar.",
+    "de": "Starte ein Spiel und stelle gewählte Einstellungen danach wieder her.",
+    "fr": "Lancez un jeu et restaurez les réglages choisis à la fin.",
+    "pt": "Inicie um jogo e restaure os ajustes escolhidos ao terminar.",
+    "ru": "Запустите игру и восстановите выбранные настройки по завершении.",
+    "zh": "启动游戏并在结束后还原所选设置。"
+  },
+  "Useful Windows controls and apps you can close safely.": {
+    "nl": "Handige Windows-instellingen en apps die je veilig kunt sluiten.",
+    "es": "Controles útiles de Windows y aplicaciones que puedes cerrar con seguridad.",
+    "de": "Nützliche Windows-Einstellungen und sicher schließbare Apps.",
+    "fr": "Commandes Windows utiles et applications à fermer normalement.",
+    "pt": "Controles úteis do Windows e aplicativos que você pode fechar com segurança.",
+    "ru": "Полезные настройки Windows и приложения для безопасного закрытия.",
+    "zh": "实用 Windows 控件和可安全关闭的应用。"
+  },
+  "Clear old temporary files and review the space first.": {
+    "nl": "Ruim oude tijdelijke bestanden op en bekijk eerst de ruimte.",
+    "es": "Borra archivos temporales antiguos y revisa primero el espacio.",
+    "de": "Bereinige alte temporäre Dateien und prüfe zuerst den Speicherplatz.",
+    "fr": "Nettoyez les anciens fichiers temporaires en vérifiant d’abord l’espace.",
+    "pt": "Limpe arquivos temporários antigos e confira o espaço primeiro.",
+    "ru": "Очистите старые временные файлы, сначала проверив объём.",
+    "zh": "先查看空间，再清理旧临时文件。"
+  },
+  "Ping, DNS, and route checks for your connection.": {
+    "nl": "Ping-, DNS- en routecontroles voor je verbinding.",
+    "es": "Comprobaciones de ping, DNS y ruta para tu conexión.",
+    "de": "Ping-, DNS- und Routenprüfungen für deine Verbindung.",
+    "fr": "Vérifications du ping, DNS et des routes de votre connexion.",
+    "pt": "Verificações de ping, DNS e rota da conexão.",
+    "ru": "Проверки пинга, DNS и маршрута соединения.",
+    "zh": "检查连接的延迟、DNS 和路由。"
+  },
+  "Verify settings, inspect your PC, and move profiles.": {
+    "nl": "Controleer instellingen, bekijk je pc en verplaats profielen.",
+    "es": "Verifica ajustes, inspecciona tu PC y transfiere perfiles.",
+    "de": "Prüfe Einstellungen, untersuche deinen PC und übertrage Profile.",
+    "fr": "Vérifiez les réglages, inspectez votre PC et transférez les profils.",
+    "pt": "Verifique ajustes, examine seu PC e transfira perfis.",
+    "ru": "Проверьте настройки, сведения о ПК и перенесите профили.",
+    "zh": "验证设置、检查电脑并迁移配置。"
+  },
+  "A clear history of changes you can roll back.": {
+    "nl": "Een duidelijk overzicht van wijzigingen die je kunt terugdraaien.",
+    "es": "Un historial claro de cambios que puedes revertir.",
+    "de": "Ein übersichtlicher Verlauf rückgängig machbarer Änderungen.",
+    "fr": "Un historique clair des changements que vous pouvez annuler.",
+    "pt": "Um histórico claro de alterações que você pode reverter.",
+    "ru": "Понятная история изменений, которые можно отменить.",
+    "zh": "清晰记录可撤销的更改。"
+  },
+  "App preferences and local data.": {
+    "nl": "Appvoorkeuren en lokale gegevens.",
+    "es": "Preferencias de la aplicación y datos locales.",
+    "de": "App-Einstellungen und lokale Daten.",
+    "fr": "Préférences de l’application et données locales.",
+    "pt": "Preferências do aplicativo e dados locais.",
+    "ru": "Настройки приложения и локальные данные.",
+    "zh": "应用偏好和本地数据。"
+  },
+  "Medians of up to three latest samples per group. BEFORE: {0} · AFTER: {1}": {
+    "nl": "Medianen van maximaal drie recente metingen per groep. VOOR: {0} · NA: {1}",
+    "es": "Medianas de hasta tres últimas muestras por grupo. ANTES: {0} · DESPUÉS: {1}",
+    "de": "Mediane von bis zu drei neuesten Messungen pro Gruppe. VORHER: {0} · NACHHER: {1}",
+    "fr": "Médianes des trois dernières mesures au maximum par groupe. AVANT : {0} · APRÈS : {1}",
+    "pt": "Medianas de até três últimas amostras por grupo. ANTES: {0} · DEPOIS: {1}",
+    "ru": "Медианы до трёх последних замеров в группе. ДО: {0} · ПОСЛЕ: {1}",
+    "zh": "每组最多三次最新测量的中位数。调整前：{0} · 调整后：{1}"
+  },
+  "Metric · BEFORE → AFTER": {
+    "nl": "Meting · VOOR → NA",
+    "es": "Métrica · ANTES → DESPUÉS",
+    "de": "Messwert · VORHER → NACHHER",
+    "fr": "Mesure · AVANT → APRÈS",
+    "pt": "Métrica · ANTES → DEPOIS",
+    "ru": "Показатель · ДО → ПОСЛЕ",
+    "zh": "指标 · 调整前 → 调整后"
+  },
+  "Ping average: {0} → {1}": {
+    "nl": "Gemiddelde ping: {0} → {1}",
+    "es": "Ping medio: {0} → {1}",
+    "de": "Durchschnittlicher Ping: {0} → {1}",
+    "fr": "Ping moyen : {0} → {1}",
+    "pt": "Ping médio: {0} → {1}",
+    "ru": "Средний пинг: {0} → {1}",
+    "zh": "平均延迟：{0} → {1}"
+  },
+  "Jitter average: {0} → {1}": {
+    "nl": "Gemiddelde jitter: {0} → {1}",
+    "es": "Fluctuación media: {0} → {1}",
+    "de": "Durchschnittlicher Jitter: {0} → {1}",
+    "fr": "Gigue moyenne : {0} → {1}",
+    "pt": "Jitter médio: {0} → {1}",
+    "ru": "Средний джиттер: {0} → {1}",
+    "zh": "平均抖动：{0} → {1}"
+  },
+  "DNS lookup: {0} → {1}": {
+    "nl": "DNS-opzoeking: {0} → {1}",
+    "es": "Consulta DNS: {0} → {1}",
+    "de": "DNS-Abfrage: {0} → {1}",
+    "fr": "Recherche DNS : {0} → {1}",
+    "pt": "Consulta DNS: {0} → {1}",
+    "ru": "Поиск DNS: {0} → {1}",
+    "zh": "DNS 查询：{0} → {1}"
+  },
+  "CPU usage: {0} → {1}": {
+    "nl": "CPU-gebruik: {0} → {1}",
+    "es": "Uso de CPU: {0} → {1}",
+    "de": "CPU-Auslastung: {0} → {1}",
+    "fr": "Utilisation CPU : {0} → {1}",
+    "pt": "Uso de CPU: {0} → {1}",
+    "ru": "Нагрузка CPU: {0} → {1}",
+    "zh": "CPU 使用率：{0} → {1}"
+  },
+  "Available memory: {0} → {1}": {
+    "nl": "Beschikbaar geheugen: {0} → {1}",
+    "es": "Memoria disponible: {0} → {1}",
+    "de": "Verfügbarer Speicher: {0} → {1}",
+    "fr": "Mémoire disponible : {0} → {1}",
+    "pt": "Memória disponível: {0} → {1}",
+    "ru": "Доступная память: {0} → {1}",
+    "zh": "可用内存：{0} → {1}"
+  },
+  "RAM used: {0} → {1}": {
+    "nl": "RAM gebruikt: {0} → {1}",
+    "es": "RAM usada: {0} → {1}",
+    "de": "RAM-Nutzung: {0} → {1}",
+    "fr": "RAM utilisée : {0} → {1}",
+    "pt": "RAM usada: {0} → {1}",
+    "ru": "Занято RAM: {0} → {1}",
+    "zh": "已用内存：{0} → {1}"
+  },
+  "Running processes: {0} → {1}": {
+    "nl": "Actieve processen: {0} → {1}",
+    "es": "Procesos activos: {0} → {1}",
+    "de": "Laufende Prozesse: {0} → {1}",
+    "fr": "Processus actifs : {0} → {1}",
+    "pt": "Processos ativos: {0} → {1}",
+    "ru": "Запущенные процессы: {0} → {1}",
+    "zh": "运行进程：{0} → {1}"
+  },
+  "Running services: {0} → {1}": {
+    "nl": "Actieve services: {0} → {1}",
+    "es": "Servicios activos: {0} → {1}",
+    "de": "Laufende Dienste: {0} → {1}",
+    "fr": "Services actifs : {0} → {1}",
+    "pt": "Serviços ativos: {0} → {1}",
+    "ru": "Работающие службы: {0} → {1}",
+    "zh": "运行服务：{0} → {1}"
+  },
+  "Last boot duration: {0} → {1}": {
+    "nl": "Laatste opstartduur: {0} → {1}",
+    "es": "Duración del último arranque: {0} → {1}",
+    "de": "Letzte Startdauer: {0} → {1}",
+    "fr": "Durée du dernier démarrage : {0} → {1}",
+    "pt": "Duração da última inicialização: {0} → {1}",
+    "ru": "Длительность последней загрузки: {0} → {1}",
+    "zh": "上次启动时长：{0} → {1}"
+  },
+  "These snapshots describe current conditions and do not measure game FPS. Process/service counts are context; fewer is not automatically better. Repeat small differences under the same workload.": {
+    "nl": "Deze metingen beschrijven de huidige situatie en meten geen game-FPS. Proces- en serviceaantallen geven context; minder is niet automatisch beter. Herhaal kleine verschillen met dezelfde werklast.",
+    "es": "Estas capturas describen las condiciones actuales y no miden FPS de juegos. Los recuentos de procesos y servicios aportan contexto; menos no siempre es mejor. Repite las diferencias pequeñas con la misma carga.",
+    "de": "Diese Messungen beschreiben aktuelle Bedingungen und messen keine Spiele-FPS. Prozess- und Dienstzahlen geben Kontext; weniger ist nicht automatisch besser. Prüfe kleine Unterschiede erneut mit derselben Arbeitslast.",
+    "fr": "Ces mesures décrivent les conditions actuelles et ne mesurent pas les FPS des jeux. Les nombres de processus et services donnent du contexte ; moins n’est pas automatiquement mieux. Répétez les petits écarts avec la même charge.",
+    "pt": "Estas medições descrevem as condições atuais e não medem FPS de jogos. Contagens de processos e serviços dão contexto; menos não é automaticamente melhor. Repita diferenças pequenas com a mesma carga.",
+    "ru": "Эти замеры описывают текущие условия и не измеряют FPS игр. Число процессов и служб даёт контекст; меньше не всегда лучше. Повторите небольшие отличия при той же нагрузке.",
+    "zh": "这些快照反映当前状态，不测量游戏 FPS。进程和服务数量仅供参考；较少不一定更好。请在相同工作负载下复测小幅差异。"
+  }
+}

@@ -1,0 +1,110 @@
+{
+  "The preset has no option list.": {
+    "nl": "De voorinstelling bevat geen optielijst.",
+    "es": "El preajuste no tiene lista de opciones.",
+    "de": "Die Vorlage enthält keine Optionsliste.",
+    "fr": "Le préréglage ne contient pas de liste d’options.",
+    "pt": "A predefinição não tem lista de opções.",
+    "ru": "В наборе нет списка параметров.",
+    "zh": "预设没有选项列表。"
+  },
+  "A preset contains too many options.": {
+    "nl": "Een voorinstelling bevat te veel opties.",
+    "es": "Un preajuste contiene demasiadas opciones.",
+    "de": "Eine Vorlage enthält zu viele Optionen.",
+    "fr": "Un préréglage contient trop d’options.",
+    "pt": "Uma predefinição contém opções demais.",
+    "ru": "Набор содержит слишком много параметров.",
+    "zh": "预设包含过多选项。"
+  },
+  "The preset contains no supported options.": {
+    "nl": "De voorinstelling bevat geen ondersteunde opties.",
+    "es": "El preajuste no contiene opciones compatibles.",
+    "de": "Die Vorlage enthält keine unterstützten Optionen.",
+    "fr": "Le préréglage ne contient aucune option prise en charge.",
+    "pt": "A predefinição não contém opções compatíveis.",
+    "ru": "В наборе нет поддерживаемых параметров.",
+    "zh": "预设不包含受支持选项。"
+  },
+  "This preset is too large for a share code.": {
+    "nl": "Deze voorinstelling is te groot voor een deelcode.",
+    "es": "Este preajuste es demasiado grande para un código compartido.",
+    "de": "Diese Vorlage ist zu groß für einen Freigabecode.",
+    "fr": "Ce préréglage est trop volumineux pour un code de partage.",
+    "pt": "Esta predefinição é grande demais para um código compartilhado.",
+    "ru": "Набор слишком велик для кода обмена.",
+    "zh": "此预设过大，无法生成分享代码。"
+  },
+  "Enter a valid SHARK1 share code.": {
+    "nl": "Voer een geldige SHARK1-deelcode in.",
+    "es": "Introduce un código SHARK1 válido.",
+    "de": "Gib einen gültigen SHARK1-Freigabecode ein.",
+    "fr": "Saisissez un code de partage SHARK1 valide.",
+    "pt": "Digite um código SHARK1 válido.",
+    "ru": "Введите допустимый код обмена SHARK1.",
+    "zh": "请输入有效的 SHARK1 分享代码。"
+  },
+  "The decoded share code is too large.": {
+    "nl": "De uitgepakte deelcode is te groot.",
+    "es": "El código compartido decodificado es demasiado grande.",
+    "de": "Der entpackte Freigabecode ist zu groß.",
+    "fr": "Le code de partage décodé est trop volumineux.",
+    "pt": "O código compartilhado decodificado é grande demais.",
+    "ru": "Распакованный код обмена слишком велик.",
+    "zh": "解码后的分享代码过大。"
+  },
+  "The share code has an invalid format.": {
+    "nl": "De deelcode heeft een ongeldig formaat.",
+    "es": "El código compartido tiene un formato no válido.",
+    "de": "Der Freigabecode hat ein ungültiges Format.",
+    "fr": "Le code de partage a un format invalide.",
+    "pt": "O código compartilhado tem formato inválido.",
+    "ru": "Недопустимый формат кода обмена.",
+    "zh": "分享代码格式无效。"
+  },
+  "This is not a SharkOptimizer preset file.": {
+    "nl": "Dit is geen SharkOptimizer-voorinstellingsbestand.",
+    "es": "Este no es un archivo de preajustes de SharkOptimizer.",
+    "de": "Dies ist keine SharkOptimizer-Vorlagendatei.",
+    "fr": "Ce n’est pas un fichier de préréglages SharkOptimizer.",
+    "pt": "Este não é um arquivo de predefinições do SharkOptimizer.",
+    "ru": "Это не файл наборов SharkOptimizer.",
+    "zh": "这不是 SharkOptimizer 预设文件。"
+  },
+  "This preset file uses an unsupported format version.": {
+    "nl": "Dit voorinstellingsbestand gebruikt een niet-ondersteunde formaatversie.",
+    "es": "Este archivo usa una versión de formato no compatible.",
+    "de": "Diese Vorlagendatei verwendet eine nicht unterstützte Formatversion.",
+    "fr": "Ce fichier utilise une version de format non prise en charge.",
+    "pt": "Este arquivo usa uma versão de formato não suportada.",
+    "ru": "Файл набора использует неподдерживаемую версию формата.",
+    "zh": "此预设文件使用不支持的格式版本。"
+  },
+  "The file does not contain a preset list.": {
+    "nl": "Het bestand bevat geen lijst met voorinstellingen.",
+    "es": "El archivo no contiene una lista de preajustes.",
+    "de": "Die Datei enthält keine Vorlagenliste.",
+    "fr": "Le fichier ne contient pas de liste de préréglages.",
+    "pt": "O arquivo não contém uma lista de predefinições.",
+    "ru": "Файл не содержит список наборов.",
+    "zh": "文件不包含预设列表。"
+  },
+  "Preset files can contain up to 100 presets.": {
+    "nl": "Voorinstellingsbestanden kunnen maximaal 100 voorinstellingen bevatten.",
+    "es": "Los archivos pueden contener hasta 100 preajustes.",
+    "de": "Vorlagendateien können bis zu 100 Vorlagen enthalten.",
+    "fr": "Les fichiers peuvent contenir jusqu’à 100 préréglages.",
+    "pt": "Os arquivos podem conter até 100 predefinições.",
+    "ru": "Файлы могут содержать до 100 наборов.",
+    "zh": "预设文件最多可包含 100 个预设。"
+  },
+  "No presets with supported options were found.": {
+    "nl": "Geen voorinstellingen met ondersteunde opties gevonden.",
+    "es": "No se encontraron preajustes con opciones compatibles.",
+    "de": "Keine Vorlagen mit unterstützten Optionen gefunden.",
+    "fr": "Aucun préréglage avec des options prises en charge n’a été trouvé.",
+    "pt": "Nenhuma predefinição com opções compatíveis foi encontrada.",
+    "ru": "Наборы с поддерживаемыми параметрами не найдены.",
+    "zh": "未找到包含受支持选项的预设。"
+  }
+}
