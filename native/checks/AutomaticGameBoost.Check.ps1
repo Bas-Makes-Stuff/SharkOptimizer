@@ -26,7 +26,8 @@ function Wait-ForSession {
  $probe=[Activator]::CreateInstance($assembly.GetType('SharkOptimizer.NativeApp.AutomaticGameProbe'),$true)
  $probe.Paths=$paths
  $probe=$type.GetMethod('ReadAutomaticGame',[Reflection.BindingFlags]'Static,NonPublic').Invoke($null,@($probe))
- throw ('External game detection failed. Running='+$probe.Running+'; uncertain='+$probe.Uncertain+'; notes='+($type.GetField('_sessionActionNotes',$flags).GetValue($window) -join '; '))
+ $child.Refresh()
+ throw ('External game detection failed. Running='+$probe.Running+'; uncertain='+$probe.Uncertain+'; childName='+$child.ProcessName+'; childExited='+$child.HasExited+'; notes='+($type.GetField('_sessionActionNotes',$flags).GetValue($window) -join '; '))
 }
 function Start-Fixture($path) {
  $process=New-Object Diagnostics.Process
@@ -73,6 +74,7 @@ try {
  Poll
  if($state.ActiveSessionReport){throw 'A process with the same name but a different path triggered Game Boost.'}
  $child=Start-Fixture $fixture
+ Write-Output ('Fixture reported process name: '+$child.ProcessName)
  Wait-ForSession
  if(!$state.ActiveSessionReport -or $state.ActiveSessionReport.Mode -ne 'Automatic'){throw 'Detected external game did not start a session.'}
  $type.GetMethod('ShowPage',$flags).Invoke($window,@('Game Session'))

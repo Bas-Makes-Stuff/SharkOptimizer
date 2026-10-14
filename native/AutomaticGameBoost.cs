@@ -86,15 +86,22 @@ namespace SharkOptimizer.NativeApp
 
         private static AutomaticGameProbe ReadAutomaticGame(AutomaticGameProbe probe)
         {
-            foreach (string name in probe.Paths.Select(Path.GetFileNameWithoutExtension).Distinct(StringComparer.OrdinalIgnoreCase)) {
-                Process[] processes;
-                try { processes = Process.GetProcessesByName(name); } catch { probe.Uncertain = true; continue; }
-                foreach (Process process in processes) {
+            string[] names = probe.Paths.Select(Path.GetFileNameWithoutExtension).Distinct(StringComparer.OrdinalIgnoreCase).ToArray();
+            Process[] processes;
+            try { processes = Process.GetProcesses(); } catch { probe.Uncertain = true; return probe; }
+            foreach (Process process in processes) {
+                try {
+                    string reportedName;
+                    try { reportedName = process.ProcessName; } catch { continue; }
+                    // .NET Framework's performance-counter enumeration can truncate names on Windows Server.
+                    // A prefix only selects a candidate; the full image path must still match exactly.
+                    if (!names.Any(name => String.Equals(name, reportedName, StringComparison.OrdinalIgnoreCase) ||
+                        (reportedName.Length >= 15 && name.StartsWith(reportedName, StringComparison.OrdinalIgnoreCase)))) continue;
                     try {
                         string runningPath = AutomaticProcessPath(process.Id);
                         if (probe.Paths.Any(path => String.Equals(Path.GetFullPath(path), runningPath, StringComparison.OrdinalIgnoreCase))) probe.Running = true;
-                    } catch { probe.Uncertain = true; } finally { process.Dispose(); }
-                }
+                    } catch { probe.Uncertain = true; }
+                } finally { process.Dispose(); }
             }
             return probe;
         }
