@@ -1,4 +1,4 @@
-param([string]$AppPath)
+param([string]$AppPath, [switch]$ShortPaths)
 $ErrorActionPreference='Stop'
 if (!$AppPath) { $AppPath=Join-Path $PSScriptRoot '..\out\SharkOptimizer.Native.exe' }
 Add-Type -AssemblyName PresentationFramework
@@ -60,7 +60,14 @@ try {
  $game.Id='auto-fixture'; $game.Name='Automatic fixture'; $game.IsCustom=$true
  $game.Executables=New-Object 'Collections.Generic.List[string]'; $game.Executables.Add('SharkGameFixture.exe')
  $state.CustomGames.Add($game)
- $paths=New-Object 'Collections.Generic.List[string]'; $paths.Add($fixture); $state.GamePaths.Add($game.Id,$paths)
+ $paths=New-Object 'Collections.Generic.List[string]'
+ if($ShortPaths) {
+  Add-Type -TypeDefinition 'using System; using System.Text; using System.Runtime.InteropServices; public static class AutoFixtureShortPath { [DllImport("kernel32.dll", CharSet=CharSet.Unicode)] public static extern uint GetShortPathName(string path, StringBuilder output, uint size); }'
+  $shortBuffer=New-Object Text.StringBuilder 32768
+  if([AutoFixtureShortPath]::GetShortPathName($fixture,$shortBuffer,32768) -eq 0){throw 'Could not query fixture short path.'}
+  $paths.Add($shortBuffer.ToString())
+ } else { $paths.Add($fixture) }
+ $state.GamePaths.Add($game.Id,$paths)
  $profile=[Activator]::CreateInstance($assembly.GetType('SharkOptimizer.NativeApp.GameSessionProfile'),$true)
  if($profile.Automatic -or $profile.AutomaticCloseApps){throw 'Automatic actions were enabled by default.'}
  $state.GameSessions.Profiles.Add($game.Id,$profile)

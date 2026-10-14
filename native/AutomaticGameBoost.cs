@@ -29,6 +29,15 @@ namespace SharkOptimizer.NativeApp
         private static extern bool QueryAutomaticProcessImage(IntPtr process, uint flags, StringBuilder path, ref uint size);
         [DllImport("kernel32.dll", EntryPoint = "CloseHandle")]
         private static extern bool CloseAutomaticProcess(IntPtr process);
+        [DllImport("kernel32.dll", EntryPoint = "GetLongPathNameW", CharSet = CharSet.Unicode, SetLastError = true)]
+        private static extern uint LongAutomaticPath(string path, StringBuilder result, uint size);
+        private static string NormalizeAutomaticPath(string value)
+        {
+            string full = Path.GetFullPath(value);
+            var result = new StringBuilder(32768);
+            uint length = LongAutomaticPath(full, result, (uint)result.Capacity);
+            return length > 0 && length < result.Capacity ? result.ToString() : full;
+        }
         private static string AutomaticProcessPath(int processId)
         {
             IntPtr handle = OpenAutomaticProcess(0x1000, false, processId);
@@ -86,7 +95,8 @@ namespace SharkOptimizer.NativeApp
 
         private static AutomaticGameProbe ReadAutomaticGame(AutomaticGameProbe probe)
         {
-            string[] names = probe.Paths.Select(Path.GetFileNameWithoutExtension).Distinct(StringComparer.OrdinalIgnoreCase).ToArray();
+            string[] paths = probe.Paths.Select(NormalizeAutomaticPath).ToArray();
+            string[] names = paths.Select(Path.GetFileNameWithoutExtension).Distinct(StringComparer.OrdinalIgnoreCase).ToArray();
             Process[] processes;
             try { processes = Process.GetProcesses(); } catch { probe.Uncertain = true; return probe; }
             foreach (Process process in processes) {
@@ -99,7 +109,7 @@ namespace SharkOptimizer.NativeApp
                         (reportedName.Length >= 15 && name.StartsWith(reportedName, StringComparison.OrdinalIgnoreCase)))) continue;
                     try {
                         string runningPath = AutomaticProcessPath(process.Id);
-                        if (probe.Paths.Any(path => String.Equals(Path.GetFullPath(path), runningPath, StringComparison.OrdinalIgnoreCase))) probe.Running = true;
+                        if (paths.Any(path => String.Equals(path, NormalizeAutomaticPath(runningPath), StringComparison.OrdinalIgnoreCase))) probe.Running = true;
                     } catch { probe.Uncertain = true; }
                 } finally { process.Dispose(); }
             }

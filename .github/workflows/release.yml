@@ -59,6 +59,8 @@ jobs:
           }
           & $hostPath -NoProfile -STA -ExecutionPolicy Bypass -File ./installer/checks/Uninstall.Check.ps1 -SetupPath "./release/$env:RELEASE_VERSION/SharkOptimizer-Setup.exe"
           if ($LASTEXITCODE -ne 0) { throw 'Uninstall filesystem check failed.' }
+          & $hostPath -NoProfile -STA -ExecutionPolicy Bypass -File ./native/checks/AutomaticGameBoost.Check.ps1 -ShortPaths
+          if ($LASTEXITCODE -ne 0) { throw 'Automatic Game Boost short-path check failed.' }
       - name: Prepare release artifact
         env:
           RELEASE_VERSION: ${{ steps.version.outputs.version }}
